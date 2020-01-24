@@ -9,13 +9,15 @@
 
 #include "../types.h"
 
-namespace tp::d_menu_collect {
-  extern "C" {
-  /**
-   *	@brief Sets the maximum number of rupees
-   *
-   *	Automatically gets the wallet size and fills it
-   */
-  void setWalletMaxNum();
-  }
-}
+namespace tp::d_menu_collect
+{
+    extern "C"
+    {
+        /**
+         *	@brief Sets the maximum number of rupees
+         *
+         *	Automatically gets the wallet size and fills it
+         */
+        void setWalletMaxNum();
+    }
+}  // namespace tp::d_menu_collect

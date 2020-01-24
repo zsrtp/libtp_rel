@@ -9,11 +9,13 @@
 
 #include "../types.h"
 
-namespace tp::f_ap_game {
-  extern "C" {
-  /**
-   *	@brief Runs once per frame
-   */
-  void fapGm_Execute();
-  }
-}
+namespace tp::f_ap_game
+{
+    extern "C"
+    {
+        /**
+         *	@brief Runs once per frame
+         */
+        void fapGm_Execute();
+    }
+}  // namespace tp::f_ap_game
