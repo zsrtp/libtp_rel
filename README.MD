@@ -21,8 +21,8 @@ This project contains all the mandatory tools to create a custom REL for TP but 
 			// TP Specific headers
 	source/
 		// General purpose function source files
-	format.sh			// Runs the formatter for all files
-	.clang-format 		// rules for clang-format
+	.clang-format	// rules for clang-format
+	format.sh		// Runs the formatter for all files
 
 
 ## Coding guidelines
