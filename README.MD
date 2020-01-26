@@ -3,21 +3,22 @@
 Hi! This is a library written in **C/C++** specifically for **The Legend of Zelda: Twilight Princess**
 This project contains all the mandatory tools to create a custom REL for TP but is primarily designed to grant easy access to symbols without unreadable, manual RAM access.
 
-## Structure
+## Filesystem Structure
+	assets/
+		// Additional data and code
+		eu.lst	// Lists that resolve
+		jp.lst	// symbols to their
+		us.lst	// respective RAM address
 	bin/
-		elf2rel 		// Compiled elf2rel for UNIX/Linux systems
-		elf2rel.exe 	// Windows version
-		gcipack.py 		// Script to generate a valid GCI
+		elf2rel		// Compiled elf2rel for UNIX/Linux systems
+		elf2rel.exe // Windows version
+		gcipack.py 	// Script to generate a valid GCI
 	include/
+		// Header files
 		gc/
-						// GC Specific headers (dolphin OS)
+			// GC Specific headers (dolphin OS)
 		tp/
 			// TP Specific headers
-			eu.lst 		// Lists that resolve
-			jp.lst 		// symbols to their
-			us.lst 		// respective RAM address
-		...
-		// General purpose function headers
 	source/
 		// General purpose function source files
 	format.sh			// Runs the formatter for all files
