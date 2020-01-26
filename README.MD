@@ -11,8 +11,8 @@ This project contains all the mandatory tools to create a custom REL for TP but 
 		us.lst	// respective RAM address
 	bin/
 		elf2rel		// Compiled elf2rel for UNIX/Linux systems
-		elf2rel.exe // Windows version
-		gcipack.py 	// Script to generate a valid GCI
+		elf2rel.exe	// Windows version
+		gcipack.py	// Script to generate a valid GCI
 	include/
 		// Header files
 		gc/
@@ -22,7 +22,7 @@ This project contains all the mandatory tools to create a custom REL for TP but 
 	source/
 		// General purpose function source files
 	.clang-format	// rules for clang-format
-	format.sh		// Runs the formatter for all files
+	format.sh	// Runs the formatter for all files
 
 
 ## Coding guidelines
