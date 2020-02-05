@@ -9,7 +9,7 @@
 
 #include "../types.h"
 
-namespace tp::d_menu_collect
+namespace libtp::tp::d_menu_collect
 {
     extern "C"
     {
@@ -20,4 +20,4 @@ namespace tp::d_menu_collect
          */
         void setWalletMaxNum();
     }
-}  // namespace tp::d_menu_collect
+}  // namespace libtp::tp::d_menu_collect

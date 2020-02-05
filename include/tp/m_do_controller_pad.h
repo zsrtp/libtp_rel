@@ -10,7 +10,7 @@
 
 #include "types.h"
 
-namespace tp::m_do_controller_pad
+namespace libtp::tp::m_do_controller_pad
 {
     /**
      *	@todo Fill missing vars.
@@ -29,4 +29,4 @@ namespace tp::m_do_controller_pad
     {
         extern CPadInfo cpadInfo;
     }
-}  // namespace tp::m_do_controller_pad
+}  // namespace libtp::tp::m_do_controller_pad

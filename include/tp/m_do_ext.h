@@ -9,10 +9,10 @@
 
 #include "../types.h"
 
-namespace tp::m_Do_ext
+namespace libtp::tp::m_Do_ext
 {
     extern "C"
     {
         extern void* archiveHeap;  // Archive heap pointer
     }
-}  // namespace tp::m_Do_ext
+}  // namespace libtp::tp::m_Do_ext

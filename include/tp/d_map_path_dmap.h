@@ -9,7 +9,7 @@
 
 #include "../types.h"
 
-namespace tp::d_map_path_dmap
+namespace libtp::tp::d_map_path_dmap
 {
     extern "C"
     {
@@ -21,4 +21,4 @@ namespace tp::d_map_path_dmap
          */
         void getMapPlayerPos(float posOut[3]);
     }
-}  // namespace tp::d_map_path_dmap
+}  // namespace libtp::tp::d_map_path_dmap

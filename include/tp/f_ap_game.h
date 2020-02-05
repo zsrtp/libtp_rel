@@ -9,7 +9,7 @@
 
 #include "../types.h"
 
-namespace tp::f_ap_game
+namespace libtp::tp::f_ap_game
 {
     extern "C"
     {
@@ -18,4 +18,4 @@ namespace tp::f_ap_game
          */
         void fapGm_Execute();
     }
-}  // namespace tp::f_ap_game
+}  // namespace libtp::tp::f_ap_game

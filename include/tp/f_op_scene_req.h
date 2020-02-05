@@ -9,11 +9,11 @@
 
 #include "../types.h"
 
-namespace tp::f_op_scene_req
+namespace libtp::tp::f_op_scene_req
 {
     extern "C"
     {
         extern bool freezeActors;  // Freezes all actors
         extern s32 isLoading;      // Current loading status
     }
-}  // namespace tp::f_op_scene_req
+}  // namespace libtp::tp::f_op_scene_req

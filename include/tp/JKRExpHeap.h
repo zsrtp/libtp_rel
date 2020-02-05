@@ -9,7 +9,7 @@
 
 #include "../types.h"
 
-namespace tp::jkr_exp_heap
+namespace libtp::tp::jkr_exp_heap
 {
     extern "C"
     {
@@ -29,4 +29,4 @@ namespace tp::jkr_exp_heap
          */
         void do_free_JKRExpHeap(void* heap, void* ptr);
     }
-}  // namespace tp::jkr_exp_heap
+}  // namespace libtp::tp::jkr_exp_heap

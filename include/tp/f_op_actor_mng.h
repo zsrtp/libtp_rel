@@ -9,7 +9,7 @@
 
 #include "types.h"
 
-namespace tp::f_op_actor_mng
+namespace libtp::tp::f_op_actor_mng
 {
     extern "C"
     {
@@ -131,4 +131,4 @@ namespace tp::f_op_actor_mng
                                    float unk6,
                                    float unk7);
     }
-}  // namespace tp::f_op_actor_mng
+}  // namespace libtp::tp::f_op_actor_mng
