@@ -10,8 +10,10 @@ extern "C"
     void _epilog();
     void _unresolved();
 }
-
-extern void main();
+namespace mod
+{
+    extern void main();
+}
 
 void _prolog()
 {
@@ -21,7 +23,7 @@ void _prolog()
         (*ctor)();
     }
     // Run main
-    ::main();
+    mod::main();
 }
 
 void _epilog()
