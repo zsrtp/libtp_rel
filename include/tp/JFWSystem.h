@@ -10,7 +10,7 @@
 
 #include "../types.h"
 
-namespace tp::jfw_system
+namespace libtp::tp::jfw_system
 {
     struct ConsoleLine
     {
@@ -41,4 +41,4 @@ namespace tp::jfw_system
     {
         extern SystemConsole* systemConsole;
     }
-}  // namespace tp::jfw_system
+}  // namespace libtp::tp::jfw_system
