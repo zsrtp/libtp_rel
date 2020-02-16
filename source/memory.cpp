@@ -1,9 +1,9 @@
-#include "memory.h"
 
-#include <gc/OSCache.h>
+#include "memory.h"
 
 #include <cstring>
 
+#include "gc/OSCache.h"
 #include "types.h"
 
 namespace libtp::memory
