@@ -15,12 +15,11 @@
 
 namespace libtp::display
 {
-    // Replace %s with title
-    const char* heading = "Twilight Princess - REL::%s";
-    const char* pre_description = "A mod by %s:";
-    const char* legalText = "Powered by libtp | (C) AECX, Zephiles";
-    const char* github = "Github: zsrtp";
-    const char* twitter = "Twitter: AECXTP, Zephiles";
+    const char* heading;
+    const char* pre_description;
+    const char* legalText;
+    const char* github;
+    const char* twitter;
 
     /**
      *  @brief Console wrapper class

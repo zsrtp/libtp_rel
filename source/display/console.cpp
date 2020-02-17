@@ -1,5 +1,6 @@
 #include "display/console.h"
 
+#include <cstddef>
 #include <cstdio>
 #include <cstring>
 
@@ -8,6 +9,12 @@
 
 namespace libtp::display
 {
+    const char* heading = "Twilight Princess - REL::%s";
+    const char* pre_description = "A mod by %s:";
+    const char* legalText = "Powered by libtp | (C) AECX, Zephiles";
+    const char* github = "Github: zsrtp";
+    const char* twitter = "Twitter: AECXTP, Zephiles";
+
     Console::Console(const char* author, const char* title, const char* description, const char* version)
         : _author(author), _title(title), _description(description), _version(version)
     {
