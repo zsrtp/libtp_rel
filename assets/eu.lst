@@ -120,6 +120,7 @@
 
 // string.o
 803697C4:strcmp
+80369918:strncpy
 8036995C:strcpy
 
 // m_Do_controller_pad.o

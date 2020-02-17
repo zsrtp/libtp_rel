@@ -120,6 +120,7 @@
 
 // string.o
 8036AE30:strcmp
+8036AF84:strncpy
 8036AFC8:strcpy
 
 // m_Do_controller_pad.o
