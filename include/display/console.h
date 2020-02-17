@@ -15,11 +15,11 @@
 
 namespace libtp::display
 {
-    const char* heading;
-    const char* pre_description;
-    const char* legalText;
-    const char* github;
-    const char* twitter;
+    extern const char* heading;
+    extern const char* pre_description;
+    extern const char* legalText;
+    extern const char* github;
+    extern const char* twitter;
 
     /**
      *  @brief Console wrapper class
