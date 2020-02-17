@@ -43,6 +43,34 @@ namespace libtp::display
         return;
     }
 
+    void clearConsole(u8 from, u8 count)
+    {
+        // Load the console as a local pointer to avoid loading it each loop
+        tp::jfw_system::SystemConsole* console = tp::jfw_system::systemConsole;
+
+        // If count is 0 we want to clear all lines
+        std::size_t linecount = sizeof(tp::jfw_system::SystemConsole::consoleLine) / sizeof(tp::jfw_system::ConsoleLine);
+
+        if (from > linecount)
+        {
+            from = 0;
+        }
+
+        // count = 0 ?              - remaining lines
+        // from + count > linecount - remaining lines
+        // else                     - count
+        count = (count == 0 ? (linecount - from) : ((from + count) > linecount ? (linecount - from) : count));
+
+        std::size_t lineLength = sizeof(tp::jfw_system::ConsoleLine::line);
+
+        for (u8 i = from; i < from + count; i++)
+        {
+            memset(console->consoleLine[i].line, 0x0, lineLength);
+        }
+
+        return;
+    }
+
     void setConsole(bool state, u8 lines)
     {
         // Load the console as a local pointer to avoid loading it each loop

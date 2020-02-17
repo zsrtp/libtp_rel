@@ -46,6 +46,15 @@ namespace libtp::display
                 const char* description2,
                 const char* version);
     };
+
+    /**
+     *  @brief Clears all console lines in a given range i.e. clearConsole(0, 10)
+     *
+     *  @param from First line index to be cleared (inclusive)
+     *  @param count Number of lines to be cleared, 0 = all
+     */
+    void clearConsole(u8 from, u8 count = 0);
+
     /**
      *  @brief Sets the state of the console
      *
