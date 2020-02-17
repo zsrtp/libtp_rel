@@ -13,5 +13,6 @@ namespace libtp::tools
         {
             i++;
         }
+        return i;
     }
 }  // namespace libtp::tools
