@@ -35,15 +35,16 @@ namespace libtp::display
          *  @param author Author name to display on legal stream
          *  @param title The name of your mod
          *  @param description Small description text about your mod
+         *  @param description1 Following description line
+         *  @param description2 Last description line
          *  @param version Version string (i.e. v3.1)
          */
-        Console(const char* author, const char* title, const char* description, const char* version);
-
-       private:
-        const char* _author;       // Author name to display on legal screen
-        const char* _title;        // Title of this mod
-        const char* _description;  // Short description
-        const char* _version;      // Version string to display (i.e. v3.1)
+        Console(const char* author,
+                const char* title,
+                const char* description,
+                const char* description1,
+                const char* description2,
+                const char* version);
     };
     /**
      *  @brief Sets the state of the console

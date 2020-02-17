@@ -15,8 +15,12 @@ namespace libtp::display
     const char* github = "Github: zsrtp";
     const char* twitter = "Twitter: AECXTP, Zephiles";
 
-    Console::Console(const char* author, const char* title, const char* description, const char* version)
-        : _author(author), _title(title), _description(description), _version(version)
+    Console::Console(const char* author,
+                     const char* title,
+                     const char* description,
+                     const char* description1,
+                     const char* description2,
+                     const char* version)
     {
         // Display some information about this mod, the project and everything
 
@@ -25,10 +29,13 @@ namespace libtp::display
 
         setConsole(true, 25);
 
-        snprintf(console->consoleLine[0].line, max, heading, _title);
-        snprintf(console->consoleLine[1].line, max, pre_description, _author);
-        strncpy(console->consoleLine[3].line, _description, max);
-        strncpy(console->consoleLine[10].line, _version, max);
+        snprintf(console->consoleLine[0].line, max, heading, title);
+        snprintf(console->consoleLine[2].line, max, pre_description, author);
+        strncpy(console->consoleLine[4].line, description, max);
+        strncpy(console->consoleLine[5].line, description1, max);
+        strncpy(console->consoleLine[6].line, description2, max);
+
+        strncpy(console->consoleLine[10].line, version, max);
         strncpy(console->consoleLine[21].line, legalText, max);
         strncpy(console->consoleLine[23].line, github, max);
         strncpy(console->consoleLine[24].line, twitter, max);
