@@ -36,7 +36,7 @@ namespace libtp::display
 
         console->consoleEnabled = state;
 
-        for (u8 line = 0; lines < lines; line++)
+        for (u8 line = 0; line < lines; line++)
         {
             console->consoleLine[line].showLine = state;
         }
