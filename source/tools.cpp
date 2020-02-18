@@ -29,7 +29,6 @@ namespace libtp::tools
                 break;
             }
         }
-
         return r;
     }
 }  // namespace libtp::tools
