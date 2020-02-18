@@ -42,6 +42,9 @@
 800B271C:setStickData
 800BB4B8:checkHeavyStateOn
 8011A6FC:checkTreasureRupeeReturn
+8011E9F8:procGanonFinishInit
+8011EA78:procGanonFinish
+
 // data
 8038EB8C:ladderVars
 

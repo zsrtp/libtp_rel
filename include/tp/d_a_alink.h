@@ -66,6 +66,16 @@ namespace libtp::tp::d_a_alink
          */
         bool checkTreasureRupeeReturn(void* unk1, s32 item);
 
+        /**
+         *  @brief Runs when delivering the final blow to Ganondorf
+         */
+        void procGanonFinishInit();
+
+        /**
+         *  @brief Runs when delivering the final blow to Ganondorf
+         */
+        void procGanonFinish();
+
         extern ClimbVars climbVars;
     }
 }  // namespace libtp::tp::d_a_alink
