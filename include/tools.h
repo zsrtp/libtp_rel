@@ -32,5 +32,5 @@ namespace libtp::tools
      *  @param state Current State (Link)
      *  @param event EventID to trigger
      */
-    void triggerSaveLoad(char* stage, u8 room, u8 spawn, u8 state = 0xFF, u8 event = 0xFF);
+    void triggerSaveLoad(const char* stage, u8 room, u8 spawn, u8 state = 0xFF, u8 event = 0xFF);
 }  // namespace libtp::tools
