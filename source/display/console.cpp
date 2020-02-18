@@ -86,7 +86,10 @@ namespace libtp::display
 
     void setConsoleColor(u8 red, u8 green, u8 blue, u8 alpha)
     {
-        *tp::jfw_system::systemConsole->consoleColor = (u32)(red << 24 | green << 16 | blue << 8 | alpha);
+        tp::jfw_system::systemConsole->consoleColor[0] = red;
+        tp::jfw_system::systemConsole->consoleColor[1] = green;
+        tp::jfw_system::systemConsole->consoleColor[2] = blue;
+        tp::jfw_system::systemConsole->consoleColor[3] = alpha;
         return;
     }
 
