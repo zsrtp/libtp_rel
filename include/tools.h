@@ -22,4 +22,15 @@ namespace libtp::tools
      *  @param chunkSize Length (in bytes) of one individual element (haystack[0])
      */
     s32 indexOf(const void* haystack, void* needle, s32 length, s32 chunkSize = sizeof(char));
+
+    /**
+     *  @brief Savely loads a given stage-room-spawnpoint-state and event combination
+     *
+     *  @param stage 8 char stage ID
+     *  @param room Room ID
+     *  @param spawn Spawnpoint
+     *  @param state Current State (Link)
+     *  @param event EventID to trigger
+     */
+    void triggerSaveLoad(char* stage, u8 room, u8 spawn, u8 state = 0xFF, u8 event = 0xFF);
 }  // namespace libtp::tools
