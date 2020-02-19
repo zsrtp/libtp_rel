@@ -74,7 +74,7 @@ namespace libtp::tp::d_a_alink
         /**
          *  @brief Runs when delivering the final blow to Ganondorf
          */
-        void procGanonFinish();
+        bool procGanonFinish(void* d_a_alink);
 
         extern ClimbVars climbVars;
     }
