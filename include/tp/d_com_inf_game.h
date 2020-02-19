@@ -102,7 +102,8 @@ namespace libtp::tp::d_com_inf_game
     struct GameInfo
     {
         ScratchPad scratchPad;        // 0 - 957
-        u8 unk_958[0x470];            // 958 - DC7
+        u8 localAreaNodes[0x20];      // 958 - 977 holds flags about the current area
+        u8 unk_978[0x450];            // 978 - DC7
         u8 respawnCutscene;           // DC8 - DC8
         u8 unkdc9[0xA];               // dc9 - dd2
         u8 respawnAnimation;          // dd3 - dd3
