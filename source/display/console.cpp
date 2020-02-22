@@ -13,7 +13,7 @@ namespace libtp::display
     const char* pre_description = "A mod by %s:";
     const char* legalText = "Powered by libtp | (C) AECX, Zephiles";
     const char* github = "Github: zsrtp";
-    const char* twitter = "Twitter: AECXTP, Zephiles";
+    const char* twitter = "Twitter: AECXTP, Zephiles_";
 
     Console::Console(const char* author,
                      const char* title,
