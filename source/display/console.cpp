@@ -11,7 +11,7 @@ namespace libtp::display
 {
     const char* heading = "Twilight Princess - REL::%s";
     const char* pre_description = "A mod by %s:";
-    const char* legalText = "Powered by libtp | (C) AECX, Zephiles";
+    const char* legalText = "Powered by libtp | (C) AECX, Zephiles_";
     const char* github = "Github: zsrtp";
     const char* twitter = "Twitter: AECXTP, Zephiles_";
 
