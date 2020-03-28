@@ -13,7 +13,7 @@ namespace libtp::display
     const char* pre_description = "A mod by %s:";
     const char* legalText = "Powered by libtp | (C) AECX, Zephiles";
     const char* github = "Github: zsrtp";
-    const char* twitter = "Twitter: AECXTP, Zephiles";
+    const char* twitter = "Twitter: AECXTP, Zephiles_";
 
     Console::Console(const char* author,
                      const char* title,
@@ -24,8 +24,11 @@ namespace libtp::display
     {
         // Display some information about this mod, the project and everything
 
+        // Load the console as a local pointer to save memory on each use
         tp::jfw_system::SystemConsole* console = tp::jfw_system::systemConsole;
-        std::size_t max = sizeof(tp::jfw_system::ConsoleLine::line);
+
+        // Get the max size minus one, to insure that the last char is always NULL
+        std::size_t max = sizeof(tp::jfw_system::ConsoleLine::line) - 1;
 
         setConsole(true, 25);
 
@@ -86,15 +89,20 @@ namespace libtp::display
 
     void setConsoleColor(u8 red, u8 green, u8 blue, u8 alpha)
     {
-        tp::jfw_system::systemConsole->consoleColor[0] = red;
-        tp::jfw_system::systemConsole->consoleColor[1] = green;
-        tp::jfw_system::systemConsole->consoleColor[2] = blue;
-        tp::jfw_system::systemConsole->consoleColor[3] = alpha;
+        // Load the console as a local pointer to save memory on each use
+        tp::jfw_system::SystemConsole* console = tp::jfw_system::systemConsole;
+
+        console->consoleColor[0] = red;
+        console->consoleColor[1] = green;
+        console->consoleColor[2] = blue;
+        console->consoleColor[3] = alpha;
         return;
     }
 
     char* print(u8 line, const char* text)
     {
-        return strncpy(tp::jfw_system::systemConsole->consoleLine[line].line, text, sizeof(tp::jfw_system::ConsoleLine::line));
+        // Get the max size minus one, to insure that the last char is always NULL
+        std::size_t max = sizeof(tp::jfw_system::ConsoleLine::line) - 1;
+        return strncpy(tp::jfw_system::systemConsole->consoleLine[line].line, text, max);
     }
 }  // namespace libtp::display
