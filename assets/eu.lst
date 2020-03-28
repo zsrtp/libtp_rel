@@ -5,6 +5,10 @@
 // m_Do_ext.o
 // text
 8000EDA8:getArchiveHeapPtr
+
+// d_stage
+80027DAC:setTresure
+
 // data
 80452BF4:archiveHeap
 
