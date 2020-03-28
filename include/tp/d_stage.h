@@ -14,14 +14,11 @@ namespace libtp::tp::d_stage
     extern "C"
     {
         /**
-         *	@brief Initialises treasure (not just chests)
-         *
-         *	Takes a pointer to 8 bytes; first 4 are numEntries followed by a pointer to
-         *the actual entry data of Type TRES
+         *	@brief Used for treasure initialisation (not just chests)
          *
          *	@return Returns the maximum number of rupees Link can hold in his
          *current wallet
          */
-        void setTresure(void* pEntryMetaData);  // Yes they spell it Tresure
+        void setTresure(void* unk1);  // Yes they spell it Tresure
     }
 }  // namespace libtp::tp::d_stage
