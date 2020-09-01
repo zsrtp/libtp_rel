@@ -4,6 +4,11 @@ Hi! This is a library written in **C/C++** specifically for **The Legend of Zeld
 This project is meant to be the backbone of your Twilight Princess mod by providing easy and quick access to a lot of functions, variables and data-fields used in the game.
 It also features some basic tools and wrapper functions to avoid recreating the same code for future RELs
 
+# Links
+ - [Documentation](//zsrtp.github.io/libtp_rel/index.html)
+ - [TP Dev Discord](//discord.gg/CsDF9hY)
+ - [TP Discord](//discord.gg/tp)
+
 # Usage
 This project is meant to be used as a **Submodule**, you can check out [this template](//github.com/zsrtp/REL) repository
 
