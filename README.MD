@@ -18,5 +18,5 @@ Credits for the implementation of custom REL files in a GC Game:
 
 Main contributors are
 * [AECX](//github.com/AECX)
-* [Lunar](//github.com/LunarSoap)
+* [Lunar](//github.com/lunarsoap5)
 * [Zephiles](//github.com/Zephiles)
