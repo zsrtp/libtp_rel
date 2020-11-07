@@ -6,8 +6,7 @@
  */
 
 #pragma once
-
-#include "../types.h"
+#include <cstdint>
 
 namespace libtp::tp::d_map_path_dmap
 {
@@ -20,5 +19,12 @@ namespace libtp::tp::d_map_path_dmap
          *coordinate
          */
         void getMapPlayerPos(float posOut[3]);
+
+        /**
+         *	@brief If Link is loaded on the stage, get the Y angle
+         *
+         *	@return Int of Link's angle.
+         */
+        uint32_t getMapPlayerAngleY();
     }
 }  // namespace libtp::tp::d_map_path_dmap

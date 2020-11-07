@@ -7,8 +7,7 @@
  */
 
 #pragma once
-
-#include "../types.h"
+#include <cstdint>
 
 namespace libtp::tp::jfw_system
 {
@@ -26,11 +25,11 @@ namespace libtp::tp::jfw_system
      */
     struct SystemConsole
     {
-        u8 unk_0[0x60];
-        u8 consoleColor[4];  // rgba
-        u8 unk_64[0x4];
+        uint8_t unk_0[0x60];
+        uint8_t consoleColor[4];  // rgba
+        uint8_t unk_64[0x4];
         bool consoleEnabled;
-        u8 unk_69[3];
+        uint8_t unk_69[3];
         ConsoleLine consoleLine[25];  // Should figure out the total amount of lines
                                       // at some point
     } __attribute__((__packed__));

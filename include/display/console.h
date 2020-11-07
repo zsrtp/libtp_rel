@@ -1,5 +1,5 @@
 /**	@file console.h
- *  @brief Wrapper functions for the
+ *  @brief Wrapper functions for the console
  *
  *  Provides definitions for using and interacting with the console class
  *
@@ -11,7 +11,7 @@
 #pragma once
 
 #include "../tp/JFWSystem.h"
-#include "../types.h"
+#include <cstdint>
 
 namespace libtp::display
 {
@@ -53,7 +53,7 @@ namespace libtp::display
      *  @param from First line index to be cleared (inclusive)
      *  @param count Number of lines to be cleared, 0 = all
      */
-    void clearConsole(u8 from, u8 count = 0);
+    void clearConsole(uint8_t from, uint8_t count = 0);
 
     /**
      *  @brief Sets the state of the console
@@ -61,12 +61,12 @@ namespace libtp::display
      *  @param state If true: Enabled otherwise disabled
      *  @param lines Number of lines to enable, 0 to enable the console but hide the lines (max. 25; check: tp/JFWSystem.h)
      */
-    void setConsole(bool state, u8 lines);
+    void setConsole(bool state, uint8_t lines);
 
     /**
      *  @brief Sets the console background colour + Alpha
      */
-    void setConsoleColor(u8 red, u8 green, u8 blue, u8 alpha);
+    void setConsoleColor(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha);
 
     /**
      *  @brief Copies text to a console line
@@ -76,5 +76,5 @@ namespace libtp::display
      *
      *  @return The pointer to the console line
      */
-    char* print(u8 line, const char* text);
+    char* print(uint8_t line, const char* text);
 }  // namespace libtp::display

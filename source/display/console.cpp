@@ -3,9 +3,9 @@
 #include <cstddef>
 #include <cstdio>
 #include <cstring>
+#include <cstdint>
 
 #include "tp/JFWSystem.h"
-#include "types.h"
 
 namespace libtp::display
 {
@@ -46,7 +46,7 @@ namespace libtp::display
         return;
     }
 
-    void clearConsole(u8 from, u8 count)
+    void clearConsole(uint8_t from, uint8_t count)
     {
         // Load the console as a local pointer to avoid loading it each loop
         tp::jfw_system::SystemConsole* console = tp::jfw_system::systemConsole;
@@ -66,7 +66,7 @@ namespace libtp::display
 
         std::size_t lineLength = sizeof(tp::jfw_system::ConsoleLine::line);
 
-        for (u8 i = from; i < from + count; i++)
+        for (uint8_t i = from; i < from + count; i++)
         {
             memset(console->consoleLine[i].line, 0x0, lineLength);
         }
@@ -74,20 +74,20 @@ namespace libtp::display
         return;
     }
 
-    void setConsole(bool state, u8 lines)
+    void setConsole(bool state, uint8_t lines)
     {
         // Load the console as a local pointer to avoid loading it each loop
         tp::jfw_system::SystemConsole* console = tp::jfw_system::systemConsole;
 
         console->consoleEnabled = state;
 
-        for (u8 line = 0; line < lines; line++)
+        for (uint8_t line = 0; line < lines; line++)
         {
             console->consoleLine[line].showLine = state;
         }
     }
 
-    void setConsoleColor(u8 red, u8 green, u8 blue, u8 alpha)
+    void setConsoleColor(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha)
     {
         // Load the console as a local pointer to save memory on each use
         tp::jfw_system::SystemConsole* console = tp::jfw_system::systemConsole;
@@ -99,7 +99,7 @@ namespace libtp::display
         return;
     }
 
-    char* print(u8 line, const char* text)
+    char* print(uint8_t line, const char* text)
     {
         // Get the max size minus one, to insure that the last char is always NULL
         std::size_t max = sizeof(tp::jfw_system::ConsoleLine::line) - 1;

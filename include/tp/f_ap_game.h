@@ -7,7 +7,6 @@
 
 #pragma once
 
-#include "../types.h"
 
 namespace libtp::tp::f_ap_game
 {

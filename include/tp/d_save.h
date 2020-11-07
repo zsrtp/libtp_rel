@@ -7,8 +7,8 @@
 
 #pragma once
 
-#include "../types.h"
 #include "d_com_inf_game.h"
+#include <cstdint>
 
 namespace libtp::tp::d_save
 {
@@ -25,7 +25,7 @@ namespace libtp::tp::d_save
          *	@return Returns the maximum number of rupees Link can hold in his
          *current wallet
          */
-        u16 getRupeeMax();
+        uint16_t getRupeeMax();
 
         /**
          *	@brief Sets the current AreaNode for region-specific flags
@@ -37,7 +37,7 @@ namespace libtp::tp::d_save
          *	@param gameInfoPtr Pointer to d_com_inf_game::gameInfo
          *	@param areaID ID of the current Area
          */
-        void getSave(d_com_inf_game::GameInfo* gameInfoPtr, s32 areaID);
+        void getSave(d_com_inf_game::GameInfo* gameInfoPtr, int32_t areaID);
 
         /**
          *	@brief Puts the previously set AreaNode for region-specific flags back
@@ -49,6 +49,6 @@ namespace libtp::tp::d_save
          *	@param gameInfoPtr Pointer to d_com_inf_game::gameInfo
          *	@param areaID ID of the current Area
          */
-        void putSave(d_com_inf_game::GameInfo* gameInfoPtr, s32 areaID);
+        void putSave(d_com_inf_game::GameInfo* gameInfoPtr, int32_t areaID);
     }
 }  // namespace libtp::tp::d_save

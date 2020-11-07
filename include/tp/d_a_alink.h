@@ -11,7 +11,9 @@
 
 #pragma once
 
-#include "../types.h"
+#include "d_com_inf_game.h"
+#include <cstdint>
+
 
 namespace libtp::tp::d_a_alink
 {
@@ -22,27 +24,46 @@ namespace libtp::tp::d_a_alink
      */
     struct ClimbVars
     {
-        u8 unk_0[0x28];
+        uint8_t unk_0[0x28];
         float ladderClimbInitSpeed;
-        u8 unk_2c[0x4];
+        uint8_t unk_2c[0x4];
         float ladderReachTopClimbUpSpeed;
-        u8 unk_30[0x4];
+        uint8_t unk_30[0x4];
         float ladderTopStartClimbDownSpeed;
-        u8 unk_34[0x4];
+        uint8_t unk_34[0x4];
         float ladderBottomGetOffSpeed;
-        u8 unk_38[0x8];
+        uint8_t unk_38[0x8];
         float ladderClimbSpeed;
-        u8 unk_40[0x10];
+        uint8_t unk_40[0x10];
         float wallClimbHorizontalSpeed;
-        u8 unk_58[0x4];
+        uint8_t unk_58[0x4];
         float wallClimbVerticalSpeed;
-        u8 unk_5c[0x4];
+        uint8_t unk_5c[0x4];
     } __attribute__((__packed__));
 
     static_assert(sizeof(ClimbVars) == 0x70);
 
+    /**
+     *	@brief These values contain the values for Link's state
+     *
+     *	@todo Fill missing vars.
+     */
+    struct LinkStatus
+	{
+		uint8_t unk_0[0xA2];
+		uint8_t status;
+	} __attribute__((__packed__));
+
+
     extern "C"
     {
+        /**
+         *	@brief Checks if dComIfG_gameInfo.curentStage is equal to name
+         *
+         *  @return Bool if the stages match
+         */
+        bool checkStageName(const char* name);
+
         /**
          *	@brief Runs when Link is about to walk on magnetic wall/ceiling
          */
@@ -54,7 +75,14 @@ namespace libtp::tp::d_a_alink
          *
          *	@return Bool whether Link is, if he is some actions might be restricted
          */
-        bool checkHeavyStateOn(s32 unk1, s32 unk2);
+        bool checkHeavyStateOn(int32_t unk1, int32_t unk2);
+
+        /**
+         *	@brief Initializes the animation that causes Link to transform
+         *
+         *  @return Bool if link is transforming
+         */
+        bool procCoMetamorphoseInit(tp::d_com_inf_game::LinkMapVars* linkMapPtr);
 
         /**
          *	@brief Checks whether a chest-rupee doesn't fit in Link's wallet
@@ -64,7 +92,49 @@ namespace libtp::tp::d_a_alink
          *
          *	@return True if the rupee doesn't fit in Links wallet, otherwise false
          */
-        bool checkTreasureRupeeReturn(void* unk1, s32 item);
+        bool checkTreasureRupeeReturn(void* unk1, int32_t item);
+
+        /**
+         *	@brief Checks to see if Link is in an event (cutscene/animation/etc.)
+         *
+         *  @return False if he isnt, True if he is.
+         */
+        bool checkEventRun(tp::d_com_inf_game::LinkMapVars* linkMapPtr);
+
+        /**
+         *	@brief Checks to see if Link is currently snowboarding
+         *
+         *  @return Bool if he is or isn't
+         */
+        bool checkBoardRide(tp::d_com_inf_game::LinkMapVars* linkMapPtr);
+
+        /**
+         *	@brief Checks to see if Link is currently riding in a canoe
+         *
+         *  @return Bool if he is or isn't
+         */
+        bool checkCanoeRide(tp::d_com_inf_game::LinkMapVars* linkMapPtr);
+
+        /**
+         *	@brief Checks to see if Link is currently riding on Epona
+         *
+         *  @return Bool if he is or isn't
+         */
+        bool checkHorseRide(tp::d_com_inf_game::LinkMapVars* linkMapPtr);
+
+        /**
+         *	@brief Checks to see if Link is currently riding on a boar
+         *
+         *  @return Bool if he is or isn't
+         */
+        bool checkBoarRide(tp::d_com_inf_game::LinkMapVars* linkMapPtr);
+
+        /**
+         *	@brief Checks to see if Link is currently riding on the spinner
+         *
+         *  @return Bool if he is or isn't
+         */
+        bool checkSpinnerRide(tp::d_com_inf_game::LinkMapVars* linkMapPtr);
 
         /**
          *  @brief Runs when delivering the final blow to Ganondorf
@@ -77,5 +147,6 @@ namespace libtp::tp::d_a_alink
         bool procGanonFinish(void* d_a_alink);
 
         extern ClimbVars climbVars;
+        extern LinkStatus* linkStatus;
     }
 }  // namespace libtp::tp::d_a_alink
