@@ -5,7 +5,6 @@
  *	@bug No known bugs.
  */
 
-#pragma once
 #include <cstdint>
 
 namespace libtp::tp::f_op_actor_mng

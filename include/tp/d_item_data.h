@@ -5,7 +5,6 @@
  *	@bug No known bugs.
  */
 
-#pragma once
 
 #include "d_stage.h"
 #include <cstdint>

@@ -6,7 +6,6 @@
  *	@bug No known bugs.
  */
 
-#pragma once
 
 #include "d_com_inf_game.h"
 

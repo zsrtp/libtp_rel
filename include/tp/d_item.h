@@ -5,7 +5,6 @@
  *	@bug
  */
 
-#pragma once
 #include <cstdint>
 
 namespace libtp::tp::d_item

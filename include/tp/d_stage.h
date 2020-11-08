@@ -7,7 +7,6 @@
  *	@bug No known bugs.
  */
 
-#pragma once
 #include <cstdint>
 
 namespace libtp::tp::d_stage
@@ -132,7 +131,7 @@ namespace libtp::tp::d_stage
 		 *  @param unk3 unknown
 		 *  @param unk4 unknown
 		 */
-		bool actorCommonLayerInit(void* mStatus_roomControl, dzxChunkTypeInfo* chunkTypeInfo, int unk3, void* unk4);
+		bool actorCommonLayerInit(void* mStatus_roomControl, dzxChunkTypeInfo* chunkTypeInfo, int32_t unk3, void* unk4);
 		
         /**
 		 *  @brief Initialises Actors, can run multiple times per load - Layer Based on Stage
@@ -142,7 +141,7 @@ namespace libtp::tp::d_stage
 		 *  @param unk3 unknown
 		 *  @param unk4 unknown
 		 */
-        bool actorInit(void* mStatus_roomControl, dzxChunkTypeInfo* chunkTypeInfo, int unk3, void* unk4);
+        bool actorInit(void* mStatus_roomControl, dzxChunkTypeInfo* chunkTypeInfo, int32_t unk3, void* unk4);
 		
         /**
 		 *  @brief Initialises Actors, can run multiple times per load - Layer Based on Room
@@ -152,7 +151,7 @@ namespace libtp::tp::d_stage
 		 *  @param unk3 unknown
 		 *  @param unk4 unknown
 		 */
-        bool roomTresureInit(void* mStatus_roomControl, dzxChunkTypeInfo* chunkTypeInfo, int unk3, void* unk4);
+        bool roomTresureInit(void* mStatus_roomControl, dzxChunkTypeInfo* chunkTypeInfo, int32_t unk3, void* unk4);
         
         /**
 		 *  @brief Pointer to roomControl data

@@ -5,8 +5,6 @@
  *	@bug No known bugs.
  */
 
-#pragma once
-
 #ifndef _LIBTP_STAGE_CONSTANTS
 #define _LIBTP_STAGE_CONSTANTS
 

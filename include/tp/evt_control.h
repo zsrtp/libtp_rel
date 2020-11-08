@@ -6,7 +6,6 @@
  *	@bug No known bugs.
  */
 
-#pragma once
 #include <cstdint>
 
 namespace libtp::tp::evt_control

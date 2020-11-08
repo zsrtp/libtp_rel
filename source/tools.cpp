@@ -1,8 +1,9 @@
 #include "tools.h"
 
+#include <cstdint>
 #include <cstdio>
 #include <cstring>
-#include <cstdint>
+
 #include "display/console.h"
 #include "memory.h"
 #include "tp/d_com_inf_game.h"

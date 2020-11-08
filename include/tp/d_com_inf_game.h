@@ -9,7 +9,6 @@
  *	@bug No known bugs.
  */
 
-#pragma once
 
 #include "evt_control.h"
 #include <cstdint>

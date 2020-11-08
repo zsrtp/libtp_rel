@@ -4,7 +4,6 @@
  *
  * @bug No known bugs
  */
-#pragma once
 
 #include "memory.h"
 #include <cstdint>

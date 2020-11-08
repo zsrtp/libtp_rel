@@ -8,8 +8,6 @@
  *	@bug No known bugs.
  */
 
-#pragma once
-
 #include "../tp/JFWSystem.h"
 #include <cstdint>
 

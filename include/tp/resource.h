@@ -1,14 +1,10 @@
-/**	@file resource.h
- *	@brief Contains functions that help process Message values.
+/** @file resource.h
+ *  @brief Contains functions that help process Message values.
  *
- *	@author Zephiles
+ *  @author Zephiles
  *  @author Lunar Soap
  *	@bug No known bugs.
  */
-
-
-#pragma once
-
 
 namespace libtp::tp::resource
 {
@@ -38,5 +34,12 @@ namespace libtp::tp::resource
     #define MSG_COLOR(id) \
         "\x1A\x06\xFF\x00\x00" id
 	
+	 //Message Text Color Values
+    #define MSG_COLOR_WHITE "\x00"
 	#define MSG_COLOR_RED "\x01"
+    #define MSG_COLOR_GREEN "\x02"
+    #define MSG_COLOR_DARK_BLUE "\x03"
+    #define MSG_COLOR_YELLOW "\x04"
+    #define MSG_COLOR_PURPLE "\x06"
+    #define MSG_COLOR_ORANGE "\x08"
 }

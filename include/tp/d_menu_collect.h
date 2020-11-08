@@ -5,7 +5,6 @@
  *	@bug No known bugs.
  */
 
-#pragma once
 
 
 namespace libtp::tp::d_menu_collect

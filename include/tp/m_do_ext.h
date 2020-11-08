@@ -5,7 +5,6 @@
  *	@bug No known bugs.
  */
 
-#pragma once
 
 
 namespace libtp::tp::m_Do_ext
