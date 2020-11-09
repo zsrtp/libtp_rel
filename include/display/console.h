@@ -7,9 +7,10 @@
  *	@author AECX
  *	@bug No known bugs.
  */
+#pragma once
+#include <cstdint>
 
 #include "../tp/JFWSystem.h"
-#include <cstdint>
 
 namespace libtp::display
 {

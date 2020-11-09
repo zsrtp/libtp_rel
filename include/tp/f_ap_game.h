@@ -4,9 +4,7 @@
  *	@author Zephiles
  *	@bug No known bugs.
  */
-
-
-
+#pragma once
 namespace libtp::tp::f_ap_game
 {
     extern "C"

@@ -4,7 +4,7 @@
  *	@author AECX
  *	@bug No known bugs.
  */
-
+#pragma once
 #include <cstdint>
 
 namespace libtp::tp::f_op_actor_mng
@@ -28,12 +28,12 @@ namespace libtp::tp::f_op_actor_mng
          *	@return Unknown use.
          */
         int32_t createItemForPresentDemo(const float pos[3],
-                                     int32_t item,
-                                     uint8_t unk3,
-                                     int32_t unk4,
-                                     int32_t unk5,
-                                     const float unk6[3],
-                                     const float unk7[3]);
+                                         int32_t item,
+                                         uint8_t unk3,
+                                         int32_t unk4,
+                                         int32_t unk5,
+                                         const float unk6[3],
+                                         const float unk7[3]);
 
         /**
          *	@brief Runs when Link receives an item by opening a treasure chest
@@ -50,7 +50,12 @@ namespace libtp::tp::f_op_actor_mng
          *	@param unk6 Unknown
          *	@return Unknown use.
          */
-        int32_t createItemForTrBoxDemo(const float pos[3], int32_t item, int32_t unk3, int32_t unk4, const float unk5[3], const float unk6[3]);
+        int32_t createItemForTrBoxDemo(const float pos[3],
+                                       int32_t item,
+                                       int32_t unk3,
+                                       int32_t unk4,
+                                       const float unk5[3],
+                                       const float unk6[3]);
 
         /**
          *	@brief Runs when the game creates a boss specific item (heart container)
@@ -71,13 +76,13 @@ namespace libtp::tp::f_op_actor_mng
          *	@return Unknown use.
          */
         int32_t createItemForBoss(const float pos[3],
-                              int32_t item,
-                              int32_t unk3,
-                              const float unk4[3],
-                              const float unk5[3],
-                              float unk6,
-                              float unk7,
-                              int32_t unk8);
+                                  int32_t item,
+                                  int32_t unk3,
+                                  const float unk4[3],
+                                  const float unk5[3],
+                                  float unk6,
+                                  float unk7,
+                                  int32_t unk8);
 
         /**
          *	@brief Runs when the game creates a mini-boss specific item (e.g.
@@ -98,12 +103,12 @@ namespace libtp::tp::f_op_actor_mng
          *	@return Unknown use.
          */
         int32_t createItemForMidBoss(const float pos[3],
-                                 int32_t item,
-                                 int32_t unk3,
-                                 const float unk4[3],
-                                 const float unk5[3],
-                                 int32_t unk6,
-                                 int32_t unk7);
+                                     int32_t item,
+                                     int32_t unk3,
+                                     const float unk4[3],
+                                     const float unk5[3],
+                                     int32_t unk6,
+                                     int32_t unk7);
 
         /**
          *	@brief Runs when Link picks up a minor item
@@ -122,16 +127,26 @@ namespace libtp::tp::f_op_actor_mng
          *	@return Unknown use.
          */
         int32_t createItemForDirectGet(const float pos[3],
-                                   int32_t item,
-                                   int32_t unk3,
-                                   const float unk4[3],
-                                   const float unk5[3],
-                                   float unk6,
-                                   float unk7);
+                                       int32_t item,
+                                       int32_t unk3,
+                                       const float unk4[3],
+                                       const float unk5[3],
+                                       float unk6,
+                                       float unk7);
 
-
-        int32_t createItemForSimpleDemo(const float pos[3], int32_t item, int32_t unk3, const int16_t rot[3], const float scale[3], float unk6, float unk7);
-		int32_t createItem(const float pos[3], int32_t item, int32_t itemPickupFlag, int32_t roomNo, const int16_t rot[3], const float scale[3], int32_t itemAction);
-	
+        int32_t createItemForSimpleDemo(const float pos[3],
+                                        int32_t item,
+                                        int32_t unk3,
+                                        const int16_t rot[3],
+                                        const float scale[3],
+                                        float unk6,
+                                        float unk7);
+        int32_t createItem(const float pos[3],
+                           int32_t item,
+                           int32_t itemPickupFlag,
+                           int32_t roomNo,
+                           const int16_t rot[3],
+                           const float scale[3],
+                           int32_t itemAction);
     }
 }  // namespace libtp::tp::f_op_actor_mng

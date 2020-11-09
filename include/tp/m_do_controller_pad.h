@@ -5,7 +5,7 @@
  *	@author AECX
  *	@bug No known bugs.
  */
-
+#pragma once
 #include <cstdint>
 
 namespace libtp::tp::m_do_controller_pad

@@ -8,7 +8,7 @@
  *  @author Lunar Soap
  *	@bug No known bugs.
  */
-
+#pragma once
 #include <cstdint>
 
 namespace libtp::tp::d_a_shop_item_static

@@ -4,10 +4,10 @@
  *	@author AECX
  *	@bug No known bugs.
  */
-
+#pragma once
+#include <cstdint>
 
 #include "d_com_inf_game.h"
-#include <cstdint>
 
 namespace libtp::tp::d_save
 {

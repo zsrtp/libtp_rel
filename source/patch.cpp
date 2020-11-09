@@ -1,7 +1,8 @@
 #include "patch.h"
 
-#include "memory.h"
 #include <cstdint>
+
+#include "memory.h"
 
 namespace libtp::patch
 {

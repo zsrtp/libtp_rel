@@ -8,10 +8,10 @@
  *	@author AECX
  *	@bug No known bugs.
  */
-
+#pragma once
+#include <cstdint>
 
 #include "evt_control.h"
-#include <cstdint>
 
 namespace libtp::tp::d_com_inf_game
 {
@@ -100,20 +100,20 @@ namespace libtp::tp::d_com_inf_game
      */
     struct GameInfo
     {
-        ScratchPad scratchPad;        // 0 - 957
-        uint8_t localAreaNodes[0x20];      // 958 - 977 holds flags about the current area
-        uint8_t unk_978[0x450];            // 978 - DC7
-        uint8_t respawnCutscene;           // DC8 - DC8
-        uint8_t unkdc9[0xA];               // dc9 - dd2
-        uint8_t respawnAnimation;          // dd3 - dd3
-        uint8_t unkdd4[0x402C];            // dd4 - 4DFF
-        char currentStage[8];         // 4E00 - 4E07
-        uint8_t unk_4e08[6];               // 4E08 - 4E0D
-        NextStageVars nextStageVars;  // 4E0E - 4E1b
-        uint8_t unk_4e1c[0xAA];            // 4E19 - 4EC7
-        EventSystem eventSystem;      // 4EC8 - 4FDE
-        uint8_t unk_4fdd[0xDD0];           // 4FDD - 5DBF
-        LinkMapVars* linkMapPtr;      // 5DA0 - 5DAB
+        ScratchPad scratchPad;         // 0 - 957
+        uint8_t localAreaNodes[0x20];  // 958 - 977 holds flags about the current area
+        uint8_t unk_978[0x450];        // 978 - DC7
+        uint8_t respawnCutscene;       // DC8 - DC8
+        uint8_t unkdc9[0xA];           // dc9 - dd2
+        uint8_t respawnAnimation;      // dd3 - dd3
+        uint8_t unkdd4[0x402C];        // dd4 - 4DFF
+        char currentStage[8];          // 4E00 - 4E07
+        uint8_t unk_4e08[6];           // 4E08 - 4E0D
+        NextStageVars nextStageVars;   // 4E0E - 4E1b
+        uint8_t unk_4e1c[0xAA];        // 4E19 - 4EC7
+        EventSystem eventSystem;       // 4EC8 - 4FDE
+        uint8_t unk_4fdd[0xDD0];       // 4FDD - 5DBF
+        LinkMapVars* linkMapPtr;       // 5DA0 - 5DAB
         uint8_t unk_5dac[0x18060];
     } __attribute__((__packed__));
     static_assert(sizeof(ScratchPad) == 0x958);

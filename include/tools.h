@@ -6,7 +6,7 @@
  *  @todo At some point we might want to seperate functions into different namespaces
  * i.e. tools::array, tools::hashing, etc.; for now there aren't enough functions for this to make sense
  */
-
+#pragma once
 #include <cstdint>
 
 namespace libtp::tools

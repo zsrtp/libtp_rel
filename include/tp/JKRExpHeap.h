@@ -4,7 +4,7 @@
  *	@author Zephiles
  *	@bug No known bugs.
  */
-
+#pragma once
 #include <cstdint>
 
 namespace libtp::tp::jkr_exp_heap

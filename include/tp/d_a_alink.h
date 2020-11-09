@@ -8,11 +8,10 @@
  *	@author Zephiles
  *	@bug No known bugs.
  */
-
-
-#include "d_com_inf_game.h"
+#pragma once
 #include <cstdint>
 
+#include "d_com_inf_game.h"
 
 namespace libtp::tp::d_a_alink
 {
@@ -48,11 +47,10 @@ namespace libtp::tp::d_a_alink
      *	@todo Fill missing vars.
      */
     struct LinkStatus
-	{
-		uint8_t unk_0[0xA2];
-		uint8_t status;
-	} __attribute__((__packed__));
-
+    {
+        uint8_t unk_0[0xA2];
+        uint8_t status;
+    } __attribute__((__packed__));
 
     extern "C"
     {
