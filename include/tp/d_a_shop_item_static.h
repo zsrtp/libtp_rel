@@ -69,4 +69,4 @@ namespace libtp::tp::d_a_shop_item_static
 	{
 		extern ShopItemData shopItemData[23]; // mData__12daShopItem_c
 	}
-}
+}// namespace libtp::tp::d_a_shop_item_static
