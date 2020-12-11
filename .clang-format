@@ -14,5 +14,3 @@ NamespaceIndentation: All
 SpacesInContainerLiterals: 'false'
 SpacesInParentheses: 'false'
 UseTab: Never
-
-...
