@@ -7,10 +7,8 @@
  *	@author AECX
  *	@bug No known bugs.
  */
-
 #pragma once
-
-#include "../types.h"
+#include <cstdint>
 
 namespace libtp::tp::d_kankyo
 {
@@ -21,9 +19,9 @@ namespace libtp::tp::d_kankyo
      */
     struct EnvLight
     {
-        u8 unk_0[0x98C];
-        u8 currentRoom;
-        u8 unk_98d[0x983];
+        uint8_t unk_0[0x98C];
+        uint8_t currentRoom;
+        uint8_t unk_98d[0x983];
     } __attribute__((__packed__));
 
     static_assert(sizeof(EnvLight) == 0x1310);

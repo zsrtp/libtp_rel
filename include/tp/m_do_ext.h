@@ -4,11 +4,7 @@
  *	@author Zephiles
  *	@bug No known bugs.
  */
-
 #pragma once
-
-#include "../types.h"
-
 namespace libtp::tp::m_Do_ext
 {
     extern "C"

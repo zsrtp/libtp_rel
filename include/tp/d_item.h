@@ -4,10 +4,8 @@
  *	@author AECX
  *	@bug
  */
-
 #pragma once
-
-#include "../types.h"
+#include <cstdint>
 
 namespace libtp::tp::d_item
 {
@@ -22,6 +20,18 @@ namespace libtp::tp::d_item
          *	@return Probably(!) the correct item id to use (for progressive items
          *like clawshot)
          */
-        s32 checkItemGet(u8 item, s32 defaultValue);
+        int32_t checkItemGet(uint8_t item, int32_t defaultValue);
+
+        /**
+         *	@brief Initializes the dSv_player_get_item_c function with the current value
+         *
+         *	@param item id of the item being recieved
+         */
+        int32_t execItemGet(uint8_t item);
+
+        /**
+         *	@brief Sets the flag for the heart container being recieved
+         */
+        void item_func_UTUWA_HEART();
     }
 }  // namespace libtp::tp::d_item

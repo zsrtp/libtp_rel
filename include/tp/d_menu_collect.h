@@ -4,11 +4,7 @@
  *	@author AECX
  *	@bug No known bugs.
  */
-
 #pragma once
-
-#include "../types.h"
-
 namespace libtp::tp::d_menu_collect
 {
     extern "C"

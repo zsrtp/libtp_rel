@@ -5,17 +5,15 @@
  *	@author AECX
  *	@bug No known bugs.
  */
-
 #pragma once
-
-#include "types.h"
+#include <cstdint>
 
 namespace libtp::tp::m_do_controller_pad
 {
     /**
      *  @brief Controller inputs
      */
-    enum PadInputs : u32
+    enum PadInputs : uint32_t
     {
         Button_DPad_Left = 0x00000001,
         Button_DPad_Right = 0x00000002,
@@ -44,10 +42,10 @@ namespace libtp::tp::m_do_controller_pad
      */
     struct CPadInfo
     {
-        u8 unk_0[0x30];
-        u32 buttonInput;
-        u32 buttonInputTrg;
-        u8 unk_38[0xC8];
+        uint8_t unk_0[0x30];
+        uint32_t buttonInput;
+        uint32_t buttonInputTrg;
+        uint8_t unk_38[0xC8];
     } __attribute__((__packed__));
 
     static_assert(sizeof(CPadInfo) == 0x100);

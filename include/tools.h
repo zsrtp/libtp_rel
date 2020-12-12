@@ -6,10 +6,8 @@
  *  @todo At some point we might want to seperate functions into different namespaces
  * i.e. tools::array, tools::hashing, etc.; for now there aren't enough functions for this to make sense
  */
-
 #pragma once
-
-#include "types.h"
+#include <cstdint>
 
 namespace libtp::tools
 {
@@ -21,7 +19,7 @@ namespace libtp::tools
      *  @param length Length (in bytes) of haystack
      *  @param chunkSize Length (in bytes) of one individual element (haystack[0])
      */
-    s32 indexOf(const void* haystack, void* needle, s32 length, s32 chunkSize = sizeof(char));
+    int32_t indexOf(const void* haystack, void* needle, int32_t length, int32_t chunkSize = sizeof(char));
 
     /**
      *  @brief Savely loads a given stage-room-spawnpoint-state and event combination
@@ -32,5 +30,5 @@ namespace libtp::tools
      *  @param state Current State (Link)
      *  @param event EventID to trigger
      */
-    void triggerSaveLoad(const char* stage, u8 room, u8 spawn, u8 state = 0xFF, u8 event = 0xFF);
+    void triggerSaveLoad(const char* stage, uint8_t room, uint8_t spawn, uint8_t state = 0xFF, uint8_t event = 0xFF);
 }  // namespace libtp::tools

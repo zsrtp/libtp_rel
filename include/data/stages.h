@@ -7,8 +7,6 @@
 
 #pragma once
 
-#include "../types.h"
-
 #ifndef _LIBTP_STAGE_CONSTANTS
 #define _LIBTP_STAGE_CONSTANTS
 
