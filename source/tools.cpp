@@ -10,29 +10,6 @@
 
 namespace libtp::tools
 {
-    int32_t indexOf(const void* haystack, void* needle, int32_t length, int32_t chunkSize)
-    {
-        // return, -1 = err
-        int32_t r = -1;
-
-        // Helper variables
-        uint32_t baseAddress = reinterpret_cast<uint32_t>(haystack);
-        int32_t numElements = length / chunkSize;
-
-        sprintf(libtp::display::print(17, ""), "Size: %d", sizeof(haystack));
-
-        for (int32_t n = 0; n < numElements; n++)
-        {
-            // Compare n'th element of haystack with needle
-            if (!memcmp(reinterpret_cast<void*>(baseAddress + n * chunkSize), needle, chunkSize))
-            {
-                r = n;
-                break;
-            }
-        }
-        return r;
-    }
-
     void triggerSaveLoad(const char* stage, uint8_t room, uint8_t spawn, uint8_t state, uint8_t event)
     {
         libtp::tp::d_com_inf_game::GameInfo* gameInfo = &tp::d_com_inf_game::dComIfG_gameInfo;
