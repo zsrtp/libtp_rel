@@ -38,8 +38,6 @@ namespace libtp::tp::d_stage
 
         uint8_t item;
         uint8_t unk2[3];  // Seems to always be 0xFF
-
-        TRES() { memset(this, 0xFF, sizeof(TRES)); }
     } __attribute__((__packed__));
 
     /**
@@ -134,7 +132,7 @@ namespace libtp::tp::d_stage
         bool actorCommonLayerInit(void* mStatus_roomControl, dzxChunkTypeInfo* chunkTypeInfo, int32_t unk3, void* unk4);
 
         /**
-         *  @brief Initialises Actors, can run multiple times per load - Layer Based on Stage
+         *  @brief Initialises Actors for current layer, can run multiple times per load
          *
          *  @param mStatus_roomControl Pointer to roomControl data (unknown)
          *  @param chunkTypeInfo Pointer to dzxHeader
@@ -144,14 +142,14 @@ namespace libtp::tp::d_stage
         bool actorInit(void* mStatus_roomControl, dzxChunkTypeInfo* chunkTypeInfo, int32_t unk3, void* unk4);
 
         /**
-         *  @brief Initialises Actors, can run multiple times per load - Layer Based on Room
+         *  @brief Initialises Actors for global layer, can run multiple times per load
          *
          *  @param mStatus_roomControl Pointer to roomControl data (unknown)
          *  @param chunkTypeInfo Pointer to dzxHeader
          *  @param unk3 unknown
          *  @param unk4 unknown
          */
-        bool roomTresureInit(void* mStatus_roomControl, dzxChunkTypeInfo* chunkTypeInfo, int32_t unk3, void* unk4);
+        bool actorInit_always(void* mStatus_roomControl, dzxChunkTypeInfo* chunkTypeInfo, int32_t unk3, void* unk4);
 
         /**
          *  @brief Pointer to roomControl data
