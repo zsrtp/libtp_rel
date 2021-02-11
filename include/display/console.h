@@ -14,12 +14,6 @@
 
 namespace libtp::display
 {
-    extern const char* heading;
-    extern const char* pre_description;
-    extern const char* legalText;
-    extern const char* github;
-    extern const char* twitter;
-
     /**
      *  @brief Console wrapper class
      *
@@ -29,21 +23,45 @@ namespace libtp::display
     {
        public:
         /**
-         *  @brief Wrapper class for accessing the JFW console
+         *  @brief Simple console class
          *
-         *  @param author Author name to display on legal stream
-         *  @param title The name of your mod
-         *  @param description Small description text about your mod
-         *  @param description1 Following description line
-         *  @param description2 Last description line
-         *  @param version Version string (i.e. v3.1)
+         * Warning: This is NOT a proper output buffer like cout! This is just meant for
+         * easier access to the console and isn't as feature rich as a proper cout.
          */
-        Console(const char* author,
-                const char* title,
-                const char* description,
-                const char* description1,
-                const char* description2,
-                const char* version);
+        Console();
+
+        /**
+         *  @brief Reads a string and outputs it directly
+         *
+         *  @param text The char array to be parsed and displayed
+         */
+        void parse( const char* text );
+
+       private:
+        // Current line (should be < 25)
+        uint8_t m_Line;
+        // Current Column (should be < linewidth)
+        uint8_t m_Col;
+
+        // Operators
+        friend Console& operator<<( Console& console, const char* text );
+        friend Console& operator<<( Console& console, char* text );
+        // Output unsigned (hex) int
+        friend Console& operator<<( Console& console, uint8_t n );
+        // Output unsigned (hex) int
+        friend Console& operator<<( Console& console, uint16_t n );
+        // Output unsigned (hex) int
+        friend Console& operator<<( Console& console, uint32_t n );
+        // Output signed (dec) int
+        friend Console& operator<<( Console& console, int8_t n );
+        // Output signed (dec) int
+        friend Console& operator<<( Console& console, int16_t n );
+        // Output signed (dec) int
+        friend Console& operator<<( Console& console, int32_t n );
+        // Output signed float
+        friend Console& operator<<( Console& console, float n );
+        // Prints the address of a given pointer
+        friend Console& operator<<( Console& console, void* ptr );
     };
 
     /**
@@ -52,7 +70,7 @@ namespace libtp::display
      *  @param from First line index to be cleared (inclusive)
      *  @param count Number of lines to be cleared, 0 = all
      */
-    void clearConsole(uint8_t from, uint8_t count = 0);
+    void clearConsole( uint8_t from, uint8_t count = 0 );
 
     /**
      *  @brief Sets the state of the console
@@ -60,12 +78,12 @@ namespace libtp::display
      *  @param state If true: Enabled otherwise disabled
      *  @param lines Number of lines to enable, 0 to enable the console but hide the lines (max. 25; check: tp/JFWSystem.h)
      */
-    void setConsole(bool state, uint8_t lines);
+    void setConsole( bool state, uint8_t lines );
 
     /**
      *  @brief Sets the console background colour + Alpha
      */
-    void setConsoleColor(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha);
+    void setConsoleColor( uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha );
 
     /**
      *  @brief Copies text to a console line
@@ -75,5 +93,5 @@ namespace libtp::display
      *
      *  @return The pointer to the console line
      */
-    char* print(uint8_t line, const char* text);
-}  // namespace libtp::display
+    char* print( uint8_t line, const char* text );
+}     // namespace libtp::display

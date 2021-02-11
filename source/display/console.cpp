@@ -1,5 +1,6 @@
 #include "display/console.h"
 
+#include <cinttypes>
 #include <cstddef>
 #include <cstdint>
 #include <cstdio>
@@ -9,52 +10,172 @@
 
 namespace libtp::display
 {
-    const char* heading = "Twilight Princess - REL::%s";
-    const char* pre_description = "A mod by %s:";
-    const char* legalText = "Powered by libtp | (C) AECX, Zephiles";
-    const char* github = "Github: zsrtp";
-    const char* twitter = "Twitter: AECXTP, Zephiles_";
-
-    Console::Console(const char* author,
-                     const char* title,
-                     const char* description,
-                     const char* description1,
-                     const char* description2,
-                     const char* version)
+    Console::Console()
     {
-        // Display some information about this mod, the project and everything
+        // Init
+        libtp::display::setConsole( true, 25 );
 
-        // Load the console as a local pointer to save memory on each use
-        tp::jfw_system::SystemConsole* console = tp::jfw_system::systemConsole;
+        this->m_Line = 0;
+        this->m_Col = 0;
 
-        // Get the max size minus one, to insure that the last char is always NULL
-        std::size_t max = sizeof(tp::jfw_system::ConsoleLine::line) - 1;
-
-        setConsole(true, 25);
-
-        snprintf(console->consoleLine[0].line, max, heading, title);
-        snprintf(console->consoleLine[2].line, max, pre_description, author);
-        strncpy(console->consoleLine[4].line, description, max);
-        strncpy(console->consoleLine[5].line, description1, max);
-        strncpy(console->consoleLine[6].line, description2, max);
-
-        strncpy(console->consoleLine[10].line, version, max);
-        strncpy(console->consoleLine[21].line, legalText, max);
-        strncpy(console->consoleLine[23].line, github, max);
-        strncpy(console->consoleLine[24].line, twitter, max);
-
-        return;
+        // Display initial information, then lock line 1 (could be overwritten manually)
+        *this << _PROJECT_NAME " - " _VERSION " " _VARIANT << "\n"
+              << "Powered by github/zsrtp/libtp_rel"
+              << "\n"
+              << "Created by AECX & Zephiles"
+              << "\n"
+              << "Build ID: " << _BUILDID << "\n"
+              << "Version: " << _VERSION " " _VARIANT;
     }
 
-    void clearConsole(uint8_t from, uint8_t count)
+    void Console::parse( const char* text )
+    {
+        // Store the console pointer once
+        tp::jfw_system::SystemConsole* console = tp::jfw_system::systemConsole;
+
+        while ( *text != '\0' )
+        {
+            if ( *text == '\n' )
+            {
+                this->m_Col = 0;
+                this->m_Line++;
+            }
+            else
+            {
+                // Adjust if otherwise out of bounds
+                if ( this->m_Col >= 48 )
+                {
+                    this->m_Line++;
+                    this->m_Col = 0;
+                }
+                if ( this->m_Line >= 25 )
+                {
+                    // Reset to 1 (0 is fixed info)
+                    this->m_Line = 1;
+                    this->m_Col = 0;
+                    // Clear lines
+                    libtp::display::clearConsole( 1, 0 );
+                }
+
+                // Print to current line and col
+                console->consoleLine[this->m_Line].line[this->m_Col] = *text;
+                this->m_Col++;
+            }
+
+            // Advance the pointer
+            text++;
+        }
+    }
+
+    Console& operator<<( Console& console, const char* text )
+    {
+        console.parse( text );
+        return console;
+    }
+
+    Console& operator<<( Console& console, char* text )
+    {
+        console.parse( text );
+        return console;
+    }
+
+    Console& operator<<( Console& console, uint8_t n )
+    {
+        // Custom print this
+        char* buf = new char[15];
+
+        sprintf( buf, "0x%" PRIx8, n );
+        console.parse( buf );
+        delete[] buf;
+        return console;
+    }
+
+    Console& operator<<( Console& console, int8_t n )
+    {
+        // Custom print this
+        char* buf = new char[15];
+
+        sprintf( buf, "%" PRId8, n );
+        console.parse( buf );
+        delete[] buf;
+        return console;
+    }
+
+    Console& operator<<( Console& console, uint16_t n )
+    {
+        // Custom print this
+        char* buf = new char[15];
+
+        sprintf( buf, "0x%" PRIx16, n );
+        console.parse( buf );
+        delete[] buf;
+        return console;
+    }
+
+    Console& operator<<( Console& console, int16_t n )
+    {
+        // Custom print this
+        char* buf = new char[15];
+
+        sprintf( buf, "%" PRId16, n );
+        console.parse( buf );
+        delete[] buf;
+        return console;
+    }
+
+    Console& operator<<( Console& console, uint32_t n )
+    {
+        // Custom print this
+        char* buf = new char[15];
+
+        sprintf( buf, "0x%" PRIx32, n );
+        console.parse( buf );
+        delete[] buf;
+        return console;
+    }
+
+    Console& operator<<( Console& console, int32_t n )
+    {
+        // Custom print this
+        char* buf = new char[15];
+
+        sprintf( buf, "%" PRId32, n );
+        console.parse( buf );
+        delete[] buf;
+        return console;
+    }
+
+    Console& operator<<( Console& console, float n )
+    {
+        // Custom print this
+        char* buf = new char[15];
+
+        // Is there a cinttype for float?
+        sprintf( buf, "%.4f", n );
+        delete[] buf;
+        return console;
+    }
+
+    Console& operator<<( Console& console, void* ptr )
+    {
+        // Custom print this
+        char* buf = new char[15];
+
+        sprintf( buf, "0x%" PRIxPTR, reinterpret_cast<uint32_t>( ptr ) );
+        console.parse( buf );
+        delete[] buf;
+        return console;
+    }
+
+    void clearConsole( uint8_t from, uint8_t count )
     {
         // Load the console as a local pointer to avoid loading it each loop
         tp::jfw_system::SystemConsole* console = tp::jfw_system::systemConsole;
 
         // If count is 0 we want to clear all lines
-        std::size_t linecount = sizeof(tp::jfw_system::SystemConsole::consoleLine) / sizeof(tp::jfw_system::ConsoleLine);
+        std::size_t linecount = sizeof( tp::jfw_system::SystemConsole::consoleLine ) / sizeof( tp::jfw_system::ConsoleLine );
 
-        if (from > linecount)
+        if ( from > linecount )
         {
             from = 0;
         }
@@ -62,32 +183,32 @@ namespace libtp::display
         // count = 0 ?              - remaining lines
         // from + count > linecount - remaining lines
         // else                     - count
-        count = (count == 0 ? (linecount - from) : ((from + count) > linecount ? (linecount - from) : count));
+        count = ( count == 0 ? ( linecount - from ) : ( ( from + count ) > linecount ? ( linecount - from ) : count ) );
 
-        std::size_t lineLength = sizeof(tp::jfw_system::ConsoleLine::line);
+        std::size_t lineLength = sizeof( tp::jfw_system::ConsoleLine::line );
 
-        for (uint8_t i = from; i < from + count; i++)
+        for ( uint8_t i = from; i < from + count; i++ )
         {
-            memset(console->consoleLine[i].line, 0x0, lineLength);
+            memset( console->consoleLine[i].line, 0x0, lineLength );
         }
 
         return;
     }
 
-    void setConsole(bool state, uint8_t lines)
+    void setConsole( bool state, uint8_t lines )
     {
         // Load the console as a local pointer to avoid loading it each loop
         tp::jfw_system::SystemConsole* console = tp::jfw_system::systemConsole;
 
         console->consoleEnabled = state;
 
-        for (uint8_t line = 0; line < lines; line++)
+        for ( uint8_t line = 0; line < lines; line++ )
         {
             console->consoleLine[line].showLine = state;
         }
     }
 
-    void setConsoleColor(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha)
+    void setConsoleColor( uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha )
     {
         // Load the console as a local pointer to save memory on each use
         tp::jfw_system::SystemConsole* console = tp::jfw_system::systemConsole;
@@ -99,10 +220,10 @@ namespace libtp::display
         return;
     }
 
-    char* print(uint8_t line, const char* text)
+    char* print( uint8_t line, const char* text )
     {
         // Get the max size minus one, to insure that the last char is always NULL
-        std::size_t max = sizeof(tp::jfw_system::ConsoleLine::line) - 1;
-        return strncpy(tp::jfw_system::systemConsole->consoleLine[line].line, text, max);
+        std::size_t max = sizeof( tp::jfw_system::ConsoleLine::line ) - 1;
+        return strncpy( tp::jfw_system::systemConsole->consoleLine[line].line, text, max );
     }
-}  // namespace libtp::display
+}     // namespace libtp::display
