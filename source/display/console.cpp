@@ -25,7 +25,7 @@ namespace libtp::display
               << "Created by AECX & Zephiles"
               << "\n"
               << "Build ID: " << _BUILDID << "\n"
-              << "Version: " << _VERSION " " _VARIANT;
+              << "Version: " << _VERSION " " _VARIANT "\n\n";
     }
 
     void Console::parse( const char* text )
