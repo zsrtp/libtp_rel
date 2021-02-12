@@ -82,88 +82,88 @@ namespace libtp::display
     Console& operator<<( Console& console, uint8_t n )
     {
         // Custom print this
-        char* buf = new char[15];
+        char buf[15];
 
         sprintf( buf, "0x%" PRIx8, n );
         console.parse( buf );
-        delete[] buf;
+
         return console;
     }
 
     Console& operator<<( Console& console, int8_t n )
     {
         // Custom print this
-        char* buf = new char[15];
+        char buf[15];
 
         sprintf( buf, "%" PRId8, n );
         console.parse( buf );
-        delete[] buf;
+
         return console;
     }
 
     Console& operator<<( Console& console, uint16_t n )
     {
         // Custom print this
-        char* buf = new char[15];
+        char buf[15];
 
         sprintf( buf, "0x%" PRIx16, n );
         console.parse( buf );
-        delete[] buf;
+
         return console;
     }
 
     Console& operator<<( Console& console, int16_t n )
     {
         // Custom print this
-        char* buf = new char[15];
+        char buf[15];
 
         sprintf( buf, "%" PRId16, n );
         console.parse( buf );
-        delete[] buf;
+
         return console;
     }
 
     Console& operator<<( Console& console, uint32_t n )
     {
         // Custom print this
-        char* buf = new char[15];
+        char buf[15];
 
         sprintf( buf, "0x%" PRIx32, n );
         console.parse( buf );
-        delete[] buf;
+
         return console;
     }
 
     Console& operator<<( Console& console, int32_t n )
     {
         // Custom print this
-        char* buf = new char[15];
+        char buf[15];
 
         sprintf( buf, "%" PRId32, n );
         console.parse( buf );
-        delete[] buf;
+
         return console;
     }
 
     Console& operator<<( Console& console, float n )
     {
         // Custom print this
-        char* buf = new char[15];
+        char buf[15];
 
         // Is there a cinttype for float?
         sprintf( buf, "%.4f", n );
-        delete[] buf;
+
         return console;
     }
 
     Console& operator<<( Console& console, void* ptr )
     {
         // Custom print this
-        char* buf = new char[15];
+        char buf[15];
 
         sprintf( buf, "0x%" PRIxPTR, reinterpret_cast<uint32_t>( ptr ) );
         console.parse( buf );
-        delete[] buf;
+
         return console;
     }
 
