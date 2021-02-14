@@ -40,6 +40,10 @@ namespace libtp::display
                 this->m_Col = 0;
                 this->m_Line++;
             }
+            else if ( *text == '\r' )
+            {
+                this->m_Col = 0;
+            }
             else
             {
                 // Adjust if otherwise out of bounds
