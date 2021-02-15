@@ -49,6 +49,9 @@ namespace libtp::display
                 // Adjust if otherwise out of bounds
                 if ( this->m_Col >= 48 )
                 {
+                    // Null terminate this line
+                    console->consoleLine[this->m_Line].line[this->m_Col] = '\0';
+
                     this->m_Line++;
                     this->m_Col = 0;
                 }
@@ -68,7 +71,9 @@ namespace libtp::display
 
             // Advance the pointer
             text++;
-        }
+        }     // End of while
+
+        console->consoleLine[this->m_Line].line[this->m_Col] = '\0';
     }
 
     Console& operator<<( Console& console, const char* text )
