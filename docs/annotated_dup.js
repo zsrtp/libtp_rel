@@ -20,6 +20,11 @@ var annotated_dup =
           [ "LinkMapVars", "d3/d33/structlibtp_1_1tp_1_1d__com__inf__game_1_1LinkMapVars.html", "d3/d33/structlibtp_1_1tp_1_1d__com__inf__game_1_1LinkMapVars" ],
           [ "GameInfo", "d8/d22/structlibtp_1_1tp_1_1d__com__inf__game_1_1GameInfo.html", "d8/d22/structlibtp_1_1tp_1_1d__com__inf__game_1_1GameInfo" ]
         ] ],
+        [ "d_item_data", "d1/dfc/namespacelibtp_1_1tp_1_1d__item__data.html", [
+          [ "ItemResource", "d5/d8c/structlibtp_1_1tp_1_1d__item__data_1_1ItemResource.html", "d5/d8c/structlibtp_1_1tp_1_1d__item__data_1_1ItemResource" ],
+          [ "FieldItemRes", "d5/d73/structlibtp_1_1tp_1_1d__item__data_1_1FieldItemRes.html", "d5/d73/structlibtp_1_1tp_1_1d__item__data_1_1FieldItemRes" ],
+          [ "ItemInfo", "db/da0/structlibtp_1_1tp_1_1d__item__data_1_1ItemInfo.html", "db/da0/structlibtp_1_1tp_1_1d__item__data_1_1ItemInfo" ]
+        ] ],
         [ "d_kankyo", "d1/d54/namespacelibtp_1_1tp_1_1d__kankyo.html", [
           [ "EnvLight", "d3/d01/structlibtp_1_1tp_1_1d__kankyo_1_1EnvLight.html", "d3/d01/structlibtp_1_1tp_1_1d__kankyo_1_1EnvLight" ]
         ] ],
@@ -43,13 +48,6 @@ var annotated_dup =
         [ "m_do_controller_pad", "dc/db5/namespacelibtp_1_1tp_1_1m__do__controller__pad.html", [
           [ "CPadInfo", "dd/d59/structlibtp_1_1tp_1_1m__do__controller__pad_1_1CPadInfo.html", "dd/d59/structlibtp_1_1tp_1_1m__do__controller__pad_1_1CPadInfo" ]
         ] ]
-      ] ]
-    ] ],
-    [ "tp", "d3/d81/namespacetp.html", [
-      [ "d_item_data", "d1/d9b/namespacetp_1_1d__item__data.html", [
-        [ "ItemResource", "d5/d9e/structtp_1_1d__item__data_1_1ItemResource.html", "d5/d9e/structtp_1_1d__item__data_1_1ItemResource" ],
-        [ "FieldItemRes", "d6/d4b/structtp_1_1d__item__data_1_1FieldItemRes.html", "d6/d4b/structtp_1_1d__item__data_1_1FieldItemRes" ],
-        [ "ItemInfo", "de/dc0/structtp_1_1d__item__data_1_1ItemInfo.html", "de/dc0/structtp_1_1d__item__data_1_1ItemInfo" ]
       ] ]
     ] ]
 ];

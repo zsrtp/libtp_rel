@@ -1,11 +1,23 @@
 var searchData=
 [
-  ['red_5fpotion_243',['Red_Potion',['../d0/d2b/namespacelibtp_1_1tp_1_1d__a__shop__item__static.html#a0c2eab15d016b48bb8c019730543258aa9fde5ccc6698b21647d877327b479cdd',1,'libtp::tp::d_a_shop_item_static']]],
-  ['render_244',['render',['../d0/db0/namespacelibtp_1_1tp_1_1control.html#afbc0caf83e828aa7171d40853360362f',1,'libtp::tp::control']]],
-  ['resource_2eh_245',['resource.h',['../d8/d01/resource_8h.html',1,'']]],
-  ['respawnanimation_246',['respawnAnimation',['../d8/d22/structlibtp_1_1tp_1_1d__com__inf__game_1_1GameInfo.html#a6acaf9a53b50d429067b2ed3e63e7ae8',1,'libtp::tp::d_com_inf_game::GameInfo::respawnAnimation()'],['../dd/de1/d__com__inf__game_8h.html#ab17829602b3e7d7d7200654772643ad1',1,'respawnAnimation():&#160;d_com_inf_game.h']]],
-  ['respawncutscene_247',['respawnCutscene',['../d8/d22/structlibtp_1_1tp_1_1d__com__inf__game_1_1GameInfo.html#a187ccee7176f37e9118cabbb8926cede',1,'libtp::tp::d_com_inf_game::GameInfo::respawnCutscene()'],['../dd/de1/d__com__inf__game_8h.html#ac5a5d289402e425bfd90d560c16eaaf2',1,'respawnCutscene():&#160;d_com_inf_game.h']]],
-  ['ringtexresidx_248',['ringTexResIdx',['../d5/d9e/structtp_1_1d__item__data_1_1ItemResource.html#afafbeebfe74f21875eca9466603ff6e4',1,'tp::d_item_data::ItemResource::ringTexResIdx()'],['../d2/db5/d__item__data_8h.html#a6d148b800dba8e20b951e986800a7e65',1,'ringTexResIdx():&#160;d_item_data.h']]],
-  ['roomtresureinit_249',['roomTresureInit',['../db/df3/namespacelibtp_1_1tp_1_1d__stage.html#a786106e419d9063bae65f5976612838f',1,'libtp::tp::d_stage']]],
-  ['rot_250',['rot',['../da/d63/structlibtp_1_1tp_1_1d__stage_1_1Actr.html#a2c2c46b56e651aab3c13b1073bf21d08',1,'libtp::tp::d_stage::Actr::rot()'],['../d7/dcf/structlibtp_1_1tp_1_1d__stage_1_1Item.html#ab484422ba80250efab0b70458d09812b',1,'libtp::tp::d_stage::Item::rot()'],['../d5/def/d__stage_8h.html#a2b59a4384836f73631aba0bcf24ae5c4',1,'rot():&#160;d_stage.h']]]
+  ['padinputs_357',['PadInputs',['../dc/db5/namespacelibtp_1_1tp_1_1m__do__controller__pad.html#a860fa7a7942cdcb0ba19b1bab41313fd',1,'libtp::tp::m_do_controller_pad']]],
+  ['parameters_358',['parameters',['../da/d63/structlibtp_1_1tp_1_1d__stage_1_1Actr.html#ab3966524fec06bf0847599f380b6afb9',1,'libtp::tp::d_stage::Actr::parameters()'],['../d5/def/d__stage_8h.html#a4bde727118d71276ce56c00ffc381002',1,'parameters():&#160;d_stage.h']]],
+  ['paramone_359',['paramOne',['../d7/dcf/structlibtp_1_1tp_1_1d__stage_1_1Item.html#a31333aaa44f13599474c80d46241b698',1,'libtp::tp::d_stage::Item::paramOne()'],['../d5/def/d__stage_8h.html#a6b3fe5ce9b8445f627b57026099bd324',1,'paramOne():&#160;d_stage.h']]],
+  ['paramtwo_360',['paramTwo',['../d7/dcf/structlibtp_1_1tp_1_1d__stage_1_1Item.html#a9493ae17ea63c4c0f02e407f5a70935c',1,'libtp::tp::d_stage::Item::paramTwo()'],['../d5/def/d__stage_8h.html#adf15fea2195936fac0c76e563173f5f2',1,'paramTwo():&#160;d_stage.h']]],
+  ['parse_361',['parse',['../df/dfa/classlibtp_1_1display_1_1Console.html#a940f7b362d2c8d2896a07295cff059e3',1,'libtp::display::Console']]],
+  ['parsecharacter_5f1byte_362',['parseCharacter_1Byte',['../d9/d46/namespacelibtp_1_1tp_1_1resource.html#a794dc66f42eb4dc58faaecefe5859ca9',1,'libtp::tp::resource']]],
+  ['patch_2eh_363',['patch.h',['../df/dfd/patch_8h.html',1,'']]],
+  ['piece_5fof_5fheart_364',['Piece_of_Heart',['../d9/da4/namespacelibtp_1_1items.html#ad838a0f89a1efcd0cd3496df9aeb7b55a7d9ce1c037d48a2b112cb26c1eb42d38',1,'libtp::items']]],
+  ['poe_5fscent_365',['Poe_Scent',['../d9/da4/namespacelibtp_1_1items.html#ad838a0f89a1efcd0cd3496df9aeb7b55ab3e50ab4141b5dace43932be8984d7eb',1,'libtp::items']]],
+  ['poe_5fsoul_366',['Poe_Soul',['../d9/da4/namespacelibtp_1_1items.html#ad838a0f89a1efcd0cd3496df9aeb7b55a0dded6c41a32e1edbe130b80271003b6',1,'libtp::items']]],
+  ['pos_367',['pos',['../d3/d33/structlibtp_1_1tp_1_1d__com__inf__game_1_1LinkMapVars.html#ad0b1e58c406f7b48dc9b3bce13714098',1,'libtp::tp::d_com_inf_game::LinkMapVars::pos()'],['../da/d63/structlibtp_1_1tp_1_1d__stage_1_1Actr.html#ab8c8043d5f9726b5f68e0bd13fe5634d',1,'libtp::tp::d_stage::Actr::pos()'],['../d7/dcf/structlibtp_1_1tp_1_1d__stage_1_1Item.html#ad909eb2bf00f3de3008e6902eedc7061',1,'libtp::tp::d_stage::Item::pos()'],['../dd/de1/d__com__inf__game_8h.html#ae493020fc2b5bbc4fbe3f180e043f511',1,'pos():&#160;d_com_inf_game.h'],['../d5/def/d__stage_8h.html#a617e6b670348d89bfb267f3b5001bd4d',1,'pos():&#160;d_stage.h']]],
+  ['posy_368',['posY',['../de/d85/structlibtp_1_1tp_1_1d__a__shop__item__static_1_1ShopItemData.html#a36cf42fff7a874e761101f95b37e7420',1,'libtp::tp::d_a_shop_item_static::ShopItemData::posY()'],['../d2/dbd/d__a__shop__item__static_8h.html#a5ae291898db9f789348010f7cc350d5b',1,'posY():&#160;d_a_shop_item_static.h']]],
+  ['print_369',['print',['../d0/d49/namespacelibtp_1_1display.html#a524a6914ff8f74509a16b703e7f61191',1,'libtp::display']]],
+  ['proccometamorphoseinit_370',['procCoMetamorphoseInit',['../d0/d78/namespacelibtp_1_1tp_1_1d__a__alink.html#a3aa464a01728dfffbe8934e41234d49a',1,'libtp::tp::d_a_alink']]],
+  ['procganonfinish_371',['procGanonFinish',['../d0/d78/namespacelibtp_1_1tp_1_1d__a__alink.html#a04ce10b957aa27eb7c115166aecff176',1,'libtp::tp::d_a_alink']]],
+  ['procganonfinishinit_372',['procGanonFinishInit',['../d0/d78/namespacelibtp_1_1tp_1_1d__a__alink.html#ab3eef50067581066f8ad31a6cb71f4ba',1,'libtp::tp::d_a_alink']]],
+  ['purple_5fchu_5fjelly_373',['Purple_Chu_Jelly',['../d9/da4/namespacelibtp_1_1items.html#ad838a0f89a1efcd0cd3496df9aeb7b55ae6cc86207d0572281ace527627eb9f26',1,'libtp::items']]],
+  ['purple_5frupee_374',['Purple_Rupee',['../d9/da4/namespacelibtp_1_1items.html#ad838a0f89a1efcd0cd3496df9aeb7b55a35a851dab4ca07044cf8981f63efdbe7',1,'libtp::items']]],
+  ['purple_5frupee_5flinks_5fhouse_375',['Purple_Rupee_Links_house',['../d9/da4/namespacelibtp_1_1items.html#ad838a0f89a1efcd0cd3496df9aeb7b55a9da947891fb822b18bb6db219abf4222',1,'libtp::items']]],
+  ['putsave_376',['putSave',['../d6/d58/namespacelibtp_1_1tp_1_1d__save.html#ae168e007331a8d5ab2a5531db52e902e',1,'libtp::tp::d_save']]]
 ];

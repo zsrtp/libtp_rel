@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['red_5fpotion_671',['Red_Potion',['../d0/d2b/namespacelibtp_1_1tp_1_1d__a__shop__item__static.html#a0c2eab15d016b48bb8c019730543258aa9fde5ccc6698b21647d877327b479cdd',1,'libtp::tp::d_a_shop_item_static']]]
+  ['ilias_5fcharm_914',['Ilias_Charm',['../d9/da4/namespacelibtp_1_1items.html#ad838a0f89a1efcd0cd3496df9aeb7b55af4ea9dd209b0494386858eda9732b31f',1,'libtp::items']]],
+  ['ilias_5fscent_915',['Ilias_Scent',['../d9/da4/namespacelibtp_1_1items.html#ad838a0f89a1efcd0cd3496df9aeb7b55aa7d3da1bc7909eb1a89f634d9ddd3863',1,'libtp::items']]],
+  ['invoice_916',['Invoice',['../d9/da4/namespacelibtp_1_1items.html#ad838a0f89a1efcd0cd3496df9aeb7b55aaf5bafe20ff2623b36981f59c5d379cd',1,'libtp::items']]],
+  ['iron_5fboots_917',['Iron_Boots',['../d9/da4/namespacelibtp_1_1items.html#ad838a0f89a1efcd0cd3496df9aeb7b55ac4c1c0322117db189d51fa86ec3a4ece',1,'libtp::items']]]
 ];

@@ -101,69 +101,87 @@ $(document).ready(function(){initNavTree('d0/de3/console_8h_source.html','../../
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
 <div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="../../d0/d49/namespacelibtp_1_1display.html">   15</a></span>&#160;<span class="keyword">namespace</span> libtp::<a class="code" href="../../d0/d49/namespacelibtp_1_1display.html">display</a></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="../../d0/d49/namespacelibtp_1_1display.html#ac706462a261ac266de9f335f4dbfc6f8">heading</a>;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="../../d0/d49/namespacelibtp_1_1display.html#afce69ebd7f7ca65af3f8f0dabe2bf84f">pre_description</a>;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="../../d0/d49/namespacelibtp_1_1display.html#a74d35b31e5ff2dcbae1de4ae65e756d4">legalText</a>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="../../d0/d49/namespacelibtp_1_1display.html#a3561ce9b8a6937454cda1da043ce824d">github</a>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="../../d0/d49/namespacelibtp_1_1display.html#aaf82ec7efb4148f9bff503978ce8899f">twitter</a>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="comment">/**</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">     *  @brief Console wrapper class</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">     *  @todo Add features (menu, watches, etc.)</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="../../df/dfa/classlibtp_1_1display_1_1Console.html">   28</a></span>&#160;    <span class="keyword">class</span> <a class="code" href="../../df/dfa/classlibtp_1_1display_1_1Console.html">Console</a></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;       <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="comment">/**</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">         *  @brief Wrapper class for accessing the JFW console</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">         *</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">         *  @param author Author name to display on legal stream</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">         *  @param title The name of your mod</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">         *  @param description Small description text about your mod</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">         *  @param description1 Following description line</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">         *  @param description2 Last description line</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">         *  @param version Version string (i.e. v3.1)</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">         */</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="../../df/dfa/classlibtp_1_1display_1_1Console.html#adb5cd65930e7aaa9cd35ae5901f04021">   41</a></span>&#160;        <a class="code" href="../../df/dfa/classlibtp_1_1display_1_1Console.html#adb5cd65930e7aaa9cd35ae5901f04021">Console</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* author,</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">char</span>* title,</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">char</span>* description,</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">char</span>* description1,</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">char</span>* description2,</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">char</span>* version);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    };</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="comment">/**</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">     *  @brief Clears all console lines in a given range i.e. clearConsole(0, 10)</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">     *  @param from First line index to be cleared (inclusive)</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">     *  @param count Number of lines to be cleared, 0 = all</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="../../d0/d49/namespacelibtp_1_1display.html#a7c5acb006ad83bead0f5a39cf5bfeb13">   55</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d0/d49/namespacelibtp_1_1display.html#a7c5acb006ad83bead0f5a39cf5bfeb13">clearConsole</a>(uint8_t from, uint8_t count = 0);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="comment">/**</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">     *  @brief Sets the state of the console</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">     *  @param state If true: Enabled otherwise disabled</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">     *  @param lines Number of lines to enable, 0 to enable the console but hide the lines (max. 25; check: tp/JFWSystem.h)</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="../../d0/d49/namespacelibtp_1_1display.html#a43fd89d1e0f8fa73699b2ddb78f8949f">   63</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d0/d49/namespacelibtp_1_1display.html#a43fd89d1e0f8fa73699b2ddb78f8949f">setConsole</a>(<span class="keywordtype">bool</span> state, uint8_t lines);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="comment">/**</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">     *  @brief Sets the console background colour + Alpha</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="../../d0/d49/namespacelibtp_1_1display.html#af404f3d9b559e42b5e6e170eb96cdc61">   68</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d0/d49/namespacelibtp_1_1display.html#af404f3d9b559e42b5e6e170eb96cdc61">setConsoleColor</a>(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="comment">/**</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">     *  @brief Copies text to a console line</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">     *  @param line The targeted line</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">     *  @param text The text to be printed</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">     *  @return The pointer to the console line</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="../../d0/d49/namespacelibtp_1_1display.html#a524a6914ff8f74509a16b703e7f61191">   78</a></span>&#160;    <span class="keywordtype">char</span>* <a class="code" href="../../d0/d49/namespacelibtp_1_1display.html#a524a6914ff8f74509a16b703e7f61191">print</a>(uint8_t line, <span class="keyword">const</span> <span class="keywordtype">char</span>* text);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}  <span class="comment">// namespace libtp::display</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="comment">/**</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">     *  @brief Console wrapper class</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">     *  @todo Add features (menu, watches, etc.)</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="../../df/dfa/classlibtp_1_1display_1_1Console.html">   22</a></span>&#160;    <span class="keyword">class</span> <a class="code" href="../../df/dfa/classlibtp_1_1display_1_1Console.html">Console</a></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;       <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="comment">/**</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">         *  @brief Simple console class</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">         *</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">         * Warning: This is NOT a proper output buffer like cout! This is just meant for</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">         * easier access to the console and isn&#39;t as feature rich as a proper cout.</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">         */</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="../../df/dfa/classlibtp_1_1display_1_1Console.html#a3ecec61aab60c3579d5543c090439993">   31</a></span>&#160;        <a class="code" href="../../df/dfa/classlibtp_1_1display_1_1Console.html#a3ecec61aab60c3579d5543c090439993">Console</a>();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="comment">/**</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">         *  @brief Reads a string and outputs it directly</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">         *</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">         *  @param text The char array to be parsed and displayed</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">         */</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="../../df/dfa/classlibtp_1_1display_1_1Console.html#a940f7b362d2c8d2896a07295cff059e3">   38</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../df/dfa/classlibtp_1_1display_1_1Console.html#a940f7b362d2c8d2896a07295cff059e3">parse</a>( <span class="keyword">const</span> <span class="keywordtype">char</span>* text );</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;       <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="comment">// Current line (should be &lt; 25)</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="../../df/dfa/classlibtp_1_1display_1_1Console.html#ae10387408786f74aca30f5c29e7fa1d9">   42</a></span>&#160;        uint8_t <a class="code" href="../../df/dfa/classlibtp_1_1display_1_1Console.html#ae10387408786f74aca30f5c29e7fa1d9">m_Line</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="comment">// Current Column (should be &lt; linewidth)</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="../../df/dfa/classlibtp_1_1display_1_1Console.html#a5f3918fae8ae43ff6835fe0533b2e46d">   44</a></span>&#160;        uint8_t <a class="code" href="../../df/dfa/classlibtp_1_1display_1_1Console.html#a5f3918fae8ae43ff6835fe0533b2e46d">m_Col</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="comment">// Operators</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="../../df/dfa/classlibtp_1_1display_1_1Console.html#a604cbb3008aefbdd18d4b31a6872a87c">   47</a></span>&#160;        <span class="keyword">friend</span> <a class="code" href="../../df/dfa/classlibtp_1_1display_1_1Console.html">Console</a>&amp; operator&lt;&lt;( <a class="code" href="../../df/dfa/classlibtp_1_1display_1_1Console.html">Console</a>&amp; console, <span class="keyword">const</span> <span class="keywordtype">char</span>* text );</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="../../df/dfa/classlibtp_1_1display_1_1Console.html#a88c7b821bef9191750af70c516867964">   48</a></span>&#160;        <span class="keyword">friend</span> <a class="code" href="../../df/dfa/classlibtp_1_1display_1_1Console.html">Console</a>&amp; operator&lt;&lt;( <a class="code" href="../../df/dfa/classlibtp_1_1display_1_1Console.html">Console</a>&amp; console, <span class="keywordtype">char</span>* text );</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="comment">// Output unsigned (hex) int</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="../../df/dfa/classlibtp_1_1display_1_1Console.html#af4fc921d1fa67b9dee4d41398f90382f">   50</a></span>&#160;        <span class="keyword">friend</span> <a class="code" href="../../df/dfa/classlibtp_1_1display_1_1Console.html">Console</a>&amp; operator&lt;&lt;( <a class="code" href="../../df/dfa/classlibtp_1_1display_1_1Console.html">Console</a>&amp; console, uint8_t n );</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="comment">// Output unsigned (hex) int</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="../../df/dfa/classlibtp_1_1display_1_1Console.html#a328a0b6061d69df15a558f74a261b89c">   52</a></span>&#160;        <span class="keyword">friend</span> <a class="code" href="../../df/dfa/classlibtp_1_1display_1_1Console.html">Console</a>&amp; operator&lt;&lt;( <a class="code" href="../../df/dfa/classlibtp_1_1display_1_1Console.html">Console</a>&amp; console, uint16_t n );</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="comment">// Output unsigned (hex) int</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="../../df/dfa/classlibtp_1_1display_1_1Console.html#a08097e5b4ad5a57b3ecbbb4b437209ce">   54</a></span>&#160;        <span class="keyword">friend</span> <a class="code" href="../../df/dfa/classlibtp_1_1display_1_1Console.html">Console</a>&amp; operator&lt;&lt;( <a class="code" href="../../df/dfa/classlibtp_1_1display_1_1Console.html">Console</a>&amp; console, uint32_t n );</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="comment">// Output signed (dec) int</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="../../df/dfa/classlibtp_1_1display_1_1Console.html#ab258bc9046ebf3767e0d4096459481bb">   56</a></span>&#160;        <span class="keyword">friend</span> <a class="code" href="../../df/dfa/classlibtp_1_1display_1_1Console.html">Console</a>&amp; operator&lt;&lt;( <a class="code" href="../../df/dfa/classlibtp_1_1display_1_1Console.html">Console</a>&amp; console, int8_t n );</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="comment">// Output signed (dec) int</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="../../df/dfa/classlibtp_1_1display_1_1Console.html#af4254640afdd29754331e9a8138c460b">   58</a></span>&#160;        <span class="keyword">friend</span> <a class="code" href="../../df/dfa/classlibtp_1_1display_1_1Console.html">Console</a>&amp; operator&lt;&lt;( <a class="code" href="../../df/dfa/classlibtp_1_1display_1_1Console.html">Console</a>&amp; console, int16_t n );</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="comment">// Output signed (dec) int</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="../../df/dfa/classlibtp_1_1display_1_1Console.html#a37412a5b41849d48c430142189060623">   60</a></span>&#160;        <span class="keyword">friend</span> <a class="code" href="../../df/dfa/classlibtp_1_1display_1_1Console.html">Console</a>&amp; operator&lt;&lt;( <a class="code" href="../../df/dfa/classlibtp_1_1display_1_1Console.html">Console</a>&amp; console, int32_t n );</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="comment">// Output signed float</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="../../df/dfa/classlibtp_1_1display_1_1Console.html#a2b32452c2e2c3e77a258fb000fed04c3">   62</a></span>&#160;        <span class="keyword">friend</span> <a class="code" href="../../df/dfa/classlibtp_1_1display_1_1Console.html">Console</a>&amp; operator&lt;&lt;( <a class="code" href="../../df/dfa/classlibtp_1_1display_1_1Console.html">Console</a>&amp; console, <span class="keywordtype">float</span> n );</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="comment">// Prints the address of a given pointer</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="../../df/dfa/classlibtp_1_1display_1_1Console.html#a2fb000168fc07de41dccb4dc2e34fbbc">   64</a></span>&#160;        <span class="keyword">friend</span> <a class="code" href="../../df/dfa/classlibtp_1_1display_1_1Console.html">Console</a>&amp; operator&lt;&lt;( <a class="code" href="../../df/dfa/classlibtp_1_1display_1_1Console.html">Console</a>&amp; console, <span class="keywordtype">void</span>* ptr );</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    };</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="comment">/**</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">     *  @brief Clears all console lines in a given range i.e. clearConsole(0, 10)</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">     *  @param from First line index to be cleared (inclusive)</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">     *  @param count Number of lines to be cleared, 0 = all</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="../../d0/d49/namespacelibtp_1_1display.html#a7c5acb006ad83bead0f5a39cf5bfeb13">   73</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d0/d49/namespacelibtp_1_1display.html#a7c5acb006ad83bead0f5a39cf5bfeb13">clearConsole</a>( uint8_t from, uint8_t count = 0 );</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="comment">/**</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">     *  @brief Sets the state of the console</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">     *  @param state If true: Enabled otherwise disabled</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">     *  @param lines Number of lines to enable, 0 to enable the console but hide the lines (max. 25; check: tp/JFWSystem.h)</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="../../d0/d49/namespacelibtp_1_1display.html#a43fd89d1e0f8fa73699b2ddb78f8949f">   81</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d0/d49/namespacelibtp_1_1display.html#a43fd89d1e0f8fa73699b2ddb78f8949f">setConsole</a>( <span class="keywordtype">bool</span> state, uint8_t lines );</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="comment">/**</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">     *  @brief Sets the console background colour + Alpha</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="../../d0/d49/namespacelibtp_1_1display.html#af404f3d9b559e42b5e6e170eb96cdc61">   86</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d0/d49/namespacelibtp_1_1display.html#af404f3d9b559e42b5e6e170eb96cdc61">setConsoleColor</a>( uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha );</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="comment">/**</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">     *  @brief Copies text to a console line</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">     *  @param line The targeted line</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">     *  @param text The text to be printed</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">     *  @return The pointer to the console line</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="../../d0/d49/namespacelibtp_1_1display.html#a524a6914ff8f74509a16b703e7f61191">   96</a></span>&#160;    <span class="keywordtype">char</span>* <a class="code" href="../../d0/d49/namespacelibtp_1_1display.html#a524a6914ff8f74509a16b703e7f61191">print</a>( uint8_t line, <span class="keyword">const</span> <span class="keywordtype">char</span>* text );</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}     <span class="comment">// namespace libtp::display</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

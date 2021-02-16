@@ -11,6 +11,7 @@ var namespacelibtp_1_1tp =
       [ "execItemGet", "d7/d98/namespacelibtp_1_1tp_1_1d__item.html#ac306844b69a668e4b76d9897b2939ca7", null ],
       [ "item_func_UTUWA_HEART", "d7/d98/namespacelibtp_1_1tp_1_1d__item.html#aacc2faaa49432f59f470ee01c37b2a31", null ]
     ] ],
+    [ "d_item_data", "d1/dfc/namespacelibtp_1_1tp_1_1d__item__data.html", "d1/dfc/namespacelibtp_1_1tp_1_1d__item__data" ],
     [ "d_kankyo", "d1/d54/namespacelibtp_1_1tp_1_1d__kankyo.html", "d1/d54/namespacelibtp_1_1tp_1_1d__kankyo" ],
     [ "d_map_path_dmap", "d8/d85/namespacelibtp_1_1tp_1_1d__map__path__dmap.html", [
       [ "getMapPlayerAngleY", "d8/d85/namespacelibtp_1_1tp_1_1d__map__path__dmap.html#a5f2a1cd6424afe6e28a377aab43efbc9", null ],

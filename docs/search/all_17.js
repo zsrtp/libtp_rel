@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['z_347',['Z',['../d7/d63/structlibtp_1_1tp_1_1d__stage_1_1TRES.html#a17c93d598626df9daca3e0df1682f563',1,'libtp::tp::d_stage::TRES::Z()'],['../d5/def/d__stage_8h.html#aa65967cca170d24dcd0d555df0d5ee4f',1,'Z():&#160;d_stage.h']]]
+  ['x_508',['X',['../d7/d63/structlibtp_1_1tp_1_1d__stage_1_1TRES.html#adf7c4cd0457ae780e6b3990a70684819',1,'libtp::tp::d_stage::TRES::X()'],['../d5/def/d__stage_8h.html#ab3c4b737dfc5c78a6aba50dda616f7c3',1,'X():&#160;d_stage.h']]]
 ];

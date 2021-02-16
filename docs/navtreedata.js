@@ -30,12 +30,12 @@ var NAVTREE =
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
-        [ "All", "namespacemembers.html", null ],
+        [ "All", "namespacemembers.html", "namespacemembers_dup" ],
         [ "Functions", "namespacemembers_func.html", null ],
         [ "Variables", "namespacemembers_vars.html", null ],
         [ "Typedefs", "namespacemembers_type.html", null ],
         [ "Enumerations", "namespacemembers_enum.html", null ],
-        [ "Enumerator", "namespacemembers_eval.html", null ]
+        [ "Enumerator", "namespacemembers_eval.html", "namespacemembers_eval" ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [
@@ -44,7 +44,8 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
         [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", null ]
+        [ "Variables", "functions_vars.html", null ],
+        [ "Related Functions", "functions_rela.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -61,8 +62,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d4/d29/d__a__alink_8h.html#a69397078c9e05040a2ab2ebc436903a3",
-"db/d6a/namespacelibtp_1_1tp_1_1f__op__scene__req.html"
+"d4/d29/d__a__alink_8h.html#a8a30f24a318b365aaaf2a0e181fa0aae",
+"d5/db4/items_8h.html#ad838a0f89a1efcd0cd3496df9aeb7b55ae40e85994131b95bd5e21e3b794f8dcb",
+"d9/da4/namespacelibtp_1_1items.html#ad838a0f89a1efcd0cd3496df9aeb7b55a9340667f7f794e0502e81545f01f7e5a",
+"de/d85/structlibtp_1_1tp_1_1d__a__shop__item__static_1_1ShopItemData.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

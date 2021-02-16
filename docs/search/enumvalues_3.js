@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['giant_5fbomb_5fbag_661',['Giant_Bomb_Bag',['../d0/d2b/namespacelibtp_1_1tp_1_1d__a__shop__item__static.html#a0c2eab15d016b48bb8c019730543258aadcf065075b0dad27ef582aa5c7e42e59',1,'libtp::tp::d_a_shop_item_static']]],
-  ['green_5fpotion_662',['Green_Potion',['../d0/d2b/namespacelibtp_1_1tp_1_1d__a__shop__item__static.html#a0c2eab15d016b48bb8c019730543258aaba2053b5cafc6a0438ec878c3b9d84a2',1,'libtp::tp::d_a_shop_item_static']]]
+  ['dominion_5frod_869',['Dominion_Rod',['../d9/da4/namespacelibtp_1_1items.html#ad838a0f89a1efcd0cd3496df9aeb7b55a7ac129e1362199c1d69dfafdd49def28',1,'libtp::items']]],
+  ['dominion_5frod_5funcharged_870',['Dominion_Rod_Uncharged',['../d9/da4/namespacelibtp_1_1items.html#ad838a0f89a1efcd0cd3496df9aeb7b55aa30b068c3d170c01e510f4431030d060',1,'libtp::items']]],
+  ['dungeon_5fmap_871',['Dungeon_Map',['../d9/da4/namespacelibtp_1_1items.html#ad838a0f89a1efcd0cd3496df9aeb7b55a19f03fbeef9899c7de44c59a36053139',1,'libtp::items']]]
 ];

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['jfwsystem_2eh_423',['JFWSystem.h',['../db/d73/JFWSystem_8h.html',1,'']]],
-  ['jkrexpheap_2eh_424',['JKRExpHeap.h',['../d8/d52/JKRExpHeap_8h.html',1,'']]]
+  ['items_2eh_592',['items.h',['../d5/db4/items_8h.html',1,'']]]
 ];
