@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['scratchpad_359',['scratchPad',['../d8/d22/structlibtp_1_1tp_1_1d__com__inf__game_1_1GameInfo.html#a7fa2c51feb4714ed855de387a9cf1aba',1,'libtp::tp::d_com_inf_game::GameInfo::scratchPad()'],['../dd/de1/d__com__inf__game_8h.html#a977fd6c5622a27e79ab86c2b541f09f7',1,'scratchPad():&#160;d_com_inf_game.h']]],
-  ['showline_360',['showLine',['../d4/d51/structlibtp_1_1tp_1_1jfw__system_1_1ConsoleLine.html#a8c8e627955ce98a6d78bf7a4ec34300b',1,'libtp::tp::jfw_system::ConsoleLine::showLine()'],['../db/d73/JFWSystem_8h.html#afd787c1ac9fe388ddc74f2414c10b2bb',1,'showLine():&#160;JFWSystem.h']]],
-  ['stagedescs_361',['stageDescs',['../d5/d4e/namespacelibtp_1_1data_1_1stage.html#afd085c0073a61dc41eaaa644094b9e83',1,'libtp::data::stage']]],
-  ['systemconsole_362',['systemConsole',['../de/d26/namespacelibtp_1_1tp_1_1jfw__system.html#aa35e2b9b8a3e318fcc6d74b2fc8b699e',1,'libtp::tp::jfw_system']]]
+  ['respawnanimation_572',['respawnAnimation',['../d8/d22/structlibtp_1_1tp_1_1d__com__inf__game_1_1GameInfo.html#a6acaf9a53b50d429067b2ed3e63e7ae8',1,'libtp::tp::d_com_inf_game::GameInfo::respawnAnimation()'],['../dd/de1/d__com__inf__game_8h.html#ab17829602b3e7d7d7200654772643ad1',1,'respawnAnimation():&#160;d_com_inf_game.h']]],
+  ['respawncutscene_573',['respawnCutscene',['../d8/d22/structlibtp_1_1tp_1_1d__com__inf__game_1_1GameInfo.html#a187ccee7176f37e9118cabbb8926cede',1,'libtp::tp::d_com_inf_game::GameInfo::respawnCutscene()'],['../dd/de1/d__com__inf__game_8h.html#ac5a5d289402e425bfd90d560c16eaaf2',1,'respawnCutscene():&#160;d_com_inf_game.h']]],
+  ['ringtexresidx_574',['ringTexResIdx',['../d5/d9e/structtp_1_1d__item__data_1_1ItemResource.html#afafbeebfe74f21875eca9466603ff6e4',1,'tp::d_item_data::ItemResource::ringTexResIdx()'],['../d2/db5/d__item__data_8h.html#a6d148b800dba8e20b951e986800a7e65',1,'ringTexResIdx():&#160;d_item_data.h']]],
+  ['rot_575',['rot',['../da/d63/structlibtp_1_1tp_1_1d__stage_1_1Actr.html#a2c2c46b56e651aab3c13b1073bf21d08',1,'libtp::tp::d_stage::Actr::rot()'],['../d7/dcf/structlibtp_1_1tp_1_1d__stage_1_1Item.html#ab484422ba80250efab0b70458d09812b',1,'libtp::tp::d_stage::Item::rot()'],['../d5/def/d__stage_8h.html#a2b59a4384836f73631aba0bcf24ae5c4',1,'rot():&#160;d_stage.h']]]
 ];

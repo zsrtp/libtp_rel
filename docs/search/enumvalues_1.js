@@ -1,11 +1,21 @@
 var searchData=
 [
-  ['stick_5fc_5fdown_417',['Stick_C_Down',['../dc/db5/namespacelibtp_1_1tp_1_1m__do__controller__pad.html#aadf3813f5928e6536efbd9fc0aa88d21a03348208b79ec961966fee8ac8613340',1,'libtp::tp::m_do_controller_pad']]],
-  ['stick_5fc_5fleft_418',['Stick_C_Left',['../dc/db5/namespacelibtp_1_1tp_1_1m__do__controller__pad.html#aadf3813f5928e6536efbd9fc0aa88d21a1d0d1762b91eeaba8d28f3746ed6ff7b',1,'libtp::tp::m_do_controller_pad']]],
-  ['stick_5fc_5fright_419',['Stick_C_Right',['../dc/db5/namespacelibtp_1_1tp_1_1m__do__controller__pad.html#aadf3813f5928e6536efbd9fc0aa88d21a10a0ed1758ec70625c8d9c5d41118d47',1,'libtp::tp::m_do_controller_pad']]],
-  ['stick_5fc_5fup_420',['Stick_C_Up',['../dc/db5/namespacelibtp_1_1tp_1_1m__do__controller__pad.html#aadf3813f5928e6536efbd9fc0aa88d21a25d9a63eab59faf5ff970d35f859531b',1,'libtp::tp::m_do_controller_pad']]],
-  ['stick_5fdown_421',['Stick_Down',['../dc/db5/namespacelibtp_1_1tp_1_1m__do__controller__pad.html#aadf3813f5928e6536efbd9fc0aa88d21aa359d042f771efaec80c24426db7fb5d',1,'libtp::tp::m_do_controller_pad']]],
-  ['stick_5fleft_422',['Stick_Left',['../dc/db5/namespacelibtp_1_1tp_1_1m__do__controller__pad.html#aadf3813f5928e6536efbd9fc0aa88d21aa6325ecf6de85a1d270ae17179d15db1',1,'libtp::tp::m_do_controller_pad']]],
-  ['stick_5fright_423',['Stick_Right',['../dc/db5/namespacelibtp_1_1tp_1_1m__do__controller__pad.html#aadf3813f5928e6536efbd9fc0aa88d21a53c752f2b3a47c28cd1b52e1e83d15bc',1,'libtp::tp::m_do_controller_pad']]],
-  ['stick_5fup_424',['Stick_Up',['../dc/db5/namespacelibtp_1_1tp_1_1m__do__controller__pad.html#aadf3813f5928e6536efbd9fc0aa88d21a805aec8b48fb061fa00ff379771da12f',1,'libtp::tp::m_do_controller_pad']]]
+  ['bee_5flarva_642',['Bee_Larva',['../d0/d2b/namespacelibtp_1_1tp_1_1d__a__shop__item__static.html#a0c2eab15d016b48bb8c019730543258aa5cd3cad321c686014d159589c7c3d588',1,'libtp::tp::d_a_shop_item_static']]],
+  ['blue_5fpotion_643',['Blue_Potion',['../d0/d2b/namespacelibtp_1_1tp_1_1d__a__shop__item__static.html#a0c2eab15d016b48bb8c019730543258aab3154635c8089df3a32b28cc6980b34e',1,'libtp::tp::d_a_shop_item_static']]],
+  ['bomb_5fbag_5fbomblings_644',['Bomb_Bag_Bomblings',['../d0/d2b/namespacelibtp_1_1tp_1_1d__a__shop__item__static.html#a0c2eab15d016b48bb8c019730543258aa1d580cce47cbe9679c6491d7c4a76df0',1,'libtp::tp::d_a_shop_item_static']]],
+  ['bomb_5fbag_5fwater_5fbombs_645',['Bomb_Bag_Water_Bombs',['../d0/d2b/namespacelibtp_1_1tp_1_1d__a__shop__item__static.html#a0c2eab15d016b48bb8c019730543258aa173dcc140405f50bde0bd3f7f938249e',1,'libtp::tp::d_a_shop_item_static']]],
+  ['bombs_646',['Bombs',['../d0/d2b/namespacelibtp_1_1tp_1_1d__a__shop__item__static.html#a0c2eab15d016b48bb8c019730543258aaafe41f241de0defb6336460472decc7d',1,'libtp::tp::d_a_shop_item_static']]],
+  ['bottle_647',['Bottle',['../d0/d2b/namespacelibtp_1_1tp_1_1d__a__shop__item__static.html#a0c2eab15d016b48bb8c019730543258aafb768d34d89a71e28bd942099f1c5863',1,'libtp::tp::d_a_shop_item_static']]],
+  ['button_5fa_648',['Button_A',['../dc/db5/namespacelibtp_1_1tp_1_1m__do__controller__pad.html#a860fa7a7942cdcb0ba19b1bab41313fda32530aeb26b4cfec87997500ef944ad7',1,'libtp::tp::m_do_controller_pad']]],
+  ['button_5fb_649',['Button_B',['../dc/db5/namespacelibtp_1_1tp_1_1m__do__controller__pad.html#a860fa7a7942cdcb0ba19b1bab41313fda723b8b944c717377e2ae594eec7e538a',1,'libtp::tp::m_do_controller_pad']]],
+  ['button_5fdpad_5fdown_650',['Button_DPad_Down',['../dc/db5/namespacelibtp_1_1tp_1_1m__do__controller__pad.html#a860fa7a7942cdcb0ba19b1bab41313fdad9bcac267f272128d4ae0838d61c31d4',1,'libtp::tp::m_do_controller_pad']]],
+  ['button_5fdpad_5fleft_651',['Button_DPad_Left',['../dc/db5/namespacelibtp_1_1tp_1_1m__do__controller__pad.html#a860fa7a7942cdcb0ba19b1bab41313fda434ba1da2850b49d2fd72955b031a426',1,'libtp::tp::m_do_controller_pad']]],
+  ['button_5fdpad_5fright_652',['Button_DPad_Right',['../dc/db5/namespacelibtp_1_1tp_1_1m__do__controller__pad.html#a860fa7a7942cdcb0ba19b1bab41313fda17909c6218261466eb02e2e916d715ad',1,'libtp::tp::m_do_controller_pad']]],
+  ['button_5fdpad_5fup_653',['Button_DPad_Up',['../dc/db5/namespacelibtp_1_1tp_1_1m__do__controller__pad.html#a860fa7a7942cdcb0ba19b1bab41313fdae3e3bbadb023639e3367e5f27ddab38f',1,'libtp::tp::m_do_controller_pad']]],
+  ['button_5fl_654',['Button_L',['../dc/db5/namespacelibtp_1_1tp_1_1m__do__controller__pad.html#a860fa7a7942cdcb0ba19b1bab41313fda11ffd4a63615f6fcce8146c58d4b05ca',1,'libtp::tp::m_do_controller_pad']]],
+  ['button_5fr_655',['Button_R',['../dc/db5/namespacelibtp_1_1tp_1_1m__do__controller__pad.html#a860fa7a7942cdcb0ba19b1bab41313fdabb364e3448457bf56eebd7c1ed99345b',1,'libtp::tp::m_do_controller_pad']]],
+  ['button_5fstart_656',['Button_Start',['../dc/db5/namespacelibtp_1_1tp_1_1m__do__controller__pad.html#a860fa7a7942cdcb0ba19b1bab41313fda5e7c4287aeaccb9da6e4b5cde55a165d',1,'libtp::tp::m_do_controller_pad']]],
+  ['button_5fx_657',['Button_X',['../dc/db5/namespacelibtp_1_1tp_1_1m__do__controller__pad.html#a860fa7a7942cdcb0ba19b1bab41313fdaa96b0eba0e6380c0aa674d0c87626603',1,'libtp::tp::m_do_controller_pad']]],
+  ['button_5fy_658',['Button_Y',['../dc/db5/namespacelibtp_1_1tp_1_1m__do__controller__pad.html#a860fa7a7942cdcb0ba19b1bab41313fda336679d99e5d514e8daa0256929df4ce',1,'libtp::tp::m_do_controller_pad']]],
+  ['button_5fz_659',['Button_Z',['../dc/db5/namespacelibtp_1_1tp_1_1m__do__controller__pad.html#a860fa7a7942cdcb0ba19b1bab41313fdae77b1af3b07c23afbe81ffbbd705c889',1,'libtp::tp::m_do_controller_pad']]]
 ];

@@ -7,5 +7,9 @@ digraph "include/tp/evt_control.h"
   Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node2 [label="include/tp/d_com_inf\l_game.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dd/de1/d__com__inf__game_8h.html",tooltip="Holds general game information."];
   Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="include/tp/d_save.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dd/dba/d__save_8h.html",tooltip="Holds symbols of the d_save field."];
+  Node3 [label="include/tp/d_a_alink.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d4/d29/d__a__alink_8h.html",tooltip="Holds definitions about the d_a_alink field."];
+  Node2 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="include/tp/d_meter2\l_info.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/d31/d__meter2__info_8h.html",tooltip="Holds the pointers to button transparancy values (possibly more)"];
+  Node2 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="include/tp/d_save.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dd/dba/d__save_8h.html",tooltip="Holds symbols of the d_save field."];
 }

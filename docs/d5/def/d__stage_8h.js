@@ -1,6 +1,31 @@
 var d__stage_8h =
 [
+    [ "TRES", "d7/d63/structlibtp_1_1tp_1_1d__stage_1_1TRES.html", "d7/d63/structlibtp_1_1tp_1_1d__stage_1_1TRES" ],
+    [ "Actr", "da/d63/structlibtp_1_1tp_1_1d__stage_1_1Actr.html", "da/d63/structlibtp_1_1tp_1_1d__stage_1_1Actr" ],
+    [ "Item", "d7/dcf/structlibtp_1_1tp_1_1d__stage_1_1Item.html", "d7/dcf/structlibtp_1_1tp_1_1d__stage_1_1Item" ],
     [ "dzxChunkTypeInfo", "d8/d73/structlibtp_1_1tp_1_1d__stage_1_1dzxChunkTypeInfo.html", "d8/d73/structlibtp_1_1tp_1_1d__stage_1_1dzxChunkTypeInfo" ],
-    [ "roomTresureInit", "d5/def/d__stage_8h.html#aee696f9bd86938ae01ba360f72ae7b35", null ],
-    [ "setTresure", "d5/def/d__stage_8h.html#a611f273e1da2dce1a0be4cc89687efff", null ]
+    [ "__attribute__", "d5/def/d__stage_8h.html#a257149015be2e9a56b1581181c68c679", null ],
+    [ "actorCommonLayerInit", "d5/def/d__stage_8h.html#afb44450af9d9e1272131308dc9da877f", null ],
+    [ "actorInit", "d5/def/d__stage_8h.html#a0528023430d86d09141231099e8610ea", null ],
+    [ "actorInit_always", "d5/def/d__stage_8h.html#ad52e82bc9053e2891be32db9fca3e790", null ],
+    [ "roomTresureInit", "d5/def/d__stage_8h.html#a786106e419d9063bae65f5976612838f", null ],
+    [ "setTresure", "d5/def/d__stage_8h.html#a611f273e1da2dce1a0be4cc89687efff", null ],
+    [ "__attribute__", "d5/def/d__stage_8h.html#a0651d5fbbdad974e95a1e32c2659a287", null ],
+    [ "actorName", "d5/def/d__stage_8h.html#a4678d0b241ed700390ab296e21d408b0", null ],
+    [ "angle", "d5/def/d__stage_8h.html#ae326589338858b1ca614144b2ea02189", null ],
+    [ "enemyNum", "d5/def/d__stage_8h.html#a0d1dfc1729851061df41227a08e6ccbd", null ],
+    [ "flags", "d5/def/d__stage_8h.html#a773b39d480759f67926cb18ae2219281", null ],
+    [ "item", "d5/def/d__stage_8h.html#aabbc127ff9bd89511f63b91a44d1f161", null ],
+    [ "membitFlag", "d5/def/d__stage_8h.html#a9516b5fb009faf2cd8698bd7cb279585", null ],
+    [ "mStatus_roomControl", "d5/def/d__stage_8h.html#a9f561f6b94562f73b2ac2ac81c854c75", null ],
+    [ "objectName", "d5/def/d__stage_8h.html#a20f967743317606f4a03d2d552531b6b", null ],
+    [ "parameters", "d5/def/d__stage_8h.html#a4bde727118d71276ce56c00ffc381002", null ],
+    [ "paramOne", "d5/def/d__stage_8h.html#a6b3fe5ce9b8445f627b57026099bd324", null ],
+    [ "paramTwo", "d5/def/d__stage_8h.html#adf15fea2195936fac0c76e563173f5f2", null ],
+    [ "pos", "d5/def/d__stage_8h.html#a617e6b670348d89bfb267f3b5001bd4d", null ],
+    [ "rot", "d5/def/d__stage_8h.html#a2b59a4384836f73631aba0bcf24ae5c4", null ],
+    [ "unk2", "d5/def/d__stage_8h.html#aaa2f33bcdefb490a836a9a29b59034b1", null ],
+    [ "X", "d5/def/d__stage_8h.html#ab3c4b737dfc5c78a6aba50dda616f7c3", null ],
+    [ "Y", "d5/def/d__stage_8h.html#ac915220fb659eb2c5958a1ccd81b80d4", null ],
+    [ "Z", "d5/def/d__stage_8h.html#aa65967cca170d24dcd0d555df0d5ee4f", null ]
 ];

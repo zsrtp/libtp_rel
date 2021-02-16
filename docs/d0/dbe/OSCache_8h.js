@@ -1,5 +1,5 @@
 var OSCache_8h =
 [
-    [ "DCFlushRange", "d0/dbe/OSCache_8h.html#ae72aa96312102a82a4fc8dac07815b0c", null ],
-    [ "ICInvalidateRange", "d0/dbe/OSCache_8h.html#a56697e096f719180fd3825c6653058e9", null ]
+    [ "DCFlushRange", "d0/dbe/OSCache_8h.html#a535771737809892859af26839429b6fa", null ],
+    [ "ICInvalidateRange", "d0/dbe/OSCache_8h.html#a2c209c61889ad53c434e7dc54897e999", null ]
 ];

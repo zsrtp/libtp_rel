@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['roomtresureinit_299',['roomTresureInit',['../db/df3/namespacelibtp_1_1tp_1_1d__stage.html#aee696f9bd86938ae01ba360f72ae7b35',1,'libtp::tp::d_stage']]]
+  ['icinvalidaterange_469',['ICInvalidateRange',['../df/d26/namespacelibtp_1_1gc_1_1os__cache.html#a2c209c61889ad53c434e7dc54897e999',1,'libtp::gc::os_cache']]],
+  ['item_5ffunc_5futuwa_5fheart_470',['item_func_UTUWA_HEART',['../d7/d98/namespacelibtp_1_1tp_1_1d__item.html#aacc2faaa49432f59f470ee01c37b2a31',1,'libtp::tp::d_item']]]
 ];

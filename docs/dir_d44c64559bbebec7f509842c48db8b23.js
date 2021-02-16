@@ -6,6 +6,5 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "tp", "dir_75ff0ebed823e60e8355822167227a3b.html", "dir_75ff0ebed823e60e8355822167227a3b" ],
     [ "memory.h", "dc/d18/memory_8h.html", "dc/d18/memory_8h" ],
     [ "patch.h", "df/dfd/patch_8h.html", "df/dfd/patch_8h" ],
-    [ "tools.h", "d5/da5/tools_8h.html", "d5/da5/tools_8h" ],
-    [ "types.h", "d9/d49/types_8h.html", "d9/d49/types_8h" ]
+    [ "tools.h", "d5/da5/tools_8h.html", "d5/da5/tools_8h" ]
 ];
