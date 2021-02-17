@@ -1,10 +1,14 @@
 /**
  * List of all item ids with names.
  */
+#pragma once
+
+#ifndef _LIBTP_ITEMS
+#define _LIBTP_ITEMS
 
 #include <cstdint>
 
-namespace libtp::items
+namespace libtp::data::items
 {
     enum Item : uint8_t
     {
@@ -16,8 +20,8 @@ namespace libtp::items
         Purple_Rupee = 0x05,
         Orange_Rupee = 0x06,
         Silver_Rupee = 0x07,
-        /*Borrow_Bomb_Bag?	=	0x08,*/
-        /*Bomb_Bag_And_Bombs?	=	0x09,*/
+        Borrow_Bomb_Bag = 0x08,
+        Bomb_Bag_And_Bombs = 0x09,
         Bombs_5 = 0x0A,
         Bombs_10 = 0x0B,
         Bombs_20 = 0x0C,
@@ -265,4 +269,5 @@ namespace libtp::items
         Coro_Key = 0xFE,
         /*Gives_Vanilla*/ NullItem = 0xFF
     };
-}     // namespace libtp::items
+}     // namespace libtp::data::items
+#endif
