@@ -9,6 +9,8 @@
 #pragma once
 #include <cstdint>
 
+#include "tp/dzx.h"
+
 namespace libtp::tools
 {
     /**
@@ -20,5 +22,13 @@ namespace libtp::tools
      *  @param state Current State (Link)
      *  @param event EventID to trigger
      */
-    void triggerSaveLoad(const char* stage, uint8_t room, uint8_t spawn, uint8_t state = 0xFF, uint8_t event = 0xFF);
-}  // namespace libtp::tools
+    void triggerSaveLoad( const char* stage, uint8_t room, uint8_t spawn, uint8_t state = 0xFF, uint8_t event = 0xFF );
+
+    /**
+     *  @brief Spawns an actor
+     *
+     *  @param roomID Room id to spawn the actor
+     *  @param actor The actor object to be spawned
+     */
+    void SpawnActor( uint8_t roomID, tp::dzx::ACTR& actor );
+}     // namespace libtp::tools

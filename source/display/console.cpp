@@ -161,6 +161,7 @@ namespace libtp::display
 
         // Is there a cinttype for float?
         sprintf( buf, "%.4f", n );
+        console.parse( buf );
 
         return console;
     }
