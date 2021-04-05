@@ -17,7 +17,7 @@ namespace libtp::tp::d_map_path_dmap
          *	@param posOut The 3 floats which will hold the respective X, Y and Z
          *coordinate
          */
-        void getMapPlayerPos(float posOut[3]);
+        void getMapPlayerPos( float posOut[3] );
 
         /**
          *	@brief If Link is loaded on the stage, get the Y angle
@@ -26,4 +26,4 @@ namespace libtp::tp::d_map_path_dmap
          */
         uint32_t getMapPlayerAngleY();
     }
-}  // namespace libtp::tp::d_map_path_dmap
+}     // namespace libtp::tp::d_map_path_dmap

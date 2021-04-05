@@ -36,7 +36,7 @@ namespace libtp::tp::d_save
          *	@param gameInfoPtr Pointer to d_com_inf_game::gameInfo
          *	@param areaID ID of the current Area
          */
-        void getSave(d_com_inf_game::GameInfo* gameInfoPtr, int32_t areaID);
+        void getSave( d_com_inf_game::GameInfo* gameInfoPtr, int32_t areaID );
 
         /**
          *	@brief Puts the previously set AreaNode for region-specific flags back
@@ -48,6 +48,6 @@ namespace libtp::tp::d_save
          *	@param gameInfoPtr Pointer to d_com_inf_game::gameInfo
          *	@param areaID ID of the current Area
          */
-        void putSave(d_com_inf_game::GameInfo* gameInfoPtr, int32_t areaID);
+        void putSave( d_com_inf_game::GameInfo* gameInfoPtr, int32_t areaID );
     }
-}  // namespace libtp::tp::d_save
+}     // namespace libtp::tp::d_save

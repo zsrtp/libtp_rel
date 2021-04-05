@@ -15,19 +15,19 @@ namespace libtp::tp::resource
          *
          *  @returns char to be processed
          */
-        char parseCharacter_1Byte(const char** text);
+        char parseCharacter_1Byte( const char** text );
     }
 
     // Macros for custom messages
-#define MSG_BEGIN(name) char* name =
+#define MSG_BEGIN( name ) char* name =
 
-#define MSG_BEGIN_CONST(name) const char* name =
+#define MSG_BEGIN_CONST( name ) const char* name =
 
 #define MSG_END() ;
 
-#define MSG_SPEED(speed) "\x1A\x05\x00\x00" speed
+#define MSG_SPEED( speed ) "\x1A\x05\x00\x00" speed
 
-#define MSG_COLOR(id) "\x1A\x06\xFF\x00\x00" id
+#define MSG_COLOR( id ) "\x1A\x06\xFF\x00\x00" id
 
     // Message Text Color Values
 #define MSG_COLOR_WHITE "\x00"
@@ -37,4 +37,4 @@ namespace libtp::tp::resource
 #define MSG_COLOR_YELLOW "\x04"
 #define MSG_COLOR_PURPLE "\x06"
 #define MSG_COLOR_ORANGE "\x08"
-}  // namespace libtp::tp::resource
+}     // namespace libtp::tp::resource

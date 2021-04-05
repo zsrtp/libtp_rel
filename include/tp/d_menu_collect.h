@@ -16,4 +16,4 @@ namespace libtp::tp::d_menu_collect
          */
         void setWalletMaxNum();
     }
-}  // namespace libtp::tp::d_menu_collect
+}     // namespace libtp::tp::d_menu_collect

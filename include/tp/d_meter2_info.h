@@ -15,10 +15,10 @@ namespace libtp::tp::d_meter2_info
         uint8_t unk_0[0x10];
         tp::d_msg_object::StringDataTable* stringDataTable;
         uint8_t unk_14[0xE4];
-    } __attribute__((__packed__));
+    } __attribute__( ( __packed__ ) );
 
-    static_assert(sizeof(G_Meter2_Info) == 0xF8);
-    
+    static_assert( sizeof( G_Meter2_Info ) == 0xF8 );
+
     extern "C"
     {
         /**
@@ -27,4 +27,4 @@ namespace libtp::tp::d_meter2_info
         extern void* wZButtonPtr;
         extern G_Meter2_Info g_meter2_info;
     }
-}  // namespace libtp::tp::d_meter2_info
+}     // namespace libtp::tp::d_meter2_info

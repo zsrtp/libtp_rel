@@ -10,8 +10,8 @@
 
 namespace libtp::tp::control
 {
-	extern "C"
-	{
-		bool render(void* TControl);
-	}
-} // namespace libtp::tp::control
+    extern "C"
+    {
+        bool render( void* TControl );
+    }
+}     // namespace libtp::tp::control
