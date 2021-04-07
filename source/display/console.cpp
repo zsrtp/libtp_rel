@@ -88,6 +88,14 @@ namespace libtp::display
         return console;
     }
 
+    Console& operator<<( Console& console, char chr )
+    {
+        char buf[1];
+        buf[0] = chr;
+        console.parse( buf );
+        return console;
+    }
+
     Console& operator<<( Console& console, uint8_t n )
     {
         // Custom print this

@@ -46,6 +46,7 @@ namespace libtp::display
         // Operators
         friend Console& operator<<( Console& console, const char* text );
         friend Console& operator<<( Console& console, char* text );
+        friend Console& operator<<( Console& console, char chr );
         // Output unsigned (hex) int
         friend Console& operator<<( Console& console, uint8_t n );
         // Output unsigned (hex) int
