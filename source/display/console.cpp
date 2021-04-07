@@ -93,7 +93,7 @@ namespace libtp::display
         // Custom print this
         char buf[15];
 
-        sprintf( buf, "0x%" PRIx8, n );
+        sprintf( buf, "%02" PRIx8, n );
         console.parse( buf );
 
         return console;
@@ -115,7 +115,7 @@ namespace libtp::display
         // Custom print this
         char buf[15];
 
-        sprintf( buf, "0x%" PRIx16, n );
+        sprintf( buf, "%04" PRIx16, n );
         console.parse( buf );
 
         return console;
@@ -137,7 +137,7 @@ namespace libtp::display
         // Custom print this
         char buf[15];
 
-        sprintf( buf, "0x%" PRIx32, n );
+        sprintf( buf, "%08" PRIx32, n );
         console.parse( buf );
 
         return console;
