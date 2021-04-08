@@ -5,7 +5,6 @@ This project is meant to be the backbone of your Twilight Princess mod by provid
 It also features some basic tools and wrapper functions to avoid recreating the same code for future RELs
 
 # Links
- - [Documentation](//zsrtp.github.io/libtp_rel/index.html)
  - [TP Dev Discord](//discord.gg/CsDF9hY)
  - [TP Discord](//discord.gg/tp)
 
