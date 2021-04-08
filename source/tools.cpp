@@ -1,10 +1,12 @@
 #include "tools.h"
 
+#include <cinttypes>
 #include <cstdint>
 #include <cstdio>
 #include <cstring>
 
 #include "display/console.h"
+#include "gc/card.h"
 #include "memory.h"
 #include "tp/d_com_inf_game.h"
 #include "tp/d_stage.h"
@@ -13,9 +15,11 @@
 
 namespace libtp::tools
 {
-    void triggerSaveLoad( const char* stage, uint8_t room, uint8_t spawn, uint8_t state, uint8_t event )
+    void TriggerSaveLoad( const char* stage, uint8_t room, uint8_t spawn, uint8_t state, uint8_t event )
     {
-        libtp::tp::d_com_inf_game::GameInfo* gameInfo = &tp::d_com_inf_game::dComIfG_gameInfo;
+        using namespace libtp::tp::d_com_inf_game;
+
+        GameInfo* gameInfo = &dComIfG_gameInfo;
         strcpy( gameInfo->nextStageVars.nextStage, stage );
         gameInfo->nextStageVars.nextRoom = room;
         gameInfo->nextStageVars.nextSpawnPoint = spawn;
@@ -33,7 +37,10 @@ namespace libtp::tools
 
     void SpawnActor( uint8_t roomID, tp::dzx::ACTR& actor )
     {
-        tp::dzx::ActorPRMClass* actorMemoryPtr = tp::f_op_actor_mng::CreateAppend();
+        using namespace libtp::tp::dzx;
+        using namespace libtp::tp::f_op_actor_mng;
+
+        ActorPRMClass* actorMemoryPtr = CreateAppend();
 
         actorMemoryPtr->params = actor.parameters;
 
@@ -49,5 +56,56 @@ namespace libtp::tools
         actorMemoryPtr->room_id = roomID;
 
         tp::d_stage::ActorCreate( &actor, actorMemoryPtr );
+    }
+
+    int32_t ReadGCI( int32_t chan, const char* fileName, int32_t length, int32_t offset, uint8_t* buffer )
+    {
+        using namespace libtp::gc::card;
+
+        // Helper variable
+        // uint8_t level = 0;
+
+        // Must use at least once before using any of the CARD functions
+        CARDInit();
+
+        CARDFileInfo* fileInfo = new CARDFileInfo();
+        uint8_t* workArea = new uint8_t[CARD_WORKAREA_SIZE];
+        int32_t result;
+
+        // Check if card is valid
+        result = CARDProbeEx( chan, NULL, NULL );
+
+        if ( result == CARD_RESULT_READY )
+        {
+            // level = 1;
+            result = CARDMount( chan, workArea, []( int32_t chan, int32_t result ) {
+                // TODO: Handler for cardDetach
+            } );
+
+            if ( result == CARD_RESULT_READY )
+            {
+                // level = 2;
+                // Read data
+                result = CARDOpen( chan, const_cast<char*>( fileName ), fileInfo );
+
+                if ( result == CARD_RESULT_READY )
+                {
+                    // level = 3;
+                    result = CARDRead( fileInfo, buffer, length, offset );
+
+                    CARDClose( fileInfo );
+                }
+                // CARDOpen
+                CARDUnmount( chan );
+            }
+            // CARDMount
+        }
+        // CARDProbeEx
+
+        // Clean up
+        delete fileInfo;
+        delete[] workArea;
+
+        return result;
     }
 }     // namespace libtp::tools

@@ -22,7 +22,7 @@ namespace libtp::tools
      *  @param state Current State (Link)
      *  @param event EventID to trigger
      */
-    void triggerSaveLoad( const char* stage, uint8_t room, uint8_t spawn, uint8_t state = 0xFF, uint8_t event = 0xFF );
+    void TriggerSaveLoad( const char* stage, uint8_t room, uint8_t spawn, uint8_t state = 0xFF, uint8_t event = 0xFF );
 
     /**
      *  @brief Spawns an actor
@@ -31,4 +31,17 @@ namespace libtp::tools
      *  @param actor The actor object to be spawned
      */
     void SpawnActor( uint8_t roomID, tp::dzx::ACTR& actor );
+
+    /**
+     *  @brief Reads GCI data from offset to offset + length into buffer
+     *
+     *  @param chan Slot to check for the file
+     *  @param fileName GCI Filename to load
+     *  @param length Maximum length to read
+     *  @param offset GCI fileOffset to read
+     *  @param[out] buffer Buffer to save the data
+     *
+     *  @return One of the CARD_RESULT Constants (CARD_RESULT_READY, ...)
+     */
+    int32_t ReadGCI( int32_t chan, const char* fileName, int32_t length, int32_t offset, uint8_t* buffer );
 }     // namespace libtp::tools
