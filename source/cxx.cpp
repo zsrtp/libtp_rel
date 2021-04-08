@@ -1,7 +1,7 @@
 #include <cstring>
 
 #include "tp/JKRExpHeap.h"
-#include "tp/m_Do_ext.h"
+#include "tp/m_do_ext.h"
 
 void* operator new( std::size_t size )
 {
