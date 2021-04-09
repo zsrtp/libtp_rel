@@ -53,12 +53,16 @@ namespace libtp::display
         friend Console& operator<<( Console& console, uint16_t n );
         // Output unsigned (hex) int
         friend Console& operator<<( Console& console, uint32_t n );
+        // Output unsigned (hex) int
+        friend Console& operator<<( Console& console, uint64_t n );
         // Output signed (dec) int
         friend Console& operator<<( Console& console, int8_t n );
         // Output signed (dec) int
         friend Console& operator<<( Console& console, int16_t n );
         // Output signed (dec) int
         friend Console& operator<<( Console& console, int32_t n );
+        // Output signed (dec) int
+        friend Console& operator<<( Console& console, int64_t n );
         // Output signed float
         friend Console& operator<<( Console& console, float n );
         // Prints the address of a given pointer

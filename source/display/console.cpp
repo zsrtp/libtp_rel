@@ -162,6 +162,16 @@ namespace libtp::display
         return console;
     }
 
+    Console& operator<<( Console& console, uint64_t n )
+    {
+        return console << static_cast<uint32_t>( n >> 32 ) << static_cast<uint32_t>( n );
+    }
+
+    Console& operator<<( Console& console, int64_t n )
+    {
+        return console << static_cast<int32_t>( n >> 32 ) << static_cast<int32_t>( n );
+    }
+
     Console& operator<<( Console& console, float n )
     {
         // Custom print this
