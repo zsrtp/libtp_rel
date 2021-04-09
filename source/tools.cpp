@@ -72,6 +72,14 @@ namespace libtp::tools
         uint8_t* workArea = new uint8_t[CARD_WORKAREA_SIZE];
         int32_t result;
 
+        // Since we can only read in and at increments of CARD_READ_SIZE do this to calculate the region we require
+
+        int32_t adjustedOffset = ( offset / CARD_READ_SIZE ) * CARD_READ_SIZE;
+        int32_t adjustedLength = ( 1 + ( ( length - 1 ) / CARD_READ_SIZE ) ) * CARD_READ_SIZE;
+
+        // Buffer might not be adjusted to the new length so create a temporary data buffer
+        uint8_t* data = new uint8_t[adjustedLength];
+
         // Check if card is valid
         result = CARDProbeEx( chan, NULL, NULL );
 
@@ -93,9 +101,11 @@ namespace libtp::tools
                 if ( result == CARD_RESULT_READY )
                 {
                     // level = 3;
-                    result = CARDRead( fileInfo, buffer, length, offset );
-
+                    result = CARDRead( fileInfo, data, adjustedLength, adjustedOffset );
                     CARDClose( fileInfo );
+
+                    // Copy data to the user's buffer
+                    memcpy( buffer, data + ( offset - adjustedOffset ), length );
                 }
                 // CARDOpen
                 CARDUnmount( chan );
@@ -107,6 +117,7 @@ namespace libtp::tools
         // Clean up
         delete fileInfo;
         delete[] workArea;
+        delete[] data;
 
         return result;
     }
