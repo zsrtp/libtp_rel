@@ -75,7 +75,7 @@ namespace libtp::tools
         // Since we can only read in and at increments of CARD_READ_SIZE do this to calculate the region we require
 
         int32_t adjustedOffset = ( offset / CARD_READ_SIZE ) * CARD_READ_SIZE;
-        int32_t adjustedLength = ( 1 + ( ( length - 1 ) / CARD_READ_SIZE ) ) * CARD_READ_SIZE;
+        int32_t adjustedLength = ( 1 + ( ( offset - adjustedOffset + length - 1 ) / CARD_READ_SIZE ) ) * CARD_READ_SIZE;
 
         // Buffer might not be adjusted to the new length so create a temporary data buffer
         uint8_t* data = new uint8_t[adjustedLength];
