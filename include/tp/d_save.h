@@ -49,5 +49,20 @@ namespace libtp::tp::d_save
          *	@param areaID ID of the current Area
          */
         void putSave( d_com_inf_game::GameInfo* gameInfoPtr, int32_t areaID );
+
+        /**
+         *  @brief Sets an eventBit for the currently active save
+         *
+         *  @param flag Offset+Flag
+         */
+
+        void onEventBit( uint16_t flag );
+
+        /**
+         *  @brief Unsets an eventBit for the currently active save
+         *
+         *  @param flag Offset+Flag
+         */
+        void offEventBit( uint16_t flag );
     }
 }     // namespace libtp::tp::d_save
