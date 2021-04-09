@@ -58,7 +58,7 @@ namespace libtp::tools
         tp::d_stage::ActorCreate( &actor, actorMemoryPtr );
     }
 
-    int32_t ReadGCI( int32_t chan, const char* fileName, int32_t length, int32_t offset, uint8_t* buffer )
+    int32_t ReadGCI( int32_t chan, const char* fileName, int32_t length, int32_t offset, void* buffer )
     {
         using namespace libtp::gc::card;
 
@@ -78,9 +78,11 @@ namespace libtp::tools
         if ( result == CARD_RESULT_READY )
         {
             // level = 1;
-            result = CARDMount( chan, workArea, []( int32_t chan, int32_t result ) {
-                // TODO: Handler for cardDetach
-            } );
+            result = CARDMount( chan,
+                                workArea,
+                                CARDCallback {
+                                    // TODO: Handler for cardDetach
+                                } );
 
             if ( result == CARD_RESULT_READY )
             {
