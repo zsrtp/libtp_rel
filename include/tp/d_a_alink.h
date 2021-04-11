@@ -8,10 +8,12 @@
  *	@author Zephiles
  *	@bug No known bugs.
  */
-#pragma once
+#ifndef TP_D_A_ALINK_H
+#define TP_D_A_ALINK_H
+
 #include <cstdint>
 
-#include "d_com_inf_game.h"
+#include "tp/d_com_inf_game.h"
 
 namespace libtp::tp::d_a_alink
 {
@@ -147,3 +149,4 @@ namespace libtp::tp::d_a_alink
         extern LinkStatus* linkStatus;
     }
 }     // namespace libtp::tp::d_a_alink
+#endif

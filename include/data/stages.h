@@ -1,14 +1,13 @@
-/**	@file stages.h
+/** @file stages.h
  *  @brief Constants and definitions to work with stages
  *
- *	@author AECX
- *	@bug No known bugs.
+ *  @author AECX
+ *  @bug No known bugs.
  */
+#ifndef LIBTP_STAGES_H
+#define LIBTP_STAGES_H
 
-#pragma once
-
-#ifndef _LIBTP_STAGE_CONSTANTS
-#define _LIBTP_STAGE_CONSTANTS
+#include <cstdint>
 
 namespace libtp::data::stage
 {

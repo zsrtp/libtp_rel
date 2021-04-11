@@ -5,7 +5,9 @@
  *	@author AECX
  *	@bug No known bugs.
  */
-#pragma once
+#ifndef TP_M_DO_CONTROLLER_PAD_H
+#define TP_M_DO_CONTROLLER_PAD_H
+
 #include <cstdint>
 
 namespace libtp::tp::m_do_controller_pad
@@ -55,3 +57,4 @@ namespace libtp::tp::m_do_controller_pad
         extern CPadInfo cpadInfo;
     }
 }     // namespace libtp::tp::m_do_controller_pad
+#endif

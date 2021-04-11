@@ -5,7 +5,9 @@
  *	@author AECX
  *	@bug No known bugs.
  */
-#pragma once
+#ifndef TP_JFWSYSTEM_H
+#define TP_JFWSYSTEM_H
+
 #include <cstdint>
 
 namespace libtp::tp::jfw_system
@@ -40,3 +42,4 @@ namespace libtp::tp::jfw_system
         extern SystemConsole* systemConsole;
     }
 }     // namespace libtp::tp::jfw_system
+#endif

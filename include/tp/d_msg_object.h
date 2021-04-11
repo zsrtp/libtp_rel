@@ -5,7 +5,9 @@
  *  @author Zephiles
  *	@bug No known bugs.
  */
-#pragma once
+#ifndef TP_D_MSG_OBJECT_H
+#define TP_D_MSG_OBJECT_H
+
 #include <cstdint>
 
 namespace libtp::tp::d_msg_object
@@ -40,3 +42,4 @@ namespace libtp::tp::d_msg_object
         void setMessageIndex( uint32_t param_1, uint32_t itemIndex, bool param_3 );
     }
 }     // namespace libtp::tp::d_msg_object
+#endif

@@ -4,7 +4,9 @@
  *	@author Zephiles
  *	@bug No known bugs.
  */
-#pragma once
+#ifndef TP_D_MAP_PATH_DMAP_H
+#define TP_D_MAP_PATH_DMAP_H
+
 #include <cstdint>
 
 namespace libtp::tp::d_map_path_dmap
@@ -27,3 +29,4 @@ namespace libtp::tp::d_map_path_dmap
         uint32_t getMapPlayerAngleY();
     }
 }     // namespace libtp::tp::d_map_path_dmap
+#endif

@@ -7,10 +7,12 @@
  *	@author AECX
  *	@bug No known bugs.
  */
-#pragma once
+#ifndef LIBTP_CONSOLE_H
+#define LIBTP_CONSOLE_H
+
 #include <cstdint>
 
-#include "../tp/JFWSystem.h"
+#include "display/console.h"
 
 namespace libtp::display
 {
@@ -100,3 +102,4 @@ namespace libtp::display
      */
     char* print( uint8_t line, const char* text );
 }     // namespace libtp::display
+#endif

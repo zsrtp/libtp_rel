@@ -5,7 +5,9 @@
  *  @author Lunar Soap
  *	@bug No known bugs.
  */
-#pragma once
+#ifndef TP_RESOURCE_H
+#define TP_RESOURCE_H
+
 namespace libtp::tp::resource
 {
     extern "C"
@@ -38,3 +40,4 @@ namespace libtp::tp::resource
 #define MSG_COLOR_PURPLE "\x06"
 #define MSG_COLOR_ORANGE "\x08"
 }     // namespace libtp::tp::resource
+#endif

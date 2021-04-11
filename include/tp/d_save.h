@@ -4,7 +4,9 @@
  *	@author AECX
  *	@bug No known bugs.
  */
-#pragma once
+#ifndef TP_D_STAGE_H
+#define TP_D_STAGE_H
+
 #include <cstdint>
 
 #include "d_com_inf_game.h"
@@ -66,3 +68,4 @@ namespace libtp::tp::d_save
         void offEventBit( uint16_t flag );
     }
 }     // namespace libtp::tp::d_save
+#endif

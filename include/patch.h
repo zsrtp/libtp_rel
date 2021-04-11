@@ -4,7 +4,9 @@
  *
  * @bug No known bugs
  */
-#pragma once
+#ifndef LIBTP_PATCH_H
+#define LIBTP_PATCH_H
+
 #include <cstdint>
 
 #include "memory.h"
@@ -35,3 +37,4 @@ namespace libtp::patch
         return reinterpret_cast<Func>( trampoline );
     }
 }     // namespace libtp::patch
+#endif

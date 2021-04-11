@@ -4,7 +4,9 @@
  *	@author AECX
  *	@bug
  */
-#pragma once
+#ifndef TP_D_ITEM_H
+#define TP_D_ITEM_H
+
 #include <cstdint>
 
 namespace libtp::tp::d_item
@@ -35,3 +37,4 @@ namespace libtp::tp::d_item
         void item_func_UTUWA_HEART();
     }
 }     // namespace libtp::tp::d_item
+#endif

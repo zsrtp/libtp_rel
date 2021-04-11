@@ -4,14 +4,16 @@
  *	@author Zephiles
  *	@bug No known bugs.
  */
-#pragma once
+#ifndef TP_D_ITEM_DATA_H
+#define TP_D_ITEM_DATA_H
+
 #include <cstdint>
 
-#include "d_stage.h"
+#include "tp/d_stage.h"
 
 namespace libtp::tp::d_item_data
 {
-    struct ItemResource     // d_item_data.h
+    struct ItemResource
     {
         const char* arcName;
         int16_t modelResIdx;
@@ -25,7 +27,7 @@ namespace libtp::tp::d_item_data
         int16_t unk_12[3];
     } __attribute__( ( __packed__ ) );
 
-    struct FieldItemRes     // d_item_data.h
+    struct FieldItemRes
     {
         const char* arcName;
         int16_t modelResIdx;
@@ -55,3 +57,4 @@ namespace libtp::tp::d_item_data
         extern ItemInfo item_info[255];              // 0x803AED78 in US
     }
 }     // namespace libtp::tp::d_item_data
+#endif

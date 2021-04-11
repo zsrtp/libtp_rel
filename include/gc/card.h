@@ -6,7 +6,9 @@
  *	@author AECX
  *	@bug No known bugs.
  */
-#pragma once
+#ifndef GC_CARD_H
+#define GC_CARD_H
+
 #include <cstdint>
 
 #define CARD_SLOT_A 0
@@ -199,3 +201,5 @@ namespace libtp::gc::card
         // int32_t CARDWriteAsync( CARDFileInfo* fileInfo, void* addr, int32_t length, int32_t offset, CARDCallback callback );
     }
 }     // namespace libtp::gc::card
+
+#endif

@@ -5,7 +5,9 @@
  *	@author dragonbane0
  *	@bug No known bugs.
  */
-#pragma once
+#ifndef TP_EVT_CONTROL_H
+#define TP_EVT_CONTROL_H
+
 #include <cstdint>
 
 namespace libtp::tp::evt_control
@@ -33,3 +35,4 @@ namespace libtp::tp::evt_control
         csSkipFunction defaultSkipStb;
     }
 }     // namespace libtp::tp::evt_control
+#endif

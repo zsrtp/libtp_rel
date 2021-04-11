@@ -7,7 +7,9 @@
  *	@author AECX
  *	@bug No known bugs.
  */
-#pragma once
+#ifndef TP_D_KANKYO_H
+#define TP_D_KANKYO_H
+
 #include <cstdint>
 
 namespace libtp::tp::d_kankyo
@@ -31,3 +33,4 @@ namespace libtp::tp::d_kankyo
         extern EnvLight env_light;
     }
 }     // namespace libtp::tp::d_kankyo
+#endif

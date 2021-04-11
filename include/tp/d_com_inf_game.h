@@ -8,10 +8,12 @@
  *	@author AECX
  *	@bug No known bugs.
  */
-#pragma once
+#ifndef TP_D_COM_INF_GAME_H
+#define TP_D_COM_INF_GAME_H
+
 #include <cstdint>
 
-#include "evt_control.h"
+#include "tp/evt_control.h"
 
 namespace libtp::tp::d_com_inf_game
 {
@@ -28,6 +30,7 @@ namespace libtp::tp::d_com_inf_game
         uint8_t eventBits[0x150];       // Bitfield (QuestLogOffset - 7F0)
         uint8_t miniGameBits[0x18];     // Bitfield
     } __attribute__( ( __packed__ ) );
+    static_assert( sizeof( ScratchPad ) == 0x958 );
 
     /**
      *	@brief Holds information about the current stage
@@ -116,7 +119,6 @@ namespace libtp::tp::d_com_inf_game
         LinkMapVars* linkMapPtr;          // 5DA0 - 5DAB
         uint8_t unk_5dac[0x18060];
     } __attribute__( ( __packed__ ) );
-    static_assert( sizeof( ScratchPad ) == 0x958 );
     static_assert( sizeof( GameInfo ) == 0x1DE10 );
 
     extern "C"
@@ -124,3 +126,4 @@ namespace libtp::tp::d_com_inf_game
         extern GameInfo dComIfG_gameInfo;
     }
 }     // namespace libtp::tp::d_com_inf_game
+#endif

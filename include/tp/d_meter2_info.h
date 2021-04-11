@@ -5,8 +5,10 @@
  *  @author Lunar Soap
  *	@bug No known bugs.
  */
-#pragma once
-#include "d_com_inf_game.h"
+#ifndef TP_D_METER2_INFO_H
+#define TP_D_METER2_INFO_H
+
+#include "tp/d_com_inf_game.h"
 
 namespace libtp::tp::d_meter2_info
 {
@@ -28,3 +30,4 @@ namespace libtp::tp::d_meter2_info
         extern G_Meter2_Info g_meter2_info;
     }
 }     // namespace libtp::tp::d_meter2_info
+#endif

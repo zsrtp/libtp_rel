@@ -6,7 +6,9 @@
  *	@author Zephiles
  *	@bug No known bugs.
  */
-#pragma once
+#ifndef GC_OSCACHE_H
+#define GC_OSCACHE_H
+
 #include <cstdint>
 
 namespace libtp::gc::os_cache
@@ -34,3 +36,4 @@ namespace libtp::gc::os_cache
         // __OSCacheInit
     }
 }     // namespace libtp::gc::os_cache
+#endif

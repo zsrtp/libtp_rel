@@ -4,7 +4,9 @@
  *	@author AECX
  *	@bug No known bugs.
  */
-#pragma once
+#ifndef TP_F_OP_SCENE_REQ_H
+#define TP_F_OP_SCENE_REQ_H
+
 #include <cstdint>
 
 namespace libtp::tp::f_op_scene_req
@@ -15,3 +17,4 @@ namespace libtp::tp::f_op_scene_req
         extern int32_t isLoading;     // Current loading status
     }
 }     // namespace libtp::tp::f_op_scene_req
+#endif

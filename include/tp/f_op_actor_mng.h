@@ -4,7 +4,9 @@
  *	@author AECX
  *	@bug No known bugs.
  */
-#pragma once
+#ifndef TP_F_OP_ACTOR_MNG_H
+#define TP_F_OP_ACTOR_MNG_H
+
 #include <cstdint>
 
 #include "tp/dzx.h"
@@ -157,3 +159,4 @@ namespace libtp::tp::f_op_actor_mng
                             int32_t itemAction );
     }
 }     // namespace libtp::tp::f_op_actor_mng
+#endif

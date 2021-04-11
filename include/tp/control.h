@@ -5,7 +5,9 @@
  *	@author Lunar Soap
  *	@bug No known bugs.
  */
-#pragma once
+#ifndef TP_CONTROL_H
+#define TP_CONTROL_H
+
 #include <cstdint>
 
 namespace libtp::tp::control
@@ -15,3 +17,4 @@ namespace libtp::tp::control
         bool render( void* TControl );
     }
 }     // namespace libtp::tp::control
+#endif

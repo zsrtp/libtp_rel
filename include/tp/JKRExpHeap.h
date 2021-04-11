@@ -4,7 +4,9 @@
  *	@author Zephiles
  *	@bug No known bugs.
  */
-#pragma once
+#ifndef TP_JKREXPHEAP_H
+#define TP_JKREXPHEAP_H
+
 #include <cstdint>
 
 namespace libtp::tp::jkr_exp_heap
@@ -28,3 +30,4 @@ namespace libtp::tp::jkr_exp_heap
         void do_free_JKRExpHeap( void* heap, void* ptr );
     }
 }     // namespace libtp::tp::jkr_exp_heap
+#endif

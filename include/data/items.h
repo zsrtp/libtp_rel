@@ -1,10 +1,11 @@
-/**
- * List of all item ids with names.
+/**	@file items.h
+ *  @brief Constants and definitions to work with items
+ *
+ *	@author AECX
+ *	@bug No known bugs.
  */
-#pragma once
-
-#ifndef _LIBTP_ITEMS
-#define _LIBTP_ITEMS
+#ifndef LIBTP_ITEMS_H
+#define LIBTP_ITEMS_H
 
 #include <cstdint>
 

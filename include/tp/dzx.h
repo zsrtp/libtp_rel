@@ -6,7 +6,9 @@
  *  @author Lunar Soap
  *	@bug No known bugs.
  */
-#pragma once
+#ifndef TP_DZX_H
+#define TP_DZX_H
+
 #include <cstdint>
 
 namespace libtp::tp::dzx
@@ -93,3 +95,4 @@ namespace libtp::tp::dzx
     static_assert( sizeof( ITEM ) == 0x20 );
     static_assert( sizeof( ChunkTypeInfo ) == 0xC );
 }     // namespace libtp::tp::dzx
+#endif

@@ -4,7 +4,9 @@
  *	@author AECX
  *	@bug No known bugs.
  */
-#pragma once
+#ifndef LIBTP_CHRONOS_H
+#define LIBTP_CHRONOS_H
+
 #include <cstdint>
 
 namespace libtp::chronos
@@ -46,3 +48,4 @@ namespace libtp::chronos
         handler m_Handler;
     };
 }     // namespace libtp::chronos
+#endif

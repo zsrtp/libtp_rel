@@ -6,10 +6,12 @@
  *  @author Lunar Soap
  *	@bug No known bugs.
  */
-#pragma once
+#ifndef TP_D_STAGE_H
+#define TP_D_STAGE_H
+
 #include <cstdint>
 
-#include "dzx.h"
+#include "tp/dzx.h"
 
 namespace libtp::tp::d_stage
 {
@@ -74,3 +76,4 @@ namespace libtp::tp::d_stage
         extern void* mStatus_roomControl;
     }
 }     // namespace libtp::tp::d_stage
+#endif

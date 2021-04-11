@@ -4,7 +4,9 @@
  *	@author Zephiles
  *	@bug No known bugs.
  */
-#pragma once
+#ifndef TP_F_AP_GAME_H
+#define TP_F_AP_GAME_H
+
 namespace libtp::tp::f_ap_game
 {
     extern "C"
@@ -15,3 +17,4 @@ namespace libtp::tp::f_ap_game
         void fapGm_Execute();
     }
 }     // namespace libtp::tp::f_ap_game
+#endif

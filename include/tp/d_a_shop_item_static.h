@@ -8,7 +8,9 @@
  *  @author Lunar Soap
  *	@bug No known bugs.
  */
-#pragma once
+#ifndef TP_D_A_SHOP_ITEM_STATIC_H
+#define TP_D_A_SHOP_ITEM_STATIC_H
+
 #include <cstdint>
 
 namespace libtp::tp::d_a_shop_item_static
@@ -70,3 +72,4 @@ namespace libtp::tp::d_a_shop_item_static
         extern ShopItemData shopItemData[23];     // mData__12daShopItem_c
     }
 }     // namespace libtp::tp::d_a_shop_item_static
+#endif
