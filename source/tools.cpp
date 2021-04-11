@@ -8,6 +8,7 @@
 #include "display/console.h"
 #include "gc/card.h"
 #include "memory.h"
+#include "tp/JFWSystem.h"
 #include "tp/d_com_inf_game.h"
 #include "tp/d_stage.h"
 #include "tp/dzx.h"
@@ -86,11 +87,13 @@ namespace libtp::tools
         if ( result == CARD_RESULT_READY )
         {
             // level = 1;
-            result = CARDMount( chan,
-                                workArea,
-                                CARDCallback {
-                                    // TODO: Handler for cardDetach
-                                } );
+            result = CARDMount( chan, workArea, []( int32_t chan, int32_t result ) {
+                // S
+                tp::jfw_system::ConsoleLine* line = &tp::jfw_system::systemConsole->consoleLine[JFW_DEBUG_LINE];
+
+                line->showLine = true;
+                sprintf( line->line, "ReadGCI::CARDERR; Chan: %" PRId32 " Result: %" PRId32, chan, result );
+            } );
 
             if ( result == CARD_RESULT_READY )
             {
