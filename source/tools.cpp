@@ -16,6 +16,20 @@
 
 namespace libtp::tools
 {
+    uint16_t fletcher16( uint8_t* data, int32_t length )
+    {
+        uint16_t sum1 = 0;
+        uint16_t sum2 = 0;
+
+        for ( int32_t index = 0; index < length; ++index )
+        {
+            sum1 = ( sum1 + data[index] ) % 0xFF;
+            sum2 = ( sum2 + sum1 ) % 0xFF;
+        }
+
+        return ( sum2 << 8 ) | sum1;
+    }
+
     void TriggerSaveLoad( const char* stage, uint8_t room, uint8_t spawn, uint8_t state, uint8_t event )
     {
         using namespace libtp::tp::d_com_inf_game;

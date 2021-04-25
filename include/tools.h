@@ -14,6 +14,15 @@
 namespace libtp::tools
 {
     /**
+     *  @brief Fletcher16 checksum
+     *
+     *  @param data Data to calculate the checksum from
+     *  @param length How many bytes of data should be considered
+     *  @return Checksum in 2 bytes
+     */
+    uint16_t fletcher16( uint8_t* data, int32_t length );
+
+    /**
      *  @brief Savely loads a given stage-room-spawnpoint-state and event combination
      *
      *  @param stage 8 char stage ID
