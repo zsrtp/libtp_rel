@@ -40,6 +40,11 @@ namespace libtp::patch
     template<typename Func>
     Func unhookFunction( Func trampoline )
     {
+        if ( !trampoline )
+        {
+            return nullptr;
+        }
+
         uint32_t* instructions = reinterpret_cast<uint32_t*>( trampoline );
 
         // Restore the original instruction
