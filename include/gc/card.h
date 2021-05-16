@@ -276,6 +276,15 @@ namespace libtp::gc::card
          *  @param callback Callback function
          */
         int32_t __CARDUpdateDir( int32_t chan, CARDCallback callback );
+
+        /**
+         *  @brief Determines if the current file on the memory card can be accessed
+         *
+         *  @param card Pointer to the current card block (Struct for this not defined yet)
+         *  @param dirBlock Pointer the directly block for a specified file on the memory card (This description may be
+         * incorrect) (Struct for this not defined yet)
+         */
+        int32_t __CARDAccess( void* card, void* dirBlock );
     }
 
     // Manually written functions

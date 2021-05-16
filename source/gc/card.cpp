@@ -62,17 +62,9 @@ namespace libtp::gc::card
     int32_t __CARDGetFileNo( void* card, const char* fileName, int32_t* fileNo )
     {
         int32_t cardIsAttached = *reinterpret_cast<int32_t*>( reinterpret_cast<uint32_t>( card ) );
-
         if ( cardIsAttached == 0 )
         {
             return CARD_RESULT_NOCARD;
-        }
-
-        uint8_t* cardDiskGameCode = *reinterpret_cast<uint8_t**>( reinterpret_cast<uint32_t>( card ) + 0x10C );
-
-        if ( !cardDiskGameCode )
-        {
-            return CARD_RESULT_FATAL_ERROR;
         }
 
         uint32_t dirBlock = reinterpret_cast<uint32_t>( __CARDGetDirBlock( card ) );
@@ -81,19 +73,12 @@ namespace libtp::gc::card
         for ( i = 0; i < 127; i++ )
         {
             uint8_t* currentDirBlock = reinterpret_cast<uint8_t*>( dirBlock + ( i * 0x40 ) );
-            uint8_t* gameCode = &currentDirBlock[0];
+            const char* currentFileName = reinterpret_cast<const char*>( &currentDirBlock[0x8] );
 
-            if ( gameCode[0] != 0xFF )
+            if ( strncmp( fileName, currentFileName, 32 ) == 0 )
             {
-                const char* currentFileName = reinterpret_cast<const char*>( &currentDirBlock[0x8] );
-                if ( strcmp( fileName, currentFileName ) == 0 )
+                if ( __CARDAccess( card, currentDirBlock ) >= CARD_RESULT_READY )
                 {
-                    if ( ( ( cardDiskGameCode[0] != 0xFF ) && ( memcmp( &gameCode[0], &cardDiskGameCode[0], 4 ) != 0 ) ) ||
-                         ( ( cardDiskGameCode[0x4] != 0xFF ) && ( memcmp( &gameCode[0x4], &cardDiskGameCode[0x4], 2 ) != 0 ) ) )
-                    {
-                        continue;
-                    }
-
                     *fileNo = i;
                     break;
                 }
