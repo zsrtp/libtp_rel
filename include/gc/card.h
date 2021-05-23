@@ -278,6 +278,15 @@ namespace libtp::gc::card
         int32_t __CARDUpdateDir( int32_t chan, CARDCallback callback );
 
         /**
+         *  @brief Determines if the file name of the file in the current directly block is the same as the fileName parameter
+         *
+         *  @param dirBlock Pointer the directly block for a specified file on the memory card (This description may be
+         * incorrect) (Struct for this not defined yet)
+         *  @param fileName Internal name for the desired file on the memory card
+         */
+        bool __CARDCompareFileName( void* dirBlock, const char* fileName );
+
+        /**
          *  @brief Determines if the current file on the memory card can be accessed
          *
          *  @param card Pointer to the current card block (Struct for this not defined yet)

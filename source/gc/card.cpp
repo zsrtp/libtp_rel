@@ -73,9 +73,7 @@ namespace libtp::gc::card
         for ( i = 0; i < 127; i++ )
         {
             uint8_t* currentDirBlock = reinterpret_cast<uint8_t*>( dirBlock + ( i * 0x40 ) );
-            const char* currentFileName = reinterpret_cast<const char*>( &currentDirBlock[0x8] );
-
-            if ( strncmp( fileName, currentFileName, 32 ) == 0 )
+            if ( __CARDCompareFileName( currentDirBlock, fileName ) )
             {
                 if ( __CARDAccess( card, currentDirBlock ) >= CARD_RESULT_READY )
                 {
