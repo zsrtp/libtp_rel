@@ -73,14 +73,19 @@ namespace libtp::gc::card
         for ( i = 0; i < 127; i++ )
         {
             uint8_t* currentDirBlock = reinterpret_cast<uint8_t*>( dirBlock + ( i * 0x40 ) );
-            if ( __CARDCompareFileName( currentDirBlock, fileName ) )
+
+            if ( !__CARDCompareFileName( currentDirBlock, fileName ) )
             {
-                if ( __CARDAccess( card, currentDirBlock ) >= CARD_RESULT_READY )
-                {
-                    *fileNo = i;
-                    break;
-                }
+                continue;
             }
+
+            if ( __CARDAccess( card, currentDirBlock ) < CARD_RESULT_READY )
+            {
+                continue;
+            }
+
+            *fileNo = i;
+            break;
         }
 
         if ( i >= 127 )
