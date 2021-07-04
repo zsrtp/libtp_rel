@@ -29,8 +29,10 @@ namespace libtp::display
          *
          * Warning: This is NOT a proper output buffer like cout! This is just meant for
          * easier access to the console and isn't as feature rich as a proper cout.
+         *
+         * @param protection The number of lines to exclude when flushing the screen
          */
-        Console();
+        Console( uint8_t protection );
 
         /**
          *  @brief Reads a string and outputs it directly
@@ -39,11 +41,20 @@ namespace libtp::display
          */
         void parse( const char* text );
 
+        /**
+         *  @brief Sets the console to a specific line
+         *
+         *  @param line The line to use (0 based)
+         */
+        void setLine( uint8_t line );
+
        private:
         // Current line (should be < 25)
         uint8_t m_Line;
         // Current Column (should be < linewidth)
         uint8_t m_Col;
+        // Number of lines we want protected from clearing when overflowing
+        uint8_t m_Protect;
 
         // Operators
         friend Console& operator<<( Console& console, const char* text );

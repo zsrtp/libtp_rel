@@ -10,7 +10,7 @@
 
 namespace libtp::display
 {
-    Console::Console()
+    Console::Console( uint8_t protection ): m_Protect( protection )
     {
         // Init
         libtp::display::setConsole( true, 25 );
@@ -38,7 +38,7 @@ namespace libtp::display
             if ( *text == '\n' )
             {
                 this->m_Col = 0;
-                this->m_Line++;
+                setLine( m_Line + 1 );
             }
             else if ( *text == '\r' )
             {
@@ -52,16 +52,8 @@ namespace libtp::display
                     // Null terminate this line
                     console->consoleLine[this->m_Line].line[this->m_Col] = '\0';
 
-                    this->m_Line++;
+                    setLine( m_Line + 1 );
                     this->m_Col = 0;
-                }
-                if ( this->m_Line >= 25 )
-                {
-                    // Reset to 1 (0 is fixed info)
-                    this->m_Line = 1;
-                    this->m_Col = 0;
-                    // Clear lines
-                    libtp::display::clearConsole( 1, 0 );
                 }
 
                 // Print to current line and col
@@ -74,6 +66,20 @@ namespace libtp::display
         }     // End of while
 
         console->consoleLine[this->m_Line].line[this->m_Col] = '\0';
+    }
+
+    void Console::setLine( uint8_t line )
+    {
+        m_Line = line;
+
+        if ( this->m_Line >= 25 )
+        {
+            // Reset to the number of lines we want to be protected
+            this->m_Line = m_Protect;
+            this->m_Col = 0;
+            // Clear lines
+            libtp::display::clearConsole( m_Protect, 0 );
+        }
     }
 
     Console& operator<<( Console& console, const char* text )
