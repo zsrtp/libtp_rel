@@ -86,10 +86,22 @@ namespace libtp::gc::card
         uint32_t offsetData;
     } __attribute__( ( __packed__ ) );
 
+    struct CARDBlock
+    {
+        uint8_t unk[0x110];
+    } __attribute__( ( __packed__ ) );
+
     typedef void ( *CARDCallback )( int32_t chan, int32_t result );
 
     extern "C"
     {
+        // Variables
+        /**
+         *  @brief No decent description at this time
+         */
+        extern CARDBlock __CARDBlock[2];     // One for each memory card slot
+
+        // Functions
         /**
          *  @brief Initializes memory card API control blocks. Must be called once before using any other CARD API functions.
          */
@@ -199,7 +211,134 @@ namespace libtp::gc::card
          */
         int32_t CARDWrite( CARDFileInfo* fileInfo, void* addr, int32_t length, int32_t offset );
         // int32_t CARDWriteAsync( CARDFileInfo* fileInfo, void* addr, int32_t length, int32_t offset, CARDCallback callback );
+
+        // Internal CARD functions; Use with caution
+        /**
+         *  @brief Default CARDCallback function to be used when the user did not specify one
+         *
+         *  @param chan Slot number (0: slot A, 1: slot B).
+         *  @param result Return value of the most recent CARD function (This description may be incorrect)
+         */
+        void __CARDDefaultApiCallback( int32_t chan, int32_t result );
+
+        /**
+         *  @brief Callback function to resume the current thread after the most resent asynchronous CARD function has finished
+         * its operation
+         *
+         *  @param chan Slot number (0: slot A, 1: slot B).
+         *  @param result Return value of the most recent CARD function (This description may be incorrect)
+         */
+        void __CARDSyncCallback( int32_t chan, int32_t result );
+
+        /**
+         *  @brief Gets the control block for the desired memory card slot
+         *
+         *  @param chan Slot number (0: slot A, 1: slot B).
+         *  @param card Output for the pointer to the current card block (Struct for this not defined yet)
+         */
+        int32_t __CARDGetControlBlock( int32_t chan, void** card );
+
+        /**
+         *  @brief Puts the control block for the desired memory card slot
+         *
+         *  @param card Pointer to the current card block (Struct for this not defined yet)
+         *  @param result Return value of the most recent CARD function (This description may be incorrect)
+         */
+        int32_t __CARDPutControlBlock( void* card, int32_t result );
+
+        /**
+         *  @brief Suspends the current thread until the most resent asynchronous CARD function has finished its operation
+         *
+         *  @param chan Slot number (0: slot A, 1: slot B).
+         */
+        int32_t __CARDSync( int32_t chan );
+
+        /**
+         *  @brief Updates the fat block section for a specific file on the memory card (This description may be incorrect)
+         *
+         *  @param chan Slot number (0: slot A, 1: slot B).
+         *  @param fatBlock Fat block section to be updated (Struct for this not defined yet)
+         *  @param callback Callback function
+         */
+        int32_t __CARDUpdateFatBlock( int32_t chan, void* fatBlock, CARDCallback callback );
+
+        /**
+         *  @brief Gets the directly block for a specified file on the memory card (This description may be incorrect)
+         *
+         *  @param card Pointer to the current card block (Struct for this not defined yet)
+         */
+        void* __CARDGetDirBlock( void* card );
+
+        /**
+         *  @brief Updates the directly block for a specified file on the memory card (This description may be incorrect)
+         *
+         *  @param chan Slot number (0: slot A, 1: slot B).
+         *  @param callback Callback function
+         */
+        int32_t __CARDUpdateDir( int32_t chan, CARDCallback callback );
+
+        /**
+         *  @brief Determines if the file name of the file in the current directly block is the same as the fileName parameter
+         *
+         *  @param dirBlock Pointer the directly block for a specified file on the memory card (This description may be
+         * incorrect) (Struct for this not defined yet)
+         *  @param fileName Internal name for the desired file on the memory card
+         */
+        bool __CARDCompareFileName( void* dirBlock, const char* fileName );
+
+        /**
+         *  @brief Determines if the current file on the memory card can be accessed
+         *
+         *  @param card Pointer to the current card block (Struct for this not defined yet)
+         *  @param dirBlock Pointer the directly block for a specified file on the memory card (This description may be
+         * incorrect) (Struct for this not defined yet)
+         */
+        int32_t __CARDAccess( void* card, void* dirBlock );
     }
+
+    // Manually written functions
+    /**
+     *  @brief Frees the fat blocks for a specific file (This description may be incorrect)
+     *
+     *  @param chan Slot number (0: slot A, 1: slot B).
+     *  @param block Starting block
+     *  @param Callback Callback function
+     */
+    int32_t __CARDFreeBlock( int32_t chan, uint16_t block, CARDCallback callback );
+
+    /**
+     *  @brief Callback to be called when a file is ready to be deleted (This description may be incorrect)
+     *
+     *  @param chan Slot number (0: slot A, 1: slot B).
+     *  @param result Return value of the most recent CARD function (This description may be incorrect)
+     */
+    void DeleteCallback( int32_t chan, int32_t result );
+
+    /**
+     *  @brief Gets the file number of the desired file on the memory card
+     *
+     *  @param card Pointer to the current card block (Struct for this not defined yet)
+     *  @param fileName Internal name for the desired file on the memory card
+     *  @param fileNo Output for the index to the desired file on the memory card
+     */
+    int32_t __CARDGetFileNo( void* card, const char* fileName, int32_t* fileNo );
+
+    /**
+     *  @brief Deletes a file asynchronously
+     *
+     *  @param chan Slot number (0: slot A, 1: slot B).
+     *  @param fileName Internal name for the desired file on the memory card
+     *  @param callback Callback function to be notified of the result
+     */
+    int32_t CARDDeleteAsync( int32_t chan, const char* fileName, CARDCallback callback );
+
+    /**
+     *  @brief Deletes a file synchronously
+     *
+     *  @param chan Slot number (0: slot A, 1: slot B).
+     *  @param fileName Internal name for the desired file on the memory card
+     */
+    int32_t CARDDelete( int32_t chan, const char* fileName );
 }     // namespace libtp::gc::card
 
 #endif
