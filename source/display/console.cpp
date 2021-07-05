@@ -74,11 +74,14 @@ namespace libtp::display
 
         if ( this->m_Line >= 25 )
         {
-            // Reset to the number of lines we want to be protected
-            this->m_Line = m_Protect;
-            this->m_Col = 0;
-            // Clear lines
-            libtp::display::clearConsole( m_Protect, 0 );
+            tp::jfw_system::SystemConsole* console = tp::jfw_system::systemConsole;
+            this->m_Line = 24;
+
+            // Move all lines up by one starting at protected + 1
+            for ( uint8_t i = m_Protect + 1; i < 25; i++ )
+            {
+                strcpy( console->consoleLine[i - 1].line, console->consoleLine[i].line );
+            }
         }
     }
 
