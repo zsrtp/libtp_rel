@@ -77,12 +77,6 @@ namespace libtp::tools
     {
         using namespace libtp::gc::card;
 
-        // Helper variable
-        // uint8_t level = 0;
-
-        // Must use at least once before using any of the CARD functions
-        CARDInit();
-
         CARDFileInfo* fileInfo = new CARDFileInfo();
         uint8_t* workArea = new uint8_t[CARD_WORKAREA_SIZE];
         int32_t result;
@@ -100,24 +94,25 @@ namespace libtp::tools
 
         if ( result == CARD_RESULT_READY )
         {
-            // level = 1;
-            result = CARDMount( chan, workArea, []( int32_t chan, int32_t result ) {
-                // S
-                tp::jfw_system::ConsoleLine* line = &tp::jfw_system::systemConsole->consoleLine[JFW_DEBUG_LINE];
+            result = CARDMount( chan,
+                                workArea,
+                                []( int32_t chan, int32_t result )
+                                {
+                                    // S
+                                    tp::jfw_system::ConsoleLine* line =
+                                        &tp::jfw_system::systemConsole->consoleLine[JFW_DEBUG_LINE];
 
-                line->showLine = true;
-                sprintf( line->line, "ReadGCI::CARDERR; Chan: %" PRId32 " Result: %" PRId32, chan, result );
-            } );
+                                    line->showLine = true;
+                                    sprintf( line->line, "ReadGCI::CARDERR; Chan: %" PRId32 " Result: %" PRId32, chan, result );
+                                } );
 
             if ( result == CARD_RESULT_READY )
             {
-                // level = 2;
                 // Read data
                 result = CARDOpen( chan, const_cast<char*>( fileName ), fileInfo );
 
                 if ( result == CARD_RESULT_READY )
                 {
-                    // level = 3;
                     result = CARDRead( fileInfo, data, adjustedLength, adjustedOffset );
                     CARDClose( fileInfo );
 
