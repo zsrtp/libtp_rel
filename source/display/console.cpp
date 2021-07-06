@@ -70,17 +70,24 @@ namespace libtp::display
 
     void Console::setLine( uint8_t line )
     {
+        tp::jfw_system::SystemConsole* console = tp::jfw_system::systemConsole;
+
+        // Clear following lines
+        if ( line < m_Line )
+        {
+            display::clearConsole( line, 0 );
+        }
+
         m_Line = line;
 
         if ( this->m_Line >= 25 )
         {
-            tp::jfw_system::SystemConsole* console = tp::jfw_system::systemConsole;
             this->m_Line = 24;
 
             // Move all lines up by one starting at protected + 1
             for ( uint8_t i = m_Protect + 1; i < 25; i++ )
             {
-                strcpy( console->consoleLine[i - 1].line, console->consoleLine[i].line );
+                strncpy( console->consoleLine[i - 1].line, console->consoleLine[i].line, 48 );
             }
         }
     }
