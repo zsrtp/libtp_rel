@@ -216,8 +216,9 @@ namespace libtp::display
         // Load the console as a local pointer to avoid loading it each loop
         tp::jfw_system::SystemConsole* console = tp::jfw_system::systemConsole;
 
-        // If count is 0 we want to clear all lines
-        std::size_t linecount = sizeof( tp::jfw_system::SystemConsole::consoleLine ) / sizeof( tp::jfw_system::ConsoleLine );
+        // If count is 0 we want to clear all lines; -1 because last line is debug info
+        std::size_t linecount =
+            sizeof( tp::jfw_system::SystemConsole::consoleLine ) / sizeof( tp::jfw_system::ConsoleLine ) - 1;
 
         if ( from > linecount )
         {
