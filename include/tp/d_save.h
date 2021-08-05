@@ -2,6 +2,7 @@
  *	@brief Holds symbols of the d_save field
  *
  *	@author AECX
+*	@author Lunar Soap
  *	@bug No known bugs.
  */
 #ifndef TP_D_SAVE_H
@@ -55,17 +56,35 @@ namespace libtp::tp::d_save
         /**
          *  @brief Sets an eventBit for the currently active save
          *
+         *  @param eventPtr The pointer to the event bits.
          *  @param flag Offset+Flag
          */
 
-        void onEventBit( uint16_t flag );
+        void onEventBit( uint8_t* eventPtr, uint16_t flag );
 
         /**
          *  @brief Unsets an eventBit for the currently active save
          *
+         *  @param eventPtr The pointer to the event bits.
          *  @param flag Offset+Flag
          */
-        void offEventBit( uint16_t flag );
+        void offEventBit( uint8_t* eventPtr, uint16_t flag );
+
+        /**
+         *  @brief Checks whether the player has cleared the specified twilight.
+         * 
+         *  @param twilightNode The twilight instance to be checked.
+         */
+        bool isDarkClearLV( uint8_t twilightNode );
+
+        /**
+         *  @brief Checks whether or not Link has been transformed into wolf by a twilight CS
+         * 
+         *  @param twilightEvent The twilight cutscene event to be checked.
+         */
+        bool isTransformLV( uint8_t twilightEvent );
+
+        extern uint16_t saveBitLabels[0x338]; //saveBitLabels__16dSv_event_flag_c
     }
 }     // namespace libtp::tp::d_save
 #endif

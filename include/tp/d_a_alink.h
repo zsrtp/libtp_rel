@@ -6,6 +6,7 @@
  *
  *	@author AECX
  *	@author Zephiles
+ *	@author Lunar Soap
  *	@bug No known bugs.
  */
 #ifndef TP_D_A_ALINK_H
@@ -144,6 +145,13 @@ namespace libtp::tp::d_a_alink
          *  @brief Runs when delivering the final blow to Ganondorf
          */
         bool procGanonFinish( void* d_a_alink );
+
+        /**
+         *  @brief Checks to see if an eventBit for the currently active save is set.
+         *
+         *  @param flag Offset+Flag
+         */
+        bool dComIfGs_isEventBit( uint16_t flag );
 
         extern ClimbVars climbVars;
         extern LinkStatus* linkStatus;
