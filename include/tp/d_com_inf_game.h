@@ -131,7 +131,7 @@ namespace libtp::tp::d_com_inf_game
          *
          *  @param pLayer The pointer to the current layer.
          */
-        void dComIfG_get_timelayer( uint32_t* pLayer );
+        void dComIfG_get_timelayer( int32_t* pLayer );
 
         /**
          *  @brief Returns the layer for the current stage after checking the appropriate flags.
@@ -140,7 +140,7 @@ namespace libtp::tp::d_com_inf_game
          *  @param roomId The current room.
          *  @param layerOverride The initial layer to be returned.
          */
-        uint32_t getLayerNo_common_common(const char *stageName, uint8_t roomId, uint32_t layerOverride);
+        int32_t getLayerNo_common_common(const char* stageName, int32_t roomId, int32_t layerOverride);
     }
 }     // namespace libtp::tp::d_com_inf_game
 #endif

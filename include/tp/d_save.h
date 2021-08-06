@@ -73,18 +73,20 @@ namespace libtp::tp::d_save
         /**
          *  @brief Checks whether the player has cleared the specified twilight.
          * 
+         *  @param playerStatusPtr The pointer to the PlayerStatus struct.
          *  @param twilightNode The twilight instance to be checked.
          */
-        bool isDarkClearLV( uint8_t twilightNode );
+        bool isDarkClearLV( void* playerStatusPtr, int32_t twilightNode );
 
         /**
          *  @brief Checks whether or not Link has been transformed into wolf by a twilight CS
          * 
+         *  @param playerStatusPtr The pointer to the PlayerStatus struct.
          *  @param twilightEvent The twilight cutscene event to be checked.
          */
-        bool isTransformLV( uint8_t twilightEvent );
+        bool isTransformLV( void* playerStatusPtr, int32_t twilightEvent );
 
-        extern uint16_t saveBitLabels[0x338]; //saveBitLabels__16dSv_event_flag_c
+        extern uint16_t saveBitLabels[0x336]; //saveBitLabels__16dSv_event_flag_c
     }
 }     // namespace libtp::tp::d_save
 #endif
