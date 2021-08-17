@@ -4,7 +4,9 @@
  *	@author AECX
  *	@bug No known bugs.
  */
-#pragma once
+#ifndef TP_D_MENU_COLLECT_H
+#define TP_D_MENU_COLLECT_H
+
 namespace libtp::tp::d_menu_collect
 {
     extern "C"
@@ -16,4 +18,5 @@ namespace libtp::tp::d_menu_collect
          */
         void setWalletMaxNum();
     }
-}  // namespace libtp::tp::d_menu_collect
+}     // namespace libtp::tp::d_menu_collect
+#endif
