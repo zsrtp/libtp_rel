@@ -23,16 +23,99 @@ namespace libtp::tp::d_com_inf_game
      *	@todo Make bitfields actual bitwise variables for easier access.
      *(https://en.cppreference.com/w/cpp/language/bit_field)
      */
-    struct ScratchPad
+    struct GameInfo
     {
-        Player player;
-        uint8_t field_0x1ec[4];
+        Save save_file; //ScratchPad
         Memory memory;
         DanBit dungeon_bit;
         Zone zones[32];
         Restart restart;
         Event events;
         TurnRestart turn_restart;
+    };
+
+    struct Save
+    {
+        Player player;
+        uint8_t field_0x1ec[4];
+        Memory area_flags[32];
+        Memory ordon_area_flags;
+        Memory sewers_area_flags;
+        Memory faron_area_flags;
+        Memory eldin_area_flags;
+        Memory lanayru_area_flags;
+        Memory unk5;
+        Memory hyrule_field_flags;
+        Memory sacred_grove_flags;
+        Memory snowpeak_flags;
+        Memory castle_town_flags;
+        Memory gerudo_desert_flags;
+        Memory fishing_hole_flags;
+        Memory unk12[4];
+        Memory forest_temple_flags;
+        Memory goron_mines_flags;
+        Memory lakebed_temple_flags;
+        Memory arbiters_grounds_flags;
+        Memory snowpeak_ruins_flags;
+        Memory temple_of_time_flags;
+        Memory city_in_the_sky_flags;
+        Memory palace_of_twilight_flags;
+        Memory hyrule_castle_flags;
+        Memory cave_flags;
+        Memory lake_hylia_lantern_cave_flags;
+        Memory grotto_flags;
+        Memory unk28[4];
+        Memory2 ordon_ranch_map_flags;
+        Memory2 ordon_village_map_flags;
+        Memory2 ordon_spring_map_flags;
+        Memory2 ordon_interiors_map_flags;
+        Memory2 unk4;
+        Memory2 sewers_map_flags;
+        Memory2 faron_woods_map_flags;
+        Memory2 coro_shop_map_flags;
+        Memory2 sacred_grove_map_flags;
+        Memory2 kakariko_village_map_flags;
+        Memory2 death_mountain_map_flags;
+        Memory2 kakariko_graveyard_map_flags;
+        Memory2 kakariko_interiors_map_flags;
+        Memory2 zoras_river_map_flags;
+        Memory2 zoras_domain_map_flags;
+        Memory2 snowpeak_map_flags;
+        Memory2 lake_hylia_map_flags;
+        Memory2 castle_town_map_flags;
+        Memory2 desert_map_flags;
+        Memory2 unk19[2];
+        Memory2 hyrule_field_map_flags;
+        Memory2 forest_temple_map_flags;
+        Memory2 goron_mines_map_flags;
+        Memory2 lakebed_temple_map_flags;
+        Memory2 arbiters_grounds_map_flags;
+        Memory2 snowpeak_ruins_map_flags;
+        Memory2 temple_of_time_map_flags;
+        Memory2 city_in_the_sky_map_flags;
+        Memory2 palace_of_twilight_map_flags;
+        Memory2 hyrule_castle_map_flags;
+        Memory2 death_mountain_interiors_map_flags;
+        Memory2 castle_town_interiors_map_flags;
+        Memory2 fishing_pond_map_flags;
+        Memory2 hidden_village_map_flags;
+        Memory2 hidden_village_interiors_map_flags;
+        Memory2 light_arrow_cutscene_map_flags;
+        Memory2 hyrule_castle_cutscene_map_flags;
+        Memory2 shades_realm_map_flags;
+        Memory2 fishing_pond_interiors_map_flags;
+        Memory2 ice_block_cave_map_flags;
+        Memory2 cave_of_ordeals_map_flags;
+        Memory2 gorge_lantern_cave_map_flags;
+        Memory2 lake_hylia_lantern_cave_map_flags;
+        Memory2 goron_stockcave_map_flags;
+        Memory2 grotto_map_flags;
+        Memory2 unk46[4];
+        Memory2 faron_woods_cave_map_flags;
+        Memory2 unk51[13];
+        Event event_flags;
+        uint8_t unk2288[80];
+        MiniGame minigame_flags;
     };
 
     struct Player
@@ -54,6 +137,38 @@ namespace libtp::tp::d_com_inf_game
         FishingInfo fishing_info;
         PlayerInfo player_info;
         PlayerConfig player_config;
+    };
+
+    struct Memory
+    {
+        MemBit temp_flags;
+    };
+
+    struct Memory2
+    {
+        uint32_t room_flags1;
+        uint32_t room_flags2;
+    };
+
+    struct Event
+    {
+        uint8_t events[256];
+    };
+
+    struct MiniGame
+    {
+        uint8_t unk0;
+        uint8_t
+    };
+
+    struct MemBit
+    {
+        uint32_t area_flags_bitfields1[2];
+        uint32_t area_flags_bitfields2[4];
+        uint32_t rupee_flags_bitfields;
+        uint8_t small_keys;
+        uint8_t dungeon_flags;
+        uint8_t padding[2];
     };
 
     struct PlayerStatusA
