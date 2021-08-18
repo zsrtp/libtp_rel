@@ -4,16 +4,14 @@
  *	@author Zephiles
  *	@bug No known bugs.
  */
-#ifndef TP_D_ITEM_DATA_H
-#define TP_D_ITEM_DATA_H
-
+#pragma once
 #include <cstdint>
 
-#include "tp/d_stage.h"
+#include "d_stage.h"
 
-namespace libtp::tp::d_item_data
+namespace tp::d_item_data
 {
-    struct ItemResource
+    struct ItemResource  // d_item_data.h
     {
         const char* arcName;
         int16_t modelResIdx;
@@ -25,9 +23,9 @@ namespace libtp::tp::d_item_data
         uint8_t btpFrm;
         int16_t ringTexResIdx;
         int16_t unk_12[3];
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    struct FieldItemRes
+    struct FieldItemRes  // d_item_data.h
     {
         const char* arcName;
         int16_t modelResIdx;
@@ -36,25 +34,24 @@ namespace libtp::tp::d_item_data
         int16_t unk_a;
         int16_t heapSize;
         int16_t unk_e;
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    struct ItemInfo     // d_item_data.h
+    struct ItemInfo  // d_item_data.h
     {
         uint8_t mShadowSize;
         uint8_t mCollisionH;
         uint8_t mCollisionR;
         uint8_t mFlags;
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    static_assert( sizeof( ItemResource ) == 0x18 );
-    static_assert( sizeof( FieldItemRes ) == 0x10 );
-    static_assert( sizeof( ItemInfo ) == 0x4 );
+    static_assert(sizeof(ItemResource) == 0x18);
+    static_assert(sizeof(FieldItemRes) == 0x10);
+    static_assert(sizeof(ItemInfo) == 0x4);
 
     extern "C"
     {
-        extern ItemResource item_resource[255];      // 0x803AC5A0 in US
-        extern FieldItemRes field_item_res[255];     // 0x803ADD88 in US
-        extern ItemInfo item_info[255];              // 0x803AED78 in US
+        extern ItemResource item_resource[255];   // 0x803AC5A0 in US
+        extern FieldItemRes field_item_res[255];  // 0x803ADD88 in US
+        extern ItemInfo item_info[255];           // 0x803AED78 in US
     }
-}     // namespace libtp::tp::d_item_data
-#endif
+}  // namespace tp::d_item_data

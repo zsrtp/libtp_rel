@@ -6,15 +6,13 @@
  *
  *	@author Zephiles
  *	@author AECX
- *	@author Lunar Soap
  *	@bug No known bugs.
  */
-#ifndef TP_D_COM_INF_GAME_H
-#define TP_D_COM_INF_GAME_H
-
+#pragma once
 #include <cstdint>
 
-#include "tp/evt_control.h"
+#include "evt_control.h"
+#include "..\data\items.h"
 
 namespace libtp::tp::d_com_inf_game
 {
@@ -27,11 +25,292 @@ namespace libtp::tp::d_com_inf_game
      */
     struct ScratchPad
     {
-        uint8_t wQuestLogData[0x7F0];
-        uint8_t eventBits[0x150];       // Bitfield (QuestLogOffset - 7F0)
-        uint8_t miniGameBits[0x18];     // Bitfield
-    } __attribute__( ( __packed__ ) );
-    static_assert( sizeof( ScratchPad ) == 0x958 );
+        Player player;
+        uint8_t field_0x1ec[4];
+        Memory memory;
+        DanBit dungeon_bit;
+        Zone zones[32];
+        Restart restart;
+        Event events;
+        TurnRestart turn_restart;
+    };
+
+    struct Player
+    {
+        PlayerStatusA player_status_a;
+        PlayerStatusB player_status_b;
+        HorsePlace horse_place;
+        PlayerReturnPlace player_return_place;
+        PlayerFieldLastStayInfo player_last_stay_info;
+        PlayerLastMarkInfo player_last_mark_info;
+        PlayerItem player_item;
+        PlayerGetItem player_get_item;
+        PlayerItemRecord player_item_record;
+        PlayerItemMax player_item_max;
+        PlayerCollect player_collect;
+        PlayerWolf player_wolf;
+        LightDrop light_drop;
+        LetterInfo letter_info;
+        FishingInfo fishing_info;
+        PlayerInfo player_info;
+        PlayerConfig player_config;
+    };
+
+    struct PlayerStatusA
+    {
+        uint16_t maxHealth;
+        uint16_t currentHealth;
+        uint16_t currentRupees;
+        uint16_t maxLanternOil;
+        uint16_t currentLanternOil;
+        uint8_t unk10; //Possibly an unused Wii equip slot.
+        libtp::data::item::Item selectItem[3];
+        libtp::data::item::Item mixItem[3];
+        uint8_t unk17; //Possibly an unused Wii combo equip slot.
+        uint8_t unk18;
+        libtp::data::item::Item equipment[6];
+        Wallets currentWallet;
+        uint8_t unk26;
+        uint8_t unk27;
+        uint8_t magicFlag;
+        uint8_t unk29;
+        uint8_t currentForm;
+        uint8_t unk31[3];
+        uint8_t padding[6];
+    };
+
+    struct PlayerStatusB
+    {
+        uint32_t unk0;
+        uint32_t currentTime;
+        uint8_t transform_level_flag; //0 is Sewers. 1 is Eldin. 2 is Lanayru. 3 is MDH
+        uint8_t dark_clear_level_flag;
+        uint16_t unk10;
+        float skyAngle;
+        uint16_t unk16;
+        uint8_t unk18[3];
+        uint8_t padding21[3];
+    };
+
+    struct HorsePlace
+    {
+        float epona_x_pos;
+        float epona_y_pos;
+        float epona_z_pos;
+        uint16_t epona_angle;
+        uint8_t epona_spawn_id;
+        uint8_t epona_room_id;
+    };
+
+    struct PlayerReturnPlace
+    {
+        char link_current_stage[8];
+        uint8_t link_spawn_point_id;
+        uint8_t link_room_id;
+        uint8_t unk10;
+        uint8_t unk11;
+    };
+
+    struct PlayerFieldLastStayInfo
+    {
+        float player_last_x_pos;
+        float player_last_y_pos;
+        float player_last_z_pos;
+        uint16_t player_last_angle;
+        char player_last_stage[8];
+        uint8_t player_last_spawn_id;
+        uint8_t player_last_room_id;
+        uint8_t unk24;
+        uint8_t player_last_region;
+        uint8_t unk26[2];
+    };
+
+    struct PlayerLastMarkInfo
+    {
+        float ooccoo_x_pos;
+        float ooccoo_y_pos;
+        float ooccoo_z_pos;
+        uint16_t ooccoo_angle;
+        char ooccoo_stage[8];
+        uint8_t ooccoo_spawn_id;
+        uint8_t ooccoo_room_id;
+        char unk24;
+        uint8_t unk25[3];
+    };
+
+    struct PlayerItem
+    {
+        libtp::data::item::Item item[24];
+        ItemSlot item_slots[24];
+    };
+
+    struct PlayerGetItem
+    {
+        uint32_t pause_menu_bit_fields[4];
+        uint8_t padding[16]; //I doubt this is correct as the flags for golden bugs are in here as well.
+    };
+
+    struct PlayerItemRecord
+    {
+        uint8_t bow_ammo;
+        uint8_t bomb_bag_1_ammo;
+        uint8_t bomb_bag_2_ammo;
+        uint8_t bomb_bag_3_ammo;
+        uint8_t unk4_ammo[4];
+        uint8_t slingshot_ammo;
+        uint8_t unk5_ammo;
+    };
+
+    struct PlayerItemMax
+    {
+        uint8_t max_arrow_capacity;
+        uint8_t max_bomb_capacity;
+        uint8_t max_water_bomb_capacity;
+        uint8_t unk3;
+        uint8_t unk4;
+        uint8_t unk5;
+        uint8_t max_bombling_capacity;
+        uint8_t unk7;
+    };
+
+    struct PlayerCollect
+    {
+        uint8_t equipment[8];
+        uint8_t unk8;
+        uint8_t crystal;
+        uint8_t mirror;
+        uint8_t unk11;
+        uint8_t poe_count;
+        uint8_t padding13[3];
+    };
+
+    struct PlayerWolf
+    {
+        uint8_t unk0[3];
+        uint8_t unk3;
+    };
+
+    struct LightDrop
+    {
+        uint8_t faron_tear_count;
+        uint8_t eldin_tear_count;
+        uint8_t lanayru_tear_count;
+        uint8_t unk3;
+        uint8_t light_drop_flag;
+        uint8_t unk5[3];
+    };
+
+    struct LetterInfo
+    {
+        uint32_t letter_get_bitfields[2];
+        uint32_t letter_read_bitfields[2];
+        u8 padding[64];
+    };
+
+    struct FishingInfo
+    {
+        uint16_t hyrule_bass_count;
+        uint16_t hylian_loach_count;
+        uint16_t hylian_pike_count;
+        uint16_t ordon_catfish_count;
+        uint16_t reekfish_count;
+        uint16_t greengill_count;
+        uint16_t unk12;
+        uint16_t unk14;
+        uint16_t unk16;
+        uint16_t unk18;
+        uint16_t unk20;
+        uint16_t unk22;
+        uint16_t unk24;
+        uint16_t unk26;
+        uint16_t unk28;
+        uint16_t unk30;
+        uint8_t largest_hyrule_bass_size;
+        uint8_t largest_hylian_loach_size;
+        uint8_t largest_hylian_pike_size;
+        uint8_t largest_ordon_catfish_size;
+        uint8_t largest_reekfish_size;
+        uint8_t largest_greengill_size;
+        uint8_t unk38;
+        uint8_t unk39;
+        uint8_t unk40;
+        uint8_t unk41;
+        uint8_t unk42;
+        uint8_t unk43;
+        uint8_t unk44;
+        uint8_t unk45;
+        uint8_t unk46;
+        uint8_t unk47;
+        uint8_t padding48[4];
+    };
+
+    struct PlayerInfo
+    {
+        uint8_t unk0[4];
+        uint8_t unk4[4];
+        uint8_t unk8[4];
+        uint8_t unk12[4];
+        uint8_t unk16[2];
+        uint8_t unk18[2];
+        uint8_t links_name[16];
+        uint8_t unk36
+        uint8_t eponas_name[16];
+        uint8_t unk53;
+        uint8_t unk54;
+        uint8_t unk55[5];
+        uint8_t padding60[4];
+    };
+
+    struct PlayerConfig
+    {
+        uint8_t unk0;
+        uint8_t sound_mode; //0 is Mono. 1 is Stereo. 2 is Surround.
+        uint8_t target_mode; //0 is Hold. 1 is Switch.
+        uint8_t vibration_on_off; //0 is Off. 1 is On
+        uint8_t motion_controls; //0 is On. 1 is Off. 
+        uint8_t brightness_level; //1 is darkest. 6 is brightest.
+        uint16_t unk6;
+        uint8_t unk8;
+        uint8_t unk9;
+        uint8_t camera_aiming_options; // Default is 8. |80 is third person aiming. |8 inverts the vertical swiming axis. |4 inverts horizontal swimming axis. |2 inverts vertical camera axis. |1 inverts horizontal axis. 
+        uint8_t unk11;
+    };
+
+    enum Wallets : u8
+	{
+        Wallet = 0,
+        Big_Wallet = 1,
+        Giant_Wallet = 2
+    };
+
+    enum ItemSlot : u8
+    { // The 24 useable item slots in the game
+        SLOT_0 = 0;
+        SLOT_1 = 1;
+        SLOT_2 = 2;
+        SLOT_3 = 3;
+        SLOT_4 = 4;
+        SLOT_5 = 5;
+        SLOT_6 = 6;
+        SLOT_7 = 7;
+        SLOT_8 = 8;
+        SLOT_9 = 9;
+        SLOT_10 = 10;
+        SLOT_11 = 11;
+        SLOT_12 = 12;
+        SLOT_13 = 13;
+        SLOT_14 = 14;
+        SLOT_15 = 15;
+        SLOT_16 = 16;
+        SLOT_17 = 17;
+        SLOT_18 = 18;
+        SLOT_19 = 19;
+        SLOT_20 = 20;
+        SLOT_21 = 21;
+        SLOT_22 = 22;
+        SLOT_23 = 23; 
+    };
+
 
     /**
      *	@brief Holds information about the current stage
@@ -44,7 +323,7 @@ namespace libtp::tp::d_com_inf_game
         char currentStage[8];
         int16_t currentSpawnPoint;
         uint8_t unknown[4];
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
     /**
      *	@brief Holds information about the next stage
@@ -63,7 +342,7 @@ namespace libtp::tp::d_com_inf_game
         uint8_t unk2;
         uint8_t triggerLoad;
         uint8_t fadeType;
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
     /**
      *	@brief Cutscene and event control system
@@ -79,10 +358,10 @@ namespace libtp::tp::d_com_inf_game
         uint8_t unk1A[0xD1];
         uint8_t currentEventID;
         uint8_t unk_ec[0x14];
-        libtp::tp::evt_control::csSkipFunction* onSkip;     // This will run when trying to skip; if null it's unskippable
+        libtp::tp::evt_control::csSkipFunction* onSkip;  // This will run when trying to skip; if null it's unskippable
         uint8_t unk_104[0xC];
-        uint32_t fadeOnSkip;     // If > 0 the screen will fade when skipping
-    } __attribute__( ( __packed__ ) );
+        uint32_t fadeOnSkip;  // If > 0 the screen will fade when skipping
+    } __attribute__((__packed__));
 
     /**
      *	@brief Holds data about Links position on the current map
@@ -94,7 +373,7 @@ namespace libtp::tp::d_com_inf_game
     {
         uint8_t unk_0[0x4D0];
         float pos[3];
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
     /**
      *	@brief GameInfo Structure holding general and most crucial game
@@ -104,43 +383,27 @@ namespace libtp::tp::d_com_inf_game
      */
     struct GameInfo
     {
-        ScratchPad scratchPad;            // 0 - 957
-        uint8_t localAreaNodes[0x20];     // 958 - 977 holds flags about the current area
-        uint8_t unk_978[0x450];           // 978 - DC7
-        uint8_t respawnCutscene;          // DC8 - DC8
-        uint8_t unkdc9[0xA];              // dc9 - dd2
-        uint8_t respawnAnimation;         // dd3 - dd3
-        uint8_t unkdd4[0x402C];           // dd4 - 4DFF
-        char currentStage[8];             // 4E00 - 4E07
-        uint8_t unk_4e08[6];              // 4E08 - 4E0D
-        NextStageVars nextStageVars;      // 4E0E - 4E1b
-        uint8_t unk_4e1c[0xAA];           // 4E19 - 4EC7
-        EventSystem eventSystem;          // 4EC8 - 4FDE
-        uint8_t unk_4fdd[0xDD0];          // 4FDD - 5DBF
-        LinkMapVars* linkMapPtr;          // 5DA0 - 5DAB
+        ScratchPad scratchPad;         // 0 - 957
+        uint8_t localAreaNodes[0x20];  // 958 - 977 holds flags about the current area
+        uint8_t unk_978[0x450];        // 978 - DC7
+        uint8_t respawnCutscene;       // DC8 - DC8
+        uint8_t unkdc9[0xA];           // dc9 - dd2
+        uint8_t respawnAnimation;      // dd3 - dd3
+        uint8_t unkdd4[0x402C];        // dd4 - 4DFF
+        char currentStage[8];          // 4E00 - 4E07
+        uint8_t unk_4e08[6];           // 4E08 - 4E0D
+        NextStageVars nextStageVars;   // 4E0E - 4E1b
+        uint8_t unk_4e1c[0xAA];        // 4E19 - 4EC7
+        EventSystem eventSystem;       // 4EC8 - 4FDE
+        uint8_t unk_4fdd[0xDD0];       // 4FDD - 5DBF
+        LinkMapVars* linkMapPtr;       // 5DA0 - 5DAB
         uint8_t unk_5dac[0x18060];
-    } __attribute__( ( __packed__ ) );
-    static_assert( sizeof( GameInfo ) == 0x1DE10 );
+    } __attribute__((__packed__));
+    static_assert(sizeof(ScratchPad) == 0x958);
+    static_assert(sizeof(GameInfo) == 0x1DE10);
 
     extern "C"
     {
         extern GameInfo dComIfG_gameInfo;
-
-        /**
-         *  @brief Checks the current time and sets the proper layer based on the current layer.
-         *
-         *  @param pLayer The pointer to the current layer.
-         */
-        void dComIfG_get_timelayer( int32_t* pLayer );
-
-        /**
-         *  @brief Returns the layer for the current stage after checking the appropriate flags.
-         *
-         *  @param stageName The current stage.
-         *  @param roomId The current room.
-         *  @param layerOverride The initial layer to be returned.
-         */
-        int32_t getLayerNo_common_common(const char* stageName, int32_t roomId, int32_t layerOverride);
     }
-}     // namespace libtp::tp::d_com_inf_game
-#endif
+}  // namespace libtp::tp::d_com_inf_game

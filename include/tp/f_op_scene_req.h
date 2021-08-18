@@ -4,17 +4,14 @@
  *	@author AECX
  *	@bug No known bugs.
  */
-#ifndef TP_F_OP_SCENE_REQ_H
-#define TP_F_OP_SCENE_REQ_H
-
+#pragma once
 #include <cstdint>
 
 namespace libtp::tp::f_op_scene_req
 {
     extern "C"
     {
-        extern bool freezeActors;     // Freezes all actors
-        extern int32_t isLoading;     // Current loading status
+        extern bool freezeActors;  // Freezes all actors
+        extern int32_t isLoading;  // Current loading status
     }
-}     // namespace libtp::tp::f_op_scene_req
-#endif
+}  // namespace libtp::tp::f_op_scene_req

@@ -7,9 +7,7 @@
  *	@author AECX
  *	@bug No known bugs.
  */
-#ifndef TP_D_KANKYO_H
-#define TP_D_KANKYO_H
-
+#pragma once
 #include <cstdint>
 
 namespace libtp::tp::d_kankyo
@@ -24,13 +22,12 @@ namespace libtp::tp::d_kankyo
         uint8_t unk_0[0x98C];
         uint8_t currentRoom;
         uint8_t unk_98d[0x983];
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    static_assert( sizeof( EnvLight ) == 0x1310 );
+    static_assert(sizeof(EnvLight) == 0x1310);
 
     extern "C"
     {
         extern EnvLight env_light;
     }
-}     // namespace libtp::tp::d_kankyo
-#endif
+}  // namespace libtp::tp::d_kankyo

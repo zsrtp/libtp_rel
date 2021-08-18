@@ -5,9 +5,7 @@
  *	@author AECX
  *	@bug No known bugs.
  */
-#ifndef TP_M_DO_CONTROLLER_PAD_H
-#define TP_M_DO_CONTROLLER_PAD_H
-
+#pragma once
 #include <cstdint>
 
 namespace libtp::tp::m_do_controller_pad
@@ -48,13 +46,12 @@ namespace libtp::tp::m_do_controller_pad
         uint32_t buttonInput;
         uint32_t buttonInputTrg;
         uint8_t unk_38[0xC8];
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    static_assert( sizeof( CPadInfo ) == 0x100 );
+    static_assert(sizeof(CPadInfo) == 0x100);
 
     extern "C"
     {
         extern CPadInfo cpadInfo;
     }
-}     // namespace libtp::tp::m_do_controller_pad
-#endif
+}  // namespace libtp::tp::m_do_controller_pad
