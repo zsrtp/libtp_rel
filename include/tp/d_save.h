@@ -17,7 +17,7 @@ namespace libtp::tp::d_save
         Wallet = 0,
         Big_Wallet = 1,
         Giant_Wallet = 2
-    };
+    } __attribute__((__packed__));
 
     enum ItemSlot : uint8_t 
     { // The 24 useable item slots in the game
@@ -45,7 +45,7 @@ namespace libtp::tp::d_save
         SLOT_21 = 21;
         SLOT_22 = 22;
         SLOT_23 = 23; 
-    };
+    } __attribute__((__packed__));
 
     enum ItemTable : uint8_t
 	{
@@ -305,152 +305,152 @@ namespace libtp::tp::d_save
 		Big_Key_Goron_Mines	=	0xFD,
 		Coro_Key	=	0xFE,
 		/*Gives_Vanilla*/NullItem	=	0xFF
-	};
+	} __attribute__((__packed__));
 
-    class SaveInfo
+    class dSv_info_c
     {
         private:
-            Save save_file; //ScratchPad 0 - 957
-            Memory memory; //Local Area Nodes 958 - 977
-            DanBit dungeon_bit; //978 - 9B3
-            Zone zones[32]; //9B4 - DB3
-            Restart restart; //DB4 - DD7
-            Event events; //DD8 - ED7
-            TurnRestart turn_restart; //ED8 - EEA
+            dSv_save_c save_file; //ScratchPad 0 - 957
+            dSv_memory_c memory; //Local Area Nodes 958 - 977
+            dSv_danBit_c dungeon_bit; //978 - 9B3
+            dSv_zone_c zones[32]; //9B4 - DB3
+            dSv_restart_c restart; //DB4 - DD7
+            dSv_event_c events; //DD8 - ED7
+            dSv_turnRestart_c turn_restart; //ED8 - EEA
             uint8_t unk1[0x3D]; //EEB - F27
             uint32_t saveTotalTime; //F28
             uint32_t saveStartTime; //F2C
             uint32_t unkF30; //F30
             uint32_t unkF34; //F34
-    };
+    } __attribute__((__packed__));
 
-    class Save
+    class dSv_save_c
     {
         private:
-            Player player;
+            dSv_player_c player;
             uint8_t field_0x1ec[4];
-            Memory area_flags[32];
-            Memory ordon_area_flags;
-            Memory sewers_area_flags;
-            Memory faron_area_flags;
-            Memory eldin_area_flags;
-            Memory lanayru_area_flags;
-            Memory unk5;
-            Memory hyrule_field_flags;
-            Memory sacred_grove_flags;
-            Memory snowpeak_flags;
-            Memory castle_town_flags;
-            Memory gerudo_desert_flags;
-            Memory fishing_hole_flags;
-            Memory unk12[4];
-            Memory forest_temple_flags;
-            Memory goron_mines_flags;
-            Memory lakebed_temple_flags;
-            Memory arbiters_grounds_flags;
-            Memory snowpeak_ruins_flags;
-            Memory temple_of_time_flags;
-            Memory city_in_the_sky_flags;
-            Memory palace_of_twilight_flags;
-            Memory hyrule_castle_flags;
-            Memory cave_flags;
-            Memory lake_hylia_lantern_cave_flags;
-            Memory grotto_flags;
-            Memory unk28[4];
-            Memory2 ordon_ranch_map_flags;
-            Memory2 ordon_village_map_flags;
-            Memory2 ordon_spring_map_flags;
-            Memory2 ordon_interiors_map_flags;
-            Memory2 unk4;
-            Memory2 sewers_map_flags;
-            Memory2 faron_woods_map_flags;
-            Memory2 coro_shop_map_flags;
-            Memory2 sacred_grove_map_flags;
-            Memory2 kakariko_village_map_flags;
-            Memory2 death_mountain_map_flags;
-            Memory2 kakariko_graveyard_map_flags;
-            Memory2 kakariko_interiors_map_flags;
-            Memory2 zoras_river_map_flags;
-            Memory2 zoras_domain_map_flags;
-            Memory2 snowpeak_map_flags;
-            Memory2 lake_hylia_map_flags;
-            Memory2 castle_town_map_flags;
-            Memory2 desert_map_flags;
-            Memory2 unk19[2];
-            Memory2 hyrule_field_map_flags;
-            Memory2 forest_temple_map_flags;
-            Memory2 goron_mines_map_flags;
-            Memory2 lakebed_temple_map_flags;
-            Memory2 arbiters_grounds_map_flags;
-            Memory2 snowpeak_ruins_map_flags;
-            Memory2 temple_of_time_map_flags;
-            Memory2 city_in_the_sky_map_flags;
-            Memory2 palace_of_twilight_map_flags;
-            Memory2 hyrule_castle_map_flags;
-            Memory2 death_mountain_interiors_map_flags;
-            Memory2 castle_town_interiors_map_flags;
-            Memory2 fishing_pond_map_flags;
-            Memory2 hidden_village_map_flags;
-            Memory2 hidden_village_interiors_map_flags;
-            Memory2 light_arrow_cutscene_map_flags;
-            Memory2 hyrule_castle_cutscene_map_flags;
-            Memory2 shades_realm_map_flags;
-            Memory2 fishing_pond_interiors_map_flags;
-            Memory2 ice_block_cave_map_flags;
-            Memory2 cave_of_ordeals_map_flags;
-            Memory2 gorge_lantern_cave_map_flags;
-            Memory2 lake_hylia_lantern_cave_map_flags;
-            Memory2 goron_stockcave_map_flags;
-            Memory2 grotto_map_flags;
-            Memory2 unk46[4];
-            Memory2 faron_woods_cave_map_flags;
-            Memory2 unk51[13];
-            Event event_flags;
+            dSv_memory_c area_flags[32];
+            dSv_memory_c ordon_area_flags;
+            dSv_memory_c sewers_area_flags;
+            dSv_memory_c faron_area_flags;
+            dSv_memory_c eldin_area_flags;
+            dSv_memory_c lanayru_area_flags;
+            dSv_memory_c unk5;
+            dSv_memory_c hyrule_field_flags;
+            dSv_memory_c sacred_grove_flags;
+            dSv_memory_c snowpeak_flags;
+            dSv_memory_c castle_town_flags;
+            dSv_memory_c gerudo_desert_flags;
+            dSv_memory_c fishing_hole_flags;
+            dSv_memory_c unk12[4];
+            dSv_memory_c forest_temple_flags;
+            dSv_memory_c goron_mines_flags;
+            dSv_memory_c lakebed_temple_flags;
+            dSv_memory_c arbiters_grounds_flags;
+            dSv_memory_c snowpeak_ruins_flags;
+            dSv_memory_c temple_of_time_flags;
+            dSv_memory_c city_in_the_sky_flags;
+            dSv_memory_c palace_of_twilight_flags;
+            dSv_memory_c hyrule_castle_flags;
+            dSv_memory_c cave_flags;
+            dSv_memory_c lake_hylia_lantern_cave_flags;
+            dSv_memory_c grotto_flags;
+            dSv_memory_c unk28[4];
+            dSv_memory2_c ordon_ranch_map_flags;
+            dSv_memory2_c ordon_village_map_flags;
+            dSv_memory2_c ordon_spring_map_flags;
+            dSv_memory2_c ordon_interiors_map_flags;
+            dSv_memory2_c unk4;
+            dSv_memory2_c sewers_map_flags;
+            dSv_memory2_c faron_woods_map_flags;
+            dSv_memory2_c coro_shop_map_flags;
+            dSv_memory2_c sacred_grove_map_flags;
+            dSv_memory2_c kakariko_village_map_flags;
+            dSv_memory2_c death_mountain_map_flags;
+            dSv_memory2_c kakariko_graveyard_map_flags;
+            dSv_memory2_c kakariko_interiors_map_flags;
+            dSv_memory2_c zoras_river_map_flags;
+            dSv_memory2_c zoras_domain_map_flags;
+            dSv_memory2_c snowpeak_map_flags;
+            dSv_memory2_c lake_hylia_map_flags;
+            dSv_memory2_c castle_town_map_flags;
+            dSv_memory2_c desert_map_flags;
+            dSv_memory2_c unk19[2];
+            dSv_memory2_c hyrule_field_map_flags;
+            dSv_memory2_c forest_temple_map_flags;
+            dSv_memory2_c goron_mines_map_flags;
+            dSv_memory2_c lakebed_temple_map_flags;
+            dSv_memory2_c arbiters_grounds_map_flags;
+            dSv_memory2_c snowpeak_ruins_map_flags;
+            dSv_memory2_c temple_of_time_map_flags;
+            dSv_memory2_c city_in_the_sky_map_flags;
+            dSv_memory2_c palace_of_twilight_map_flags;
+            dSv_memory2_c hyrule_castle_map_flags;
+            dSv_memory2_c death_mountain_interiors_map_flags;
+            dSv_memory2_c castle_town_interiors_map_flags;
+            dSv_memory2_c fishing_pond_map_flags;
+            dSv_memory2_c hidden_village_map_flags;
+            dSv_memory2_c hidden_village_interiors_map_flags;
+            dSv_memory2_c light_arrow_cutscene_map_flags;
+            dSv_memory2_c hyrule_castle_cutscene_map_flags;
+            dSv_memory2_c shades_realm_map_flags;
+            dSv_memory2_c fishing_pond_interiors_map_flags;
+            dSv_memory2_c ice_block_cave_map_flags;
+            dSv_memory2_c cave_of_ordeals_map_flags;
+            dSv_memory2_c gorge_lantern_cave_map_flags;
+            dSv_memory2_c lake_hylia_lantern_cave_map_flags;
+            dSv_memory2_c goron_stockcave_map_flags;
+            dSv_memory2_c grotto_map_flags;
+            dSv_memory2_c unk46[4];
+            dSv_memory2_c faron_woods_cave_map_flags;
+            dSv_memory2_c unk51[13];
+            dSv_event_c event_flags;
             uint8_t unk2288[80];
-            MiniGame minigame_flags;
-    };
+            dSv_MiniGame_c minigame_flags;
+    } __attribute__((__packed__));
 
-    class Player
+    class dSv_player_c
     {
         private:
-            PlayerStatusA player_status_a;
-            PlayerStatusB player_status_b;
-            HorsePlace horse_place;
-            PlayerReturnPlace player_return_place;
-            PlayerFieldLastStayInfo player_last_stay_info;
-            PlayerLastMarkInfo player_last_mark_info;
-            PlayerItem player_item;
-            PlayerGetItem player_get_item;
-            PlayerItemRecord player_item_record;
-            PlayerItemMax player_item_max;
-            PlayerCollect player_collect;
-            PlayerWolf player_wolf;
-            LightDrop light_drop;
-            LetterInfo letter_info;
-            FishingInfo fishing_info;
-            PlayerInfo player_info;
-            PlayerConfig player_config;
-    };
+            dSv_player_status_a_c player_status_a;
+            dSv_player_status_b_c player_status_b;
+            dSv_horse_place_c horse_place;
+            dSv_player_return_place_c player_return_place;
+            dSv_player_field_last_stay_info_c player_last_stay_info;
+            dSv_player_last_mark_info_c player_last_mark_info;
+            dSv_player_item_c player_item;
+            dSv_player_get_item_c player_get_item;
+            dSv_player_item_record_c player_item_record;
+            dSv_player_item_max_c player_item_max;
+            dSv_player_collect_c player_collect;
+            dSv_player_wolf_c player_wolf;
+            dSv_light_drop_c light_drop;
+            dSv_letter_info_c letter_info;
+            dSv_fishing_info_c fishing_info;
+            dSv_player_info_c player_info;
+            dSv_player_config_c player_config;
+    } __attribute__((__packed__));
 
-    class Memory
+    class dSv_memory_c
     {
         private:
-            MemBit temp_flags;
-    };
+            dSv_memBit_c temp_flags;
+    } __attribute__((__packed__));
 
-    class Memory2
+    class dSv_memory2_c
     {
         private:
             uint32_t room_flags1;
             uint32_t room_flags2;
-    };
+    } __attribute__((__packed__));
 
-    class Event
+    class dSv_event_c
     {
         private:
             uint8_t events[256];
-    };
+    } __attribute__((__packed__));
 
-    class MiniGame
+    class dSv_MiniGame_c
     {
         private:
             uint8_t unk0;
@@ -460,9 +460,9 @@ namespace libtp::tp::d_save
             uint32_t unk12;
             uint32_t unk16;
             uint32_t unk20;
-    };
+    } __attribute__((__packed__));
 
-    class DanBit
+    class dSv_danBit_c
     {
         private:
             int8_t unk0;
@@ -470,18 +470,18 @@ namespace libtp::tp::d_save
             uint8_t unk2[2];
             uint32_t unk4[6];
             uint16_t unk28[16];
-    };
+    } __attribute__((__packed__));
 
-    class Zone
+    class dSv_zone_c
     {
         private:
             uint8_t unk0;
             uint8_t unk1;
-            ZoneBit zone_bit;
-            ZoneActor zone_actor;
-    };
+            dSv_zoneBit_c zone_bit;
+            dSv_zoneActor_c zone_actor;
+    } __attribute__((__packed__));
 
-    class Restart
+    class dSv_restart_c
     {
         private:
             uint8_t unk0;
@@ -489,18 +489,18 @@ namespace libtp::tp::d_save
             short angle;
             libtp::tp::c_xyz::cXyz position;
             uint8_t padding20[16];
-    };
+    } __attribute__((__packed__));
 
-    class TurnRestart
+    class dSv_turnRestart_c
     {
         private:
             libtp::tp::c_xyz::cXyz position;
             uint32_t unk12;
             short angle;
             int8_t unk18;
-    };
+    } __attribute__((__packed__));
 
-    class PlayerStatusA
+    class dSv_player_status_a_c
     {
         private:
             uint16_t maxHealth;
@@ -522,9 +522,9 @@ namespace libtp::tp::d_save
             uint8_t currentForm;
             uint8_t unk31[3];
             uint8_t padding[6];
-    };
+    } __attribute__((__packed__));
 
-    class PlayerStatusB
+    class dSv_player_status_b_c
     {
         private:
             uint32_t unk0;
@@ -536,9 +536,9 @@ namespace libtp::tp::d_save
             uint16_t unk16;
             uint8_t unk18[3];
             uint8_t padding21[3];
-    };
+    } __attribute__((__packed__));
 
-     class HorsePlace
+     class dSv_horse_place_c
     {
         private:
             float epona_x_pos;
@@ -547,9 +547,9 @@ namespace libtp::tp::d_save
             uint16_t epona_angle;
             uint8_t epona_spawn_id;
             uint8_t epona_room_id;
-    };
+    } __attribute__((__packed__));
 
-    class PlayerReturnPlace
+    class dSv_player_return_place_c
     {
         private:
             char link_current_stage[8];
@@ -557,9 +557,9 @@ namespace libtp::tp::d_save
             uint8_t link_room_id;
             uint8_t unk10;
             uint8_t unk11;
-    };
+    } __attribute__((__packed__));
 
-    class PlayerFieldLastStayInfo
+    class dSv_player_field_last_stay_info_c
     {
         private:
             float player_last_x_pos;
@@ -572,9 +572,9 @@ namespace libtp::tp::d_save
             uint8_t unk24;
             uint8_t player_last_region;
             uint8_t unk26[2];
-    };
+    } __attribute__((__packed__));
 
-    class PlayerLastMarkInfo
+    class dSv_player_last_mark_info_c
     {
         private:
             float ooccoo_x_pos;
@@ -586,22 +586,22 @@ namespace libtp::tp::d_save
             uint8_t ooccoo_room_id;
             char unk24;
             uint8_t unk25[3];
-    };
+    } __attribute__((__packed__));
 
-    class PlayerItem
+    class dSv_player_item_c
     {
         uint8_t item[24];
         uint8_t item_slots[24];
-    };
+    } __attribute__((__packed__));
 
-    class PlayerGetItem
+    class dSv_player_get_item_c
     {
         private:
             uint32_t pause_menu_bit_fields[4];
             uint8_t padding[16]; //I doubt this is correct as the flags for golden bugs are in here as well.
-    };
+    } __attribute__((__packed__));
 
-    class PlayerItemRecord
+    class dSv_player_item_record_c
     {
         private:
             uint8_t bow_ammo;
@@ -611,9 +611,9 @@ namespace libtp::tp::d_save
             uint8_t unk4_ammo[4];
             uint8_t slingshot_ammo;
             uint8_t unk5_ammo;
-    };
+    } __attribute__((__packed__));
 
-    class PlayerItemMax
+    class dSv_player_item_max_c
     {
         private:
             uint8_t max_arrow_capacity;
@@ -624,9 +624,9 @@ namespace libtp::tp::d_save
             uint8_t unk5;
             uint8_t max_bombling_capacity;
             uint8_t unk7;
-    };
+    } __attribute__((__packed__));
 
-    class PlayerCollect
+    class dSv_player_collect_c
     {
         private:
             uint8_t equipment[8];
@@ -636,16 +636,16 @@ namespace libtp::tp::d_save
             uint8_t unk11;
             uint8_t poe_count;
             uint8_t padding13[3];
-    };
+    } __attribute__((__packed__));
 
-    class PlayerWolf
+    class dSv_player_wolf_c
     {
         private:
             uint8_t unk0[3];
             uint8_t unk3;
-    };
+    } __attribute__((__packed__));
 
-    class LightDrop
+    class dSv_light_drop_c
     {
         private:
             uint8_t faron_tear_count;
@@ -654,17 +654,17 @@ namespace libtp::tp::d_save
             uint8_t unk3;
             uint8_t light_drop_flag;
             uint8_t unk5[3];
-    };
+    } __attribute__((__packed__));
 
-    class LetterInfo
+    class dSv_letter_info_c
     {
         private:
             uint32_t letter_get_bitfields[2];
             uint32_t letter_read_bitfields[2];
             uint8_t  padding[64];
-    };
+    } __attribute__((__packed__));
 
-    class FishingInfo
+    class dSv_fishing_info_c
     {
         private:
             uint16_t hyrule_bass_count;
@@ -700,9 +700,9 @@ namespace libtp::tp::d_save
             uint8_t unk46;
             uint8_t unk47;
             uint8_t padding48[4];
-    };
+    } __attribute__((__packed__));
 
-    class PlayerInfo
+    class dSv_player_info_c
     {
         private:
             uint32_t unk0;
@@ -717,9 +717,9 @@ namespace libtp::tp::d_save
             uint8_t mClearCount;
             uint8_t unk55[5];
             uint8_t padding60[4];
-    };
+    } __attribute__((__packed__));
 
-    class PlayerConfig
+    class dSv_player_config_c
     {
         private:
             uint8_t unk0;
@@ -733,9 +733,9 @@ namespace libtp::tp::d_save
             uint8_t unk9;
             uint8_t camera_aiming_options; // Default is 8. |80 is third person aiming. |8 inverts the vertical swiming axis. |4 inverts horizontal swimming axis. |2 inverts vertical camera axis. |1 inverts horizontal axis. 
             uint8_t unk11;
-    };
+    } __attribute__((__packed__));
 
-    class ZoneBit
+    class dSv_zoneBit_c
     {
         private:
             uint8_t unk0[4];
@@ -743,15 +743,15 @@ namespace libtp::tp::d_save
             uint16_t unk6[2];
             uint16_t room_item;
             uint16_t unk12;
-    };
+    } __attribute__((__packed__));
 
-    class ZoneActor
+    class dSv_zoneActor_c
     {
         private:
             uint32_t unk0[4];
-    };
+    } __attribute__((__packed__));
 
-    class MemBit
+    class dSv_memBit_c
     {
         private:
             uint32_t area_flags_bitfields1[2];
@@ -760,7 +760,7 @@ namespace libtp::tp::d_save
             uint8_t small_keys;
             uint8_t dungeon_flags;
             uint8_t padding[2];
-    };
+    } __attribute__((__packed__));
 
 
     extern "C"

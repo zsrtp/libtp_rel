@@ -9,11 +9,11 @@
 
 namespace libtp::tp::c_xyz
 {
-    struct cXyz
+    class cXyz
     {
         private:
             float x;
             float y;
             float z;
-    };
+    } __attribute__((__packed__));
 }// namespace libtp::tp::c_xyz
