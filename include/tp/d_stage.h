@@ -106,58 +106,11 @@ namespace libtp::tp::d_stage
     static_assert(sizeof(Item) == 0x20);
     static_assert(sizeof(dzxChunkTypeInfo) == 0xC);
 
-    class dStage_stageDt
-    {
-        private:
-            uint8_t field_0x0[0x8];
-            stage_camera_class* mCamera;
-            stage_arrow_class* mArrow;
-            stage_actor_class* mPlayer;
-            roomRead_class* mRoom;
-            stage_map_info_class* mMapInfo;
-            stage_map_info_dummy_class* mMapInfoBase;
-            stage_palette_info_class* mPaletteInfo;
-            stage_pselect_info_class* mPselectInfo;
-            stage_envr_info_class* mEnvrInfo;
-            stage_vrbox_info_class* mVrboxInfo;
-            stage_vrboxcol_info_class* mVrboxcolInfo;
-            stage_plight_info_class* mPlightInfo;
-            dStage_MapEventInfo_c* mMapEventInfo;
-            uint32_t mPaletteNumInfo;
-            uint32_t mPselectNumInfo;
-            uint32_t mEnvrNumInfo;
-            uint32_t mVrboxNumInfo;
-            int32_t mVrboxcolNumInfo;
-            uint32_t mPlightNumInfo;
-            uint16_t mPlayerNum;
-            uint16_t field_0x56;
-            uint16_t field_0x58;
-            uint16_t field_0x5a;
-            stage_stag_info_class* mStagInfo;
-            stage_scls_info_dummy_class* mSclsInfo;
-            dStage_dPnt_c* mPntInfo;
-            dStage_dPath_c* mPathInfo;
-            dStage_dPnt_c* mPnt2Inf;
-            dStage_dPath_c* mPath2Info;
-            dStage_SoundInfo_c* mSoundInf;
-            dStage_SoundInfo_c* mSoundInfCL;
-            dStage_FloorInfo_c* mFloorInfo;
-            dStage_MemoryConfig_c* mMemoryConfig;
-            dStage_MemoryMap_c* mMemoryMap;
-            dStage_Multi_c* mMulti;
-            dStage_Multi_c* mOldMulti;
-            stage_tresure_class* mTreasure;
-            dStage_DMap_c* mDMap;
-            stage_tgsc_class* mDrTg;
-            stage_tgsc_class* mDoor;
-            dStage_Elst_c* mElst;
-    };
-
     class dStage_roomControl
     {
         private:
-            u8 field_0x0[164];
-    };
+            uint8_t field_0x0[164];
+    } __attribute__((__packed__));
 
     class dStage_startStage
     {
@@ -167,7 +120,7 @@ namespace libtp::tp::d_stage
             /* 0xA */ int8_t mRoomNo;
             /* 0xB */ int8_t mLayer;
             /* 0xC */ int8_t mDarkArea;    
-    };
+    } __attribute__((__packed__));
 
     class dStage_nextStage
     {
@@ -181,7 +134,7 @@ namespace libtp::tp::d_stage
             int8_t enabled;
             uint8_t wipe;
             uint8_t wipe_speed;
-    };
+    } __attribute__((__packed__));
 
     extern "C"
     {

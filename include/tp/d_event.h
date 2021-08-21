@@ -13,7 +13,7 @@ namespace libtp::tp::d_event
     {
         public:
             /* 0x000 */ uint8_t  field_0x0[4];
-            /* 0x004 */ dEvt_order_c mOrder[8];
+            /* 0x004 */ uint8_t field_0x4[0xC0]; //dEvt_order_c mOrder[8];
             /* 0x0C4 */ uint32_t  mPt1;
             /* 0x0C8 */ uint32_t  mPt2;
             /* 0x0CC */ uint32_t  mPtT;
@@ -42,7 +42,7 @@ namespace libtp::tp::d_event
             /* 0x0F4 */ void* mStageEventDt;
             /* 0x0F8 */ void* mChangeOK;
             /* 0x0FC */ uint8_t  field_0xfc[4];
-            /* 0x100 */ SkipFunc mSkipFunc;
+            /* 0x100 */ uint8_t field_0x100[4]; //SkipFunc mSkipFunc;
             /* 0x104 */ uint32_t  field_0x104;
             /* 0x108 */ uint32_t  field_0x108;
             /* 0x10C */ uint32_t  field_0x10c;
@@ -51,5 +51,5 @@ namespace libtp::tp::d_event
             /* 0x128 */ uint8_t  mCompulsory;
             /* 0x129 */ bool field_0x129;
             /* 0x12C */ int32_t field_0x12c;
-    };  // Size = 0x130
+    } __attribute__((__packed__));  // Size = 0x130
 }// namespace libtp::tp::d_event

@@ -17,7 +17,6 @@
 #include "d_event_manager.h"
 #include "d_save.h"
 #include "c_xyz.h"
-#include "JKRArchive.h"
 #include <cstdint>
 
 namespace libtp::tp::d_com_inf_game
@@ -35,9 +34,9 @@ namespace libtp::tp::d_com_inf_game
         private:
             libtp::tp::d_save::dSv_info_c save_file; //0 - F38
             dComIfG_play play; // F39 - 5F63
-            dDlst_list_c draw_list_list; //5F64 - 1C10F
-            uint8_t field_0x1C110[0x1E8]; //1C110 - 1C2F7
-            dRes_control_c mResControl; //1C2F8 - 1DDF7
+            uint8_t field_0x5f64[0x161AC]; //dDlst_list_c draw_list_list; 5F64 - 1C10F
+            uint8_t field_0x1c110[0x1E8]; //1C110 - 1C2F7
+            uint8_t field_0x1c2f8[0x1B00]; //dRes_control_c mResControl; 1C2F8 - 1DDF7
             uint8_t field_0x1ddf8; //1DDF8
             uint8_t mWorldDark; //1DDF9
             uint8_t field_0x1ddfa; //1DDFA
@@ -54,55 +53,55 @@ namespace libtp::tp::d_com_inf_game
 
     
 
-    class dComIfG_play //pulled this from decomp
+    class dComIfG_play 
     {
         private:
-            /* 0x00000 */ dBgS mDBgS;
-            /* 0x01404 */ dCcS mDCcS;
-            /* 0x03EC8 */ libtp::tp::d_stage::dStage_startStage mStartStage;
+            /* 0x00000 */ uint8_t field_0x0[0x1404]; //dBgS mDBgS;
+            /* 0x01404 */ uint8_t field_0x1404[0x2AC4]; //dCcS mDCcS;
+            /* 0x03EC8 */ libtp::tp::d_stage::dStage_startStage mStartStage; //Possibly currentStageVars
             /* 0x03ED5 */ uint8_t field_0x3ed5;  // probably padding
             /* 0x03ED6 */ libtp::tp::d_stage::dStage_nextStage mNextStage; //Probably nextStageVars
             /* 0x03EE7 */ uint8_t field_0x3ee7;  // probably padding
-            /* 0x03EE8 */ libtp::tp::d_stage::dStage_stageDt mStageData; //Possibly currentStageVars
+            /* 0x03EE8 */ uint8_t field_0x3ee8[0xA4]; //dStage_stageDt mStageData; 
             /* 0x03F8C */ libtp::tp::d_stage::dStage_roomControl* mRoomControl;
             /* 0x03F90 */ libtp::tp::d_event::dEvt_control mEvent; //Probably EventSystem
             /* 0x040C0 */ libtp::tp::d_event_manager::dEvent_manager mEvtManager; 
-            /* 0x04780 */ dAttention_c mAttention;
-            /* 0x04C9C */ dVibration_c mVibration;
+            /* 0x04780 */ uint8_t field_0x4780[0x51C]; //dAttention_c mAttention;
+            /* 0x04C9C */ uint8_t field_0x4c9c[0x90]; //dVibration_c mVibration;
             /* 0x04D2C */ uint8_t field_0x4d2c[4];
-            /* 0x04D30 */ libtp::tp::JKRArchive::JKRArchive* mFieldMapArchive2;
-            /* 0x04D34 */ libtp::tp::JKRArchive::JKRArchive* mMsgArchive[11];
-            /* 0x04D60 */ libtp::tp::JKRArchive::JKRArchive* mDemoMsgArchive;
-            /* 0x04D64 */ libtp::tp::JKRArchive::JKRArchive* mMeterButtonArchive;
+            /* 0x04D30 */ uint8_t field_0x4d30[4]; //JKRArchive* mFieldMapArchive2;
+            /* 0x04D34 */ uint8_t field_0x4d34[0x2C]; //JKRArchive* mMsgArchive[11];
+            /* 0x04D60 */ uint8_t field_0x4d60[4]; //JKRArchive* mDemoMsgArchive;
+            /* 0x04D64 */ uint8_t field_0x4d64[4]; //JKRArchive* mMeterButtonArchive;
             /* 0x04D68 */ void* field_0x4d68;
-            /* 0x04D6C */ libtp::tp::JKRArchive::JKRArchive* mFontArchive;
-            /* 0x04D70 */ libtp::tp::JKRArchive::JKRArchive* mRubyArchive;
-            /* 0x04D74 */ libtp::tp::JKRArchive::JKRArchive* mAnmArchive;
+            /* 0x04D6C */ uint8_t field_0x4d6C[4]; //JKRArchive* mFontArchive;
+            /* 0x04D70 */ uint8_t field_0x4d70[4]; //JKRArchive* mRubyArchive;
+            /* 0x04D74 */ uint8_t field_0x4d74[4]; //JKRArchive* mAnmArchive;
             /* 0x04D78 */ void* field_0x4d78[2];
-            /* 0x04D80 */ libtp::tp::JKRArchive::JKRArchive* mCollectResArchive;
-            /* 0x04D84 */ libtp::tp::JKRArchive::JKRArchive* mFmapResArchive;
-            /* 0x04D88 */ libtp::tp::JKRArchive::JKRArchive* mDmapResArchive;
-            /* 0x04D8C */ libtp::tp::JKRArchive::JKRArchive* mOptionResArchive;
+            /* 0x04D80 */ uint8_t field_0x4d80[4]; //JKRArchive* mCollectResArchive;
+            /* 0x04D84 */ uint8_t field_0x4d84[4]; //JKRArchive* mFmapResArchive;
+            /* 0x04D88 */ uint8_t field_0x4d88[4]; //JKRArchive* mDmapResArchive;
+            /* 0x04D8C */ uint8_t field_0x4d8c[4]; //JKRArchive* mOptionResArchive;
             /* 0x04D90 */ void* field_0x4d90[2];
-            /* 0x04D98 */ libtp::tp::JKRArchive::JKRArchive* mItemIconArchive;
-            /* 0x04D9C */ libtp::tp::JKRArchive::JKRArchive* mNameResArchive;
-            /* 0x04DA0 */ libtp::tp::JKRArchive::JKRArchive* mErrorResArchive;
+            /* 0x04D98 */ uint8_t field_0x4d98[4]; //JKRArchive* mItemIconArchive;
+            /* 0x04D9C */ uint8_t field_0x4d9C[4]; //JKRArchive* mNameResArchive;
+            /* 0x04DA0 */ uint8_t field_0x4da0[4]; //JKRArchive* mErrorResArchive;
             /* 0x04DA4 */ void* field_0x4da4;
-            /* 0x04DA8 */ libtp::tp::JKRArchive::JKRArchive* mAllMapArchive;
-            /* 0x04DAC */ libtp::tp::JKRArchive::JKRArchive* mMsgCommonArchive;
-            /* 0x04DB0 */ libtp::tp::JKRArchive::JKRArchive* mRingResArchive;
+            /* 0x04DA8 */ uint8_t field_0x4da8[4]; //JKRArchive* mAllMapArchive;
+            /* 0x04DAC */ uint8_t field_0x4dac[4]; //JKRArchive* mMsgCommonArchive;
+            /* 0x04DB0 */ uint8_t field_0x4db0[4]; //JKRArchive* mRingResArchive;
             /* 0x04DB4 */ void* field_0x4db4;
-            /* 0x04DB8 */ libtp::tp::JKRArchive::JKRArchive* mCardIconResArchive;
-            /* 0x04DBC */ libtp::tp::JKRArchive::JKRArchive* mMsgDtArchive[15];
-            /* 0x04DF8 */ libtp::tp::JKRArchive::JKRArchive* mMain2DArchive;
+            /* 0x04DB8 */ uint8_t field_0x4db8[4]; //JKRArchive* mCardIconResArchive;
+            /* 0x04DBC */ uint8_t field_0x4dbc[0x3C]; //JKRArchive* mMsgDtArchive[15];
+            /* 0x04DF8 */ uint8_t field_0x4df8[4]; //JKRArchive* mMain2DArchive;
             /* 0x04DFC */ void* field_0x4dfc[2];
             /* 0x04E04 */ void* mParticle;
             /* 0x04E08 */ void* mSimpleModel;
             /* 0x04E0C */ uint8_t mWindowNum;
             /* 0x04E0D */ uint8_t mLayerOld;
             /* 0x04E0E */ uint16_t mStatus;
-            /* 0x04E10 */ dDlst_window_c mWindow;
-            /* 0x04E3C */ dComIfG_camera_info_class* mCameraInfo;
+            /* 0x04E10 */ uint8_t field_0x4e10[0x2C]; //dDlst_window_c mWindow;
+            /* 0x04E3C */ uint8_t field_0x4d60[4]; //dComIfG_camera_info_class* mCameraInfo;
             /* 0x04E40 */ int8_t mCameraWinID;
             /* 0x04E41 */ int8_t mCameraPlayer1ID;
             /* 0x04E42 */ int8_t mCameraPlayer2ID;
@@ -116,10 +115,10 @@ namespace libtp::tp::d_com_inf_game
             /* 0x04E6C */ float mCameraUnk1;
             /* 0x04E70 */ int16_t mCameraUnk2;
             /* 0x04E72 */ int16_t field_0x4e72;
-            /* 0x04E74 */ daAlink_c* mPlayer;
+            /* 0x04E74 */ uint8_t field_0x4e74[4]; //daAlink_c* mPlayer;
             /* 0x04E78 */ int8_t  mPlayerCameraID[4];
-            /* 0x04E7C */ daAlink_c* mPlayerPtr;
-            /* 0x04E80 */ daHorse_c* mHorseActor;
+            /* 0x04E7C */ uint8_t field_0x4e7c[4]; //daAlink_c* mPlayerPtr;
+            /* 0x04E80 */ uint8_t field_0x4e80[4]; //daHorse_c* mHorseActor;
             /* 0x04E84 */ void* mMsgObjectClass;
             /* 0x04E88 */ float mItemLifeCount;
             /* 0x04E8C */ uint32_t mItemRupeeCount;
@@ -257,9 +256,9 @@ namespace libtp::tp::d_com_inf_game
             /* 0x04F7F */ uint8_t  mOxygenShowFlag;
             /* 0x04F80 */ uint8_t  mShow2D;
             /* 0x04F81 */ uint8_t  field_0x4f81[3];
-            /* 0x04F84 */ JKRExpHeap* mExpHeap2D;
-            /* 0x04F88 */ JKRExpHeap* mSubExpHeap2D[2];
-            /* 0x04F90 */ JKRExpHeap* mMsgExpHeap;
+            /* 0x04F84 */ uint8_t field_0x4f84[4]; //JKRExpHeap* mExpHeap2D;
+            /* 0x04F88 */ uint8_t field_0x4f88[4]; //JKRExpHeap* mSubExpHeap2D[2];
+            /* 0x04F90 */ uint8_t field_0x4f90[4]; //JKRExpHeap* mMsgExpHeap;
             /* 0x04F94 */ char field_0x4F94[8];  // related to setWarpItemData
             /* 0x04F9C */ libtp::tp::c_xyz::cXyz field_0x4f9c;     // related to setWarpItemData
             /* 0x04FA8 */ uint8_t  field_0x4fa8[2];
@@ -269,24 +268,24 @@ namespace libtp::tp::d_com_inf_game
             /* 0x04FAD */ uint8_t  field_0x4fad[3];
             /* 0x04FB0 */ void* mMesgCamInfo;
             /* 0x04FB4 */ uint32_t mMesgCamInfoBasicID;
-            /* 0x04FB8 */ fopAc_ac_c* mMesgCamInfoActor1;
-            /* 0x04FBC */ fopAc_ac_c* mMesgCamInfoActor2;
-            /* 0x04FC0 */ fopAc_ac_c* mMesgCamInfoActor3;
-            /* 0x04FC4 */ fopAc_ac_c* mMesgCamInfoActor4;
-            /* 0x04FC8 */ fopAc_ac_c* mMesgCamInfoActor5;
-            /* 0x04FCC */ fopAc_ac_c* mMesgCamInfoActor6;
-            /* 0x04FD0 */ fopAc_ac_c* mMesgCamInfoActor7;
-            /* 0x04FD4 */ fopAc_ac_c* mMesgCamInfoActor8;
-            /* 0x04FD8 */ fopAc_ac_c* mMesgCamInfoActor9;
-            /* 0x04FDC */ fopAc_ac_c* mMesgCamInfoActor10;
+            /* 0x04FB8 */ uint8_t field_0x4fb8[4]; //fopAc_ac_c* mMesgCamInfoActor1;
+            /* 0x04FBC */ uint8_t field_0x4dbc[4]; //fopAc_ac_c* mMesgCamInfoActor2;
+            /* 0x04FC0 */ uint8_t field_0x4fc0[4]; //fopAc_ac_c* mMesgCamInfoActor3;
+            /* 0x04FC4 */ uint8_t field_0x4fc4[4]; //fopAc_ac_c* mMesgCamInfoActor4;
+            /* 0x04FC8 */ uint8_t field_0x4fc8[4]; //fopAc_ac_c* mMesgCamInfoActor5;
+            /* 0x04FCC */ uint8_t field_0x4fcc[4]; //fopAc_ac_c* mMesgCamInfoActor6;
+            /* 0x04FD0 */ uint8_t field_0x4fd0[4]; //fopAc_ac_c* mMesgCamInfoActor7;
+            /* 0x04FD4 */ uint8_t field_0x4fd4[4]; //fopAc_ac_c* mMesgCamInfoActor8;
+            /* 0x04FD8 */ uint8_t field_0x4fd8[4]; //fopAc_ac_c* mMesgCamInfoActor9;
+            /* 0x04FDC */ uint8_t field_0x4fdc[4]; //fopAc_ac_c* mMesgCamInfoActor10;
             /* 0x04FE0 */ uint32_t mPlayerStatus;
             /* 0x04FE4 */ uint8_t  field_0x4fe4[0x14];
-            /* 0x04FF8 */ dTimer_c* mTimerPtr;
+            /* 0x04FF8 */ uint8_t field_0x4ff8[4]; //dTimer_c* mTimerPtr;
             /* 0x04FFC */ uint32_t mTimerNowTimeMs;
             /* 0x05000 */ uint32_t mTimerLimitTimeMs;
             /* 0x05004 */ uint32_t mTimerMode;
             /* 0x05008 */ uint8_t  mTimerType;
-            /* 0x0500C */ dDlst_window_c* mCurrentWindow;
+            /* 0x0500C */ uint8_t field_0x500c[4]; //dDlst_window_c* mCurrentWindow;
             /* 0x05010 */ void* mCurrentView;
             /* 0x05014 */ void* mCurrentViewport;
             /* 0x05018 */ void* mCurrentGrafPort;
