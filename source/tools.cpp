@@ -30,24 +30,25 @@ namespace libtp::tools
         return ( sum2 << 8 ) | sum1;
     }
 
+    //This entire function will need to be re-looked at now that a lot of defintions are different. UPDATE: should be better. updated data types in libtp
     void TriggerSaveLoad( const char* stage, uint8_t room, uint8_t spawn, uint8_t state, uint8_t event )
     {
         using namespace libtp::tp::d_com_inf_game;
 
-        GameInfo* gameInfo = &dComIfG_gameInfo;
-        strcpy( gameInfo->nextStageVars.nextStage, stage );
-        gameInfo->nextStageVars.nextRoom = room;
-        gameInfo->nextStageVars.nextSpawnPoint = spawn;
-        gameInfo->nextStageVars.nextState = state;
+        dComIfG_inf_c* gameInfo = &dComIfG_gameInfo;
+        strcpy( gameInfo->play.mNextStage.mStage, stage );
+        gameInfo->play.mNextStage.mRoomNo = room;
+        gameInfo->play.mNextStage.mPoint = spawn;
+        gameInfo->play.mNextStage.mLayer = state;
 
-        gameInfo->eventSystem.nextEventID = event;
-        gameInfo->respawnAnimation = 0;
-        gameInfo->nextStageVars.isVoidorWarp = 0;
-        gameInfo->respawnCutscene = 0;
-        gameInfo->eventSystem.immediateControl = 0xFFFF;
-        gameInfo->nextStageVars.fadeType = 0x13;
+        gameInfo->play.mEvent.mOrder[0].mEventInfoIdx = event;
+        gameInfo->save.restart.mLastMode = 0;
+        gameInfo->play.mNextStage.mPoint = 0;
+        gameInfo->save.restart.mRoomParam = 0;
+        gameInfo->play.mEvent.mOrder[0].mEventId = 0xFFFF; //immediateControl
+        gameInfo->play.mNextStage.wipe_speed = 0x13;
 
-        gameInfo->nextStageVars.triggerLoad = true;
+        gameInfo->play.mNextStage.wipe = true;
     }
 
     void SpawnActor( uint8_t roomID, tp::dzx::ACTR& actor )

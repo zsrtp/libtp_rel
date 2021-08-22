@@ -11,7 +11,7 @@
 #ifndef TP_D_COM_INF_GAME_H
 #define TP_D_COM_INF_GAME_H
 
-#include "tp/d_save.h"
+#include "d_save.h"
 #include "tp/evt_control.h"
 #include "tp/d_stage.h"
 #include "tp/d_event.h"
@@ -294,6 +294,22 @@ namespace libtp::tp::d_com_inf_game
     extern "C"
     {
         extern dComIfG_inf_c dComIfG_gameInfo;
+
+        /**
+         *  @brief Checks the current time and sets the proper layer based on the current layer.
+         *
+         *  @param pLayer The pointer to the current layer.
+         */
+        void dComIfG_get_timelayer( int32_t* pLayer );
+
+        /**
+         *  @brief Returns the layer for the current stage after checking the appropriate flags.
+         *
+         *  @param stageName The current stage.
+         *  @param roomId The current room.
+         *  @param layerOverride The initial layer to be returned.
+         */
+        int32_t getLayerNo_common_common(const char* stageName, int32_t roomId, int32_t layerOverride);
     }
 }  // namespace libtp::tp::d_com_inf_game
 #endif

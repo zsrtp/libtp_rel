@@ -9,11 +9,25 @@
 
 namespace libtp::tp::d_event
 {
+    struct dEvt_order
+    {
+        /*  0x00 */ uint16_t mEventType;
+        /*  0x02 */ uint16_t mFlag;
+        /*  0x04 */ int16_t field_0x04;
+        /*  0x08 */ uint8_t field_0x08[4]; //fopAc_ac_c* mActor1;
+        /*  0x0C */ uint8_t field_0x0C[4]; //fopAc_ac_c* mActor2;
+        /*  0x10 */ int16_t mEventId;
+        /*  0x12 */ int16_t mPriority;
+        /*  0x14 */ uint8_t mNextOrderIdx;
+        /*  0x15 */ uint8_t mEventInfoIdx;
+        /*  0x16 */ uint8_t padding_0x16[2];
+    } __attribute__((__packed__));
+
     struct dEvt_control
     {
         public:
             /* 0x000 */ uint8_t  field_0x0[4];
-            /* 0x004 */ uint8_t field_0x4[0xC0]; //dEvt_order_c mOrder[8];
+            /* 0x004 */ dEvt_order mOrder[8];
             /* 0x0C4 */ uint32_t  mPt1;
             /* 0x0C8 */ uint32_t  mPt2;
             /* 0x0CC */ uint32_t  mPtT;

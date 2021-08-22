@@ -7,8 +7,7 @@
 #ifndef TP_D_SAVE_H
 #define TP_D_SAVE_H
 #include <cstdint>
-
-#include "tp/d_com_inf_game.h"
+#include "tp/c_xyz.h"
 
 
 namespace libtp::tp::d_save
@@ -319,7 +318,7 @@ namespace libtp::tp::d_save
 
     struct dSv_event_c
     {
-        uint8_t events[256];
+        uint8_t event_flags[256];
     } __attribute__((__packed__));
 
     struct dSv_MiniGame_c
@@ -342,18 +341,24 @@ namespace libtp::tp::d_save
         uint16_t unk28[16];
     } __attribute__((__packed__));
 
+    
+
     struct dSv_restart_c
     {
-        uint8_t unk0;
-        uint8_t unk1[5];
-        short angle;
-        c_xyz::cXyz position;
-        uint8_t padding20[16];
+        /* 0x00 */ int8_t mRoomNo;
+        /* 0x01 */ uint8_t field_0x01[3];
+        /* 0x04 */ int16_t mStartPoint;
+        /* 0x06 */ int16_t mRoomAngleY;
+        /* 0x08 */ c_xyz::cXyz mRoomPos;
+        /* 0x14 */ uint32_t mRoomParam;
+        /* 0x18 */ float mLastSpeedF;
+        /* 0x1C */ uint32_t mLastMode;
+        /* 0x20 */ int16_t mLastAngleY;
     } __attribute__((__packed__));
 
     struct dSv_turnRestart_c
     {
-        c_xyz::cXyz position;
+        libtp::tp::c_xyz::cXyz position;
         uint32_t unk12;
         short angle;
         int8_t unk18;
@@ -767,7 +772,7 @@ namespace libtp::tp::d_save
          *	@param gameInfoPtr Pointer to d_com_inf_game::gameInfo
          *	@param areaID ID of the current Area
          */
-        void getSave(d_com_inf_game::dComIfG_inf_c* gameInfoPtr, int32_t areaID);
+        void getSave(dSv_info_c* gameInfoPtr, int32_t areaID);
 
         /**
          *	@brief Puts the previously set AreaNode for region-specific flags back
@@ -779,7 +784,7 @@ namespace libtp::tp::d_save
          *	@param gameInfoPtr Pointer to d_com_inf_game::gameInfo
          *	@param areaID ID of the current Area
          */
-        void putSave(d_com_inf_game::dComIfG_inf_c* gameInfoPtr, int32_t areaID);
+        void putSave(dSv_info_c* gameInfoPtr, int32_t areaID);
 
         /**
          *  @brief Sets an eventBit for the currently active save
