@@ -8,7 +8,8 @@
 #define TP_D_SAVE_H
 #include <cstdint>
 
-#include "d_com_inf_game.h"
+#include "tp/d_com_inf_game.h"
+
 
 namespace libtp::tp::d_save
 {
@@ -341,20 +342,18 @@ namespace libtp::tp::d_save
         uint16_t unk28[16];
     } __attribute__((__packed__));
 
-    
-
     struct dSv_restart_c
     {
         uint8_t unk0;
         uint8_t unk1[5];
         short angle;
-        libtp::tp::c_xyz::cXyz position;
+        c_xyz::cXyz position;
         uint8_t padding20[16];
     } __attribute__((__packed__));
 
     struct dSv_turnRestart_c
     {
-        libtp::tp::c_xyz::cXyz position;
+        c_xyz::cXyz position;
         uint32_t unk12;
         short angle;
         int8_t unk18;
@@ -781,6 +780,41 @@ namespace libtp::tp::d_save
          *	@param areaID ID of the current Area
          */
         void putSave(d_com_inf_game::dComIfG_inf_c* gameInfoPtr, int32_t areaID);
+
+        /**
+         *  @brief Sets an eventBit for the currently active save
+         *
+         *  @param eventPtr The pointer to the event bits.
+         *  @param flag Offset+Flag
+         */
+
+        void onEventBit( uint8_t* eventPtr, uint16_t flag );
+
+        /**
+         *  @brief Unsets an eventBit for the currently active save
+         *
+         *  @param eventPtr The pointer to the event bits.
+         *  @param flag Offset+Flag
+         */
+        void offEventBit( uint8_t* eventPtr, uint16_t flag );
+
+        /**
+         *  @brief Checks whether the player has cleared the specified twilight.
+         * 
+         *  @param playerStatusPtr The pointer to the PlayerStatus struct.
+         *  @param twilightNode The twilight instance to be checked.
+         */
+        bool isDarkClearLV( void* playerStatusPtr, int32_t twilightNode );
+
+        /**
+         *  @brief Checks whether or not Link has been transformed into wolf by a twilight CS
+         * 
+         *  @param playerStatusPtr The pointer to the PlayerStatus struct.
+         *  @param twilightEvent The twilight cutscene event to be checked.
+         */
+        bool isTransformLV( void* playerStatusPtr, int32_t twilightEvent );
+
+        extern uint16_t saveBitLabels[0x336]; //saveBitLabels__16dSv_event_flag_c
     }
 }  // namespace libtp::tp::d_save
 #endif

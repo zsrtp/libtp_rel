@@ -11,12 +11,12 @@
 #ifndef TP_D_COM_INF_GAME_H
 #define TP_D_COM_INF_GAME_H
 
+#include "tp/d_save.h"
+#include "tp/evt_control.h"
+#include "tp/d_stage.h"
+#include "tp/d_event.h"
+#include "tp/d_event_manager.h"
 
-#include "evt_control.h"
-#include "d_stage.h"
-#include "d_event.h"
-#include "d_event_manager.h"
-#include "d_save.h"
 
 #include <cstdint>
 
@@ -34,14 +34,14 @@ namespace libtp::tp::d_com_inf_game
     {
         /* 0x00000 */ uint8_t field_0x0[0x1404]; //dBgS mDBgS;
         /* 0x01404 */ uint8_t field_0x1404[0x2AC4]; //dCcS mDCcS;
-        /* 0x03EC8 */ libtp::tp::d_stage::dStage_startStage mStartStage; //Possibly currentStageVars
+        /* 0x03EC8 */ d_stage::dStage_startStage mStartStage; //Possibly currentStageVars
         /* 0x03ED5 */ uint8_t field_0x3ed5;  // probably padding
-        /* 0x03ED6 */ libtp::tp::d_stage::dStage_nextStage mNextStage; //Probably nextStageVars
+        /* 0x03ED6 */ d_stage::dStage_nextStage mNextStage; //Probably nextStageVars
         /* 0x03EE7 */ uint8_t field_0x3ee7;  // probably padding
         /* 0x03EE8 */ uint8_t field_0x3ee8[0xA4]; //dStage_stageDt mStageData; 
-        /* 0x03F8C */ libtp::tp::d_stage::dStage_roomControl* mRoomControl;
-        /* 0x03F90 */ libtp::tp::d_event::dEvt_control mEvent; //Probably EventSystem
-        /* 0x040C0 */ libtp::tp::d_event_manager::dEvent_manager mEvtManager; 
+        /* 0x03F8C */ d_stage::dStage_roomControl* mRoomControl;
+        /* 0x03F90 */ d_event::dEvt_control mEvent; //Probably EventSystem
+        /* 0x040C0 */ d_event_manager::dEvent_manager mEvtManager; 
         /* 0x04780 */ uint8_t field_0x4780[0x51C]; //dAttention_c mAttention;
         /* 0x04C9C */ uint8_t field_0x4c9c[0x90]; //dVibration_c mVibration;
         /* 0x04D2C */ uint8_t field_0x4d2c[4];
@@ -86,8 +86,8 @@ namespace libtp::tp::d_com_inf_game
         /* 0x04E48 */ float mCameraZoomScale;
         /* 0x04E4C */ float mCameraZoomForcus;
         /* 0x04E50 */ void* mCameraParamFileName;
-        /* 0x04E54 */ libtp::tp::c_xyz::cXyz mCameraPos;
-        /* 0x04E60 */ libtp::tp::c_xyz::cXyz mCameraTarget; //I think LinkMapVars is stored in here
+        /* 0x04E54 */ c_xyz::cXyz mCameraPos;
+        /* 0x04E60 */ c_xyz::cXyz mCameraTarget; //I think LinkMapVars is stored in here
         /* 0x04E6C */ float mCameraUnk1;
         /* 0x04E70 */ int16_t mCameraUnk2;
         /* 0x04E72 */ int16_t field_0x4e72;
@@ -236,7 +236,7 @@ namespace libtp::tp::d_com_inf_game
         /* 0x04F88 */ uint8_t field_0x4f88[4]; //JKRExpHeap* mSubExpHeap2D[2];
         /* 0x04F90 */ uint8_t field_0x4f90[4]; //JKRExpHeap* mMsgExpHeap;
         /* 0x04F94 */ char field_0x4F94[8];  // related to setWarpItemData
-        /* 0x04F9C */ libtp::tp::c_xyz::cXyz field_0x4f9c;     // related to setWarpItemData
+        /* 0x04F9C */ c_xyz::cXyz field_0x4f9c;     // related to setWarpItemData
         /* 0x04FA8 */ uint8_t  field_0x4fa8[2];
         /* 0x04FAA */ uint8_t  field_0x4faa;  // related to setWarpItemData
         /* 0x04FAB */ uint8_t  field_0x4fab;  // related to setWarpItemData
@@ -272,7 +272,7 @@ namespace libtp::tp::d_com_inf_game
 
      struct dComIfG_inf_c //Game Info
     {
-        libtp::tp::d_save::dSv_info_c save; //0 - F38
+        d_save::dSv_info_c save; //0 - F38
         dComIfG_play play; // F39 - 5F63
         uint8_t field_0x5f64[0x161AC]; //dDlst_list_c draw_list_list; 5F64 - 1C10F
         uint8_t field_0x1c110[0x1E8]; //1C110 - 1C2F7
