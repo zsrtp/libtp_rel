@@ -9,7 +9,7 @@
 
 #include <cstdint>
 
-#include "gc/OSModule.h"
+#include "gc_wii/OSModule.h"
 
 namespace libtp::tp::dynamic_link
 {
@@ -17,7 +17,7 @@ namespace libtp::tp::dynamic_link
     struct DynamicModuleControl
     {
         uint8_t unk_0[0x10];
-        gc::os_module::OSModuleInfo* moduleInfo;
+        gc_wii::os_module::OSModuleInfo* moduleInfo;
         uint8_t unk_10[0x18];
     } __attribute__( ( __packed__ ) );
 

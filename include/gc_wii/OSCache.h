@@ -6,12 +6,12 @@
  *	@author Zephiles
  *	@bug No known bugs.
  */
-#ifndef GC_OSCACHE_H
-#define GC_OSCACHE_H
+#ifndef GC_WII_OSCACHE_H
+#define GC_WII_OSCACHE_H
 
 #include <cstdint>
 
-namespace libtp::gc::os_cache
+namespace libtp::gc_wii::os_cache
 {
     extern "C"
     {
@@ -35,5 +35,5 @@ namespace libtp::gc::os_cache
         // DMAErrorHandler
         // __OSCacheInit
     }
-}     // namespace libtp::gc::os_cache
+}     // namespace libtp::gc_wii::os_cache
 #endif

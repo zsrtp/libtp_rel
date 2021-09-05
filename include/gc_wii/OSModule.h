@@ -6,12 +6,12 @@
  *	@author Zephiles
  *	@bug No known bugs.
  */
-#ifndef GC_OSMODULE_H
-#define GC_OSMODULE_H
+#ifndef GC_WII_OSMODULE_H
+#define GC_WII_OSMODULE_H
 
 #include <cstdint>
 
-namespace libtp::gc::os_module
+namespace libtp::gc_wii::os_module
 {
     struct OSModuleInfo
     {
@@ -25,5 +25,5 @@ namespace libtp::gc::os_module
         uint32_t version;
     } __attribute__( ( __packed__ ) );
 
-}     // namespace libtp::gc::os_module
+}     // namespace libtp::gc_wii::os_module
 #endif

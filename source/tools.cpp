@@ -6,7 +6,7 @@
 #include <cstring>
 
 #include "display/console.h"
-#include "gc/card.h"
+#include "gc_wii/card.h"
 #include "memory.h"
 #include "tp/JFWSystem.h"
 #include "tp/d_com_inf_game.h"
@@ -75,7 +75,7 @@ namespace libtp::tools
 
     int32_t ReadGCI( int32_t chan, const char* fileName, int32_t length, int32_t offset, void* buffer )
     {
-        using namespace libtp::gc::card;
+        using namespace libtp::gc_wii::card;
 
         CARDFileInfo* fileInfo = new CARDFileInfo();
         uint8_t* workArea = new uint8_t[CARD_WORKAREA_SIZE];

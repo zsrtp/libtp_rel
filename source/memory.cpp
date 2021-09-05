@@ -3,7 +3,7 @@
 
 #include <cstring>
 
-#include "gc/OSCache.h"
+#include "gc_wii/OSCache.h"
 
 namespace libtp::memory
 {
@@ -11,7 +11,7 @@ namespace libtp::memory
 
     void clear_DC_IC_Cache( void* ptr, uint32_t size )
     {
-        gc::os_cache::DCFlushRange( ptr, size );
-        gc::os_cache::ICInvalidateRange( ptr, size );
+        gc_wii::os_cache::DCFlushRange( ptr, size );
+        gc_wii::os_cache::ICInvalidateRange( ptr, size );
     }
 }     // namespace libtp::memory

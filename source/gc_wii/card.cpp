@@ -1,8 +1,8 @@
-#include "gc/card.h"
+#include "gc_wii/card.h"
 
 #include <cstring>
 
-namespace libtp::gc::card
+namespace libtp::gc_wii::card
 {
     int32_t __CARDFreeBlock( int32_t chan, uint16_t block, CARDCallback callback )
     {
@@ -150,4 +150,4 @@ namespace libtp::gc::card
         }
         return ret;
     }
-}     // namespace libtp::gc::card
+}     // namespace libtp::gc_wii::card
