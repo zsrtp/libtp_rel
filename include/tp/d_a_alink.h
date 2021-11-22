@@ -44,6 +44,15 @@ namespace libtp::tp::d_a_alink
 
     static_assert( sizeof( ClimbVars ) == 0x70 );
 
+    struct WallMoveVars
+    {
+        float moveSidewaysStickNotHeld;     // default = 0.8
+        float movesidewaysStickHeld;        // default = 1.1
+        uint8_t unk[0xC];
+    } __attribute__( ( __packed__ ) );
+
+    static_assert( sizeof( WallMoveVars ) == 0x14 );
+
     /**
      *	@brief These values contain the values for Link's state
      *
@@ -155,6 +164,8 @@ namespace libtp::tp::d_a_alink
 
         extern ClimbVars climbVars;
         extern LinkStatus* linkStatus;
+        extern WallMoveVars wallMoveVars;     // US Address = 0x8038E1E0
+        extern uint8_t getSeType[0x100];
     }
 }     // namespace libtp::tp::d_a_alink
 #endif

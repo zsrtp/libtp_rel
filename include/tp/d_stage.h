@@ -1,4 +1,4 @@
-  
+
 /**	@file d_stage.h
  *	@brief Stage related functions and fields
  *
@@ -19,17 +19,16 @@ namespace libtp::tp::d_stage
     struct dStage_roomControl
     {
         uint8_t field_0x0[164];
-    } __attribute__((__packed__));
+    } __attribute__( ( __packed__ ) );
 
     struct dStage_startStage
     {
-        
         /* 0x0 */ char mStage[8];
         /* 0x8 */ int16_t mPoint;
         /* 0xA */ int8_t mRoomNo;
         /* 0xB */ int8_t mLayer;
-        /* 0xC */ int8_t mDarkArea;    
-    } __attribute__((__packed__));
+        /* 0xC */ int8_t mDarkArea;
+    } __attribute__( ( __packed__ ) );
 
     struct dStage_nextStage
     {
@@ -42,7 +41,7 @@ namespace libtp::tp::d_stage
         int8_t enabled;
         uint8_t wipe;
         uint8_t wipe_speed;
-    } __attribute__((__packed__));
+    } __attribute__( ( __packed__ ) );
 
     extern "C"
     {
@@ -104,5 +103,5 @@ namespace libtp::tp::d_stage
          */
         extern void* mStatus_roomControl;
     }
-}  // namespace libtp::tp::d_stage
+}     // namespace libtp::tp::d_stage
 #endif

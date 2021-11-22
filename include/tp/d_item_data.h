@@ -52,9 +52,9 @@ namespace libtp::tp::d_item_data
 
     extern "C"
     {
-        extern ItemResource item_resource[255];      // 0x803AC5A0 in US
-        extern FieldItemRes field_item_res[255];     // 0x803ADD88 in US
-        extern ItemInfo item_info[255];              // 0x803AED78 in US
+        extern ItemResource item_resource[255];
+        extern FieldItemRes field_item_res[255];
+        extern ItemInfo item_info[255];
     }
 }     // namespace libtp::tp::d_item_data
 #endif

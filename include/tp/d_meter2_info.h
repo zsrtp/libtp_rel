@@ -9,6 +9,7 @@
 #define TP_D_METER2_INFO_H
 
 #include "tp/d_com_inf_game.h"
+#include "tp/d_msg_object.h"
 
 namespace libtp::tp::d_meter2_info
 {
