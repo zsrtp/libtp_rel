@@ -81,12 +81,12 @@ namespace libtp::tp::f_op_actor_mng
          */
         int32_t createItemForBoss( const float pos[3],
                                    int32_t item,
-                                   int32_t unk3,
-                                   const float unk4[3],
-                                   const float unk5[3],
+                                   int32_t roomNo,
+                                   const int16_t rot[3],
+                                   const float scale[3],
                                    float unk6,
                                    float unk7,
-                                   int32_t unk8 );
+                                   int32_t parameters );
 
         /**
          *	@brief Runs when the game creates a mini-boss specific item (e.g.
@@ -157,6 +157,26 @@ namespace libtp::tp::f_op_actor_mng
                             const int16_t rot[3],
                             const float scale[3],
                             int32_t itemAction );
+
+        /**
+         *	@brief Spawns an actor given a specific index
+         *
+         *	@param type type of item being spawned
+         *	@param params paramOne, paramTwo, membitFlag, item; Different for each type
+         *	@param pos the position of the the actor spawned
+         *	@param roomNo the current room number
+         *	@param rot the rotation of the actor
+         *	@param scale the scale of the actor
+         *	@param unk9 Unknown
+         *	@return Unknown use.
+         */
+        int32_t fopAcM_create( int16_t type,
+                               uint32_t params,
+                               const float pos[3],
+                               int32_t roomNo,
+                               const int16_t rot[3],
+                               const float scale[3],
+                               int8_t unk9 );
     }
 }     // namespace libtp::tp::f_op_actor_mng
 #endif

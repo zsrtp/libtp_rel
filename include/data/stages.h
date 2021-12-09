@@ -349,192 +349,194 @@ namespace libtp::data::stage
 
     enum faronStateIDs : uint8_t
     { 
-        Talo_Captured = 0x1,
-        Forest_Temple_Completed = 0x2,
-        MDH_Completed = 0x5
+        Faron_Talo_Captured = 0x1,
+        Faron_Forest_Temple_Completed = 0x2,
+        Faron_MDH_Completed = 0x3,
+        Faron_Snowpeak_Completed = 0x5
     };
 
     enum kakarikoStateIDs : uint8_t
     { 
-        KB1_Active = 0x1,
-        KB1_Completed = 0x2,
-        KB1_Completed_Night = 0x3,
-        Goron_Mines_Completed = 0xC,
-        Zora_Escort_Cleared = 0x4
+        Kakariko_KB1_Active = 0x1,
+        Kakariko_KB1_Completed = 0x2,
+        Kakariko_KB1_Completed_Night = 0x3,
+        Kakariko_Goron_Mines_Completed = 0xC,
+        Kakariko_Zora_Escort_Cleared = 0x4
     };
 
     enum kakarikoInteriorStateIDs : uint8_t
     { 
-        KB1_Active = 0x1,
-        KB1_Completed = 0x2,
-        KB1_Completed_Night = 0x3,
-        Lakebed_Completed = 0x4,
-        Lakebed_Completed_Night = 0x5
+        Kakariko_Int_KB1_Active = 0x1,
+        Kakariko_Int_KB1_Completed = 0x2,
+        Kakariko_Int_KB1_Completed_Night = 0x3,
+        Kakariko_Int_Lakebed_Completed = 0x4,
+        Kakariko_Int_Lakebed_Completed_Night = 0x5
     };
 
     enum deathMountainStateIDs : uint8_t
     { 
-        Goron_Mines_Completed = 0x2
+        Death_Mountain_Goron_Mines_Completed = 0x2
     };
 
     enum deathMountainInteriorStateIDs : uint8_t
     { 
-        Goron_Mines_Completed = 0x1,
-        Master_Sword_CS_Watched = 0x2,
-        Ilia_Given_Charm = 0x3,
-        Temple_of_Time_Completed = 0x4
+        Death_Mountain_Int_Goron_Mines_Completed = 0x1,
+        Death_Mountain_Int_Master_Sword_CS_Watched = 0x2,
+        Death_Mountain_Int_Ilia_Given_Charm = 0x3,
+        Death_Mountain_Int_Temple_of_Time_Completed = 0x4
     };
 
     enum lakeHyliaStateIDs : uint8_t
     { 
-        Warped_Cannon_To_Lake = 0x1,
-        Lakebed_Completed = 0x2,
-        Cannon_Repaired = 0x3
-    };
-
-    enum lakeHyliaInteriorStateIDs : uint8_t
-    { 
-        MDH_Started = 0x2,
-        Lakebed_Completed = 0x9
+        Lake_Hylia_Warped_Cannon_To_Lake = 0x1,
+        Lake_Hylia_Lakebed_Completed = 0x2,
+        Lake_Hylia_Cannon_Repaired = 0x3,
+        Lake_Int_MDH_Started = 0x2,
+        Lake_Int_Lakebed_Completed = 0x9
     };
 
     enum castleTownStateIDs : uint8_t
     { 
-        West_MDH_Clear = 0x0,
-        Finished_Zora_Escort = 0x1,
-        Town_MDH_Clear = 0x1,
-        Lakebed_Completed = 0x2
+        Castle_Town_West_MDH_Clear = 0x0,
+        Castle_Town_Finished_Zora_Escort = 0x1,
+        Castle_Town_MDH_Clear = 0x1,
+        Castle_Town_Lakebed_Completed = 0x2
     };
 
     enum zorasDomainStateIDs : uint8_t
     { 
-        Snowpeak_Ruins_Completed = 0x2
+        Domain_Snowpeak_Ruins_Completed = 0x2,
+        Domain_Meteor_Warped = 0xD
     };
 
     enum upperZorasRiverStateIDs : uint8_t
     { 
-        Iza_1_Started = 0x1
+        Upper_Zoras_River_Iza_1_Started = 0x1
     };
 
     enum gerudoDesertStateIDs : uint8_t
     { 
-        Entrance_Cutscene_Watched = 0x0,
-        Entrance_Cutscene_Not_Watched = 0x8
+        Desert_Entrance_Cutscene_Watched = 0x0,
+        Desert_Entrance_Cutscene_Not_Watched = 0x8
     };
 
     enum zorasRiverStateIDs : uint8_t
     { 
-        Iza_1_Completed = 0x1,
-        Iza_1_Started = 0x2
+        Zoras_River_Iza_1_Completed = 0x1,
+        Zoras_River_Iza_1_Started = 0x2
     };
 
     enum ordonVillageStateIDs : uint8_t
     { 
-        Goats_1_Completed = 0x0,
-        Link_House_Talo_Rescued = 0x0,
-        Finished_Sewers = 0x1,
-        Faron_Twilight_Cleared = 0x2,
-        Faron_Twilight_Cleared_Night = 0x3,
-        Link_House_New_Game = 0x3,
-        Link_House_Goats_1_Completed = 0x4,
-        Epona_Tamed = 0x4,
-        Epona_Tamed_Night = 0x5,
-        New_Game = 0x6,
-        Talo_Rescued = 0x7
+        Ordon_Goats_1_Completed = 0x0,
+        Ordon_Link_House_Talo_Rescued = 0x0,
+        Ordon_Finished_Sewers = 0x1,
+        Ordon_Faron_Twilight_Cleared = 0x2,
+        Ordon_Faron_Twilight_Cleared_Night = 0x3,
+        Ordon_Link_House_New_Game = 0x3,
+        Ordon_Link_House_Goats_1_Completed = 0x4,
+        Ordon_Epona_Tamed = 0x4,
+        Ordon_Epona_Tamed_Night = 0x5,
+        Ordon_New_Game = 0x6,
+        Ordon_Talo_Rescued = 0x7
     };
 
     enum ordonInteriorsStateIDs : uint8_t
     { 
-        Finished_Sewers = 0x1,
-        Faron_Twilight_Cleared = 0x2,
-        KB1_Completed = 0x3
+        Ordon_Int_Finished_Sewers = 0x1,
+        Ordon_Int_Faron_Twilight_Cleared = 0x2,
+        Ordon_Int_KB1_Completed = 0x3
     };
 
     enum ordonSpringStateIDs : uint8_t
     { 
-        Talo_Rescued = 0x0,
-        New_Game = 0x1,
-        Faron_Twilight_Cleared = 0x2,
-        Sword_Tutorial_Completed = 0x3,
-        Finished_Sewers = 0x4
+        Ordon_Spring_Talo_Rescued = 0x0,
+        Ordon_Spring_New_Game = 0x1,
+        Ordon_Spring_Faron_Twilight_Cleared = 0x2,
+        Ordon_Spring_Sword_Tutorial_Completed = 0x3,
+        Ordon_Spring_Finished_Sewers = 0x4
     };
 
     enum ordonRanchStateIDs : uint8_t
     { 
-        Finished_Sewers = 0x1,
-        Faron_Twilight_Cleared = 0x2,
-        Faron_Twilight_Cleared_Night = 0x3,
-        Talo_Rescued = 0x9,
-        Goats_2_Completed = 0xA,
-        Goats_1_Completed = 0xB,
-        New_Game = 0xC
+        Ordon_Ranch_Finished_Sewers = 0x1,
+        Ordon_Ranch_Faron_Twilight_Cleared = 0x2,
+        Ordon_Ranch_Faron_Twilight_Cleared_Night = 0x3,
+        Ordon_Ranch_Talo_Rescued = 0x9,
+        Ordon_Ranch_Goats_2_Completed = 0xA,
+        Ordon_Ranch_Goats_1_Completed = 0xB,
+        Ordon_Ranch_New_Game = 0xC
     };
 
     enum hyruleFieldStateIDs : uint8_t
     { 
-        New_Game = 0x0,
-        MDH_Started = 0x4,
-        MDH_Completed = 0x6
-
+        Hyrule_Field_New_Game = 0x0,
+        Hyrule_Field_MDH_Started = 0x4,
+        Hyrule_Field_MDH_Completed = 0x6,
+        Hyrule_Field_Meteor_Warped = 0xD
     };
 
     enum outsideCastleTownStateIDs : uint8_t
     { 
-        New_Game = 0x0,
-        MDH_Completed_West = 0x0,
-        Talked_To_Louise_Before_Statue = 0x1,
-        MDH_Started = 0x4,
-        MDH_Completed = 0x6,
-        Got_Wooden_Statue_South = 0x6
+        Outside_Castle_Town_New_Game = 0x0,
+        Outside_Castle_Town_MDH_Completed_East = 0x0,
+        Outside_Castle_Town_Talked_To_Louise_Before_Statue = 0x1,
+        Outside_Castle_Town_MDH_Started = 0x4,
+        Outside_Castle_Town_MDH_Completed = 0x6,
+        Outside_Castle_Town_Got_Wooden_Statue_South = 0x6
     };
 
     enum hiddenVillageStateIDs : uint8_t
     { 
-        New_Game = 0x0,
-        Showed_Ilia_Charm = 0x1
-
+        Hidden_Village_New_Game = 0x0,
+        Hidden_Village_Showed_Ilia_Charm = 0x1
     };
 
     enum castleTownInteriorsStateIDs : uint8_t
     { 
-        New_Game = 0x0,
-        Jovani_MDH_Completed = 0x0,
-        Castle_Town_Malo_Mart = 0x1,
-        Jovani_New_Game = 0x1
+        Castle_Town_Int_Twilight_Cleared = 0x0,
+        Castle_Town_Int_Lakebed_Completed = 0x2,
+        Castle_Town_Int_Watched_MS_Cutscene = 0x4
+    };
 
+    enum castleTownShopsStateIDs : uint8_t
+    { 
+        Castle_Town_Int_New_Game = 0x0,
+        Castle_Town_Int_Jovani_MDH_Completed = 0x0,
+        Castle_Town_Int_Malo_Mart = 0x1,
+        Castle_Town_Int_Jovani_New_Game = 0x1,
     };
 
     enum sacredGroveStateIDs : uint8_t
-    { 
+    {
         Grove_2 = 0x2
     };
 
     enum bulblinCampStateIDs : uint8_t
     { 
-        New_Game = 0x0,
-        KB3_Completed = 0x1,
-        Watched_Mirror_Cutscene = 0x3
-
+        Bulblin_Camp_New_Game = 0x0,
+        Bulblin_Camp_KB3_Completed = 0x1,
+        Bulblin_Camp_Stallord_Defeated = 0x2,
+        Bulblin_Camp_Watched_Mirror_Cutscene = 0x3
     };
 
     enum faronWoodsCaveStateIDs : uint8_t
     { 
-        New_Game = 0x0,
-        Talo_Rescued = 0x1,
+        Faron_Woods_Cave_New_Game = 0x0,
+        Faron_Woods_Cave_Talo_Rescued = 0x1,
     };
 
     enum sewersStateIDs : uint8_t
     { 
-        New_Game = 0x0,
-        Midna_On_Back = 0xD
-
+        Sewers_New_Game = 0x0,
+        Sewers_First_Time = 0xB,
+        Sewers_Midna_On_Back = 0xD
     };
 
     enum hyruleCastleStateIDs : uint8_t
     { 
-        Exterior_State = 0x0,
-        Interior_State = 0x1
-
+        Hyrule_Castle_Exterior_State = 0x0,
+        Hyrule_Castle_Interior_State = 0x1
     };
 
     enum fishingHoleStateIDs : uint8_t
@@ -543,7 +545,13 @@ namespace libtp::data::stage
         Fishing_Hole_Summer = 0x1,
         Fishing_Hole_Autumn = 0x2,
         Fishing_Hole_Winter = 0x3,
+    };
 
+    enum twilightStateIDs : uint8_t
+    {
+        Default_Twilight_State = 0xE,
+        Palace_of_Twilight_Zant_Fight = 0x0,
+        Palace_of_Twilight_Zant_Defeated = 0x1,
     };
 }     // namespace libtp::data::stage
 #endif
