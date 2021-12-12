@@ -28,7 +28,8 @@ namespace libtp::tp::d_item
         int32_t checkItemGet( uint8_t item, int32_t defaultValue );
 
         /**
-         *	@brief Initializes the dSv_player_get_item_c function with the current value
+         *	@brief Initializes the dSv_player_get_item_c function with the current
+         *value
          *
          *	@param item id of the item being recieved
          */

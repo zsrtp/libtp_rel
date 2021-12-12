@@ -1,5 +1,6 @@
 /**	@file dzx.h
- *	@brief dzr related definitions and structs, mainly used for working with actors
+ *	@brief dzr related definitions and structs, mainly used for working with
+ *actors
  *
  *	@author AECX
  *  @author Zephiles

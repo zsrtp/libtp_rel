@@ -20,7 +20,7 @@ namespace libtp::tp::resource
         char parseCharacter_1Byte( const char** text );
     }
 
-    // Macros for custom messages
+// Macros for custom messages
 #define MSG_BEGIN( name ) char* name =
 
 #define MSG_BEGIN_CONST( name ) const char* name =
@@ -31,7 +31,7 @@ namespace libtp::tp::resource
 
 #define MSG_COLOR( id ) "\x1A\x06\xFF\x00\x00" id
 
-    // Message Text Color Values
+// Message Text Color Values
 #define MSG_COLOR_WHITE "\x00"
 #define MSG_COLOR_RED "\x01"
 #define MSG_COLOR_GREEN "\x02"
