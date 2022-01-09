@@ -15,6 +15,7 @@ namespace libtp::patch
 {
     void writeBranch( void* ptr, void* destination );
     void writeBranchLR( void* ptr, void* destination );
+    void writeBranchBL( void* ptr, void* destination );
     void writeBranchMain( void* ptr, void* destination, uint32_t branch );
 
     template<typename Func, typename Dest>

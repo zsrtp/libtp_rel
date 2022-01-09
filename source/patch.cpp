@@ -18,6 +18,12 @@ namespace libtp::patch
         writeBranchMain( ptr, destination, branch );
     }
 
+    void writeBranchBL( void* ptr, void* destination )
+    {
+        uint32_t branch = 0x48000001;     // bl
+        writeBranchMain( ptr, destination, branch );
+    }
+
     void writeBranchMain( void* ptr, void* destination, uint32_t branch )
     {
         uint32_t delta = reinterpret_cast<uint32_t>( destination ) - reinterpret_cast<uint32_t>( ptr );
