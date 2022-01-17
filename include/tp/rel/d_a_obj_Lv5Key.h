@@ -19,7 +19,7 @@
 // handles communicating that Link can open the door. For more information, see
 // https://icogn.github.io/tp-docs/docs/technical-explanations/sprlocksoftlock.
 
-namespace libtp::tp::d_a_obj_Lv5Key
+namespace libtp::tp::rel::d_a_obj_Lv5Key
 {
     struct daObjLv5Key_c
     {
@@ -121,6 +121,6 @@ namespace libtp::tp::d_a_obj_Lv5Key
     //   offset 0x14 (abs 0x11B8) which is 0
     // }
     static_assert( sizeof( daObjLv5Key_c ) == 0x97C );
-}     // namespace libtp::tp::d_a_obj_Lv5Key
+}     // namespace libtp::tp::rel::d_a_obj_Lv5Key
 
 #endif
