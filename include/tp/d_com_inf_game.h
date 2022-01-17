@@ -34,7 +34,6 @@ namespace libtp::tp::d_com_inf_game
         /* 0x00000 */ uint8_t field_0x0[0x1404];                  // dBgS mDBgS;
         /* 0x01404 */ uint8_t field_0x1404[0x2AC4];               // dCcS mDCcS;
         /* 0x03EC8 */ d_stage::dStage_startStage mStartStage;     // Possibly currentStageVars
-        /* 0x03ED5 */ uint8_t field_0x3ed5;                       // probably padding
         /* 0x03ED6 */ d_stage::dStage_nextStage mNextStage;       // Probably nextStageVars
         /* 0x03EE7 */ uint8_t field_0x3ee7;                       // probably padding
         /* 0x03EE8 */ uint8_t field_0x3ee8[0xA4];                 // dStage_stageDt mStageData;
@@ -271,8 +270,8 @@ namespace libtp::tp::d_com_inf_game
 
     struct dComIfG_inf_c     // Game Info
     {
-        d_save::dSv_info_c save;           // 0 - F38
-        dComIfG_play play;                 // F39 - 5F63
+        d_save::dSv_info_c save;           // 0 - F37
+        dComIfG_play play;                 // F38 - 5F63
         uint8_t field_0x5f64[0x161AC];     // dDlst_list_c draw_list_list; 5F64 - 1C10F
         uint8_t field_0x1c110[0x1E8];      // 1C110 - 1C2F7
         uint8_t field_0x1c2f8[0x1B00];     // dRes_control_c mResControl; 1C2F8 - 1DDF7

@@ -28,19 +28,20 @@ namespace libtp::tp::d_save
     {
         uint8_t unk0;
         uint8_t unk1[3];
-        uint32_t unk4;
-        uint32_t unk8;
-        uint32_t unk12;
+        uint32_t mStarTime;
+        uint32_t umBalloonScore;
+        uint32_t mRaceGameTime;
         uint32_t unk16;
         uint32_t unk20;
     } __attribute__( ( __packed__ ) );
 
     struct dSv_danBit_c
     {
-        int8_t unk0;
+        int8_t mStageNo;
         uint8_t unk1;
         uint8_t unk2[2];
-        uint32_t unk4[6];
+        uint32_t mSwitch[2];
+        uint32_t mItem[4];
         uint16_t unk28[16];
     } __attribute__( ( __packed__ ) );
 
@@ -55,14 +56,25 @@ namespace libtp::tp::d_save
         /* 0x18 */ float mLastSpeedF;
         /* 0x1C */ uint32_t mLastMode;
         /* 0x20 */ int16_t mLastAngleY;
+        /* 0x22 */ uint8_t padding[2];
+    } __attribute__( ( __packed__ ) );
+
+    struct dSv_turnRestart_camera_c
+    {
+        /* 0x00 */ c_xyz::cXyz mCameraCtr;
+        /* 0x0C */ c_xyz::cXyz mCameraEye;
+        /* 0x18 */ c_xyz::cXyz mCameraUp;
     } __attribute__( ( __packed__ ) );
 
     struct dSv_turnRestart_c
     {
         libtp::tp::c_xyz::cXyz position;
-        uint32_t unk12;
-        short angle;
-        int8_t unk18;
+        uint32_t mParam;
+        uint16_t mAngleY;
+        int16_t unk18;
+        dSv_turnRestart_camera_c mCamera;
+        void* mCameraFvy;
+
     } __attribute__( ( __packed__ ) );
 
     struct dSv_player_status_a_c
@@ -73,14 +85,12 @@ namespace libtp::tp::d_save
         uint16_t maxLanternOil;
         uint16_t currentLanternOil;
         uint8_t unk10;     // Possibly an unused Wii equip slot.
-        uint8_t selectItem[3];
-        uint8_t mixItem[3];
-        uint8_t unk17;     // Possibly an unused Wii combo equip slot.
-        uint8_t unk18;
+        uint8_t selectItem[4];
+        uint8_t mixItem[4];
         uint8_t equipment[6];
         libtp::data::items::Wallets currentWallet;
-        uint8_t unk26;
-        uint8_t unk27;
+        uint8_t mMaxMagic;
+        uint8_t mMagic;
         uint8_t magicFlag;
         uint8_t unk29;
         uint8_t currentForm;
@@ -96,17 +106,16 @@ namespace libtp::tp::d_save
         uint8_t dark_clear_level_flag;
         uint16_t unk10;
         float skyAngle;
-        uint16_t unk16;
+        uint16_t mDate;
         uint8_t unk18[3];
         uint8_t padding21[3];
     } __attribute__( ( __packed__ ) );
 
     struct dSv_horse_place_c
     {
-        float epona_x_pos;
-        float epona_y_pos;
-        float epona_z_pos;
+        c_xyz::cXyz mPos;
         uint16_t epona_angle;
+        char epona_current_stage[8];
         uint8_t epona_spawn_id;
         uint8_t epona_room_id;
     } __attribute__( ( __packed__ ) );
@@ -122,28 +131,24 @@ namespace libtp::tp::d_save
 
     struct dSv_player_field_last_stay_info_c
     {
-        float player_last_x_pos;
-        float player_last_y_pos;
-        float player_last_z_pos;
+        c_xyz::cXyz mPos;
         uint16_t player_last_angle;
         char player_last_stage[8];
         uint8_t player_last_spawn_id;
         uint8_t player_last_room_id;
-        uint8_t unk24;
+        bool mFieldDataExistFlag;
         uint8_t player_last_region;
         uint8_t unk26[2];
     } __attribute__( ( __packed__ ) );
 
     struct dSv_player_last_mark_info_c
     {
-        float ooccoo_x_pos;
-        float ooccoo_y_pos;
-        float ooccoo_z_pos;
+        c_xyz::cXyz mPos;
         uint16_t ooccoo_angle;
         char ooccoo_stage[8];
         uint8_t ooccoo_spawn_id;
         uint8_t ooccoo_room_id;
-        char unk24;
+        char mWarpAcceptStage;
         uint8_t unk25[3];
     } __attribute__( ( __packed__ ) );
 
@@ -155,8 +160,7 @@ namespace libtp::tp::d_save
 
     struct dSv_player_get_item_c
     {
-        uint32_t pause_menu_bit_fields[4];
-        uint8_t padding[16];     // I doubt this is correct as the flags for golden bugs are in here as well.
+        uint32_t mItemsFlags[8];
     } __attribute__( ( __packed__ ) );
 
     struct dSv_player_item_record_c
@@ -165,9 +169,9 @@ namespace libtp::tp::d_save
         uint8_t bomb_bag_1_ammo;
         uint8_t bomb_bag_2_ammo;
         uint8_t bomb_bag_3_ammo;
-        uint8_t unk4_ammo[4];
+        uint8_t mBottleNum[4];
         uint8_t slingshot_ammo;
-        uint8_t unk5_ammo;
+        uint8_t unk5_ammo[3];
     } __attribute__( ( __packed__ ) );
 
     struct dSv_player_item_max_c
@@ -213,7 +217,7 @@ namespace libtp::tp::d_save
     {
         uint32_t letter_get_bitfields[2];
         uint32_t letter_read_bitfields[2];
-        uint8_t padding[64];
+        uint8_t mGetNumber[64];
     } __attribute__( ( __packed__ ) );
 
     struct dSv_fishing_info_c
@@ -277,32 +281,32 @@ namespace libtp::tp::d_save
         uint8_t vibration_on_off;     // 0 is Off. 1 is On
         uint8_t motion_controls;      // 0 is On. 1 is Off.
         uint8_t brightness_level;     // 1 is darkest. 6 is brightest.
-        uint16_t unk6;
-        uint8_t unk8;
-        uint8_t unk9;
+        uint16_t mCalibrateDist;
+        uint8_t mCalValue;
+        bool mShortCut;
         uint8_t camera_aiming_options;     // Default is 8. |80 is third person aiming. |8 inverts the vertical swiming axis. |4
                                            // inverts horizontal swimming axis. |2 inverts vertical camera axis. |1 inverts
                                            // horizontal axis.
-        uint8_t unk11;
+        bool mPointer;
     } __attribute__( ( __packed__ ) );
 
     struct dSv_zoneBit_c
     {
-        uint8_t unk0[4];
+        uint16_t mSwitch[2];
         uint16_t room_switch;
-        uint16_t unk6[2];
+        uint16_t mItem[2];
         uint16_t room_item;
         uint16_t unk12;
     } __attribute__( ( __packed__ ) );
 
     struct dSv_zoneActor_c
     {
-        uint32_t unk0[4];
+        uint32_t mActorFlags[4];
     } __attribute__( ( __packed__ ) );
 
     struct dSv_zone_c
     {
-        uint8_t unk0;
+        uint8_t mRoomNo;
         uint8_t unk1;
         dSv_zoneBit_c zone_bit;
         dSv_zoneActor_c zone_actor;
@@ -310,12 +314,8 @@ namespace libtp::tp::d_save
 
     struct dSv_memBit_c
     {
-        uint32_t area_flags_bitfields1[2];
-        uint32_t area_flags_bitfields2[4];
-        uint32_t rupee_flags_bitfields;
-        uint8_t small_keys;
-        uint8_t dungeon_flags;
-        uint8_t padding[2];
+        uint8_t memoryFlags[0x20];
+        ;
     } __attribute__( ( __packed__ ) );
 
     struct dSv_memory_c
@@ -349,54 +349,7 @@ namespace libtp::tp::d_save
         dSv_player_c player;
         uint8_t field_0x1ec[4];
         dSv_memory_c area_flags[32];
-        dSv_memory2_c ordon_ranch_map_flags;
-        dSv_memory2_c ordon_village_map_flags;
-        dSv_memory2_c ordon_spring_map_flags;
-        dSv_memory2_c ordon_interiors_map_flags;
-        dSv_memory2_c unk4;
-        dSv_memory2_c sewers_map_flags;
-        dSv_memory2_c faron_woods_map_flags;
-        dSv_memory2_c coro_shop_map_flags;
-        dSv_memory2_c sacred_grove_map_flags;
-        dSv_memory2_c kakariko_village_map_flags;
-        dSv_memory2_c death_mountain_map_flags;
-        dSv_memory2_c kakariko_graveyard_map_flags;
-        dSv_memory2_c kakariko_interiors_map_flags;
-        dSv_memory2_c zoras_river_map_flags;
-        dSv_memory2_c zoras_domain_map_flags;
-        dSv_memory2_c snowpeak_map_flags;
-        dSv_memory2_c lake_hylia_map_flags;
-        dSv_memory2_c castle_town_map_flags;
-        dSv_memory2_c desert_map_flags;
-        dSv_memory2_c unk19[2];
-        dSv_memory2_c hyrule_field_map_flags;
-        dSv_memory2_c forest_temple_map_flags;
-        dSv_memory2_c goron_mines_map_flags;
-        dSv_memory2_c lakebed_temple_map_flags;
-        dSv_memory2_c arbiters_grounds_map_flags;
-        dSv_memory2_c snowpeak_ruins_map_flags;
-        dSv_memory2_c temple_of_time_map_flags;
-        dSv_memory2_c city_in_the_sky_map_flags;
-        dSv_memory2_c palace_of_twilight_map_flags;
-        dSv_memory2_c hyrule_castle_map_flags;
-        dSv_memory2_c death_mountain_interiors_map_flags;
-        dSv_memory2_c castle_town_interiors_map_flags;
-        dSv_memory2_c fishing_pond_map_flags;
-        dSv_memory2_c hidden_village_map_flags;
-        dSv_memory2_c hidden_village_interiors_map_flags;
-        dSv_memory2_c light_arrow_cutscene_map_flags;
-        dSv_memory2_c hyrule_castle_cutscene_map_flags;
-        dSv_memory2_c shades_realm_map_flags;
-        dSv_memory2_c fishing_pond_interiors_map_flags;
-        dSv_memory2_c ice_block_cave_map_flags;
-        dSv_memory2_c cave_of_ordeals_map_flags;
-        dSv_memory2_c gorge_lantern_cave_map_flags;
-        dSv_memory2_c lake_hylia_lantern_cave_map_flags;
-        dSv_memory2_c goron_stockcave_map_flags;
-        dSv_memory2_c grotto_map_flags;
-        dSv_memory2_c unk46[4];
-        dSv_memory2_c faron_woods_cave_map_flags;
-        dSv_memory2_c unk51[13];
+        dSv_memory2_c map_flags[64];
         dSv_event_c event_flags;
         uint8_t unk2288[80];
         dSv_MiniGame_c minigame_flags;
@@ -410,12 +363,14 @@ namespace libtp::tp::d_save
         dSv_zone_c zones[32];               // 9B4 - DB3
         dSv_restart_c restart;              // DB4 - DD7
         dSv_event_c events;                 // DD8 - ED7
-        dSv_turnRestart_c turn_restart;     // ED8 - EEA
-        uint8_t unk1[0x3D];                 // EEB - F27
-        uint32_t saveTotalTime;             // F28
-        uint32_t saveStartTime;             // F2C
-        uint32_t unkF30;                    // F30
-        uint32_t unkF34;                    // F34
+        dSv_turnRestart_c turn_restart;     // ED8 - F13
+        uint8_t unkf14[0x4];                // F14 - F17
+        uint8_t mDataNum;                   // F18
+        uint8_t mNewFile;                   // F19
+        uint8_t mNoFile;                    // F1A
+        uint8_t unkf1b[13];                 // F1B-F27
+        int64_t mStartTime;                 // F28
+        int64_t mSaveTotalTime;             // F30
     } __attribute__( ( __packed__ ) );
 
     extern "C"

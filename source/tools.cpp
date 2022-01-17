@@ -30,22 +30,23 @@ namespace libtp::tools
         return ( sum2 << 8 ) | sum1;
     }
 
-    //This entire function will need to be re-looked at now that a lot of defintions are different. UPDATE: should be better. updated data types in libtp
+    // This entire function will need to be re-looked at now that a lot of defintions are different. UPDATE: should be better.
+    // updated data types in libtp
     void TriggerSaveLoad( const char* stage, uint8_t room, uint8_t spawn, uint8_t state, uint8_t event )
     {
         using namespace libtp::tp::d_com_inf_game;
 
         dComIfG_inf_c* gameInfo = &dComIfG_gameInfo;
-        strcpy( gameInfo->play.mNextStage.mStage, stage );
-        gameInfo->play.mNextStage.mRoomNo = room;
-        gameInfo->play.mNextStage.mPoint = spawn;
-        gameInfo->play.mNextStage.mLayer = state;
+        strcpy( gameInfo->play.mNextStage.stageValues.mStage, stage );
+        gameInfo->play.mNextStage.stageValues.mRoomNo = room;
+        gameInfo->play.mNextStage.stageValues.mPoint = spawn;
+        gameInfo->play.mNextStage.stageValues.mLayer = state;
 
         gameInfo->play.mEvent.mOrder[0].mEventInfoIdx = event;
         gameInfo->save.restart.mLastMode = 0;
-        gameInfo->play.mNextStage.mPoint = 0;
+        gameInfo->play.mNextStage.stageValues.mPoint = 0;
         gameInfo->save.restart.mRoomParam = 0;
-        gameInfo->play.mEvent.mOrder[0].mEventId = 0xFFFF; //immediateControl
+        gameInfo->play.mEvent.mOrder[0].mEventId = 0xFFFF;     // immediateControl
         gameInfo->play.mNextStage.wipe_speed = 0x13;
 
         gameInfo->play.mNextStage.wipe = true;
@@ -92,7 +93,6 @@ namespace libtp::tools
 
         // Check if card is valid
         result = CARDProbeEx( chan, NULL, NULL );
-
         if ( result == CARD_RESULT_READY )
         {
             result = CARDMount( chan,
