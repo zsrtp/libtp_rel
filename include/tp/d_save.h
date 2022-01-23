@@ -71,7 +71,8 @@ namespace libtp::tp::d_save
         libtp::tp::c_xyz::cXyz position;
         uint32_t mParam;
         uint16_t mAngleY;
-        int16_t unk18;
+        int8_t unk18;
+        uint8_t padding;
         dSv_turnRestart_camera_c mCamera;
         void* mCameraFvy;
 
