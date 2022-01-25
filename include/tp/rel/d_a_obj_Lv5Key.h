@@ -25,7 +25,7 @@ namespace libtp::tp::rel::d_a_obj_Lv5Key
 {
     class daObjLv5Key_c: public libtp::tp::f_op_actor::fopAc_ac_c
     {
-        uint8_t unk_568[0x3DC];
+        /* 0x568 */ uint8_t unk_0x568[0x3DC];
 
         // 0x56C Z2SoundObjSimple*
         // 0x594 J3DFrameCtrl* - used with Open animation
@@ -35,6 +35,8 @@ namespace libtp::tp::rel::d_a_obj_Lv5Key
         //   offset 0x14 (abs 0x60C) dBgS_PolyPassChk*
         //   offset 0x2C (abs 0x624) - bit 26 set indicates collided with ground
         // 0x7EC dCcD_GStts*
+
+        /* 0x944 */ uint8_t unk_0x944;     // padding?
 
         // Byte which allows for communication between the door and the lock.
         // Normally, the byte sits at 0. When Link tries to open the door without a
@@ -46,41 +48,40 @@ namespace libtp::tp::rel::d_a_obj_Lv5Key
         // byte to 3. When the external thing changed the byte from 0 to 2, it began
         // checking every frame for when the byte changes to 3, and once it does
         // Link opens the door. Softlock happens when this byte never changes to 3.
-        uint8_t unk_945;          // 0x945 - padding?
-        uint8_t status;           // 0x945
-        uint8_t unk_946[0x2];     // 0x946 - padding?
-        // ptmf properties used alongside activeAnimFuncPtr.
+        /* 0x945 */ uint8_t status;
+        /* 0x946 */ uint8_t unk_0x946[0x2];     // padding?
+        // ptmf (pointer to member function) properties used alongside activeAnimFuncPtr.
         // Used by Runtime.PPCEABI.H ptmf functions.
-        uint32_t ptmf0;     // 0x948 - usually 0x00000000
-        uint32_t ptmf1;     // 0x94C - usually 0xFFFFFFFF
-        // Determines which function runs during Execute each frame.
-        // Points to Wait, Open, etc.
-        uint32_t activeAnimFuncPtr;     // 0x950
+        /* 0x948 */ uint32_t ptmf0;     // usually 0x00000000
+        /* 0x94C */ uint32_t ptmf1;     // usually 0xFFFFFFFF
+                                        // Determines which function runs during Execute each frame.
+                                        // Points to Wait, Open, etc.
+        /* 0x950 */ uint32_t activeAnimFuncPtr;
         // animationPhase varies between -1, 0, 1, and 2. Valid values are specific
         // to each animation.
-        uint16_t animationPhase;     // 0x954
+        /* 0x954 */ uint16_t animationPhase;
         // Shake phase 1 runs for 30 frames before phase 2 which is the shaking.
-        uint16_t shakePhase1Timer;     // 0x956
+        /* 0x956 */ uint16_t shakePhase1Timer;
         // Used in matrix calculations to translate lock during Land animation.
         // x value in matrix calc? Land phase 0 initializes to -17.4
-        float f_958;     // 0x958
+        /* 0x958 */ float f_0x958;
         // y value in matrix calc? Land phase 0 initializes to -74.7
-        float f_95c;     // 0x95C
+        /* 0x95C */ float f_0x95c;
         // z value in matrix calc? Land phase 0 initializes to 8.7
-        float f_960;     // 0x960
+        /* 0x960 */ float f_0x960;
         // Rotational speeds control how much the lock's rotations change each
         // frame. Only certain animations use these.
-        uint16_t xRotateSpd;     // 0x964
-        uint16_t yRotateSpd;     // 0x966
-        uint16_t zRotateSpd;     // 0x968
+        /* 0x964 */ uint16_t xRotateSpd;
+        /* 0x966 */ uint16_t yRotateSpd;
+        /* 0x968 */ uint16_t zRotateSpd;
         // Rotational accelerations control how much the lock's rotational
         // speeds change each frame. Only certain animations use these.
-        uint16_t xRotateAccel;     // 0x96A
-        uint16_t yRotateAccel;     // 0x96C
-        uint16_t zRotateAccel;     // 0x96E
+        /* 0x96A */ uint16_t xRotateAccel;
+        /* 0x96C */ uint16_t yRotateAccel;
+        /* 0x96E */ uint16_t zRotateAccel;
         // Used by shake phase 2. Number of shakes remaining.
-        uint8_t shakeNum;         // 0x970
-        uint8_t unk_971[0xB];     // padding?
+        /* 0x970 */ uint8_t shakeNum;
+        /* 0x971 */ uint8_t unk_0x971[0xB];     // padding?
     } __attribute__( ( __packed__ ) );
 
     // Size to allocate generated at runtime by adding two inner offsets:
