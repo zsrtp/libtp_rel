@@ -9,6 +9,8 @@
 
 #include <cstdint>
 
+#include "tp/f_op_actor.h"
+
 // Lv5 refers to Snowpeak Ruins. It is called Key because the Japanese word
 // "kagi" is generally used for both key and lock.
 
@@ -21,43 +23,9 @@
 
 namespace libtp::tp::rel::d_a_obj_Lv5Key
 {
-    struct daObjLv5Key_c
+    class daObjLv5Key_c: public libtp::tp::f_op_actor::fopAc_ac_c
     {
-        uint8_t unk_0[0x4D0];
-
-        // offset 0xEC (word) is a pointer. Offset 0x8 (word) of what this points to
-        // is the address of the execute function for the actor, which is called
-        // daObjLv5Key_Execute__FP13daObjLv5Key_c in the d_a_obj_Lv5Key.map.
-        // Internally, this function handles calling the correct function for the
-        // Lv5Key instance (called once per frame). For example, while the lock is
-        // shaking because you tried to open it without a key, the execute function
-        // will run the Shake function for the frames in which the instance is in
-        // the Shake state before returning to Wait.
-
-        // positions
-        float xPos;               // 0x4D0
-        float yPos;               // 0x4D4
-        float zPos;               // 0x4D8
-        uint16_t unk_u16_4dc;     // 0x4DC
-        // 0 points in positive Z direction. 0x4000 points in positive X direction.
-        uint16_t speedRot;        // 0x4DE
-        uint16_t unk_u16_4e0;     // 0x4E0
-        uint8_t unk_u8_4e2;       // 0x4E2
-        uint8_t unk_u8_4e3;       // 0x4E3
-        // rotations
-        uint16_t xRot;     // 0x4E4 - axis is relative to actor
-        uint16_t yRot;     // 0x4E6
-        uint16_t zRot;     // 0x4E8 - axis is relative to actor
-        uint8_t unk_4ea[0xE];
-        // velocities
-        float xVel;                 // 0x4F8
-        float yVel;                 // 0x4FC
-        float zVel;                 // 0x500
-        uint8_t unk_504[0x28];      // 0x504
-        float speedAccel;           // 0x52C
-        float yAccel;               // 0x530
-        float minYVel;              // 0x534
-        uint8_t unk_538[0x40C];     // 0x538
+        uint8_t unk_568[0x3DC];
 
         // 0x56C Z2SoundObjSimple*
         // 0x594 J3DFrameCtrl* - used with Open animation
