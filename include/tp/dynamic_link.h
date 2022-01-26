@@ -27,6 +27,7 @@ namespace libtp::tp::dynamic_link
     extern "C"
     {
         bool do_link( DynamicModuleControl* dmc );
+        bool do_unlink( DynamicModuleControl* dmc );
     }
 }     // namespace libtp::tp::dynamic_link
 #endif
