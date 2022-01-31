@@ -39,7 +39,9 @@ namespace libtp::tp::d_msg_object
          * @param itemIndex - The itemId of the item received + 0x65
          * @param param_3 - Unknown. I think it checks for a valid message but more research is needed
          */
-        void setMessageIndex( uint32_t param_1, uint32_t itemIndex, bool param_3 );
+        void setMessageIndex( void* msgObjPtr, uint32_t param_1, uint32_t itemIndex, bool param_3 );
+
+        void setStatus( void* daObj, uint16_t param_1 );
     }
 }     // namespace libtp::tp::d_msg_object
 #endif

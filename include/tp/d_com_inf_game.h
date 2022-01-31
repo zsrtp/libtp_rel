@@ -308,6 +308,13 @@ namespace libtp::tp::d_com_inf_game
          *  @param layerOverride The initial layer to be returned.
          */
         int32_t getLayerNo_common_common( const char* stageName, int32_t roomId, int32_t layerOverride );
+
+        /**
+         *  @brief Returns whether the player has gotten the specified item.
+         *
+         *  @param stageName The item to be checked
+         */
+        int32_t dComIfGs_isItemFirstBit( uint8_t itemID );
     }
 }     // namespace libtp::tp::d_com_inf_game
 #endif

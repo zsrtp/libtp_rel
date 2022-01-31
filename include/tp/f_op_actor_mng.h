@@ -56,10 +56,10 @@ namespace libtp::tp::f_op_actor_mng
          */
         int32_t createItemForTrBoxDemo( const float pos[3],
                                         int32_t item,
-                                        int32_t unk3,
-                                        int32_t unk4,
-                                        const float unk5[3],
-                                        const float unk6[3] );
+                                        int32_t itemPickupFlag,
+                                        int32_t roomNo,
+                                        const int16_t rot[3],
+                                        const float scale[3] );
 
         /**
          *	@brief Runs when the game creates a boss specific item (heart container)

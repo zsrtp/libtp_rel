@@ -108,5 +108,10 @@ namespace libtp::tp::d_meter2
         /* 0x200 */ uint8_t field_0x200;
         /* 0x201 */ uint8_t field_0x201;
     } __attribute__( ( __packed__ ) );
+
+    extern "C"
+    {
+        uint32_t dMeter2_Create( dMeter2_c* param_1 );
+    }
 }     // namespace libtp::tp::d_meter2
 #endif

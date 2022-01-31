@@ -66,4 +66,11 @@ namespace libtp::tp::d_event
         /* 0x129 */ bool field_0x129;
         /* 0x12C */ int32_t field_0x12c;
     } __attribute__( ( __packed__ ) );     // Size = 0x130
+
+    extern "C"
+    {
+        void resetEvent( void* eventPtr );
+        void talkEnd( void* eventPtr );
+        void setGtItm( void* eventPtr, uint8_t itemID );
+    }
 }     // namespace libtp::tp::d_event

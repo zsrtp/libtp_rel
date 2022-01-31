@@ -10,29 +10,28 @@
 
 #include <cstdint>
 
+#include "gc/bmgres.h"
+
 namespace libtp::tp::control
 {
-    // Message command stuff
-#define MSG_BEGIN( name ) const char* name =
-
-#define MSG_END() ;
-
-#define MSG_SPEED( speed ) "\x1A\x05\x00\x00" speed
-
-#define MSG_COLOR( id ) "\x1A\x06\xFF\x00\x00" id
-
-// Message Text Color Values
-#define MSG_COLOR_WHITE "\x00"
-#define MSG_COLOR_RED "\x01"
-#define MSG_COLOR_GREEN "\x02"
-#define MSG_COLOR_DARK_BLUE "\x03"
-#define MSG_COLOR_YELLOW "\x04"
-#define MSG_COLOR_PURPLE "\x06"
-#define MSG_COLOR_ORANGE "\x08"
+    struct TControl
+    {
+        void* unk_0;
+        void* unk_4;
+        void* unk_8;
+        uint16_t unk_E;     // unk3 in setMessageCode_inSequence
+        uint16_t msgId;
+        void* unk_10;
+        gc::bmgres::MessageEntry* msgEntry;
+        const char* msg;
+        uint8_t unk_1C[0x4];
+        const char* wMsgRender;
+        uint32_t unk_24;
+    } __attribute__( ( __packed__ ) );
 
     extern "C"
     {
-        bool render( void* TControl );
+        bool setMessageCode_inSequence( TControl* control, const void* TProcessor, uint16_t unk3, uint16_t msgId );
     }
 }     // namespace libtp::tp::control
 #endif

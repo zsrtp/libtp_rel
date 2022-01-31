@@ -8,7 +8,82 @@
 #define LIBTP_STAGES_H
 
 #include <cstdint>
-
+#define Stage_Lakebed_Temple 0
+#define Stage_Morpheel 1
+#define Stage_Deku_Toad 2
+#define Stage_Goron_Mines 3
+#define Stage_Fyrus 4
+#define Stage_Dangoro 5
+#define Stage_Forest_Temple 6
+#define Stage_Diababa 7
+#define Stage_Ook 8
+#define Stage_Temple_of_Time 9
+#define Stage_Armogohma 10
+#define Stage_Darknut 11
+#define Stage_City_in_the_Sky 12
+#define Stage_Argorok 13
+#define Stage_Aeralfos 14
+#define Stage_Palace_of_Twilight 15
+#define Stage_Zant_Main 16
+#define Stage_Phantom_Zant_1 17
+#define Stage_Phantom_Zant_2 18
+#define Stage_Zant_Fight 19
+#define Stage_Hyrule_Castle 20
+#define Stage_Ganondorf_Castle 21
+#define Stage_Ganondorf_Field 22
+#define Stage_Ganondorf_Defeated 23
+#define Stage_Arbiters_Grounds 24
+#define Stage_Stallord 25
+#define Stage_Death_Sword 26
+#define Stage_Snowpeak_Ruins 27
+#define Stage_Blizzeta 28
+#define Stage_Darkhammer 29
+#define Stage_Lanayru_Ice_Puzzle_Cave 30
+#define Stage_Cave_of_Ordeals 31
+#define Stage_Eldin_Long_Cave 32
+#define Stage_Lake_Hylia_Long_Cave 33
+#define Stage_Eldin_Goron_Stockcave 34
+#define Stage_Grotto_1 35
+#define Stage_Grotto_2 36
+#define Stage_Grotto_3 37
+#define Stage_Grotto_4 38
+#define Stage_Grotto_5 39
+#define Stage_Faron_Woods_Cave 40
+#define Stage_Ordon_Ranch 41
+#define Stage_Title_Screen 42
+#define Stage_Ordon_Village 43
+#define Stage_Ordon_Spring 44
+#define Stage_Faron_Woods 45
+#define Stage_Kakariko_Village 46
+#define Stage_Death_Mountain 47
+#define Stage_Kakariko_Graveyard 48
+#define Stage_Zoras_River 49
+#define Stage_Zoras_Domain 50
+#define Stage_Snowpeak 51
+#define Stage_Lake_Hylia 52
+#define Stage_Castle_Town 53
+#define Stage_Sacred_Grove 54
+#define Stage_Bublin_Camp 55
+#define Stage_Hyrule_Field 56
+#define Stage_Outside_Castle_Town 57
+#define Stage_Bublin_2 58
+#define Stage_Gerudo_Desert 59
+#define Stage_Mirror_Chamber 60
+#define Stage_Upper_Zoras_River 61
+#define Stage_Fishing_Pond 62
+#define Stage_Hidden_Village 63
+#define Stage_Hidden_Skill 64
+#define Stage_Ordon_Interiors 65
+#define Stage_Hyrule_Castle_Sewers 66
+#define Stage_Coros_Lantern_Shop 67
+#define Stage_Kakariko_Interiors 68
+#define Stage_Death_Mountain_Sumo_Hall 69
+#define Stage_Castle_Town_Interiors 70
+#define Stage_Henas_Cabin 71
+#define Stage_Impaz_House 72
+#define Stage_Castle_Town_Shops 73
+#define Stage_Star_Game 74
+#define Stage_Sanctuary_Basement 75
 namespace libtp::data::stage
 {
     // AreaIDs used by the game, excluding 0xFF (title screen, KB temp map, ...)
@@ -94,6 +169,42 @@ namespace libtp::data::stage
         0x03,     // 75
         0xFF,     // 76
         0xFF      // 77
+    };
+
+    enum class AreaNodesID : uint32_t
+    {
+        Ordon = 0,
+        Sewers,
+        Faron,
+        Eldin,
+        Lanayru,
+        Unk_5,
+        Hyrule_Field,
+        Sacred_Grove,
+        Snowpeak,
+        Castle_Town,
+        Gerudo_Desert,
+        Fishing_Pond,
+        Unk_C,
+        Unk_D,
+        Unk_E,
+        Unk_F,
+        Forest_Temple,
+        Goron_Mines,
+        Lakebed_Temple,
+        Arbiters_Grounds,
+        Snowpeak_Ruins,
+        Temple_of_Time,
+        City_in_the_Sky,
+        Palace_of_Twilight,
+        Hyrule_Castle,
+        Cave_of_Ordeals,     // Includes Gorge Cave and Ice Block Cave
+        Lake_Hylia_Cave,     // Includes Goron Stockcave
+        Grottos,
+        Unk_1C,
+        Unk_1D,
+        Unk_1E,
+        Unk_1F,
     };
 
     // Stage strings (ids)
@@ -259,7 +370,7 @@ namespace libtp::data::stage
                                    "Hyrule Castle Cutscenes" };*/
 
     enum stageIDs : uint8_t
-    { 
+    {
         Lakebed_Temple = 0x0,
         Morpheel = 0x1,
         Deku_Toad,
@@ -341,14 +452,14 @@ namespace libtp::data::stage
     };
 
     enum snowpeakStateIDs : uint8_t
-    { 
+    {
         SPR_Northwest_Door_Unlocked = 0x1,
         SPR_West_Door_Unlocked = 0x2,
         SPR_Dungeon_Completed = 0x3
     };
 
     enum faronStateIDs : uint8_t
-    { 
+    {
         Faron_Talo_Captured = 0x1,
         Faron_Forest_Temple_Completed = 0x2,
         Faron_MDH_Completed = 0x3,
@@ -356,7 +467,7 @@ namespace libtp::data::stage
     };
 
     enum kakarikoStateIDs : uint8_t
-    { 
+    {
         Kakariko_KB1_Active = 0x1,
         Kakariko_KB1_Completed = 0x2,
         Kakariko_KB1_Completed_Night = 0x3,
@@ -365,7 +476,7 @@ namespace libtp::data::stage
     };
 
     enum kakarikoInteriorStateIDs : uint8_t
-    { 
+    {
         Kakariko_Int_KB1_Active = 0x1,
         Kakariko_Int_KB1_Completed = 0x2,
         Kakariko_Int_KB1_Completed_Night = 0x3,
@@ -374,12 +485,12 @@ namespace libtp::data::stage
     };
 
     enum deathMountainStateIDs : uint8_t
-    { 
+    {
         Death_Mountain_Goron_Mines_Completed = 0x2
     };
 
     enum deathMountainInteriorStateIDs : uint8_t
-    { 
+    {
         Death_Mountain_Int_Goron_Mines_Completed = 0x1,
         Death_Mountain_Int_Master_Sword_CS_Watched = 0x2,
         Death_Mountain_Int_Ilia_Given_Charm = 0x3,
@@ -387,7 +498,7 @@ namespace libtp::data::stage
     };
 
     enum lakeHyliaStateIDs : uint8_t
-    { 
+    {
         Lake_Hylia_Warped_Cannon_To_Lake = 0x1,
         Lake_Hylia_Lakebed_Completed = 0x2,
         Lake_Hylia_Cannon_Repaired = 0x3,
@@ -396,7 +507,7 @@ namespace libtp::data::stage
     };
 
     enum castleTownStateIDs : uint8_t
-    { 
+    {
         Castle_Town_West_MDH_Clear = 0x0,
         Castle_Town_Finished_Zora_Escort = 0x1,
         Castle_Town_MDH_Clear = 0x1,
@@ -404,30 +515,30 @@ namespace libtp::data::stage
     };
 
     enum zorasDomainStateIDs : uint8_t
-    { 
+    {
         Domain_Snowpeak_Ruins_Completed = 0x2,
         Domain_Meteor_Warped = 0xD
     };
 
     enum upperZorasRiverStateIDs : uint8_t
-    { 
+    {
         Upper_Zoras_River_Iza_1_Started = 0x1
     };
 
     enum gerudoDesertStateIDs : uint8_t
-    { 
+    {
         Desert_Entrance_Cutscene_Watched = 0x0,
         Desert_Entrance_Cutscene_Not_Watched = 0x8
     };
 
     enum zorasRiverStateIDs : uint8_t
-    { 
+    {
         Zoras_River_Iza_1_Completed = 0x1,
         Zoras_River_Iza_1_Started = 0x2
     };
 
     enum ordonVillageStateIDs : uint8_t
-    { 
+    {
         Ordon_Goats_1_Completed = 0x0,
         Ordon_Link_House_Talo_Rescued = 0x0,
         Ordon_Finished_Sewers = 0x1,
@@ -442,14 +553,14 @@ namespace libtp::data::stage
     };
 
     enum ordonInteriorsStateIDs : uint8_t
-    { 
+    {
         Ordon_Int_Finished_Sewers = 0x1,
         Ordon_Int_Faron_Twilight_Cleared = 0x2,
         Ordon_Int_KB1_Completed = 0x3
     };
 
     enum ordonSpringStateIDs : uint8_t
-    { 
+    {
         Ordon_Spring_Talo_Rescued = 0x0,
         Ordon_Spring_New_Game = 0x1,
         Ordon_Spring_Faron_Twilight_Cleared = 0x2,
@@ -458,7 +569,7 @@ namespace libtp::data::stage
     };
 
     enum ordonRanchStateIDs : uint8_t
-    { 
+    {
         Ordon_Ranch_Finished_Sewers = 0x1,
         Ordon_Ranch_Faron_Twilight_Cleared = 0x2,
         Ordon_Ranch_Faron_Twilight_Cleared_Night = 0x3,
@@ -469,7 +580,7 @@ namespace libtp::data::stage
     };
 
     enum hyruleFieldStateIDs : uint8_t
-    { 
+    {
         Hyrule_Field_New_Game = 0x0,
         Hyrule_Field_MDH_Started = 0x4,
         Hyrule_Field_MDH_Completed = 0x6,
@@ -477,7 +588,7 @@ namespace libtp::data::stage
     };
 
     enum outsideCastleTownStateIDs : uint8_t
-    { 
+    {
         Outside_Castle_Town_New_Game = 0x0,
         Outside_Castle_Town_MDH_Completed_East = 0x0,
         Outside_Castle_Town_Talked_To_Louise_Before_Statue = 0x1,
@@ -487,20 +598,20 @@ namespace libtp::data::stage
     };
 
     enum hiddenVillageStateIDs : uint8_t
-    { 
+    {
         Hidden_Village_New_Game = 0x0,
         Hidden_Village_Showed_Ilia_Charm = 0x1
     };
 
     enum castleTownInteriorsStateIDs : uint8_t
-    { 
+    {
         Castle_Town_Int_Twilight_Cleared = 0x0,
         Castle_Town_Int_Lakebed_Completed = 0x2,
         Castle_Town_Int_Watched_MS_Cutscene = 0x4
     };
 
     enum castleTownShopsStateIDs : uint8_t
-    { 
+    {
         Castle_Town_Int_New_Game = 0x0,
         Castle_Town_Int_Jovani_MDH_Completed = 0x0,
         Castle_Town_Int_Malo_Mart = 0x1,
@@ -513,7 +624,7 @@ namespace libtp::data::stage
     };
 
     enum bulblinCampStateIDs : uint8_t
-    { 
+    {
         Bulblin_Camp_New_Game = 0x0,
         Bulblin_Camp_KB3_Completed = 0x1,
         Bulblin_Camp_Stallord_Defeated = 0x2,
@@ -521,26 +632,26 @@ namespace libtp::data::stage
     };
 
     enum faronWoodsCaveStateIDs : uint8_t
-    { 
+    {
         Faron_Woods_Cave_New_Game = 0x0,
         Faron_Woods_Cave_Talo_Rescued = 0x1,
     };
 
     enum sewersStateIDs : uint8_t
-    { 
+    {
         Sewers_New_Game = 0x0,
         Sewers_First_Time = 0xB,
         Sewers_Midna_On_Back = 0xD
     };
 
     enum hyruleCastleStateIDs : uint8_t
-    { 
+    {
         Hyrule_Castle_Exterior_State = 0x0,
         Hyrule_Castle_Interior_State = 0x1
     };
 
     enum fishingHoleStateIDs : uint8_t
-    { 
+    {
         Fishing_Hole_Spring = 0x0,
         Fishing_Hole_Summer = 0x1,
         Fishing_Hole_Autumn = 0x2,
