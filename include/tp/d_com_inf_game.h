@@ -315,6 +315,12 @@ namespace libtp::tp::d_com_inf_game
          *  @param stageName The item to be checked
          */
         int32_t dComIfGs_isItemFirstBit( uint8_t itemID );
+
+        /**
+         *  @brief Returns whether the player should be transformed into a wolf based on story and the current stage
+         *
+         */
+        void dComIfGs_Wolf_Change_Check();
     }
 }     // namespace libtp::tp::d_com_inf_game
 #endif

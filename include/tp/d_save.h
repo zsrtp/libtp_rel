@@ -352,7 +352,7 @@ namespace libtp::tp::d_save
         dSv_memory_c area_flags[32];
         dSv_memory2_c map_flags[64];
         dSv_event_c event_flags;
-        uint8_t unk2288[80];
+        uint8_t reserve[80];
         dSv_MiniGame_c minigame_flags;
     } __attribute__( ( __packed__ ) );
 
@@ -445,6 +445,39 @@ namespace libtp::tp::d_save
          *  @param twilightEvent The twilight cutscene event to be checked.
          */
         bool isTransformLV( void* playerStatusPtr, int32_t twilightEvent );
+
+        /**
+         *  @brief Gives the player a specified Fused Shadow Piece
+         *
+         *  @param playerCollectPtr The pointer to the PlayerCollect struct.
+         *  @param crystalFlag The Fused Shadow to be given.
+         */
+        bool onCollectCrystal( dSv_player_collect_c* playerCollectPtr, uint8_t crystalFlag );
+
+        /**
+         *  @brief Gives the player a specified Mirror of Twilight Piece
+         *
+         *  @param playerCollectPtr The pointer to the PlayerCollect struct.
+         *  @param mirrorFlag The Mirror Shard to be given.
+         */
+        bool onCollectMirror( dSv_player_collect_c* playerCollectPtr, uint8_t mirrorFlag );
+
+        /**
+         *  @brief Puts the specified item on the item wheel in the specified slot
+         *
+         *  @param playerItemPtr A pointer to the player_item struct
+         *  @param itemSlot The slot on the item wheel
+         *  @param item The item to be placed
+         */
+        bool setItem( dSv_player_item_c* playerItemPtr, uint8_t itemSlot, uint8_t item );
+
+        /**
+         *  @brief Checks if the specific dungeon flag has been set
+         *
+         *  @param memBitPtr The pointer to the memory bit structure.
+         *  @param memBit The bit to be checked.
+         */
+        bool isDungeonItem( dSv_memBit_c* memBitPtr, const int memBit );
 
         extern uint16_t saveBitLabels[0x336];     // saveBitLabels__16dSv_event_flag_c
     }

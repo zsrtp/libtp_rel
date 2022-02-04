@@ -187,10 +187,10 @@ namespace libtp::data::items
         City_in_The_Sky_Compass = 0xAB,        // Custom Item added for the Randomizer.
         Palace_of_Twilight_Compass = 0xAC,     // Custom Item added for the Randomizer.
         Hyrule_Castle_Compass = 0xAD,          // Custom Item added for the Randomizer.
-        Progressive_Fused_Shadow = 0xAE,
-        Progressive_Mirror_Shard = 0xAF,
+        /*unused = 0xAE,*/
+        /*unused = 0xAF,*/
         Ilias_Scent = 0xB0,
-        /*Unused_Scent?	=	0xB1,*/
+        /*unused scent? = 0xB1,*/
         Poe_Scent = 0xB2,
         Reekfish_Scent = 0xB3,
         Youths_Scent = 0xB4,
@@ -229,9 +229,9 @@ namespace libtp::data::items
         Female_Ant = 0xD5,
         Male_Dayfly = 0xD6,
         Female_Dayfly = 0xD7,
-        /*?	=	0xD8,*/
-        /*?	=	0xD9,*/
-        /*?	=	0xDA,*/
+        Fused_Shadow_1 = 0xD8,                        // Custom Item added for the Randomizer.
+        Fused_Shadow_2 = 0xD9,                        // Custom Item added for the Randomizer.
+        Fused_Shadow_3 = 0xDA,                        // Custom Item added for the Randomizer.
         Ancient_Sky_Book_First_Character = 0xDB,      // Custom Item added for the Randomizer.
         Ancient_Sky_Book_Second_Character = 0xDC,     // Custom Item added for the Randomizer.
         Ancient_Sky_Book_Third_Character = 0xDD,      // Custom Item added for the Randomizer.

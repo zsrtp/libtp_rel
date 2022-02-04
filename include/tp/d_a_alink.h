@@ -42,8 +42,6 @@ namespace libtp::tp::d_a_alink
         uint8_t unk_5c[0x4];
     } __attribute__( ( __packed__ ) );
 
-    static_assert( sizeof( ClimbVars ) == 0x70 );
-
     struct WallMoveVars
     {
         float moveSidewaysStickNotHeld;     // default = 0.8
@@ -51,6 +49,21 @@ namespace libtp::tp::d_a_alink
         uint8_t unk[0xC];
     } __attribute__( ( __packed__ ) );
 
+    struct daAlinkHIO_kandelaar_c0
+    {
+        uint8_t unk_0[0x3C];
+        uint16_t innerSphereR;
+        uint16_t innerSphereG;
+        uint16_t innerSphereB;
+        uint16_t outerSphereR;
+        uint16_t outerSphereG;
+        uint16_t outerSphereB;
+        uint8_t unk_48[0x8];
+
+    } __attribute__( ( __packed__ ) );
+
+    static_assert( sizeof( ClimbVars ) == 0x70 );
+    static_assert( sizeof( daAlinkHIO_kandelaar_c0 ) == 0x50 );
     static_assert( sizeof( WallMoveVars ) == 0x14 );
 
     /**
@@ -166,6 +179,7 @@ namespace libtp::tp::d_a_alink
         extern LinkStatus* linkStatus;
         extern WallMoveVars wallMoveVars;     // US Address = 0x8038E1E0
         extern uint8_t getSeType[0x100];
+        extern daAlinkHIO_kandelaar_c0 lanternVars;
     }
 }     // namespace libtp::tp::d_a_alink
 #endif
