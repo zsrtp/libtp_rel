@@ -108,11 +108,11 @@ namespace libtp::tp::f_op_actor_mng
          */
         int32_t createItemForMidBoss( const float pos[3],
                                       int32_t item,
-                                      int32_t unk3,
-                                      const float unk4[3],
-                                      const float unk5[3],
+                                      int32_t roomNo,
+                                      const int16_t rot[3],
+                                      const float scale[3],
                                       int32_t unk6,
-                                      int32_t unk7 );
+                                      int32_t itemPickupFlag );
 
         /**
          *	@brief Runs when Link picks up a minor item

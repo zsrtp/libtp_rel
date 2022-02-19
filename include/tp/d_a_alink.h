@@ -104,7 +104,7 @@ namespace libtp::tp::d_a_alink
          *
          *  @return Bool if link is transforming
          */
-        bool procCoMetamorphoseInit( tp::c_xyz::cXyz* linkMapPtr );
+        bool procCoMetamorphoseInit( void* linkMapPtr );
 
         /**
          *	@brief Checks whether a chest-rupee doesn't fit in Link's wallet
@@ -174,6 +174,8 @@ namespace libtp::tp::d_a_alink
          *  @param flag Offset+Flag
          */
         bool dComIfGs_isEventBit( uint16_t flag );
+
+        bool checkDownAttackState( void* d_a_alink );
 
         extern ClimbVars climbVars;
         extern LinkStatus* linkStatus;

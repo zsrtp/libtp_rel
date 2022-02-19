@@ -23,5 +23,6 @@ namespace libtp::tp::d_event_manager
         /* 0x01B8 */ uint32_t field_0x1b8;
         /* 0x01BC */ uint8_t field_0x1bc[0x500];     // dEvDtFlag_c mFlags;
         /* 0x06BC */ bool mDataLoaded;
+        /* 0x06BD */ uint8_t padding[0x3];
     } __attribute__( ( __packed__ ) );
 }     // namespace libtp::tp::d_event_manager

@@ -13,9 +13,9 @@ namespace libtp::tp::d_event
     {
         /*  0x00 */ uint16_t mEventType;
         /*  0x02 */ uint16_t mFlag;
-        /*  0x04 */ int16_t field_0x04;
-        /*  0x08 */ uint8_t field_0x08[4];     // fopAc_ac_c* mActor1;
-        /*  0x0C */ uint8_t field_0x0C[4];     // fopAc_ac_c* mActor2;
+        /*  0x04 */ int32_t field_0x04;
+        /*  0x08 */ void* mActor1;     // fopAc_ac_c* mActor1;
+        /*  0x0C */ void* mActor2;     // fopAc_ac_c* mActor2;
         /*  0x10 */ int16_t mEventId;
         /*  0x12 */ int16_t mPriority;
         /*  0x14 */ uint8_t mNextOrderIdx;
@@ -64,6 +64,7 @@ namespace libtp::tp::d_event
         /* 0x114 */ char mSkipEventName[20];
         /* 0x128 */ uint8_t mCompulsory;
         /* 0x129 */ bool field_0x129;
+        /* 0x12A */ uint16_t padding;
         /* 0x12C */ int32_t field_0x12c;
     } __attribute__( ( __packed__ ) );     // Size = 0x130
 

@@ -414,6 +414,15 @@ namespace libtp::tp::d_save
         void putSave( dSv_info_c* gameInfoPtr, int32_t areaID );
 
         /**
+         *  @brief Checks if an eventBit for the currently active save is set.
+         *
+         *  @param eventPtr The pointer to the event bits.
+         *  @param flag Offset+Flag
+         */
+
+        bool isEventBit( dSv_event_c* eventPtr, uint16_t flag );
+
+        /**
          *  @brief Sets an eventBit for the currently active save
          *
          *  @param eventPtr The pointer to the event bits.
@@ -469,7 +478,7 @@ namespace libtp::tp::d_save
          *  @param itemSlot The slot on the item wheel
          *  @param item The item to be placed
          */
-        bool setItem( dSv_player_item_c* playerItemPtr, uint8_t itemSlot, uint8_t item );
+        bool setItem( dSv_player_item_c* playerItemPtr, int itemSlot, uint8_t item );
 
         /**
          *  @brief Checks if the specific dungeon flag has been set
@@ -478,6 +487,12 @@ namespace libtp::tp::d_save
          *  @param memBit The bit to be checked.
          */
         bool isDungeonItem( dSv_memBit_c* memBitPtr, const int memBit );
+
+        void onSwitch_dSv_memBit( dSv_memBit_c* memoryBit, int flag );
+
+        bool isSwitch_dSv_memBit( dSv_memBit_c* memoryBit, int flag );
+
+        void setLineUpItem( dSv_player_item_c* playerItemPtr );
 
         extern uint16_t saveBitLabels[0x336];     // saveBitLabels__16dSv_event_flag_c
     }

@@ -28,13 +28,12 @@ namespace libtp::tp::d_stage
         /* 0xA */ int8_t mRoomNo;
         /* 0xB */ int8_t mLayer;
         /* 0xC */ int8_t mDarkArea;
-        /* 0xD */ uint8_t unk_d;
+        /* 0xD */ uint8_t padding;
     } __attribute__( ( __packed__ ) );
 
     struct dStage_nextStage
     {
         dStage_startStage stageValues;
-        uint8_t field_0xd;
         int8_t enabled;
         uint8_t wipe;
         uint8_t wipe_speed;
