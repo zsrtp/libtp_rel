@@ -92,7 +92,7 @@ namespace libtp::tools
         uint8_t* data = new uint8_t[adjustedLength];
 
         // Check if card is valid
-        result = CARDProbeEx( chan, NULL, NULL );
+        result = checkForMemoryCard( chan );
         if ( result == CARD_RESULT_READY )
         {
             result = CARDMount( chan,
@@ -142,5 +142,19 @@ namespace libtp::tools
         z = ( z ^ ( z >> 27 ) ) * 0x94d049bb133111eb;
 
         return ( z % max );
+    }
+
+    int32_t checkForMemoryCard( int32_t chan )
+    {
+        int32_t ret;
+        for ( uint32_t i = 0; i < 1000000; i++ )
+        {
+            ret = gc::card::CARDProbeEx( chan, nullptr, nullptr );
+            if ( ret != CARD_RESULT_BUSY )
+            {
+                break;
+            }
+        }
+        return ret;
     }
 }     // namespace libtp::tools
