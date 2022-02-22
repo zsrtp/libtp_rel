@@ -95,7 +95,7 @@ namespace libtp::data::stage
         0xFF      // 77
     };
 
-    enum class AreaNodesID : uint32_t
+    enum class AreaNodesID : uint8_t
     {
         Ordon = 0,
         Sewers,
