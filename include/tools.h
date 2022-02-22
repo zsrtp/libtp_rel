@@ -74,7 +74,7 @@ namespace libtp::tools
      *
      * @param stage The stage string to be read in.
      */
-    uint8_t getStageIndex( const char* stage );
+    int32_t getStageIndex( const char* stage );
 
     // Allows to transform data as bytes 1:1 from A<-->B and vice versa
     template<typename A, typename B>

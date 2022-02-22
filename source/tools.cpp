@@ -159,10 +159,10 @@ namespace libtp::tools
         return ret;
     }
 
-    uint8_t getStageIndex( const char* stage )
+    int32_t getStageIndex( const char* stage )
     {
         // Find the index of this stage
-        for ( uint8_t stageIDX = 0; stageIDX < sizeof( data::stage::allStages ) / sizeof( data::stage::allStages[0] );
+        for ( uint32_t stageIDX = 0; stageIDX < sizeof( data::stage::allStages ) / sizeof( data::stage::allStages[0] );
               stageIDX++ )
         {
             if ( strcmp( stage, libtp::data::stage::allStages[stageIDX] ) == 0 )
