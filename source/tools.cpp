@@ -5,6 +5,7 @@
 #include <cstdio>
 #include <cstring>
 
+#include "data/stages.h"
 #include "display/console.h"
 #include "gc/card.h"
 #include "memory.h"
@@ -156,5 +157,18 @@ namespace libtp::tools
             }
         }
         return ret;
+    }
+
+    uint8_t getStageIndex( const char* stage )
+    {
+        // Find the index of this stage
+        uint8_t stageIDX;
+        for ( stageIDX = 0; stageIDX < sizeof( data::stage::allStages ) / sizeof( data::stage::allStages[0] ); stageIDX++ )
+        {
+            if ( !strcmp( stage, data::stage::allStages[stageIDX] ) )
+            {
+                break;
+            }
+        }
     }
 }     // namespace libtp::tools
