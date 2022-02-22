@@ -162,13 +162,16 @@ namespace libtp::tools
     uint8_t getStageIndex( const char* stage )
     {
         // Find the index of this stage
-        uint8_t stageIDX;
-        for ( stageIDX = 0; stageIDX < sizeof( data::stage::allStages ) / sizeof( data::stage::allStages[0] ); stageIDX++ )
+        for ( uint8_t stageIDX = 0; stageIDX < sizeof( data::stage::allStages ) / sizeof( data::stage::allStages[0] );
+              stageIDX++ )
         {
-            if ( !strcmp( stage, data::stage::allStages[stageIDX] ) )
+            if ( strcmp( stage, libtp::data::stage::allStages[stageIDX] ) == 0 )
             {
-                break;
+                return stageIDX;
             }
         }
+
+        // Did not find a valid stage
+        return -1;
     }
 }     // namespace libtp::tools

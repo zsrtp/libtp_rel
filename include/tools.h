@@ -69,6 +69,13 @@ namespace libtp::tools
      */
     int32_t checkForMemoryCard( int32_t slot );
 
+    /**
+     * @brief Converts the given stage string into an index
+     *
+     * @param stage The stage string to be read in.
+     */
+    uint8_t getStageIndex( const char* stage );
+
     // Allows to transform data as bytes 1:1 from A<-->B and vice versa
     template<typename A, typename B>
     union typeTransform
