@@ -494,6 +494,14 @@ namespace libtp::tp::d_save
 
         void setLineUpItem( dSv_player_item_c* playerItemPtr );
 
+        /**
+         *  @brief Sets the flag for the specified vessel of light to have been collected.
+         *
+         *  @param lightDropPtr The pointer to the light drop structure.
+         *  @param i_nowLevel The value to be set.
+         */
+        void onLightDropGetFlag( dSv_light_drop_c* lightDropPtr, uint8_t i_nowLevel );
+
         extern uint16_t saveBitLabels[0x336];     // saveBitLabels__16dSv_event_flag_c
     }
 }     // namespace libtp::tp::d_save
