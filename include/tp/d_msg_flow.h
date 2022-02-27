@@ -18,6 +18,7 @@ namespace libtp::tp::d_msg_flow
         bool query025( void* unk1, void* unk2, int32_t unk3 );
         void event035( void* unk1, void* param_1, void* param_2 );
         bool chkEvtBit( uint32_t flag );
+        bool chkEvtBitF( uint32_t flag );
         uint32_t event000( void* messageFlow, void* nodeEvent, void* actrPtr );
     }
 }     // namespace libtp::tp::d_msg_flow
