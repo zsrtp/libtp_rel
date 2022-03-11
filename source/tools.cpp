@@ -13,6 +13,7 @@
 #include "tp/d_stage.h"
 #include "tp/dzx.h"
 #include "tp/f_op_actor_mng.h"
+#include "tp/m_do_memcard.h"
 
 namespace libtp::tools
 {
@@ -77,8 +78,8 @@ namespace libtp::tools
     {
         using namespace libtp::gc_wii::card;
 
-        CARDFileInfo* fileInfo = new CARDFileInfo();
-        uint8_t* workArea = new uint8_t[CARD_WORKAREA_SIZE];
+        CARDFileInfo fileInfo;
+        uint8_t* workArea = libtp::tp::m_Do_MemCard::MemCardWorkArea0;
         int32_t result;
 
         // Since we can only read in and at increments of CARD_READ_SIZE do this to calculate the region we require
@@ -90,31 +91,34 @@ namespace libtp::tools
         uint8_t* data = new uint8_t[adjustedLength];
 
         // Check if card is valid
-        result = CARDProbeEx( chan, NULL, NULL );
+        for ( uint32_t i = 0; i < 1000000; i++ )
+        {
+            result = CARDProbeEx( chan, NULL, NULL );
+            if ( result != CARD_RESULT_BUSY )
+            {
+                break;
+            }
+        }
 
         if ( result == CARD_RESULT_READY )
         {
-            result = CARDMount( chan,
-                                workArea,
-                                []( int32_t chan, int32_t result )
-                                {
-                                    // S
-                                    tp::jfw_system::ConsoleLine* line =
-                                        &tp::jfw_system::systemConsole->consoleLine[JFW_DEBUG_LINE];
+            result = CARDMount( chan, workArea, []( int32_t chan, int32_t result ) {
+                // S
+                tp::jfw_system::ConsoleLine* line = &tp::jfw_system::systemConsole->consoleLine[JFW_DEBUG_LINE];
 
-                                    line->showLine = true;
-                                    sprintf( line->line, "ReadGCI::CARDERR; Chan: %" PRId32 " Result: %" PRId32, chan, result );
-                                } );
+                line->showLine = true;
+                sprintf( line->line, "ReadGCI::CARDERR; Chan: %" PRId32 " Result: %" PRId32, chan, result );
+            } );
 
             if ( result == CARD_RESULT_READY )
             {
                 // Read data
-                result = CARDOpen( chan, const_cast<char*>( fileName ), fileInfo );
+                result = CARDOpen( chan, const_cast<char*>( fileName ), &fileInfo );
 
                 if ( result == CARD_RESULT_READY )
                 {
-                    result = CARDRead( fileInfo, data, adjustedLength, adjustedOffset );
-                    CARDClose( fileInfo );
+                    result = CARDRead( &fileInfo, data, adjustedLength, adjustedOffset );
+                    CARDClose( &fileInfo );
 
                     // Copy data to the user's buffer
                     memcpy( buffer, data + ( offset - adjustedOffset ), length );
@@ -127,8 +131,6 @@ namespace libtp::tools
         // CARDProbeEx
 
         // Clean up
-        delete fileInfo;
-        delete[] workArea;
         delete[] data;
 
         return result;
