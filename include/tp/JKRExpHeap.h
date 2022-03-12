@@ -18,8 +18,10 @@ namespace libtp::tp::jkr_exp_heap
          *
          *	@param heap The heap pointer
          *	@param size The number of bytes to be allocated
+         *	@param alignment The amount of bytes that the address of the memory should be aligned to. Negative values will
+         *allocate from the tail of the heap instead of the head.
          */
-        void* do_alloc_JKRExpHeap( void* heap, uint32_t size, int32_t unk3 );
+        void* do_alloc_JKRExpHeap( void* heap, uint32_t size, int32_t alignment );
 
         /**
          *	@brief Frees a number of bytes in a given heap
