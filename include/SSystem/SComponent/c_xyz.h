@@ -11,8 +11,12 @@
 
 #include "dolphin/mtx/vec.h"
 
-struct cXyz: Vec
+struct cXyz
 {
+   private:
+    float x;
+    float y;
+    float z;
 } __attribute__( ( __packed__ ) );
 
 #endif
