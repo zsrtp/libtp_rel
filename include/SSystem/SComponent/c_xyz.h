@@ -13,7 +13,7 @@
 
 struct cXyz
 {
-   private:
+   public:
     float x;
     float y;
     float z;
