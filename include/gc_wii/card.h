@@ -6,8 +6,8 @@
  *	@author AECX
  *	@bug No known bugs.
  */
-#ifndef GC_CARD_H
-#define GC_CARD_H
+#ifndef GC_WII_CARD_H
+#define GC_WII_CARD_H
 
 #include <cstdint>
 
@@ -49,7 +49,7 @@
 
 #define CARD_READ_SIZE 512
 
-namespace libtp::gc::card
+namespace libtp::gc_wii::card
 {
     struct CARDFileInfo
     {
@@ -339,6 +339,6 @@ namespace libtp::gc::card
      *  @param fileName Internal name for the desired file on the memory card
      */
     int32_t CARDDelete( int32_t chan, const char* fileName );
-}     // namespace libtp::gc::card
+}     // namespace libtp::gc_wii::card
 
 #endif

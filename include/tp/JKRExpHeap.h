@@ -19,7 +19,7 @@ namespace libtp::tp::jkr_exp_heap
          *	@param heap The heap pointer
          *	@param size The number of bytes to be allocated
          */
-        void* do_alloc_JKRExpHeap( void* heap, uint32_t size, int32_t unk3 );
+        void* do_alloc_JKRExpHeap( void* heap, uint32_t size, int32_t alignment );
 
         /**
          *	@brief Frees a number of bytes in a given heap

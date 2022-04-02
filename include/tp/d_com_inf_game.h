@@ -217,11 +217,11 @@ namespace libtp::tp::d_com_inf_game
         /* 0x04F7F */ uint8_t mOxygenShowFlag;
         /* 0x04F80 */ uint8_t mShow2D;
         /* 0x04F81 */ uint8_t field_0x4f81[3];
-        /* 0x04F84 */ uint8_t field_0x4f84[4];      // JKRExpHeap* mExpHeap2D;
-        /* 0x04F88 */ uint8_t field_0x4f88[4];      // JKRExpHeap* mSubExpHeap2D[2];
-        /* 0x04F90 */ uint8_t field_0x4f90[4];      // JKRExpHeap* mMsgExpHeap;
-        /* 0x04F94 */ char field_0x4F94[8];         // related to setWarpItemData
-        /* 0x04F9C */ c_xyz::cXyz field_0x4f9c;     // related to setWarpItemData
+        /* 0x04F84 */ uint8_t field_0x4f84[4];     // JKRExpHeap* mExpHeap2D;
+        /* 0x04F88 */ uint8_t field_0x4f88[4];     // JKRExpHeap* mSubExpHeap2D[2];
+        /* 0x04F90 */ uint8_t field_0x4f90[4];     // JKRExpHeap* mMsgExpHeap;
+        /* 0x04F94 */ char field_0x4F94[8];        // related to setWarpItemData
+        /* 0x04F9C */ cXyz field_0x4f9c;           // related to setWarpItemData
         /* 0x04FA8 */ uint8_t field_0x4fa8[2];
         /* 0x04FAA */ uint8_t field_0x4faa;     // related to setWarpItemData
         /* 0x04FAB */ uint8_t field_0x4fab;     // related to setWarpItemData

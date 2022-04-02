@@ -7,7 +7,7 @@
 
 #include "data/stages.h"
 #include "display/console.h"
-#include "gc/card.h"
+#include "gc_wii/card.h"
 #include "memory.h"
 #include "tp/JFWSystem.h"
 #include "tp/d_com_inf_game.h"
@@ -78,7 +78,7 @@ namespace libtp::tools
 
     int32_t ReadGCI( int32_t chan, const char* fileName, int32_t length, int32_t offset, void* buffer )
     {
-        using namespace libtp::gc::card;
+        using namespace libtp::gc_wii::card;
 
         CARDFileInfo* fileInfo = new CARDFileInfo();
         uint8_t* workArea = new uint8_t[CARD_WORKAREA_SIZE];
@@ -150,7 +150,7 @@ namespace libtp::tools
         int32_t ret;
         for ( uint32_t i = 0; i < 1000000; i++ )
         {
-            ret = gc::card::CARDProbeEx( chan, nullptr, nullptr );
+            ret = gc_wii::card::CARDProbeEx( chan, nullptr, nullptr );
             if ( ret != CARD_RESULT_BUSY )
             {
                 break;

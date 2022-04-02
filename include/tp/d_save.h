@@ -8,8 +8,9 @@
 #define TP_D_SAVE_H
 #include <cstdint>
 
+#include "SSystem/SComponent/c_sxyz.h"
+#include "SSystem/SComponent/c_xyz.h"
 #include "data/items.h"
-#include "tp/c_xyz.h"
 
 namespace libtp::tp::d_save
 {
@@ -51,7 +52,7 @@ namespace libtp::tp::d_save
         /* 0x01 */ uint8_t field_0x01[3];
         /* 0x04 */ int16_t mStartPoint;
         /* 0x06 */ int16_t mRoomAngleY;
-        /* 0x08 */ c_xyz::cXyz mRoomPos;
+        /* 0x08 */ cXyz mRoomPos;
         /* 0x14 */ uint32_t mRoomParam;
         /* 0x18 */ float mLastSpeedF;
         /* 0x1C */ uint32_t mLastMode;
@@ -61,14 +62,14 @@ namespace libtp::tp::d_save
 
     struct dSv_turnRestart_camera_c
     {
-        /* 0x00 */ c_xyz::cXyz mCameraCtr;
-        /* 0x0C */ c_xyz::cXyz mCameraEye;
-        /* 0x18 */ c_xyz::cXyz mCameraUp;
+        /* 0x00 */ cXyz mCameraCtr;
+        /* 0x0C */ cXyz mCameraEye;
+        /* 0x18 */ cXyz mCameraUp;
     } __attribute__( ( __packed__ ) );
 
     struct dSv_turnRestart_c
     {
-        libtp::tp::c_xyz::cXyz position;
+        cXyz position;
         uint32_t mParam;
         uint16_t mAngleY;
         int8_t unk18;
@@ -114,7 +115,7 @@ namespace libtp::tp::d_save
 
     struct dSv_horse_place_c
     {
-        c_xyz::cXyz mPos;
+        cXyz mPos;
         uint16_t epona_angle;
         char epona_current_stage[8];
         uint8_t epona_spawn_id;
@@ -132,7 +133,7 @@ namespace libtp::tp::d_save
 
     struct dSv_player_field_last_stay_info_c
     {
-        c_xyz::cXyz mPos;
+        cXyz mPos;
         uint16_t player_last_angle;
         char player_last_stage[8];
         uint8_t player_last_spawn_id;
@@ -144,7 +145,7 @@ namespace libtp::tp::d_save
 
     struct dSv_player_last_mark_info_c
     {
-        c_xyz::cXyz mPos;
+        cXyz mPos;
         uint16_t ooccoo_angle;
         char ooccoo_stage[8];
         uint8_t ooccoo_spawn_id;
