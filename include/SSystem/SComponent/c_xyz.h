@@ -13,6 +13,6 @@
 
 struct cXyz: Vec
 {
-};
+} __attribute__( ( __packed__ ) );
 
 #endif
