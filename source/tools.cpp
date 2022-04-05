@@ -6,7 +6,10 @@
 #include <cstring>
 
 #include "display/console.h"
-#include "gc_wii/card.h"
+// #include "gc_wii/card.h"
+#include "cxx.h"
+#include "gc_wii/nand.h"
+#include "main.h"
 #include "memory.h"
 #include "tp/JFWSystem.h"
 #include "tp/d_com_inf_game.h"
@@ -14,6 +17,18 @@
 #include "tp/dzx.h"
 #include "tp/f_op_actor_mng.h"
 #include "tp/m_do_memcard.h"
+
+#define StorageRead( fileinfo, result_size, result, data, length, offset ) \
+    ( {                                                                    \
+        result = NANDSeek( &( fileinfo ), offset, 0 );                     \
+        if ( result == NAND_RESULT_READY )                                 \
+        {                                                                  \
+            result_size = NANDRead( &( fileinfo ), data, length );         \
+        }                                                                  \
+    } )
+
+#define MAX( a, b ) ( ( a ) > ( b ) ? ( a ) : ( b ) )
+#define MIN( a, b ) ( ( a ) < ( b ) ? ( a ) : ( b ) )
 
 namespace libtp::tools
 {
@@ -76,62 +91,42 @@ namespace libtp::tools
 
     int32_t ReadGCI( int32_t chan, const char* fileName, int32_t length, int32_t offset, void* buffer )
     {
-        using namespace libtp::gc_wii::card;
+        using namespace libtp::gc_wii::nand;
 
-        CARDFileInfo fileInfo;
-        uint8_t* workArea = libtp::tp::m_Do_MemCard::MemCardWorkArea0;
-        int32_t result;
+        NANDFileInfo fileInfo;
+        int32_t result = NAND_RESULT_READY;
 
-        // Since we can only read in and at increments of CARD_READ_SIZE do this to calculate the region we require
+        // Since we can only read in and at increments of NAND_READ_SIZE do this to calculate the region we require
 
-        int32_t adjustedOffset = ( offset / CARD_READ_SIZE ) * CARD_READ_SIZE;
-        int32_t adjustedLength = ( 1 + ( ( offset - adjustedOffset + length - 1 ) / CARD_READ_SIZE ) ) * CARD_READ_SIZE;
+        int32_t adjustedOffset = ( offset / NAND_READ_SIZE ) * NAND_READ_SIZE;
+        int32_t adjustedLength = ( 1 + ( ( offset - adjustedOffset + length - 1 ) / NAND_READ_SIZE ) ) * NAND_READ_SIZE;
 
         // Buffer might not be adjusted to the new length so create a temporary data buffer
-        uint8_t* data = new uint8_t[adjustedLength];
+        uint8_t* data = new ( 0x20, HEAP_ZELDA ) uint8_t[adjustedLength];
 
-        // Check if card is valid
-        for ( uint32_t i = 0; i < 1000000; i++ )
+        memset( buffer, 0, length );
+        memset( data, 0, adjustedLength );
+
+        // Read data
+        result = NANDOpen( const_cast<char*>( fileName ), &fileInfo, NAND_OPEN_READ );
+
+        if ( result == NAND_RESULT_READY )
         {
-            result = CARDProbeEx( chan, NULL, NULL );
-            if ( result != CARD_RESULT_BUSY )
+            // result = storage_read( &fileInfo, data, adjustedLength, adjustedOffset, NAND_OPEN_READ );
+            result = NANDSeek( &fileInfo, adjustedOffset, 0 );
+            if ( result == NAND_RESULT_READY )
             {
-                break;
+                NANDRead( &fileInfo, data, adjustedLength );
             }
+            NANDClose( &fileInfo );
+
+            // Copy data to the user's buffer
+            memcpy( buffer, data + ( offset - adjustedOffset ), length );
         }
-
-        if ( result == CARD_RESULT_READY )
-        {
-            result = CARDMount( chan, workArea, []( int32_t chan, int32_t result ) {
-                // S
-                tp::jfw_system::ConsoleLine* line = &tp::jfw_system::systemConsole->consoleLine[JFW_DEBUG_LINE];
-
-                line->showLine = true;
-                sprintf( line->line, "ReadGCI::CARDERR; Chan: %" PRId32 " Result: %" PRId32, chan, result );
-            } );
-
-            if ( result == CARD_RESULT_READY )
-            {
-                // Read data
-                result = CARDOpen( chan, const_cast<char*>( fileName ), &fileInfo );
-
-                if ( result == CARD_RESULT_READY )
-                {
-                    result = CARDRead( &fileInfo, data, adjustedLength, adjustedOffset );
-                    CARDClose( &fileInfo );
-
-                    // Copy data to the user's buffer
-                    memcpy( buffer, data + ( offset - adjustedOffset ), length );
-                }
-                // CARDOpen
-                CARDUnmount( chan );
-            }
-            // CARDMount
-        }
-        // CARDProbeEx
+        // NANDOpen
 
         // Clean up
-        delete[] data;
+        freeFromHeap( HEAP_ZELDA, data );
 
         return result;
     }
