@@ -116,7 +116,8 @@ namespace libtp::tools
             result = NANDSeek( &fileInfo, adjustedOffset, 0 );
             if ( result == NAND_RESULT_READY )
             {
-                NANDRead( &fileInfo, data, adjustedLength );
+                int32_t r = NANDRead( &fileInfo, data, adjustedLength );
+                result = (r > 1) ? NAND_RESULT_READY : r;
             }
             NANDClose( &fileInfo );
 
