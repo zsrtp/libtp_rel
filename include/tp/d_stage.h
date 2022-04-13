@@ -102,7 +102,7 @@ namespace libtp::tp::d_stage
          *  @param entryNum The number of entries to be read in.
          *  @param param_3 Unknown at this time.
          */
-        static int32_t tgscInfoInit( void* stageDt, void* i_data, int32_t entryNum, void* param_3 );
+        int32_t tgscInfoInit( void* stageDt, void* i_data, int32_t entryNum, void* param_3 );
 
         /**
          *  @brief Pointer to roomControl data
