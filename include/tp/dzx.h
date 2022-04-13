@@ -26,6 +26,14 @@ namespace libtp::tp::dzx
         uint16_t enemyID;
     } __attribute__( ( __packed__ ) );
 
+    struct SCOB: ACTR
+    {
+        uint8_t xScale;
+        uint8_t yScale;
+        uint8_t zScale;
+        uint8_t padding;
+    } __attribute__( ( __packed__ ) );
+
     /**
      *  @brief Holds information about an ACTR of type TRES
      */
@@ -84,13 +92,17 @@ namespace libtp::tp::dzx
         uint16_t flag;
         int16_t enemy_id;
 
-        uint8_t flags[9];
+        uint8_t mScale[3];
+        uint8_t mGbaName;
+        int32_t mParentPId;
+        int8_t subtype;
         uint8_t room_id;
 
-        uint8_t padding[2];
+        uint8_t padding[3];
     } __attribute__( ( __packed__ ) );
 
     static_assert( sizeof( ACTR ) == 0x20 );
+    static_assert( sizeof( SCOB ) == 0x24 );
     static_assert( sizeof( TRES ) == 0x20 );
     static_assert( sizeof( ITEM ) == 0x20 );
     static_assert( sizeof( ChunkTypeInfo ) == 0xC );

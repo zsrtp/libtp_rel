@@ -42,6 +42,14 @@ namespace libtp::tools
     void SpawnActor( uint8_t roomID, tp::dzx::ACTR& actor );
 
     /**
+     *  @brief Spawns an actor
+     *
+     *  @param roomID Room id to spawn the actor
+     *  @param actor The actor object to be spawned
+     */
+    void SpawnSCOB( uint8_t roomID, tp::dzx::SCOB& actor_data );
+
+    /**
      *  @brief Reads GCI data from offset to offset + length into buffer
      *
      *  @param chan Slot to check for the file

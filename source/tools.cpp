@@ -76,6 +76,32 @@ namespace libtp::tools
         tp::d_stage::ActorCreate( &actor, actorMemoryPtr );
     }
 
+    void SpawnSCOB( uint8_t roomID, tp::dzx::SCOB& actor_data )
+    {
+        using namespace libtp::tp::dzx;
+        using namespace libtp::tp::f_op_actor_mng;
+
+        ActorPRMClass* actorMemoryPtr = CreateAppend();
+
+        actorMemoryPtr->params = actor_data.parameters;
+
+        actorMemoryPtr->pos[0] = actor_data.pos[0];
+        actorMemoryPtr->pos[1] = actor_data.pos[1];
+        actorMemoryPtr->pos[2] = actor_data.pos[2];
+
+        actorMemoryPtr->xRot = actor_data.rot[0];
+        actorMemoryPtr->yRot = actor_data.rot[1];
+
+        actorMemoryPtr->flag = actor_data.flag;
+        actorMemoryPtr->enemy_id = actor_data.enemyID;
+        actorMemoryPtr->room_id = roomID;
+        actorMemoryPtr->mScale[0] = actor_data.xScale;
+        actorMemoryPtr->mScale[1] = actor_data.yScale;
+        actorMemoryPtr->mScale[2] = actor_data.zScale;
+
+        tp::d_stage::ActorCreate( &actor_data, actorMemoryPtr );
+    }
+
     int32_t ReadGCI( int32_t chan, const char* fileName, int32_t length, int32_t offset, void* buffer )
     {
         using namespace libtp::gc_wii::card;
