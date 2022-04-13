@@ -95,6 +95,16 @@ namespace libtp::tp::d_stage
         void ActorCreate( dzx::ACTR* actor, dzx::ActorPRMClass* actorMemoryPtr );
 
         /**
+         *  @brief Creates a number of SCOBs defined in a list.
+         *
+         *  @param stageDt The pointer to the stage data.
+         *  @param i_data The pointer to the list of SCOBs to be read in.
+         *  @param entryNum The number of entries to be read in.
+         *  @param param_3 Unknown at this time.
+         */
+        static int32_t tgscInfoInit( void* stageDt, void* i_data, int32_t entryNum, void* param_3 );
+
+        /**
          *  @brief Pointer to roomControl data
          */
         extern void* mStatus_roomControl;
