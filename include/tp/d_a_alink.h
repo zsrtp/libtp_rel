@@ -14,8 +14,6 @@
 
 #include <cstdint>
 
-#include "d_com_inf_game.h"
-
 namespace libtp::tp::d_a_alink
 {
     struct daAlink
