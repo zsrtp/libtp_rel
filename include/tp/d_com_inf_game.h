@@ -14,7 +14,7 @@
 #include <cstdint>
 
 #include "d_save.h"
-#include "tp//d_a_alink.h"
+#include "tp/d_a_alink.h"
 #include "tp/d_event.h"
 #include "tp/d_event_manager.h"
 #include "tp/d_stage.h"
