@@ -1,3 +1,9 @@
+/**	@file cxx.h
+ *	@brief Custom override of (de)allocation onto specific heaps.
+ *
+ *  @author Zephiles
+ *	@bug No known bugs.
+ */
 #pragma once
 
 #include <new>
