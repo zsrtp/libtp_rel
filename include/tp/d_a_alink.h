@@ -23,7 +23,7 @@ namespace libtp::tp::d_a_alink
         /* 0x0062C */ uint8_t unk0[0x2FDC];
         /* 0x02FDC */ uint16_t mEquipItem;
         /* 0x02FDE */ uint8_t unk2FDE[0x87A];
-    };
+    } __attribute__( ( __packed__ ) );
     /**
      *	@brief These values define the speed of various climbing actions
      *

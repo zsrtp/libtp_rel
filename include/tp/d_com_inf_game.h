@@ -75,9 +75,9 @@ namespace libtp::tp::d_com_inf_game
         /* 0x04E0C */ uint8_t mWindowNum;
         /* 0x04E0D */ uint8_t mLayerOld;
         /* 0x04E0E */ uint16_t mStatus;
-        /* 0x04E10 */ uint8_t field_0x4e10[0x2C];      // dDlst_window_c mWindow;
-        /* 0x04E3C */ uint8_t field_0x4e3c[0x38];      // dComIfG_camera_info_class* mCameraInfo;
-        /* 0x04E74 */ d_a_alink::daAlink* mPlayer;     // daAlink_c* mPlayer;
+        /* 0x04E10 */ uint8_t field_0x4e10[0x2C];     // dDlst_window_c mWindow;
+        /* 0x04E3C */ uint8_t field_0x4e3c[0x38];     // dComIfG_camera_info_class* mCameraInfo;
+        /* 0x04E74 */ d_a_alink::daAlink* mPlayer;
         /* 0x04E78 */ int8_t mPlayerCameraID[4];
         /* 0x04E7C */ uint8_t field_0x4e7c[4];     // daAlink_c* mPlayerPtr;
         /* 0x04E80 */ uint8_t field_0x4e80[4];     // daHorse_c* mHorseActor;
