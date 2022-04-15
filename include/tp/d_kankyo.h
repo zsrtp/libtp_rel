@@ -21,9 +21,11 @@ namespace libtp::tp::d_kankyo
      */
     struct EnvLight
     {
-        uint8_t unk_0[0x98C];
-        uint8_t currentRoom;
-        uint8_t unk_98d[0x983];
+        /* 0x0 */ uint8_t unk_0[0x98C];
+        /* 0x98C */ uint8_t currentRoom;
+        /* 0x98D */ uint8_t unk_98d[0x6C3];
+        /* 0x1050 */ uint8_t mEvilPacketEnabled;
+        /* 0x1051 */ uint8_t unk_1051[0x2BF];
     } __attribute__( ( __packed__ ) );
 
     static_assert( sizeof( EnvLight ) == 0x1310 );
