@@ -121,42 +121,42 @@ namespace libtp::tp::d_a_alink
          *
          *  @return False if he isnt, True if he is.
          */
-        bool checkEventRun( cXyz* linkMapPtr );
+        bool checkEventRun( void* linkMapPtr );
 
         /**
          *	@brief Checks to see if Link is currently snowboarding
          *
          *  @return Bool if he is or isn't
          */
-        bool checkBoardRide( cXyz* linkMapPtr );
+        bool checkBoardRide( void* linkMapPtr );
 
         /**
          *	@brief Checks to see if Link is currently riding in a canoe
          *
          *  @return Bool if he is or isn't
          */
-        bool checkCanoeRide( cXyz* linkMapPtr );
+        bool checkCanoeRide( void* linkMapPtr );
 
         /**
          *	@brief Checks to see if Link is currently riding on Epona
          *
          *  @return Bool if he is or isn't
          */
-        bool checkHorseRide( cXyz* linkMapPtr );
+        bool checkHorseRide( void* linkMapPtr );
 
         /**
          *	@brief Checks to see if Link is currently riding on a boar
          *
          *  @return Bool if he is or isn't
          */
-        bool checkBoarRide( cXyz* linkMapPtr );
+        bool checkBoarRide( void* linkMapPtr );
 
         /**
          *	@brief Checks to see if Link is currently riding on the spinner
          *
          *  @return Bool if he is or isn't
          */
-        bool checkSpinnerRide( cXyz* linkMapPtr );
+        bool checkSpinnerRide( void* linkMapPtr );
 
         /**
          *  @brief Runs when delivering the final blow to Ganondorf
