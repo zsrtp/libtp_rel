@@ -14,7 +14,7 @@ namespace libtp::tp::d_camera
 {
     extern "C"
     {
-        bool checkRide( d_a_alink::daAlink );
+        bool checkRide( d_a_alink::daAlink* d_a_alink );
     }
 }     // namespace libtp::tp::d_camera
 #endif
