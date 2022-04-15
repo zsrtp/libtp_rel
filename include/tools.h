@@ -54,6 +54,20 @@ namespace libtp::tools
      */
     int32_t ReadGCI( int32_t chan, const char* fileName, int32_t length, int32_t offset, void* buffer );
 
+#ifdef PLATFORM_WII
+    /**
+     *  @brief Reads NAND data from offset to offset + length into buffer
+     *
+     *  @param fileName NAND Filename to load
+     *  @param length Maximum length to read
+     *  @param offset NAND fileOffset to read
+     *  @param[out] buffer Buffer to save the data
+     *
+     *  @return One of the NAND_RESULT Constants (NAND_RESULT_READY, ...)
+     */
+    int32_t ReadNAND( const char* fileName, int32_t length, int32_t offset, void* buffer );
+#endif  // PLATFORM_WII
+
     /**
      * @brief Generates a random number based on a seed and a maximum number
      *

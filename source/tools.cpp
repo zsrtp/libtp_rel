@@ -141,7 +141,7 @@ namespace libtp::tools
     }
 
 #ifdef PLATFORM_WII
-    int32_t ReadNAND( int32_t chan, const char* fileName, int32_t length, int32_t offset, void* buffer )
+    int32_t ReadNAND( const char* fileName, int32_t length, int32_t offset, void* buffer )
     {
         using namespace libtp::gc_wii::nand;
 
