@@ -18,6 +18,12 @@
 
 namespace libtp::tp::d_a_alink
 {
+    struct daAlink
+    {
+        /* 0x0062C */ uint8_t unk0[0x2FDC];
+        /* 0x02FDC */ uint16_t mEquipItem;
+        /* 0x02FDE */ uint8_t unk2FDE[0x87A];
+    };
     /**
      *	@brief These values define the speed of various climbing actions
      *
@@ -104,7 +110,7 @@ namespace libtp::tp::d_a_alink
          *
          *  @return Bool if link is transforming
          */
-        bool procCoMetamorphoseInit( void* linkMapPtr );
+        bool procCoMetamorphoseInit( daAlink* linkMapPtr );
 
         /**
          *	@brief Checks whether a chest-rupee doesn't fit in Link's wallet
@@ -121,52 +127,52 @@ namespace libtp::tp::d_a_alink
          *
          *  @return False if he isnt, True if he is.
          */
-        bool checkEventRun( void* linkMapPtr );
+        bool checkEventRun( daAlink* linkMapPtr );
 
         /**
          *	@brief Checks to see if Link is currently snowboarding
          *
          *  @return Bool if he is or isn't
          */
-        bool checkBoardRide( void* linkMapPtr );
+        bool checkBoardRide( daAlink* linkMapPtr );
 
         /**
          *	@brief Checks to see if Link is currently riding in a canoe
          *
          *  @return Bool if he is or isn't
          */
-        bool checkCanoeRide( void* linkMapPtr );
+        bool checkCanoeRide( daAlink* linkMapPtr );
 
         /**
          *	@brief Checks to see if Link is currently riding on Epona
          *
          *  @return Bool if he is or isn't
          */
-        bool checkHorseRide( void* linkMapPtr );
+        bool checkHorseRide( daAlink* linkMapPtr );
 
         /**
          *	@brief Checks to see if Link is currently riding on a boar
          *
          *  @return Bool if he is or isn't
          */
-        bool checkBoarRide( void* linkMapPtr );
+        bool checkBoarRide( daAlink* linkMapPtr );
 
         /**
          *	@brief Checks to see if Link is currently riding on the spinner
          *
          *  @return Bool if he is or isn't
          */
-        bool checkSpinnerRide( void* linkMapPtr );
+        bool checkSpinnerRide( daAlink* linkMapPtr );
 
         /**
          *  @brief Runs when delivering the final blow to Ganondorf
          */
-        bool procGanonFinishInit( void* d_a_alink );
+        bool procGanonFinishInit( daAlink* d_a_alink );
 
         /**
          *  @brief Runs when delivering the final blow to Ganondorf
          */
-        bool procGanonFinish( void* d_a_alink );
+        bool procGanonFinish( daAlink* d_a_alink );
 
         /**
          *  @brief Checks to see if an eventBit for the currently active save is set.
@@ -175,7 +181,7 @@ namespace libtp::tp::d_a_alink
          */
         bool dComIfGs_isEventBit( uint16_t flag );
 
-        bool checkDownAttackState( void* d_a_alink );
+        bool checkDownAttackState( daAlink* d_a_alink );
 
         extern ClimbVars climbVars;
         extern LinkStatus* linkStatus;
