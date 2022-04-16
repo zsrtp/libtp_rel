@@ -7,11 +7,13 @@
 #ifndef TP_M_DO_EXT_H
 #define TP_M_DO_EXT_H
 
+#include <cstdarg>
+
 namespace libtp::tp::m_Do_printf
 {
     extern "C"
     {
-        void OSReport(const char *string, ...);
+        void OSReport( const char* string, ... );
     }
 }     // namespace libtp::tp::m_Do_printf
 

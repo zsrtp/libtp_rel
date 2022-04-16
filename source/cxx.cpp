@@ -4,17 +4,17 @@
  *  @author Zephiles
  *	@bug No known bugs.
  */
+#include "cxx.h"
+
 #include <cstdint>
 #include <cstring>
-#include "cxx.h"
 
 #include "tp/JKRExpHeap.h"
 #include "tp/m_do_ext.h"
 
-void* getHeapPtr(int32_t id)
+void* getHeapPtr( int32_t id )
 {
-    static void** heapPtrArray[] = 
-    {
+    static void** heapPtrArray[] = {
         &libtp::tp::m_Do_ext::AssertHeap,
         &libtp::tp::m_Do_ext::DbPrintHeap,
         &libtp::tp::m_Do_ext::gameHeap,
@@ -22,11 +22,17 @@ void* getHeapPtr(int32_t id)
         &libtp::tp::m_Do_ext::commandHeap,
         &libtp::tp::m_Do_ext::archiveHeap,
         &libtp::tp::m_Do_ext::j2dHeap,
+
+#ifndef PLATFORM_WII
+
+        &libtp::tp::m_Do_ext::HostIOHeap,
+
+#endif     // PLATFORM_WII
     };
 
     // Make sure the id is valid
-    constexpr uint32_t heapPtrArraySize = sizeof(heapPtrArray) / sizeof(heapPtrArray[0]);
-    if ((id < 0) || (static_cast<uint32_t>(id) >= heapPtrArraySize))
+    constexpr uint32_t heapPtrArraySize = sizeof( heapPtrArray ) / sizeof( heapPtrArray[0] );
+    if ( ( id < 0 ) || ( static_cast<uint32_t>( id ) >= heapPtrArraySize ) )
     {
         // The id is invalid, so use the archive heap by default
         id = HEAP_ARCHIVE;
@@ -80,23 +86,23 @@ void operator delete[]( void* ptr, std::size_t size )
     return libtp::tp::jkr_exp_heap::do_free_JKRExpHeap( archiveHeapPtr, ptr );
 }
 
-void* operator new(size_t size, int32_t alignment, int32_t id)
+void* operator new( size_t size, int32_t alignment, int32_t id )
 {
-    void* heapPtr = getHeapPtr(id);
-    void* newPtr = libtp::tp::jkr_exp_heap::do_alloc_JKRExpHeap(heapPtr, size, alignment);
-    return memset(newPtr, 0, size);
+    void* heapPtr = getHeapPtr( id );
+    void* newPtr = libtp::tp::jkr_exp_heap::do_alloc_JKRExpHeap( heapPtr, size, alignment );
+    return memset( newPtr, 0, size );
 }
 
-void* operator new[](size_t size, int32_t alignment, int32_t id)
+void* operator new[]( size_t size, int32_t alignment, int32_t id )
 {
-    void* heapPtr = getHeapPtr(id);
-    void* newPtr = libtp::tp::jkr_exp_heap::do_alloc_JKRExpHeap(heapPtr, size, alignment);
-    return memset(newPtr, 0, size);
+    void* heapPtr = getHeapPtr( id );
+    void* newPtr = libtp::tp::jkr_exp_heap::do_alloc_JKRExpHeap( heapPtr, size, alignment );
+    return memset( newPtr, 0, size );
 }
 
 // Cannot used overloaded delete operator, so must use a generic function
-void freeFromHeap(int32_t id, void* ptr)
+void freeFromHeap( int32_t id, void* ptr )
 {
-    void* heapPtr = getHeapPtr(id);
-    return libtp::tp::jkr_exp_heap::do_free_JKRExpHeap(heapPtr, ptr);
+    void* heapPtr = getHeapPtr( id );
+    return libtp::tp::jkr_exp_heap::do_free_JKRExpHeap( heapPtr, ptr );
 }

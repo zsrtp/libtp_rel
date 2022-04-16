@@ -13,11 +13,17 @@ namespace libtp::tp::m_Do_ext
     {
         extern void* AssertHeap;
         extern void* DbPrintHeap;
-        extern void* gameHeap;        // Dynamic link heap
+        extern void* gameHeap;     // Dynamic link heap
         extern void* zeldaHeap;
         extern void* commandHeap;
         extern void* archiveHeap;     // Archive heap pointer
         extern void* j2dHeap;
+
+#ifndef PLATFORM_WII
+
+        extern void* HostIOHeap;
+
+#endif     // PLATFORM_WII
     }
 }     // namespace libtp::tp::m_Do_ext
 #endif
