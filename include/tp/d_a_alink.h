@@ -66,8 +66,17 @@ namespace libtp::tp::d_a_alink
 
     } __attribute__( ( __packed__ ) );
 
+    struct daAlinkHIO_magneBoots_c0
+    {
+        uint8_t unk_0[0x14];
+        float heavyStateSpeed;
+        uint8_t unk_18[0x34];
+
+    } __attribute__( ( __packed__ ) );
+
     static_assert( sizeof( ClimbVars ) == 0x70 );
     static_assert( sizeof( daAlinkHIO_kandelaar_c0 ) == 0x50 );
+    static_assert( sizeof( daAlinkHIO_magneBoots_c0 ) == 0x4C );
     static_assert( sizeof( WallMoveVars ) == 0x14 );
 
     /**
@@ -181,11 +190,14 @@ namespace libtp::tp::d_a_alink
 
         bool checkDownAttackState( daAlink* d_a_alink );
 
+        void checkBootsMoveAnime( daAlink* d_a_alink, int param_1 );
+
         extern ClimbVars climbVars;
         extern LinkStatus* linkStatus;
         extern WallMoveVars wallMoveVars;     // US Address = 0x8038E1E0
         extern uint8_t getSeType[0x100];
         extern daAlinkHIO_kandelaar_c0 lanternVars;
+        extern daAlinkHIO_magneBoots_c0 ironBootsVars;
     }
 }     // namespace libtp::tp::d_a_alink
 #endif
