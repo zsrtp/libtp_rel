@@ -174,7 +174,7 @@ namespace libtp::tools
         if ( result == NAND_RESULT_READY )
         {
             // result = storage_read( &fileInfo, data, adjustedLength, adjustedOffset, NAND_OPEN_READ );
-            result = NANDSeek( &fileInfo, adjustedOffset, 0 );
+            result = NANDSeek( &fileInfo, adjustedOffset, NAND_SEEK_START );
             if ( result == NAND_RESULT_READY )
             {
                 int32_t r = NANDRead( &fileInfo, data, adjustedLength );
