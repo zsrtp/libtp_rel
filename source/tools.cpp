@@ -5,8 +5,14 @@
 #include <cstdio>
 #include <cstring>
 
-#include "display/console.h"
+#ifndef PLATFORM_WII
 #include "gc_wii/card.h"
+#else
+#include "cxx.h"
+#include "gc_wii/nand.h"
+#endif
+
+#include "display/console.h"
 #include "memory.h"
 #include "tp/JFWSystem.h"
 #include "tp/d_com_inf_game.h"
@@ -74,6 +80,8 @@ namespace libtp::tools
         tp::d_stage::ActorCreate( &actor, actorMemoryPtr );
     }
 
+#ifndef PLATFORM_WII
+
     int32_t ReadGCI( int32_t chan, const char* fileName, int32_t length, int32_t offset, void* buffer )
     {
         using namespace libtp::gc_wii::card;
@@ -102,13 +110,17 @@ namespace libtp::tools
 
         if ( result == CARD_RESULT_READY )
         {
-            result = CARDMount( chan, workArea, []( int32_t chan, int32_t result ) {
-                // S
-                tp::jfw_system::ConsoleLine* line = &tp::jfw_system::systemConsole->consoleLine[JFW_DEBUG_LINE];
+            result = CARDMount( chan,
+                                workArea,
+                                []( int32_t chan, int32_t result )
+                                {
+                                    // S
+                                    tp::jfw_system::ConsoleLine* line =
+                                        &tp::jfw_system::systemConsole->consoleLine[JFW_DEBUG_LINE];
 
-                line->showLine = true;
-                sprintf( line->line, "ReadGCI::CARDERR; Chan: %" PRId32 " Result: %" PRId32, chan, result );
-            } );
+                                    line->showLine = true;
+                                    sprintf( line->line, "ReadGCI::CARDERR; Chan: %" PRId32 " Result: %" PRId32, chan, result );
+                                } );
 
             if ( result == CARD_RESULT_READY )
             {
@@ -135,6 +147,53 @@ namespace libtp::tools
 
         return result;
     }
+
+#else     // PLATFORM_WII
+
+    int32_t ReadNAND( const char* fileName, int32_t length, int32_t offset, void* buffer )
+    {
+        using namespace libtp::gc_wii::nand;
+
+        NANDFileInfo fileInfo;
+        int32_t result = NAND_RESULT_READY;
+
+        // Since we can only read in and at increments of NAND_READ_SIZE do this to calculate the region we require
+
+        int32_t adjustedOffset = ( offset / NAND_READ_SIZE ) * NAND_READ_SIZE;
+        int32_t adjustedLength = ( 1 + ( ( offset - adjustedOffset + length - 1 ) / NAND_READ_SIZE ) ) * NAND_READ_SIZE;
+
+        // Buffer might not be adjusted to the new length so create a temporary data buffer
+        uint8_t* data = new uint8_t[adjustedLength];
+
+        memset( buffer, 0, length );
+        memset( data, 0, adjustedLength );
+
+        // Read data
+        result = NANDOpen( const_cast<char*>( fileName ), &fileInfo, NAND_OPEN_READ );
+
+        if ( result == NAND_RESULT_READY )
+        {
+            // result = storage_read( &fileInfo, data, adjustedLength, adjustedOffset, NAND_OPEN_READ );
+            result = NANDSeek( &fileInfo, adjustedOffset, NAND_SEEK_START );
+            if ( result == NAND_RESULT_READY )
+            {
+                int32_t r = NANDRead( &fileInfo, data, adjustedLength );
+                result = ( r > 0 ) ? NAND_RESULT_READY : r;
+            }
+            NANDClose( &fileInfo );
+
+            // Copy data to the user's buffer
+            memcpy( buffer, data + ( offset - adjustedOffset ), length );
+        }
+        // NANDOpen
+
+        // Clean up
+        delete[] data;
+
+        return result;
+    }
+
+#endif     // PLATFORM_WII
 
     uint32_t getRandom( uint64_t* seed, uint32_t max )
     {

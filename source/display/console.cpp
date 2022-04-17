@@ -106,8 +106,9 @@ namespace libtp::display
 
     Console& operator<<( Console& console, char chr )
     {
-        char buf[1];
+        char buf[2];
         buf[0] = chr;
+        buf[1] = 0;
         console.parse( buf );
         return console;
     }
