@@ -145,7 +145,7 @@ namespace libtp::gc_wii::nand
          * @param basePosition Base position to seek from (Start/Current/End)
          * @return int32_t The new position of the cursor, or an error code for the operation
          */
-        int32_t NANDSeek( NANDFileInfo* fileInfo, uint32_t offset, int32_t basePosition );
+        int32_t NANDSeek( NANDFileInfo* fileInfo, int32_t offset, int32_t basePosition );
     }
 
 }     // namespace libtp::gc_wii::nand
