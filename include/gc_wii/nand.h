@@ -45,7 +45,7 @@ namespace libtp::gc_wii::nand
     extern "C"
     {
         // Variables
-        /** 
+        /**
          * @brief Static memory intended to be used with the Safe version of NANDOpen.
          */
         extern uint8_t l_safeCopyBuf[0x4000];
@@ -142,10 +142,10 @@ namespace libtp::gc_wii::nand
          *
          * @param fileInfo Pointer to the file info of the file to seek into
          * @param offset File position to seek to
-         * @param unk1 Base position to seek from (Start/Current/End)
+         * @param basePosition Base position to seek from (Start/Current/End)
          * @return int32_t The new position of the cursor, or an error code for the operation
          */
-        int32_t NANDSeek( NANDFileInfo* fileInfo, uint32_t offset, int32_t unk1 );
+        int32_t NANDSeek( NANDFileInfo* fileInfo, uint32_t offset, int32_t basePosition );
     }
 
 }     // namespace libtp::gc_wii::nand

@@ -167,7 +167,7 @@ namespace libtp::tools
         int32_t adjustedLength = ( 1 + ( ( offset - adjustedOffset + length - 1 ) / NAND_READ_SIZE ) ) * NAND_READ_SIZE;
 
         // Buffer might not be adjusted to the new length so create a temporary data buffer
-        uint8_t* data = new ( 0x20 ) uint8_t[adjustedLength];
+        uint8_t* data = new uint8_t[adjustedLength];
 
         memset( buffer, 0, length );
         memset( data, 0, adjustedLength );
