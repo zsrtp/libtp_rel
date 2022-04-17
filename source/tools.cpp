@@ -6,14 +6,10 @@
 #include <cstring>
 
 #ifndef PLATFORM_WII
-
 #include "gc_wii/card.h"
-
 #else
-
 #include "cxx.h"
 #include "gc_wii/nand.h"
-
 #endif
 
 #include "display/console.h"

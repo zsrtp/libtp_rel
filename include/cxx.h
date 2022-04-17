@@ -22,9 +22,9 @@ enum HeapID : int32_t
     HEAP_J2D,
 
 #ifndef PLATFORM_WII
-
     HEAP_HOST_IO,
-
+#else
+    HEAP_DYNAMIC_LINK,
 #endif
 
 };

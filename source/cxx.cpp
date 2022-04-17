@@ -10,6 +10,7 @@
 #include <cstring>
 
 #include "tp/JKRExpHeap.h"
+#include "tp/dynamic_link.h"
 #include "tp/m_do_ext.h"
 
 void* getHeapPtr( int32_t id )
@@ -24,10 +25,11 @@ void* getHeapPtr( int32_t id )
         &libtp::tp::m_Do_ext::j2dHeap,
 
 #ifndef PLATFORM_WII
-
         &libtp::tp::m_Do_ext::HostIOHeap,
-
+#else
+        &libtp::tp::dynamic_link::DynamicModuleControlBase::m_heap,
 #endif     // PLATFORM_WII
+
     };
 
     // Make sure the id is valid

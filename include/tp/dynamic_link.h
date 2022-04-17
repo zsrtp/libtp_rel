@@ -29,5 +29,13 @@ namespace libtp::tp::dynamic_link
         bool do_link( DynamicModuleControl* dmc );
         bool do_unlink( DynamicModuleControl* dmc );
     }
+
+    namespace DynamicModuleControlBase
+    {
+        extern "C"
+        {
+            extern void* m_heap;
+        }
+    }     // namespace DynamicModuleControlBase
 }     // namespace libtp::tp::dynamic_link
 #endif
