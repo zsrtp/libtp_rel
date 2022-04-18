@@ -190,7 +190,7 @@ namespace libtp::tp::d_a_alink
 
         bool checkDownAttackState( daAlink* d_a_alink );
 
-        void checkBootsMoveAnime( daAlink* d_a_alink, int param_1 );
+        bool checkBootsMoveAnime( daAlink* d_a_alink, int param_1 );
 
         extern ClimbVars climbVars;
         extern LinkStatus* linkStatus;
