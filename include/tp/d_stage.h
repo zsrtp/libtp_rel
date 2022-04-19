@@ -104,6 +104,8 @@ namespace libtp::tp::d_stage
          */
         int32_t tgscInfoInit( void* stageDt, void* i_data, int32_t entryNum, void* param_3 );
 
+        void roomLoader( void* data, void* stageDt, int roomNo );
+
         /**
          *  @brief Pointer to roomControl data
          */
