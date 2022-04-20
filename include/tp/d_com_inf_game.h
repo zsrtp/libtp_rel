@@ -309,6 +309,13 @@ namespace libtp::tp::d_com_inf_game
          *
          */
         void dComIfGs_Wolf_Change_Check();
+
+        /**
+         *  @brief Returns the location in memory where the specified data file is loaded on the stage
+         *
+         *  @param data The data file name to find.
+         */
+        void* dComIfG_getStageRes( const char* data );
     }
 }     // namespace libtp::tp::d_com_inf_game
 #endif
