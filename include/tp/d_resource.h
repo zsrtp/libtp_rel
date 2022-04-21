@@ -40,7 +40,7 @@ namespace libtp::tp::d_resource
 
     dRes_info_c* getObjectResInfo( const char* arcName )
     {
-        return getResInfo( arcName, libtp::tp::d_com_inf_game::dComIfG_gameInfo.mResControl.mObjectInfo, 0x80 );
+        return getResInfo( arcName, d_com_inf_game::dComIfG_gameInfo.mResControl.mObjectInfo, 0x80 );
     }
 }     // namespace libtp::tp::d_resource
 #endif
