@@ -17,6 +17,7 @@
 #include "tp/d_a_alink.h"
 #include "tp/d_event.h"
 #include "tp/d_event_manager.h"
+#include "tp/d_resource.h"
 #include "tp/d_stage.h"
 #include "tp/evt_control.h"
 
@@ -262,19 +263,19 @@ namespace libtp::tp::d_com_inf_game
         dComIfG_play play;                 // F38 - 5F63
         uint8_t field_0x5f64[0x161AC];     // dDlst_list_c draw_list_list; 5F64 - 1C10F
         uint8_t field_0x1c110[0x1E8];      // 1C110 - 1C2F7
-        uint8_t field_0x1c2f8[0x1B00];     // dRes_control_c mResControl; 1C2F8 - 1DDF7
-        uint8_t field_0x1ddf8;             // 1DDF8
-        uint8_t mWorldDark;                // 1DDF9
-        uint8_t field_0x1ddfa;             // 1DDFA
-        uint8_t field_0x1ddfb;             // 1DDFB
-        uint8_t field_0x1ddfc;             // 1DDFC
-        uint8_t padding[3];                // 1DDFD - 1DDFF
-        uint32_t field_0x1de00;            // 1DE00 - 1DE03
-        uint32_t field_0x1de04;            // 1DE04 -  1DE07
-        uint8_t field_0x1de08;             // 1DE08
-        uint8_t field_0x1de09;             // 1DE09
-        uint8_t field_0x1de0a;             // 1DE0A
-        uint8_t padding_0x1DE0B[8];        // 1DE0B - 1DE010
+        libtp::tp::d_resource::dRes_control_c mResControl;
+        uint8_t field_0x1ddf8;          // 1DDF8
+        uint8_t mWorldDark;             // 1DDF9
+        uint8_t field_0x1ddfa;          // 1DDFA
+        uint8_t field_0x1ddfb;          // 1DDFB
+        uint8_t field_0x1ddfc;          // 1DDFC
+        uint8_t padding[3];             // 1DDFD - 1DDFF
+        uint32_t field_0x1de00;         // 1DE00 - 1DE03
+        uint32_t field_0x1de04;         // 1DE04 -  1DE07
+        uint8_t field_0x1de08;          // 1DE08
+        uint8_t field_0x1de09;          // 1DE09
+        uint8_t field_0x1de0a;          // 1DE0A
+        uint8_t padding_0x1DE0B[8];     // 1DE0B - 1DE010
     } __attribute__( ( __packed__ ) );
 
     extern "C"

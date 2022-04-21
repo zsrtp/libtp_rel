@@ -9,6 +9,8 @@
 
 #include <cstdint>
 
+#include "tp/d_com_inf_game.h"
+
 namespace libtp::tp::d_resource
 {
     struct dRes_info_c
@@ -23,11 +25,22 @@ namespace libtp::tp::d_resource
         /* 0x20 */ void** mRes;
     } __attribute__( ( __packed__ ) );
 
+    class dRes_control_c
+    {
+        /* 0x0000 */ dRes_info_c mObjectInfo[0x80];
+        /* 0x1200 */ dRes_info_c mStageInfo[0x40];
+    };
+
     static_assert( sizeof( dRes_info_c ) == 0x24 );
 
     extern "C"
     {
-        void* getResInfo( const char* arcName, dRes_info_c* objectInfo, int size );
+        dRes_info_c* getResInfo( const char* arcName, dRes_info_c* objectInfo, int size );
+    }
+
+    dRes_info_c* getObjectResInfo( const char* arcName )
+    {
+        return getResInfo( arcName, libtp::tp::d_com_inf_game::dComIfG_gameInfo.mResControl.mObjectInfo, 0x80 );
     }
 }     // namespace libtp::tp::d_resource
 #endif
