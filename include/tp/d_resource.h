@@ -31,8 +31,6 @@ namespace libtp::tp::d_resource
         /* 0x1200 */ dRes_info_c mStageInfo[0x40];
     } __attribute__( ( __packed__ ) );
 
-    static_assert( sizeof( dRes_info_c ) == 0x24 );
-
     extern "C"
     {
         dRes_info_c* getResInfo( const char* arcName, dRes_info_c* objectInfo, int size );
