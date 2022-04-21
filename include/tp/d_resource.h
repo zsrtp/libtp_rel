@@ -25,6 +25,7 @@ namespace libtp::tp::d_resource
 
     class dRes_control_c
     {
+       public:
         /* 0x0000 */ dRes_info_c mObjectInfo[0x80];
         /* 0x1200 */ dRes_info_c mStageInfo[0x40];
     } __attribute__( ( __packed__ ) );
