@@ -9,8 +9,6 @@
 
 #include <cstdint>
 
-#include "tp/d_com_inf_game.h"
-
 namespace libtp::tp::d_resource
 {
     struct dRes_info_c
