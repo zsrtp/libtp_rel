@@ -15,6 +15,7 @@ namespace libtp::tp::d_resource
     {
         /* 0x00 */ char mArchiveName[11];
         /* 0x0C */ uint16_t mCount;
+        /* 0x0E */ uint8_t padding[2];
         /* 0x10 */ void* mDMCommand;     // mDoDvdThd_mountArchive_c*
         /* 0x14 */ void* mArchive;       // JKRArchive*
         /* 0x18 */ void* heap;           // JKRHeap*
