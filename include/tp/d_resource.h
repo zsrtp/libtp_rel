@@ -14,7 +14,7 @@ namespace libtp::tp::d_resource
     struct dRes_info_c
     {
         /* 0x00 */ char mArchiveName[11];
-        /* 0x0B */ uint8_t padding;
+        /* 0x0B */ uint8_t padding_0xB;
         /* 0x0C */ uint16_t mCount;
         /* 0x0E */ uint8_t padding[2];
         /* 0x10 */ void* mDMCommand;     // mDoDvdThd_mountArchive_c*
