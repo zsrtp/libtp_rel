@@ -192,7 +192,7 @@ namespace libtp::tp::d_a_alink
 
         bool checkBootsMoveAnime( daAlink* d_a_alink, int param_1 );
 
-        void orderTalk( daAlink* d_a_alink );
+        void procCoTalkInit( daAlink* d_a_alink );
 
         extern ClimbVars climbVars;
         extern LinkStatus* linkStatus;
