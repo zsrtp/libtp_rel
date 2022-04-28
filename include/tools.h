@@ -6,7 +6,8 @@
  *  @todo At some point we might want to seperate functions into different namespaces
  * i.e. tools::array, tools::hashing, etc.; for now there aren't enough functions for this to make sense
  */
-#pragma once
+#ifndef LIBTP_TOOLS_H
+#define LIBTP_TOOLS_H
 #include <cstdint>
 
 #include "tp/dzx.h"
@@ -49,6 +50,7 @@ namespace libtp::tools
      */
     void SpawnSCOB( uint8_t roomID, tp::dzx::SCOB& actor_data );
 
+#ifndef PLATFORM_WII
     /**
      *  @brief Reads GCI data from offset to offset + length into buffer
      *
@@ -62,6 +64,19 @@ namespace libtp::tools
      */
     int32_t ReadGCI( int32_t chan, const char* fileName, int32_t length, int32_t offset, void* buffer );
 
+#else
+    /**
+     *  @brief Reads NAND data from offset to offset + length into buffer
+     *
+     *  @param fileName NAND Filename to load
+     *  @param length Maximum length to read
+     *  @param offset NAND fileOffset to read
+     *  @param[out] buffer Buffer to save the data
+     *
+     *  @return One of the NAND_RESULT Constants (NAND_RESULT_READY, ...)
+     */
+    int32_t ReadNAND( const char* fileName, int32_t length, int32_t offset, void* buffer );
+#endif
     /**
      * @brief Generates a random number based on a seed and a maximum number
      *
@@ -92,3 +107,5 @@ namespace libtp::tools
         B b;
     };
 }     // namespace libtp::tools
+
+#endif     // LIBTP_TOOLS_H

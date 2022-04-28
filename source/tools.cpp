@@ -5,6 +5,12 @@
 #include <cstdio>
 #include <cstring>
 
+#ifndef PLATFORM_WII
+#include "gc_wii/card.h"
+#else
+#include "cxx.h"
+#include "gc_wii/nand.h"
+#endif
 #include "data/stages.h"
 #include "display/console.h"
 #include "gc_wii/card.h"
@@ -101,7 +107,7 @@ namespace libtp::tools
 
         tp::d_stage::ActorCreate( &actor_data, actorMemoryPtr );
     }
-
+#ifndef PLATFORM_WII
     int32_t ReadGCI( int32_t chan, const char* fileName, int32_t length, int32_t offset, void* buffer )
     {
         using namespace libtp::gc_wii::card;
@@ -161,7 +167,50 @@ namespace libtp::tools
 
         return result;
     }
+#else
+    int32_t ReadNAND( const char* fileName, int32_t length, int32_t offset, void* buffer )
+    {
+        using namespace libtp::gc_wii::nand;
 
+        NANDFileInfo fileInfo;
+        int32_t result = NAND_RESULT_READY;
+
+        // Since we can only read in and at increments of NAND_READ_SIZE do this to calculate the region we require
+
+        int32_t adjustedOffset = ( offset / NAND_READ_SIZE ) * NAND_READ_SIZE;
+        int32_t adjustedLength = ( 1 + ( ( offset - adjustedOffset + length - 1 ) / NAND_READ_SIZE ) ) * NAND_READ_SIZE;
+
+        // Buffer might not be adjusted to the new length so create a temporary data buffer
+        uint8_t* data = new uint8_t[adjustedLength];
+
+        memset( buffer, 0, length );
+        memset( data, 0, adjustedLength );
+
+        // Read data
+        result = NANDOpen( const_cast<char*>( fileName ), &fileInfo, NAND_OPEN_READ );
+
+        if ( result == NAND_RESULT_READY )
+        {
+            // result = storage_read( &fileInfo, data, adjustedLength, adjustedOffset, NAND_OPEN_READ );
+            result = NANDSeek( &fileInfo, adjustedOffset, NAND_SEEK_START );
+            if ( result == NAND_RESULT_READY )
+            {
+                int32_t r = NANDRead( &fileInfo, data, adjustedLength );
+                result = ( r > 0 ) ? NAND_RESULT_READY : r;
+            }
+            NANDClose( &fileInfo );
+
+            // Copy data to the user's buffer
+            memcpy( buffer, data + ( offset - adjustedOffset ), length );
+        }
+        // NANDOpen
+
+        // Clean up
+        delete[] data;
+
+        return result;
+    }
+#endif
     uint32_t getRandom( uint64_t* seed, uint32_t max )
     {
         uint64_t z = ( *seed += 0x9e3779b97f4a7c15 );
