@@ -317,7 +317,6 @@ namespace libtp::tp::d_save
     struct dSv_memBit_c
     {
         uint8_t memoryFlags[0x20];
-        ;
     } __attribute__( ( __packed__ ) );
 
     struct dSv_memory_c
