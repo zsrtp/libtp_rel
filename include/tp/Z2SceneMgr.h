@@ -36,6 +36,8 @@ namespace libtp::tp::z2audiolib::z2scenemgr
                           uint8_t BgmWave2,
                           uint8_t DemoWave,
                           bool param_7 );
+        void loadSeWave( void* Z2SceneMgr, uint32_t waveID );
+        void eraseSeWave( void* Z2SceneMgr, uint32_t waveID );
     };
 }     // namespace libtp::tp::z2audiolib::z2scenemgr
 
