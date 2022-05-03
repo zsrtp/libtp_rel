@@ -20,6 +20,7 @@
 #include "tp/d_stage.h"
 #include "tp/dzx.h"
 #include "tp/f_op_actor_mng.h"
+#include "tp/m_do_memcard.h"
 
 namespace libtp::tools
 {
@@ -112,8 +113,8 @@ namespace libtp::tools
     {
         using namespace libtp::gc_wii::card;
 
-        CARDFileInfo* fileInfo = new CARDFileInfo();
-        uint8_t* workArea = new uint8_t[CARD_WORKAREA_SIZE];
+        CARDFileInfo fileInfo;
+        uint8_t* workArea = libtp::tp::m_Do_MemCard::MemCardWorkArea0;
         int32_t result;
 
         // Since we can only read in and at increments of CARD_READ_SIZE do this to calculate the region we require
@@ -143,12 +144,12 @@ namespace libtp::tools
             if ( result == CARD_RESULT_READY )
             {
                 // Read data
-                result = CARDOpen( chan, const_cast<char*>( fileName ), fileInfo );
+                result = CARDOpen( chan, const_cast<char*>( fileName ), &fileInfo );
 
                 if ( result == CARD_RESULT_READY )
                 {
-                    result = CARDRead( fileInfo, data, adjustedLength, adjustedOffset );
-                    CARDClose( fileInfo );
+                    result = CARDRead( &fileInfo, data, adjustedLength, adjustedOffset );
+                    CARDClose( &fileInfo );
 
                     // Copy data to the user's buffer
                     memcpy( buffer, data + ( offset - adjustedOffset ), length );
@@ -161,8 +162,6 @@ namespace libtp::tools
         // CARDProbeEx
 
         // Clean up
-        delete fileInfo;
-        delete[] workArea;
         delete[] data;
 
         return result;
