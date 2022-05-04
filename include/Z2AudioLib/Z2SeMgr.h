@@ -9,6 +9,7 @@
 
 #include <cstdint>
 
+#include "dolphin/mtx/vec.h"
 #include "gc_wii/bmgres.h"
 
 namespace libtp::z2audiolib::z2semgr
@@ -39,5 +40,10 @@ namespace libtp::z2audiolib::z2semgr
     } __attribute__( ( __packed__ ) );
 
     static_assert( sizeof( Z2SeMgr ) == 0x3D0 );
+
+    extern "C"
+    {
+        void seStartLevel( uint32_t sfxID, const Vec* unk1, uint32_t unk2, int8_t unk3 );
+    };
 }     // namespace libtp::z2audiolib::z2semgr
 #endif
