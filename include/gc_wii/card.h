@@ -294,6 +294,15 @@ namespace libtp::gc_wii::card
          * incorrect) (Struct for this not defined yet)
          */
         int32_t __CARDAccess( void* card, void* dirBlock );
+
+        /**
+     *  @brief Gets the status of a file.
+     *
+     *  @param chan EXI channel number
+        @param fileNo Index to the desired file on the memory card
+        @param stat Output for the status of the file
+    */
+        int32_t CARDGetStatus( int32_t chan, int32_t fileNo, CARDStat* stat );
     }
 
     // Manually written functions
@@ -340,14 +349,6 @@ namespace libtp::gc_wii::card
      */
     int32_t CARDDelete( int32_t chan, const char* fileName );
 
-    /**
- *  @brief Gets the status of a file.
- *
- *  @param chan EXI channel number
-    @param fileNo Index to the desired file on the memory card
-    @param stat Output for the status of the file
- */
-    int32_t CARDGetStatus( int32_t chan, int32_t fileNo, CARDStat* stat );
 }     // namespace libtp::gc_wii::card
 
 #endif
