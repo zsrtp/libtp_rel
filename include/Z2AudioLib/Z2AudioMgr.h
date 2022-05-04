@@ -25,6 +25,7 @@ namespace libtp::z2audiolib::z2audiomgr
         /* 0x0514 */ void* vtable;     // remove later
         /* 0x0518 */ bool mResettingFlag;
         /* 0x0519 */ bool field_0x519;
+        /* 0x051A */ uint8_t padding[2];
         /* 0x051C */ uint8_t mAudioReseter[0x10];
         /* 0x052C */ uint32_t mSoundStarter;
         /* 0x0530 */ uint8_t mSoundMgr[0x810];

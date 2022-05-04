@@ -37,6 +37,7 @@ namespace libtp::z2audiolib::z2semgr
         /* 0x3CA */ uint8_t field_0x3ca;
         /* 0x3CB */ uint8_t field_0x3cb;
         /* 0x3CC */ uint8_t mCrowdSize;
+        /* 0x3CC */ uint8_t padding[3];
     } __attribute__( ( __packed__ ) );
 
     static_assert( sizeof( Z2SeMgr ) == 0x3D0 );

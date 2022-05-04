@@ -24,9 +24,9 @@ namespace libtp::z2audiolib::z2scenemgr
 
     struct Z2SceneMgr
     {
-        /* 0x00 */ long BGM_ID;
-        /* 0x04 */ int sceneNum;
-        /* 0x08 */ int timer;
+        /* 0x00 */ uint32_t BGM_ID;
+        /* 0x04 */ int32_t sceneNum;
+        /* 0x08 */ int32_t timer;
         /* 0x0C */ int8_t roomNum;
         /* 0x0D */ uint8_t SeWave_1;
         /* 0x0E */ uint8_t SeWaveToErase_1;
@@ -46,6 +46,7 @@ namespace libtp::z2audiolib::z2scenemgr
         /* 0x1C */ bool inGame;
         /* 0x1D */ bool sceneExist;
         /* 0x1E */ bool inDarkness;
+        /* 0x1F */ uint8_t padding;
     } __attribute__( ( __packed__ ) );
 
     static_assert( sizeof( Z2SceneMgr ) == 0x20 );
