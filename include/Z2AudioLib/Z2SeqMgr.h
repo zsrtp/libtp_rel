@@ -10,7 +10,7 @@
 
 #include <cstdint>
 
-namespace libtp::tp::z2audiolib::z2seqmgr
+namespace libtp::z2audiolib::z2seqmgr
 {
     struct Z2SeqMgr;
 
@@ -18,6 +18,6 @@ namespace libtp::tp::z2audiolib::z2seqmgr
     {
         void startBattleBgm( Z2SeqMgr* seqMgr, bool param_1 );
     }
-}     //  namespace libtp::tp::z2audiolib::z2seqmgr
+}     // namespace libtp::z2audiolib::z2seqmgr
 
 #endif

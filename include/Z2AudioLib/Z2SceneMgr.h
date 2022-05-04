@@ -1,6 +1,7 @@
 /**	@file Z2SceneMgr.h
- *	@brief Contains structure definitions and functions for handling game audio
+ *	@brief Provides a funciton definition for the sceneChange function
  *
+ *  @author jdflyer
  *	@author Lunar Soap
  *	@bug No known bugs.
  */
@@ -11,8 +12,16 @@
 
 #include "gc_wii/bmgres.h"
 
-namespace libtp::Z2AudioLib::Z2SceneMgr
+namespace libtp::z2audiolib::z2scenemgr
 {
+    /**
+     *@todo Move JAISoundID to its own file
+     */
+    struct JAISoundID
+    {
+        uint32_t id;
+    };
+
     struct Z2SceneMgr
     {
         /* 0x00 */ long BGM_ID;
@@ -40,5 +49,22 @@ namespace libtp::Z2AudioLib::Z2SceneMgr
     } __attribute__( ( __packed__ ) );
 
     static_assert( sizeof( Z2SceneMgr ) == 0x20 );
-}     // namespace libtp::Z2AudioLib::Z2SceneMgr
+
+    extern "C"
+    {
+        /**
+         * @brief sceneChange is called when the game changes the BGM playing
+         */
+        void sceneChange( Z2SceneMgr* sceneMgr,
+                          JAISoundID id,
+                          uint8_t SeWave1,
+                          uint8_t SeWave2,
+                          uint8_t BgmWave1,
+                          uint8_t BgmWave2,
+                          uint8_t DemoWave,
+                          bool param_7 );
+        void loadSeWave( void* Z2SceneMgr, uint32_t waveID );
+        void eraseSeWave( void* Z2SceneMgr, uint32_t waveID );
+    };
+}     // namespace libtp::z2audiolib::z2scenemgr
 #endif

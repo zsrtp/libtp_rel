@@ -11,7 +11,7 @@
 
 #include "gc_wii/bmgres.h"
 
-namespace libtp::Z2AudioLib::Z2SeMgr
+namespace libtp::z2audiolib::z2semgr
 {
     struct Z2SeMgr
     {
@@ -39,5 +39,5 @@ namespace libtp::Z2AudioLib::Z2SeMgr
     } __attribute__( ( __packed__ ) );
 
     static_assert( sizeof( Z2SeMgr ) == 0x3D0 );
-}     // namespace libtp::Z2AudioLib::Z2SeMgr
+}     // namespace libtp::z2audiolib::z2semgr
 #endif

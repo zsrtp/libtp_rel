@@ -13,13 +13,13 @@
 #include "Z2AudioLib/Z2SeMgr.h"
 #include "gc_wii/bmgres.h"
 
-namespace libtp::Z2AudioLib::Z2AudioMgr
+namespace libtp::z2audiolib::z2audiomgr
 {
     struct Z2AudioMgr
     {
-        /* 0x0000 */ libtp::Z2AudioLib::Z2SeMgr mSeMgr;
+        /* 0x0000 */ libtp::z2audiolib::z2semgr::Z2SeMgr mSeMgr;
         /* 0x03D0 */ uint8_t mSeqMgr[0xD4];
-        /* 0x04A4 */ libtp::Z2AudioLib::Z2SceneMgr mSceneMgr;
+        /* 0x04A4 */ libtp::z2audiolib::z2scenemgr::Z2SceneMgr mSceneMgr;
         /* 0x04C4 */ uint8_t mStatusMgr[0x30];
         /* 0x04F4 */ uint8_t mSoundObjMgr[0x20];
         /* 0x0514 */ void* vtable;     // remove later
@@ -36,5 +36,11 @@ namespace libtp::Z2AudioLib::Z2AudioMgr
     } __attribute__( ( __packed__ ) );
 
     static_assert( sizeof( Z2AudioMgr ) == 0x138C );
-}     // namespace libtp::Z2AudioLib::Z2AudioMgr
+
+    extern "C"
+    {
+        extern Z2AudioMgr g_mDoAud_zelAudio;
+    };
+
+}     // namespace libtp::z2audiolib::z2audiomgr
 #endif
