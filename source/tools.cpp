@@ -114,77 +114,84 @@ namespace libtp::tools
                      int32_t length,
                      int32_t offset,
                      void* buffer,
-                     bool getOffsetFromCardStat )
+                     bool incrementOffsetFromCardStat )
     {
         using namespace libtp::gc_wii::card;
 
-        CARDFileInfo fileInfo;
-        uint8_t* workArea = libtp::tp::m_Do_MemCard::MemCardWorkArea0;
         int32_t result;
 
-        // Since we can only read in and at increments of CARD_READ_SIZE do this to calculate the region we require
+        // Check if memory card is valid
+        result = checkForMemoryCard( chan );
+        if ( result != CARD_RESULT_READY )
+        {
+            return result;
+        }
 
+        // Mount the memory card
+        uint8_t* workArea = libtp::tp::m_Do_MemCard::MemCardWorkArea0;
+        result = CARDMount( chan,
+                            workArea,
+                            []( int32_t chan, int32_t result )
+                            {
+                                // S
+                                tp::jfw_system::ConsoleLine* line = &tp::jfw_system::systemConsole->consoleLine[JFW_DEBUG_LINE];
+
+                                line->showLine = true;
+                                sprintf( line->line, "ReadGCI::CARDERR; Chan: %" PRId32 " Result: %" PRId32, chan, result );
+                            } );
+
+        if ( result != CARD_RESULT_READY )
+        {
+            return result;
+        }
+
+        // Open the file
+        CARDFileInfo fileInfo;
+        result = CARDOpen( chan, const_cast<char*>( fileName ), &fileInfo );
+        if ( result != CARD_RESULT_READY )
+        {
+            CARDUnmount( chan );
+            return result;
+        }
+
+        if ( incrementOffsetFromCardStat )
+        {
+            CARDStat stat;
+            result = CARDGetStatus( chan, fileInfo.fileNo, &stat );
+
+            if ( result != CARD_RESULT_READY )
+            {
+                CARDClose( &fileInfo );
+                CARDUnmount( chan );
+                return result;
+            }
+
+            offset += stat.commentAddr + ( sizeof( stat.fileName ) * 2 );
+        }
+
+        // Since we can only read in and at increments of CARD_READ_SIZE do this to calculate the region we require
         int32_t adjustedOffset = ( offset / CARD_READ_SIZE ) * CARD_READ_SIZE;
         int32_t adjustedLength = ( 1 + ( ( offset - adjustedOffset + length - 1 ) / CARD_READ_SIZE ) ) * CARD_READ_SIZE;
 
         // Buffer might not be adjusted to the new length so create a temporary data buffer
         uint8_t* data = new uint8_t[adjustedLength];
 
-        // Check if card is valid
-        result = checkForMemoryCard( chan );
-        if ( result == CARD_RESULT_READY )
+        // Read the data
+        result = CARDRead( &fileInfo, data, adjustedLength, adjustedOffset );
+        CARDClose( &fileInfo );
+
+        if ( result != CARD_RESULT_READY )
         {
-            result = CARDMount( chan,
-                                workArea,
-                                []( int32_t chan, int32_t result )
-                                {
-                                    // S
-                                    tp::jfw_system::ConsoleLine* line =
-                                        &tp::jfw_system::systemConsole->consoleLine[JFW_DEBUG_LINE];
-
-                                    line->showLine = true;
-                                    sprintf( line->line, "ReadGCI::CARDERR; Chan: %" PRId32 " Result: %" PRId32, chan, result );
-                                } );
-
-            if ( result == CARD_RESULT_READY )
-            {
-                // Read data
-                result = CARDOpen( chan, const_cast<char*>( fileName ), &fileInfo );
-
-                if ( result == CARD_RESULT_READY )
-                {
-                    if ( getOffsetFromCardStat )
-                    {
-                        CARDStat stat;
-                        result = CARDGetStatus( chan, fileInfo.fileNo, &stat );
-
-                        if ( result == CARD_RESULT_READY )
-                        {
-                            offset = stat.commentAddr + ( sizeof( stat.fileName ) * 2 );
-                        }
-                    }
-
-                    // Since we can only read in and at increments of CARD_READ_SIZE do this to calculate the region we require
-                    int32_t adjustedOffset = ( offset / CARD_READ_SIZE ) * CARD_READ_SIZE;
-                    int32_t adjustedLength =
-                        ( 1 + ( ( offset - adjustedOffset + length - 1 ) / CARD_READ_SIZE ) ) * CARD_READ_SIZE;
-
-                    result = CARDRead( &fileInfo, data, adjustedLength, adjustedOffset );
-                    CARDClose( &fileInfo );
-
-                    // Copy data to the user's buffer
-                    memcpy( buffer, data + ( offset - adjustedOffset ), length );
-                }
-                // CARDOpen
-                CARDUnmount( chan );
-            }
-            // CARDMount
+            CARDUnmount( chan );
+            delete[] data;
+            return result;
         }
-        // CARDProbeEx
 
-        // Clean up
+        // Copy data to the user's buffer
+        memcpy( buffer, data + ( offset - adjustedOffset ), length );
+
+        CARDUnmount( chan );
         delete[] data;
-
         return result;
     }
 #else
