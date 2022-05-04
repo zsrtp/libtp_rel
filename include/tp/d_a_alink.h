@@ -184,7 +184,7 @@ namespace libtp::tp::d_a_alink
         /**
          *  @brief Checks to see if link should be taking damage
          */
-        void checkDamageAction( daAlink* d_a_alink );
+        bool checkDamageAction( daAlink* d_a_alink );
 
         /**
          *  @brief Causes link to take damage based on his interaction with certain things.
