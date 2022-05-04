@@ -109,7 +109,12 @@ namespace libtp::tools
         tp::d_stage::ActorCreate( &actor_data, actorMemoryPtr );
     }
 #ifndef PLATFORM_WII
-    int32_t ReadGCI( int32_t chan, const char* fileName, int32_t length, int32_t offset, void* buffer )
+    int32_t ReadGCI( int32_t chan,
+                     const char* fileName,
+                     int32_t length,
+                     int32_t offset,
+                     void* buffer,
+                     bool getOffsetFromCardStat )
     {
         using namespace libtp::gc_wii::card;
 
@@ -148,6 +153,22 @@ namespace libtp::tools
 
                 if ( result == CARD_RESULT_READY )
                 {
+                    if ( getOffsetFromCardStat )
+                    {
+                        CARDStat stat;
+                        result = CARDGetStatus( chan, fileInfo.fileNo, &stat );
+
+                        if ( result == CARD_RESULT_READY )
+                        {
+                            offset = stat.commentAddr + ( sizeof( stat.fileName ) * 2 );
+                        }
+                    }
+
+                    // Since we can only read in and at increments of CARD_READ_SIZE do this to calculate the region we require
+                    int32_t adjustedOffset = ( offset / CARD_READ_SIZE ) * CARD_READ_SIZE;
+                    int32_t adjustedLength =
+                        ( 1 + ( ( offset - adjustedOffset + length - 1 ) / CARD_READ_SIZE ) ) * CARD_READ_SIZE;
+
                     result = CARDRead( &fileInfo, data, adjustedLength, adjustedOffset );
                     CARDClose( &fileInfo );
 
