@@ -22,7 +22,7 @@ namespace libtp::z2audiolib::z2semgr
         /* 0x1D0 */ uint32_t mLevelObjectSeCount;
         /* 0x1D4 */ uint8_t mMultiTriggerSe[0x168];     // Z2MultiSeObj mMultiTriggerSe[10]
         /* 0x33C */ uint8_t mMultiTriggerSeCount;
-        /* 0x33D */ uint8_t field_0x33d[0x62];
+        /* 0x33D */ uint8_t field_0x33d[0x63];
         /* 0x3A0 */ uint32_t mModY[8];
         /* 0x3C0 */ uint8_t field_0x3c0;
         /* 0x3C1 */ uint8_t field_0x3c1;
