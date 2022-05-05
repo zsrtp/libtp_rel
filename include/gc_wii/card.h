@@ -157,7 +157,7 @@ namespace libtp::gc_wii::card
          *  @param fileName	pointer to file name to be opened
          *  @param fileInfo	pointer to file info to be used
          */
-        int32_t CARDOpen( int32_t chan, char* fileName, CARDFileInfo* fileInfo );
+        int32_t CARDOpen( int32_t chan, const char* fileName, CARDFileInfo* fileInfo );
 
         // bool CARDProbe( int32_t chan );
 

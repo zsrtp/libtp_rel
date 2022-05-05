@@ -62,9 +62,14 @@ namespace libtp::tools
      *
      *  @return One of the CARD_RESULT Constants (CARD_RESULT_READY, ...)
      */
-    int32_t ReadGCI( int32_t chan, char* fileName, int32_t length, int32_t offset, void* buffer, bool getOffsetFromCardStat );
+    int32_t ReadGCI( int32_t chan,
+                     const char* fileName,
+                     int32_t length,
+                     int32_t offset,
+                     void* buffer,
+                     bool getOffsetFromCardStat );
     int32_t ReadGCIMounted( int32_t chan,
-                            char* fileName,
+                            const char* fileName,
                             int32_t length,
                             int32_t offset,
                             void* buffer,

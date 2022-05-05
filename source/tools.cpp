@@ -110,7 +110,7 @@ namespace libtp::tools
     }
 #ifndef PLATFORM_WII
     int32_t ReadGCIMounted( int32_t chan,
-                            char* fileName,
+                            const char* fileName,
                             int32_t length,
                             int32_t offset,
                             void* buffer,
@@ -167,7 +167,7 @@ namespace libtp::tools
     }
 
     int32_t ReadGCI( int32_t chan,
-                     char* fileName,
+                     const char* fileName,
                      int32_t length,
                      int32_t offset,
                      void* buffer,
