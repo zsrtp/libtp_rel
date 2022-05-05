@@ -68,6 +68,12 @@ namespace libtp::tools
                      int32_t offset,
                      void* buffer,
                      bool getOffsetFromCardStat );
+    int32_t ReadGCIMounted( int32_t chan,
+                            const char* fileName,
+                            int32_t length,
+                            int32_t offset,
+                            void* buffer,
+                            bool startAfterIconComments );
 
 #else
     /**
@@ -96,6 +102,13 @@ namespace libtp::tools
      * @param chan the current channel of the Memory Card being checked.
      */
     int32_t checkForMemoryCard( int32_t slot );
+
+    /**
+     * @brief Mounts the current memory card
+     *
+     * @param chan the current channel of the Memory Card being mounted.
+     */
+    int32_t mountMemoryCard( int32_t chan );
 
     /**
      * @brief Converts the given stage string into an index
