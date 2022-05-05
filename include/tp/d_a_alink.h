@@ -187,6 +187,11 @@ namespace libtp::tp::d_a_alink
         bool checkDamageAction( daAlink* d_a_alink );
 
         /**
+         *  @brief Sets link's facial expression when getting an item
+         */
+        void setGetItemFace( daAlink* d_a_alink, uint16_t itemID );
+
+        /**
          *  @brief Causes link to take damage based on his interaction with certain things.
          */
         bool procDamageInit( daAlink* d_a_alink, void* obj, int32_t unk3 );
