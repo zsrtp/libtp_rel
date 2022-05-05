@@ -181,9 +181,8 @@ namespace libtp::tools
         if ( result == CARD_RESULT_READY )
         {
             result = ReadGCIMounted( chan, fileName, length, offset, buffer, startAfterBannerIconComments );
+            CARDUnmount( chan );
         }
-
-        CARDUnmount( chan );
         return result;
     }
 #else
