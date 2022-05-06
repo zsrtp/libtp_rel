@@ -139,7 +139,7 @@ namespace libtp::tools
             if ( startAfterComments )
             {
                 CARDStat stat;
-                result = CARDGetStatus( chan, fileInfo.fileNum, &stat );
+                result = CARDGetStatus( chan, fileInfo.fileNo, &stat );
 
                 if ( result != CARD_RESULT_READY )
                 {
