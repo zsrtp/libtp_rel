@@ -174,6 +174,7 @@ namespace libtp::tools
 
     int32_t ReadGCI( int32_t chan, const char* fileName, int32_t length, int32_t offset, void* buffer, bool startAfterComments )
     {
+        using namespace libtp::gc_wii::card;
         int32_t result;
 
         result = mountMemoryCard( chan );
