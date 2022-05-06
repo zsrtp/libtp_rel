@@ -117,10 +117,10 @@ namespace libtp::gc_wii::card
         int32_t CARDCheck( int32_t chan );
 
         // int32_t CARDCheckAsync( int32_t chan, CARDCallback callback );
-        // int32_t CARDCreate( int32_t chan, char* fileName, u32 size, CARDFileInfo*
-        // fileInfo ); int32_t CARDCreateAsync( int32_t chan, char* fileName, u32 size,
+        // int32_t CARDCreate( int32_t chan, const char* fileName, u32 size, CARDFileInfo*
+        // fileInfo ); int32_t CARDCreateAsync( int32_t chan, const char* fileName, u32 size,
         // CARDFileInfo* fileInfo, CARDCallback callback ); int32_t CARDDelete( int32_t
-        // chan, char* fileName ); int32_t CARDDeleteAsync( int32_t chan, char*
+        // chan, const char* fileName ); int32_t CARDDeleteAsync( int32_t chan, const char*
         // fileName, CARDCallback callback ); int32_t CARDFastDelete( int32_t chan,
         // int32_t fileNo ); int32_t CARDFastDeleteAsync( int32_t chan, int32_t fileNo,
         // CARDCallback callback ); int32_t CARDFastOpen( int32_t chan, int32_t fileNo,
@@ -171,7 +171,7 @@ namespace libtp::gc_wii::card
          *  @param fileName	pointer to file name to be opened
          *  @param fileInfo	pointer to file info to be used
          */
-        int32_t CARDOpen( int32_t chan, char* fileName, CARDFileInfo* fileInfo );
+        int32_t CARDOpen( int32_t chan, const char* fileName, CARDFileInfo* fileInfo );
 
         // bool CARDProbe( int32_t chan );
 
@@ -190,8 +190,8 @@ namespace libtp::gc_wii::card
          * size, in bytes. Specify NULL if it is not necessary.
          */
         int32_t CARDProbeEx( int32_t chan, int32_t* memSize, int32_t* sectorSize );
-        // int32_t CARDRename( int32_t chan, char* oldName, char* newName );
-        // int32_t CARDRenameAsync( int32_t chan, char* oldName, char* newName,
+        // int32_t CARDRename( int32_t chan, const char* oldName, const char* newName );
+        // int32_t CARDRenameAsync( int32_t chan, const char* oldName, const char* newName,
         // CARDCallback callback ); int32_t CARDSetStatus( int32_t chan, int32_t fileNo,
         // CARDStat* stat ); int32_t CARDSetStatusAsync( int32_t chan, int32_t fileNo,
         // CARDStat* stat, CARDCallback callback );
