@@ -46,17 +46,55 @@ namespace libtp::tools
 #ifndef PLATFORM_WII
 
     /**
-     *  @brief Reads GCI data from offset to offset + length into buffer
+     *  @brief Mounts a memory card
+     *
+     *  @param chan Slot to check for the memory card
+     *
+     *  @return One of the CARD_RESULT Constants (CARD_RESULT_READY, ...)
+     */
+    int32_t mountMemoryCard( int32_t chan );
+
+    /**
+     *  @brief Reads GCI data from offset to offset + length into buffer. This function assumes that the memory card is already
+     * mounted, and does not unmount the memory card upon ending.
      *
      *  @param chan Slot to check for the file
      *  @param fileName GCI Filename to load
      *  @param length Maximum length to read
      *  @param offset GCI fileOffset to read
      *  @param[out] buffer Buffer to save the data
+     *  @param startAfterComments Whether to start reading after the comments section of the file. This assumes that the banner,
+     * icon, and comments are all directly next to each other in the file, and that the comments come last.
      *
      *  @return One of the CARD_RESULT Constants (CARD_RESULT_READY, ...)
      */
-    int32_t ReadGCI( int32_t chan, const char* fileName, int32_t length, int32_t offset, void* buffer );
+    int32_t ReadGCIMounted( int32_t chan,
+                            const char* fileName,
+                            int32_t length,
+                            int32_t offset,
+                            void* buffer,
+                            bool startAfterComments );
+
+    /**
+     *  @brief Reads GCI data from offset to offset + length into buffer. This function mounts and unmounts the memory card upon
+     * starting and ending respectively.
+     *
+     *  @param chan Slot to check for the file
+     *  @param fileName GCI Filename to load
+     *  @param length Maximum length to read
+     *  @param offset GCI fileOffset to read
+     *  @param[out] buffer Buffer to save the data
+     *  @param startAfterComments Whether to start reading after the comments section of the file. This assumes that the banner,
+     * icon, and comments are all directly next to each other in the file, and that the comments come last.
+     *
+     *  @return One of the CARD_RESULT Constants (CARD_RESULT_READY, ...)
+     */
+    int32_t ReadGCI( int32_t chan,
+                     const char* fileName,
+                     int32_t length,
+                     int32_t offset,
+                     void* buffer,
+                     bool startAfterComments );
 
 #else     // PLATFORM_WII
 

@@ -129,7 +129,15 @@ namespace libtp::gc_wii::card
         // CARDFreeBlocks( int32_t chan, int32_t* byteNotUsed, int32_t* filesNotUsed );
         // int32_t CARDGetResultCode( int32_t chan );
         // int32_t CARDGetEncoding( int32_t chan, u16* encode );
-        // int32_t CARDGetStatus( int32_t chan, int32_t fileNo, CARDStat* stat );
+
+        /**
+         *  @brief Gets the status of a file.
+         *
+         *  @param chan EXI channel number
+            @param fileNo Index to the desired file on the memory card
+            @param stat Output for the status of the file
+         */
+        int32_t CARDGetStatus( int32_t chan, int32_t fileNo, CARDStat* stat );
 
         // int32_t CARDMountAsync( int32_t chan, void* workArea, CARDCallback
         // detachCallback, CARDCallback attachCallback );
