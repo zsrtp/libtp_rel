@@ -177,6 +177,8 @@ namespace libtp::tp::f_op_actor_mng
                                const int16_t rot[3],
                                const float scale[3],
                                int8_t unk9 );
+
+        int32_t fopAcM_getTalkEventPartner( void* actrPtr );
     }
 }     // namespace libtp::tp::f_op_actor_mng
 #endif
