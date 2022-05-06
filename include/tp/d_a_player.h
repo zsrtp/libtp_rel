@@ -12,7 +12,7 @@ namespace libtp::tp::d_a_player
 {
     extern "C"
     {
-        void* m_midnaActor;
+        extern void* m_midnaActor;
     }
 }     // namespace libtp::tp::d_a_player
 #endif
