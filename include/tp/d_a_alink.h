@@ -197,6 +197,11 @@ namespace libtp::tp::d_a_alink
         bool procDamageInit( daAlink* d_a_alink, void* obj, int32_t unk3 );
 
         /**
+         *  @brief Causes link to take damage based on his interaction with certain things.
+         */
+        bool procWolfDamageInit( daAlink* d_a_alink, void* obj );
+
+        /**
          *  @brief Checks to see if an eventBit for the currently active save is set.
          *
          *  @param flag Offset+Flag
