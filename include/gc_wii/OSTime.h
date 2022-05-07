@@ -1,5 +1,5 @@
 /**	@file OSTime.h
- *	@brief Holds OSTimee definitions from dolphin OS
+ *	@brief Holds OSTime definitions from dolphin OS
  *
  *	For additional information check the dolphin OS manual
  *
@@ -15,7 +15,7 @@ namespace libtp::gc_wii::os_time
 {
     extern "C"
     {
-        extern uint32_t OSGetTick();
+        uint32_t OSGetTick();
     }
 }     // namespace libtp::gc_wii::os_time
 #endif
