@@ -60,7 +60,7 @@ namespace libtp::tp::d_meter2_draw
         /* 0x124 */ libtp::tp::d_pane_class::CPaneMgr* mpLifeParent;
         /* 0x128 */ libtp::tp::d_pane_class::CPaneMgr* mpLifeParts[20];
         /* 0x178 */ libtp::tp::d_pane_class::CPaneMgr* mpHeartMask[20];
-        /* 0x1C8 */ libtp::tp::d_pane_class::CPaneMgr* mpBigHeart;
+        /* 0x1C8 */ libtp::tp::d_pane_class::CPaneMgr* mpBigHeart;     // Big heart that displays highest heart value.
         /* 0x1CC */ libtp::tp::d_pane_class::CPaneMgr* mpMagicParent;
         /* 0x1D0 */ libtp::tp::d_pane_class::CPaneMgr* mpMagicBase;
         /* 0x1D4 */ libtp::tp::d_pane_class::CPaneMgr* mpMagicFrameL;
