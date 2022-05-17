@@ -15,6 +15,7 @@ namespace libtp::tp::d_menu_ring
     {
         void _create( void* dMenuRing );
         void _delete( void* dMenuRing );
+        void _draw( void* dMenuRing );
     }
 }     // namespace libtp::tp::d_menu_ring
 #endif
