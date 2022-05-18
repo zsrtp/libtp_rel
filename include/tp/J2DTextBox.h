@@ -74,6 +74,8 @@ namespace libtp::tp::J2DTextBox
             mGradientColor = color;
         }
 
+        void setLineSpacing( float spacing ) { mLineSpacing = spacing; }
+
        private:
         uint8_t temp[0x100];
         /* 0x0100 */ void* mFont;
