@@ -17,6 +17,8 @@ namespace libtp::tp::d_menu_collect
          *	Automatically gets the wallet size and fills it
          */
         void setWalletMaxNum();
+
+        void dMenuCollect__draw( void* dMenuCollect );
     }
 }     // namespace libtp::tp::d_menu_collect
 #endif

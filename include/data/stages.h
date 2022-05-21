@@ -129,7 +129,6 @@ namespace libtp::data::stage
         Unk_1D,
         Unk_1E,
         Unk_1F,
-        Invalid = 0xFF
     };
 
     // Stage strings (ids)

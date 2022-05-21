@@ -38,6 +38,15 @@
 #define CUSTOM_MSG_COLOR_BLUE "\x0A"
 #define CUSTOM_MSG_COLOR_SILVER "\x0B"
 
+// Standard hex values for message colors
+#define MSG_COLOR_WHITE_HEX 0x0
+#define MSG_COLOR_RED_HEX 0x1
+#define MSG_COLOR_GREEN_HEX 0x2
+#define MSG_COLOR_LIGHT_BLUE_HEX 0x3
+#define MSG_COLOR_YELLOW_HEX 0x4
+#define MSG_COLOR_PURPLE_HEX 0x6
+#define MSG_COLOR_ORANGE_HEX 0x8
+
 // Standard hex values for custom message colors
 // Needed for the getFontCCColorTable and getFontGCColorTable hooks
 #define CUSTOM_MSG_COLOR_DARK_GREEN_HEX 0x9

@@ -13,9 +13,9 @@ namespace libtp::tp::d_menu_ring
 {
     extern "C"
     {
-        void _create( void* dMenuRing );
-        void _delete( void* dMenuRing );
-        void _draw( void* dMenuRing );
+        void dMenuRing__create( void* dMenuRing );
+        void dMenuRing__delete( void* dMenuRing );
+        void dMenuRing__draw( void* dMenuRing );
     }
 }     // namespace libtp::tp::d_menu_ring
 #endif
