@@ -1,9 +1,9 @@
 #include "tools.h"
 
-#include <cinttypes>
 #include <cstdint>
-#include <cstdio>
 #include <cstring>
+#include <cstdio>
+#include <cinttypes>
 
 #ifndef PLATFORM_WII
 #include "gc_wii/card.h"
