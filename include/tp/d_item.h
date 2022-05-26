@@ -12,7 +12,7 @@
 namespace libtp::tp::d_item
 {
     typedef void ( *ItemFunc )();
-    typedef bool ( *ItemGetCheckFunc )();
+    typedef int32_t ( *ItemGetCheckFunc )();
 
     extern "C"
     {
