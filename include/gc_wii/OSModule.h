@@ -51,6 +51,9 @@ namespace libtp::gc_wii::os_module
 
     extern "C"
     {
+        bool OSLink( OSModuleInfo* newModule, void* bss );
+        bool OSUnlink( OSModuleInfo* module );
+
         extern OSModuleList osModuleList;
     }
 }     // namespace libtp::gc_wii::os_module
