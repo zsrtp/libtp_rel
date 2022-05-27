@@ -13,7 +13,8 @@ extern "C"
 namespace mod
 {
     extern void main();
-}
+    extern void exit();
+}     // namespace mod
 
 void _prolog()
 {
@@ -28,7 +29,9 @@ void _prolog()
 
 void _epilog()
 {
-    // In the unlikely event we ever get here, run the global destructors
+    // Run exit
+    mod::exit();
+    // Run global destructors
     for ( PFN_voidfunc* dtor = _dtors_start; dtor != _dtors_end && *dtor; ++dtor )
     {
         ( *dtor )();
