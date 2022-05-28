@@ -20,6 +20,7 @@ namespace libtp::tp::J2DPicture
         J2DPicture( const void* ResTIMG ) { J2DPicture_ct4( this, ResTIMG ); }
 
         void setWhiteColor( uint32_t color ) { mWhite = color; }
+        void setBlackColor( uint32_t color ) { mBlack = color; }
 
        private:
         /* 0x100 */ void* mTexture[2];
