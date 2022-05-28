@@ -26,6 +26,9 @@ namespace libtp::tp::dzx
         uint16_t enemyID;
     } __attribute__( ( __packed__ ) );
 
+    /**
+     *  @brief Holds information about scalable actors and boundaries.
+     */
     struct SCOB: ACTR
     {
         uint8_t xScale;
