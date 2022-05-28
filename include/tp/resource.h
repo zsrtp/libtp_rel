@@ -12,17 +12,15 @@
 #define MSG_BEGIN( name ) const char* name =
 
 #define MSG_END() ;
+#define MSG_SPEED( speed ) "\x1A\x05\x00\x00" speed
+#define MSG_COLOR( id ) "\x1A\x06\xFF\x00\x00" id
+#define MSG_ICON( icon ) "\x1A\x05\x00\x00" icon
+#define MSG_PLYR_NAME "\x1A\x05\x00\x00\x00"
+#define MSG_OPTION_LIST( option ) "\x1A\x06\x00\x00\x09" option
 
 // Message Speeds
-#define MSG_SPEED( speed ) "\x1A\x05\x00\x00" speed
-
 #define MSG_SPEED_FAST "\x01"
 #define MSG_SPEED_SLOW "\x02"
-
-#define MSG_COLOR( id ) "\x1A\x06\xFF\x00\x00" id
-
-// Message Icons
-#define MSG_ICON( icon ) "\x1A\x05\x00\x00" icon
 
 // Message colors
 #define MSG_COLOR_WHITE "\x00"
@@ -58,6 +56,11 @@
 #define MSG_ICON_A "\x0A"
 #define MSG_ICON_X "\x0F"
 #define MSG_ICON_Y "\x10"
+
+// Message Option Values
+#define MSG_OPTION_1 "\x01"
+#define MSG_OPTION_2 "\x02"
+#define MSG_OPTION_3 "\x03"
 
 namespace libtp::tp::resource
 {
