@@ -15,7 +15,7 @@ namespace libtp::tp::m_Do_Audio
 {
     extern "C"
     {
-        void mDoAud_seStartLevel( uint32_t sfxID, const Vec* unk, uint32_t unk, int8_t unk );
+        void mDoAud_seStartLevel( uint32_t sfxID, const Vec* unk4, uint32_t un5, int8_t un6 );
     }
 }     // namespace libtp::tp::m_Do_Audio
 #endif
