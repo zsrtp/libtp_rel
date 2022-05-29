@@ -9,7 +9,8 @@
 #define TP_RESOURCE_H
 
 // Message commands
-#define MSG_BEGIN( name ) const char* name =
+#define MSG_BEGIN_PTR( name ) const char* name =
+#define MSG_BEGIN_ARRAY( name ) char name[] =
 
 #define MSG_END() ;
 #define MSG_SPEED( speed ) "\x1A\x05\x00\x00" speed
