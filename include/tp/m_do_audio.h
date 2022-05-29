@@ -11,11 +11,11 @@
 
 #include "dolphin/mtx/vec.h"
 
-namespace libtp::tp::m_Do_AUDIO
+namespace libtp::tp::m_Do_Audio
 {
     extern "C"
     {
         void mDoAud_seStartLevel( uint32_t sfxID, const Vec* unk, uint32_t unk, int8_t unk );
     }
-}     // namespace libtp::tp::m_Do_AUDIO
+}     // namespace libtp::tp::m_Do_Audio
 #endif
