@@ -44,7 +44,15 @@ namespace libtp::z2audiolib::z2semgr
 
     extern "C"
     {
-        void seStartLevel( uint32_t sfxID, const Vec* unk1, uint32_t unk2, int8_t unk3 );
+        void z2SeMgr_seStartLevel( uint32_t sfxID,
+                                   const Vec* unk4,
+                                   uint32_t unk5,
+                                   int8_t unk6,
+                                   float f1,
+                                   float f2,
+                                   float f3,
+                                   float f4,
+                                   uint8_t unk7 );
     };
 }     // namespace libtp::z2audiolib::z2semgr
 #endif
