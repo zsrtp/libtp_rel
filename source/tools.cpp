@@ -8,12 +8,13 @@
 #ifndef PLATFORM_WII
 #include "gc_wii/card.h"
 #else
-#include "cxx.h"
 #include "gc_wii/nand.h"
 #endif
+
+#include "cxx.h"
 #include "data/stages.h"
 #include "display/console.h"
-#include "gc_wii/card.h"
+#include "gc_wii/OSModule.h"
 #include "memory.h"
 #include "tp/JFWSystem.h"
 #include "tp/d_com_inf_game.h"
@@ -109,12 +110,45 @@ namespace libtp::tools
         tp::d_stage::ActorCreate( &actor_data, actorMemoryPtr );
     }
 #ifndef PLATFORM_WII
+    int32_t mountMemoryCard( int32_t chan )
+    {
+        using namespace libtp::gc_wii::card;
+
+        int32_t result;
+        uint8_t* workArea;
+
+        // Check if memory card is valid
+        for ( uint32_t i = 0; i < 1000000; i++ )
+        {
+            result = CARDProbeEx( chan, NULL, NULL );
+            if ( result != CARD_RESULT_BUSY )
+            {
+                break;
+            }
+        }
+
+        if ( result == CARD_RESULT_READY )
+        {
+            // Mount the memory card
+            workArea = libtp::tp::m_Do_MemCard::MemCardWorkArea0;
+            result = CARDMount( chan, workArea, []( int32_t chan, int32_t result ) {
+                // S
+                tp::jfw_system::ConsoleLine* line = &tp::jfw_system::systemConsole->consoleLine[JFW_DEBUG_LINE];
+
+                line->showLine = true;
+                sprintf( line->line, "ReadGCI::CARDERR; Chan: %" PRId32 " Result: %" PRId32, chan, result );
+            } );
+        }
+
+        return result;
+    }
+
     int32_t ReadGCIMounted( int32_t chan,
                             const char* fileName,
                             int32_t length,
                             int32_t offset,
                             void* buffer,
-                            bool startAfterBannerIconComments )
+                            bool startAfterComments )
     {
         using namespace libtp::gc_wii::card;
 
@@ -130,7 +164,7 @@ namespace libtp::tools
         if ( result == CARD_RESULT_READY )
         {
             // Increment the offset if desired
-            if ( startAfterBannerIconComments )
+            if ( startAfterComments )
             {
                 CARDStat stat;
                 result = CARDGetStatus( chan, fileInfo.fileNo, &stat );
@@ -166,12 +200,7 @@ namespace libtp::tools
         return result;
     }
 
-    int32_t ReadGCI( int32_t chan,
-                     const char* fileName,
-                     int32_t length,
-                     int32_t offset,
-                     void* buffer,
-                     bool startAfterBannerIconComments )
+    int32_t ReadGCI( int32_t chan, const char* fileName, int32_t length, int32_t offset, void* buffer, bool startAfterComments )
     {
         using namespace libtp::gc_wii::card;
         int32_t result;
@@ -180,7 +209,7 @@ namespace libtp::tools
         result = mountMemoryCard( chan );
         if ( result == CARD_RESULT_READY )
         {
-            result = ReadGCIMounted( chan, fileName, length, offset, buffer, startAfterBannerIconComments );
+            result = ReadGCIMounted( chan, fileName, length, offset, buffer, startAfterComments );
             CARDUnmount( chan );
         }
         return result;
@@ -229,6 +258,167 @@ namespace libtp::tools
         return result;
     }
 #endif
+    bool callRelPrologMounted( int32_t chan, uint32_t rel_id )
+    {
+        using namespace libtp::gc_wii::card;
+        using namespace libtp::gc_wii::os_module;
+        int32_t result;
+
+        // All of the RELs should be in the main save file, which always uses an internal name of "Custom REL File"
+        CARDFileInfo fileInfo;
+        result = CARDOpen( chan, "Custom REL File", &fileInfo );
+        if ( result != CARD_RESULT_READY )
+        {
+            return false;
+        }
+
+        // Allocate bytes to hold the area of the file that contains the size
+        uint8_t* fileData = new uint8_t[CARD_READ_SIZE];
+
+        // Get the data from the area that holds the size
+        result = CARDRead( &fileInfo, fileData, CARD_READ_SIZE, 0x2000 );
+        if ( result != CARD_RESULT_READY )
+        {
+            delete[] fileData;
+            CARDClose( &fileInfo );
+            return false;
+        }
+
+        // Loop through the REL entries until the desired one is found
+        RelEntry* entry = reinterpret_cast<RelEntry*>( &fileData[0x44] );
+        bool foundDesiredRel = false;
+
+        for ( uint32_t i = 0; i < MAX_REL_ENTRIES; i++ )
+        {
+            uint32_t currentRelId = entry->rel_id;
+
+            // If any of the fields are 0, then there are no more entries
+            if ( ( currentRelId == 0 ) || ( entry->rel_size == 0 ) || ( entry->offset == 0 ) )
+            {
+                break;
+            }
+
+            if ( currentRelId == rel_id )
+            {
+                // Found the desired REL
+                foundDesiredRel = true;
+                break;
+            }
+
+            entry++;
+        }
+
+        if ( !foundDesiredRel )
+        {
+            delete[] fileData;
+            CARDClose( &fileInfo );
+            return false;
+        }
+
+        // Get the variables from the entry so that fileData can be freed
+        uint32_t fileSize = entry->rel_size;
+        uint32_t fileOffset = entry->offset;
+        delete[] fileData;
+
+        // Allocate memory to hold the REL file, and clear it's cache since assembly will run from it
+        // Allocate the memory to the back of the heap to avoid fragmentation
+        // Align to 0x20 to be safe
+        fileData = new ( -0x20 ) uint8_t[fileSize];
+        libtp::memory::clear_DC_IC_Cache( fileData, fileSize );
+
+        // Since we can only read in and at increments of CARD_READ_SIZE do this to calculate the region we require
+        int32_t adjustedOffset = ( fileOffset / CARD_READ_SIZE ) * CARD_READ_SIZE;
+        int32_t adjustedLength = ( 1 + ( ( fileOffset - adjustedOffset + fileSize - 1 ) / CARD_READ_SIZE ) ) * CARD_READ_SIZE;
+
+        // Buffer might not be adjusted to the new length so create a temporary data buffer
+        // Allocate the memory to the back of the heap to avoid possible fragmentation
+        // Buffers that CARDRead uses must be aligned to 0x20 bytes
+        uint8_t* data = new ( -0x20 ) uint8_t[adjustedLength];
+
+        // Read the REL file from the memory card
+        result = CARDRead( &fileInfo, data, adjustedLength, adjustedOffset );
+
+        // Close the file, as it's no longer needed
+        CARDClose( &fileInfo );
+
+        if ( result != CARD_RESULT_READY )
+        {
+            delete[] fileData;
+            delete[] data;
+            return false;
+        }
+
+        // Copy data to the user's buffer
+        memcpy( fileData, data + ( fileOffset - adjustedOffset ), fileSize );
+
+        // Delete the temporary data buffer, as it's no longer needed
+        delete[] data;
+
+        // Failsafe: Be 100% sure the REL file loaded is the correct one
+        OSModuleInfo* relFile = reinterpret_cast<OSModuleInfo*>( fileData );
+        if ( relFile->id != rel_id )
+        {
+            delete[] relFile;
+            return false;
+        }
+
+        // Get the REL's BSS size and allocate memory for it
+        uint32_t bssSize = relFile->bssSize;
+
+        // If bssSize is 0, then use an arbitrary size
+        if ( bssSize == 0 )
+        {
+            bssSize = 0x1;
+        }
+
+        // Allocate the memory to the back of the heap to avoid fragmentation
+        uint8_t* bssArea = new ( -( relFile->bssAlignment ) ) uint8_t[bssSize];
+
+        // Link the REL file
+        if ( !OSLink( relFile, bssArea ) )
+        {
+            // Try to unlink to be safe
+            OSUnlink( relFile );
+
+            delete[] bssArea;
+            delete[] relFile;
+            return false;
+        }
+
+        // Call the REL's prolog functon
+        reinterpret_cast<void ( * )()>( relFile->prologFuncOffset )();
+
+        // We are done with the REL file, so call it's epilog function to perform any necessary exit code
+        reinterpret_cast<void ( * )()>( relFile->epilogFuncOffset )();
+
+        // All REL functions are done, so the file can be unlinked
+        OSUnlink( relFile );
+
+        // Clear the cache of the memory used by the REL file since assembly ran from it
+        libtp::memory::clear_DC_IC_Cache( relFile, fileSize );
+
+        // Cleanup
+        delete[] bssArea;
+        delete[] relFile;
+
+        return true;
+    }
+
+    bool callRelProlog( int32_t chan, uint32_t rel_id )
+    {
+        using namespace libtp::gc_wii::card;
+        bool result = false;
+
+        // Mount the memory card
+        if ( CARD_RESULT_READY == libtp::tools::mountMemoryCard( chan ) )
+        {
+            result = callRelPrologMounted( chan, rel_id );
+            CARDUnmount( chan );
+        }
+
+        return result;
+    }
+
     uint32_t getRandom( uint64_t* seed, uint32_t max )
     {
         uint64_t z = ( *seed += 0x9e3779b97f4a7c15 );
@@ -236,57 +426,6 @@ namespace libtp::tools
         z = ( z ^ ( z >> 27 ) ) * 0x94d049bb133111eb;
 
         return ( z % max );
-    }
-
-    int32_t checkForMemoryCard( int32_t chan )
-    {
-        int32_t ret;
-        for ( uint32_t i = 0; i < 1000000; i++ )
-        {
-            ret = gc_wii::card::CARDProbeEx( chan, nullptr, nullptr );
-            if ( ret != CARD_RESULT_BUSY )
-            {
-                break;
-            }
-        }
-        return ret;
-    }
-
-    int32_t mountMemoryCard( int32_t chan )
-    {
-        using namespace libtp::gc_wii::card;
-
-        int32_t result;
-        uint8_t* workArea;
-
-        // Check if memory card is valid
-        for ( uint32_t i = 0; i < 1000000; i++ )
-        {
-            result = CARDProbeEx( chan, NULL, NULL );
-            if ( result != CARD_RESULT_BUSY )
-            {
-                break;
-            }
-        }
-
-        if ( result == CARD_RESULT_READY )
-        {
-            // Mount the memory card
-            workArea = libtp::tp::m_Do_MemCard::MemCardWorkArea0;
-            result = CARDMount( chan,
-                                workArea,
-                                []( int32_t chan, int32_t result )
-                                {
-                                    // S
-                                    tp::jfw_system::ConsoleLine* line =
-                                        &tp::jfw_system::systemConsole->consoleLine[JFW_DEBUG_LINE];
-
-                                    line->showLine = true;
-                                    sprintf( line->line, "ReadGCI::CARDERR; Chan: %" PRId32 " Result: %" PRId32, chan, result );
-                                } );
-        }
-
-        return result;
     }
 
     int32_t getStageIndex( const char* stage )
