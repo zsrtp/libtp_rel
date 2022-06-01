@@ -26,7 +26,7 @@ namespace libtp::patch
 #ifdef PLATFORM_WII
         uint32_t* trampoline = new ( 0x4, HEAP_ZELDA ) uint32_t[2];
 #else
-        uint32_t* trampoline = new uint32_t[2];
+        uint32_t* trampoline = new ( 0x4 ) uint32_t[2];
 #endif
 
         // Original instruction

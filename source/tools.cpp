@@ -92,7 +92,7 @@ namespace libtp::tools
         // Check if the memory card is valid
         for ( uint32_t i = 0; i < 1000000; i++ )
         {
-            result = CARDProbeEx( chan, NULL, NULL );
+            result = CARDProbeEx( chan, nullptr, nullptr );
             if ( result != CARD_RESULT_BUSY )
             {
                 break;
@@ -103,13 +103,7 @@ namespace libtp::tools
         {
             // Mount the memory card
             workArea = libtp::tp::m_Do_MemCard::MemCardWorkArea0;
-            result = CARDMount( chan, workArea, []( int32_t chan, int32_t result ) {
-                // S
-                tp::jfw_system::ConsoleLine* line = &tp::jfw_system::systemConsole->consoleLine[JFW_DEBUG_LINE];
-
-                line->showLine = true;
-                sprintf( line->line, "ReadGCI::CARDERR; Chan: %" PRId32 " Result: %" PRId32, chan, result );
-            } );
+            result = CARDMount( chan, workArea, nullptr );
         }
 
         return result;
@@ -125,6 +119,7 @@ namespace libtp::tools
         using namespace libtp::gc_wii::card;
 
         CARDFileInfo fileInfo;
+        CARDStat stat;
         int32_t result;
 
         int32_t adjustedOffset;
@@ -138,7 +133,6 @@ namespace libtp::tools
             // Adjust the offset if starting after the banner/icon/comments
             if ( startAfterComments )
             {
-                CARDStat stat;
                 result = CARDGetStatus( chan, fileInfo.fileNo, &stat );
 
                 if ( result != CARD_RESULT_READY )
@@ -155,7 +149,9 @@ namespace libtp::tools
             adjustedLength = ( 1 + ( ( offset - adjustedOffset + length - 1 ) / CARD_READ_SIZE ) ) * CARD_READ_SIZE;
 
             // Buffer might not be adjusted to the new length so create a temporary data buffer
-            data = new uint8_t[adjustedLength];
+            // Allocate the memory to the back of the heap to avoid possible fragmentation
+            // Buffers that CARDRead uses must be aligned to 0x20 bytes
+            data = new ( -0x20 ) uint8_t[adjustedLength];
 
             result = CARDRead( &fileInfo, data, adjustedLength, adjustedOffset );
             if ( result == CARD_RESULT_READY )
@@ -212,7 +208,9 @@ namespace libtp::tools
                 adjustedLength = ( 1 + ( ( offset - adjustedOffset + length - 1 ) / NAND_READ_SIZE ) ) * NAND_READ_SIZE;
 
                 // Buffer might not be adjusted to the new length so create a temporary data buffer
-                data = new uint8_t[adjustedLength];
+                // Allocate the memory to the back of the heap to avoid possible fragmentation
+                // Buffers that NANDRead uses must be aligned to 0x20 bytes
+                data = new ( -0x20 ) uint8_t[adjustedLength];
 
                 int32_t r = NANDRead( &fileInfo, data, adjustedLength );
                 result = ( r > 0 ) ? NAND_RESULT_READY : r;
