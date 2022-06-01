@@ -120,7 +120,7 @@ namespace libtp::tools
         // Check if memory card is valid
         for ( uint32_t i = 0; i < 1000000; i++ )
         {
-            result = CARDProbeEx( chan, NULL, NULL );
+            result = CARDProbeEx( chan, nullptr, nullptr );
             if ( result != CARD_RESULT_BUSY )
             {
                 break;
@@ -131,13 +131,7 @@ namespace libtp::tools
         {
             // Mount the memory card
             workArea = libtp::tp::m_Do_MemCard::MemCardWorkArea0;
-            result = CARDMount( chan, workArea, []( int32_t chan, int32_t result ) {
-                // S
-                tp::jfw_system::ConsoleLine* line = &tp::jfw_system::systemConsole->consoleLine[JFW_DEBUG_LINE];
-
-                line->showLine = true;
-                sprintf( line->line, "ReadGCI::CARDERR; Chan: %" PRId32 " Result: %" PRId32, chan, result );
-            } );
+            result = CARDMount( chan, workArea, nullptr );
         }
 
         return result;
@@ -153,6 +147,7 @@ namespace libtp::tools
         using namespace libtp::gc_wii::card;
 
         CARDFileInfo fileInfo;
+        CARDStat stat;
         int32_t result;
 
         int32_t adjustedOffset;
@@ -166,7 +161,6 @@ namespace libtp::tools
             // Increment the offset if desired
             if ( startAfterComments )
             {
-                CARDStat stat;
                 result = CARDGetStatus( chan, fileInfo.fileNo, &stat );
 
                 if ( result != CARD_RESULT_READY )
@@ -183,7 +177,9 @@ namespace libtp::tools
             adjustedLength = ( 1 + ( ( offset - adjustedOffset + length - 1 ) / CARD_READ_SIZE ) ) * CARD_READ_SIZE;
 
             // Buffer might not be adjusted to the new length so create a temporary data buffer
-            data = new uint8_t[adjustedLength];
+            // Allocate the memory to the back of the heap to avoid possible fragmentation
+            // Buffers that CARDRead uses must be aligned to 0x20 bytes
+            data = new ( -0x20 ) uint8_t[adjustedLength];
 
             result = CARDRead( &fileInfo, data, adjustedLength, adjustedOffset );
             if ( result == CARD_RESULT_READY )
@@ -220,40 +216,42 @@ namespace libtp::tools
         using namespace libtp::gc_wii::nand;
 
         NANDFileInfo fileInfo;
-        int32_t result = NAND_RESULT_READY;
+        int32_t result;
 
-        // Since we can only read in and at increments of NAND_READ_SIZE do this to calculate the region we require
-
-        int32_t adjustedOffset = ( offset / NAND_READ_SIZE ) * NAND_READ_SIZE;
-        int32_t adjustedLength = ( 1 + ( ( offset - adjustedOffset + length - 1 ) / NAND_READ_SIZE ) ) * NAND_READ_SIZE;
-
-        // Buffer might not be adjusted to the new length so create a temporary data buffer
-        uint8_t* data = new uint8_t[adjustedLength];
-
-        memset( buffer, 0, length );
-        memset( data, 0, adjustedLength );
+        int32_t adjustedOffset;
+        int32_t adjustedLength;
+        uint8_t* data;
 
         // Read data
-        result = NANDOpen( const_cast<char*>( fileName ), &fileInfo, NAND_OPEN_READ );
-
+        result = NANDOpen( fileName, &fileInfo, NAND_OPEN_READ );
         if ( result == NAND_RESULT_READY )
         {
-            // result = storage_read( &fileInfo, data, adjustedLength, adjustedOffset, NAND_OPEN_READ );
             result = NANDSeek( &fileInfo, adjustedOffset, NAND_SEEK_START );
             if ( result == NAND_RESULT_READY )
             {
+                // Since we can only read in and at increments of NAND_READ_SIZE do this to calculate the region we require
+                adjustedOffset = ( offset / NAND_READ_SIZE ) * NAND_READ_SIZE;
+                adjustedLength = ( 1 + ( ( offset - adjustedOffset + length - 1 ) / NAND_READ_SIZE ) ) * NAND_READ_SIZE;
+
+                // Buffer might not be adjusted to the new length so create a temporary data buffer
+                // Allocate the memory to the back of the heap to avoid possible fragmentation
+                // Buffers that NANDRead uses must be aligned to 0x20 bytes
+                data = new ( -0x20 ) uint8_t[adjustedLength];
+
                 int32_t r = NANDRead( &fileInfo, data, adjustedLength );
                 result = ( r > 0 ) ? NAND_RESULT_READY : r;
+
+                if ( result == NAND_RESULT_READY )
+                {
+                    // Copy data to the user's buffer
+                    memcpy( buffer, data + ( offset - adjustedOffset ), length );
+                }
+
+                delete[] data;
             }
             NANDClose( &fileInfo );
-
-            // Copy data to the user's buffer
-            memcpy( buffer, data + ( offset - adjustedOffset ), length );
         }
         // NANDOpen
-
-        // Clean up
-        delete[] data;
 
         return result;
     }
