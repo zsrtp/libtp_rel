@@ -4,6 +4,8 @@
 #include <cstdarg>
 #include <cstdint>
 
+#include "tp/J2DPane.h"
+
 namespace libtp::tp::J2DTextBox
 {
     enum J2DTextBoxVBinding
@@ -30,7 +32,7 @@ namespace libtp::tp::J2DTextBox
         int32_t J2DTextBox_setString1( void* J2DTextBox, const char* format, ... );
     }
 
-    class J2DTextBox
+    class J2DTextBox: public libtp::tp::J2DPane::J2DPane
     {
        public:
         struct TFontSize
@@ -77,7 +79,6 @@ namespace libtp::tp::J2DTextBox
         void setLineSpacing( float spacing ) { mLineSpacing = spacing; }
 
        private:
-        uint8_t temp[0x100];
         /* 0x0100 */ void* mFont;
         /* 0x0104 */ uint32_t mCharColor;
         /* 0x0108 */ uint32_t mGradientColor;

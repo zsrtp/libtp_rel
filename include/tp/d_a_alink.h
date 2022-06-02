@@ -214,6 +214,8 @@ namespace libtp::tp::d_a_alink
 
         void procCoTalkInit( daAlink* d_a_alink );
 
+        void procCoGetItem( daAlink* d_a_alink );
+
         extern ClimbVars climbVars;
         extern LinkStatus* linkStatus;
         extern WallMoveVars wallMoveVars;     // US Address = 0x8038E1E0

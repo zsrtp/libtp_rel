@@ -14,7 +14,7 @@ namespace libtp::tp::J2DPicture
         void J2DPicture_draw( void* J2DPicture, float x, float y, float width, float height, bool unk5, bool unk6, bool unk7 );
     }
 
-    class J2DPicture: libtp::tp::J2DPane::J2DPane
+    class J2DPicture: public libtp::tp::J2DPane::J2DPane
     {
        public:
         J2DPicture( const void* ResTIMG ) { J2DPicture_ct4( this, ResTIMG ); }

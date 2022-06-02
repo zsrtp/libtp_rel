@@ -13,7 +13,7 @@
 
 namespace libtp::tp::J2DWindow
 {
-    class J2DWindow: libtp::tp::J2DPane::J2DPane
+    class J2DWindow: public libtp::tp::J2DPane::J2DPane
     {
        private:
         /* 0x100 */ uint8_t field_0x100[0x14];     // TMaterial mMaterial;
