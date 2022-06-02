@@ -13,6 +13,6 @@
 
 class csXyz: public SVec
 {
-};
+} __attribute__( ( __packed__ ) );
 
 #endif

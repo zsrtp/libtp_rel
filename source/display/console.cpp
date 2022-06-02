@@ -1,10 +1,10 @@
 #include "display/console.h"
 
-#include <cinttypes>
 #include <cstddef>
 #include <cstdint>
-#include <cstdio>
 #include <cstring>
+#include <cstdio>
+#include <cinttypes>
 
 #include "tp/JFWSystem.h"
 

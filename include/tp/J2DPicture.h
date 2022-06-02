@@ -10,7 +10,7 @@ namespace libtp::tp::J2DPicture
     extern "C"
     {
         void* J2DPicture_ct4( void* J2DPicture, const void* ResTIMG );     // Constructor
-        void* J2DPicture_dt( void* J2DPicture, int16_t bFreeThis );        // Destructor
+        void* J2DPicture_dt( void* J2DPicture, int16_t freeThis );         // Destructor
         void J2DPicture_draw( void* J2DPicture, float x, float y, float width, float height, bool unk5, bool unk6, bool unk7 );
     }
 

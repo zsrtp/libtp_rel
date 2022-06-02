@@ -26,7 +26,7 @@ namespace libtp::tp::d_s_logo
         // This function only exists in the PAL version
         Languages getPalLanguage2( void* dScnLogo_c );     // dScnLogo_c is unused
 #endif
-        void* dScnLogo_c_dt( void* dScnLogo_c, int16_t bFreeThis );
+        void* dScnLogo_c_dt( void* dScnLogo_c, int16_t freeThis );
     }
 }     // namespace libtp::tp::d_s_logo
 #endif

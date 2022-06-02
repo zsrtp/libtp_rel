@@ -24,8 +24,8 @@ namespace libtp::tp::J2DTextBox
 
     extern "C"
     {
-        void* J2DTextBox_ct1( void* J2DTextBox );                       // Constructor
-        void* J2DTextBox_dt( void* J2DTextBox, int16_t bFreeThis );     // Destructor
+        void* J2DTextBox_ct1( void* J2DTextBox );                      // Constructor
+        void* J2DTextBox_dt( void* J2DTextBox, int16_t freeThis );     // Destructor
         void J2DTextBox_setFont( void* J2DTextBox, void* font );
         void J2DTextBox_draw1( void* J2DTextBox, float x, float y );
         void J2DTextBox_draw2( void* J2DTextBox, float x, float y, float maxScreenHorizontalSize, J2DTextBoxHBinding hBind );
