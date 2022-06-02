@@ -8,6 +8,7 @@
 
 namespace libtp::tp::d_meter_hio
 {
+    // Functions used by classes/structs
     extern "C"
     {
         // dMeter_menuHIO_c
@@ -74,12 +75,6 @@ namespace libtp::tp::d_meter_hio
         // dMeter_cursorHIO_c
         void* dMeter_cursorHIO_c_ct( void* dMeter_cursorHIO_c );                       // Constructor
         void* dMeter_cursorHIO_c_dt( void* dMeter_cursorHIO_c, int16_t freeThis );     // Destructor
-
-        extern dMeter_menuHIO_c g_menuHIO;
-        extern dMeter_drawHIO_c g_drawHIO;
-        extern dMeter_ringHIO_c g_ringHIO;
-        extern dMeter_fmapHIO_c g_fmapHIO;
-        extern dMeter_cursorHIO_c g_cursorHIO;
     }
 
     class dMeter_menuHIO_c
@@ -1516,5 +1511,15 @@ namespace libtp::tp::d_meter_hio
     } __attribute__( ( __packed__ ) );
 
     static_assert( sizeof( dMeter_cursorHIO_c ) == 0x44 );
+
+    // Functions/variables
+    extern "C"
+    {
+        extern dMeter_menuHIO_c g_menuHIO;
+        extern dMeter_drawHIO_c g_drawHIO;
+        extern dMeter_ringHIO_c g_ringHIO;
+        extern dMeter_fmapHIO_c g_fmapHIO;
+        extern dMeter_cursorHIO_c g_cursorHIO;
+    }
 }     // namespace libtp::tp::d_meter_hio
 #endif
