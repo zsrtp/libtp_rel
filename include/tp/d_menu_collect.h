@@ -19,6 +19,7 @@ namespace libtp::tp::d_menu_collect
         void setWalletMaxNum();
 
         void dMenuCollect__draw( void* dMenuCollect );
+        void dMenuCollect_screenSet( void* dMenuCollect );
     }
 }     // namespace libtp::tp::d_menu_collect
 #endif
