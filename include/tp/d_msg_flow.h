@@ -29,6 +29,7 @@ namespace libtp::tp::d_msg_flow
         bool chkEvtBit( uint32_t flag );
         bool chkEvtBitF( uint32_t flag );
         uint32_t event000( void* messageFlow, void* nodeEvent, void* actrPtr );
+        int32_t event017( void* messageFlow, void* nodeEvent, void* actrPtr );
     }
 }     // namespace libtp::tp::d_msg_flow
 #endif
