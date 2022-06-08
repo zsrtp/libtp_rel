@@ -317,6 +317,8 @@ namespace libtp::tp::d_com_inf_game
          *  @param data The data file name to find.
          */
         void* dComIfG_getStageRes( const char* data );
+
+        float dComIfGs_getMaxLifeGauge();
     }
 }     // namespace libtp::tp::d_com_inf_game
 #endif
