@@ -116,22 +116,15 @@ namespace libtp::tools
     int32_t ReadNAND( const char* fileName, int32_t length, int32_t offset, void* buffer );
 #endif
     /**
-     *  @brief Loads a REL file from the current mod's GCI file and runs it's prolog function. This function assumes that the
-     * memory card is already mounted, and does not unmount the memory card upon ending.
+     *  @brief Loads a REL file from the current mod's GCI file and runs it's prolog function
      *
      *  @param chan Slot to check for the file
      *  @param rel_id Module id of the REL file to load
+     *  @param isMounted If true, then the function will try to mount the memory card. If false, then it is assumed that the
+     * memory card is already mounted.
+     *  @param stayMounted If true, then the function will not unmount the memory card before exiting.
      */
-    bool callRelPrologMounted( int32_t chan, uint32_t rel_id );
-
-    /**
-     *  @brief Loads a REL file from the current mod's GCI file and runs it's prolog function. This function mounts and unmounts
-     * the memory card upon starting and ending respectively.
-     *
-     *  @param chan Slot to check for the file
-     *  @param rel_id Module id of the REL file to load
-     */
-    bool callRelProlog( int32_t chan, uint32_t rel_id );
+    bool callRelProlog( int32_t chan, uint32_t rel_id, bool isMounted, bool stayMounted );
 
     /**
      * @brief Generates a random number based on a seed and a maximum number

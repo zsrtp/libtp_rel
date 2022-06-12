@@ -256,17 +256,31 @@ namespace libtp::tools
         return result;
     }
 #endif
-    bool callRelPrologMounted( int32_t chan, uint32_t rel_id )
+    bool callRelProlog( int32_t chan, uint32_t rel_id, bool isMounted, bool stayMounted )
     {
         using namespace libtp::gc_wii::card;
         using namespace libtp::gc_wii::os_module;
         int32_t result;
+
+        // Mount the memory card if necessary
+        if ( !isMounted )
+        {
+            if ( CARD_RESULT_READY != mountMemoryCard( chan ) )
+            {
+                return false;
+            }
+        }
 
         // All of the RELs should be in the main save file, which always uses an internal name of "Custom REL File"
         CARDFileInfo fileInfo;
         result = CARDOpen( chan, "Custom REL File", &fileInfo );
         if ( result != CARD_RESULT_READY )
         {
+            if ( !stayMounted )
+            {
+                CARDUnmount( chan );
+            }
+
             return false;
         }
 
@@ -281,6 +295,12 @@ namespace libtp::tools
         {
             delete[] fileData;
             CARDClose( &fileInfo );
+
+            if ( !stayMounted )
+            {
+                CARDUnmount( chan );
+            }
+
             return false;
         }
 
@@ -312,6 +332,12 @@ namespace libtp::tools
         {
             delete[] fileData;
             CARDClose( &fileInfo );
+
+            if ( !stayMounted )
+            {
+                CARDUnmount( chan );
+            }
+
             return false;
         }
 
@@ -320,39 +346,36 @@ namespace libtp::tools
         uint32_t fileOffset = entry->offset;
         delete[] fileData;
 
-        // Allocate memory to hold the REL file, and clear it's cache since assembly will run from it
-        // Allocate the memory to the back of the heap to avoid fragmentation
-        // Align to 0x20 to be safe
-        fileData = new ( -0x20 ) uint8_t[fileSize];
-        libtp::memory::clear_DC_IC_Cache( fileData, fileSize );
-
         // Since we can only read in and at increments of CARD_READ_SIZE do this to calculate the region we require
         int32_t adjustedOffset = ( fileOffset / CARD_READ_SIZE ) * CARD_READ_SIZE;
         int32_t adjustedLength = ( 1 + ( ( fileOffset - adjustedOffset + fileSize - 1 ) / CARD_READ_SIZE ) ) * CARD_READ_SIZE;
 
         // Buffer might not be adjusted to the new length so create a temporary data buffer
-        // Allocate the memory to the back of the heap to avoid possible fragmentation
-        // Buffers that CARDRead uses must be aligned to 0x20 bytes
-        uint8_t* data = new ( -0x20 ) uint8_t[adjustedLength];
+        // Allocate the memory to the back of the heap to avoid fragmentation
+        // Buffers that CARDRead uses must be aligned to 0x20 bytes, and REL files must also be aligned to 0x20 bytes
+        fileData = new ( -0x20 ) uint8_t[adjustedLength];
+        libtp::memory::clear_DC_IC_Cache( fileData, adjustedLength );
 
         // Read the REL file from the memory card
-        result = CARDRead( &fileInfo, data, adjustedLength, adjustedOffset );
+        result = CARDRead( &fileInfo, fileData, adjustedLength, adjustedOffset );
 
         // Close the file, as it's no longer needed
         CARDClose( &fileInfo );
 
+        // Unmount the memory card if necessary, as it's no longer needed
+        if ( !stayMounted )
+        {
+            CARDUnmount( chan );
+        }
+
         if ( result != CARD_RESULT_READY )
         {
             delete[] fileData;
-            delete[] data;
             return false;
         }
 
-        // Copy data to the user's buffer
-        memcpy( fileData, data + ( fileOffset - adjustedOffset ), fileSize );
-
-        // Delete the temporary data buffer, as it's no longer needed
-        delete[] data;
+        // Move the data so that the start of the rel file is at the start of the buffer
+        memmove( fileData, fileData + ( fileOffset - adjustedOffset ), fileSize );
 
         // Failsafe: Be 100% sure the REL file loaded is the correct one
         OSModuleInfo* relFile = reinterpret_cast<OSModuleInfo*>( fileData );
@@ -402,21 +425,6 @@ namespace libtp::tools
         delete[] relFile;
 
         return true;
-    }
-
-    bool callRelProlog( int32_t chan, uint32_t rel_id )
-    {
-        using namespace libtp::gc_wii::card;
-        bool result = false;
-
-        // Mount the memory card
-        if ( CARD_RESULT_READY == libtp::tools::mountMemoryCard( chan ) )
-        {
-            result = callRelPrologMounted( chan, rel_id );
-            CARDUnmount( chan );
-        }
-
-        return result;
     }
 
     uint32_t getRandom( uint64_t* seed, uint32_t max )
