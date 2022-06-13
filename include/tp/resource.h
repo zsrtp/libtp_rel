@@ -19,6 +19,9 @@
 #define MSG_PLYR_NAME "\x1A\x05\x00\x00\x00"
 #define MSG_OPTION_LIST( option ) "\x1A\x06\x00\x00\x09" option
 
+// Special Characters
+#define MSG_SP_CHAR_HAIKYO "\x94\x70\x1A\x05\x04\x00\x0A"
+
 // Message Speeds
 #define MSG_SPEED_FAST "\x01"
 #define MSG_SPEED_SLOW "\x02"
