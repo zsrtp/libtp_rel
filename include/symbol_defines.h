@@ -107,12 +107,32 @@
 #define JKRDisposer_dt __dt__11JKRDisposerFv
 #define JKRDisposer_vt __vt__11JKRDisposer
 
+// JKRAramHeap.h
+#define JKRAramHeap_vt __vt__11JKRAramHeap
+#define JKRAramHeap_sAramList sAramList__11JKRAramHeap
+#define JKRAramHeap_ct __ct__11JKRAramHeapFUlUl
+#define JKRAramHeap_dt1 __dt__11JKRAramHeapFv
+#define JKRAramHeap_dt2 __dt__23JSUList_12JKRAramBlock_Fv
+#define JKRAramHeap_alloc alloc__11JKRAramHeapFUlQ211JKRAramHeap10EAllocMode
+#define JKRAramHeap_allocFromHead allocFromHead__11JKRAramHeapFUl
+#define JKRAramHeap_allocFromTail allocFromTail__11JKRAramHeapFUl
+#define JKRAramHeap_getFreeSize getFreeSize__11JKRAramHeapFv
+#define JKRAramHeap_getTotalFreeSize getTotalFreeSize__11JKRAramHeapFv
+#define JKRAramHeap_dump dump__11JKRAramHeapFv
+
+// JKRAramBlock.h
+#define JKRAramBlock_vt __vt__12JKRAramBlock
+#define JKRAramBlock_ct __ct__12JKRAramBlockFUlUlUlUcb
+#define JKRAramBlock_dt __dt__12JKRAramBlockFv
+#define JKRAramBlock_allocHead allocHead__12JKRAramBlockFUlUcP11JKRAramHeap
+#define JKRAramBlock_allocTail allocTail__12JKRAramBlockFUlUcP11JKRAramHeap
+
 // JKRFileLoader.h
 #define JKRFileLoader_sVolumeList sVolumeList__13JKRFileLoader
 #define JKRFileLoader_sCurrentVolume sCurrentVolume__13JKRFileLoader
 #define JKRFileLoader_ct __ct__13JKRFileLoaderFv
 #define JKRFileLoader_dt1 __dt__13JKRFileLoaderFv
-// #define JKRFileLoader_dt2 __dt__24JSUList<13JKRFileLoader>Fv
+#define JKRFileLoader_dt2 __dt__24JSUList_13JKRFileLoader_Fv
 #define JKRFileLoader_unmount unmount__13JKRFileLoaderFv
 #define JKRFileLoader_getGlbResource1 getGlbResource__13JKRFileLoaderFPCc
 #define JKRFileLoader_getGlbResource2 getGlbResource__13JKRFileLoaderFPCcP13JKRFileLoader

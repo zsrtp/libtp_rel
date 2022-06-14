@@ -22,7 +22,7 @@ extern "C"
     // Functions
     JKRFileLoader* JKRFileLoader_ct( JKRFileLoader* JKRFileLoaderThis );                        // Constructor
     JKRFileLoader* JKRFileLoader_dt1( JKRFileLoader* JKRFileLoaderThis, int16_t freeThis );     // Destructor
-    // JKRFileLoader* JKRFileLoader_dt2( JKRFileLoader* JKRFileLoaderThis, int16_t freeThis );  // Destructor
+    void* JKRFileLoader_dt2( void* JSUList_JKRFileLoader_This, int16_t freeThis );              // Destructor
 
     /* vt[03] */ void JKRFileLoader_unmount( JKRFileLoader* JKRFileLoaderThis );
 
