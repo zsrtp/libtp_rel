@@ -18,6 +18,7 @@
 #define MSG_ICON( icon ) "\x1A\x05\x00\x00" icon
 #define MSG_PLYR_NAME "\x1A\x05\x00\x00\x00"
 #define MSG_OPTION_LIST( option ) "\x1A\x06\x00\x00\x09" option
+#define MSG_FONT_SIZE( size ) "\x1A\x07\xFF\x00\x01\x00" size
 
 // Special Characters
 #define MSG_SP_CHAR_KYO "\x1A\x05\x04\x00\x0A"
