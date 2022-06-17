@@ -22,6 +22,8 @@
 #include "tp/dzx.h"
 #include "tp/f_op_actor_mng.h"
 #include "tp/m_do_memcard.h"
+#include "tp/d_kankyo.h"
+#include "tp/d_a_alink.h"
 
 namespace libtp::tools
 {
@@ -450,5 +452,28 @@ namespace libtp::tools
 
         // Did not find a valid stage
         return -1;
+    }
+
+    bool playerIsInRoomStage( int32_t room, const char* stage )
+    {
+        // Only check room if it is valid
+        if ( ( room >= 0 ) && ( room <= 0xFF ) )
+        {
+            if ( static_cast<uint32_t>( room ) != libtp::tp::d_kankyo::env_light.currentRoom )
+            {
+                return false;
+            }
+        }
+
+        // Only check stage if it is valid
+        if ( stage )
+        {
+            if ( !libtp::tp::d_a_alink::checkStageName( stage ) )
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 }     // namespace libtp::tools

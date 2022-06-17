@@ -141,6 +141,15 @@ namespace libtp::tools
      */
     int32_t getStageIndex( const char* stage );
 
+    /**
+     * @brief Checks if the player is in a specific room in a stage
+     *
+     * @param room The room to be checked. If set to a negative value or higher than 255, then the room is not checked.
+     * @param stage The stage string to be read in. If set to nullptr, then it is assumed that the room is for any stage.
+     * If neither room nor stage are valid inputs, then the function will return true.
+     */
+    bool playerIsInRoomStage( int32_t room, const char* stage );
+
     // Allows to transform data as bytes 1:1 from A<-->B and vice versa
     template<typename A, typename B>
     union typeTransform
