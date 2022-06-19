@@ -35,6 +35,7 @@ namespace libtp::tp::d_item
         int32_t execItemGet( uint8_t item );
 
         void item_func_WOOD_STICK();
+        void item_func_UTUWA_HEART();
 
         extern ItemFunc item_func_ptr[0x100];
         extern ItemGetCheckFunc item_getcheck_func_ptr[0x100];

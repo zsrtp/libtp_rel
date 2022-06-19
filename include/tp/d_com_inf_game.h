@@ -318,7 +318,7 @@ namespace libtp::tp::d_com_inf_game
          */
         void* dComIfG_getStageRes( const char* data );
 
-        float dComIfGs_getMaxLifeGauge();
+        uint16_t dComIfGs_getMaxLifeGauge();
     }
 }     // namespace libtp::tp::d_com_inf_game
 #endif
