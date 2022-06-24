@@ -14,7 +14,7 @@ namespace libtp::tp::d_msg_flow
     extern "C"
     {
         bool query022( void* unk1, void* unk2, int32_t unk3 );
-        bool query023( void* unk1, void* unk2, int32_t unk3 );
+        int32_t query023( void* unk1, void* unk2, int32_t unk3 );
         bool query025( void* unk1, void* unk2, int32_t unk3 );
         bool query042( void* unk1, void* unk2, int32_t unk3 );
         int query004( void* unk1, void* unk2, int32_t unk3 );
