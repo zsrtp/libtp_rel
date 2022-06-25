@@ -106,6 +106,8 @@ namespace libtp::tp::d_stage
 
         void roomLoader( void* data, void* stageDt, int roomNo );
 
+        void stageLoader( void* data, void* stageDt );
+
         /**
          *  @brief Pointer to roomControl data
          */
