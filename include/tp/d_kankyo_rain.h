@@ -13,7 +13,7 @@ namespace libtp::tp::d_kankyo_rain
 {
     extern "C"
     {
-        void dKyr_odour_draw( float* param_0, uint8_t** param_1 );
+        void dKyr_odour_draw( float mtx[3][4], uint8_t** ResTIMG );
     }
 }     // namespace libtp::tp::d_kankyo_rain
 #endif
