@@ -618,7 +618,7 @@ namespace libtp::data::flags
         BOUGHT_HYLIAN_SHIELD_AT_MALO_MART                                                        = 0x6102,
         MIDNA_TEXT_AFTER_YOU_ENTERED_ELDIN_TWILIGHT                                              = 0x6104,
         TRILL_WILL_TRY_TO_KILL_YOU                                                               = 0x6110,
-        GOT_REEKFISH_SCENT_PREVENTS_VOID_IN_SNOWPEAK                                             = 0x6120,
+        GOT_REEKFISH_SCENT                                                                       = 0x6120,
         REMOVE_MIDNA_FROM_Z                                                                      = 0x6140,
         TALKED_TO_LAZY_GORON                                                                     = 0x6180,
         AMPITHEATER_SKYLETTER                                                                    = 0x6204,
