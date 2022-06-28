@@ -101,7 +101,6 @@ namespace libtp::tools
                      int32_t offset,
                      void* buffer,
                      bool startAfterComments );
-
 #else
     /**
      *  @brief Reads NAND data from offset to offset + length into buffer
@@ -116,6 +115,25 @@ namespace libtp::tools
     int32_t ReadNAND( const char* fileName, int32_t length, int32_t offset, void* buffer );
 #endif
     /**
+     *  @brief Reads file data from offset to offset + length into buffer.
+     *
+     *  @param file File to load
+     *  @param length Maximum length to read
+     *  @param offset File offset to read
+     *  @param[out] buffer Buffer to save the data
+     *
+     *  @return One of the DVD_STATE Constants (DVD_STATE_END, ...)
+     */
+    int32_t ReadFile( const char* file, int32_t length, int32_t offset, void* buffer );
+#ifdef DVD
+    /**
+     *  @brief Loads a REL file from the disc and runs it's prolog function
+     *
+     *  @param file File to load
+     */
+    bool callRelProlog( const char* file );
+#else
+    /**
      *  @brief Loads a REL file from the current mod's GCI file and runs it's prolog function
      *
      *  @param chan Slot to check for the file
@@ -125,6 +143,7 @@ namespace libtp::tools
      *  @param stayMounted If true, then the function will not unmount the memory card before exiting.
      */
     bool callRelProlog( int32_t chan, uint32_t rel_id, bool isMounted, bool stayMounted );
+#endif
 
     /**
      * @brief Generates a random number based on a seed and a maximum number

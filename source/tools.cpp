@@ -14,6 +14,7 @@
 #include "cxx.h"
 #include "data/stages.h"
 #include "display/console.h"
+#include "gc_wii/dvd.h"
 #include "gc_wii/OSModule.h"
 #include "memory.h"
 #include "tp/JFWSystem.h"
@@ -258,6 +259,127 @@ namespace libtp::tools
         return result;
     }
 #endif
+    int32_t ReadFile( const char* file, int32_t length, int32_t offset, void* buffer )
+    {
+        using namespace libtp::gc_wii::dvd;
+
+        DVDFileInfo fileInfo;
+        int32_t result;
+
+        int32_t adjustedOffset;
+        int32_t adjustedLength;
+        uint8_t* data;
+
+        // Read data
+        if ( !DVDOpen( file, &fileInfo ) )
+        {
+            return DVD_STATE_FATAL_ERROR;
+        }
+
+        // We can only read in multiples of DVD_READ_SIZE and at offsets in multiples of DVD_OFFSET_SIZE
+        adjustedOffset = ( offset / DVD_OFFSET_SIZE ) * DVD_OFFSET_SIZE;
+        adjustedLength = ( 1 + ( ( offset - adjustedOffset + length - 1 ) / DVD_READ_SIZE ) ) * DVD_READ_SIZE;
+
+        // Buffer might not be adjusted to the new length so create a temporary data buffer
+        // Allocate the memory to the back of the heap to avoid possible fragmentation
+        // Buffers that DVDReadPrio uses must be aligned to 0x20 bytes
+        data = new ( -0x20 ) uint8_t[adjustedLength];
+
+        int32_t r = DVDReadPrio( &fileInfo, data, adjustedLength, adjustedOffset, 2 );
+        result = ( r > 0 ) ? DVD_STATE_END : r;
+        if ( result == DVD_STATE_END )
+        {
+            // Copy data to the user's buffer
+            memcpy( buffer, data + ( offset - adjustedOffset ), length );
+        }
+
+        delete[] data;
+        DVDClose( &fileInfo );
+
+        return result;
+    }
+#ifdef DVD
+    bool callRelProlog( const char* file )
+    {
+        using namespace libtp::gc_wii::dvd;
+        using namespace libtp::gc_wii::os_module;
+
+        // Try to open the file from the disc
+        DVDFileInfo fileInfo;
+        if ( !DVDOpen( file, &fileInfo ) )
+        {
+            return false;
+        }
+
+        // Get the length of the file
+        uint32_t length = fileInfo.length;
+
+        // Round the length to be in multiples of DVD_READ_SIZE
+        length = ( length + DVD_READ_SIZE - 1 ) & ~( DVD_READ_SIZE - 1 );
+
+        // Allocate bytes for the file
+        // Allocate the memory to the back of the heap to avoid possible fragmentation
+        // Buffers that DVDReadPrio uses must be aligned to 0x20 bytes
+        uint8_t* fileData = new ( -0x20 ) uint8_t[length];
+        libtp::memory::clear_DC_IC_Cache( fileData, length );
+
+        // Read the REL from the disc
+        int32_t r = DVDReadPrio( &fileInfo, fileData, length, 0, 2 );
+        int32_t result = ( r > 0 ) ? DVD_STATE_END : r;
+
+        // Close the file, as it's no longer needed
+        DVDClose( &fileInfo );
+
+        // Make sure the read was successful
+        if ( result != DVD_STATE_END )
+        {
+            delete[] fileData;
+            return false;
+        }
+
+        // Get the REL's BSS size and allocate memory for it
+        OSModuleInfo* relFile = reinterpret_cast<OSModuleInfo*>( fileData );
+        uint32_t bssSize = relFile->bssSize;
+
+        // If bssSize is 0, then use an arbitrary size
+        if ( bssSize == 0 )
+        {
+            bssSize = 0x1;
+        }
+
+        // Allocate the memory to the back of the heap to avoid fragmentation
+        uint8_t* bssArea = new ( -( relFile->bssAlignment ) ) uint8_t[bssSize];
+
+        // Link the REL file
+        if ( !OSLink( relFile, bssArea ) )
+        {
+            // Try to unlink to be safe
+            OSUnlink( relFile );
+
+            delete[] bssArea;
+            delete[] relFile;
+            return false;
+        }
+
+        // Call the REL's prolog functon
+        reinterpret_cast<void ( * )()>( relFile->prologFuncOffset )();
+
+        // We are done with the REL file, so call it's epilog function to perform any necessary exit code
+        reinterpret_cast<void ( * )()>( relFile->epilogFuncOffset )();
+
+        // All REL functions are done, so the file can be unlinked
+        OSUnlink( relFile );
+
+        // Clear the cache of the memory used by the REL file since assembly ran from it
+        libtp::memory::clear_DC_IC_Cache( relFile, length );
+
+        // Cleanup
+        delete[] bssArea;
+        delete[] relFile;
+
+        return true;
+    }
+#else
     bool callRelProlog( int32_t chan, uint32_t rel_id, bool isMounted, bool stayMounted )
     {
         using namespace libtp::gc_wii::card;
@@ -428,7 +550,7 @@ namespace libtp::tools
 
         return true;
     }
-
+#endif
     uint32_t getRandom( uint64_t* seed, uint32_t max )
     {
         uint64_t z = ( *seed += 0x9e3779b97f4a7c15 );
