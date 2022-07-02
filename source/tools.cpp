@@ -23,6 +23,8 @@
 #include "tp/dzx.h"
 #include "tp/f_op_actor_mng.h"
 #include "tp/m_do_memcard.h"
+#include "gc_wii/OSCache.h"
+#include "gc_wii/OSInterrupt.h"
 #include "tp/d_kankyo.h"
 #include "tp/d_a_alink.h"
 
@@ -120,6 +122,9 @@ namespace libtp::tools
         int32_t result;
         uint8_t* workArea;
 
+        // Make sure the memory card is already unmounted before trying to mount it
+        CARDUnmount( chan );
+
         // Check if memory card is valid
         for ( uint32_t i = 0; i < 1000000; i++ )
         {
@@ -132,9 +137,22 @@ namespace libtp::tools
 
         if ( result == CARD_RESULT_READY )
         {
-            // Mount the memory card
             workArea = libtp::tp::m_Do_MemCard::MemCardWorkArea0;
+
+            // Clear the memory for the work area
+            libtp::memory::clearMemory( workArea, CARD_WORKAREA_SIZE );
+
+            // Clear the cache for the work area
+            libtp::gc_wii::os_cache::DCFlushRange( workArea, CARD_WORKAREA_SIZE );
+
+            // Mount the memory card
             result = CARDMount( chan, workArea, nullptr );
+
+            if ( ( result == CARD_RESULT_READY ) || ( result == CARD_RESULT_BROKEN ) )
+            {
+                // Check for and attempt to repair memory card errors
+                result = CARDCheck( chan );
+            }
         }
 
         return result;
@@ -350,16 +368,25 @@ namespace libtp::tools
         // Allocate the memory to the back of the heap to avoid fragmentation
         uint8_t* bssArea = new ( -( relFile->bssAlignment ) ) uint8_t[bssSize];
 
+        // Disable interrupts to make sure other REL files do not try to be linked while this one is being linked
+        bool enable = libtp::gc_wii::os_interrupt::OSDisableInterrupts();
+
         // Link the REL file
         if ( !OSLink( relFile, bssArea ) )
         {
             // Try to unlink to be safe
             OSUnlink( relFile );
 
+            // Restore interrupts
+            libtp::gc_wii::os_interrupt::OSRestoreInterrupts( enable );
+
             delete[] bssArea;
             delete[] relFile;
             return false;
         }
+
+        // Restore interrupts
+        libtp::gc_wii::os_interrupt::OSRestoreInterrupts( enable );
 
         // Call the REL's prolog functon
         reinterpret_cast<void ( * )()>( relFile->prologFuncOffset )();
@@ -367,8 +394,14 @@ namespace libtp::tools
         // We are done with the REL file, so call it's epilog function to perform any necessary exit code
         reinterpret_cast<void ( * )()>( relFile->epilogFuncOffset )();
 
+        // Disable interrupts to make sure other REL files do not try to be linked while this one is being unlinked
+        enable = libtp::gc_wii::os_interrupt::OSDisableInterrupts();
+
         // All REL functions are done, so the file can be unlinked
         OSUnlink( relFile );
+
+        // Restore interrupts
+        libtp::gc_wii::os_interrupt::OSRestoreInterrupts( enable );
 
         // Clear the cache of the memory used by the REL file since assembly ran from it
         libtp::memory::clear_DC_IC_Cache( relFile, length );
@@ -384,6 +417,7 @@ namespace libtp::tools
     {
         using namespace libtp::gc_wii::card;
         using namespace libtp::gc_wii::os_module;
+
         int32_t result;
 
         // Mount the memory card if necessary
@@ -521,16 +555,25 @@ namespace libtp::tools
         // Allocate the memory to the back of the heap to avoid fragmentation
         uint8_t* bssArea = new ( -( relFile->bssAlignment ) ) uint8_t[bssSize];
 
+        // Disable interrupts to make sure other REL files do not try to be linked while this one is being linked
+        bool enable = libtp::gc_wii::os_interrupt::OSDisableInterrupts();
+
         // Link the REL file
         if ( !OSLink( relFile, bssArea ) )
         {
             // Try to unlink to be safe
             OSUnlink( relFile );
 
+            // Restore interrupts
+            libtp::gc_wii::os_interrupt::OSRestoreInterrupts( enable );
+
             delete[] bssArea;
             delete[] relFile;
             return false;
         }
+
+        // Restore interrupts
+        libtp::gc_wii::os_interrupt::OSRestoreInterrupts( enable );
 
         // Call the REL's prolog functon
         reinterpret_cast<void ( * )()>( relFile->prologFuncOffset )();
@@ -538,8 +581,14 @@ namespace libtp::tools
         // We are done with the REL file, so call it's epilog function to perform any necessary exit code
         reinterpret_cast<void ( * )()>( relFile->epilogFuncOffset )();
 
+        // Disable interrupts to make sure other REL files do not try to be linked while this one is being unlinked
+        enable = libtp::gc_wii::os_interrupt::OSDisableInterrupts();
+
         // All REL functions are done, so the file can be unlinked
         OSUnlink( relFile );
+
+        // Restore interrupts
+        libtp::gc_wii::os_interrupt::OSRestoreInterrupts( enable );
 
         // Clear the cache of the memory used by the REL file since assembly ran from it
         libtp::memory::clear_DC_IC_Cache( relFile, fileSize );
