@@ -79,11 +79,15 @@ void operator delete[]( void* ptr )
 }
 void operator delete( void* ptr, std::size_t size )
 {
+    (void)size;
+
     void* archiveHeapPtr = libtp::tp::m_Do_ext::archiveHeap;
     return libtp::tp::jkr_exp_heap::do_free_JKRExpHeap( archiveHeapPtr, ptr );
 }
 void operator delete[]( void* ptr, std::size_t size )
 {
+    (void)size;
+
     void* archiveHeapPtr = libtp::tp::m_Do_ext::archiveHeap;
     return libtp::tp::jkr_exp_heap::do_free_JKRExpHeap( archiveHeapPtr, ptr );
 }
