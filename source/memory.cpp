@@ -7,7 +7,10 @@
 
 namespace libtp::memory
 {
-    void* clearMemory( void* ptr, size_t size ) { return memset( ptr, 0, size ); }
+    void* clearMemory( void* ptr, size_t size )
+    {
+        return memset( ptr, 0, size );
+    }
 
     void clear_DC_IC_Cache( void* ptr, uint32_t size )
     {
