@@ -9,6 +9,7 @@
 #include <cstdint>
 #include <cstring>
 
+#include "gc_wii/OSCache.h"
 #include "tp/m_do_ext.h"
 #include "tp/JKRExpHeap.h"
 #include "tp/JKRHeap.h"
@@ -49,8 +50,10 @@ void* getHeapPtr( int32_t id )
 
 void* allocateMemory( void* heap, std::size_t size, int32_t alignment )
 {
-    void* newPtr = libtp::tp::jkr_exp_heap::do_alloc_JKRExpHeap( heap, size, alignment );
-    return memset( newPtr, 0, size );
+    void* ptr = libtp::tp::jkr_exp_heap::do_alloc_JKRExpHeap( heap, size, alignment );
+    memset( ptr, 0, size );
+    libtp::gc_wii::os_cache::DCFlushRange( ptr, size );
+    return ptr;
 }
 
 void* allocateMemoryFromMainHeap( std::size_t size, int32_t alignment )
