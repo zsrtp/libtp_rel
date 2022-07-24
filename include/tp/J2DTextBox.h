@@ -1,10 +1,12 @@
 #ifndef TP_J2DTEXTBOX_H
 #define TP_J2DTEXTBOX_H
 
-#include <cstdarg>
 #include <cstdint>
+#include <cstdarg>
+#include <cstring>
 
 #include "tp/J2DPane.h"
+#include "cxx.h"
 
 namespace libtp::tp::J2DTextBox
 {
@@ -76,7 +78,38 @@ namespace libtp::tp::J2DTextBox
             mGradientColor = color;
         }
 
-        void setLineSpacing( float spacing ) { mLineSpacing = spacing; }
+        void setLineSpacing( float spacing )
+        {
+            if ( spacing > 0.0f )
+            {
+                mLineSpacing = spacing;
+            }
+            else
+            {
+                mLineSpacing = 0.0f;
+            }
+        }
+
+        // Custom implementation of setString to avoid possible fragmentation when allocating memory for the string
+        int32_t setString( const char* string )
+        {
+            // Make sure memory isn't already allocated for the string
+            delete[] mStringPtr;
+
+            // Get the length of the string, as well as the size that will be used by it
+            const uint32_t len = strlen( string );
+            const uint32_t size = len + 1;
+
+            // Allocate the memory to the back of the heap to avoid possible fragmentation
+            // Align to char, as strings don't have specific alignment requirements
+            char* buf = new ( -sizeof( char ) ) char[size];
+            strcpy( buf, string );
+
+            // Assign the variables
+            mStringLength = static_cast<int16_t>( size );
+            mStringPtr = buf;
+            return len;
+        }
 
        private:
         /* 0x0100 */ void* mFont;
