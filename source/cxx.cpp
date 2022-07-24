@@ -9,9 +9,13 @@
 #include <cstdint>
 #include <cstring>
 
-#include "tp/JKRExpHeap.h"
-#include "tp/dynamic_link.h"
 #include "tp/m_do_ext.h"
+#include "tp/JKRExpHeap.h"
+#include "tp/JKRHeap.h"
+
+#ifdef PLATFORM_WII
+#include "tp/dynamic_link.h"
+#endif
 
 void* getHeapPtr( int32_t id )
 {
@@ -43,72 +47,70 @@ void* getHeapPtr( int32_t id )
     return *heapPtrArray[id];
 }
 
+void* allocateMemory( void* heap, std::size_t size, int32_t alignment )
+{
+    void* newPtr = libtp::tp::jkr_exp_heap::do_alloc_JKRExpHeap( heap, size, alignment );
+    return memset( newPtr, 0, size );
+}
+
+void* allocateMemoryFromMainHeap( std::size_t size, int32_t alignment )
+{
+    void* heapPtr = libtp::tp::m_Do_ext::archiveHeap;
+    return allocateMemory( heapPtr, size, alignment );
+}
+
 void* operator new( std::size_t size )
 {
-    void* archiveHeapPtr = libtp::tp::m_Do_ext::archiveHeap;
-    void* newPtr = libtp::tp::jkr_exp_heap::do_alloc_JKRExpHeap( archiveHeapPtr, size, 0x20 );
-    return memset( newPtr, 0, size );
+    return allocateMemoryFromMainHeap( size, 0x20 );
 }
+
 void* operator new[]( std::size_t size )
 {
-    void* archiveHeapPtr = libtp::tp::m_Do_ext::archiveHeap;
-    void* newPtr = libtp::tp::jkr_exp_heap::do_alloc_JKRExpHeap( archiveHeapPtr, size, 0x20 );
-    return memset( newPtr, 0, size );
+    return allocateMemoryFromMainHeap( size, 0x20 );
 }
+
 void* operator new( std::size_t size, int32_t alignment )
 {
-    void* archiveHeapPtr = libtp::tp::m_Do_ext::archiveHeap;
-    void* newPtr = libtp::tp::jkr_exp_heap::do_alloc_JKRExpHeap( archiveHeapPtr, size, alignment );
-    return memset( newPtr, 0, size );
+    return allocateMemoryFromMainHeap( size, alignment );
 }
+
 void* operator new[]( std::size_t size, int32_t alignment )
 {
-    void* archiveHeapPtr = libtp::tp::m_Do_ext::archiveHeap;
-    void* newPtr = libtp::tp::jkr_exp_heap::do_alloc_JKRExpHeap( archiveHeapPtr, size, alignment );
-    return memset( newPtr, 0, size );
-}
-void operator delete( void* ptr )
-{
-    void* archiveHeapPtr = libtp::tp::m_Do_ext::archiveHeap;
-    return libtp::tp::jkr_exp_heap::do_free_JKRExpHeap( archiveHeapPtr, ptr );
-}
-void operator delete[]( void* ptr )
-{
-    void* archiveHeapPtr = libtp::tp::m_Do_ext::archiveHeap;
-    return libtp::tp::jkr_exp_heap::do_free_JKRExpHeap( archiveHeapPtr, ptr );
-}
-void operator delete( void* ptr, std::size_t size )
-{
-    (void) size;
-
-    void* archiveHeapPtr = libtp::tp::m_Do_ext::archiveHeap;
-    return libtp::tp::jkr_exp_heap::do_free_JKRExpHeap( archiveHeapPtr, ptr );
-}
-void operator delete[]( void* ptr, std::size_t size )
-{
-    (void) size;
-
-    void* archiveHeapPtr = libtp::tp::m_Do_ext::archiveHeap;
-    return libtp::tp::jkr_exp_heap::do_free_JKRExpHeap( archiveHeapPtr, ptr );
+    return allocateMemoryFromMainHeap( size, alignment );
 }
 
 void* operator new( size_t size, int32_t alignment, int32_t id )
 {
     void* heapPtr = getHeapPtr( id );
-    void* newPtr = libtp::tp::jkr_exp_heap::do_alloc_JKRExpHeap( heapPtr, size, alignment );
-    return memset( newPtr, 0, size );
+    return allocateMemory( heapPtr, size, alignment );
 }
 
 void* operator new[]( size_t size, int32_t alignment, int32_t id )
 {
     void* heapPtr = getHeapPtr( id );
-    void* newPtr = libtp::tp::jkr_exp_heap::do_alloc_JKRExpHeap( heapPtr, size, alignment );
-    return memset( newPtr, 0, size );
+    return allocateMemory( heapPtr, size, alignment );
 }
 
-// Cannot used overloaded delete operator, so must use a generic function
-void freeFromHeap( int32_t id, void* ptr )
+void operator delete( void* ptr )
 {
-    void* heapPtr = getHeapPtr( id );
-    return libtp::tp::jkr_exp_heap::do_free_JKRExpHeap( heapPtr, ptr );
+    return libtp::tp::jkr_heap::__dl_JKRHeap( ptr );
+}
+
+void operator delete[]( void* ptr )
+{
+    return libtp::tp::jkr_heap::__dl_JKRHeap( ptr );
+}
+
+void operator delete( void* ptr, std::size_t size )
+{
+    (void) size;
+
+    return libtp::tp::jkr_heap::__dl_JKRHeap( ptr );
+}
+
+void operator delete[]( void* ptr, std::size_t size )
+{
+    (void) size;
+
+    return libtp::tp::jkr_heap::__dl_JKRHeap( ptr );
 }
