@@ -46,6 +46,16 @@ namespace libtp::tp::d_a_alink
         uint8_t unk_5c[0x4];
     } __attribute__( ( __packed__ ) );
 
+    struct daAlinkHIO_anm_c
+    {
+        /* 0x00 */ int16_t field_0x00;     // end f?
+        /* 0x02 */ uint16_t padding_0x02;
+        /* 0x04 */ float field_0x04;       // speed?
+        /* 0x08 */ float field_0x08;       // start?
+        /* 0x0C */ float field_0x0c;       // interpolation?
+        /* 0x10 */ float field_0x10;       // CF?
+    } __attribute__( ( __packed__ ) );     // size = 0x14
+
     struct WallMoveVars
     {
         float moveSidewaysStickNotHeld;     // default = 0.8
@@ -53,16 +63,29 @@ namespace libtp::tp::d_a_alink
         uint8_t unk[0xC];
     } __attribute__( ( __packed__ ) );
 
+    struct daAlinkHIO_huLight_c0
+    {
+        uint32_t unk_0;
+        uint16_t lanternAmbienceR;
+        uint16_t lanternAmbienceG;
+        uint16_t lanternAmbienceB;
+        uint8_t unk_A[0x12];
+    } __attribute__( ( __packed__ ) );
+
     struct daAlinkHIO_kandelaar_c0
     {
-        uint8_t unk_0[0x3C];
-        uint16_t innerSphereR;
-        uint16_t innerSphereG;
-        uint16_t innerSphereB;
-        uint16_t outerSphereR;
-        uint16_t outerSphereG;
-        uint16_t outerSphereB;
-        uint8_t unk_48[0x8];
+        /* 0x00 */ daAlinkHIO_anm_c mShakeAnm;
+        /* 0x14 */ daAlinkHIO_anm_c mBeginUnkAnm;
+        /* 0x28 */ daAlinkHIO_anm_c mEndUnkAnm;
+        /* 0x3C */ uint16_t innerSphereR;
+        /* 0x3E */ uint16_t innerSphereG;
+        /* 0x40 */ uint16_t innerSphereB;
+        /* 0x42 */ uint16_t outerSphereR;
+        /* 0x44 */ uint16_t outerSphereG;
+        /* 0x46 */ uint16_t outerSphereB;
+        /* 0x48 */ uint16_t mNormalOilLoss;
+        /* 0x4A */ uint16_t mShakeOilLoss;
+        /* 0x4C */ float mFlameTrackRate;
 
     } __attribute__( ( __packed__ ) );
 
@@ -78,6 +101,8 @@ namespace libtp::tp::d_a_alink
     static_assert( sizeof( daAlinkHIO_kandelaar_c0 ) == 0x50 );
     static_assert( sizeof( daAlinkHIO_magneBoots_c0 ) == 0x4C );
     static_assert( sizeof( WallMoveVars ) == 0x14 );
+    static_assert( sizeof( daAlinkHIO_huLight_c0 ) == 0x1C );
+    static_assert( sizeof( daAlinkHIO_anm_c ) == 0x14 );
 
     /**
      *	@brief These values contain the values for Link's state
@@ -226,6 +251,7 @@ namespace libtp::tp::d_a_alink
         extern uint8_t getSeType[0x100];
         extern daAlinkHIO_kandelaar_c0 lanternVars;
         extern daAlinkHIO_magneBoots_c0 ironBootsVars;
+        extern daAlinkHIO_huLight_c0 huLightVars;
     }
 }     // namespace libtp::tp::d_a_alink
 #endif
