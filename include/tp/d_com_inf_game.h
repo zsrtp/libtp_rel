@@ -318,6 +318,18 @@ namespace libtp::tp::d_com_inf_game
          */
         void* dComIfG_getStageRes( const char* data );
 
+        void dComIfGp_setNextStage( const char* stage,
+                                    int16_t point,
+                                    int8_t roomNo,
+                                    int8_t layer,
+                                    float lastSpeed,
+                                    uint32_t lastMode,
+                                    int32_t setPoint,
+                                    int8_t wipe,
+                                    int16_t lastAngle,
+                                    int32_t param_9,
+                                    int32_t wipSpeedT );
+
         uint16_t dComIfGs_getMaxLifeGauge();
     }
 }     // namespace libtp::tp::d_com_inf_game
