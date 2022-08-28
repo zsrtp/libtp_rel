@@ -20,8 +20,6 @@ namespace libtp::display
 
         // Display initial information, then lock line 1 (could be overwritten manually)
         *this << _PROJECT_NAME " - v" _VERSION " " _VARIANT << "\n"
-              << "Powered by github/zsrtp/libtp_rel"
-              << "\n"
               << "Build ID: " << _BUILDID << "\n\n";
     }
 
