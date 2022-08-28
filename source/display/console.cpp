@@ -22,8 +22,6 @@ namespace libtp::display
         *this << _PROJECT_NAME " - v" _VERSION " " _VARIANT << "\n"
               << "Powered by github/zsrtp/libtp_rel"
               << "\n"
-              << "Created by AECX & Zephiles"
-              << "\n"
               << "Build ID: " << _BUILDID << "\n\n";
     }
 
