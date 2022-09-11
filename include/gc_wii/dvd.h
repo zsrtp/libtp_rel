@@ -62,9 +62,25 @@ namespace libtp::gc_wii::dvd
         DVDCallback callback;
     } __attribute__( ( __packed__ ) );
 
+    struct DVDDir
+    {
+        uint32_t entryNum;
+        uint32_t location;
+        uint32_t next;
+    } __attribute__( ( __packed__ ) );
+
+    struct DVDDirEntry
+    {
+        uint32_t entryNum;
+        int32_t bIsDir;     // Handled as a bool
+        const char* fileName;
+    } __attribute__( ( __packed__ ) );
+
     static_assert( sizeof( DVDDiskID ) == 0x20 );
     static_assert( sizeof( DVDCommandBlock ) == 0x30 );
     static_assert( sizeof( DVDFileInfo ) == 0x3C );
+    static_assert( sizeof( DVDDir ) == 0xC );
+    static_assert( sizeof( DVDDirEntry ) == 0xC );
 
     extern "C"
     {
@@ -94,6 +110,33 @@ namespace libtp::gc_wii::dvd
          * standard reads use 2.
          */
         int32_t DVDReadPrio( DVDFileInfo* fileInfo, void* buffer, int32_t length, int32_t offset, int32_t priority );
+
+        /**
+         *  @brief Opens a directory.
+         *
+         *  @param directoryName Pointer to directory to be opened
+         *  @param dir Pointer to directory structure to be used
+         */
+        bool DVDOpenDir( const char* directoryName, DVDDir* dir );
+
+        /**
+         *  @brief Gets information on the next directory entry. The entry can either be a file (opened via
+         * DVDOpen/DVDFastOpen), or a directory (opened via DVDOpenDir). This function will return false when there are no more
+         * entries in the directory to go through, or if a DVDSeekDir call fails (is called internally).
+         *
+         *  @param dir Pointer to directory structure to be used
+         *  @param dirEntry Information on the next directory entry. The same dirEntry variable can be used if reading each
+         * entry in a loop.
+         */
+        bool DVDReadDir( DVDDir* dir, DVDDirEntry* dirEntry );
+
+        /**
+         *  @brief Closes a directory. The vanilla function for this does nothing, but mods may want to hook it at some point to
+         * make it do other stuff.
+         *
+         *  @param dir Pointer to directory structure to be used
+         */
+        bool DVDCloseDir( DVDDir* dir );
     }
 }     // namespace libtp::gc_wii::dvd
 #endif

@@ -64,7 +64,7 @@ namespace libtp::gc_wii::card
     struct CARDStat
     {
         // read-only (Set by CARDGetStatus)
-        uint8_t fileName[CARD_FILENAME_MAX];
+        char fileName[CARD_FILENAME_MAX];
         uint32_t length;
         uint32_t time;
         uint8_t gameName[4];
