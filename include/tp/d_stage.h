@@ -13,6 +13,8 @@
 #include <cstdint>
 
 #include "dzx.h"
+#include "SSystem/SComponent/c_sxyz.h"
+#include "SSystem/SComponent/c_xyz.h"
 
 namespace libtp::tp::d_stage
 {
@@ -37,6 +39,28 @@ namespace libtp::tp::d_stage
         int8_t enabled;
         uint8_t wipe;
         uint8_t wipe_speed;
+    } __attribute__( ( __packed__ ) );
+
+    struct stage_actor_data_class
+    {
+        /* 0x00 */ char mName[8];
+        /* 0x08 */ uint32_t mParameter;
+        /* 0x0C */ cXyz mSpawnPos;
+        /* 0x18 */ csXyz mAngle;
+        /* 0x1E */ uint16_t mEnemyNo;
+    } __attribute__( ( __packed__ ) );     // Size: 0x20
+
+    struct stage_dzr_header_entry
+    {
+        /* 0x00 */ char mName[4];
+        /* 0x04 */ int32_t mNumEntries;
+        /* 0x08 */ stage_actor_data_class* mDzrDataPointer;
+    } __attribute__( ( __packed__ ) );     // size: 0xC
+
+    struct stage_actor_class
+    {
+        /* 0x0 */ int32_t mEntryNum;
+        /* 0x4 */ stage_actor_data_class* mEntries;
     } __attribute__( ( __packed__ ) );
 
     extern "C"
@@ -107,6 +131,8 @@ namespace libtp::tp::d_stage
         void roomLoader( void* data, void* stageDt, int roomNo );
 
         void stageLoader( void* data, void* stageDt );
+
+        int dStage_playerInit( void* stageDt, stage_dzr_header_entry* i_data, int num, void* raw_data );
 
         /**
          *  @brief Pointer to roomControl data
