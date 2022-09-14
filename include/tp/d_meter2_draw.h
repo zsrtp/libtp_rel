@@ -49,8 +49,8 @@ namespace libtp::tp::d_meter2_draw
         /* 0x07C */ void* mpKanteraScreen;        // J2DScreen*
         /* 0x080 */ void* mpPikariScreen;         // J2DScreen*
         /* 0x084 */ void* mpItemNumTex[2][3];     // J2DScreen*
-        /* 0x09C */ int field_0x9c[3];
-        /* 0x0A8 */ int field_0xa8;
+        /* 0x09C */ int32_t field_0x9c[3];
+        /* 0x0A8 */ int32_t field_0xa8;
         /* 0x0AC */ void* mpKanteraMeter[2];     // dKantera_icon_c*
         /* 0x0B4 */ uint8_t field_0xb4[8];
         /* 0x0BC */ void* mpParent;
@@ -67,7 +67,7 @@ namespace libtp::tp::d_meter2_draw
         /* 0x1D8 */ libtp::tp::d_pane_class::CPaneMgr* mpMagicMeter;
         /* 0x1DC */ libtp::tp::d_pane_class::CPaneMgr* mpMagicFrameR;
         /* 0x1E0 */ libtp::tp::d_pane_class::CPaneMgr* mpLightDropParent;
-        /* 0x1E4 */ int field_0x1e4;
+        /* 0x1E4 */ int32_t field_0x1e4;
         /* 0x1E8 */ libtp::tp::d_pane_class::CPaneMgr* mpSIParent[2];
         /* 0x1F0 */ libtp::tp::d_pane_class::CPaneMgr* mpSIParts[16][3];
         /* 0x2B0 */ libtp::tp::d_pane_class::CPaneMgr* mpRupeeKeyParent;
@@ -76,7 +76,7 @@ namespace libtp::tp::d_meter2_draw
         /* 0x2E0 */ libtp::tp::d_pane_class::CPaneMgr* mpKeyParent;
         /* 0x2E4 */ libtp::tp::d_pane_class::CPaneMgr* mpKeyTexture[5];
         /* 0x2F8 */ libtp::tp::d_pane_class::CPaneMgr* mpButtonParent;
-        /* 0x2FC */ int field_0x2fc;
+        /* 0x2FC */ int32_t field_0x2fc;
         /* 0x300 */ libtp::tp::d_pane_class::CPaneMgr* mpButtonA;
         /* 0x304 */ libtp::tp::d_pane_class::CPaneMgr* mpButtonB;
         /* 0x308 */ libtp::tp::d_pane_class::CPaneMgr* mpButtonMidona;
@@ -89,14 +89,14 @@ namespace libtp::tp::d_meter2_draw
         /* 0x338 */ libtp::tp::d_pane_class::CPaneMgr* mpBTextA;
         /* 0x33C */ libtp::tp::d_pane_class::CPaneMgr* mpBTextB;
         /* 0x340 */ libtp::tp::d_pane_class::CPaneMgr* mpBTextXY[2];
-        /* 0x348 */ int field_0x348;
+        /* 0x348 */ int32_t field_0x348;
         /* 0x34C */ libtp::tp::d_pane_class::CPaneMgr* mpTextA;
         /* 0x350 */ libtp::tp::d_pane_class::CPaneMgr* mpTextB;
         /* 0x354 */ libtp::tp::d_pane_class::CPaneMgr* mpTextXY[3];
         /* 0x360 */ libtp::tp::d_pane_class::CPaneMgr* mpTextI;
         /* 0x364 */ libtp::tp::d_pane_class::CPaneMgr* mpTextM;
         /* 0x368 */ libtp::tp::d_pane_class::CPaneMgr* mpButtonCrossParent;
-        /* 0x36C */ int field_0x36c;
+        /* 0x36C */ int32_t field_0x36c;
         /* 0x370 */ uint8_t field_0x370[0x2C];
         /* 0x39C */ libtp::tp::d_pane_class::CPaneMgr* mpPikariParent;
         /* 0x3A0 */ libtp::tp::d_pane_class::CPaneMgr* mpLifeTexture[20][2];
@@ -109,7 +109,7 @@ namespace libtp::tp::d_meter2_draw
         /* 0x4F4 */ void* mpItemXYTex[2][2][2];     // JKRHeap*
         /* 0x514 */ void* mpItemBPane;              // J2DPicture*
         /* 0x518 */ void* mpItemXYPane[3];          // J2DPicture*
-        /* 0x524 */ int field_0x524[2][2];
+        /* 0x524 */ int32_t field_0x524[2][2];
         /* 0x534 */ uint8_t field_0x534[8];
         /* 0x53C */ void* field_0x53c;
         /* 0x540 */ void* field_0x540;     // bpk //J2DAnmBase*

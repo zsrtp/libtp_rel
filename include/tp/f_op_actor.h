@@ -39,7 +39,7 @@ namespace libtp::tp::f_op_actor
     {
        public:
         uint8_t unk_0x0[0x494];
-        // /* 0x0C0 */ int mAcType;
+        // /* 0x0C0 */ int32_t mAcType;
         // /* 0x0C4 */ create_tag_class mAcTg;
         // /* 0x0D8 */ create_tag_class mDwTg;
         // /* 0x0EC */ profile_method_class* mSubMtd;

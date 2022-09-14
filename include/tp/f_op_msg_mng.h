@@ -13,8 +13,8 @@ namespace libtp::tp::f_op_msg_mng
 {
     extern "C"
     {
-        int fopMsgM_messageSet( uint32_t messageIndex, uint32_t unk2 );
-        void* fopMsgM_SearchByID( int i_msgID );
+        int32_t fopMsgM_messageSet( uint32_t messageIndex, uint32_t unk2 );
+        void* fopMsgM_SearchByID( int32_t i_msgID );
     }
 }     // namespace libtp::tp::f_op_msg_mng
 #endif

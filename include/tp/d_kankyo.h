@@ -34,7 +34,7 @@ namespace libtp::tp::d_kankyo
     {
         extern EnvLight env_light;
 
-        bool dKy_darkworld_stage_check( char const* param_0, int param_1 );
+        bool dKy_darkworld_stage_check( char const* param_0, int32_t param_1 );
     }
 }     // namespace libtp::tp::d_kankyo
 #endif

@@ -128,11 +128,11 @@ namespace libtp::tp::d_stage
          */
         int32_t tgscInfoInit( void* stageDt, void* i_data, int32_t entryNum, void* param_3 );
 
-        void roomLoader( void* data, void* stageDt, int roomNo );
+        void roomLoader( void* data, void* stageDt, int32_t roomNo );
 
         void stageLoader( void* data, void* stageDt );
 
-        int dStage_playerInit( void* stageDt, stage_dzr_header_entry* i_data, int num, void* raw_data );
+        int32_t dStage_playerInit( void* stageDt, stage_dzr_header_entry* i_data, int32_t num, void* raw_data );
 
         /**
          *  @brief Pointer to roomControl data

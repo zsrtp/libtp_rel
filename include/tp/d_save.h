@@ -478,7 +478,7 @@ namespace libtp::tp::d_save
          *  @param itemSlot The slot on the item wheel
          *  @param item The item to be placed
          */
-        bool setItem( dSv_player_item_c* playerItemPtr, int itemSlot, uint8_t item );
+        bool setItem( dSv_player_item_c* playerItemPtr, int32_t itemSlot, uint8_t item );
 
         /**
          *  @brief Checks if the specific dungeon flag has been set
@@ -486,11 +486,11 @@ namespace libtp::tp::d_save
          *  @param memBitPtr The pointer to the memory bit structure.
          *  @param memBit The bit to be checked.
          */
-        bool isDungeonItem( dSv_memBit_c* memBitPtr, const int memBit );
+        bool isDungeonItem( dSv_memBit_c* memBitPtr, const int32_t memBit );
 
-        void onSwitch_dSv_memBit( dSv_memBit_c* memoryBit, int flag );
+        void onSwitch_dSv_memBit( dSv_memBit_c* memoryBit, int32_t flag );
 
-        bool isSwitch_dSv_memBit( dSv_memBit_c* memoryBit, int flag );
+        bool isSwitch_dSv_memBit( dSv_memBit_c* memoryBit, int32_t flag );
 
         void setLineUpItem( dSv_player_item_c* playerItemPtr );
 

@@ -26,8 +26,8 @@ namespace libtp::tp::d_meter2
         /* 0x11C */ void* field_0x11c;
         /* 0x120 */ void* mpMap;     // dMeterMap_c*
         /* 0x124 */ uint32_t field_0x124;
-        /* 0x128 */ int field_0x128;
-        /* 0x12C */ int field_0x12c;
+        /* 0x128 */ int32_t field_0x128;
+        /* 0x12C */ int32_t field_0x12c;
         /* 0x130 */ float field_0x130;
         /* 0x134 */ float field_0x134[2];
         /* 0x13C */ float field_0x13c[2];
@@ -48,11 +48,11 @@ namespace libtp::tp::d_meter2
         /* 0x196 */ int16_t field_0x196;
         /* 0x198 */ int16_t field_0x198;
         /* 0x19A */ int16_t field_0x19a;
-        /* 0x19C */ int field_0x19c;
-        /* 0x1A0 */ int field_0x1a0;
-        /* 0x1A4 */ int field_0x1a4;
-        /* 0x1A8 */ int field_0x1a8;
-        /* 0x1AC */ int field_0x1ac;
+        /* 0x19C */ int32_t field_0x19c;
+        /* 0x1A0 */ int32_t field_0x1a0;
+        /* 0x1A4 */ int32_t field_0x1a4;
+        /* 0x1A8 */ int32_t field_0x1a8;
+        /* 0x1AC */ int32_t field_0x1ac;
         /* 0x1B0 */ uint16_t field_0x1b0;
         /* 0x1B2 */ uint16_t field_0x1b2;
         /* 0x1B4 */ uint16_t field_0x1b4;

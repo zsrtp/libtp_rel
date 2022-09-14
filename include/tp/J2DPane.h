@@ -17,7 +17,7 @@ namespace libtp::tp::J2DPane
         /* 0x00 */ void* vtable;
         /* 0x04 */ uint16_t _4;
         /* 0x06 */ uint8_t _6[2];
-        /* 0x08 */ int id;
+        /* 0x08 */ int32_t id;
         /* 0x0C */ uint8_t _c[4];
         /* 0x10 */ uint64_t mInfoTag;
         /* 0x18 */ uint64_t mUserInfoTag;

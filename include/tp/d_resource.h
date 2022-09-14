@@ -33,7 +33,7 @@ namespace libtp::tp::d_resource
 
     extern "C"
     {
-        dRes_info_c* getResInfo( const char* arcName, dRes_info_c* objectInfo, int size );
+        dRes_info_c* getResInfo( const char* arcName, dRes_info_c* objectInfo, int32_t size );
     }
 
 }     // namespace libtp::tp::d_resource

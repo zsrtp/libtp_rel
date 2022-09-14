@@ -235,7 +235,7 @@ namespace libtp::tp::d_a_alink
 
         bool checkDownAttackState( daAlink* d_a_alink );
 
-        bool checkBootsMoveAnime( daAlink* d_a_alink, int param_1 );
+        bool checkBootsMoveAnime( daAlink* d_a_alink, int32_t param_1 );
 
         void procCoTalkInit( daAlink* d_a_alink );
 
