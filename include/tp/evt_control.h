@@ -22,14 +22,6 @@ namespace libtp::tp::evt_control
     typedef int32_t( csSkipFunction )( void* unk, int32_t unk2 );
     extern "C"
     {
-        /**
-         *	@brief Runs when attempting to skip a function
-         *
-         *	@param eventPtr Current event
-         *	@return Unknown use.
-         */
-        int32_t skipper( void* eventPtr );
-
         int32_t defaultSkipStb( void* unk, int32_t unk2 );
 
         csSkipFunction defaultSkipStb;
