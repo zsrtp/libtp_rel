@@ -73,5 +73,6 @@ namespace libtp::tp::d_event
         void resetEvent( void* eventPtr );
         void talkEnd( void* eventPtr );
         void setGtItm( void* eventPtr, uint8_t itemID );
+        bool skipper( void* eventPtr );
     }
 }     // namespace libtp::tp::d_event
