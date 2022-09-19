@@ -24,18 +24,21 @@ namespace libtp::patch
     Func hookFunction( Func function, Dest destination, bool absoluteBranch )
     {
         uint32_t* instructions = reinterpret_cast<uint32_t*>( function );
+        uint32_t instructionCount;
         uint32_t* trampoline;
 
         if ( absoluteBranch )
         {
-            trampoline = new ( 0x4 ) uint32_t[5];
+            instructionCount = 5;
+            trampoline = new ( sizeof( uint32_t ) ) uint32_t[instructionCount];
         }
         else
         {
+            instructionCount = 2;
 #ifdef PLATFORM_WII
-            trampoline = new ( 0x4, HEAP_ZELDA ) uint32_t[2];
+            trampoline = new ( sizeof( uint32_t ), HEAP_ZELDA ) uint32_t[instructionCount];
 #else
-            trampoline = new ( 0x4 ) uint32_t[2];
+            trampoline = new ( sizeof( uint32_t ) ) uint32_t[instructionCount];
 #endif
         }
 
@@ -80,20 +83,24 @@ namespace libtp::patch
         }
 
         uint32_t* instructions = reinterpret_cast<uint32_t*>( trampoline );
+        uint32_t instructionCount;
         uint32_t* address;
 
         // Restore the original instruction
-        if ( ( instructions[1] & 0xFFFF0000 ) == 0x3D800000 )
+        uint32_t firstInstruction = instructions[1];
+        if ( ( firstInstruction >> 16 ) == 0x3D80 )     // lis r12
         {
             // Absolute branch
-            uint32_t instructionAddress = ( instructions[1] & 0xFFFF ) << 16;     // Upper 16 bits
-            instructionAddress |= ( instructions[2] & 0xFFFF );                   // Lower 16 bits
+            instructionCount = 5;
+            uint32_t instructionAddress = ( firstInstruction & 0xFFFF ) << 16;     // Upper 16 bits
+            instructionAddress |= ( instructions[2] & 0xFFFF );                    // Lower 16 bits
             address = reinterpret_cast<uint32_t*>( instructionAddress - 0x4 );
         }
         else
         {
             // Standard branch
-            int32_t branchLength = instructions[1] & 0x03FFFFFC;
+            instructionCount = 2;
+            int32_t branchLength = firstInstruction & 0x03FFFFFC;
 
             // Check if this is a negative branch
             if ( branchLength > 0x01FFFFFC )
@@ -111,7 +118,7 @@ namespace libtp::patch
 
         // Clear the cache for both the address and where the instructions were stored
         memory::clear_DC_IC_Cache( address, sizeof( uint32_t ) );
-        memory::clear_DC_IC_Cache( instructions, sizeof( uint32_t ) );
+        memory::clear_DC_IC_Cache( instructions, sizeof( uint32_t ) * instructionCount );
 
         // Free the memory used by the trampoline
         delete[] instructions;
