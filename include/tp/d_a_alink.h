@@ -18,7 +18,9 @@ namespace libtp::tp::d_a_alink
 {
     struct daAlink
     {
-        /* 0x0062C */ uint8_t unk0[0x2FDC];
+        /* 0x0062C */ uint8_t unk0[0x4D0];
+        float playerPos[3];
+        /* 0x0062C */ uint8_t unk4dc[0x2b00];
         /* 0x02FDC */ uint16_t mEquipItem;
         /* 0x02FDE */ uint8_t unk2FDE[0x87A];
     } __attribute__( ( __packed__ ) );

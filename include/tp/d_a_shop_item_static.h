@@ -47,9 +47,9 @@ namespace libtp::tp::d_a_shop_item_static
         const char* arcName;
         int16_t modelResIdx;
         int16_t wBtkResIdx;
-        int16_t unk_8;
+        int16_t wBpkName;
         int16_t wBckResIdx;
-        int16_t unk_C;
+        int16_t wBxaName;
         int16_t wBrkResIdx;
         int16_t wBtpResIdx;
         int16_t unk_12;
