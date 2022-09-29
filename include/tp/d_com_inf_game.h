@@ -331,6 +331,8 @@ namespace libtp::tp::d_com_inf_game
                                     int32_t wipSpeedT );
 
         uint16_t dComIfGs_getMaxLifeGauge();
+
+        void dComIfGs_onStageBossEnemy( int32_t i_stageNo );
     }
 }     // namespace libtp::tp::d_com_inf_game
 #endif
