@@ -32,9 +32,9 @@ namespace libtp::data::items
         Arrows_30 = 0x10,
         Arrows_1 = 0x11,
         Seeds_50 = 0x12,
-        /*?	=	0x13,*/
-        /*?	=	0x14,*/
-        /*?	=	0x15,*/
+        Foolish_Item_1 = 0x13,     // Custom Item added for the Randomizer.
+        Foolish_Item_2 = 0x14,     // Custom Item added for the Randomizer.
+        Foolish_Item_3 = 0x15,     // Custom Item added for the Randomizer.
         Water_Bombs_5 = 0x16,
         Water_Bombs_10 = 0x17,
         Water_Bombs_15 = 0x18,
@@ -156,7 +156,7 @@ namespace libtp::data::items
         Palace_of_Twilight_Small_Key = 0x8C,     // Custom Item added for the Randomizer.
         Hyrule_Castle_Small_Key = 0x8D,          // Custom Item added for the Randomizer.
         Bulblin_Camp_Key = 0x8E,                 // Custom Item added for the Randomizer.
-        Foolish_Item = 0x8F,                     // Custom Item added for the Randomizer.
+        /*?	=	0x8F,*/
         Aurus_Memo = 0x90,
         Asheis_Sketch = 0x91,
         Forest_Temple_Big_Key = 0x92,          // Custom Item added for the Randomizer.
