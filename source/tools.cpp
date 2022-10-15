@@ -300,10 +300,10 @@ namespace libtp::tools
 
         // Buffer might not be adjusted to the new length so create a temporary data buffer
         // Allocate the memory to the back of the heap to avoid possible fragmentation
-        // Buffers that DVDReadPrio uses must be aligned to 0x20 bytes
+        // Buffers that DVDRead uses must be aligned to 0x20 bytes
         data = new ( -0x20 ) uint8_t[adjustedLength];
 
-        int32_t r = DVDReadPrio( &fileInfo, data, adjustedLength, adjustedOffset, 2 );
+        int32_t r = DVDRead( &fileInfo, data, adjustedLength, adjustedOffset );
         result = ( r > 0 ) ? DVD_STATE_END : r;
         if ( result == DVD_STATE_END )
         {
@@ -337,12 +337,12 @@ namespace libtp::tools
 
         // Allocate bytes for the file
         // Allocate the memory to the back of the heap to avoid possible fragmentation
-        // Buffers that DVDReadPrio uses must be aligned to 0x20 bytes
+        // Buffers that DVDRead uses must be aligned to 0x20 bytes
         uint8_t* fileData = new ( -0x20 ) uint8_t[length];
         libtp::memory::clear_DC_IC_Cache( fileData, length );
 
         // Read the REL from the disc
-        int32_t r = DVDReadPrio( &fileInfo, fileData, length, 0, 2 );
+        int32_t r = DVDRead( &fileInfo, fileData, length, 0 );
         int32_t result = ( r > 0 ) ? DVD_STATE_END : r;
 
         // Close the file, as it's no longer needed
