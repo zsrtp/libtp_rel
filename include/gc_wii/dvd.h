@@ -112,6 +112,19 @@ namespace libtp::gc_wii::dvd
         int32_t DVDReadPrio( DVDFileInfo* fileInfo, void* buffer, int32_t length, int32_t offset, int32_t priority );
 
         /**
+         *  @brief Reads data from a file synchronously.
+         *
+         *  @param fileInfo Pointer to file info of the file to be read
+         *  @param buffer Pointer to buffer address (32 bytes aligned)
+         *  @param length Number of bytes to be read (multiple of DVD_READ_SIZE)
+         *  @param offset File position at which to start the read (multiple of DVD_OFFSET_SIZE)
+         */
+        inline int32_t DVDRead( DVDFileInfo* fileInfo, void* buffer, int32_t length, int32_t offset )
+        {
+            return DVDReadPrio( fileInfo, buffer, length, offset, 2 );
+        }
+
+        /**
          *  @brief Opens a directory.
          *
          *  @param directoryName Pointer to directory to be opened
