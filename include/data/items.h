@@ -90,8 +90,8 @@ namespace libtp::data::items
         Fishing_Rod = 0x4A,
         Slingshot = 0x4B,
         Dominion_Rod = 0x4C,
-        /*?	=	0x4D,*/
-        /*?	=	0x4E,*/
+        Foolish_Item_4 = 0x4D,     // Custom Item added for the Randomizer.
+        Foolish_Item_5 = 0x4E,     // Custom Item added for the Randomizer.
         Giant_Bomb_Bag = 0x4F,
         Empty_Bomb_Bag = 0x50,
         Goron_Bomb_Bag = 0x51,
@@ -100,7 +100,7 @@ namespace libtp::data::items
         Small_Quiver = 0x54,     // Unused
         Big_Quiver = 0x55,
         Giant_Quiver = 0x56,
-        /*?	=	0x57,*/
+        Foolish_Item_6 = 0x57,     // Custom Item added for the Randomizer.
         Fishing_Rod_Lure = 0x58,
         Bow_Bombs = 0x59,
         Bow_Hawkeye = 0x5A,
