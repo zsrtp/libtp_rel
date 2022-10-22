@@ -66,6 +66,7 @@ namespace libtp::z2audiolib::z2scenemgr
                           bool param_7 );
         void loadSeWave( void* Z2SceneMgr, uint32_t waveID );
         void eraseSeWave( void* Z2SceneMgr, uint32_t waveID );
+        void setSceneName( const char* stageName, int32_t roomNum, int32_t layerNo );
     };
 }     // namespace libtp::z2audiolib::z2scenemgr
 #endif
