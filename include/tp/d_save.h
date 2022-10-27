@@ -494,6 +494,8 @@ namespace libtp::tp::d_save
 
         void setLineUpItem( dSv_player_item_c* playerItemPtr );
 
+        uint8_t checkEmptyBottle( dSv_player_item_c* playerItem );
+
         /**
          *  @brief Sets the flag for the specified vessel of light to have been collected.
          *
