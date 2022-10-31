@@ -25,7 +25,9 @@ namespace libtp::tp::d_kankyo
         /* 0x98C */ uint8_t currentRoom;
         /* 0x98D */ uint8_t unk_98d[0x6C3];
         /* 0x1050 */ uint8_t mEvilPacketEnabled;
-        /* 0x1051 */ uint8_t unk_1051[0x2BF];
+        /* 0x1051 */ uint8_t unk_1051[0x1FB];
+        /* 0x124C */ float mTimeSpeed;
+        /* 0x1250 */ uint8_t unk_1250[0xC0];
     } __attribute__( ( __packed__ ) );
 
     static_assert( sizeof( EnvLight ) == 0x1310 );
@@ -35,6 +37,8 @@ namespace libtp::tp::d_kankyo
         extern EnvLight env_light;
 
         bool dKy_darkworld_stage_check( char const* param_0, int32_t param_1 );
+        int32_t getTimePass();
+        int32_t dayNight_check();
     }
 }     // namespace libtp::tp::d_kankyo
 #endif
