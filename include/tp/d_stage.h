@@ -134,6 +134,8 @@ namespace libtp::tp::d_stage
 
         int32_t dStage_playerInit( void* stageDt, stage_dzr_header_entry* i_data, int32_t num, void* raw_data );
 
+        bool GetTimePass();
+
         /**
          *  @brief Pointer to roomControl data
          */

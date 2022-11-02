@@ -37,8 +37,7 @@ namespace libtp::tp::d_kankyo
         extern EnvLight env_light;
 
         bool dKy_darkworld_stage_check( char const* param_0, int32_t param_1 );
-        int32_t getTimePass();
-        int32_t dayNight_check();
+        bool dKy_daynight_check();
     }
 }     // namespace libtp::tp::d_kankyo
 #endif
