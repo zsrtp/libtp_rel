@@ -12,12 +12,6 @@ namespace libtp::patch
         writeBranchMain( ptr, destination, branch );
     }
 
-    void writeBranchLR( void* ptr, void* destination )
-    {
-        uint32_t branch = 0x48000001;     // bl
-        writeBranchMain( ptr, destination, branch );
-    }
-
     void writeBranchBL( void* ptr, void* destination )
     {
         uint32_t branch = 0x48000001;     // bl
@@ -47,5 +41,14 @@ namespace libtp::patch
         code[3] = 0x4E800420;                           // bctr
 
         memory::clear_DC_IC_Cache( ptr, sizeof( uint32_t ) * 4 );
+    }
+
+    void writeStandardBranches( void* ptr, void* funcStart, void* funcEnd )
+    {
+        // Write the main branch
+        writeBranch( ptr, funcStart );
+
+        // Write the returning branch
+        writeBranch( funcEnd, reinterpret_cast<void*>( reinterpret_cast<uint32_t>( ptr ) + 0x4 ) );
     }
 }     // namespace libtp::patch

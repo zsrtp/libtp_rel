@@ -15,10 +15,10 @@
 namespace libtp::patch
 {
     void writeBranch( void* ptr, void* destination );
-    void writeBranchLR( void* ptr, void* destination );
     void writeBranchBL( void* ptr, void* destination );
     void writeBranchMain( void* ptr, void* destination, uint32_t branch );
     void writeAbsoluteBranch( void* ptr, void* destination );
+    void writeStandardBranches( void* ptr, void* funcStart, void* funcEnd );
 
     template<typename Func, typename Dest>
     Func hookFunction( Func function, Dest destination, bool absoluteBranch )

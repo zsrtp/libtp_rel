@@ -18,12 +18,15 @@ namespace libtp::tp::d_a_alink
 {
     struct daAlink
     {
-        /* 0x0062C */ uint8_t unk0[0x4D0];
-        float playerPos[3];
-        /* 0x0062C */ uint8_t unk4dc[0x2b00];
+        /* 0x00000 */ uint8_t unk0[0x4D0];
+        /* 0x004D0 */ float playerPos[3];
+        /* 0x004DC */ uint8_t unk4dc[0x94];
+        /* 0x00570 */ uint32_t mNoResetFlg0;
+        /* 0x00574 */ uint8_t unk574[0x2A68];
         /* 0x02FDC */ uint16_t mEquipItem;
-        /* 0x02FDE */ uint8_t unk2FDE[0x87A];
+        /* 0x02FDE */ uint8_t unk2FDE[0x8DE];
     } __attribute__( ( __packed__ ) );
+
     /**
      *	@brief These values define the speed of various climbing actions
      *
@@ -99,6 +102,7 @@ namespace libtp::tp::d_a_alink
 
     } __attribute__( ( __packed__ ) );
 
+    static_assert( sizeof( daAlink ) == 0x38BC );
     static_assert( sizeof( ClimbVars ) == 0x70 );
     static_assert( sizeof( daAlinkHIO_kandelaar_c0 ) == 0x50 );
     static_assert( sizeof( daAlinkHIO_magneBoots_c0 ) == 0x4C );
@@ -246,6 +250,8 @@ namespace libtp::tp::d_a_alink
         void dComIfGp_setItemLifeCount( float amount, uint8_t count );
 
         bool checkRestartRoom( daAlink* d_a_alink );
+
+        void checkWarpStart( daAlink* d_a_alink );
 
         extern ClimbVars climbVars;
         extern LinkStatus* linkStatus;
