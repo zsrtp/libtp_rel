@@ -13,6 +13,7 @@
 #define TP_D_A_ALINK_H
 
 #include <cstdint>
+#include "tp/J3DAnimation.h"
 
 namespace libtp::tp::d_a_alink
 {
@@ -22,7 +23,9 @@ namespace libtp::tp::d_a_alink
         /* 0x004D0 */ float playerPos[3];
         /* 0x004DC */ uint8_t unk4dc[0x94];
         /* 0x00570 */ uint32_t mNoResetFlg0;
-        /* 0x00574 */ uint8_t unk574[0x2A68];
+        /* 0x00574 */ uint8_t unk574[0x1B0];
+        /* 0x00724 */ libtp::tp::J3DAnimation::J3DAnmTevRegKey* tevRegKey;
+        /* 0x00728 */ uint8_t unk728[0x28B4];
         /* 0x02FDC */ uint16_t mEquipItem;
         /* 0x02FDE */ uint8_t unk2FDE[0x8DE];
     } __attribute__( ( __packed__ ) );
@@ -252,6 +255,8 @@ namespace libtp::tp::d_a_alink
         bool checkRestartRoom( daAlink* d_a_alink );
 
         void checkWarpStart( daAlink* d_a_alink );
+
+        void setWolfLockDomeModel( daAlink* d_a_alink );
 
         extern ClimbVars climbVars;
         extern LinkStatus* linkStatus;
