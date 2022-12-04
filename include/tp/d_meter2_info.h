@@ -70,18 +70,18 @@ namespace libtp::tp::d_meter2_info
         /* 0xC1 */ uint8_t mPauseStatus;
         /* 0xC2 */ uint8_t mGameOverType;
         /* 0xC3 */ uint8_t mInsectSelectType;
-        /* 0xC4 */ uint8_t unk196[4];
-        /* 0xC8 */ uint8_t unk200[4];
-        /* 0xCC */ uint8_t unk204;
-        /* 0xCD */ uint8_t unk205;     // arrow num
-        /* 0xCE */ uint8_t unk206;     // item 1
-        /* 0xCF */ uint8_t unk207;     // item 2
-        /* 0xD0 */ uint8_t unk208[4];
-        /* 0xD4 */ uint8_t unk212[4];
-        /* 0xD8 */ uint8_t unk216;     // bomb num
-        /* 0xD9 */ uint8_t unk217;     // arrow num?
-        /* 0xDA */ uint8_t unk218;     // item 1?
-        /* 0xDB */ uint8_t unk219;     // item 2
+        /* 0xC4 */ uint8_t mSaveSelItemIdx[4];
+        /* 0xC8 */ uint8_t mSaveMixItemIdx[4];
+        /* 0xCC */ uint8_t mSaveBombNum;
+        /* 0xCD */ uint8_t mSaveArrowNum;
+        /* 0xCE */ uint8_t mSaveBowItem;
+        /* 0xCF */ uint8_t mSaveBombItem;
+        /* 0xD0 */ uint8_t mSaveSelItemIdxMG[4];
+        /* 0xD4 */ uint8_t mSaveMixItemIdxMG[4];
+        /* 0xD8 */ uint8_t mSaveBombNumMG;
+        /* 0xD9 */ uint8_t mSaveArrowNumMG;
+        /* 0xDA */ uint8_t mSaveBowItemMG;
+        /* 0xDB */ uint8_t mSaveBombItemMG;
         /* 0xDC */ uint8_t mRentalBombBag;
         /* 0xDD */ uint8_t mMiniGameItemSetFlag;     // 1: rented in game, 3: rented not in game
         /* 0xDE */ uint8_t mMiniGameCount;
