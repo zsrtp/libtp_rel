@@ -106,6 +106,8 @@ namespace libtp::tp::d_meter2_info
          */
         extern void* wZButtonPtr;
         extern G_Meter2_Info g_meter2_info;
+
+        void resetMiniGameItem( G_Meter2_Info* g_meter2_info_ptr, bool minigameFlag );
     }
 }     // namespace libtp::tp::d_meter2_info
 #endif
