@@ -19,6 +19,7 @@ namespace libtp::tp::d_msg_flow
         bool query042( void* unk1, void* unk2, int32_t unk3 );
         int32_t query004( void* unk1, void* unk2, int32_t unk3 );
         int32_t query037( void* unk1, void* unk2, int32_t unk3 );
+        int32_t query049( void* unk1, void* unk2, int32_t unk3 );
         int32_t event003( void* unk1,
                           void* param_1,
                           void* param_2 );     // Runs when you dontate to Charlo. Reduces the wallet by the donated amount.
