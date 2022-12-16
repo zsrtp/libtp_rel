@@ -488,6 +488,8 @@ namespace libtp::tp::d_save
          */
         bool isDungeonItem( dSv_memBit_c* memBitPtr, const int32_t memBit );
 
+        void offSwitch_dSv_memBit( dSv_memBit_c* memoryBit, int32_t flag );
+
         void onSwitch_dSv_memBit( dSv_memBit_c* memoryBit, int32_t flag );
 
         bool isSwitch_dSv_memBit( dSv_memBit_c* memoryBit, int32_t flag );
