@@ -11,7 +11,7 @@
 
 namespace libtp::tp::d_s_logo
 {
-    enum class Languages : int32_t
+    enum class Languages : uint8_t
     {
         uk = 0,     // English
         de,         // German
