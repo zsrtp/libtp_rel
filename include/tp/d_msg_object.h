@@ -40,6 +40,8 @@ namespace libtp::tp::d_msg_object
          * @param param_3 - Unknown. I think it checks for a valid message but more research is needed
          */
         void setMessageIndex( void* msgObjPtr, uint32_t param_1, uint32_t itemIndex, bool param_3 );
+
+        uint8_t isSend( void* msgObjPtr );
     }
 }     // namespace libtp::tp::d_msg_object
 #endif
