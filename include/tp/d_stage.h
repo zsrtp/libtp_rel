@@ -116,7 +116,7 @@ namespace libtp::tp::d_stage
          *  @param Actor Actor Object
          *  @param ActorMemoryPtr ActorPRMClass allocated for this Actor
          */
-        void ActorCreate( dzx::ACTR* actor, dzx::ActorPRMClass* actorMemoryPtr );
+        int32_t ActorCreate( dzx::ACTR* actor, dzx::ActorPRMClass* actorMemoryPtr );
 
         /**
          *  @brief Creates a number of SCOBs defined in a list.

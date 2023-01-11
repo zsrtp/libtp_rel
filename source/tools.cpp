@@ -66,7 +66,7 @@ namespace libtp::tools
         gameInfo->play.mNextStage.wipe = true;
     }
 
-    void SpawnActor( uint8_t roomID, tp::dzx::ACTR& actor )
+    int32_t SpawnActor( uint8_t roomID, tp::dzx::ACTR& actor )
     {
         using namespace libtp::tp::dzx;
         using namespace libtp::tp::f_op_actor_mng;
@@ -86,10 +86,10 @@ namespace libtp::tools
         actorMemoryPtr->enemy_id = actor.enemyID;
         actorMemoryPtr->room_id = roomID;
 
-        tp::d_stage::ActorCreate( &actor, actorMemoryPtr );
+        return tp::d_stage::ActorCreate( &actor, actorMemoryPtr );
     }
 
-    void SpawnSCOB( uint8_t roomID, tp::dzx::SCOB& actor_data )
+    int32_t SpawnSCOB( uint8_t roomID, tp::dzx::SCOB& actor_data )
     {
         using namespace libtp::tp::dzx;
         using namespace libtp::tp::f_op_actor_mng;
@@ -112,7 +112,7 @@ namespace libtp::tools
         actorMemoryPtr->mScale[1] = actor_data.yScale;
         actorMemoryPtr->mScale[2] = actor_data.zScale;
 
-        tp::d_stage::ActorCreate( &actor_data, actorMemoryPtr );
+        return tp::d_stage::ActorCreate( &actor_data, actorMemoryPtr );
     }
 #ifndef PLATFORM_WII
     int32_t mountMemoryCard( int32_t chan )

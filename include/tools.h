@@ -40,7 +40,7 @@ namespace libtp::tools
      *  @param roomID Room id to spawn the actor
      *  @param actor The actor object to be spawned
      */
-    void SpawnActor( uint8_t roomID, tp::dzx::ACTR& actor );
+    int32_t SpawnActor( uint8_t roomID, tp::dzx::ACTR& actor );
 
     /**
      *  @brief Spawns an actor
@@ -48,7 +48,7 @@ namespace libtp::tools
      *  @param roomID Room id to spawn the actor
      *  @param actor The actor object to be spawned
      */
-    void SpawnSCOB( uint8_t roomID, tp::dzx::SCOB& actor_data );
+    int32_t SpawnSCOB( uint8_t roomID, tp::dzx::SCOB& actor_data );
 
 #ifndef PLATFORM_WII
     /**
