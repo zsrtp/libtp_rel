@@ -21,6 +21,20 @@ namespace libtp::patch
     void writeStandardBranches( void* ptr, void* funcStart, void* funcEnd );
 
     template<typename Func, typename Dest>
+    void writeBranchBL( Func func, Dest dst )
+    {
+        writeBranchBL( reinterpret_cast<void*>( func ), reinterpret_cast<void*>( dst ) );
+    }
+
+    template<typename Ptr, typename FuncStart, typename FuncEnd>
+    void writeStandardBranches( Ptr ptr, FuncStart funcStart, FuncEnd funcEnd )
+    {
+        writeStandardBranches( reinterpret_cast<void*>( ptr ),
+                               reinterpret_cast<void*>( funcStart ),
+                               reinterpret_cast<void*>( funcEnd ) );
+    }
+
+    template<typename Func, typename Dest>
     Func hookFunction( Func function, Dest destination, bool absoluteBranch )
     {
         uint32_t* instructions = reinterpret_cast<uint32_t*>( function );
