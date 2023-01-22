@@ -19,6 +19,8 @@ namespace libtp::tp::m_Do_ext
         extern void* archiveHeap;     // Archive heap pointer
         extern void* j2dHeap;
 
+        void* mDoExt_getMesgFont();
+
 #ifndef PLATFORM_WII
         extern void* HostIOHeap;
 #endif     // PLATFORM_WII

@@ -9,9 +9,13 @@
 #include <cstdint>
 #include <cstring>
 
-#include "tp/JKRExpHeap.h"
-#include "tp/dynamic_link.h"
+#include "gc_wii/OSCache.h"
 #include "tp/m_do_ext.h"
+#include "tp/JKRHeap.h"
+
+#ifdef PLATFORM_WII
+#include "tp/dynamic_link.h"
+#endif
 
 void* getHeapPtr( int32_t id )
 {
@@ -20,7 +24,12 @@ void* getHeapPtr( int32_t id )
         &libtp::tp::m_Do_ext::DbPrintHeap,
         &libtp::tp::m_Do_ext::gameHeap,
         &libtp::tp::m_Do_ext::zeldaHeap,
+
+#ifdef PLATFORM_WII
+        // Cannot properly allocate from the command heap on GC
         &libtp::tp::m_Do_ext::commandHeap,
+#endif
+
         &libtp::tp::m_Do_ext::archiveHeap,
         &libtp::tp::m_Do_ext::j2dHeap,
 
@@ -28,8 +37,7 @@ void* getHeapPtr( int32_t id )
         &libtp::tp::m_Do_ext::HostIOHeap,
 #else
         &libtp::tp::dynamic_link::DynamicModuleControlBase::m_heap,
-#endif     // PLATFORM_WII
-
+#endif
     };
 
     // Make sure the id is valid
@@ -43,68 +51,82 @@ void* getHeapPtr( int32_t id )
     return *heapPtrArray[id];
 }
 
+void* allocateMemory( std::size_t size, void* heap, int32_t alignment )
+{
+    // Make sure the heap exists
+    if ( !heap )
+    {
+        return nullptr;
+    }
+
+    void* ptr = libtp::tp::jkr_heap::__nw_JKRHeap( size, heap, alignment );
+    ptr = memset( ptr, 0, size );
+    libtp::gc_wii::os_cache::DCFlushRange( ptr, size );
+    return ptr;
+}
+
+void* allocateMemoryFromMainHeap( std::size_t size, int32_t alignment )
+{
+    void* heapPtr = libtp::tp::m_Do_ext::archiveHeap;
+    return allocateMemory( size, heapPtr, alignment );
+}
+
+void* allocateMemoryFromHeapId( std::size_t size, int32_t alignment, int32_t id )
+{
+    void* heapPtr = getHeapPtr( id );
+    return allocateMemory( size, heapPtr, alignment );
+}
+
 void* operator new( std::size_t size )
 {
-    void* archiveHeapPtr = libtp::tp::m_Do_ext::archiveHeap;
-    void* newPtr = libtp::tp::jkr_exp_heap::do_alloc_JKRExpHeap( archiveHeapPtr, size, 0x20 );
-    return memset( newPtr, 0, size );
+    return allocateMemoryFromMainHeap( size, 0x20 );
 }
+
 void* operator new[]( std::size_t size )
 {
-    void* archiveHeapPtr = libtp::tp::m_Do_ext::archiveHeap;
-    void* newPtr = libtp::tp::jkr_exp_heap::do_alloc_JKRExpHeap( archiveHeapPtr, size, 0x20 );
-    return memset( newPtr, 0, size );
+    return allocateMemoryFromMainHeap( size, 0x20 );
 }
+
 void* operator new( std::size_t size, int32_t alignment )
 {
-    void* archiveHeapPtr = libtp::tp::m_Do_ext::archiveHeap;
-    void* newPtr = libtp::tp::jkr_exp_heap::do_alloc_JKRExpHeap( archiveHeapPtr, size, alignment );
-    return memset( newPtr, 0, size );
+    return allocateMemoryFromMainHeap( size, alignment );
 }
+
 void* operator new[]( std::size_t size, int32_t alignment )
 {
-    void* archiveHeapPtr = libtp::tp::m_Do_ext::archiveHeap;
-    void* newPtr = libtp::tp::jkr_exp_heap::do_alloc_JKRExpHeap( archiveHeapPtr, size, alignment );
-    return memset( newPtr, 0, size );
+    return allocateMemoryFromMainHeap( size, alignment );
 }
+
+void* operator new( std::size_t size, int32_t alignment, int32_t id )
+{
+    return allocateMemoryFromHeapId( size, alignment, id );
+}
+
+void* operator new[]( std::size_t size, int32_t alignment, int32_t id )
+{
+    return allocateMemoryFromHeapId( size, alignment, id );
+}
+
 void operator delete( void* ptr )
 {
-    void* archiveHeapPtr = libtp::tp::m_Do_ext::archiveHeap;
-    return libtp::tp::jkr_exp_heap::do_free_JKRExpHeap( archiveHeapPtr, ptr );
+    return libtp::tp::jkr_heap::__dl_JKRHeap( ptr );
 }
+
 void operator delete[]( void* ptr )
 {
-    void* archiveHeapPtr = libtp::tp::m_Do_ext::archiveHeap;
-    return libtp::tp::jkr_exp_heap::do_free_JKRExpHeap( archiveHeapPtr, ptr );
+    return libtp::tp::jkr_heap::__dl_JKRHeap( ptr );
 }
+
 void operator delete( void* ptr, std::size_t size )
 {
-    void* archiveHeapPtr = libtp::tp::m_Do_ext::archiveHeap;
-    return libtp::tp::jkr_exp_heap::do_free_JKRExpHeap( archiveHeapPtr, ptr );
+    (void) size;
+
+    return libtp::tp::jkr_heap::__dl_JKRHeap( ptr );
 }
+
 void operator delete[]( void* ptr, std::size_t size )
 {
-    void* archiveHeapPtr = libtp::tp::m_Do_ext::archiveHeap;
-    return libtp::tp::jkr_exp_heap::do_free_JKRExpHeap( archiveHeapPtr, ptr );
-}
+    (void) size;
 
-void* operator new( size_t size, int32_t alignment, int32_t id )
-{
-    void* heapPtr = getHeapPtr( id );
-    void* newPtr = libtp::tp::jkr_exp_heap::do_alloc_JKRExpHeap( heapPtr, size, alignment );
-    return memset( newPtr, 0, size );
-}
-
-void* operator new[]( size_t size, int32_t alignment, int32_t id )
-{
-    void* heapPtr = getHeapPtr( id );
-    void* newPtr = libtp::tp::jkr_exp_heap::do_alloc_JKRExpHeap( heapPtr, size, alignment );
-    return memset( newPtr, 0, size );
-}
-
-// Cannot used overloaded delete operator, so must use a generic function
-void freeFromHeap( int32_t id, void* ptr )
-{
-    void* heapPtr = getHeapPtr( id );
-    return libtp::tp::jkr_exp_heap::do_free_JKRExpHeap( heapPtr, ptr );
+    return libtp::tp::jkr_heap::__dl_JKRHeap( ptr );
 }
