@@ -55,10 +55,10 @@ namespace libtp::gc_wii::card
     {
         int32_t chan;
         int32_t fileNo;
-
-        uint32_t offset;
+        int32_t offset;
+        int32_t length;
         uint16_t iBlock;
-        uint16_t cBlock;
+        uint16_t padding;
     } __attribute__( ( __packed__ ) );
 
     struct CARDStat
@@ -90,6 +90,10 @@ namespace libtp::gc_wii::card
     {
         uint8_t unk[0x110];
     } __attribute__( ( __packed__ ) );
+
+    static_assert( sizeof( CARDFileInfo ) == 0x14 );
+    static_assert( sizeof( CARDStat ) == 0x6C );
+    static_assert( sizeof( CARDBlock ) == 0x110 );
 
     typedef void ( *CARDCallback )( int32_t chan, int32_t result );
 
