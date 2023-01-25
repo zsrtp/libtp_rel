@@ -62,25 +62,25 @@ namespace libtp::gc_wii::dvd
         DVDCallback callback;
     } __attribute__( ( __packed__ ) );
 
-    struct DVDDir
+    struct DVDDirectory
     {
-        uint32_t entryNum;
+        uint32_t entry_number;
         uint32_t location;
         uint32_t next;
     } __attribute__( ( __packed__ ) );
 
-    struct DVDDirEntry
+    struct DVDDirectoryEntry
     {
-        uint32_t entryNum;
-        int32_t bIsDir;     // Handled as a bool
+        uint32_t entry_number;
+        int32_t is_directory;     // Handled as a bool
         const char* fileName;
     } __attribute__( ( __packed__ ) );
 
     static_assert( sizeof( DVDDiskID ) == 0x20 );
     static_assert( sizeof( DVDCommandBlock ) == 0x30 );
     static_assert( sizeof( DVDFileInfo ) == 0x3C );
-    static_assert( sizeof( DVDDir ) == 0xC );
-    static_assert( sizeof( DVDDirEntry ) == 0xC );
+    static_assert( sizeof( DVDDirectory ) == 0xC );
+    static_assert( sizeof( DVDDirectoryEntry ) == 0xC );
 
     extern "C"
     {
@@ -127,10 +127,10 @@ namespace libtp::gc_wii::dvd
         /**
          *  @brief Opens a directory.
          *
-         *  @param directoryName Pointer to directory to be opened
+         *  @param dirName Pointer to directory to be opened
          *  @param dir Pointer to directory structure to be used
          */
-        bool DVDOpenDir( const char* directoryName, DVDDir* dir );
+        bool DVDOpenDir( const char* dirName, DVDDirectory* dir );
 
         /**
          *  @brief Gets information on the next directory entry. The entry can either be a file (opened via
@@ -138,10 +138,10 @@ namespace libtp::gc_wii::dvd
          * entries in the directory to go through, or if a DVDSeekDir call fails (is called internally).
          *
          *  @param dir Pointer to directory structure to be used
-         *  @param dirEntry Information on the next directory entry. The same dirEntry variable can be used if reading each
-         * entry in a loop.
+         *  @param entry Information on the next directory entry. The same entry variable can be used if reading each entry in a
+         * loop.
          */
-        bool DVDReadDir( DVDDir* dir, DVDDirEntry* dirEntry );
+        bool DVDReadDir( DVDDirectory* dir, DVDDirectoryEntry* entry );
 
         /**
          *  @brief Closes a directory. The vanilla function for this does nothing, but mods may want to hook it at some point to
@@ -149,7 +149,7 @@ namespace libtp::gc_wii::dvd
          *
          *  @param dir Pointer to directory structure to be used
          */
-        bool DVDCloseDir( DVDDir* dir );
+        bool DVDCloseDir( DVDDirectory* dir );
     }
 }     // namespace libtp::gc_wii::dvd
 #endif
