@@ -14,6 +14,7 @@
 
 #include <cstdint>
 #include "tp/J3DAnimation.h"
+#include "tp/f_op_actor.h"
 
 namespace libtp::tp::d_a_alink
 {
@@ -168,72 +169,72 @@ namespace libtp::tp::d_a_alink
          *
          *  @return False if he isnt, True if he is.
          */
-        bool checkEventRun( daAlink* linkMapPtr );
+        bool checkEventRun( daAlink* linkActrPtr );
 
         /**
          *	@brief Checks to see if Link is currently snowboarding
          *
          *  @return Bool if he is or isn't
          */
-        bool checkBoardRide( daAlink* linkMapPtr );
+        bool checkBoardRide( daAlink* linkActrPtr );
 
         /**
          *	@brief Checks to see if Link is currently riding in a canoe
          *
          *  @return Bool if he is or isn't
          */
-        bool checkCanoeRide( daAlink* linkMapPtr );
+        bool checkCanoeRide( daAlink* linkActrPtr );
 
         /**
          *	@brief Checks to see if Link is currently riding on Epona
          *
          *  @return Bool if he is or isn't
          */
-        bool checkHorseRide( daAlink* linkMapPtr );
+        bool checkHorseRide( daAlink* linkActrPtr );
 
         /**
          *	@brief Checks to see if Link is currently riding on a boar
          *
          *  @return Bool if he is or isn't
          */
-        bool checkBoarRide( daAlink* linkMapPtr );
+        bool checkBoarRide( daAlink* linkActrPtr );
 
         /**
          *	@brief Checks to see if Link is currently riding on the spinner
          *
          *  @return Bool if he is or isn't
          */
-        bool checkSpinnerRide( daAlink* linkMapPtr );
+        bool checkSpinnerRide( daAlink* linkActrPtr );
 
         /**
          *  @brief Runs when delivering the final blow to Ganondorf
          */
-        bool procGanonFinishInit( daAlink* d_a_alink );
+        bool procGanonFinishInit( daAlink* linkActrPtr );
 
         /**
          *  @brief Runs when delivering the final blow to Ganondorf
          */
-        bool procGanonFinish( daAlink* d_a_alink );
+        bool procGanonFinish( daAlink* linkActrPtr );
 
         /**
          *  @brief Checks to see if link should be taking damage
          */
-        bool checkDamageAction( daAlink* d_a_alink );
+        bool checkDamageAction( daAlink* linkActrPtr );
 
         /**
          *  @brief Sets link's facial expression when getting an item
          */
-        void setGetItemFace( daAlink* d_a_alink, uint16_t itemID );
+        void setGetItemFace( daAlink* linkActrPtr, uint16_t itemID );
 
         /**
          *  @brief Causes link to take damage based on his interaction with certain things.
          */
-        bool procDamageInit( daAlink* d_a_alink, void* obj, int32_t unk3 );
+        bool procDamageInit( daAlink* linkActrPtr, void* obj, int32_t unk3 );
 
         /**
          *  @brief Causes link to take damage based on his interaction with certain things.
          */
-        bool procWolfDamageInit( daAlink* d_a_alink, void* obj );
+        bool procWolfDamageInit( daAlink* linkActrPtr, void* obj );
 
         /**
          *  @brief Checks to see if an eventBit for the currently active save is set.
@@ -242,21 +243,28 @@ namespace libtp::tp::d_a_alink
          */
         bool dComIfGs_isEventBit( uint16_t flag );
 
-        bool checkDownAttackState( daAlink* d_a_alink );
+        bool checkDownAttackState( daAlink* linkActrPtr );
 
-        bool checkBootsMoveAnime( daAlink* d_a_alink, int32_t param_1 );
+        bool checkBootsMoveAnime( daAlink* linkActrPtr, int32_t param_1 );
 
-        void procCoTalkInit( daAlink* d_a_alink );
+        void procCoTalkInit( daAlink* linkActrPtr );
 
-        void procCoGetItem( daAlink* d_a_alink );
+        void procCoGetItem( daAlink* linkActrPtr );
 
         void dComIfGp_setItemLifeCount( float amount, uint8_t count );
 
-        bool checkRestartRoom( daAlink* d_a_alink );
+        bool checkRestartRoom( daAlink* linkActrPtr );
 
-        void checkWarpStart( daAlink* d_a_alink );
+        void checkWarpStart( daAlink* linkActrPtr );
 
-        void setWolfLockDomeModel( daAlink* d_a_alink );
+        void setWolfLockDomeModel( daAlink* linkActrPtr );
+
+        /**
+         *  @brief Checks to see if Link is riding the Spinner and if so, returns a pointer to the Spinner's actor
+         *
+         *  @param linkActrPtr A pointer to Link's Actor
+         */
+        libtp::tp::f_op_actor::fopAc_ac_c* getSpinnerActor( daAlink* linkActrPtr );
 
         extern ClimbVars climbVars;
         extern LinkStatus* linkStatus;
