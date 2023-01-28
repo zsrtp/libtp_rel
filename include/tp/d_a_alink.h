@@ -266,6 +266,13 @@ namespace libtp::tp::d_a_alink
          */
         libtp::tp::f_op_actor::fopAc_ac_c* getSpinnerActor( daAlink* linkActrPtr );
 
+        /**
+         *  @brief Checks to see if Link is trying to open a door near Bo
+         *
+         *  @param actrPtr A pointer to an actor near Link
+         */
+        libtp::tp::f_op_actor::fopAc_ac_c* searchBouDoor( libtp::tp::f_op_actor::fopAc_ac_c* actrPtr );
+
         extern ClimbVars climbVars;
         extern LinkStatus* linkStatus;
         extern WallMoveVars wallMoveVars;     // US Address = 0x8038E1E0
