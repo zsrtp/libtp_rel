@@ -134,15 +134,24 @@ namespace libtp::tools
     bool callRelProlog( const char* file );
 #else
     /**
-     *  @brief Loads a REL file from the current mod's GCI file and runs it's prolog function
+     *  @brief Loads a REL file from the current mod's GCI file and runs it's prolog function. If the memory card is not
+     * mounted, then this function will mount it.
      *
      *  @param chan Slot to check for the file
      *  @param rel_id Module id of the REL file to load
-     *  @param isMounted If true, then the function will try to mount the memory card. If false, then it is assumed that the
-     * memory card is already mounted.
-     *  @param stayMounted If true, then the function will not unmount the memory card before exiting.
+     *  @param stayMounted If true, then this function will not unmount the memory card before running the prolog/epilog
+     * functions.
      */
-    bool callRelProlog( int32_t chan, uint32_t rel_id, bool isMounted, bool stayMounted );
+    bool callRelProlog( int32_t chan, uint32_t rel_id, bool stayMounted );
+
+    /**
+     *  @brief Loads a REL file from the current mod's GCI file and runs it's prolog function. This function unmounts the memory
+     * card after the prolog/epilog functions have ran.
+     *
+     *  @param chan Slot to check for the file
+     *  @param rel_id Module id of the REL file to load
+     */
+    bool callRelProlog( int32_t chan, uint32_t rel_id );
 #endif
 
     /**

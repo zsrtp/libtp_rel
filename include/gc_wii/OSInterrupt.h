@@ -8,6 +8,7 @@ namespace libtp::gc_wii::os_interrupt
     extern "C"
     {
         bool OSDisableInterrupts();
+        bool OSEnableInterrupts();
         bool OSRestoreInterrupts( bool enable );
     }
 }     // namespace libtp::gc_wii::os_interrupt

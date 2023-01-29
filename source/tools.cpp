@@ -413,25 +413,31 @@ namespace libtp::tools
         return true;
     }
 #else
-    bool callRelProlog( int32_t chan, uint32_t rel_id, bool isMounted, bool stayMounted )
+    bool callRelProlog( int32_t chan, uint32_t rel_id, bool stayMounted )
     {
         using namespace libtp::gc_wii::card;
         using namespace libtp::gc_wii::os_module;
 
         int32_t result;
 
-        // Mount the memory card if necessary
-        if ( !isMounted )
+        // All of the RELs should be in the main save file, which always uses an internal name of "Custom REL File"
+        const char* internalName = "Custom REL File";
+        CARDFileInfo fileInfo;
+
+        result = CARDOpen( chan, internalName, &fileInfo );
+
+        // If CARD_RESULT_NOCARD is returned, then the memory card may not be mounted
+        if ( result == CARD_RESULT_NOCARD )
         {
-            if ( CARD_RESULT_READY != mountMemoryCard( chan ) )
+            result = mountMemoryCard( chan );
+            if ( result != CARD_RESULT_READY )
             {
                 return false;
             }
+
+            result = CARDOpen( chan, internalName, &fileInfo );
         }
 
-        // All of the RELs should be in the main save file, which always uses an internal name of "Custom REL File"
-        CARDFileInfo fileInfo;
-        result = CARDOpen( chan, "Custom REL File", &fileInfo );
         if ( result != CARD_RESULT_READY )
         {
             if ( !stayMounted )
@@ -598,6 +604,16 @@ namespace libtp::tools
         delete[] relFile;
 
         return true;
+    }
+
+    bool callRelProlog( int32_t chan, uint32_t rel_id )
+    {
+        // Call the main function
+        const bool ret = callRelProlog( chan, rel_id, true );
+
+        // Try to unmount the memory card even if the main function fails
+        libtp::gc_wii::card::CARDUnmount( chan );
+        return ret;
     }
 #endif
     uint32_t getRandom( uint64_t* seed, uint32_t max )
