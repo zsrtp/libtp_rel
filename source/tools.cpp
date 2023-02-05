@@ -648,7 +648,8 @@ namespace libtp::tools
     bool playerIsInRoomStage( int32_t room, const char* stage )
     {
         // Only check room if it is valid
-        if ( ( room < 0 ) || ( room > 0xFF ) )
+        // Room numbers are normally stored as int8_t, so the highest positive value is 127
+        if ( ( room < 0 ) || ( room > 127 ) )
         {
             return false;
         }
