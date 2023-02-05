@@ -9,7 +9,7 @@
 
 namespace libtp::chronos
 {
-    IntervalTimer::IntervalTimer( uint32_t interval, handler handler ): m_Interval( interval ), m_Handler( handler ) {}
+    IntervalTimer::IntervalTimer( uint32_t interval, TimerHandler handler ): m_Interval( interval ), m_Handler( handler ) {}
 
     void IntervalTimer::tick()
     {
