@@ -9,6 +9,8 @@
 #ifndef TP_DZX_H
 #define TP_DZX_H
 
+#include "SSystem/SComponent/c_xyz.h"
+
 #include <cstdint>
 
 namespace libtp::tp::dzx
@@ -20,7 +22,7 @@ namespace libtp::tp::dzx
     {
         char objectName[8];
         uint32_t parameters;
-        float pos[3];
+        cXyz pos;
         int16_t rot[2];
         uint16_t flag;
         uint16_t enemyID;
@@ -44,7 +46,7 @@ namespace libtp::tp::dzx
     {
         char actorName[8];
         uint32_t flags;
-        float pos[3];
+        cXyz pos;
         int32_t angle;
         uint8_t item;
         uint8_t unk2[3];     // Seems to always be 0xFF
@@ -60,7 +62,7 @@ namespace libtp::tp::dzx
         uint8_t paramTwo;
         uint8_t membitFlag;
         uint8_t item;
-        float pos[3];
+        cXyz pos;
         int16_t rot[3];
         uint16_t enemyNum;
     } __attribute__( ( __packed__ ) );
@@ -87,7 +89,7 @@ namespace libtp::tp::dzx
     {
         int32_t params;
 
-        float pos[3];
+        cXyz pos;
 
         uint16_t xRot;
         uint16_t yRot;

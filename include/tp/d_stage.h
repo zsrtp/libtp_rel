@@ -140,6 +140,11 @@ namespace libtp::tp::d_stage
          *  @brief Pointer to roomControl data
          */
         extern void* mStatus_roomControl;
+
+        /**
+         *  @brief A static value that represents the current room the player is in
+         */
+        extern int8_t mStayNo;
     }
 }     // namespace libtp::tp::d_stage
 #endif

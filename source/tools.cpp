@@ -75,9 +75,9 @@ namespace libtp::tools
 
         actorMemoryPtr->params = actor.parameters;
 
-        actorMemoryPtr->pos[0] = actor.pos[0];
-        actorMemoryPtr->pos[1] = actor.pos[1];
-        actorMemoryPtr->pos[2] = actor.pos[2];
+        actorMemoryPtr->pos.x = actor.pos.x;
+        actorMemoryPtr->pos.y = actor.pos.y;
+        actorMemoryPtr->pos.z = actor.pos.z;
 
         actorMemoryPtr->xRot = actor.rot[0];
         actorMemoryPtr->yRot = actor.rot[1];
@@ -98,9 +98,9 @@ namespace libtp::tools
 
         actorMemoryPtr->params = actor_data.parameters;
 
-        actorMemoryPtr->pos[0] = actor_data.pos[0];
-        actorMemoryPtr->pos[1] = actor_data.pos[1];
-        actorMemoryPtr->pos[2] = actor_data.pos[2];
+        actorMemoryPtr->pos.x = actor_data.pos.x;
+        actorMemoryPtr->pos.y = actor_data.pos.y;
+        actorMemoryPtr->pos.z = actor_data.pos.z;
 
         actorMemoryPtr->xRot = actor_data.rot[0];
         actorMemoryPtr->yRot = actor_data.rot[1];

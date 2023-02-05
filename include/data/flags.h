@@ -628,6 +628,17 @@ namespace libtp::data::flags
         TALKED_TO_COLIN_ORDON_DAY_1                                                              = 0x6280,
         HENA_BEAT_ROLLGOAL_8_8                                                                   = 0x6302
     };
+    
+    enum DungeonItemFlags : int32_t
+    {
+        MAP_COLLECTED                   = 0x0,
+        COMPASS_COLLECTED               = 0x1,
+        BIG_KEY_COLLECTED               = 0x2,
+        BOSS_DEFEATED                   = 0x3,
+        HEART_CONTAINER_COLLECTED       = 0x4,
+        OOCCOO_OBTAINED                 = 0x6,
+        MINIBOSS_DEFEATED               = 0x7
+    };
     //clang-format on
 }     // namespace libtp::data::flags
 #endif
