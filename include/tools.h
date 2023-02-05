@@ -170,11 +170,15 @@ namespace libtp::tools
     int32_t getStageIndex( const char* stage );
 
     /**
+     * @brief Returns the current room number (mStayNo converted to int32_t)
+     */
+    int32_t getCurrentRoomNo();
+
+    /**
      * @brief Checks if the player is in a specific room in a stage
      *
-     * @param room The room to be checked. If set to a negative value or higher than 255, then the room is not checked.
-     * @param stage The stage string to be read in. If set to nullptr, then it is assumed that the room is for any stage.
-     * If neither room nor stage are valid inputs, then the function will return true.
+     * @param room The room to be checked
+     * @param stage The stage string to be read in
      */
     bool playerIsInRoomStage( int32_t room, const char* stage );
 

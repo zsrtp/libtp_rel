@@ -25,7 +25,6 @@
 #include "tp/m_do_memcard.h"
 #include "gc_wii/OSCache.h"
 #include "gc_wii/OSInterrupt.h"
-#include "tp/d_kankyo.h"
 #include "tp/d_a_alink.h"
 
 namespace libtp::tools
@@ -641,26 +640,30 @@ namespace libtp::tools
         return -1;
     }
 
+    int32_t getCurrentRoomNo()
+    {
+        return static_cast<int32_t>( libtp::tp::d_stage::mStayNo );
+    }
+
     bool playerIsInRoomStage( int32_t room, const char* stage )
     {
         // Only check room if it is valid
-        if ( ( room >= 0 ) && ( room <= 0xFF ) )
+        if ( ( room < 0 ) || ( room > 0xFF ) )
         {
-            if ( static_cast<uint32_t>( room ) != libtp::tp::d_kankyo::env_light.currentRoom )
-            {
-                return false;
-            }
+            return false;
+        }
+
+        if ( room != getCurrentRoomNo() )
+        {
+            return false;
         }
 
         // Only check stage if it is valid
-        if ( stage )
+        if ( !stage )
         {
-            if ( !libtp::tp::d_a_alink::checkStageName( stage ) )
-            {
-                return false;
-            }
+            return false;
         }
 
-        return true;
+        return libtp::tp::d_a_alink::checkStageName( stage );
     }
 }     // namespace libtp::tools
