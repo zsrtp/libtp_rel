@@ -615,13 +615,28 @@ namespace libtp::tools
         return ret;
     }
 #endif
-    uint32_t getRandom( uint64_t* seed, uint32_t max )
+    // xorshift32 was created by George Marsaglia
+    // https://www.jstatsoft.org/article/view/v008i14
+    uint32_t xorshift32( uint32_t* state )
     {
-        uint64_t z = ( *seed += 0x9e3779b97f4a7c15 );
-        z = ( z ^ ( z >> 30 ) ) * 0xbf58476d1ce4e5b9;
-        z = ( z ^ ( z >> 27 ) ) * 0x94d049bb133111eb;
+        uint32_t x = *state;
+        x ^= x << 13;
+        x ^= x >> 17;
+        x ^= x << 5;
+        *state = x;
+        return x;
+    }
 
-        return ( z % max );
+    uint32_t ulRand( uint32_t* state, uint32_t range )
+    {
+        if ( range == 0 )
+        {
+            return 0;
+        }
+
+        uint32_t ret = xorshift32( state );
+        ret -= ( ret / range ) * range;
+        return ret;
     }
 
     int32_t getStageIndex( const char* stage )
