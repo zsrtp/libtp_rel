@@ -12,7 +12,7 @@
 #define MSG_BEGIN_PTR( name ) const char* name =
 #define MSG_BEGIN_ARRAY( name ) char name[] =
 
-#define MSG_END() ;
+#define MSG_END()     // Does nothing; is a placeholder for now
 #define MSG_SPEED( speed ) "\x1A\x05\x00\x00" speed
 #define MSG_COLOR( id ) "\x1A\x06\xFF\x00\x00" id
 #define MSG_ICON( icon ) "\x1A\x05\x00\x00" icon
