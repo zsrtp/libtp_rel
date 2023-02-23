@@ -36,7 +36,7 @@ void* getHeapPtr( int32_t id )
 #ifndef PLATFORM_WII
         &libtp::tp::m_Do_ext::HostIOHeap,
 #else
-        &libtp::tp::dynamic_link::DynamicModuleControlBase::m_heap,
+        &libtp::tp::dynamic_link::m_heap,
 #endif
     };
 
