@@ -102,7 +102,26 @@ namespace libtp::tp::JKRArchive
     };
     extern "C"
     {
+        /**
+         *	@brief Retrieves a resource from an archive.
+         *
+         *	@param JKRArchive A pointer to the archive to be searched.
+         * @param type The type of resource to be loaded.
+         *  @param file The name of the file to be searched.
+         *
+         *  @return Returns a pointer to the resource if successfully loaded. Returns a nullptr otherwise.
+         */
         void* JKRArchive_getResource2( void* JKRArchive, uint32_t type, const char* file );
+
+        /**
+         *	@brief Locates a file resource in memory.
+         *
+         *	@param _this A pointer to the archive to be searched.
+         *  @param name The name of the resource to be located
+         *  @param param_2 Unknown
+         *
+         *  @return Returns a pointer to the resource if successfully found. Returns a nullptr otherwise.
+         */
         JKRArchive::SDIFileEntry* JKRArchive_findFsResource( JKRArchive* _this, const char* name, uint32_t param_2 );
     }
 }     // namespace libtp::tp::JKRArchive

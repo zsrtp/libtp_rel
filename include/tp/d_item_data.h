@@ -2,6 +2,7 @@
  *	@brief Holds structs that contain values for item data
  *
  *	@author Zephiles
+ *  @author Lunar Soap
  *	@bug No known bugs.
  */
 #ifndef TP_D_ITEM_DATA_H

@@ -5,6 +5,7 @@
  *
  *	@author Zephiles
  *	@author AECX
+ *  @author Lunar Soap
  *	@bug No known bugs.
  */
 #ifndef TP_D_KANKYO_H
@@ -36,8 +37,22 @@ namespace libtp::tp::d_kankyo
     {
         extern EnvLight env_light;
 
-        bool dKy_darkworld_stage_check( char const* param_0, int32_t param_1 );
-        bool dKy_daynight_check();
+        /**
+         *  @brief Checks to see if the current stage should be in Twilight
+         *
+         *  @param stageName The current stage name.
+         *  @param roomNo The current room number.
+         *
+         *  @return Bool returns True if the stage should be in Twilight, otherwise returns False.
+         */
+        bool dKy_darkworld_stage_check( char const* stageName, int32_t roomNo );
+
+        /**
+         *  @brief Checks to see it is currently day or night time.
+         *
+         *  @return BOOL returns 0 if it is day time and 1 if it is night time.
+         */
+        int32_t dKy_daynight_check();
     }
 }     // namespace libtp::tp::d_kankyo
 #endif

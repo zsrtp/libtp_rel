@@ -128,14 +128,14 @@ namespace libtp::tp::d_a_alink
     extern "C"
     {
         /**
-         *	@brief Checks if dComIfG_gameInfo.curentStage is equal to name
+         *	@brief Checks if the specified stage is equal to the current stage.
          *
-         *  @return Bool if the stages match
+         *  @return Bool Returns True if the stages match, otherwise returns False.
          */
         bool checkStageName( const char* name );
 
         /**
-         *	@brief Runs when Link is about to walk on magnetic wall/ceiling
+         *	@brief Runs when Link is about to walk in a direction.
          */
         void setStickData();
 
@@ -143,120 +143,210 @@ namespace libtp::tp::d_a_alink
          *	@brief Determines whether Link is in heavy state (Iron boots, Ball and
          *Chain, ...)
          *
-         *	@return Bool whether Link is, if he is some actions might be restricted
+         *	@return Bool returns True if Link is in a heavy state, otherwise returns False.
          */
         bool checkHeavyStateOn( int32_t unk1, int32_t unk2 );
 
         /**
-         *	@brief Initializes the animation that causes Link to transform
+         *	@brief Initializes the animation that causes Link to transform.
          *
-         *  @return Bool if link is transforming
+         *  @param linkActrPtr A pointer to Link's Actor
+         *
+         *  @return Bool returns True if the process completed successfully, otherwise returns False.
          */
-        bool procCoMetamorphoseInit( daAlink* linkMapPtr );
+        bool procCoMetamorphoseInit( daAlink* linkActrPtr );
 
         /**
-         *	@brief Checks whether a chest-rupee doesn't fit in Link's wallet
+         *	@brief Checks whether a chest-rupee doesn't fit in Link's wallet.
          *
-         *	@param unk1 Unknown pointer (perhaps to the treasure struct?)
-         *	@param item Item id (1 through 7)
+         *	@param linkActrPtr A pointer to Link's Actor
+         *	@param itemID The ID of the rupee to check.
          *
-         *	@return True if the rupee doesn't fit in Links wallet, otherwise false
+         *	@return Bool returns True if the rupee doesn't fit in Links wallet, otherwise returns False.
          */
-        bool checkTreasureRupeeReturn( void* unk1, int32_t item );
+        bool checkTreasureRupeeReturn( daAlink* unk1, int32_t item );
 
         /**
          *	@brief Checks to see if Link is in an event (cutscene/animation/etc.)
          *
-         *  @return False if he isnt, True if he is.
+         *  @param linkActrPtr A pointer to Link's Actor
+         *
+         *  @return Bool returns True if Link is in an event, otherwise returns False.
          */
         bool checkEventRun( daAlink* linkActrPtr );
 
         /**
-         *	@brief Checks to see if Link is currently snowboarding
+         *	@brief Checks to see if Link is currently snowboarding.
          *
-         *  @return Bool if he is or isn't
+         *  @param linkActrPtr A pointer to Link's Actor
+         *
+         *  @return Bool returns True if Link is on a snowboard, otherwise returns False.
          */
         bool checkBoardRide( daAlink* linkActrPtr );
 
         /**
-         *	@brief Checks to see if Link is currently riding in a canoe
+         *	@brief Checks to see if Link is currently riding in a canoe.
          *
-         *  @return Bool if he is or isn't
+         *  @param linkActrPtr A pointer to Link's Actor
+         *
+         *  @return Bool returns True if Link is in a canoe, otherwise returns False.
          */
         bool checkCanoeRide( daAlink* linkActrPtr );
 
         /**
-         *	@brief Checks to see if Link is currently riding on Epona
+         *	@brief Checks to see if Link is currently riding on Epona.
          *
-         *  @return Bool if he is or isn't
+         *  @param linkActrPtr A pointer to Link's Actor
+         *
+         *  @return Bool returns True if Link is riding Epona, otherwise returns False.
          */
         bool checkHorseRide( daAlink* linkActrPtr );
 
         /**
-         *	@brief Checks to see if Link is currently riding on a boar
+         *	@brief Checks to see if Link is currently riding on a boar.
          *
-         *  @return Bool if he is or isn't
+         *  @param linkActrPtr A pointer to Link's Actor
+         *
+         *  @return Bool returns True if Link is riding a Boar, otherwise returns False.
          */
         bool checkBoarRide( daAlink* linkActrPtr );
 
         /**
-         *	@brief Checks to see if Link is currently riding on the spinner
+         *	@brief Checks to see if Link is currently riding on the spinner.
          *
-         *  @return Bool if he is or isn't
+         *  @param linkActrPtr A pointer to Link's Actor
+         *
+         *  @return Bool returns True if Link is riding on the Spinner, otherwise returns False.
          */
         bool checkSpinnerRide( daAlink* linkActrPtr );
 
         /**
-         *  @brief Runs when delivering the final blow to Ganondorf
+         *  @brief Initializes the process used when delivering the final blow to Ganondorf.
+         *
+         *  @param linkActrPtr A pointer to Link's Actor
+         *
+         *  @return Bool returns True if the action was successful, otherwise returns False.
          */
         bool procGanonFinishInit( daAlink* linkActrPtr );
 
         /**
-         *  @brief Runs when delivering the final blow to Ganondorf
+         *  @brief Runs when delivering the final blow to Ganondorf.
+         *
+         *  @param linkActrPtr A pointer to Link's Actor
+         *
+         *  @return Bool returns True if the action was successful, otherwise returns False.
          */
         bool procGanonFinish( daAlink* linkActrPtr );
 
         /**
-         *  @brief Checks to see if link should be taking damage
+         *  @brief Checks to see if link should be taking damage.
+         *
+         *  @param linkActrPtr A pointer to Link's Actor
+         *
+         *  @return Bool returns True if Link should be taking damage, otherwise returns False.
          */
         bool checkDamageAction( daAlink* linkActrPtr );
 
         /**
          *  @brief Sets link's facial expression when getting an item
+         *
+         *  @param linkActrPtr A pointer to Link's Actor
+         *  @param itemID The item to be checked.
          */
         void setGetItemFace( daAlink* linkActrPtr, uint16_t itemID );
 
         /**
-         *  @brief Causes link to take damage based on his interaction with certain things.
+         *  @brief Causes Human Link to take damage based on his interaction with certain things.
+         *
+         *  @param linkActrPtr A pointer to Link's Actor
+         *  @param obj A pointer to the object causing the damage.
+         *  @param unk3 Unknown.
+         *
+         *  @return Bool returns True if Link successfully took damage, otherwise returns False.
          */
         bool procDamageInit( daAlink* linkActrPtr, void* obj, int32_t unk3 );
 
         /**
-         *  @brief Causes link to take damage based on his interaction with certain things.
+         *  @brief Causes Wolf Link to take damage based on his interaction with certain things.
+         *
+         *  @param linkActrPtr A pointer to Link's Actor
+         *  @param obj A pointer to the object causing the damage.
+         *
+         *  @return Bool returns True if Link successfully took damage, otherwise returns False.
          */
         bool procWolfDamageInit( daAlink* linkActrPtr, void* obj );
 
         /**
          *  @brief Checks to see if an eventBit for the currently active save is set.
          *
-         *  @param flag Offset+Flag
+         *  @param flag Offset | Flag
+         *
+         *  @return Bool returns True if the flag is set, otherwise returns False.
          */
         bool dComIfGs_isEventBit( uint16_t flag );
 
+        /**
+         *  @brief Checks to see if the currently targeted actor is able to be finished with the Ending Blow.
+         *
+         *  @param linkActrPtr A pointer to Link's Actor.
+         *
+         *  @return Bool returns True if the enemy can be finished, otherwise returns False.
+         */
         bool checkDownAttackState( daAlink* linkActrPtr );
 
+        /**
+         *  @brief Checks to see if Link is moving while in a heavy state.
+         *
+         *  @param linkActrPtr A pointer to Link's Actor
+         *
+         *  @return Bool returns True if Link is moving while heavy, otherwise returns False.
+         */
         bool checkBootsMoveAnime( daAlink* linkActrPtr, int32_t param_1 );
 
+        /**
+         *  @brief Initializes the process that runs when Link talks to a character.
+         *
+         *  @param linkActrPtr A pointer to Link's Actor
+         */
         void procCoTalkInit( daAlink* linkActrPtr );
 
+        /**
+         *  @brief The function process that runs when Link collects an item.
+         *
+         *  @param linkActrPtr A pointer to Link's Actor
+         */
         void procCoGetItem( daAlink* linkActrPtr );
 
+        /**
+         *  @brief Increases Link's maximum health by a determined amount and sets the currently filled hearts to the stated
+         * count.
+         *
+         *  @param amount The amount in which to increase Link's maximum heart count (in 1/4 hearts).
+         *  @param count The amount of filled hearts in which to increase Link's current health (in 1/4 hearts).
+         */
         void dComIfGp_setItemLifeCount( float amount, uint8_t count );
 
+        /**
+         *  @brief Checks to see if Link is currently voiding out.
+         *
+         *  @param linkActrPtr A pointer to Link's Actor
+         *
+         *  @return Bool returns True if Link is voiding, otherwise returns False.
+         */
         bool checkRestartRoom( daAlink* linkActrPtr );
 
+        /**
+         *  @brief Checks to see if Link has begun the warping process, either in the overworld or in a dungeon.
+         *
+         *  @param linkActrPtr A pointer to Link's Actor
+         */
         void checkWarpStart( daAlink* linkActrPtr );
 
+        /**
+         *  @brief Sets the model information for the Midna Charge attack including color, size, etc.
+         *
+         *  @param linkActrPtr A pointer to Link's Actor
+         */
         void setWolfLockDomeModel( daAlink* linkActrPtr );
 
         /**
@@ -275,7 +365,7 @@ namespace libtp::tp::d_a_alink
 
         extern ClimbVars climbVars;
         extern LinkStatus* linkStatus;
-        extern WallMoveVars wallMoveVars;     // US Address = 0x8038E1E0
+        extern WallMoveVars wallMoveVars;
         extern uint8_t getSeType[0x100];
         extern daAlinkHIO_kandelaar_c0 lanternVars;
         extern daAlinkHIO_magneBoots_c0 ironBootsVars;

@@ -1,3 +1,9 @@
+/**	@file d_meter_HIO.h
+ *	@brief Contains definitions and functions that have to do with verious graphical and event functions.
+ *
+ *	@author Lunar Soap
+ *	@bug No known bugs.
+ */
 #ifndef TP_D_METER_HIO_H
 #define TP_D_METER_HIO_H
 

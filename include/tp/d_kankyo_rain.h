@@ -13,6 +13,12 @@ namespace libtp::tp::d_kankyo_rain
 {
     extern "C"
     {
+        /**
+         *  @brief Draws the scent path when Link uses his senses.
+         *
+         *  @param mtx The matrix values to be drawn.
+         *  @param ResTIMG Unknown.
+         */
         void dKyr_odour_draw( float mtx[3][4], uint8_t** ResTIMG );
     }
 }     // namespace libtp::tp::d_kankyo_rain

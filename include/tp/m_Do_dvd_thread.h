@@ -79,6 +79,13 @@ namespace libtp::tp::m_Do_dvd_thread
     };
     extern "C"
     {
+        /**
+         *	@brief Attempts to mount the specified archive.
+         *
+         *  @param mountArchive A pointer to the archive to be mounted
+         *
+         *  @return Bool returns True if successful, otherwise returns False.
+         */
         bool mountArchive__execute( mDoDvdThd_mountArchive_c* mountArchive );
     }
 }     // namespace libtp::tp::m_Do_dvd_thread

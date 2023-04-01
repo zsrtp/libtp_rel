@@ -6,6 +6,7 @@
  *
  *	@author Zephiles
  *	@author AECX
+ *  @author Lunar Soap
  *	@bug No known bugs.
  */
 #ifndef TP_D_COM_INF_GAME_H
@@ -295,29 +296,51 @@ namespace libtp::tp::d_com_inf_game
          *  @param stageName The current stage.
          *  @param roomId The current room.
          *  @param layerOverride The initial layer to be returned.
+         *
+         *  @return The layer that the stage will use.
          */
         int32_t getLayerNo_common_common( const char* stageName, int32_t roomId, int32_t layerOverride );
 
         /**
          *  @brief Returns whether the player has gotten the specified item.
          *
-         *  @param stageName The item to be checked
+         *  @param stageName The item to be checked.
+         *
+         *  @return Bool returns True if the item has been obtained, otherwise returns False.
          */
         bool dComIfGs_isItemFirstBit( uint8_t itemID );
 
         /**
-         *  @brief Returns whether the player should be transformed into a wolf based on story and the current stage
+         *  @brief Returns whether the player should be transformed into a wolf based on story and the current stage.
          *
+         *  @return Bool returns True if the player should be transformed, otherwise returns False.
          */
-        void dComIfGs_Wolf_Change_Check();
+        bool dComIfGs_Wolf_Change_Check();
 
         /**
-         *  @brief Returns the location in memory where the specified data file is loaded on the stage
+         *  @brief Fetches the specified data resource block that is loaded on the stage.
          *
          *  @param data The data file name to find.
+         *
+         *  @return Returns a pointer to the resource that is to be loaded.
          */
         void* dComIfG_getStageRes( const char* data );
 
+        /**
+         *  @brief Sets the appropriate values when in a loading zone to load the appropriate next area.
+         *
+         *  @param stage The name of the stage being loaded.
+         *  @param point The specific spawn point to use.
+         *  @param roomNo The room number to be loaded into.
+         *  @param layer The state to try to load into.
+         *  @param lastSpeed The speed Link had when going into the stage transition.
+         *  @param lastMode The previous mode Link was in before the stage transition.
+         *  @param setPoint The specified point to force use.
+         *  @param wipe The specific wipe value to be used when loading the new stage.
+         *  @param lastAngle The angle Link had when going into the stage transition.
+         *  @param param_9 Unknown.
+         *  @param wipeSpeedT The wipe speed to be used when loading the new stage.
+         */
         void dComIfGp_setNextStage( const char* stage,
                                     int16_t point,
                                     int8_t roomNo,
@@ -328,10 +351,20 @@ namespace libtp::tp::d_com_inf_game
                                     int8_t wipe,
                                     int16_t lastAngle,
                                     int32_t param_9,
-                                    int32_t wipSpeedT );
+                                    int32_t wipeSpeedT );
 
+        /**
+         *  @brief Fetches Link's current maximum health value..
+         *
+         *  @return Link's Maximum health, measured in 1/4 heart increments.
+         */
         uint16_t dComIfGs_getMaxLifeGauge();
 
+        /**
+         *  @brief Sets the appopriate region flags for whenever a Boss is defeated.
+         *
+         *  @param flag  The index of the current stage in the list of region flag nodes.
+         */
         void dComIfGs_onStageBossEnemy( int32_t i_stageNo );
     }
 }     // namespace libtp::tp::d_com_inf_game

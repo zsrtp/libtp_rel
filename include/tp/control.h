@@ -31,6 +31,16 @@ namespace libtp::tp::control
 
     extern "C"
     {
+        /**
+         *  @brief Sets the message information for the specified TControl
+         *
+         *  @param control  The current TControl to be populated.
+         *  @param TProcessor The current TProcessor to be utilized.
+         *  @param unk3 Unknown.
+         *  @param msgID The ID of the message to be loaded.
+         *
+         *  @return Bool returns True if the process successfully completed, returns False otherwise.
+         */
         bool setMessageCode_inSequence( TControl* control, const void* TProcessor, uint16_t unk3, uint16_t msgId );
     }
 }     // namespace libtp::tp::control

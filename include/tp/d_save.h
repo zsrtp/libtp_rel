@@ -444,6 +444,8 @@ namespace libtp::tp::d_save
          *
          *  @param playerStatusPtr The pointer to the PlayerStatus struct.
          *  @param twilightNode The twilight instance to be checked.
+         *
+         *  @return Bool returns True if the twilight has been cleared, otherwise returns False.
          */
         bool isDarkClearLV( void* playerStatusPtr, int32_t twilightNode );
 
@@ -452,6 +454,8 @@ namespace libtp::tp::d_save
          *
          *  @param playerStatusPtr The pointer to the PlayerStatus struct.
          *  @param twilightEvent The twilight cutscene event to be checked.
+         *
+         *  @return Bool returns True if Link has been transformed by the specified twilight, otherwise returns False.
          */
         bool isTransformLV( void* playerStatusPtr, int32_t twilightEvent );
 
@@ -461,7 +465,7 @@ namespace libtp::tp::d_save
          *  @param playerCollectPtr The pointer to the PlayerCollect struct.
          *  @param crystalFlag The Fused Shadow to be given.
          */
-        bool onCollectCrystal( dSv_player_collect_c* playerCollectPtr, uint8_t crystalFlag );
+        void onCollectCrystal( dSv_player_collect_c* playerCollectPtr, uint8_t crystalFlag );
 
         /**
          *  @brief Gives the player a specified Mirror of Twilight Piece
@@ -469,7 +473,7 @@ namespace libtp::tp::d_save
          *  @param playerCollectPtr The pointer to the PlayerCollect struct.
          *  @param mirrorFlag The Mirror Shard to be given.
          */
-        bool onCollectMirror( dSv_player_collect_c* playerCollectPtr, uint8_t mirrorFlag );
+        void onCollectMirror( dSv_player_collect_c* playerCollectPtr, uint8_t mirrorFlag );
 
         /**
          *  @brief Puts the specified item on the item wheel in the specified slot
@@ -478,27 +482,68 @@ namespace libtp::tp::d_save
          *  @param itemSlot The slot on the item wheel
          *  @param item The item to be placed
          */
-        bool setItem( dSv_player_item_c* playerItemPtr, int32_t itemSlot, uint8_t item );
+        void setItem( dSv_player_item_c* playerItemPtr, int32_t itemSlot, uint8_t item );
 
         /**
          *  @brief Checks if the specific dungeon flag has been set
          *
          *  @param memBitPtr The pointer to the memory bit structure.
          *  @param memBit The bit to be checked.
+         *
+         *  @return Bool returns True if the flag has been set, otherwise returns False.
          */
         bool isDungeonItem( dSv_memBit_c* memBitPtr, const int32_t memBit );
 
+        /**
+         *  @brief Unsets the specified flag in the specified area node.
+         *
+         *  @param save_file A pointer to the current save info struct
+         *  @param flag The flag to be unset
+         *  @param roomNo The room the player is currently in.
+         */
         void offSwitch_dSv_info( dSv_info_c* save_file, int32_t flag, int32_t roomNo );
 
+        /**
+         *  @brief Unsets the specified flag in the specified memory section of an area node.
+         *
+         *  @param memoryBit A pointer to the current membit struct
+         *  @param flag The flag to be unset
+         */
         void offSwitch_dSv_memBit( dSv_memBit_c* memoryBit, int32_t flag );
 
+        /**
+         *  @brief Sets the specified flag in the specified memory section of an area node.
+         *
+         *  @param memoryBit A pointer to the current membit struct
+         *  @param flag The flag to be set
+         */
         void onSwitch_dSv_memBit( dSv_memBit_c* memoryBit, int32_t flag );
 
+        /**
+         *  @brief Checks to see if the specified flag in the specified memory section of an area node is set.
+         *
+         *  @param memoryBit A pointer to the current membit struct
+         *  @param flag The flag to be checked
+         *
+         *  @return Bool returns True if the flag is set, otherwise returns False.
+         */
         bool isSwitch_dSv_memBit( dSv_memBit_c* memoryBit, int32_t flag );
 
+        /**
+         *  @brief Sets the appearance order of the items in the item wheel.
+         *
+         *  @param playerItemPtr A pointer to the current player_item struct
+         */
         void setLineUpItem( dSv_player_item_c* playerItemPtr );
 
-        uint8_t checkEmptyBottle( dSv_player_item_c* playerItem );
+        /**
+         *  @brief Checks the current number of empty bottles the player has.
+         *
+         *  @param playerItemPtr A pointer to the current player_item struct.
+         *
+         *  @return Returns the current number of empty bottles the player has.
+         */
+        uint8_t checkEmptyBottle( dSv_player_item_c* playerItemPtr );
 
         /**
          *  @brief Sets the flag for the specified vessel of light to have been collected.

@@ -14,10 +14,9 @@ namespace libtp::tp::d_menu_window
     extern "C"
     {
         /**
-         *	@brief Sets the maximum number of rupees
+         *	@brief Runs when the game needs to open the save menu from the item collection screen.
          *
          *  @param param_1 unknown
-         *	Runs when the game needs to open the save menu from the item collection screen.
          */
         void collect_save_open_init( uint8_t param_1 );
     }

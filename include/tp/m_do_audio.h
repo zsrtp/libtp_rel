@@ -15,7 +15,15 @@ namespace libtp::tp::m_Do_Audio
 {
     extern "C"
     {
-        void mDoAud_seStartLevel( uint32_t sfxID, const Vec* unk4, uint32_t un5, int8_t un6 );
+        /**
+         *	@brief Plays the specified audio sound effect.
+         *
+         *  @param sfxID The ID of the sound effect to be played.
+         *  @param unk4 Unknown.
+         *  @param unk5 Unknown.
+         *  @param unk6 Unknown.
+         */
+        void mDoAud_seStartLevel( uint32_t sfxID, const Vec* unk4, uint32_t unk5, int8_t unk6 );
     }
 }     // namespace libtp::tp::m_Do_Audio
 #endif

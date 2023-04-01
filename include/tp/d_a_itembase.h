@@ -37,7 +37,18 @@ namespace libtp::tp::d_a_itembase
 
     extern "C"
     {
+        /**
+         *  @brief Allocates the heap for the model of a freestanding item.
+         *
+         *  @param actor A pointer to the Item actor being referenced.
+         */
         void CheckFieldItemCreateHeap( libtp::tp::f_op_actor::fopAc_ac_c* actor );
+
+        /**
+         *  @brief Allocates the heap for the model of an item that Link holds in his hand
+         *
+         *  @param actor A pointer to the Item actor being referenced.
+         */
         void CheckItemCreateHeap( libtp::tp::f_op_actor::fopAc_ac_c* actor );
     }
 }     // namespace libtp::tp::d_a_itembase

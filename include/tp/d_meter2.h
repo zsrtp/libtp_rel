@@ -111,7 +111,14 @@ namespace libtp::tp::d_meter2
 
     extern "C"
     {
-        uint32_t dMeter2_Create( dMeter2_c* param_1 );
+        /**
+         *	@brief Initializes the values for the dMeter2 class.
+         *
+         *  @param dMeterPtr A pointer to the current dMeter2 structure.
+         *
+         *  @return Returns the status value of the class after the function runs.
+         */
+        uint32_t dMeter2_Create( dMeter2_c* dMeterPtr );
     }
 }     // namespace libtp::tp::d_meter2
 #endif

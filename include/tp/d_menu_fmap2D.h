@@ -11,6 +11,13 @@ namespace libtp::tp::d_menu_fmap2D
 {
     extern "C"
     {
+        /**
+         *	@brief Checks to see if the player is trying to map warp.
+         *
+         *	@param mapPtr A pointer to the map resource.
+         *
+         *  @return Bool returns True if the player is trying to warp, otherwise returns False.
+         */
         bool checkPlayerWarpAccept( void* mapPtr );
     }
 }     // namespace libtp::tp::d_menu_fmap2D

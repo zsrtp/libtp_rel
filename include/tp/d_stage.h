@@ -128,12 +128,40 @@ namespace libtp::tp::d_stage
          */
         int32_t tgscInfoInit( void* stageDt, void* i_data, int32_t entryNum, void* param_3 );
 
+        /**
+         *  @brief Loads the room file into memory to be used.
+         *
+         *  @param data A pointer to the data to be loaded.
+         *  @param stageDt A pointer to the stage data file.
+         *  @param roomNo The current room number.
+         */
         void roomLoader( void* data, void* stageDt, int32_t roomNo );
 
+        /**
+         *  @brief Loads the stage file into memory to be used.
+         *
+         *  @param data A pointer to the data to be loaded.
+         *  @param stageDt A pointer to the stage data file.
+         */
         void stageLoader( void* data, void* stageDt );
 
+        /**
+         *  @brief Loads Link into the current stage.
+         *
+         *  @param stageDt A pointer to the stage data file
+         *  @param i_data A pointer to the stage DZR header.
+         *  @param num Unknown.
+         *  @param raw_data A pointer to the raw data of the area.
+         *
+         *  @return BOOL returns True if successful and False otherwise.
+         */
         int32_t dStage_playerInit( void* stageDt, stage_dzr_header_entry* i_data, int32_t num, void* raw_data );
 
+        /**
+         *  @brief Checks to see if time is currently passing on the current stage.
+         *
+         *  @return Bool returns True if time is passing, otherwise returns False.
+         */
         bool GetTimePass();
 
         /**

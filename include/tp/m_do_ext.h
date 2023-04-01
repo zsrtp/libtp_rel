@@ -19,6 +19,11 @@ namespace libtp::tp::m_Do_ext
         extern void* archiveHeap;     // Archive heap pointer
         extern void* j2dHeap;
 
+        /**
+         *	@brief Gets a pointer to the currently used message font.
+         *
+         *  @return Returns a pointer to the currently used font resources.
+         */
         void* mDoExt_getMesgFont();
 
 #ifndef PLATFORM_WII

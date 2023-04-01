@@ -35,6 +35,9 @@ namespace libtp::tp::d_msg_object
     extern "C"
     {
         /**
+         * @brief Sets the current message index to the current event system.
+         *
+         * @param msgObjPtr A pointer to the current message node object.
          * @param param_1 - Unknown
          * @param itemIndex - The itemId of the item received + 0x65
          * @param param_3 - Unknown. I think it checks for a valid message but more research is needed

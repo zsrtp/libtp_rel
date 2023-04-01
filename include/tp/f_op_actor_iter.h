@@ -14,6 +14,10 @@ namespace libtp::tp::f_op_actor_iter
     typedef void* ( *fopAcIt_JudgeFunc )( void*, void* );
     extern "C"
     {
+        /**
+         *	@brief Checks to see if the specified actor exists on the stage.
+         *	@return Returns a pointer to the actor if it exists, otherwise returns a nullptr.
+         */
         void* fopAcIt_Judge( fopAcIt_JudgeFunc, void* );
     }
 }     // namespace libtp::tp::f_op_actor_iter

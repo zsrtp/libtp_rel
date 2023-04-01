@@ -107,6 +107,12 @@ namespace libtp::tp::d_meter2_info
         extern void* wZButtonPtr;
         extern G_Meter2_Info g_meter2_info;
 
+        /**
+         *	@brief Updates Link's equipped items once a minigame is over.
+         *
+         *  @param g_meter2_info_ptr A pointer to the current g_meter2_info structure
+         *  @param minigameFlag The status of the current minigame
+         */
         void resetMiniGameItem( G_Meter2_Info* g_meter2_info_ptr, bool minigameFlag );
     }
 }     // namespace libtp::tp::d_meter2_info

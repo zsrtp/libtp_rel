@@ -74,7 +74,9 @@ namespace libtp::tp::resource
         /**
          *  @brief Parses through the current character
          *
-         *  @returns char to be processed
+         *  @param text The pointer to the character to be parsed.
+         *
+         *  @returns Character to be processed
          */
         char parseCharacter_1Byte( const char** text );
     }

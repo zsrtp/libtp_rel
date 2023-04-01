@@ -70,9 +70,28 @@ namespace libtp::tp::d_event
 
     extern "C"
     {
-        void resetEvent( void* eventPtr );
+        /**
+         *  @brief Ends the current conversation with a NPC.
+         *
+         *  @param eventPtr A pointer to the current event system.
+         */
         void talkEnd( void* eventPtr );
+
+        /**
+         *  @brief Sets the item to be obtained in the upcoming event.
+         *
+         *  @param eventPtr A pointer to the current event system.
+         *  @param itemID The ID of the item to be given.
+         */
         void setGtItm( void* eventPtr, uint8_t itemID );
+
+        /**
+         *  @brief Skips the current cutscene if it can be skipped
+         *
+         *  @param eventPtr A pointer to the current event system.
+         *
+         *  @return Bool returns True if the action was successful, otherwise returns False.
+         */
         bool skipper( void* eventPtr );
     }
 }     // namespace libtp::tp::d_event
