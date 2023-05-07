@@ -46,6 +46,12 @@ namespace libtp::tp::d_item
 
         extern ItemFunc item_func_ptr[0x100];
         extern ItemGetCheckFunc item_getcheck_func_ptr[0x100];
+
+         /**
+         *  @brief  Sets the appropriate flag for  memo so it dosen't show in the inventory if the check is already recolted.
+         */
+        void item_func_ASHS_SCRIBBLING();
+
     }
 }     // namespace libtp::tp::d_item
 #endif
