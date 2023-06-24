@@ -31,8 +31,8 @@ namespace libtp::tools
 {
     uint16_t fletcher16( uint8_t* data, int32_t length )
     {
-        uint16_t sum1 = 0;
-        uint16_t sum2 = 0;
+        uint32_t sum1 = 0;
+        uint32_t sum2 = 0;
 
         for ( int32_t index = 0; index < length; ++index )
         {
@@ -40,7 +40,7 @@ namespace libtp::tools
             sum2 = ( sum2 + sum1 ) % 0xFF;
         }
 
-        return ( sum2 << 8 ) | sum1;
+        return ( ( sum2 & 0xFFFF ) << 8 ) | ( sum1 & 0xFFFF );
     }
 
     // This entire function will need to be re-looked at now that a lot of defintions are different. UPDATE: should be better.
@@ -48,21 +48,28 @@ namespace libtp::tools
     void TriggerSaveLoad( const char* stage, uint8_t room, uint8_t spawn, uint8_t state, uint8_t event )
     {
         using namespace libtp::tp::d_com_inf_game;
+        using namespace libtp::tp::d_stage;
 
-        dComIfG_inf_c* gameInfo = &dComIfG_gameInfo;
-        strcpy( gameInfo->play.mNextStage.stageValues.mStage, stage );
-        gameInfo->play.mNextStage.stageValues.mRoomNo = room;
-        gameInfo->play.mNextStage.stageValues.mPoint = spawn;
-        gameInfo->play.mNextStage.stageValues.mLayer = state;
+        dComIfG_inf_c* gameInfoPtr = &dComIfG_gameInfo;
+        dStage_nextStage* nextStagePtr = &gameInfoPtr->play.mNextStage;
+        dStage_startStage* stageValuesPtr = &nextStagePtr->stageValues;
+        libtp::tp::d_save::dSv_restart_c* saveRestartPtr = &gameInfoPtr->save.restart;
+        libtp::tp::d_event::dEvt_order* eventOrderPtr = &gameInfoPtr->play.mEvent.mOrder[0];
 
-        gameInfo->play.mEvent.mOrder[0].mEventInfoIdx = event;
-        gameInfo->save.restart.mLastMode = 0;
-        gameInfo->play.mNextStage.stageValues.mPoint = 0;
-        gameInfo->save.restart.mRoomParam = 0;
-        gameInfo->play.mEvent.mOrder[0].mEventId = 0xFFFF;     // immediateControl
-        gameInfo->play.mNextStage.wipe_speed = 0x13;
+        stageValuesPtr->mRoomNo = room;
+        stageValuesPtr->mPoint = spawn;
+        stageValuesPtr->mLayer = state;
 
-        gameInfo->play.mNextStage.wipe = true;
+        eventOrderPtr->mEventInfoIdx = event;
+        saveRestartPtr->mLastMode = 0;
+        stageValuesPtr->mPoint = 0;
+        saveRestartPtr->mRoomParam = 0;
+        eventOrderPtr->mEventId = -1;     // immediateControl
+        nextStagePtr->wipe_speed = 0x13;
+
+        nextStagePtr->wipe = true;
+
+        strcpy( stageValuesPtr->mStage, stage );
     }
 
     int32_t SpawnActor( uint8_t roomID, tp::dzx::ACTR& actor )
@@ -302,7 +309,7 @@ namespace libtp::tools
         // Buffers that DVDRead uses must be aligned to 0x20 bytes
         data = new ( -0x20 ) uint8_t[adjustedLength];
 
-        int32_t r = DVDRead( &fileInfo, data, adjustedLength, adjustedOffset );
+        const int32_t r = DVDRead( &fileInfo, data, adjustedLength, adjustedOffset );
         result = ( r > 0 ) ? DVD_STATE_END : r;
         if ( result == DVD_STATE_END )
         {
@@ -341,7 +348,7 @@ namespace libtp::tools
         libtp::memory::clear_DC_IC_Cache( fileData, length );
 
         // Read the REL from the disc
-        int32_t r = DVDRead( &fileInfo, fileData, length, 0 );
+        const int32_t r = DVDRead( &fileInfo, fileData, length, 0 );
         int32_t result = ( r > 0 ) ? DVD_STATE_END : r;
 
         // Close the file, as it's no longer needed
@@ -468,12 +475,12 @@ namespace libtp::tools
         }
 
         // Loop through the REL entries until the desired one is found
-        RelEntry* entry = reinterpret_cast<RelEntry*>( &fileData[0x44] );
+        const RelEntry* entry = reinterpret_cast<RelEntry*>( &fileData[0x44] );
         bool foundDesiredRel = false;
 
         for ( uint32_t i = 0; i < MAX_REL_ENTRIES; i++ )
         {
-            uint32_t currentRelId = entry->rel_id;
+            const uint32_t currentRelId = entry->rel_id;
 
             // If any of the fields are 0, then there are no more entries
             if ( ( currentRelId == 0 ) || ( entry->rel_size == 0 ) || ( entry->offset == 0 ) )
@@ -505,13 +512,15 @@ namespace libtp::tools
         }
 
         // Get the variables from the entry so that fileData can be freed
-        uint32_t fileSize = entry->rel_size;
-        uint32_t fileOffset = entry->offset;
+        const uint32_t fileSize = entry->rel_size;
+        const uint32_t fileOffset = entry->offset;
         delete[] fileData;
 
         // Since we can only read in and at increments of CARD_READ_SIZE do this to calculate the region we require
-        int32_t adjustedOffset = ( fileOffset / CARD_READ_SIZE ) * CARD_READ_SIZE;
-        int32_t adjustedLength = ( 1 + ( ( fileOffset - adjustedOffset + fileSize - 1 ) / CARD_READ_SIZE ) ) * CARD_READ_SIZE;
+        const int32_t adjustedOffset = ( fileOffset / CARD_READ_SIZE ) * CARD_READ_SIZE;
+
+        const int32_t adjustedLength =
+            ( 1 + ( ( fileOffset - adjustedOffset + fileSize - 1 ) / CARD_READ_SIZE ) ) * CARD_READ_SIZE;
 
         // Buffer might not be adjusted to the new length so create a temporary data buffer
         // Allocate the memory to the back of the heap to avoid fragmentation
@@ -642,10 +651,12 @@ namespace libtp::tools
     int32_t getStageIndex( const char* stage )
     {
         // Find the index of this stage
-        for ( uint32_t stageIDX = 0; stageIDX < sizeof( data::stage::allStages ) / sizeof( data::stage::allStages[0] );
-              stageIDX++ )
+        const auto stagesPtr = &libtp::data::stage::allStages[0];
+        constexpr uint32_t totalStages = sizeof( data::stage::allStages ) / sizeof( data::stage::allStages[0] );
+
+        for ( uint32_t stageIDX = 0; stageIDX < totalStages; stageIDX++ )
         {
-            if ( strcmp( stage, libtp::data::stage::allStages[stageIDX] ) == 0 )
+            if ( strcmp( stage, stagesPtr[stageIDX] ) == 0 )
             {
                 return static_cast<int32_t>( stageIDX );
             }

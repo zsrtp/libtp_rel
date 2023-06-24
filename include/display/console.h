@@ -78,6 +78,8 @@ namespace libtp::display
         friend Console& operator<<( Console& console, int64_t n );
         // Output signed float
         friend Console& operator<<( Console& console, float n );
+        // Output signed double
+        friend Console& operator<<( Console& console, double n );
         // Prints the address of a given pointer
         friend Console& operator<<( Console& console, void* ptr );
     };
