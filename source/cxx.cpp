@@ -71,62 +71,13 @@ void* allocateMemoryFromMainHeap( std::size_t size, int32_t alignment )
     return allocateMemory( size, heapPtr, alignment );
 }
 
+void* allocateMemoryFromMainHeap( std::size_t size )
+{
+    return allocateMemoryFromMainHeap( size, 0x20 );
+}
+
 void* allocateMemoryFromHeapId( std::size_t size, int32_t alignment, int32_t id )
 {
     void* heapPtr = getHeapPtr( id );
     return allocateMemory( size, heapPtr, alignment );
-}
-
-void* operator new( std::size_t size )
-{
-    return allocateMemoryFromMainHeap( size, 0x20 );
-}
-
-void* operator new[]( std::size_t size )
-{
-    return allocateMemoryFromMainHeap( size, 0x20 );
-}
-
-void* operator new( std::size_t size, int32_t alignment )
-{
-    return allocateMemoryFromMainHeap( size, alignment );
-}
-
-void* operator new[]( std::size_t size, int32_t alignment )
-{
-    return allocateMemoryFromMainHeap( size, alignment );
-}
-
-void* operator new( std::size_t size, int32_t alignment, int32_t id )
-{
-    return allocateMemoryFromHeapId( size, alignment, id );
-}
-
-void* operator new[]( std::size_t size, int32_t alignment, int32_t id )
-{
-    return allocateMemoryFromHeapId( size, alignment, id );
-}
-
-void operator delete( void* ptr )
-{
-    return libtp::tp::jkr_heap::__dl_JKRHeap( ptr );
-}
-
-void operator delete[]( void* ptr )
-{
-    return libtp::tp::jkr_heap::__dl_JKRHeap( ptr );
-}
-
-void operator delete( void* ptr, std::size_t size )
-{
-    (void) size;
-
-    return libtp::tp::jkr_heap::__dl_JKRHeap( ptr );
-}
-
-void operator delete[]( void* ptr, std::size_t size )
-{
-    (void) size;
-
-    return libtp::tp::jkr_heap::__dl_JKRHeap( ptr );
 }
