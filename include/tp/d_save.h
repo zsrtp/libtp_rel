@@ -495,6 +495,14 @@ namespace libtp::tp::d_save
         bool isDungeonItem( dSv_memBit_c* memBitPtr, const int32_t memBit );
 
         /**
+         *  @brief Sets a specific dungeon flag.
+         *
+         *  @param memBitPtr The pointer to the memory bit structure.
+         *  @param memBit The bit to be set.
+         */
+        void onDungeonItem( dSv_memBit_c* memBitPtr, const int32_t memBit );
+
+        /**
          *  @brief Unsets the specified flag in the specified area node.
          *
          *  @param save_file A pointer to the current save info struct
