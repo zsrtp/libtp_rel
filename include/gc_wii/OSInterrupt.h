@@ -9,7 +9,7 @@ namespace libtp::gc_wii::os_interrupt
     {
         bool OSDisableInterrupts();
         bool OSEnableInterrupts();
-        bool OSRestoreInterrupts( bool enable );
+        bool OSRestoreInterrupts(bool enable);
     }
-}     // namespace libtp::gc_wii::os_interrupt
+} // namespace libtp::gc_wii::os_interrupt
 #endif

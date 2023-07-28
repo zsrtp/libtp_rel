@@ -18,21 +18,21 @@ namespace libtp::tp::d_menu_ring
          *
          *	@param dMenuRing A pointer to the item wheel resources.
          */
-        void dMenuRing__create( void* dMenuRing );
+        void dMenuRing__create(void* dMenuRing);
 
         /**
          *	@brief Removes the resources needed for the Item Wheel in preparation for destruction.
          *
          *	@param dMenuRing A pointer to the item wheel resources.
          */
-        void dMenuRing__delete( void* dMenuRing );
+        void dMenuRing__delete(void* dMenuRing);
 
         /**
          *	@brief Draws the Item Wheel on the screen.
          *
          *	@param dMenuRing A pointer to the item wheel resources.
          */
-        void dMenuRing__draw( void* dMenuRing );
+        void dMenuRing__draw(void* dMenuRing);
     }
-}     // namespace libtp::tp::d_menu_ring
+} // namespace libtp::tp::d_menu_ring
 #endif

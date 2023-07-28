@@ -17,6 +17,6 @@ namespace libtp::tp
         void* mpData;
         struct node_class* mpNextNode;
     } node_class;
-}     // namespace libtp::tp
+} // namespace libtp::tp
 
 #endif

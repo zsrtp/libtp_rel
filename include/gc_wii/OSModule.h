@@ -37,24 +37,24 @@ namespace libtp::gc_wii::os_module
         uint32_t moduleAlignment;
         uint32_t bssAlignment;
         uint32_t fixSize;
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
     struct OSModuleList
     {
         OSModuleInfo* first;
         OSModuleInfo* last;
         const char* unk;
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    static_assert( sizeof( OSModuleInfo ) == 0x4C );
-    static_assert( sizeof( OSModuleList ) == 0xC );
+    static_assert(sizeof(OSModuleInfo) == 0x4C);
+    static_assert(sizeof(OSModuleList) == 0xC);
 
     extern "C"
     {
-        bool OSLink( OSModuleInfo* newModule, void* bss );
-        bool OSUnlink( OSModuleInfo* module );
+        bool OSLink(OSModuleInfo* newModule, void* bss);
+        bool OSUnlink(OSModuleInfo* module);
 
         extern OSModuleList osModuleList;
     }
-}     // namespace libtp::gc_wii::os_module
+} // namespace libtp::gc_wii::os_module
 #endif

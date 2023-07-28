@@ -18,7 +18,7 @@ namespace libtp::tp::d_menu_window
          *
          *  @param param_1 unknown
          */
-        void collect_save_open_init( uint8_t param_1 );
+        void collect_save_open_init(uint8_t param_1);
     }
-}     // namespace libtp::tp::d_menu_window
+} // namespace libtp::tp::d_menu_window
 #endif

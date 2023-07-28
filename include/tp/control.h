@@ -19,7 +19,7 @@ namespace libtp::tp::control
         void* unk_0;
         void* unk_4;
         void* unk_8;
-        uint16_t unk_E;     // unk3 in setMessageCode_inSequence
+        uint16_t unk_E; // unk3 in setMessageCode_inSequence
         uint16_t msgId;
         void* unk_10;
         gc::bmgres::MessageEntry* msgEntry;
@@ -27,7 +27,7 @@ namespace libtp::tp::control
         uint8_t unk_1C[0x4];
         const char* wMsgRender;
         uint32_t unk_24;
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
     extern "C"
     {
@@ -41,7 +41,7 @@ namespace libtp::tp::control
          *
          *  @return Bool returns True if the process successfully completed, returns False otherwise.
          */
-        bool setMessageCode_inSequence( TControl* control, const void* TProcessor, uint16_t unk3, uint16_t msgId );
+        bool setMessageCode_inSequence(TControl* control, const void* TProcessor, uint16_t unk3, uint16_t msgId);
     }
-}     // namespace libtp::tp::control
+} // namespace libtp::tp::control
 #endif

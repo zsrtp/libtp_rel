@@ -19,14 +19,14 @@ namespace libtp::tp::d_meter2_info
         /* 0x00 */ void* vtable;
         /* 0x04 */ uint8_t unk4[4];
         /* 0x08 */ uint64_t unk8;
-        /* 0x10 */ tp::d_msg_object::StringDataTable* stringDataTable;     // mMsgResource
+        /* 0x10 */ tp::d_msg_object::StringDataTable* stringDataTable; // mMsgResource
         /* 0x14 */ void* mStageMsgResource;
         /* 0x18 */ void* mMsgUnitResource;
         /* 0x1C */ libtp::tp::d_meter2::dMeter2_c* mMeterClass;
-        /* 0x20 */ void* mMeterMap;            // dMeterMap_c*
-        /* 0x24 */ void* mMenuWindowClass;     // dMw_c*
+        /* 0x20 */ void* mMeterMap;        // dMeterMap_c*
+        /* 0x24 */ void* mMenuWindowClass; // dMw_c*
         /* 0x28 */ libtp::tp::d_pane_class::CPaneMgr* mMeterItemPanePtr[4];
-        /* 0x38 */ uint8_t unk38[0x1C];     // WarpInfo_c mWarpInfo;
+        /* 0x38 */ uint8_t unk38[0x1C];    // WarpInfo_c mWarpInfo;
         /* 0x54 */ float unk84;
         /* 0x58 */ float unk88;
         /* 0x5C */ float unk92;
@@ -83,7 +83,7 @@ namespace libtp::tp::d_meter2_info
         /* 0xDA */ uint8_t mSaveBowItemMG;
         /* 0xDB */ uint8_t mSaveBombItemMG;
         /* 0xDC */ uint8_t mRentalBombBag;
-        /* 0xDD */ uint8_t mMiniGameItemSetFlag;     // 1: rented in game, 3: rented not in game
+        /* 0xDD */ uint8_t mMiniGameItemSetFlag; // 1: rented in game, 3: rented not in game
         /* 0xDE */ uint8_t mMiniGameCount;
         /* 0xDF */ uint8_t mCollectCursorPosX;
         /* 0xE0 */ uint8_t mCollectCursorPosY;
@@ -97,7 +97,7 @@ namespace libtp::tp::d_meter2_info
         /* 0xF1 */ bool mFloatingMessageWakuVisible;
         /* 0xF2 */ uint8_t mMapDrugFlag;
         /* 0xF3 */ uint8_t unk243[5];
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
     extern "C"
     {
@@ -113,7 +113,7 @@ namespace libtp::tp::d_meter2_info
          *  @param g_meter2_info_ptr A pointer to the current g_meter2_info structure
          *  @param minigameFlag The status of the current minigame
          */
-        void resetMiniGameItem( G_Meter2_Info* g_meter2_info_ptr, bool minigameFlag );
+        void resetMiniGameItem(G_Meter2_Info* g_meter2_info_ptr, bool minigameFlag);
     }
-}     // namespace libtp::tp::d_meter2_info
+} // namespace libtp::tp::d_meter2_info
 #endif

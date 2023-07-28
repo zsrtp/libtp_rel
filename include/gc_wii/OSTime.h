@@ -17,5 +17,5 @@ namespace libtp::gc_wii::os_time
     {
         uint32_t OSGetTick();
     }
-}     // namespace libtp::gc_wii::os_time
+} // namespace libtp::gc_wii::os_time
 #endif

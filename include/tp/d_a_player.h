@@ -14,5 +14,5 @@ namespace libtp::tp::d_a_player
     {
         extern void* m_midnaActor;
     }
-}     // namespace libtp::tp::d_a_player
+} // namespace libtp::tp::d_a_player
 #endif

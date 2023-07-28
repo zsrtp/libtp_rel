@@ -16,7 +16,7 @@ namespace libtp::tp::m_Do_ext
         extern void* gameHeap;
         extern void* zeldaHeap;
         extern void* commandHeap;
-        extern void* archiveHeap;     // Archive heap pointer
+        extern void* archiveHeap; // Archive heap pointer
         extern void* j2dHeap;
 
         /**
@@ -28,7 +28,7 @@ namespace libtp::tp::m_Do_ext
 
 #ifndef PLATFORM_WII
         extern void* HostIOHeap;
-#endif     // PLATFORM_WII
+#endif // PLATFORM_WII
     }
-}     // namespace libtp::tp::m_Do_ext
+} // namespace libtp::tp::m_Do_ext
 #endif

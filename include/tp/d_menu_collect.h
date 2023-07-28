@@ -24,14 +24,14 @@ namespace libtp::tp::d_menu_collect
          *
          *	@param dMenuCollect A pointer to the pause menu screen resources.
          */
-        void dMenuCollect__draw( void* dMenuCollect );
+        void dMenuCollect__draw(void* dMenuCollect);
 
         /**
          *	@brief Sets the specific pause screen that should be displayed.
          *
          *	@param dMenuCollect A pointer to the pause menu screen resources.
          */
-        void dMenuCollect_screenSet( void* dMenuCollect );
+        void dMenuCollect_screenSet(void* dMenuCollect);
     }
-}     // namespace libtp::tp::d_menu_collect
+} // namespace libtp::tp::d_menu_collect
 #endif

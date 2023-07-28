@@ -20,7 +20,7 @@ namespace libtp::tp::dynamic_link
         DynamicModuleControlBase* mPrev;
         DynamicModuleControlBase* mNext;
         void* vtable;
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
     struct DynamicModuleControl: DynamicModuleControlBase
     {
@@ -33,18 +33,18 @@ namespace libtp::tp::dynamic_link
         uint16_t mChecksum;
         int32_t mSize;
         void* mAsyncLoadCallback;
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    static_assert( sizeof( DynamicModuleControlBase ) == 0x10 );
-    static_assert( sizeof( DynamicModuleControl ) == 0x2C );
+    static_assert(sizeof(DynamicModuleControlBase) == 0x10);
+    static_assert(sizeof(DynamicModuleControl) == 0x2C);
 
     extern "C"
     {
-        DynamicModuleControl* DynamicModuleControl_ct( DynamicModuleControl* dmc, const char* name );
-        bool do_link( DynamicModuleControl* dmc );
-        bool do_unlink( DynamicModuleControl* dmc );
+        DynamicModuleControl* DynamicModuleControl_ct(DynamicModuleControl* dmc, const char* name);
+        bool do_link(DynamicModuleControl* dmc);
+        bool do_unlink(DynamicModuleControl* dmc);
 
         extern void* m_heap;
     }
-}     // namespace libtp::tp::dynamic_link
+} // namespace libtp::tp::dynamic_link
 #endif

@@ -23,7 +23,7 @@ namespace libtp::tp::m_Do_Audio
          *  @param unk5 Unknown.
          *  @param unk6 Unknown.
          */
-        void mDoAud_seStartLevel( uint32_t sfxID, const Vec* unk4, uint32_t unk5, int8_t unk6 );
+        void mDoAud_seStartLevel(uint32_t sfxID, const Vec* unk4, uint32_t unk5, int8_t unk6);
     }
-}     // namespace libtp::tp::m_Do_Audio
+} // namespace libtp::tp::m_Do_Audio
 #endif

@@ -9,16 +9,16 @@
 #define TP_RESOURCE_H
 
 // Message commands
-#define MSG_BEGIN_PTR( name ) const char* name =
-#define MSG_BEGIN_ARRAY( name ) char name[] =
+#define MSG_BEGIN_PTR(name) const char* name =
+#define MSG_BEGIN_ARRAY(name) char name[] =
 
-#define MSG_END()     // Does nothing; is a placeholder for now
-#define MSG_SPEED( speed ) "\x1A\x05\x00\x00" speed
-#define MSG_COLOR( id ) "\x1A\x06\xFF\x00\x00" id
-#define MSG_ICON( icon ) "\x1A\x05\x00\x00" icon
+#define MSG_END() // Does nothing; is a placeholder for now
+#define MSG_SPEED(speed) "\x1A\x05\x00\x00" speed
+#define MSG_COLOR(id) "\x1A\x06\xFF\x00\x00" id
+#define MSG_ICON(icon) "\x1A\x05\x00\x00" icon
 #define MSG_PLYR_NAME "\x1A\x05\x00\x00\x00"
-#define MSG_OPTION_LIST( option ) "\x1A\x06\x00\x00\x09" option
-#define MSG_FONT_SIZE( size ) "\x1A\x07\xFF\x00\x01\x00" size
+#define MSG_OPTION_LIST(option) "\x1A\x06\x00\x00\x09" option
+#define MSG_FONT_SIZE(size) "\x1A\x07\xFF\x00\x01\x00" size
 
 // Special Characters
 #define MSG_SP_CHAR_KYO "\x1A\x05\x04\x00\x0A"
@@ -78,8 +78,8 @@ namespace libtp::tp::resource
          *
          *  @returns Character to be processed
          */
-        char parseCharacter_1Byte( const char** text );
+        char parseCharacter_1Byte(const char** text);
     }
 
-}     // namespace libtp::tp::resource
+} // namespace libtp::tp::resource
 #endif

@@ -21,7 +21,7 @@ namespace libtp::tp::d_camera
          *
          *  @return Bool returns True if Link is riding something, otherwise returns False.
          */
-        bool checkRide( d_a_alink::daAlink* d_a_alink );
+        bool checkRide(d_a_alink::daAlink* d_a_alink);
     }
-}     // namespace libtp::tp::d_camera
+} // namespace libtp::tp::d_camera
 #endif

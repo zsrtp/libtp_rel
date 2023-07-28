@@ -18,8 +18,8 @@ namespace libtp::tp::m_Do_printf
          *
          *  @param string The message to print.
          */
-        void OSReport( const char* string, ... );
+        void OSReport(const char* string, ...);
     }
-}     // namespace libtp::tp::m_Do_printf
+} // namespace libtp::tp::m_Do_printf
 
 #endif

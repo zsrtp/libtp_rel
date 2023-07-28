@@ -26,7 +26,7 @@ namespace libtp::chronos
     };
 
     // Handler Function for Timers
-    typedef void ( *TimerHandler )( Timer* );
+    typedef void (*TimerHandler)(Timer*);
 
     class IntervalTimer: public Timer
     {
@@ -39,7 +39,7 @@ namespace libtp::chronos
          *  @param interval When m_TotalTicks is a multiple of interval it will trigger the function
          *  @param function The function that handles this timer event
          */
-        IntervalTimer( uint32_t interval, TimerHandler handler );
+        IntervalTimer(uint32_t interval, TimerHandler handler);
 
         void tick() override;
 
@@ -47,5 +47,5 @@ namespace libtp::chronos
         uint32_t m_Interval;
         TimerHandler m_Handler;
     };
-}     // namespace libtp::chronos
+} // namespace libtp::chronos
 #endif

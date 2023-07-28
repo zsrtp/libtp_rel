@@ -7,8 +7,8 @@ namespace libtp::gc_wii::dvd
 {
     struct DVDFileInfo;
     struct DVDCommandBlock;
-    typedef void ( *DVDCallback )( int32_t result, DVDFileInfo* info );
-    typedef void ( *DVDCBCallback )( int32_t result, DVDCommandBlock* block );
+    typedef void (*DVDCallback)(int32_t result, DVDFileInfo* info);
+    typedef void (*DVDCBCallback)(int32_t result, DVDCommandBlock* block);
 
 #define DVD_STATE_FATAL_ERROR -1
 #define DVD_STATE_END 0
@@ -36,7 +36,7 @@ namespace libtp::gc_wii::dvd
         uint8_t is_streaming;
         uint8_t streaming_buffer_size;
         uint8_t padding[22];
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
     struct DVDCommandBlock
     {
@@ -52,7 +52,7 @@ namespace libtp::gc_wii::dvd
         DVDDiskID* disk_id;
         DVDCBCallback callback;
         void* user_data;
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
     struct DVDFileInfo
     {
@@ -60,27 +60,27 @@ namespace libtp::gc_wii::dvd
         uint32_t start_address;
         uint32_t length;
         DVDCallback callback;
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
     struct DVDDirectory
     {
         uint32_t entry_number;
         uint32_t location;
         uint32_t next;
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
     struct DVDDirectoryEntry
     {
         uint32_t entry_number;
-        int32_t is_directory;     // Handled as a bool
+        int32_t is_directory; // Handled as a bool
         const char* fileName;
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    static_assert( sizeof( DVDDiskID ) == 0x20 );
-    static_assert( sizeof( DVDCommandBlock ) == 0x30 );
-    static_assert( sizeof( DVDFileInfo ) == 0x3C );
-    static_assert( sizeof( DVDDirectory ) == 0xC );
-    static_assert( sizeof( DVDDirectoryEntry ) == 0xC );
+    static_assert(sizeof(DVDDiskID) == 0x20);
+    static_assert(sizeof(DVDCommandBlock) == 0x30);
+    static_assert(sizeof(DVDFileInfo) == 0x3C);
+    static_assert(sizeof(DVDDirectory) == 0xC);
+    static_assert(sizeof(DVDDirectoryEntry) == 0xC);
 
     extern "C"
     {
@@ -90,14 +90,14 @@ namespace libtp::gc_wii::dvd
          *  @param fileName Pointer to file name to be opened
          *  @param fileInfo Pointer to file info to be used
          */
-        bool DVDOpen( const char* fileName, DVDFileInfo* fileInfo );
+        bool DVDOpen(const char* fileName, DVDFileInfo* fileInfo);
 
         /**
          *  @brief Closes a file.
          *
          *  @param fileInfo Pointer to file info of the file to be closed
          */
-        bool DVDClose( DVDFileInfo* fileInfo );
+        bool DVDClose(DVDFileInfo* fileInfo);
 
         /**
          *  @brief Reads data from a file synchronously.
@@ -109,7 +109,7 @@ namespace libtp::gc_wii::dvd
          *  @param priority Priority of the read request. Goes from 0 to 3, with 0 being highest and 3 being lowest. Most
          * standard reads use 2.
          */
-        int32_t DVDReadPrio( DVDFileInfo* fileInfo, void* buffer, int32_t length, int32_t offset, int32_t priority );
+        int32_t DVDReadPrio(DVDFileInfo* fileInfo, void* buffer, int32_t length, int32_t offset, int32_t priority);
 
         /**
          *  @brief Reads data from a file synchronously.
@@ -119,9 +119,9 @@ namespace libtp::gc_wii::dvd
          *  @param length Number of bytes to be read (multiple of DVD_READ_SIZE)
          *  @param offset File position at which to start the read (multiple of DVD_OFFSET_SIZE)
          */
-        inline int32_t DVDRead( DVDFileInfo* fileInfo, void* buffer, int32_t length, int32_t offset )
+        inline int32_t DVDRead(DVDFileInfo* fileInfo, void* buffer, int32_t length, int32_t offset)
         {
-            return DVDReadPrio( fileInfo, buffer, length, offset, 2 );
+            return DVDReadPrio(fileInfo, buffer, length, offset, 2);
         }
 
         /**
@@ -130,7 +130,7 @@ namespace libtp::gc_wii::dvd
          *  @param dirName Pointer to directory to be opened
          *  @param dir Pointer to directory structure to be used
          */
-        bool DVDOpenDir( const char* dirName, DVDDirectory* dir );
+        bool DVDOpenDir(const char* dirName, DVDDirectory* dir);
 
         /**
          *  @brief Gets information on the next directory entry. The entry can either be a file (opened via
@@ -141,7 +141,7 @@ namespace libtp::gc_wii::dvd
          *  @param entry Information on the next directory entry. The same entry variable can be used if reading each entry in a
          * loop.
          */
-        bool DVDReadDir( DVDDirectory* dir, DVDDirectoryEntry* entry );
+        bool DVDReadDir(DVDDirectory* dir, DVDDirectoryEntry* entry);
 
         /**
          *  @brief Closes a directory. The vanilla function for this does nothing, but mods may want to hook it at some point to
@@ -149,7 +149,7 @@ namespace libtp::gc_wii::dvd
          *
          *  @param dir Pointer to directory structure to be used
          */
-        bool DVDCloseDir( DVDDirectory* dir );
+        bool DVDCloseDir(DVDDirectory* dir);
     }
-}     // namespace libtp::gc_wii::dvd
+} // namespace libtp::gc_wii::dvd
 #endif

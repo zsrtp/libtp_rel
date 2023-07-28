@@ -47,26 +47,26 @@ namespace libtp::z2audiolib::z2scenemgr
         /* 0x1D */ bool sceneExist;
         /* 0x1E */ bool inDarkness;
         /* 0x1F */ uint8_t padding;
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    static_assert( sizeof( Z2SceneMgr ) == 0x20 );
+    static_assert(sizeof(Z2SceneMgr) == 0x20);
 
     extern "C"
     {
         /**
          * @brief sceneChange is called when the game changes the BGM playing
          */
-        void sceneChange( Z2SceneMgr* sceneMgr,
-                          JAISoundID id,
-                          uint8_t SeWave1,
-                          uint8_t SeWave2,
-                          uint8_t BgmWave1,
-                          uint8_t BgmWave2,
-                          uint8_t DemoWave,
-                          bool param_7 );
-        void loadSeWave( void* Z2SceneMgr, uint32_t waveID );
-        void eraseSeWave( void* Z2SceneMgr, uint32_t waveID );
-        void setSceneName( const char* stageName, int32_t roomNum, int32_t layerNo );
+        void sceneChange(Z2SceneMgr* sceneMgr,
+                         JAISoundID id,
+                         uint8_t SeWave1,
+                         uint8_t SeWave2,
+                         uint8_t BgmWave1,
+                         uint8_t BgmWave2,
+                         uint8_t DemoWave,
+                         bool param_7);
+        void loadSeWave(void* Z2SceneMgr, uint32_t waveID);
+        void eraseSeWave(void* Z2SceneMgr, uint32_t waveID);
+        void setSceneName(const char* stageName, int32_t roomNum, int32_t layerNo);
     };
-}     // namespace libtp::z2audiolib::z2scenemgr
+} // namespace libtp::z2audiolib::z2scenemgr
 #endif

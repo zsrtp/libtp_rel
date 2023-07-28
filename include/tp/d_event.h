@@ -14,14 +14,14 @@ namespace libtp::tp::d_event
         /*  0x00 */ uint16_t mEventType;
         /*  0x02 */ uint16_t mFlag;
         /*  0x04 */ int32_t field_0x04;
-        /*  0x08 */ void* mActor1;     // fopAc_ac_c* mActor1;
-        /*  0x0C */ void* mActor2;     // fopAc_ac_c* mActor2;
+        /*  0x08 */ void* mActor1; // fopAc_ac_c* mActor1;
+        /*  0x0C */ void* mActor2; // fopAc_ac_c* mActor2;
         /*  0x10 */ int16_t mEventId;
         /*  0x12 */ int16_t mPriority;
         /*  0x14 */ uint8_t mNextOrderIdx;
         /*  0x15 */ uint8_t mEventInfoIdx;
         /*  0x16 */ uint8_t padding_0x16[2];
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
     struct dEvt_control
     {
@@ -36,7 +36,7 @@ namespace libtp::tp::d_event
         /* 0x0D8 */ uint16_t mEventFlag;
         /* 0x0DA */ uint16_t mFlag2;
         /* 0x0DC */ uint16_t mHindFlag;
-        /* 0x0DE */ int16_t mSpecifiedEvent;     // name maybe wrong
+        /* 0x0DE */ int16_t mSpecifiedEvent; // name maybe wrong
         /* 0x0E0 */ int16_t field_0xe0;
         /* 0x0E2 */ uint8_t mNum;
         /* 0x0E3 */ uint8_t field_0xe3;
@@ -56,7 +56,7 @@ namespace libtp::tp::d_event
         /* 0x0F4 */ void* mStageEventDt;
         /* 0x0F8 */ void* mChangeOK;
         /* 0x0FC */ uint8_t field_0xfc[4];
-        /* 0x100 */ uint8_t field_0x100[4];     // SkipFunc mSkipFunc;
+        /* 0x100 */ uint8_t field_0x100[4]; // SkipFunc mSkipFunc;
         /* 0x104 */ uint32_t field_0x104;
         /* 0x108 */ uint32_t field_0x108;
         /* 0x10C */ uint32_t field_0x10c;
@@ -66,7 +66,7 @@ namespace libtp::tp::d_event
         /* 0x129 */ bool field_0x129;
         /* 0x12A */ uint16_t padding;
         /* 0x12C */ int32_t field_0x12c;
-    } __attribute__( ( __packed__ ) );     // Size = 0x130
+    } __attribute__((__packed__)); // Size = 0x130
 
     extern "C"
     {
@@ -75,7 +75,7 @@ namespace libtp::tp::d_event
          *
          *  @param eventPtr A pointer to the current event system.
          */
-        void talkEnd( void* eventPtr );
+        void talkEnd(void* eventPtr);
 
         /**
          *  @brief Sets the item to be obtained in the upcoming event.
@@ -83,7 +83,7 @@ namespace libtp::tp::d_event
          *  @param eventPtr A pointer to the current event system.
          *  @param itemID The ID of the item to be given.
          */
-        void setGtItm( void* eventPtr, uint8_t itemID );
+        void setGtItm(void* eventPtr, uint8_t itemID);
 
         /**
          *  @brief Skips the current cutscene if it can be skipped
@@ -92,6 +92,6 @@ namespace libtp::tp::d_event
          *
          *  @return Bool returns True if the action was successful, otherwise returns False.
          */
-        bool skipper( void* eventPtr );
+        bool skipper(void* eventPtr);
     }
-}     // namespace libtp::tp::d_event
+} // namespace libtp::tp::d_event

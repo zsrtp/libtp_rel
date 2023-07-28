@@ -16,8 +16,8 @@ namespace libtp::z2audiolib::z2seqmgr
 
     extern "C"
     {
-        void startBattleBgm( Z2SeqMgr* seqMgr, bool param_1 );
+        void startBattleBgm(Z2SeqMgr* seqMgr, bool param_1);
     }
-}     // namespace libtp::z2audiolib::z2seqmgr
+} // namespace libtp::z2audiolib::z2seqmgr
 
 #endif

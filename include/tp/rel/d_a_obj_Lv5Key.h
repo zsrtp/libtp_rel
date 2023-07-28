@@ -36,9 +36,9 @@ namespace libtp::tp::rel::d_a_obj_Lv5Key
         //   offset 0x2C (abs 0x624) - bit 26 set indicates collided with ground
         // 0x7EC dCcD_GStts*
 
-        /* 0x944 */ uint8_t unk_0x944;     // padding?
+        /* 0x944 */ uint8_t unk_0x944; // padding?
 
-        // Byte which allows for communication between the door and the lock.
+                                       // Byte which allows for communication between the door and the lock.
         // Normally, the byte sits at 0. When Link tries to open the door without a
         // key the byte is set to 1. On the next Wait call, the lock will change to
         // Shake. When Shake finishes the byte is set back to 0. If Link has a key
@@ -49,13 +49,13 @@ namespace libtp::tp::rel::d_a_obj_Lv5Key
         // checking every frame for when the byte changes to 3, and once it does
         // Link opens the door. Softlock happens when this byte never changes to 3.
         /* 0x945 */ uint8_t status;
-        /* 0x946 */ uint8_t unk_0x946[0x2];     // padding?
-        // ptmf (pointer to member function) properties used alongside activeAnimFuncPtr.
-        // Used by Runtime.PPCEABI.H ptmf functions.
-        /* 0x948 */ uint32_t ptmf0;     // usually 0x00000000
-        /* 0x94C */ uint32_t ptmf1;     // usually 0xFFFFFFFF
-                                        // Determines which function runs during Execute each frame.
-                                        // Points to Wait, Open, etc.
+        /* 0x946 */ uint8_t unk_0x946[0x2]; // padding?
+                                            // ptmf (pointer to member function) properties used alongside activeAnimFuncPtr.
+                                            // Used by Runtime.PPCEABI.H ptmf functions.
+        /* 0x948 */ uint32_t ptmf0;         // usually 0x00000000
+        /* 0x94C */ uint32_t ptmf1;         // usually 0xFFFFFFFF
+                                            // Determines which function runs during Execute each frame.
+                                            // Points to Wait, Open, etc.
         /* 0x950 */ uint32_t activeAnimFuncPtr;
         // animationPhase varies between -1, 0, 1, and 2. Valid values are specific
         // to each animation.
@@ -81,15 +81,15 @@ namespace libtp::tp::rel::d_a_obj_Lv5Key
         /* 0x96E */ uint16_t zRotateAccel;
         // Used by shake phase 2. Number of shakes remaining.
         /* 0x970 */ uint8_t shakeNum;
-        /* 0x971 */ uint8_t unk_0x971[0xB];     // padding?
-    } __attribute__( ( __packed__ ) );
+        /* 0x971 */ uint8_t unk_0x971[0xB]; // padding?
+    } __attribute__((__packed__));
 
     // Size to allocate generated at runtime by adding two inner offsets:
     // offset 0x11A4 of REL: {
     //   offset 0x10 (abs 0x11B4) which is 0x97C +
     //   offset 0x14 (abs 0x11B8) which is 0
     // }
-    static_assert( sizeof( daObjLv5Key_c ) == 0x97C );
-}     // namespace libtp::tp::rel::d_a_obj_Lv5Key
+    static_assert(sizeof(daObjLv5Key_c) == 0x97C);
+} // namespace libtp::tp::rel::d_a_obj_Lv5Key
 
 #endif

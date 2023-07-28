@@ -16,7 +16,7 @@ namespace libtp::gc_wii::dvdfs
 {
     extern "C"
     {
-        int32_t DVDConvertPathToEntrynum( const char* fileName );
+        int32_t DVDConvertPathToEntrynum(const char* fileName);
     }
-}     // namespace libtp::gc_wii::dvdfs
+} // namespace libtp::gc_wii::dvdfs
 #endif

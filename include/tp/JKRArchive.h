@@ -87,9 +87,9 @@ namespace libtp::tp::JKRArchive
             MOUNT_DIRECTION_TAIL = 2,
         };
 
-        /* 0x00 */                  // vtable
-        /* 0x04 */                  // JKRFileLoader
-        /* 0x38 */ void* mHeap;     // JKRHeap* mHeap;
+        /* 0x00 */              // vtable
+        /* 0x04 */              // JKRFileLoader
+        /* 0x38 */ void* mHeap; // JKRHeap* mHeap;
         /* 0x3C */ uint8_t mMountMode;
         /* 0x3D */ uint8_t field_0x3d[3];
         /* 0x40 */ int32_t mEntryNum;
@@ -111,7 +111,7 @@ namespace libtp::tp::JKRArchive
          *
          *  @return Returns a pointer to the resource if successfully loaded. Returns a nullptr otherwise.
          */
-        void* JKRArchive_getResource2( void* JKRArchive, uint32_t type, const char* file );
+        void* JKRArchive_getResource2(void* JKRArchive, uint32_t type, const char* file);
 
         /**
          *	@brief Locates a file resource in memory.
@@ -122,7 +122,7 @@ namespace libtp::tp::JKRArchive
          *
          *  @return Returns a pointer to the resource if successfully found. Returns a nullptr otherwise.
          */
-        JKRArchive::SDIFileEntry* JKRArchive_findFsResource( JKRArchive* _this, const char* name, uint32_t param_2 );
+        JKRArchive::SDIFileEntry* JKRArchive_findFsResource(JKRArchive* _this, const char* name, uint32_t param_2);
     }
-}     // namespace libtp::tp::JKRArchive
+} // namespace libtp::tp::JKRArchive
 #endif

@@ -24,7 +24,7 @@ namespace libtp::tp::processor
          *
          *  @return Returns a pointer to the currently loaded resource, if valid. Returns a nullptr otherwise.
          */
-        void* getResource_groupID( const void* TProcessor, uint16_t unk2 );
+        void* getResource_groupID(const void* TProcessor, uint16_t unk2);
     }
-}     // namespace libtp::tp::processor
+} // namespace libtp::tp::processor
 #endif

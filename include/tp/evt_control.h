@@ -19,12 +19,12 @@ namespace libtp::tp::evt_control
      *	@param unk2 Unknown integer
      *	@return Unknown use.
      */
-    typedef int32_t( csSkipFunction )( void* unk, int32_t unk2 );
+    typedef int32_t(csSkipFunction)(void* unk, int32_t unk2);
     extern "C"
     {
-        int32_t defaultSkipStb( void* unk, int32_t unk2 );
+        int32_t defaultSkipStb(void* unk, int32_t unk2);
 
         csSkipFunction defaultSkipStb;
     }
-}     // namespace libtp::tp::evt_control
+} // namespace libtp::tp::evt_control
 #endif

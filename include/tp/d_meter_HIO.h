@@ -18,87 +18,87 @@ namespace libtp::tp::d_meter_hio
     extern "C"
     {
         // dMeter_menuHIO_c
-        void* dMeter_menuHIO_c_ct( void* dMeter_menuHIO_c );                       // Constructor
-        void* dMeter_menuHIO_c_dt( void* dMeter_menuHIO_c, int16_t freeThis );     // Destructor
+        void* dMeter_menuHIO_c_ct(void* dMeter_menuHIO_c);                   // Constructor
+        void* dMeter_menuHIO_c_dt(void* dMeter_menuHIO_c, int16_t freeThis); // Destructor
 
         // dMeter_drawCollectHIO_c
-        void* dMeter_drawCollectHIO_c_ct( void* dMeter_drawCollectHIO_c );                       // Constructor
-        void* dMeter_drawCollectHIO_c_dt( void* dMeter_drawCollectHIO_c, int16_t freeThis );     // Destructor
+        void* dMeter_drawCollectHIO_c_ct(void* dMeter_drawCollectHIO_c);                   // Constructor
+        void* dMeter_drawCollectHIO_c_dt(void* dMeter_drawCollectHIO_c, int16_t freeThis); // Destructor
 
         // dMeter_drawOptionHIO_c
-        void* dMeter_drawOptionHIO_c_ct( void* dMeter_drawOptionHIO_c );                       // Constructor
-        void* dMeter_drawOptionHIO_c_dt( void* dMeter_drawOptionHIO_c, int16_t freeThis );     // Destructor
+        void* dMeter_drawOptionHIO_c_ct(void* dMeter_drawOptionHIO_c);                   // Constructor
+        void* dMeter_drawOptionHIO_c_dt(void* dMeter_drawOptionHIO_c, int16_t freeThis); // Destructor
 
         // dMeter_drawLetterHIO_c
-        void* dMeter_drawLetterHIO_c_ct( void* dMeter_drawLetterHIO_c );                       // Constructor
-        void* dMeter_drawLetterHIO_c_dt( void* dMeter_drawLetterHIO_c, int16_t freeThis );     // Destructor
+        void* dMeter_drawLetterHIO_c_ct(void* dMeter_drawLetterHIO_c);                   // Constructor
+        void* dMeter_drawLetterHIO_c_dt(void* dMeter_drawLetterHIO_c, int16_t freeThis); // Destructor
 
         // dMeter_drawFishingHIO_c
-        void* dMeter_drawFishingHIO_c_ct( void* dMeter_drawFishingHIO_c );                       // Constructor
-        void* dMeter_drawFishingHIO_c_dt( void* dMeter_drawFishingHIO_c, int16_t freeThis );     // Destructor
+        void* dMeter_drawFishingHIO_c_ct(void* dMeter_drawFishingHIO_c);                   // Constructor
+        void* dMeter_drawFishingHIO_c_dt(void* dMeter_drawFishingHIO_c, int16_t freeThis); // Destructor
 
         // dMeter_drawInsectHIO_c
-        void* dMeter_drawInsectHIO_c_ct( void* dMeter_drawInsectHIO_c );                       // Constructor
-        void* dMeter_drawInsectHIO_c_dt( void* dMeter_drawInsectHIO_c, int16_t freeThis );     // Destructor
+        void* dMeter_drawInsectHIO_c_ct(void* dMeter_drawInsectHIO_c);                   // Constructor
+        void* dMeter_drawInsectHIO_c_dt(void* dMeter_drawInsectHIO_c, int16_t freeThis); // Destructor
 
         // dMeter_drawCalibrationHIO_c
-        void* dMeter_drawCalibrationHIO_c_ct( void* dMeter_drawCalibrationHIO_c );                       // Constructor
-        void* dMeter_drawCalibrationHIO_c_dt( void* dMeter_drawCalibrationHIO_c, int16_t freeThis );     // Destructor
+        void* dMeter_drawCalibrationHIO_c_ct(void* dMeter_drawCalibrationHIO_c);                   // Constructor
+        void* dMeter_drawCalibrationHIO_c_dt(void* dMeter_drawCalibrationHIO_c, int16_t freeThis); // Destructor
 
         // dMeter_drawSkillHIO_c
-        void* dMeter_drawSkillHIO_c_ct( void* dMeter_drawSkillHIO_c );                       // Constructor
-        void* dMeter_drawSkillHIO_c_dt( void* dMeter_drawSkillHIO_c, int16_t freeThis );     // Destructor
+        void* dMeter_drawSkillHIO_c_ct(void* dMeter_drawSkillHIO_c);                   // Constructor
+        void* dMeter_drawSkillHIO_c_dt(void* dMeter_drawSkillHIO_c, int16_t freeThis); // Destructor
 
         // dMeter_drawEmpButtonHIO_c
-        void* dMeter_drawEmpButtonHIO_c_ct( void* dMeter_drawEmpButtonHIO_c );                       // Constructor
-        void* dMeter_drawEmpButtonHIO_c_dt( void* dMeter_drawEmpButtonHIO_c, int16_t freeThis );     // Destructor
+        void* dMeter_drawEmpButtonHIO_c_ct(void* dMeter_drawEmpButtonHIO_c);                   // Constructor
+        void* dMeter_drawEmpButtonHIO_c_dt(void* dMeter_drawEmpButtonHIO_c, int16_t freeThis); // Destructor
 
         // dMeter_drawMiniGameHIO_c
-        void* dMeter_drawMiniGameHIO_c_ct( void* dMeter_drawMiniGameHIO_c );                       // Constructor
-        void* dMeter_drawMiniGameHIO_c_dt( void* dMeter_drawMiniGameHIO_c, int16_t freeThis );     // Destructor
+        void* dMeter_drawMiniGameHIO_c_ct(void* dMeter_drawMiniGameHIO_c);                   // Constructor
+        void* dMeter_drawMiniGameHIO_c_dt(void* dMeter_drawMiniGameHIO_c, int16_t freeThis); // Destructor
 
         // dMeter_drawLightDropHIO_c
-        void* dMeter_drawLightDropHIO_c_ct( void* dMeter_drawLightDropHIO_c );                       // Constructor
-        void* dMeter_drawLightDropHIO_c_dt( void* dMeter_drawLightDropHIO_c, int16_t freeThis );     // Destructor
+        void* dMeter_drawLightDropHIO_c_ct(void* dMeter_drawLightDropHIO_c);                   // Constructor
+        void* dMeter_drawLightDropHIO_c_dt(void* dMeter_drawLightDropHIO_c, int16_t freeThis); // Destructor
 
         // dMeter_drawHIO_c
-        void* dMeter_drawHIO_c_ct( void* dMeter_drawHIO_c );                       // Constructor
-        void* dMeter_drawHIO_c_dt( void* dMeter_drawHIO_c, int16_t freeThis );     // Destructor
+        void* dMeter_drawHIO_c_ct(void* dMeter_drawHIO_c);                   // Constructor
+        void* dMeter_drawHIO_c_dt(void* dMeter_drawHIO_c, int16_t freeThis); // Destructor
 
         // dMeter_ringHIO_c
-        void* dMeter_ringHIO_c_ct( void* dMeter_ringHIO_c );                       // Constructor
-        void* dMeter_ringHIO_c_dt( void* dMeter_ringHIO_c, int16_t freeThis );     // Destructor
+        void* dMeter_ringHIO_c_ct(void* dMeter_ringHIO_c);                   // Constructor
+        void* dMeter_ringHIO_c_dt(void* dMeter_ringHIO_c, int16_t freeThis); // Destructor
 
         // dMeter_mapIconHIO_c
-        void* dMeter_mapIconHIO_c_ct( void* dMeter_mapIconHIO_c );                       // Constructor
-        void* dMeter_mapIconHIO_c_dt( void* dMeter_mapIconHIO_c, int16_t freeThis );     // Destructor
+        void* dMeter_mapIconHIO_c_ct(void* dMeter_mapIconHIO_c);                   // Constructor
+        void* dMeter_mapIconHIO_c_dt(void* dMeter_mapIconHIO_c, int16_t freeThis); // Destructor
 
         // dMeter_fmapHIO_c
-        void* MapBlinkAnime_ct( void* MapBlinkAnime );                             // Constructor
-        void* dMeter_fmapHIO_c_ct( void* dMeter_fmapHIO_c );                       // Constructor
-        void* dMeter_fmapHIO_c_dt( void* dMeter_fmapHIO_c, int16_t freeThis );     // Destructor
+        void* MapBlinkAnime_ct(void* MapBlinkAnime);                         // Constructor
+        void* dMeter_fmapHIO_c_ct(void* dMeter_fmapHIO_c);                   // Constructor
+        void* dMeter_fmapHIO_c_dt(void* dMeter_fmapHIO_c, int16_t freeThis); // Destructor
 
         // dMeter_cursorHIO_c
-        void* dMeter_cursorHIO_c_ct( void* dMeter_cursorHIO_c );                       // Constructor
-        void* dMeter_cursorHIO_c_dt( void* dMeter_cursorHIO_c, int16_t freeThis );     // Destructor
+        void* dMeter_cursorHIO_c_ct(void* dMeter_cursorHIO_c);                   // Constructor
+        void* dMeter_cursorHIO_c_dt(void* dMeter_cursorHIO_c, int16_t freeThis); // Destructor
     }
 
     class dMeter_menuHIO_c
     {
        public:
-        dMeter_menuHIO_c() { dMeter_menuHIO_c_ct( this ); }
+        dMeter_menuHIO_c() { dMeter_menuHIO_c_ct(this); }
 
         /* 0x0 */ void* vtable;
         /* 0x4 */ uint8_t field_0x4[2];
         /* 0x6 */ int16_t mGameover;
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    static_assert( sizeof( dMeter_menuHIO_c ) == 0x8 );
+    static_assert(sizeof(dMeter_menuHIO_c) == 0x8);
 
     class dMeter_drawCollectHIO_c
     {
        public:
-        dMeter_drawCollectHIO_c() { dMeter_drawCollectHIO_c_ct( this ); }
+        dMeter_drawCollectHIO_c() { dMeter_drawCollectHIO_c_ct(this); }
 
         enum
         {
@@ -134,8 +134,8 @@ namespace libtp::tp::d_meter_hio
         /* 0x6C */ float mBButtonTextPosX;
         /* 0x70 */ float mBButtonTextPosY;
         /* 0x74 */ float mBButtonTextScale;
-        /* 0x78 */ uint32_t mVesselBack[2];      // JUtility::TColor
-        /* 0x80 */ uint32_t mVesselFront[2];     // JUtility::TColor
+        /* 0x78 */ uint32_t mVesselBack[2];  // JUtility::TColor
+        /* 0x80 */ uint32_t mVesselFront[2]; // JUtility::TColor
         /* 0x88 */ float mHeartPiecePosX;
         /* 0x8C */ float mHeartPiecePosY;
         /* 0x90 */ float mHeartPieceScale;
@@ -144,14 +144,14 @@ namespace libtp::tp::d_meter_hio
         /* 0x9B */ bool mColorDebugON;
         /* 0x9C */ bool mButtonDebugON;
         /* 0x9D */ uint8_t padding[3];
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    static_assert( sizeof( dMeter_drawCollectHIO_c ) == 0xA0 );
+    static_assert(sizeof(dMeter_drawCollectHIO_c) == 0xA0);
 
     class dMeter_drawOptionHIO_c
     {
        public:
-        dMeter_drawOptionHIO_c() { dMeter_drawOptionHIO_c_ct( this ); }
+        dMeter_drawOptionHIO_c() { dMeter_drawOptionHIO_c_ct(this); }
 
         enum OptionType
         {
@@ -163,9 +163,9 @@ namespace libtp::tp::d_meter_hio
         /* 0x00 */ void* vtable;
         /* 0x04 */ uint8_t field_0x4[4];
         /* 0x08 */ float mArrowSize;
-        /* 0x0C */ uint32_t mSelectNameColor;     // JUtility::TColor
-        /* 0x10 */ uint32_t mSelectColor;         // JUtility::TColor
-        /* 0x14 */ uint32_t mUnselectColor;       // JUtility::TColor
+        /* 0x0C */ uint32_t mSelectNameColor; // JUtility::TColor
+        /* 0x10 */ uint32_t mSelectColor;     // JUtility::TColor
+        /* 0x14 */ uint32_t mUnselectColor;   // JUtility::TColor
         /* 0x18 */ float mWindowPosX;
         /* 0x1C */ float mWindowPosY;
         /* 0x20 */ float mWindowScale;
@@ -185,14 +185,14 @@ namespace libtp::tp::d_meter_hio
         /* 0x6C */ bool mDebug;
         /* 0x6D */ uint8_t mBackgroundAlpha;
         /* 0x6E */ uint8_t padding[2];
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    static_assert( sizeof( dMeter_drawOptionHIO_c ) == 0x70 );
+    static_assert(sizeof(dMeter_drawOptionHIO_c) == 0x70);
 
     class dMeter_drawLetterHIO_c
     {
        public:
-        dMeter_drawLetterHIO_c() { dMeter_drawLetterHIO_c_ct( this ); }
+        dMeter_drawLetterHIO_c() { dMeter_drawLetterHIO_c_ct(this); }
 
         enum
         {
@@ -216,26 +216,26 @@ namespace libtp::tp::d_meter_hio
         /* 0x34 */ int16_t mCloseFrame[2];
         /* 0x38 */ int16_t mLetterNum;
         /* 0x3A */ uint8_t field_0x3a[2];
-        /* 0x3C */ uint32_t mSelectPageIconBack;      // JUtility::TColor
-        /* 0x40 */ uint32_t mSelectPageIconFront;     // JUtility::TColor
-        /* 0x44 */ uint32_t mSelectBarBack;           // JUtility::TColor
-        /* 0x48 */ uint32_t mSelectBarFront;          // JUtility::TColor
-        /* 0x4C */ uint32_t mSelectTextBack;          // JUtility::TColor
-        /* 0x50 */ uint32_t mSelectTextFront;         // JUtility::TColor
-        /* 0x54 */ uint32_t mLetterTextBack;          // JUtility::TColor
-        /* 0x58 */ uint32_t mLetterTextFront;         // JUtility::TColor
+        /* 0x3C */ uint32_t mSelectPageIconBack;  // JUtility::TColor
+        /* 0x40 */ uint32_t mSelectPageIconFront; // JUtility::TColor
+        /* 0x44 */ uint32_t mSelectBarBack;       // JUtility::TColor
+        /* 0x48 */ uint32_t mSelectBarFront;      // JUtility::TColor
+        /* 0x4C */ uint32_t mSelectTextBack;      // JUtility::TColor
+        /* 0x50 */ uint32_t mSelectTextFront;     // JUtility::TColor
+        /* 0x54 */ uint32_t mLetterTextBack;      // JUtility::TColor
+        /* 0x58 */ uint32_t mLetterTextFront;     // JUtility::TColor
         /* 0x5C */ uint8_t mUnselectPageIconAlpha;
         /* 0x5D */ uint8_t mWindowBGAlpha;
         /* 0x5E */ uint8_t mLetterLineAlpha;
         /* 0x5F */ bool mDebugON;
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    static_assert( sizeof( dMeter_drawLetterHIO_c ) == 0x60 );
+    static_assert(sizeof(dMeter_drawLetterHIO_c) == 0x60);
 
     class dMeter_drawFishingHIO_c
     {
        public:
-        dMeter_drawFishingHIO_c() { dMeter_drawFishingHIO_c_ct( this ); }
+        dMeter_drawFishingHIO_c() { dMeter_drawFishingHIO_c_ct(this); }
 
         enum
         {
@@ -285,14 +285,14 @@ namespace libtp::tp::d_meter_hio
         /* 0x246 */ uint8_t field_0x246[0xA];
         /* 0x250 */ bool mDebug;
         /* 0x251 */ uint8_t padding[3];
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    static_assert( sizeof( dMeter_drawFishingHIO_c ) == 0x254 );
+    static_assert(sizeof(dMeter_drawFishingHIO_c) == 0x254);
 
     class dMeter_drawInsectHIO_c
     {
        public:
-        dMeter_drawInsectHIO_c() { dMeter_drawInsectHIO_c_ct( this ); }
+        dMeter_drawInsectHIO_c() { dMeter_drawInsectHIO_c_ct(this); }
 
         enum Type
         {
@@ -320,14 +320,14 @@ namespace libtp::tp::d_meter_hio
         /* 0x3C */ uint8_t mType;
         /* 0x3D */ bool mDebugON;
         /* 0x3E */ uint8_t padding[2];
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    static_assert( sizeof( dMeter_drawInsectHIO_c ) == 0x40 );
+    static_assert(sizeof(dMeter_drawInsectHIO_c) == 0x40);
 
     class dMeter_drawCalibrationHIO_c
     {
        public:
-        dMeter_drawCalibrationHIO_c() { dMeter_drawCalibrationHIO_c_ct( this ); }
+        dMeter_drawCalibrationHIO_c() { dMeter_drawCalibrationHIO_c_ct(this); }
 
         /* 0x00 */ void* vtable;
         /* 0x04 */ uint8_t field_0x4[4];
@@ -338,14 +338,14 @@ namespace libtp::tp::d_meter_hio
         /* 0x14 */ int16_t mFlashFrameNum;
         /* 0x16 */ bool mDebug;
         /* 0x17 */ uint8_t padding[1];
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    static_assert( sizeof( dMeter_drawCalibrationHIO_c ) == 0x18 );
+    static_assert(sizeof(dMeter_drawCalibrationHIO_c) == 0x18);
 
     class dMeter_drawSkillHIO_c
     {
        public:
-        dMeter_drawSkillHIO_c() { dMeter_drawSkillHIO_c_ct( this ); }
+        dMeter_drawSkillHIO_c() { dMeter_drawSkillHIO_c_ct(this); }
 
         enum
         {
@@ -367,26 +367,26 @@ namespace libtp::tp::d_meter_hio
         /* 0x2C */ float mWindowLinePosY;
         /* 0x30 */ int16_t mOpenFrame[2];
         /* 0x34 */ int16_t mCloseFrame[2];
-        /* 0x38 */ uint32_t mSelectScrollIconBlack;       // JUtility::TColor
-        /* 0x3C */ uint32_t mSelectScrollIconWhite;       // JUtility::TColor
-        /* 0x40 */ uint32_t mUnselectScrollIconBlack;     // JUtility::TColor
-        /* 0x44 */ uint32_t mUnselectScrollIconWhite;     // JUtility::TColor
-        /* 0x48 */ uint32_t mSelectBarBlack;              // JUtility::TColor
-        /* 0x4C */ uint32_t mSelectBarWhite;              // JUtility::TColor
-        /* 0x50 */ uint32_t mSelectTextBlack;             // JUtility::TColor
-        /* 0x54 */ uint32_t mSelectTextWhite;             // JUtility::TColor
+        /* 0x38 */ uint32_t mSelectScrollIconBlack;   // JUtility::TColor
+        /* 0x3C */ uint32_t mSelectScrollIconWhite;   // JUtility::TColor
+        /* 0x40 */ uint32_t mUnselectScrollIconBlack; // JUtility::TColor
+        /* 0x44 */ uint32_t mUnselectScrollIconWhite; // JUtility::TColor
+        /* 0x48 */ uint32_t mSelectBarBlack;          // JUtility::TColor
+        /* 0x4C */ uint32_t mSelectBarWhite;          // JUtility::TColor
+        /* 0x50 */ uint32_t mSelectTextBlack;         // JUtility::TColor
+        /* 0x54 */ uint32_t mSelectTextWhite;         // JUtility::TColor
         /* 0x58 */ uint8_t field_0x58;
         /* 0x59 */ uint8_t mWindowBGalpha;
         /* 0x5A */ uint8_t mWindowLineAlpha;
         /* 0x5B */ bool mDebug;
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    static_assert( sizeof( dMeter_drawSkillHIO_c ) == 0x5C );
+    static_assert(sizeof(dMeter_drawSkillHIO_c) == 0x5C);
 
     class dMeter_drawEmpButtonHIO_c
     {
        public:
-        dMeter_drawEmpButtonHIO_c() { dMeter_drawEmpButtonHIO_c_ct( this ); }
+        dMeter_drawEmpButtonHIO_c() { dMeter_drawEmpButtonHIO_c_ct(this); }
 
         /* 0x000 */ void* vtable;
         /* 0x004 */ uint8_t field_0x4[4];
@@ -496,37 +496,37 @@ namespace libtp::tp::d_meter_hio
         /* 0x1AC */ float mHawkeyeTextIconScale;
         /* 0x1B0 */ float mHawkeyeTextScale;
         /* 0x1B4 */ float mHawkeyeIconScale;
-        /* 0x1B8 */ uint32_t mPointerONBlack[2];     // JUtility::TColor
-        /* 0x1C0 */ uint32_t mPointerONWhite[2];     // JUtility::TColor
-        /* 0x1C8 */ uint32_t mPointerOFFBlack;       // JUtility::TColor
-        /* 0x1CC */ uint32_t mPointerOFFWhite;       // JUtility::TColor
+        /* 0x1B8 */ uint32_t mPointerONBlack[2]; // JUtility::TColor
+        /* 0x1C0 */ uint32_t mPointerONWhite[2]; // JUtility::TColor
+        /* 0x1C8 */ uint32_t mPointerOFFBlack;   // JUtility::TColor
+        /* 0x1CC */ uint32_t mPointerOFFWhite;   // JUtility::TColor
         /* 0x1D0 */ float mPointerONScale;
         /* 0x1D4 */ float mPointerOFFScale;
         /* 0x1D8 */ int16_t mPointerONAnimFrame;
         /* 0x1DA */ uint8_t padding_1da[2];
         /* 0x1DC */ float mHighlightScale;
-        /* 0x1E0 */ uint32_t mHighlightFrontInner;     // JUtility::TColor
-        /* 0x1E4 */ uint32_t mHighlightFrontOuter;     // JUtility::TColor
-        /* 0x1E8 */ uint32_t mHighlightBackInner;      // JUtility::TColor
-        /* 0x1EC */ uint32_t mHighlightBackOuter;      // JUtility::TColor
+        /* 0x1E0 */ uint32_t mHighlightFrontInner; // JUtility::TColor
+        /* 0x1E4 */ uint32_t mHighlightFrontOuter; // JUtility::TColor
+        /* 0x1E8 */ uint32_t mHighlightBackInner;  // JUtility::TColor
+        /* 0x1EC */ uint32_t mHighlightBackOuter;  // JUtility::TColor
         /* 0x1F0 */ float mHighlightAnimSpeed;
         /* 0x1F4 */ float mHighlightFastScale;
-        /* 0x1F8 */ uint32_t mHighlightFastFrontInner;     // JUtility::TColor
-        /* 0x1FC */ uint32_t mHighlightFastFrontOuter;     // JUtility::TColor
-        /* 0x200 */ uint32_t mHighlightFastBackInner;      // JUtility::TColor
-        /* 0x204 */ uint32_t mHighlightFastBackOuter;      // JUtility::TColor
+        /* 0x1F8 */ uint32_t mHighlightFastFrontInner; // JUtility::TColor
+        /* 0x1FC */ uint32_t mHighlightFastFrontOuter; // JUtility::TColor
+        /* 0x200 */ uint32_t mHighlightFastBackInner;  // JUtility::TColor
+        /* 0x204 */ uint32_t mHighlightFastBackOuter;  // JUtility::TColor
         /* 0x208 */ float mHighlightFastAnimSpeed;
         /* 0x20C */ float mHighlightListenScale;
-        /* 0x210 */ uint32_t mHighlightListenFrontInner;     // JUtility::TColor
-        /* 0x214 */ uint32_t mHighlightListenFrontOuter;     // JUtility::TColor
-        /* 0x218 */ uint32_t mHighlightListenBackInner;      // JUtility::TColor
-        /* 0x21C */ uint32_t mHighlightListenBackOuter;      // JUtility::TColor
+        /* 0x210 */ uint32_t mHighlightListenFrontInner; // JUtility::TColor
+        /* 0x214 */ uint32_t mHighlightListenFrontOuter; // JUtility::TColor
+        /* 0x218 */ uint32_t mHighlightListenBackInner;  // JUtility::TColor
+        /* 0x21C */ uint32_t mHighlightListenBackOuter;  // JUtility::TColor
         /* 0x220 */ float mHighlightListenAnimSpeed;
         /* 0x224 */ float mHighlightRepeatHitScale;
-        /* 0x228 */ uint32_t mHighlightRepeatHitFrontInner;     // JUtility::TColor
-        /* 0x22C */ uint32_t mHighlightRepeatHitFrontOuter;     // JUtility::TColor
-        /* 0x230 */ uint32_t mHighlightRepeatHitBackInner;      // JUtility::TColor
-        /* 0x234 */ uint32_t mHighlightRepeatHitBackOuter;      // JUtility::TColor
+        /* 0x228 */ uint32_t mHighlightRepeatHitFrontInner; // JUtility::TColor
+        /* 0x22C */ uint32_t mHighlightRepeatHitFrontOuter; // JUtility::TColor
+        /* 0x230 */ uint32_t mHighlightRepeatHitBackInner;  // JUtility::TColor
+        /* 0x234 */ uint32_t mHighlightRepeatHitBackOuter;  // JUtility::TColor
         /* 0x238 */ float mHighlightRepeatHitAnimSpeed;
         /* 0x23C */ float mRepeatHitScale;
         /* 0x240 */ int16_t mRepeatHitFrameNum;
@@ -536,14 +536,14 @@ namespace libtp::tp::d_meter_hio
         /* 0x259 */ bool mHawkeyeDebugON;
         /* 0x25A */ bool mHawkeyeZoomDebugON;
         /* 0x25B */ uint8_t padding_25b[1];
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    static_assert( sizeof( dMeter_drawEmpButtonHIO_c ) == 0x25C );
+    static_assert(sizeof(dMeter_drawEmpButtonHIO_c) == 0x25C);
 
     class dMeter_drawMiniGameHIO_c
     {
        public:
-        dMeter_drawMiniGameHIO_c() { dMeter_drawMiniGameHIO_c_ct( this ); }
+        dMeter_drawMiniGameHIO_c() { dMeter_drawMiniGameHIO_c_ct(this); }
 
         /* 0x000 */ void* vtable;
         /* 0x004 */ uint8_t field_0x4[4];
@@ -619,19 +619,19 @@ namespace libtp::tp::d_meter_hio
         /* 0x11C */ int16_t mGetInTextWaitFrames;
         /* 0x11E */ int16_t mGetInTextAlphaFrames;
         /* 0x120 */ float mGetInHighlightScale;
-        /* 0x124 */ uint32_t mGetInHighlightFrontInner;     // JUtility::TColor
-        /* 0x128 */ uint32_t mGetInHighlightFrontOuter;     // JUtility::TColor
-        /* 0x12C */ uint32_t mGetInHighlightBackInner;      // JUtility::TColor
-        /* 0x130 */ uint32_t mGetInHighlightBackOuter;      // JUtility::TColor
+        /* 0x124 */ uint32_t mGetInHighlightFrontInner; // JUtility::TColor
+        /* 0x128 */ uint32_t mGetInHighlightFrontOuter; // JUtility::TColor
+        /* 0x12C */ uint32_t mGetInHighlightBackInner;  // JUtility::TColor
+        /* 0x130 */ uint32_t mGetInHighlightBackOuter;  // JUtility::TColor
         /* 0x134 */ float mGetInHighlightAnimSpeed;
         /* 0x138 */ int16_t mGetInHighlightAppearFrames;
         /* 0x13A */ uint8_t mGetInTextLocation;
         /* 0x13B */ uint8_t padding_13b[1];
         /* 0x13C */ float mStartHighlightScale;
-        /* 0x140 */ uint32_t mStartHighlightFrontInner;     // JUtility::TColor
-        /* 0x144 */ uint32_t mStartHighlightFrontOuter;     // JUtility::TColor
-        /* 0x148 */ uint32_t mStartHighlightBackInner;      // JUtility::TColor
-        /* 0x14C */ uint32_t mStartHighlightBackOuter;      // JUtility::TColor
+        /* 0x140 */ uint32_t mStartHighlightFrontInner; // JUtility::TColor
+        /* 0x144 */ uint32_t mStartHighlightFrontOuter; // JUtility::TColor
+        /* 0x148 */ uint32_t mStartHighlightBackInner;  // JUtility::TColor
+        /* 0x14C */ uint32_t mStartHighlightBackOuter;  // JUtility::TColor
         /* 0x150 */ float mStartHighlightAnimSpeed;
         /* 0x154 */ int16_t mStartHighlightAppearFrames;
         /* 0x156 */ int16_t mStartHighlightDisplayFrames;
@@ -645,21 +645,21 @@ namespace libtp::tp::d_meter_hio
         /* 0x170 */ int16_t mReadyFightTextWaitFrames;
         /* 0x172 */ int16_t field_0x172;
         /* 0x174 */ float mReadyFightHighlightScale;
-        /* 0x178 */ uint32_t mReadyFightHighlightFrontInner;     // JUtility::TColor
-        /* 0x17C */ uint32_t mReadyFightHighlightFrontOuter;     // JUtility::TColor
-        /* 0x180 */ uint32_t mReadyFightHighlightBackInner;      // JUtility::TColor
-        /* 0x184 */ uint32_t mReadyFightHighlightBackOuter;      // JUtility::TColor
+        /* 0x178 */ uint32_t mReadyFightHighlightFrontInner; // JUtility::TColor
+        /* 0x17C */ uint32_t mReadyFightHighlightFrontOuter; // JUtility::TColor
+        /* 0x180 */ uint32_t mReadyFightHighlightBackInner;  // JUtility::TColor
+        /* 0x184 */ uint32_t mReadyFightHighlightBackOuter;  // JUtility::TColor
         /* 0x188 */ float mReadyFightHighlightAnimSpeed;
         /* 0x18C */ int16_t mReadyFightHighlightAppearFrames;
         /* 0x18E */ uint8_t padding_18e[2];
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    static_assert( sizeof( dMeter_drawMiniGameHIO_c ) == 0x190 );
+    static_assert(sizeof(dMeter_drawMiniGameHIO_c) == 0x190);
 
     class dMeter_drawLightDropHIO_c
     {
        public:
-        dMeter_drawLightDropHIO_c() { dMeter_drawLightDropHIO_c_ct( this ); }
+        dMeter_drawLightDropHIO_c() { dMeter_drawLightDropHIO_c_ct(this); }
 
         /* 0x00 */ void* vtable;
         /* 0x04 */ uint8_t field_0x4[4];
@@ -675,26 +675,26 @@ namespace libtp::tp::d_meter_hio
         /* 0x2C */ float mVesselTalkAlpha;
         /* 0x30 */ float mVesselDecorAlpha;
         /* 0x34 */ float mDropAlpha;
-        /* 0x38 */ uint32_t mDropOnColorWhite;      // JUtility::TColor
-        /* 0x3C */ uint32_t mDropOnColorBlack;      // JUtility::TColor
-        /* 0x40 */ uint32_t mDropOffColorWhite;     // JUtility::TColor
-        /* 0x44 */ uint32_t mDropOffColorBlack;     // JUtility::TColor
+        /* 0x38 */ uint32_t mDropOnColorWhite;  // JUtility::TColor
+        /* 0x3C */ uint32_t mDropOnColorBlack;  // JUtility::TColor
+        /* 0x40 */ uint32_t mDropOffColorWhite; // JUtility::TColor
+        /* 0x44 */ uint32_t mDropOffColorBlack; // JUtility::TColor
         /* 0x48 */ float mDropScale;
         /* 0x4C */ float mDropGetScale;
         /* 0x50 */ int16_t mDropGetScaleAnimFrameNum;
         /* 0x52 */ int16_t mHighlightInterval;
         /* 0x54 */ int16_t field_0x54;
         /* 0x56 */ int16_t field_0x56;
-        /* 0x58 */ uint32_t mDropHighlightFrontInner;     // JUtility::TColor
-        /* 0x5C */ uint32_t mDropHighlightFrontOuter;     // JUtility::TColor
-        /* 0x60 */ uint32_t mDropHighlightBackInner;      // JUtility::TColor
-        /* 0x64 */ uint32_t mDropHighlightBackOuter;      // JUtility::TColor
+        /* 0x58 */ uint32_t mDropHighlightFrontInner; // JUtility::TColor
+        /* 0x5C */ uint32_t mDropHighlightFrontOuter; // JUtility::TColor
+        /* 0x60 */ uint32_t mDropHighlightBackInner;  // JUtility::TColor
+        /* 0x64 */ uint32_t mDropHighlightBackOuter;  // JUtility::TColor
         /* 0x68 */ float mDropHighlightAnimSpeed;
         /* 0x6C */ float mDropHighlightAnimSpeed_Completed;
-        /* 0x70 */ uint32_t mHighlightLoopFrontInner[2];     // JUtility::TColor
-        /* 0x78 */ uint32_t mHighlightLoopFrontOuter[2];     // JUtility::TColor
-        /* 0x80 */ uint32_t mHighlightLoopBackInner[2];      // JUtility::TColor
-        /* 0x88 */ uint32_t mHighlightLoopBackOuter[2];      // JUtility::TColor
+        /* 0x70 */ uint32_t mHighlightLoopFrontInner[2]; // JUtility::TColor
+        /* 0x78 */ uint32_t mHighlightLoopFrontOuter[2]; // JUtility::TColor
+        /* 0x80 */ uint32_t mHighlightLoopBackInner[2];  // JUtility::TColor
+        /* 0x88 */ uint32_t mHighlightLoopBackOuter[2];  // JUtility::TColor
         /* 0x90 */ float mHighlightLoopAnimSpeed;
         /* 0x94 */ float mHighlightLoopBackStopFrame;
         /* 0x98 */ float mHighlightScaleNormal;
@@ -703,14 +703,14 @@ namespace libtp::tp::d_meter_hio
         /* 0xA4 */ float mHighlightLoopBackScale;
         /* 0xA8 */ uint8_t mAnimDebug;
         /* 0xA9 */ uint8_t padding[3];
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    static_assert( sizeof( dMeter_drawLightDropHIO_c ) == 0xAC );
+    static_assert(sizeof(dMeter_drawLightDropHIO_c) == 0xAC);
 
     class dMeter_drawHIO_c
     {
        public:
-        dMeter_drawHIO_c() { dMeter_drawHIO_c_ct( this ); }
+        dMeter_drawHIO_c() { dMeter_drawHIO_c_ct(this); }
 
         /* 0x000 */ void* vtable;
         /* 0x004 */ int8_t field_0x4;
@@ -880,7 +880,7 @@ namespace libtp::tp::d_meter_hio
         /* 0x2B4 */ float mAButtonFontScale;
         /* 0x2B8 */ float mAButtonFontPosX;
         /* 0x2BC */ float mAButtonFontPosY;
-        /* 0x2C0 */ uint32_t mAButtonFontColor;     // JUtility::TColor
+        /* 0x2C0 */ uint32_t mAButtonFontColor; // JUtility::TColor
         /* 0x2C4 */ float mAButtonFontSpacing;
         /* 0x2C8 */ int32_t mAButtonFontActionID;
         /* 0x2CC */ uint32_t field_0x2cc;
@@ -889,19 +889,19 @@ namespace libtp::tp::d_meter_hio
         /* 0x2D4 */ float mBButtonFontScale;
         /* 0x2D8 */ float mBButtonFontPosX;
         /* 0x2DC */ float mBButtonFontPosY;
-        /* 0x2E0 */ uint32_t mBButtonFontColor;     // JUtility::TColor
+        /* 0x2E0 */ uint32_t mBButtonFontColor; // JUtility::TColor
         /* 0x2E4 */ float field_0x2e4;
         /* 0x2E8 */ float field_0x2e8;
         /* 0x2EC */ float field_0x2ec;
-        /* 0x2F0 */ uint32_t field_0x2f0;     // JUtility::TColor
+        /* 0x2F0 */ uint32_t field_0x2f0; // JUtility::TColor
         /* 0x2F4 */ float mXYButtonFontScale;
         /* 0x2F8 */ float mXYButtonFontPosX;
         /* 0x2FC */ float mXYButtonFontPosY;
-        /* 0x300 */ uint32_t mXYButtonFontColor;     // JUtility::TColor
+        /* 0x300 */ uint32_t mXYButtonFontColor; // JUtility::TColor
         /* 0x304 */ float field_0x304;
         /* 0x308 */ float field_0x308;
         /* 0x30C */ float field_0x30c;
-        /* 0x310 */ uint32_t field_0x310;     // JUtility::TColor
+        /* 0x310 */ uint32_t field_0x310; // JUtility::TColor
         /* 0x314 */ float field_0x314;
         /* 0x318 */ float field_0x318;
         /* 0x31C */ float field_0x31c;
@@ -911,7 +911,7 @@ namespace libtp::tp::d_meter_hio
         /* 0x32C */ float mZButtonFontScale;
         /* 0x330 */ float mZButtonFontPosX;
         /* 0x334 */ float mZButtonFontPosY;
-        /* 0x338 */ uint32_t mZButtonFontColor;     // JUtility::TColor
+        /* 0x338 */ uint32_t mZButtonFontColor; // JUtility::TColor
         /* 0x33C */ float mRupeeKeyScale;
         /* 0x340 */ float mRupeeKeyPosX;
         /* 0x344 */ float mRupeeKeyPosY;
@@ -980,55 +980,55 @@ namespace libtp::tp::d_meter_hio
         /* 0x42D */ uint8_t mMaxSpurAmount;
         /* 0x42E */ bool mSpurDebug;
         /* 0x42F */ bool field_0x42f;
-        /* 0x430 */ uint32_t mSpurIconHighlightFrontInner;     // JUtility::TColor
-        /* 0x434 */ uint32_t mSpurIconHighlightFrontOuter;     // JUtility::TColor
-        /* 0x438 */ uint32_t mSpurIconHighlightBackInner;      // JUtility::TColor
-        /* 0x43C */ uint32_t mSpurIconHighlightBackOuter;      // JUtility::TColor
+        /* 0x430 */ uint32_t mSpurIconHighlightFrontInner;       // JUtility::TColor
+        /* 0x434 */ uint32_t mSpurIconHighlightFrontOuter;       // JUtility::TColor
+        /* 0x438 */ uint32_t mSpurIconHighlightBackInner;        // JUtility::TColor
+        /* 0x43C */ uint32_t mSpurIconHighlightBackOuter;        // JUtility::TColor
         /* 0x440 */ float mSpurIconHighlightAnimSpeed;
-        /* 0x444 */ uint32_t mSpurIconReviveHighlightFrontInner;     // JUtility::TColor
-        /* 0x448 */ uint32_t mSpurIconReviveHighlightFrontOuter;     // JUtility::TColor
-        /* 0x44C */ uint32_t mSpurIconReviveHighlightBackInner;      // JUtility::TColor
-        /* 0x450 */ uint32_t mSpurIconReviveHighlightBackOuter;      // JUtility::TColor
+        /* 0x444 */ uint32_t mSpurIconReviveHighlightFrontInner; // JUtility::TColor
+        /* 0x448 */ uint32_t mSpurIconReviveHighlightFrontOuter; // JUtility::TColor
+        /* 0x44C */ uint32_t mSpurIconReviveHighlightBackInner;  // JUtility::TColor
+        /* 0x450 */ uint32_t mSpurIconReviveHighlightBackOuter;  // JUtility::TColor
         /* 0x454 */ float mSpurIconReviveHighlightAnimSpeed;
-        /* 0x458 */ uint32_t mZButtonHighlightFrontInner;     // JUtility::TColor
-        /* 0x45C */ uint32_t mZButtonHighlightFrontOuter;     // JUtility::TColor
-        /* 0x460 */ uint32_t mZButtonHighlightBackInner;      // JUtility::TColor
-        /* 0x464 */ uint32_t mZButtonHighlightBackOuter;      // JUtility::TColor
+        /* 0x458 */ uint32_t mZButtonHighlightFrontInner;        // JUtility::TColor
+        /* 0x45C */ uint32_t mZButtonHighlightFrontOuter;        // JUtility::TColor
+        /* 0x460 */ uint32_t mZButtonHighlightBackInner;         // JUtility::TColor
+        /* 0x464 */ uint32_t mZButtonHighlightBackOuter;         // JUtility::TColor
         /* 0x468 */ float mZButtonHighlightAnimSpeed;
-        /* 0x46C */ uint32_t mXYButtonHighlightFrontInner;     // JUtility::TColor
-        /* 0x470 */ uint32_t mXYButtonHighlightFrontOuter;     // JUtility::TColor
-        /* 0x474 */ uint32_t mXYButtonHighlightBackInner;      // JUtility::TColor
-        /* 0x478 */ uint32_t mXYButtonHighlightBackOuter;      // JUtility::TColor
+        /* 0x46C */ uint32_t mXYButtonHighlightFrontInner;       // JUtility::TColor
+        /* 0x470 */ uint32_t mXYButtonHighlightFrontOuter;       // JUtility::TColor
+        /* 0x474 */ uint32_t mXYButtonHighlightBackInner;        // JUtility::TColor
+        /* 0x478 */ uint32_t mXYButtonHighlightBackOuter;        // JUtility::TColor
         /* 0x47C */ float mXYButtonHighlightAnimSpeed;
-        /* 0x480 */ uint32_t mAButtonHighlightFrontInner;     // JUtility::TColor
-        /* 0x484 */ uint32_t mAButtonHighlightFrontOuter;     // JUtility::TColor
-        /* 0x488 */ uint32_t mAButtonHighlightBackInner;      // JUtility::TColor
-        /* 0x48C */ uint32_t mAButtonHighlightBackOuter;      // JUtility::TColor
+        /* 0x480 */ uint32_t mAButtonHighlightFrontInner;        // JUtility::TColor
+        /* 0x484 */ uint32_t mAButtonHighlightFrontOuter;        // JUtility::TColor
+        /* 0x488 */ uint32_t mAButtonHighlightBackInner;         // JUtility::TColor
+        /* 0x48C */ uint32_t mAButtonHighlightBackOuter;         // JUtility::TColor
         /* 0x490 */ float mAButtonHighlightAnimSpeed;
-        /* 0x494 */ uint32_t mBButtonHighlightFrontInner;     // JUtility::TColor
-        /* 0x498 */ uint32_t mBButtonHighlightFrontOuter;     // JUtility::TColor
-        /* 0x49C */ uint32_t mBButtonHighlightBackInner;      // JUtility::TColor
-        /* 0x4A0 */ uint32_t mBButtonHighlightBackOuter;      // JUtility::TColor
+        /* 0x494 */ uint32_t mBButtonHighlightFrontInner;        // JUtility::TColor
+        /* 0x498 */ uint32_t mBButtonHighlightFrontOuter;        // JUtility::TColor
+        /* 0x49C */ uint32_t mBButtonHighlightBackInner;         // JUtility::TColor
+        /* 0x4A0 */ uint32_t mBButtonHighlightBackOuter;         // JUtility::TColor
         /* 0x4A4 */ float mBButtonHighlightAnimSpeed;
-        /* 0x4A8 */ uint32_t field_0x4a8;     // JUtility::TColor
-        /* 0x4AC */ uint32_t field_0x4ac;     // JUtility::TColor
-        /* 0x4B0 */ uint32_t field_0x4b0;     // JUtility::TColor
-        /* 0x4B4 */ uint32_t field_0x4b4;     // JUtility::TColor
+        /* 0x4A8 */ uint32_t field_0x4a8;                        // JUtility::TColor
+        /* 0x4AC */ uint32_t field_0x4ac;                        // JUtility::TColor
+        /* 0x4B0 */ uint32_t field_0x4b0;                        // JUtility::TColor
+        /* 0x4B4 */ uint32_t field_0x4b4;                        // JUtility::TColor
         /* 0x4B8 */ float field_0x4b8;
-        /* 0x4BC */ uint32_t field_0x4bc;     // JUtility::TColor
-        /* 0x4C0 */ uint32_t field_0x4c0;     // JUtility::TColor
-        /* 0x4C4 */ uint32_t field_0x4c4;     // JUtility::TColor
-        /* 0x4C8 */ uint32_t field_0x4c8;     // JUtility::TColor
+        /* 0x4BC */ uint32_t field_0x4bc;                        // JUtility::TColor
+        /* 0x4C0 */ uint32_t field_0x4c0;                        // JUtility::TColor
+        /* 0x4C4 */ uint32_t field_0x4c4;                        // JUtility::TColor
+        /* 0x4C8 */ uint32_t field_0x4c8;                        // JUtility::TColor
         /* 0x4CC */ float field_0x4cc;
-        /* 0x4D0 */ uint32_t field_0x4d0;     // JUtility::TColor
-        /* 0x4D4 */ uint32_t field_0x4d4;     // JUtility::TColor
-        /* 0x4D8 */ uint32_t field_0x4d8;     // JUtility::TColor
-        /* 0x4DC */ uint32_t field_0x4dc;     // JUtility::TColor
+        /* 0x4D0 */ uint32_t field_0x4d0;                        // JUtility::TColor
+        /* 0x4D4 */ uint32_t field_0x4d4;                        // JUtility::TColor
+        /* 0x4D8 */ uint32_t field_0x4d8;                        // JUtility::TColor
+        /* 0x4DC */ uint32_t field_0x4dc;                        // JUtility::TColor
         /* 0x4E0 */ float field_0x4e0;
-        /* 0x4E4 */ uint32_t mMidnaIconHighlightFrontInner;     // JUtility::TColor
-        /* 0x4E8 */ uint32_t mMidnaIconHighlightFrontOuter;     // JUtility::TColor
-        /* 0x4EC */ uint32_t mMidnaIconHighlightBackInner;      // JUtility::TColor
-        /* 0x4F0 */ uint32_t mMidnaIconHighlightBackOuter;      // JUtility::TColor
+        /* 0x4E4 */ uint32_t mMidnaIconHighlightFrontInner;      // JUtility::TColor
+        /* 0x4E8 */ uint32_t mMidnaIconHighlightFrontOuter;      // JUtility::TColor
+        /* 0x4EC */ uint32_t mMidnaIconHighlightBackInner;       // JUtility::TColor
+        /* 0x4F0 */ uint32_t mMidnaIconHighlightBackOuter;       // JUtility::TColor
         /* 0x4F4 */ float mMidnaIconHighlightAnimSpeed;
         /* 0x4F8 */ float mScrollArrowScaleX;
         /* 0x4FC */ float mScrollArrowScaleY;
@@ -1074,8 +1074,8 @@ namespace libtp::tp::d_meter_hio
         /* 0x5E4 */ float mDpadMAPScale;
         /* 0x5E8 */ float mDpadMAPPosX;
         /* 0x5EC */ float mDpadMAPPosY;
-        /* 0x5F0 */ uint32_t mTouchAreaSelectWhite[3];     // JUtility::TColor
-        /* 0x5FC */ uint32_t mTouchAreaSelectBlack[3];     // JUtility::TColor
+        /* 0x5F0 */ uint32_t mTouchAreaSelectWhite[3]; // JUtility::TColor
+        /* 0x5FC */ uint32_t mTouchAreaSelectBlack[3]; // JUtility::TColor
         /* 0x608 */ int16_t mTouchAreaSelectFrameNum;
         /* 0x60A */ bool field_0x60a;
         /* 0x60B */ uint8_t padding_60b[1];
@@ -1092,14 +1092,14 @@ namespace libtp::tp::d_meter_hio
         /* 0xA90 */ dMeter_drawMiniGameHIO_c mMiniGame;
         /* 0xC20 */ dMeter_drawEmpButtonHIO_c mEmpButton;
         /* 0xE7C */ dMeter_drawLightDropHIO_c mLightDrop;
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    static_assert( sizeof( dMeter_drawHIO_c ) == 0xF28 );
+    static_assert(sizeof(dMeter_drawHIO_c) == 0xF28);
 
     class dMeter_ringHIO_c
     {
        public:
-        dMeter_ringHIO_c() { dMeter_ringHIO_c_ct( this ); }
+        dMeter_ringHIO_c() { dMeter_ringHIO_c_ct(this); }
 
         enum
         {
@@ -1141,10 +1141,10 @@ namespace libtp::tp::d_meter_hio
         /* 0x07C */ float mGuidePosY[10];
         /* 0x0A4 */ float mGuideScale[10];
         /* 0x0CC */ float mHighlightScale;
-        /* 0x0D0 */ uint32_t mHighlightFrontInner;     // JUtility::TColor
-        /* 0x0D4 */ uint32_t mHighlightFrontOuter;     // JUtility::TColor
-        /* 0x0D8 */ uint32_t mHighlightBackInner;      // JUtility::TColor
-        /* 0x0DC */ uint32_t mHighlightBackOuter;      // JUtility::TColor
+        /* 0x0D0 */ uint32_t mHighlightFrontInner; // JUtility::TColor
+        /* 0x0D4 */ uint32_t mHighlightFrontOuter; // JUtility::TColor
+        /* 0x0D8 */ uint32_t mHighlightBackInner;  // JUtility::TColor
+        /* 0x0DC */ uint32_t mHighlightBackOuter;  // JUtility::TColor
         /* 0x0E0 */ float mHighlightAnimSpeed;
         /* 0x0E4 */ float mSelectPosX;
         /* 0x0E8 */ float mSelectPosY;
@@ -1165,7 +1165,7 @@ namespace libtp::tp::d_meter_hio
         /* 0x124 */ float mRingAlpha_Wolf;
         /* 0x128 */ float mRingScaleH;
         /* 0x12C */ float mRingScaleV;
-        /* 0x130 */ uint32_t mItemFrame[2];     // JUtility::TColor
+        /* 0x130 */ uint32_t mItemFrame[2]; // JUtility::TColor
         /* 0x138 */ int16_t mItemAlphaFlashDuration;
         /* 0x13A */ int16_t mOpenFrames;
         /* 0x13C */ int16_t mCloseFrames;
@@ -1187,14 +1187,14 @@ namespace libtp::tp::d_meter_hio
         /* 0x155 */ uint8_t mItemAlphaMin;
         /* 0x156 */ uint8_t mItemAlphaMax;
         /* 0x157 */ uint8_t padding_157[1];
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    static_assert( sizeof( dMeter_ringHIO_c ) == 0x158 );
+    static_assert(sizeof(dMeter_ringHIO_c) == 0x158);
 
     class dMeter_mapIconHIO_c
     {
        public:
-        dMeter_mapIconHIO_c() { dMeter_mapIconHIO_c_ct( this ); }
+        dMeter_mapIconHIO_c() { dMeter_mapIconHIO_c_ct(this); }
 
         enum
         {
@@ -1324,9 +1324,9 @@ namespace libtp::tp::d_meter_hio
         /* 0x178 */ bool mIconDebug;
         /* 0x179 */ bool mIconDisplay[22];
         /* 0x18F */ uint8_t padding_18f[1];
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    static_assert( sizeof( dMeter_mapIconHIO_c ) == 0x190 );
+    static_assert(sizeof(dMeter_mapIconHIO_c) == 0x190);
 
     class dMeter_fmapHIO_c
     {
@@ -1359,35 +1359,35 @@ namespace libtp::tp::d_meter_hio
 
         struct BlinkAnime
         {
-            /* 0x0 */ uint32_t mBlack;     // JUtility::TColor
-            /* 0x4 */ uint32_t mWhite;     // JUtility::TColor
+            /* 0x0 */ uint32_t mBlack; // JUtility::TColor
+            /* 0x4 */ uint32_t mWhite; // JUtility::TColor
             /* 0x8 */ int16_t mBlinkSpeed;
             /* 0xA */ uint8_t mMax;
             /* 0xB */ uint8_t mMin;
-        } __attribute__( ( __packed__ ) );
+        } __attribute__((__packed__));
 
-        static_assert( sizeof( BlinkAnime ) == 0xC );
+        static_assert(sizeof(BlinkAnime) == 0xC);
 
         struct MapBlinkAnime
         {
-            MapBlinkAnime() { MapBlinkAnime_ct( this ); }
+            MapBlinkAnime() { MapBlinkAnime_ct(this); }
 
             /* 0x00 */ BlinkAnime mSelectedRegion;
             /* 0x0C */ BlinkAnime mUnselectedRegion;
-            /* 0x18 */ uint32_t mUnreachedRegionBlack;     // JUtility::TColor
-            /* 0x1C */ uint32_t mUnreachedRegionWhite;     // JUtility::TColor
-            /* 0x20 */ uint32_t field_0x20;                // JUtility::TColor
-            /* 0x24 */ uint32_t field_0x24;                // JUtility::TColor
-        } __attribute__( ( __packed__ ) );
+            /* 0x18 */ uint32_t mUnreachedRegionBlack; // JUtility::TColor
+            /* 0x1C */ uint32_t mUnreachedRegionWhite; // JUtility::TColor
+            /* 0x20 */ uint32_t field_0x20;            // JUtility::TColor
+            /* 0x24 */ uint32_t field_0x24;            // JUtility::TColor
+        } __attribute__((__packed__));
 
-        static_assert( sizeof( MapBlinkAnime ) == 0x28 );
+        static_assert(sizeof(MapBlinkAnime) == 0x28);
 
-        dMeter_fmapHIO_c() { dMeter_fmapHIO_c_ct( this ); }
+        dMeter_fmapHIO_c() { dMeter_fmapHIO_c_ct(this); }
 
         /* 0x000 */ void* vtable;
         /* 0x004 */ int8_t field_0x4;
         /* 0x005 */ uint8_t padding_5[3];
-        /* 0x008 */ void* field_0x8;     // JKRArchive
+        /* 0x008 */ void* field_0x8; // JKRArchive
         /* 0x00C */ void* field_0xc;
         /* 0x010 */ void* field_0x10;
         /* 0x014 */ void* field_0x14;
@@ -1457,8 +1457,8 @@ namespace libtp::tp::d_meter_hio
         /* 0x22C */ float mRegionScrollRangeMaxZ[8];
         /* 0x24C */ float mCursorScale;
         /* 0x250 */ float mCursorSpeed;
-        /* 0x254 */ uint32_t mCursorBlack;     // JUtility::TColor
-        /* 0x258 */ uint32_t mCursorWhite;     // JUtility::TColor
+        /* 0x254 */ uint32_t mCursorBlack; // JUtility::TColor
+        /* 0x258 */ uint32_t mCursorWhite; // JUtility::TColor
         /* 0x25C */ cXyz field_0x25c[12];
         /* 0x2EC */ bool mCursorDebugON;
         /* 0x2ED */ bool mButtonDebugON;
@@ -1485,20 +1485,20 @@ namespace libtp::tp::d_meter_hio
         /* 0x305 */ uint8_t field_0x305;
         /* 0x306 */ bool mScrollRangeDebugON;
         /* 0x307 */ bool mScrollRangeDisplay;
-        /* 0x308 */ bool field_0x308;     // related to scroll range display
+        /* 0x308 */ bool field_0x308; // related to scroll range display
         /* 0x309 */ bool mRegionImageDebug;
         /* 0x30A */ bool mRegionBitTerminalOutput;
         /* 0x30B */ bool mDebugRegionBits[8];
         /* 0x313 */ uint8_t padding_313[1];
         /* 0x314 */ dMeter_mapIconHIO_c mMapIconHIO;
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    static_assert( sizeof( dMeter_fmapHIO_c ) == 0x4A4 );
+    static_assert(sizeof(dMeter_fmapHIO_c) == 0x4A4);
 
     class dMeter_cursorHIO_c
     {
        public:
-        dMeter_cursorHIO_c() { dMeter_cursorHIO_c_ct( this ); }
+        dMeter_cursorHIO_c() { dMeter_cursorHIO_c_ct(this); }
 
         /* 0x00 */ void* vtable;
         /* 0x04 */ int8_t field_0x4;
@@ -1514,9 +1514,9 @@ namespace libtp::tp::d_meter_hio
         /* 0x3E */ int16_t mShopObjZoomAngleX;
         /* 0x40 */ int16_t mMagicArmorObjZoomAngleX;
         /* 0x42 */ uint8_t padding_42[2];
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    static_assert( sizeof( dMeter_cursorHIO_c ) == 0x44 );
+    static_assert(sizeof(dMeter_cursorHIO_c) == 0x44);
 
     // Functions/variables
     extern "C"
@@ -1527,5 +1527,5 @@ namespace libtp::tp::d_meter_hio
         extern dMeter_fmapHIO_c g_fmapHIO;
         extern dMeter_cursorHIO_c g_cursorHIO;
     }
-}     // namespace libtp::tp::d_meter_hio
+} // namespace libtp::tp::d_meter_hio
 #endif

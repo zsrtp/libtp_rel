@@ -13,13 +13,13 @@
 
 namespace libtp::util::texture
 {
-    uint8_t* findTexHeaderInTex1Section( uint8_t* tex1Ptr, const char* textureName );
+    uint8_t* findTexHeaderInTex1Section(uint8_t* tex1Ptr, const char* textureName);
 
-    uint32_t swapIndexBits( bool leftIsGreater, uint32_t bits );
+    uint32_t swapIndexBits(bool leftIsGreater, uint32_t bits);
 
-    void recolorCmprTexture( uint8_t* tex1Ptr, const char* textureName, uint8_t* rgb );
+    void recolorCmprTexture(uint8_t* tex1Ptr, const char* textureName, uint8_t* rgb);
 
-    uint8_t* findTex1InBmd( uint8_t* bmdPtr );
+    uint8_t* findTex1InBmd(uint8_t* bmdPtr);
 
-}     // namespace libtp::util::texture
+} // namespace libtp::util::texture
 #endif

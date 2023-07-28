@@ -18,7 +18,7 @@ namespace libtp::tp::d_a_npc
          *
          *  @param flag  The event flag to check as an indexed value.
          */
-        void daNpcT_onEvtBit( int16_t flag );
+        void daNpcT_onEvtBit(int16_t flag);
 
         /**
          *  @brief Checks to see if a permanent Event bit is set.
@@ -27,7 +27,7 @@ namespace libtp::tp::d_a_npc
          *
          *  @return Bool returns True if the flag is set, otherwise returns False.
          */
-        bool daNpcT_chkEvtBit( int16_t flag );
+        bool daNpcT_chkEvtBit(int16_t flag);
 
         /**
          *  @brief Checks to see if a temporary Event Bit is set.
@@ -36,8 +36,8 @@ namespace libtp::tp::d_a_npc
          *
          *  @return Bool returns True if the flag is set, otherwise returns False.
          */
-        bool daNpcF_chkEvtBit( int16_t flag );
+        bool daNpcF_chkEvtBit(int16_t flag);
     }
-}     // namespace libtp::tp::d_a_npc
+} // namespace libtp::tp::d_a_npc
 
 #endif

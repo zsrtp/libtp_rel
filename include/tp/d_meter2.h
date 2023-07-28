@@ -16,15 +16,15 @@ namespace libtp::tp::d_meter2
     struct dMeter2_c
     {
         /* 0x000 */ uint8_t field_0x0[0x100];
-        /* 0x100 */ void* mpHeap;        // JKRExpHeap*
-        /* 0x104 */ void* mpSubHeap;     // JKRExpHeap*
+        /* 0x100 */ void* mpHeap;    // JKRExpHeap*
+        /* 0x104 */ void* mpSubHeap; // JKRExpHeap*
         /* 0x108 */ void* field_0x108;
         /* 0x10C */ libtp::tp::d_meter2_draw::dMeter2Draw_c* mpMeterDraw;
-        /* 0x110 */ void* field_0x110;     // dDlst_base_c*
-        /* 0x114 */ void* field_0x114;     // dDlst_base_c*
-        /* 0x118 */ void* field_0x118;     // dDlst_base_c*
+        /* 0x110 */ void* field_0x110; // dDlst_base_c*
+        /* 0x114 */ void* field_0x114; // dDlst_base_c*
+        /* 0x118 */ void* field_0x118; // dDlst_base_c*
         /* 0x11C */ void* field_0x11c;
-        /* 0x120 */ void* mpMap;     // dMeterMap_c*
+        /* 0x120 */ void* mpMap;       // dMeterMap_c*
         /* 0x124 */ uint32_t field_0x124;
         /* 0x128 */ int32_t field_0x128;
         /* 0x12C */ int32_t field_0x12c;
@@ -107,7 +107,7 @@ namespace libtp::tp::d_meter2
         /* 0x1FF */ uint8_t field_0x1ff;
         /* 0x200 */ uint8_t field_0x200;
         /* 0x201 */ uint8_t field_0x201;
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
     extern "C"
     {
@@ -118,7 +118,7 @@ namespace libtp::tp::d_meter2
          *
          *  @return Returns the status value of the class after the function runs.
          */
-        uint32_t dMeter2_Create( dMeter2_c* dMeterPtr );
+        uint32_t dMeter2_Create(dMeter2_c* dMeterPtr);
     }
-}     // namespace libtp::tp::d_meter2
+} // namespace libtp::tp::d_meter2
 #endif

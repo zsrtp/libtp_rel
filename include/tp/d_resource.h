@@ -17,24 +17,24 @@ namespace libtp::tp::d_resource
         /* 0x0B */ uint8_t padding_0xB;
         /* 0x0C */ uint16_t mCount;
         /* 0x0E */ uint8_t padding[2];
-        /* 0x10 */ void* mDMCommand;     // mDoDvdThd_mountArchive_c*
-        /* 0x14 */ void* mArchive;       // JKRArchive*
-        /* 0x18 */ void* heap;           // JKRHeap*
-        /* 0x1C */ void* mDataHeap;      // JKRSolidHeap*
+        /* 0x10 */ void* mDMCommand; // mDoDvdThd_mountArchive_c*
+        /* 0x14 */ void* mArchive;   // JKRArchive*
+        /* 0x18 */ void* heap;       // JKRHeap*
+        /* 0x1C */ void* mDataHeap;  // JKRSolidHeap*
         /* 0x20 */ void** mRes;
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
     class dRes_control_c
     {
        public:
         /* 0x0000 */ dRes_info_c mObjectInfo[0x80];
         /* 0x1200 */ dRes_info_c mStageInfo[0x40];
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
     extern "C"
     {
-        dRes_info_c* getResInfo( const char* arcName, dRes_info_c* objectInfo, int32_t size );
+        dRes_info_c* getResInfo(const char* arcName, dRes_info_c* objectInfo, int32_t size);
     }
 
-}     // namespace libtp::tp::d_resource
+} // namespace libtp::tp::d_resource
 #endif

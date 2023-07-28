@@ -18,7 +18,7 @@ namespace libtp::tp::d_menu_fmap2D
          *
          *  @return Bool returns True if the player is trying to warp, otherwise returns False.
          */
-        bool checkPlayerWarpAccept( void* mapPtr );
+        bool checkPlayerWarpAccept(void* mapPtr);
     }
-}     // namespace libtp::tp::d_menu_fmap2D
+} // namespace libtp::tp::d_menu_fmap2D
 #endif

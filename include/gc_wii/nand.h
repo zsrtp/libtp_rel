@@ -17,7 +17,7 @@
 
 #define NAND_OPEN_READ 0x01
 #define NAND_OPEN_WRITE 0x02
-#define NAND_OPEN_RW ( NAND_OPEN_READ | NAND_OPEN_WRITE )
+#define NAND_OPEN_RW (NAND_OPEN_READ | NAND_OPEN_WRITE)
 
 #define NAND_PERM_OTHER_READ 0x01
 #define NAND_PERM_OTHER_WRITE 0x02
@@ -40,7 +40,7 @@ namespace libtp::gc_wii::nand
     typedef struct NANDFileInfo
     {
         uint8_t unk[0x8C];
-    } __attribute__( ( __packed__ ) ) NANDFileInfo;
+    } __attribute__((__packed__)) NANDFileInfo;
 
     extern "C"
     {
@@ -55,7 +55,7 @@ namespace libtp::gc_wii::nand
          * @brief Initializes NAND API control blocks. Must be called once before using any other NAND API functions.
          * @return int32_t Error code of the execution
          */
-        int32_t NANDInit( void );
+        int32_t NANDInit(void);
 
         /**
          * @brief Creates a new file on the NAND memory file system.
@@ -65,7 +65,7 @@ namespace libtp::gc_wii::nand
          * @param attributes Unknown usage. Default to 0
          * @return int32_t Error code of the execution
          */
-        int32_t NANDCreate( const char* fileName, uint8_t permissions, int8_t attributes );
+        int32_t NANDCreate(const char* fileName, uint8_t permissions, int8_t attributes);
 
         /**
          * @brief Deletes a file from the NAND memory file system.
@@ -73,7 +73,7 @@ namespace libtp::gc_wii::nand
          * @param fileName Path to the file
          * @return int32_t Error code of the execution
          */
-        int32_t NANDDelete( const char* fileName );
+        int32_t NANDDelete(const char* fileName);
 
         /**
          * @brief Opens a file on the NAND memory file system.
@@ -83,7 +83,7 @@ namespace libtp::gc_wii::nand
          * @param access_type Access type for the file (Read/Write/RW)
          * @return int32_t Error code of the operation
          */
-        int32_t NANDOpen( const char* fileName, NANDFileInfo* fileInfo, uint8_t access_type );
+        int32_t NANDOpen(const char* fileName, NANDFileInfo* fileInfo, uint8_t access_type);
 
         /**
          * @brief Safely opens a file on the NAND memory file system.
@@ -95,11 +95,11 @@ namespace libtp::gc_wii::nand
          * @param size Size of the buffer
          * @return int32_t Error code of the operation
          */
-        int32_t NANDSafeOpen( const char* fileName,
-                              NANDFileInfo* fileInfo,
-                              uint8_t access_type,
-                              void* safeCopyBuf,
-                              uint32_t size );
+        int32_t NANDSafeOpen(const char* fileName,
+                             NANDFileInfo* fileInfo,
+                             uint8_t access_type,
+                             void* safeCopyBuf,
+                             uint32_t size);
 
         /**
          * @brief Closes a file on the NAND memory file system.
@@ -107,7 +107,7 @@ namespace libtp::gc_wii::nand
          * @param fileInfo Pointer to file info to be closed
          * @return int32_t Error code of the operation
          */
-        int32_t NANDClose( NANDFileInfo* fileInfo );
+        int32_t NANDClose(NANDFileInfo* fileInfo);
 
         /**
          * @brief Safely closes a file on the NAND memory file system
@@ -115,7 +115,7 @@ namespace libtp::gc_wii::nand
          * @param fileInfo Pointer to file info to be closed
          * @return int32_t Error code of the operation
          */
-        int32_t NANDSafeClose( NANDFileInfo* fileInfo );
+        int32_t NANDSafeClose(NANDFileInfo* fileInfo);
 
         /**
          * @brief Reads from a file synchronously.
@@ -125,7 +125,7 @@ namespace libtp::gc_wii::nand
          * @param length Number of bytes to be read (multiple of NAND_READ_SIZE)
          * @return int32_t Actual number of bytes read from the file (not rounded to 32), or an error code for the operation
          */
-        int32_t NANDRead( NANDFileInfo* fileInfo, void* dest, uint32_t length );
+        int32_t NANDRead(NANDFileInfo* fileInfo, void* dest, uint32_t length);
 
         /**
          * @brief Writes data to a file synchronously.
@@ -135,7 +135,7 @@ namespace libtp::gc_wii::nand
          * @param length Number of bytes to be written (multiple of NAND_READ_SIZE)
          * @return int32_t Number of bytes written to the file
          */
-        int32_t NANDWrite( NANDFileInfo* fileInfo, const void* src, uint32_t length );
+        int32_t NANDWrite(NANDFileInfo* fileInfo, const void* src, uint32_t length);
 
         /**
          * @brief Seeks the read/write cursor to a given offset of a file.
@@ -145,9 +145,9 @@ namespace libtp::gc_wii::nand
          * @param basePosition Base position to seek from (Start/Current/End)
          * @return int32_t The new position of the cursor, or an error code for the operation
          */
-        int32_t NANDSeek( NANDFileInfo* fileInfo, int32_t offset, int32_t basePosition );
+        int32_t NANDSeek(NANDFileInfo* fileInfo, int32_t offset, int32_t basePosition);
     }
 
-}     // namespace libtp::gc_wii::nand
+} // namespace libtp::gc_wii::nand
 
 #endif

@@ -29,23 +29,23 @@
 
 namespace libtp::tools
 {
-    uint16_t fletcher16( uint8_t* data, int32_t length )
+    uint16_t fletcher16(uint8_t* data, int32_t length)
     {
         uint32_t sum1 = 0;
         uint32_t sum2 = 0;
 
-        for ( int32_t index = 0; index < length; ++index )
+        for (int32_t index = 0; index < length; ++index)
         {
-            sum1 = ( sum1 + data[index] ) % 0xFF;
-            sum2 = ( sum2 + sum1 ) % 0xFF;
+            sum1 = (sum1 + data[index]) % 0xFF;
+            sum2 = (sum2 + sum1) % 0xFF;
         }
 
-        return ( ( sum2 & 0xFFFF ) << 8 ) | ( sum1 & 0xFFFF );
+        return ((sum2 & 0xFFFF) << 8) | (sum1 & 0xFFFF);
     }
 
     // This entire function will need to be re-looked at now that a lot of defintions are different. UPDATE: should be better.
     // updated data types in libtp
-    void TriggerSaveLoad( const char* stage, uint8_t room, uint8_t spawn, uint8_t state, uint8_t event )
+    void TriggerSaveLoad(const char* stage, uint8_t room, uint8_t spawn, uint8_t state, uint8_t event)
     {
         using namespace libtp::tp::d_com_inf_game;
         using namespace libtp::tp::d_stage;
@@ -64,15 +64,15 @@ namespace libtp::tools
         saveRestartPtr->mLastMode = 0;
         stageValuesPtr->mPoint = 0;
         saveRestartPtr->mRoomParam = 0;
-        eventOrderPtr->mEventId = -1;     // immediateControl
+        eventOrderPtr->mEventId = -1; // immediateControl
         nextStagePtr->wipe_speed = 0x13;
 
         nextStagePtr->wipe = true;
 
-        strcpy( stageValuesPtr->mStage, stage );
+        strcpy(stageValuesPtr->mStage, stage);
     }
 
-    int32_t SpawnActor( uint8_t roomID, tp::dzx::ACTR& actor )
+    int32_t SpawnActor(uint8_t roomID, tp::dzx::ACTR& actor)
     {
         using namespace libtp::tp::dzx;
         using namespace libtp::tp::f_op_actor_mng;
@@ -92,10 +92,10 @@ namespace libtp::tools
         actorMemoryPtr->enemy_id = actor.enemyID;
         actorMemoryPtr->room_id = roomID;
 
-        return tp::d_stage::ActorCreate( &actor, actorMemoryPtr );
+        return tp::d_stage::ActorCreate(&actor, actorMemoryPtr);
     }
 
-    int32_t SpawnSCOB( uint8_t roomID, tp::dzx::SCOB& actor_data )
+    int32_t SpawnSCOB(uint8_t roomID, tp::dzx::SCOB& actor_data)
     {
         using namespace libtp::tp::dzx;
         using namespace libtp::tp::f_op_actor_mng;
@@ -118,10 +118,10 @@ namespace libtp::tools
         actorMemoryPtr->mScale[1] = actor_data.yScale;
         actorMemoryPtr->mScale[2] = actor_data.zScale;
 
-        return tp::d_stage::ActorCreate( &actor_data, actorMemoryPtr );
+        return tp::d_stage::ActorCreate(&actor_data, actorMemoryPtr);
     }
 #ifndef PLATFORM_WII
-    int32_t mountMemoryCard( int32_t chan )
+    int32_t mountMemoryCard(int32_t chan)
     {
         using namespace libtp::gc_wii::card;
 
@@ -129,47 +129,47 @@ namespace libtp::tools
         uint8_t* workArea;
 
         // Make sure the memory card is already unmounted before trying to mount it
-        CARDUnmount( chan );
+        CARDUnmount(chan);
 
         // Check if memory card is valid
-        for ( uint32_t i = 0; i < 1000000; i++ )
+        for (uint32_t i = 0; i < 1000000; i++)
         {
-            result = CARDProbeEx( chan, nullptr, nullptr );
-            if ( result != CARD_RESULT_BUSY )
+            result = CARDProbeEx(chan, nullptr, nullptr);
+            if (result != CARD_RESULT_BUSY)
             {
                 break;
             }
         }
 
-        if ( result == CARD_RESULT_READY )
+        if (result == CARD_RESULT_READY)
         {
             workArea = libtp::tp::m_Do_MemCard::MemCardWorkArea0;
 
             // Clear the memory for the work area
-            libtp::memory::clearMemory( workArea, CARD_WORKAREA_SIZE );
+            libtp::memory::clearMemory(workArea, CARD_WORKAREA_SIZE);
 
             // Clear the cache for the work area
-            libtp::gc_wii::os_cache::DCFlushRange( workArea, CARD_WORKAREA_SIZE );
+            libtp::gc_wii::os_cache::DCFlushRange(workArea, CARD_WORKAREA_SIZE);
 
             // Mount the memory card
-            result = CARDMount( chan, workArea, nullptr );
+            result = CARDMount(chan, workArea, nullptr);
 
-            if ( ( result == CARD_RESULT_READY ) || ( result == CARD_RESULT_BROKEN ) )
+            if ((result == CARD_RESULT_READY) || (result == CARD_RESULT_BROKEN))
             {
                 // Check for and attempt to repair memory card errors
-                result = CARDCheck( chan );
+                result = CARDCheck(chan);
             }
         }
 
         return result;
     }
 
-    int32_t ReadGCIMounted( int32_t chan,
-                            const char* fileName,
-                            int32_t length,
-                            int32_t offset,
-                            void* buffer,
-                            bool startAfterComments )
+    int32_t ReadGCIMounted(int32_t chan,
+                           const char* fileName,
+                           int32_t length,
+                           int32_t offset,
+                           void* buffer,
+                           bool startAfterComments)
     {
         using namespace libtp::gc_wii::card;
 
@@ -182,63 +182,63 @@ namespace libtp::tools
         uint8_t* data;
 
         // Read data
-        result = CARDOpen( chan, fileName, &fileInfo );
-        if ( result == CARD_RESULT_READY )
+        result = CARDOpen(chan, fileName, &fileInfo);
+        if (result == CARD_RESULT_READY)
         {
             // Increment the offset if desired
-            if ( startAfterComments )
+            if (startAfterComments)
             {
-                result = CARDGetStatus( chan, fileInfo.fileNo, &stat );
+                result = CARDGetStatus(chan, fileInfo.fileNo, &stat);
 
-                if ( result != CARD_RESULT_READY )
+                if (result != CARD_RESULT_READY)
                 {
-                    CARDClose( &fileInfo );
+                    CARDClose(&fileInfo);
                     return result;
                 }
 
-                offset += stat.commentAddr + ( sizeof( stat.fileName ) * 2 );
+                offset += stat.commentAddr + (sizeof(stat.fileName) * 2);
             }
 
             // Since we can only read in and at increments of CARD_READ_SIZE do this to calculate the region we require
-            adjustedOffset = ( offset / CARD_READ_SIZE ) * CARD_READ_SIZE;
-            adjustedLength = ( 1 + ( ( offset - adjustedOffset + length - 1 ) / CARD_READ_SIZE ) ) * CARD_READ_SIZE;
+            adjustedOffset = (offset / CARD_READ_SIZE) * CARD_READ_SIZE;
+            adjustedLength = (1 + ((offset - adjustedOffset + length - 1) / CARD_READ_SIZE)) * CARD_READ_SIZE;
 
             // Buffer might not be adjusted to the new length so create a temporary data buffer
             // Allocate the memory to the back of the heap to avoid possible fragmentation
             // Buffers that CARDRead uses must be aligned to 0x20 bytes
-            data = new ( -0x20 ) uint8_t[adjustedLength];
+            data = new (-0x20) uint8_t[adjustedLength];
 
-            result = CARDRead( &fileInfo, data, adjustedLength, adjustedOffset );
-            if ( result == CARD_RESULT_READY )
+            result = CARDRead(&fileInfo, data, adjustedLength, adjustedOffset);
+            if (result == CARD_RESULT_READY)
             {
                 // Copy data to the user's buffer
-                memcpy( buffer, data + ( offset - adjustedOffset ), length );
+                memcpy(buffer, data + (offset - adjustedOffset), length);
             }
 
             delete[] data;
-            CARDClose( &fileInfo );
+            CARDClose(&fileInfo);
         }
         // CARDOpen
 
         return result;
     }
 
-    int32_t ReadGCI( int32_t chan, const char* fileName, int32_t length, int32_t offset, void* buffer, bool startAfterComments )
+    int32_t ReadGCI(int32_t chan, const char* fileName, int32_t length, int32_t offset, void* buffer, bool startAfterComments)
     {
         using namespace libtp::gc_wii::card;
         int32_t result;
 
         // Mount the memory card
-        result = mountMemoryCard( chan );
-        if ( result == CARD_RESULT_READY )
+        result = mountMemoryCard(chan);
+        if (result == CARD_RESULT_READY)
         {
-            result = ReadGCIMounted( chan, fileName, length, offset, buffer, startAfterComments );
-            CARDUnmount( chan );
+            result = ReadGCIMounted(chan, fileName, length, offset, buffer, startAfterComments);
+            CARDUnmount(chan);
         }
         return result;
     }
 #else
-    int32_t ReadNAND( const char* fileName, int32_t length, int32_t offset, void* buffer )
+    int32_t ReadNAND(const char* fileName, int32_t length, int32_t offset, void* buffer)
     {
         using namespace libtp::gc_wii::nand;
 
@@ -250,40 +250,40 @@ namespace libtp::tools
         uint8_t* data;
 
         // Read data
-        result = NANDOpen( fileName, &fileInfo, NAND_OPEN_READ );
-        if ( result == NAND_RESULT_READY )
+        result = NANDOpen(fileName, &fileInfo, NAND_OPEN_READ);
+        if (result == NAND_RESULT_READY)
         {
-            result = NANDSeek( &fileInfo, adjustedOffset, NAND_SEEK_START );
-            if ( result == NAND_RESULT_READY )
+            result = NANDSeek(&fileInfo, adjustedOffset, NAND_SEEK_START);
+            if (result == NAND_RESULT_READY)
             {
                 // Since we can only read in and at increments of NAND_READ_SIZE do this to calculate the region we require
-                adjustedOffset = ( offset / NAND_READ_SIZE ) * NAND_READ_SIZE;
-                adjustedLength = ( 1 + ( ( offset - adjustedOffset + length - 1 ) / NAND_READ_SIZE ) ) * NAND_READ_SIZE;
+                adjustedOffset = (offset / NAND_READ_SIZE) * NAND_READ_SIZE;
+                adjustedLength = (1 + ((offset - adjustedOffset + length - 1) / NAND_READ_SIZE)) * NAND_READ_SIZE;
 
                 // Buffer might not be adjusted to the new length so create a temporary data buffer
                 // Allocate the memory to the back of the heap to avoid possible fragmentation
                 // Buffers that NANDRead uses must be aligned to 0x20 bytes
-                data = new ( -0x20 ) uint8_t[adjustedLength];
+                data = new (-0x20) uint8_t[adjustedLength];
 
-                int32_t r = NANDRead( &fileInfo, data, adjustedLength );
-                result = ( r > 0 ) ? NAND_RESULT_READY : r;
+                int32_t r = NANDRead(&fileInfo, data, adjustedLength);
+                result = (r > 0) ? NAND_RESULT_READY : r;
 
-                if ( result == NAND_RESULT_READY )
+                if (result == NAND_RESULT_READY)
                 {
                     // Copy data to the user's buffer
-                    memcpy( buffer, data + ( offset - adjustedOffset ), length );
+                    memcpy(buffer, data + (offset - adjustedOffset), length);
                 }
 
                 delete[] data;
             }
-            NANDClose( &fileInfo );
+            NANDClose(&fileInfo);
         }
         // NANDOpen
 
         return result;
     }
 #endif
-    int32_t ReadFile( const char* file, int32_t length, int32_t offset, void* buffer )
+    int32_t ReadFile(const char* file, int32_t length, int32_t offset, void* buffer)
     {
         using namespace libtp::gc_wii::dvd;
 
@@ -295,42 +295,42 @@ namespace libtp::tools
         uint8_t* data;
 
         // Read data
-        if ( !DVDOpen( file, &fileInfo ) )
+        if (!DVDOpen(file, &fileInfo))
         {
             return DVD_STATE_FATAL_ERROR;
         }
 
         // We can only read in multiples of DVD_READ_SIZE and at offsets in multiples of DVD_OFFSET_SIZE
-        adjustedOffset = ( offset / DVD_OFFSET_SIZE ) * DVD_OFFSET_SIZE;
-        adjustedLength = ( 1 + ( ( offset - adjustedOffset + length - 1 ) / DVD_READ_SIZE ) ) * DVD_READ_SIZE;
+        adjustedOffset = (offset / DVD_OFFSET_SIZE) * DVD_OFFSET_SIZE;
+        adjustedLength = (1 + ((offset - adjustedOffset + length - 1) / DVD_READ_SIZE)) * DVD_READ_SIZE;
 
         // Buffer might not be adjusted to the new length so create a temporary data buffer
         // Allocate the memory to the back of the heap to avoid possible fragmentation
         // Buffers that DVDRead uses must be aligned to 0x20 bytes
-        data = new ( -0x20 ) uint8_t[adjustedLength];
+        data = new (-0x20) uint8_t[adjustedLength];
 
-        const int32_t r = DVDRead( &fileInfo, data, adjustedLength, adjustedOffset );
-        result = ( r > 0 ) ? DVD_STATE_END : r;
-        if ( result == DVD_STATE_END )
+        const int32_t r = DVDRead(&fileInfo, data, adjustedLength, adjustedOffset);
+        result = (r > 0) ? DVD_STATE_END : r;
+        if (result == DVD_STATE_END)
         {
             // Copy data to the user's buffer
-            memcpy( buffer, data + ( offset - adjustedOffset ), length );
+            memcpy(buffer, data + (offset - adjustedOffset), length);
         }
 
         delete[] data;
-        DVDClose( &fileInfo );
+        DVDClose(&fileInfo);
 
         return result;
     }
 #ifdef DVD
-    bool callRelProlog( const char* file )
+    bool callRelProlog(const char* file)
     {
         using namespace libtp::gc_wii::dvd;
         using namespace libtp::gc_wii::os_module;
 
         // Try to open the file from the disc
         DVDFileInfo fileInfo;
-        if ( !DVDOpen( file, &fileInfo ) )
+        if (!DVDOpen(file, &fileInfo))
         {
             return false;
         }
@@ -339,52 +339,52 @@ namespace libtp::tools
         uint32_t length = fileInfo.length;
 
         // Round the length to be in multiples of DVD_READ_SIZE
-        length = ( length + DVD_READ_SIZE - 1 ) & ~( DVD_READ_SIZE - 1 );
+        length = (length + DVD_READ_SIZE - 1) & ~(DVD_READ_SIZE - 1);
 
         // Allocate bytes for the file
         // Allocate the memory to the back of the heap to avoid possible fragmentation
         // Buffers that DVDRead uses must be aligned to 0x20 bytes
-        uint8_t* fileData = new ( -0x20 ) uint8_t[length];
-        libtp::memory::clear_DC_IC_Cache( fileData, length );
+        uint8_t* fileData = new (-0x20) uint8_t[length];
+        libtp::memory::clear_DC_IC_Cache(fileData, length);
 
         // Read the REL from the disc
-        const int32_t r = DVDRead( &fileInfo, fileData, length, 0 );
-        int32_t result = ( r > 0 ) ? DVD_STATE_END : r;
+        const int32_t r = DVDRead(&fileInfo, fileData, length, 0);
+        int32_t result = (r > 0) ? DVD_STATE_END : r;
 
         // Close the file, as it's no longer needed
-        DVDClose( &fileInfo );
+        DVDClose(&fileInfo);
 
         // Make sure the read was successful
-        if ( result != DVD_STATE_END )
+        if (result != DVD_STATE_END)
         {
             delete[] fileData;
             return false;
         }
 
         // Get the REL's BSS size and allocate memory for it
-        OSModuleInfo* relFile = reinterpret_cast<OSModuleInfo*>( fileData );
+        OSModuleInfo* relFile = reinterpret_cast<OSModuleInfo*>(fileData);
         uint32_t bssSize = relFile->bssSize;
 
         // If bssSize is 0, then use an arbitrary size
-        if ( bssSize == 0 )
+        if (bssSize == 0)
         {
             bssSize = 0x1;
         }
 
         // Allocate the memory to the back of the heap to avoid fragmentation
-        uint8_t* bssArea = new ( -( relFile->bssAlignment ) ) uint8_t[bssSize];
+        uint8_t* bssArea = new (-(relFile->bssAlignment)) uint8_t[bssSize];
 
         // Disable interrupts to make sure other REL files do not try to be linked while this one is being linked
         bool enable = libtp::gc_wii::os_interrupt::OSDisableInterrupts();
 
         // Link the REL file
-        if ( !OSLink( relFile, bssArea ) )
+        if (!OSLink(relFile, bssArea))
         {
             // Try to unlink to be safe
-            OSUnlink( relFile );
+            OSUnlink(relFile);
 
             // Restore interrupts
-            libtp::gc_wii::os_interrupt::OSRestoreInterrupts( enable );
+            libtp::gc_wii::os_interrupt::OSRestoreInterrupts(enable);
 
             delete[] bssArea;
             delete[] relFile;
@@ -392,25 +392,25 @@ namespace libtp::tools
         }
 
         // Restore interrupts
-        libtp::gc_wii::os_interrupt::OSRestoreInterrupts( enable );
+        libtp::gc_wii::os_interrupt::OSRestoreInterrupts(enable);
 
         // Call the REL's prolog functon
-        reinterpret_cast<void ( * )()>( relFile->prologFuncOffset )();
+        reinterpret_cast<void (*)()>(relFile->prologFuncOffset)();
 
         // We are done with the REL file, so call it's epilog function to perform any necessary exit code
-        reinterpret_cast<void ( * )()>( relFile->epilogFuncOffset )();
+        reinterpret_cast<void (*)()>(relFile->epilogFuncOffset)();
 
         // Disable interrupts to make sure other REL files do not try to be linked while this one is being unlinked
         enable = libtp::gc_wii::os_interrupt::OSDisableInterrupts();
 
         // All REL functions are done, so the file can be unlinked
-        OSUnlink( relFile );
+        OSUnlink(relFile);
 
         // Restore interrupts
-        libtp::gc_wii::os_interrupt::OSRestoreInterrupts( enable );
+        libtp::gc_wii::os_interrupt::OSRestoreInterrupts(enable);
 
         // Clear the cache of the memory used by the REL file since assembly ran from it
-        libtp::memory::clear_DC_IC_Cache( relFile, length );
+        libtp::memory::clear_DC_IC_Cache(relFile, length);
 
         // Cleanup
         delete[] bssArea;
@@ -419,7 +419,7 @@ namespace libtp::tools
         return true;
     }
 #else
-    bool callRelProlog( int32_t chan, uint32_t rel_id, bool stayMounted )
+    bool callRelProlog(int32_t chan, uint32_t rel_id, bool stayMounted)
     {
         using namespace libtp::gc_wii::card;
         using namespace libtp::gc_wii::os_module;
@@ -430,25 +430,25 @@ namespace libtp::tools
         const char* internalName = "Custom REL File";
         CARDFileInfo fileInfo;
 
-        result = CARDOpen( chan, internalName, &fileInfo );
+        result = CARDOpen(chan, internalName, &fileInfo);
 
         // If CARD_RESULT_NOCARD is returned, then the memory card may not be mounted
-        if ( result == CARD_RESULT_NOCARD )
+        if (result == CARD_RESULT_NOCARD)
         {
-            result = mountMemoryCard( chan );
-            if ( result != CARD_RESULT_READY )
+            result = mountMemoryCard(chan);
+            if (result != CARD_RESULT_READY)
             {
                 return false;
             }
 
-            result = CARDOpen( chan, internalName, &fileInfo );
+            result = CARDOpen(chan, internalName, &fileInfo);
         }
 
-        if ( result != CARD_RESULT_READY )
+        if (result != CARD_RESULT_READY)
         {
-            if ( !stayMounted )
+            if (!stayMounted)
             {
-                CARDUnmount( chan );
+                CARDUnmount(chan);
             }
 
             return false;
@@ -457,38 +457,38 @@ namespace libtp::tools
         // Allocate bytes to hold the area of the file that contains the size
         // Allocate the memory to the back of the heap to avoid possible fragmentation
         // Buffers that CARDRead uses must be aligned to 0x20 bytes
-        uint8_t* fileData = new ( -0x20 ) uint8_t[CARD_READ_SIZE];
+        uint8_t* fileData = new (-0x20) uint8_t[CARD_READ_SIZE];
 
         // Get the data from the area that holds the size
-        result = CARDRead( &fileInfo, fileData, CARD_READ_SIZE, 0x2000 );
-        if ( result != CARD_RESULT_READY )
+        result = CARDRead(&fileInfo, fileData, CARD_READ_SIZE, 0x2000);
+        if (result != CARD_RESULT_READY)
         {
             delete[] fileData;
-            CARDClose( &fileInfo );
+            CARDClose(&fileInfo);
 
-            if ( !stayMounted )
+            if (!stayMounted)
             {
-                CARDUnmount( chan );
+                CARDUnmount(chan);
             }
 
             return false;
         }
 
         // Loop through the REL entries until the desired one is found
-        const RelEntry* entry = reinterpret_cast<RelEntry*>( &fileData[0x44] );
+        const RelEntry* entry = reinterpret_cast<RelEntry*>(&fileData[0x44]);
         bool foundDesiredRel = false;
 
-        for ( uint32_t i = 0; i < MAX_REL_ENTRIES; i++ )
+        for (uint32_t i = 0; i < MAX_REL_ENTRIES; i++)
         {
             const uint32_t currentRelId = entry->rel_id;
 
             // If any of the fields are 0, then there are no more entries
-            if ( ( currentRelId == 0 ) || ( entry->rel_size == 0 ) || ( entry->offset == 0 ) )
+            if ((currentRelId == 0) || (entry->rel_size == 0) || (entry->offset == 0))
             {
                 break;
             }
 
-            if ( currentRelId == rel_id )
+            if (currentRelId == rel_id)
             {
                 // Found the desired REL
                 foundDesiredRel = true;
@@ -498,14 +498,14 @@ namespace libtp::tools
             entry++;
         }
 
-        if ( !foundDesiredRel )
+        if (!foundDesiredRel)
         {
             delete[] fileData;
-            CARDClose( &fileInfo );
+            CARDClose(&fileInfo);
 
-            if ( !stayMounted )
+            if (!stayMounted)
             {
-                CARDUnmount( chan );
+                CARDUnmount(chan);
             }
 
             return false;
@@ -517,41 +517,40 @@ namespace libtp::tools
         delete[] fileData;
 
         // Since we can only read in and at increments of CARD_READ_SIZE do this to calculate the region we require
-        const int32_t adjustedOffset = ( fileOffset / CARD_READ_SIZE ) * CARD_READ_SIZE;
+        const int32_t adjustedOffset = (fileOffset / CARD_READ_SIZE) * CARD_READ_SIZE;
 
-        const int32_t adjustedLength =
-            ( 1 + ( ( fileOffset - adjustedOffset + fileSize - 1 ) / CARD_READ_SIZE ) ) * CARD_READ_SIZE;
+        const int32_t adjustedLength = (1 + ((fileOffset - adjustedOffset + fileSize - 1) / CARD_READ_SIZE)) * CARD_READ_SIZE;
 
         // Buffer might not be adjusted to the new length so create a temporary data buffer
         // Allocate the memory to the back of the heap to avoid fragmentation
         // Buffers that CARDRead uses must be aligned to 0x20 bytes, and REL files must also be aligned to 0x20 bytes
-        fileData = new ( -0x20 ) uint8_t[adjustedLength];
-        libtp::memory::clear_DC_IC_Cache( fileData, adjustedLength );
+        fileData = new (-0x20) uint8_t[adjustedLength];
+        libtp::memory::clear_DC_IC_Cache(fileData, adjustedLength);
 
         // Read the REL file from the memory card
-        result = CARDRead( &fileInfo, fileData, adjustedLength, adjustedOffset );
+        result = CARDRead(&fileInfo, fileData, adjustedLength, adjustedOffset);
 
         // Close the file, as it's no longer needed
-        CARDClose( &fileInfo );
+        CARDClose(&fileInfo);
 
         // Unmount the memory card if necessary, as it's no longer needed
-        if ( !stayMounted )
+        if (!stayMounted)
         {
-            CARDUnmount( chan );
+            CARDUnmount(chan);
         }
 
-        if ( result != CARD_RESULT_READY )
+        if (result != CARD_RESULT_READY)
         {
             delete[] fileData;
             return false;
         }
 
         // Move the data so that the start of the rel file is at the start of the buffer
-        memmove( fileData, fileData + ( fileOffset - adjustedOffset ), fileSize );
+        memmove(fileData, fileData + (fileOffset - adjustedOffset), fileSize);
 
         // Failsafe: Be 100% sure the REL file loaded is the correct one
-        OSModuleInfo* relFile = reinterpret_cast<OSModuleInfo*>( fileData );
-        if ( relFile->id != rel_id )
+        OSModuleInfo* relFile = reinterpret_cast<OSModuleInfo*>(fileData);
+        if (relFile->id != rel_id)
         {
             delete[] relFile;
             return false;
@@ -561,25 +560,25 @@ namespace libtp::tools
         uint32_t bssSize = relFile->bssSize;
 
         // If bssSize is 0, then use an arbitrary size
-        if ( bssSize == 0 )
+        if (bssSize == 0)
         {
             bssSize = 0x1;
         }
 
         // Allocate the memory to the back of the heap to avoid fragmentation
-        uint8_t* bssArea = new ( -( relFile->bssAlignment ) ) uint8_t[bssSize];
+        uint8_t* bssArea = new (-(relFile->bssAlignment)) uint8_t[bssSize];
 
         // Disable interrupts to make sure other REL files do not try to be linked while this one is being linked
         bool enable = libtp::gc_wii::os_interrupt::OSDisableInterrupts();
 
         // Link the REL file
-        if ( !OSLink( relFile, bssArea ) )
+        if (!OSLink(relFile, bssArea))
         {
             // Try to unlink to be safe
-            OSUnlink( relFile );
+            OSUnlink(relFile);
 
             // Restore interrupts
-            libtp::gc_wii::os_interrupt::OSRestoreInterrupts( enable );
+            libtp::gc_wii::os_interrupt::OSRestoreInterrupts(enable);
 
             delete[] bssArea;
             delete[] relFile;
@@ -587,25 +586,25 @@ namespace libtp::tools
         }
 
         // Restore interrupts
-        libtp::gc_wii::os_interrupt::OSRestoreInterrupts( enable );
+        libtp::gc_wii::os_interrupt::OSRestoreInterrupts(enable);
 
         // Call the REL's prolog functon
-        reinterpret_cast<void ( * )()>( relFile->prologFuncOffset )();
+        reinterpret_cast<void (*)()>(relFile->prologFuncOffset)();
 
         // We are done with the REL file, so call it's epilog function to perform any necessary exit code
-        reinterpret_cast<void ( * )()>( relFile->epilogFuncOffset )();
+        reinterpret_cast<void (*)()>(relFile->epilogFuncOffset)();
 
         // Disable interrupts to make sure other REL files do not try to be linked while this one is being unlinked
         enable = libtp::gc_wii::os_interrupt::OSDisableInterrupts();
 
         // All REL functions are done, so the file can be unlinked
-        OSUnlink( relFile );
+        OSUnlink(relFile);
 
         // Restore interrupts
-        libtp::gc_wii::os_interrupt::OSRestoreInterrupts( enable );
+        libtp::gc_wii::os_interrupt::OSRestoreInterrupts(enable);
 
         // Clear the cache of the memory used by the REL file since assembly ran from it
-        libtp::memory::clear_DC_IC_Cache( relFile, fileSize );
+        libtp::memory::clear_DC_IC_Cache(relFile, fileSize);
 
         // Cleanup
         delete[] bssArea;
@@ -614,19 +613,19 @@ namespace libtp::tools
         return true;
     }
 
-    bool callRelProlog( int32_t chan, uint32_t rel_id )
+    bool callRelProlog(int32_t chan, uint32_t rel_id)
     {
         // Call the main function
-        const bool ret = callRelProlog( chan, rel_id, true );
+        const bool ret = callRelProlog(chan, rel_id, true);
 
         // Try to unmount the memory card even if the main function fails
-        libtp::gc_wii::card::CARDUnmount( chan );
+        libtp::gc_wii::card::CARDUnmount(chan);
         return ret;
     }
 #endif
     // xorshift32 was created by George Marsaglia
     // https://www.jstatsoft.org/article/view/v008i14
-    uint32_t xorshift32( uint32_t* state )
+    uint32_t xorshift32(uint32_t* state)
     {
         uint32_t x = *state;
         x ^= x << 13;
@@ -636,29 +635,29 @@ namespace libtp::tools
         return x;
     }
 
-    uint32_t ulRand( uint32_t* state, uint32_t range )
+    uint32_t ulRand(uint32_t* state, uint32_t range)
     {
-        if ( range == 0 )
+        if (range == 0)
         {
             return 0;
         }
 
-        uint32_t ret = xorshift32( state );
-        ret -= ( ret / range ) * range;
+        uint32_t ret = xorshift32(state);
+        ret -= (ret / range) * range;
         return ret;
     }
 
-    int32_t getStageIndex( const char* stage )
+    int32_t getStageIndex(const char* stage)
     {
         // Find the index of this stage
         const auto stagesPtr = &libtp::data::stage::allStages[0];
-        constexpr uint32_t totalStages = sizeof( data::stage::allStages ) / sizeof( data::stage::allStages[0] );
+        constexpr uint32_t totalStages = sizeof(data::stage::allStages) / sizeof(data::stage::allStages[0]);
 
-        for ( uint32_t stageIDX = 0; stageIDX < totalStages; stageIDX++ )
+        for (uint32_t stageIDX = 0; stageIDX < totalStages; stageIDX++)
         {
-            if ( strcmp( stage, stagesPtr[stageIDX] ) == 0 )
+            if (strcmp(stage, stagesPtr[stageIDX]) == 0)
             {
-                return static_cast<int32_t>( stageIDX );
+                return static_cast<int32_t>(stageIDX);
             }
         }
 
@@ -668,29 +667,29 @@ namespace libtp::tools
 
     int32_t getCurrentRoomNo()
     {
-        return static_cast<int32_t>( libtp::tp::d_stage::mStayNo );
+        return static_cast<int32_t>(libtp::tp::d_stage::mStayNo);
     }
 
-    bool playerIsInRoomStage( int32_t room, const char* stage )
+    bool playerIsInRoomStage(int32_t room, const char* stage)
     {
         // Only check room if it is valid
         // Room numbers are normally stored as int8_t, so the highest positive value is 127
-        if ( ( room < 0 ) || ( room > 127 ) )
+        if ((room < 0) || (room > 127))
         {
             return false;
         }
 
-        if ( room != getCurrentRoomNo() )
+        if (room != getCurrentRoomNo())
         {
             return false;
         }
 
         // Only check stage if it is valid
-        if ( !stage )
+        if (!stage)
         {
             return false;
         }
 
-        return libtp::tp::d_a_alink::checkStageName( stage );
+        return libtp::tp::d_a_alink::checkStageName(stage);
     }
-}     // namespace libtp::tools
+} // namespace libtp::tools

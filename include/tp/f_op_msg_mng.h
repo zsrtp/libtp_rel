@@ -20,7 +20,7 @@ namespace libtp::tp::f_op_msg_mng
          *  @param unk2 Unknown.
          *  @return BOOL returns True if successful, otherwise returns False
          */
-        int32_t fopMsgM_messageSet( uint32_t messageIndex, uint32_t unk2 );
+        int32_t fopMsgM_messageSet(uint32_t messageIndex, uint32_t unk2);
 
         /**
          *	@brief Searches through the current event node to find a pointer to the current message structure.
@@ -29,7 +29,7 @@ namespace libtp::tp::f_op_msg_mng
          *
          *  @return Returns a pointer to the message struct if successfull, otherwise returns a nullptr
          */
-        void* fopMsgM_SearchByID( int32_t i_msgID );
+        void* fopMsgM_SearchByID(int32_t i_msgID);
     }
-}     // namespace libtp::tp::f_op_msg_mng
+} // namespace libtp::tp::f_op_msg_mng
 #endif

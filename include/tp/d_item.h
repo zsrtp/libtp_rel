@@ -12,8 +12,8 @@
 
 namespace libtp::tp::d_item
 {
-    typedef void ( *ItemFunc )();
-    typedef int32_t ( *ItemGetCheckFunc )();
+    typedef void (*ItemFunc)();
+    typedef int32_t (*ItemGetCheckFunc)();
 
     extern "C"
     {
@@ -25,14 +25,14 @@ namespace libtp::tp::d_item
          *
          *	@return BOOL returns True if the player has the item, otherwise returns False.
          */
-        int32_t checkItemGet( uint8_t item, int32_t defaultValue );
+        int32_t checkItemGet(uint8_t item, int32_t defaultValue);
 
         /**
          *	@brief Gives the specified item to the player with no cutscene.
          *
          *	@param item id of the item being recieved.
          */
-        void execItemGet( uint8_t item );
+        void execItemGet(uint8_t item);
 
         /**
          *  @brief Sets appropriate flags when the player collects the Wooden Sword.
@@ -47,5 +47,5 @@ namespace libtp::tp::d_item
         extern ItemFunc item_func_ptr[0x100];
         extern ItemGetCheckFunc item_getcheck_func_ptr[0x100];
     }
-}     // namespace libtp::tp::d_item
+} // namespace libtp::tp::d_item
 #endif

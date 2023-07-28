@@ -29,9 +29,9 @@ namespace libtp::tp::d_kankyo
         /* 0x1051 */ uint8_t unk_1051[0x1FB];
         /* 0x124C */ float mTimeSpeed;
         /* 0x1250 */ uint8_t unk_1250[0xC0];
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    static_assert( sizeof( EnvLight ) == 0x1310 );
+    static_assert(sizeof(EnvLight) == 0x1310);
 
     extern "C"
     {
@@ -45,7 +45,7 @@ namespace libtp::tp::d_kankyo
          *
          *  @return Bool returns True if the stage should be in Twilight, otherwise returns False.
          */
-        bool dKy_darkworld_stage_check( char const* stageName, int32_t roomNo );
+        bool dKy_darkworld_stage_check(char const* stageName, int32_t roomNo);
 
         /**
          *  @brief Checks to see it is currently day or night time.
@@ -54,5 +54,5 @@ namespace libtp::tp::d_kankyo
          */
         int32_t dKy_daynight_check();
     }
-}     // namespace libtp::tp::d_kankyo
+} // namespace libtp::tp::d_kankyo
 #endif

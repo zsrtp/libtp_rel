@@ -20,14 +20,14 @@ namespace libtp::tp::jkr_heap
          *	@param heap The heap pointer
          *	@param alignment The alignment to use for the address of the allocated memory
          */
-        void* __nw_JKRHeap( uint32_t size, void* heap, int32_t alignment );
+        void* __nw_JKRHeap(uint32_t size, void* heap, int32_t alignment);
 
         /**
          *	@brief Frees memory used in any of the game's vanilla heaps
          *
          *	@param ptr The pointer to the memory to free
          */
-        void __dl_JKRHeap( void* ptr );
+        void __dl_JKRHeap(void* ptr);
     }
-}     // namespace libtp::tp::jkr_heap
+} // namespace libtp::tp::jkr_heap
 #endif

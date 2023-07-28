@@ -19,7 +19,7 @@ namespace libtp::tp::d_kankyo_rain
          *  @param mtx The matrix values to be drawn.
          *  @param ResTIMG Unknown.
          */
-        void dKyr_odour_draw( float mtx[3][4], uint8_t** ResTIMG );
+        void dKyr_odour_draw(float mtx[3][4], uint8_t** ResTIMG);
     }
-}     // namespace libtp::tp::d_kankyo_rain
+} // namespace libtp::tp::d_kankyo_rain
 #endif

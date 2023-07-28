@@ -63,9 +63,9 @@ namespace libtp::data::items
         Heros_Clothes = 0x2F,
         Magic_Armor = 0x30,
         Zora_Armor = 0x31,
-        Shadow_Crystal = 0x32,     // Does nothing in Vanilla. Is used to handle the transformation flag in the Randomizer.
+        Shadow_Crystal = 0x32, // Does nothing in Vanilla. Is used to handle the transformation flag in the Randomizer.
         Ooccoo_Dungeon = 0x33,
-        Small_Wallet = 0x34,     // Unused
+        Small_Wallet = 0x34,   // Unused
         Big_Wallet = 0x35,
         Giant_Wallet = 0x36,
         /*Piece_of_Heart_2?	=	0x37,*/
@@ -97,7 +97,7 @@ namespace libtp::data::items
         Goron_Bomb_Bag = 0x51,
         /*Giant_Bomb_Bag?	=	0x52,*/
         /*unused = 0x53,*/
-        Small_Quiver = 0x54,     // Unused
+        Small_Quiver = 0x54, // Unused
         Big_Quiver = 0x55,
         Giant_Quiver = 0x56,
         /*unused = 0x57,*/
@@ -279,7 +279,7 @@ namespace libtp::data::items
     };
 
     enum ItemSlot : uint8_t
-    {     // The 24 useable item slots in the game
+    { // The 24 useable item slots in the game
         SLOT_0 = 0,
         SLOT_1 = 1,
         SLOT_2 = 2,
@@ -313,5 +313,5 @@ namespace libtp::data::items
         Compass,
         Big_Key
     };
-}     // namespace libtp::data::items
+} // namespace libtp::data::items
 #endif

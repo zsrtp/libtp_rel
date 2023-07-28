@@ -5,10 +5,7 @@
 
 namespace libtp::z2audiolib::z2soundmgr
 {
-    extern "C" void startSound( void* soungMgr,
-                                libtp::z2audiolib::z2scenemgr::JAISoundID soundId,
-                                void* soundHandle,
-                                void* pos );
+    extern "C" void startSound(void* soungMgr, libtp::z2audiolib::z2scenemgr::JAISoundID soundId, void* soundHandle, void* pos);
 }
 
 #endif

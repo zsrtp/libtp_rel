@@ -16,6 +16,6 @@ namespace libtp::tp
     const JKRCompression COMPRESSION_YAY0 = 1;
     const JKRCompression COMPRESSION_YAZ0 = 2;
     const JKRCompression COMPRESSION_ASR = 3;
-}     // namespace libtp::tp
+} // namespace libtp::tp
 
 #endif

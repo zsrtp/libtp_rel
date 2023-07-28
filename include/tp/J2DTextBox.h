@@ -26,12 +26,12 @@ namespace libtp::tp::J2DTextBox
 
     extern "C"
     {
-        void* J2DTextBox_ct1( void* J2DTextBox );                      // Constructor
-        void* J2DTextBox_dt( void* J2DTextBox, int16_t freeThis );     // Destructor
-        void J2DTextBox_setFont( void* J2DTextBox, void* font );
-        void J2DTextBox_draw1( void* J2DTextBox, float x, float y );
-        void J2DTextBox_draw2( void* J2DTextBox, float x, float y, float maxScreenHorizontalSize, J2DTextBoxHBinding hBind );
-        int32_t J2DTextBox_setString1( void* J2DTextBox, const char* format, ... );
+        void* J2DTextBox_ct1(void* J2DTextBox);                  // Constructor
+        void* J2DTextBox_dt(void* J2DTextBox, int16_t freeThis); // Destructor
+        void J2DTextBox_setFont(void* J2DTextBox, void* font);
+        void J2DTextBox_draw1(void* J2DTextBox, float x, float y);
+        void J2DTextBox_draw2(void* J2DTextBox, float x, float y, float maxScreenHorizontalSize, J2DTextBoxHBinding hBind);
+        int32_t J2DTextBox_setString1(void* J2DTextBox, const char* format, ...);
     }
 
     class J2DTextBox: public libtp::tp::J2DPane::J2DPane
@@ -43,12 +43,12 @@ namespace libtp::tp::J2DTextBox
             /* 0x4 */ float mSizeY;
         };
 
-        J2DTextBox() { J2DTextBox_ct1( this ); }
+        J2DTextBox() { J2DTextBox_ct1(this); }
 
-        void setFontSize( float sizeX, float sizeY )
+        void setFontSize(float sizeX, float sizeY)
         {
             float x;
-            if ( sizeX > 0.0f )
+            if (sizeX > 0.0f)
             {
                 x = sizeX;
             }
@@ -59,7 +59,7 @@ namespace libtp::tp::J2DTextBox
             field_0x11c = x;
 
             float y;
-            if ( sizeY > 0.0f )
+            if (sizeY > 0.0f)
             {
                 y = sizeY;
             }
@@ -70,17 +70,17 @@ namespace libtp::tp::J2DTextBox
             field_0x120 = y;
         }
 
-        void setFontSize( TFontSize size ) { setFontSize( size.mSizeX, size.mSizeY ); }
+        void setFontSize(TFontSize size) { setFontSize(size.mSizeX, size.mSizeY); }
 
-        void setSolidColor( uint32_t color )
+        void setSolidColor(uint32_t color)
         {
             mCharColor = color;
             mGradientColor = color;
         }
 
-        void setLineSpacing( float spacing )
+        void setLineSpacing(float spacing)
         {
-            if ( spacing > 0.0f )
+            if (spacing > 0.0f)
             {
                 mLineSpacing = spacing;
             }
@@ -91,22 +91,22 @@ namespace libtp::tp::J2DTextBox
         }
 
         // Custom implementation of setString to avoid possible fragmentation when allocating memory for the string
-        int32_t setString( const char* string )
+        int32_t setString(const char* string)
         {
             // Make sure memory isn't already allocated for the string
             delete[] mStringPtr;
 
             // Get the length of the string, as well as the size that will be used by it
-            const uint32_t len = strlen( string );
+            const uint32_t len = strlen(string);
             const uint32_t size = len + 1;
 
             // Allocate the memory to the back of the heap to avoid possible fragmentation
             // Align to char, as strings don't have specific alignment requirements
-            char* buf = new ( -sizeof( char ) ) char[size];
-            strcpy( buf, string );
+            char* buf = new (-sizeof(char)) char[size];
+            strcpy(buf, string);
 
             // Assign the variables
-            mStringLength = static_cast<int16_t>( size );
+            mStringLength = static_cast<int16_t>(size);
             mStringPtr = buf;
             return len;
         }
@@ -128,5 +128,5 @@ namespace libtp::tp::J2DTextBox
         /* 0x0131 */ bool mTextFontOwned;
         /* 0x0132 */ int16_t mStringLength;
     };
-}     // namespace libtp::tp::J2DTextBox
+} // namespace libtp::tp::J2DTextBox
 #endif

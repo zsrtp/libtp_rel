@@ -18,7 +18,7 @@ namespace libtp::tp::J3DAnimation
         /* 0x05 */ uint8_t padding5;
         /* 0x06 */ uint16_t mFrameMax;
         /* 0x08 */ float mFrame;
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
     struct J3DAnmTevRegKey: J3DAnmBase
     {
@@ -44,10 +44,10 @@ namespace libtp::tp::J3DAnimation
         /* 0x64 */ int32_t field_0x64;
         /* 0x68 */ int32_t field_0x68;
         /* 0x6C */ int32_t field_0x6c;
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    static_assert( sizeof( J3DAnmBase ) == 0xC );
-    static_assert( sizeof( J3DAnmTevRegKey ) == 0x70 );
+    static_assert(sizeof(J3DAnmBase) == 0xC);
+    static_assert(sizeof(J3DAnmTevRegKey) == 0x70);
 
-}     // namespace libtp::tp::J3DAnimation
+} // namespace libtp::tp::J3DAnimation
 #endif

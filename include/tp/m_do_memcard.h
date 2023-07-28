@@ -15,5 +15,5 @@ namespace libtp::tp::m_Do_MemCard
     {
         extern uint8_t MemCardWorkArea0[0xA000];
     }
-}     // namespace libtp::tp::m_Do_MemCard
+} // namespace libtp::tp::m_Do_MemCard
 #endif

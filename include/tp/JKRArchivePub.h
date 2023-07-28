@@ -20,7 +20,7 @@ namespace libtp::tp::JKRArchivePub
          *  @param JKRArchive A pointer to the JKR Archive to search.
          */
         // Passing in nullptr for JKRArchive will search through all archives for the file
-        void* JKRArchivePub_getGlbResource( uint32_t tag, const char* file, void* JKRArchive );
+        void* JKRArchivePub_getGlbResource(uint32_t tag, const char* file, void* JKRArchive);
     }
-}     // namespace libtp::tp::JKRArchivePub
+} // namespace libtp::tp::JKRArchivePub
 #endif

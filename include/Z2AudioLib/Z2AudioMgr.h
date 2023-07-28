@@ -22,26 +22,26 @@ namespace libtp::z2audiolib::z2audiomgr
         /* 0x04A4 */ libtp::z2audiolib::z2scenemgr::Z2SceneMgr mSceneMgr;
         /* 0x04C4 */ uint8_t mStatusMgr[0x30];
         /* 0x04F4 */ uint8_t mSoundObjMgr[0x20];
-        /* 0x0514 */ void* vtable;     // remove later
+        /* 0x0514 */ void* vtable; // remove later
         /* 0x0518 */ bool mResettingFlag;
         /* 0x0519 */ bool field_0x519;
         /* 0x051A */ uint8_t padding[2];
         /* 0x051C */ uint8_t mAudioReseter[0x10];
         /* 0x052C */ uint32_t mSoundStarter;
         /* 0x0530 */ uint8_t mSoundMgr[0x810];
-        /* 0x0D40 */ void* mSoundInfo[3];     // remove later
+        /* 0x0D40 */ void* mSoundInfo[3]; // remove later
         /* 0x0D4C */ uint8_t mAudience[0x1E0];
         /* 0x0F2C */ uint8_t mSpeechMgr[0x444];
         /* 0x1370 */ uint8_t mFxLineMgr[0x1C];
 
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    static_assert( sizeof( Z2AudioMgr ) == 0x138C );
+    static_assert(sizeof(Z2AudioMgr) == 0x138C);
 
     extern "C"
     {
         extern Z2AudioMgr g_mDoAud_zelAudio;
     };
 
-}     // namespace libtp::z2audiolib::z2audiomgr
+} // namespace libtp::z2audiolib::z2audiomgr
 #endif

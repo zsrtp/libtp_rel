@@ -9,18 +9,18 @@ namespace libtp::tp::J2DPicture
 {
     extern "C"
     {
-        void* J2DPicture_ct4( void* J2DPicture, const void* ResTIMG );     // Constructor
-        void* J2DPicture_dt( void* J2DPicture, int16_t freeThis );         // Destructor
-        void J2DPicture_draw( void* J2DPicture, float x, float y, float width, float height, bool unk5, bool unk6, bool unk7 );
+        void* J2DPicture_ct4(void* J2DPicture, const void* ResTIMG); // Constructor
+        void* J2DPicture_dt(void* J2DPicture, int16_t freeThis);     // Destructor
+        void J2DPicture_draw(void* J2DPicture, float x, float y, float width, float height, bool unk5, bool unk6, bool unk7);
     }
 
     class J2DPicture: public libtp::tp::J2DPane::J2DPane
     {
        public:
-        J2DPicture( const void* ResTIMG ) { J2DPicture_ct4( this, ResTIMG ); }
+        J2DPicture(const void* ResTIMG) { J2DPicture_ct4(this, ResTIMG); }
 
-        void setWhiteColor( uint32_t color ) { mWhite = color; }
-        void setBlackColor( uint32_t color ) { mBlack = color; }
+        void setWhiteColor(uint32_t color) { mWhite = color; }
+        void setBlackColor(uint32_t color) { mBlack = color; }
 
        private:
         /* 0x100 */ void* mTexture[2];
@@ -37,5 +37,5 @@ namespace libtp::tp::J2DPicture
         /* 0x14C */ uint32_t field_0x14c;
     };
 
-}     // namespace libtp::tp::J2DPicture
+} // namespace libtp::tp::J2DPicture
 #endif

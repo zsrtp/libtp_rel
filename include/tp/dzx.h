@@ -27,7 +27,7 @@ namespace libtp::tp::dzx
         int16_t rot[2];
         uint16_t flag;
         uint16_t enemyID;
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
     /**
      *  @brief Holds information about scalable actors and boundaries.
@@ -38,7 +38,7 @@ namespace libtp::tp::dzx
         uint8_t yScale;
         uint8_t zScale;
         uint8_t padding;
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
     /**
      *  @brief Holds information about an ACTR of type TRES
@@ -50,8 +50,8 @@ namespace libtp::tp::dzx
         cXyz pos;
         int32_t angle;
         uint8_t item;
-        uint8_t unk2[3];     // Seems to always be 0xFF
-    } __attribute__( ( __packed__ ) );
+        uint8_t unk2[3]; // Seems to always be 0xFF
+    } __attribute__((__packed__));
 
     /**
      *  @brief Holds information about field a item ACTR (i.e rupees)
@@ -66,7 +66,7 @@ namespace libtp::tp::dzx
         cXyz pos;
         int16_t rot[3];
         uint16_t enemyNum;
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
     /**
      *  @brief Holds information about the given dzx Chunktype
@@ -105,12 +105,12 @@ namespace libtp::tp::dzx
         uint8_t room_id;
 
         uint8_t padding[3];
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    static_assert( sizeof( ACTR ) == 0x20 );
-    static_assert( sizeof( SCOB ) == 0x24 );
-    static_assert( sizeof( TRES ) == 0x20 );
-    static_assert( sizeof( ITEM ) == 0x20 );
-    static_assert( sizeof( ChunkTypeInfo ) == 0xC );
-}     // namespace libtp::tp::dzx
+    static_assert(sizeof(ACTR) == 0x20);
+    static_assert(sizeof(SCOB) == 0x24);
+    static_assert(sizeof(TRES) == 0x20);
+    static_assert(sizeof(ITEM) == 0x20);
+    static_assert(sizeof(ChunkTypeInfo) == 0xC);
+} // namespace libtp::tp::dzx
 #endif

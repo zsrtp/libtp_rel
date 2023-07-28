@@ -16,5 +16,5 @@ namespace libtp::tp::f_pc_node_req
         // TODO: Figure out full class structure and inheritance
         extern void* l_fpcNdRq_Queue;
     }
-}     // namespace libtp::tp::f_pc_node_req
+} // namespace libtp::tp::f_pc_node_req
 #endif

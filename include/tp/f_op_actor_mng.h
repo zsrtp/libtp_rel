@@ -28,13 +28,13 @@ namespace libtp::tp::f_op_actor_mng
          *	@param unk7 Unknown
          *	@return The process ID to be used in the event flow.
          */
-        int32_t createItemForPresentDemo( const float pos[3],
-                                          int32_t item,
-                                          uint8_t unk3,
-                                          int32_t unk4,
-                                          int32_t unk5,
-                                          const float unk6[3],
-                                          const float unk7[3] );
+        int32_t createItemForPresentDemo(const float pos[3],
+                                         int32_t item,
+                                         uint8_t unk3,
+                                         int32_t unk4,
+                                         int32_t unk5,
+                                         const float unk6[3],
+                                         const float unk7[3]);
 
         /**
          *	@brief Runs when Link receives an item by opening a treasure chest
@@ -47,12 +47,12 @@ namespace libtp::tp::f_op_actor_mng
          *	@param scale The scale of the item.
          *	@return The process ID to be used in the event flow.
          */
-        int32_t createItemForTrBoxDemo( const float pos[3],
-                                        int32_t item,
-                                        int32_t itemPickupFlag,
-                                        int32_t roomNo,
-                                        const int16_t rot[3],
-                                        const float scale[3] );
+        int32_t createItemForTrBoxDemo(const float pos[3],
+                                       int32_t item,
+                                       int32_t itemPickupFlag,
+                                       int32_t roomNo,
+                                       const int16_t rot[3],
+                                       const float scale[3]);
 
         /**
          *	@brief Runs when the game creates a boss specific item (heart container)
@@ -67,14 +67,14 @@ namespace libtp::tp::f_op_actor_mng
          *	@param parameters The parameters of the item, including the flags, type, etc.
          *	@return The process ID to be used in the event flow.
          */
-        int32_t createItemForBoss( const float pos[3],
-                                   int32_t item,
-                                   int32_t roomNo,
-                                   const int16_t rot[3],
-                                   const float scale[3],
-                                   float unk6,
-                                   float unk7,
-                                   int32_t parameters );
+        int32_t createItemForBoss(const float pos[3],
+                                  int32_t item,
+                                  int32_t roomNo,
+                                  const int16_t rot[3],
+                                  const float scale[3],
+                                  float unk6,
+                                  float unk7,
+                                  int32_t parameters);
 
         /**
          *	@brief Runs when the game creates a mini-boss specific item (e.g.
@@ -89,13 +89,13 @@ namespace libtp::tp::f_op_actor_mng
          *	@param itemPickupFlag The flag to be set once the item is received.
          *	@return The process ID to be used in the event flow.
          */
-        int32_t createItemForMidBoss( const float pos[3],
-                                      int32_t item,
-                                      int32_t roomNo,
-                                      const int16_t rot[3],
-                                      const float scale[3],
-                                      int32_t unk6,
-                                      int32_t itemPickupFlag );
+        int32_t createItemForMidBoss(const float pos[3],
+                                     int32_t item,
+                                     int32_t roomNo,
+                                     const int16_t rot[3],
+                                     const float scale[3],
+                                     int32_t unk6,
+                                     int32_t itemPickupFlag);
 
         /**
          *	@brief Runs when Link picks up a minor item
@@ -113,18 +113,18 @@ namespace libtp::tp::f_op_actor_mng
          *	@param unk7 Unknown
          *	@return The process ID to be used in the event flow.
          */
-        int32_t createItemForDirectGet( const float pos[3],
-                                        int32_t item,
-                                        int32_t unk3,
-                                        const float unk4[3],
-                                        const float unk5[3],
-                                        float unk6,
-                                        float unk7 );
+        int32_t createItemForDirectGet(const float pos[3],
+                                       int32_t item,
+                                       int32_t unk3,
+                                       const float unk4[3],
+                                       const float unk5[3],
+                                       float unk6,
+                                       float unk7);
 
         /**
          *  @brief Prepares the game for spawning an actor
          */
-        dzx::ActorPRMClass* CreateAppend( void );
+        dzx::ActorPRMClass* CreateAppend(void);
 
         /**
          *	@brief Runs when Link receives up a minor item
@@ -138,13 +138,13 @@ namespace libtp::tp::f_op_actor_mng
          *	@param unk7 Unknown
          *	@return The process ID to be used in the event flow.
          */
-        int32_t createItemForSimpleDemo( const float pos[3],
-                                         int32_t item,
-                                         int32_t unk3,
-                                         const int16_t rot[3],
-                                         const float scale[3],
-                                         float unk6,
-                                         float unk7 );
+        int32_t createItemForSimpleDemo(const float pos[3],
+                                        int32_t item,
+                                        int32_t unk3,
+                                        const int16_t rot[3],
+                                        const float scale[3],
+                                        float unk6,
+                                        float unk7);
 
         /**
          *	@brief Creates the resources for an item that is to be displayed
@@ -158,13 +158,13 @@ namespace libtp::tp::f_op_actor_mng
          *	@param itemAction The ID of the action to be performed.
          *	@return The process ID to be used in the event flow.
          */
-        int32_t createItem( const float pos[3],
-                            int32_t item,
-                            int32_t itemPickupFlag,
-                            int32_t roomNo,
-                            const int16_t rot[3],
-                            const float scale[3],
-                            int32_t itemAction );
+        int32_t createItem(const float pos[3],
+                           int32_t item,
+                           int32_t itemPickupFlag,
+                           int32_t roomNo,
+                           const int16_t rot[3],
+                           const float scale[3],
+                           int32_t itemAction);
 
         /**
          *	@brief Spawns an actor given a specific index
@@ -178,13 +178,13 @@ namespace libtp::tp::f_op_actor_mng
          *	@param unk9 Unknown
          *	@return The process ID to be used in the event flow.
          */
-        int32_t fopAcM_create( int16_t type,
-                               uint32_t params,
-                               const float pos[3],
-                               int32_t roomNo,
-                               const int16_t rot[3],
-                               const float scale[3],
-                               int8_t unk9 );
+        int32_t fopAcM_create(int16_t type,
+                              uint32_t params,
+                              const float pos[3],
+                              int32_t roomNo,
+                              const int16_t rot[3],
+                              const float scale[3],
+                              int8_t unk9);
 
         /**
          *	@brief Checks if Link is currently talking to the specified actor
@@ -193,7 +193,7 @@ namespace libtp::tp::f_op_actor_mng
          *
          *  @return BOOL returns True if Link is talking to the specified actor, otherwise returns False.
          */
-        int32_t fopAcM_getTalkEventPartner( void* actrPtr );
+        int32_t fopAcM_getTalkEventPartner(void* actrPtr);
     }
-}     // namespace libtp::tp::f_op_actor_mng
+} // namespace libtp::tp::f_op_actor_mng
 #endif

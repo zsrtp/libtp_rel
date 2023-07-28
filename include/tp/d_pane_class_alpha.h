@@ -18,7 +18,7 @@ namespace libtp::tp::d_pane_class_alpha
        public:
         /* 0x00 */ void* vtable;
         /* 0x04 */ libtp::tp::J2DWindow::J2DWindow* mWindow;
-        /* 0x08 */ void* heap;     // JKRExpHeap
+        /* 0x08 */ void* heap; // JKRExpHeap
         /* 0x0C */ void* mpFirstStackAlpha;
         /* 0x10 */ void* field_0x10;
         /* 0x14 */ int16_t mChildPaneCount;
@@ -26,7 +26,7 @@ namespace libtp::tp::d_pane_class_alpha
         /* 0x18 */ uint8_t mInitAlpha;
         /* 0x19 */ uint8_t mFlags;
         /* 0x1A */ uint8_t padding[2];
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-}     // namespace libtp::tp::d_pane_class_alpha
+} // namespace libtp::tp::d_pane_class_alpha
 #endif

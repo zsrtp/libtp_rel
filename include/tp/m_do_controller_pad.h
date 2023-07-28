@@ -81,13 +81,13 @@ namespace libtp::tp::m_do_controller_pad
         /* 0x3D */ uint8_t field_0x3d;
         /* 0x3E */ uint8_t field_0x3e;
         /* 0x3F */ uint8_t field_0x3f;
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    static_assert( sizeof( CPadInfo ) == 0x40 );
+    static_assert(sizeof(CPadInfo) == 0x40);
 
     extern "C"
     {
-        extern CPadInfo cpadInfo[4];     // One for each controller port
+        extern CPadInfo cpadInfo[4]; // One for each controller port
     }
-}     // namespace libtp::tp::m_do_controller_pad
+} // namespace libtp::tp::m_do_controller_pad
 #endif

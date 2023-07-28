@@ -17,9 +17,9 @@ namespace libtp::tp::JKRDisposer
        public:
         /* 0x00 */ void* vtable;
         /* 0x04 */ JKRHeap* mHeap;
-        /* 0x08 */ uint8_t field_0x8[0x10];     // JSULink<JKRDisposer> mLink;
+        /* 0x08 */ uint8_t field_0x8[0x10]; // JSULink<JKRDisposer> mLink;
         /* 0x18 */
     };
-}     // namespace libtp::tp::JKRDisposer
+} // namespace libtp::tp::JKRDisposer
 
 #endif

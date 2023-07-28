@@ -20,7 +20,7 @@ namespace libtp::z2audiolib::z2semgr
         /* 0x060 */ uint8_t field_0x60[0x8];        // JAISoundHandles field_0x60
         /* 0x068 */ uint8_t mLevelObjSe[0x168];     // Z2MultiSeObj mLevelObjSe[10]
         /* 0x1D0 */ uint32_t mLevelObjectSeCount;
-        /* 0x1D4 */ uint8_t mMultiTriggerSe[0x168];     // Z2MultiSeObj mMultiTriggerSe[10]
+        /* 0x1D4 */ uint8_t mMultiTriggerSe[0x168]; // Z2MultiSeObj mMultiTriggerSe[10]
         /* 0x33C */ uint8_t mMultiTriggerSeCount;
         /* 0x33D */ uint8_t field_0x33d[0x63];
         /* 0x3A0 */ uint32_t mModY[8];
@@ -38,21 +38,21 @@ namespace libtp::z2audiolib::z2semgr
         /* 0x3CB */ uint8_t field_0x3cb;
         /* 0x3CC */ uint8_t mCrowdSize;
         /* 0x3CD */ uint8_t padding[3];
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    static_assert( sizeof( Z2SeMgr ) == 0x3D0 );
+    static_assert(sizeof(Z2SeMgr) == 0x3D0);
 
     extern "C"
     {
-        void z2SeMgr_seStartLevel( uint32_t sfxID,
-                                   const Vec* unk4,
-                                   uint32_t unk5,
-                                   int8_t unk6,
-                                   float f1,
-                                   float f2,
-                                   float f3,
-                                   float f4,
-                                   uint8_t unk7 );
+        void z2SeMgr_seStartLevel(uint32_t sfxID,
+                                  const Vec* unk4,
+                                  uint32_t unk5,
+                                  int8_t unk6,
+                                  float f1,
+                                  float f2,
+                                  float f3,
+                                  float f4,
+                                  uint8_t unk7);
     };
-}     // namespace libtp::z2audiolib::z2semgr
+} // namespace libtp::z2audiolib::z2semgr
 #endif

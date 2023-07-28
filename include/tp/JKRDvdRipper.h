@@ -28,15 +28,15 @@ namespace libtp::tp::JKRDvdRipper
          *
          *  @return Returns a pointer to the resource that has been loaded.
          */
-        void* loadToMainRAM2( int32_t fileIndex,
-                              uint8_t* unk2,
-                              uint32_t jkrExpandSwitch,
-                              uint32_t unk4,
-                              void* jkrHeap,
-                              uint32_t eAllocDirection,
-                              uint32_t unk7,
-                              int32_t* unk8,
-                              uint32_t* unk9 );
+        void* loadToMainRAM2(int32_t fileIndex,
+                             uint8_t* unk2,
+                             uint32_t jkrExpandSwitch,
+                             uint32_t unk4,
+                             void* jkrHeap,
+                             uint32_t eAllocDirection,
+                             uint32_t unk7,
+                             int32_t* unk8,
+                             uint32_t* unk9);
     }
-}     // namespace libtp::tp::JKRDvdRipper
+} // namespace libtp::tp::JKRDvdRipper
 #endif

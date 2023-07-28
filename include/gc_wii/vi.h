@@ -15,7 +15,7 @@ namespace libtp::gc_wii::vi
 {
     extern "C"
     {
-        void VISetNextFrameBuffer( void* fb );
+        void VISetNextFrameBuffer(void* fb);
     }
-}     // namespace libtp::gc_wii::vi
+} // namespace libtp::gc_wii::vi
 #endif

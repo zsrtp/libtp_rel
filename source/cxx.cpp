@@ -17,7 +17,7 @@
 #include "tp/dynamic_link.h"
 #endif
 
-void* getHeapPtr( int32_t id )
+void* getHeapPtr(int32_t id)
 {
     static void** heapPtrArray[] = {
         &libtp::tp::m_Do_ext::AssertHeap,
@@ -41,8 +41,8 @@ void* getHeapPtr( int32_t id )
     };
 
     // Make sure the id is valid
-    constexpr uint32_t heapPtrArraySize = sizeof( heapPtrArray ) / sizeof( heapPtrArray[0] );
-    if ( ( id < 0 ) || ( static_cast<uint32_t>( id ) >= heapPtrArraySize ) )
+    constexpr uint32_t heapPtrArraySize = sizeof(heapPtrArray) / sizeof(heapPtrArray[0]);
+    if ((id < 0) || (static_cast<uint32_t>(id) >= heapPtrArraySize))
     {
         // The id is invalid, so use the archive heap by default
         id = HEAP_ARCHIVE;
@@ -51,33 +51,33 @@ void* getHeapPtr( int32_t id )
     return *heapPtrArray[id];
 }
 
-void* allocateMemory( std::size_t size, void* heap, int32_t alignment )
+void* allocateMemory(std::size_t size, void* heap, int32_t alignment)
 {
     // Make sure the heap exists
-    if ( !heap )
+    if (!heap)
     {
         return nullptr;
     }
 
-    void* ptr = libtp::tp::jkr_heap::__nw_JKRHeap( size, heap, alignment );
-    ptr = memset( ptr, 0, size );
-    libtp::gc_wii::os_cache::DCFlushRange( ptr, size );
+    void* ptr = libtp::tp::jkr_heap::__nw_JKRHeap(size, heap, alignment);
+    ptr = memset(ptr, 0, size);
+    libtp::gc_wii::os_cache::DCFlushRange(ptr, size);
     return ptr;
 }
 
-void* allocateMemoryFromMainHeap( std::size_t size, int32_t alignment )
+void* allocateMemoryFromMainHeap(std::size_t size, int32_t alignment)
 {
     void* heapPtr = libtp::tp::m_Do_ext::archiveHeap;
-    return allocateMemory( size, heapPtr, alignment );
+    return allocateMemory(size, heapPtr, alignment);
 }
 
-void* allocateMemoryFromMainHeap( std::size_t size )
+void* allocateMemoryFromMainHeap(std::size_t size)
 {
-    return allocateMemoryFromMainHeap( size, 0x20 );
+    return allocateMemoryFromMainHeap(size, 0x20);
 }
 
-void* allocateMemoryFromHeapId( std::size_t size, int32_t alignment, int32_t id )
+void* allocateMemoryFromHeapId(std::size_t size, int32_t alignment, int32_t id)
 {
-    void* heapPtr = getHeapPtr( id );
-    return allocateMemory( size, heapPtr, alignment );
+    void* heapPtr = getHeapPtr(id);
+    return allocateMemory(size, heapPtr, alignment);
 }
