@@ -126,11 +126,8 @@ namespace libtp::patch
 
             uint32_t instructionAddress = reinterpret_cast<uint32_t>( &instructions[1] );
             address = reinterpret_cast<uint32_t*>( instructionAddress + branchLength );
-
         }
 
-        uint32_t instructionAddress = reinterpret_cast<uint32_t>( &instructions[1] );
-        uint32_t* address = reinterpret_cast<uint32_t*>( instructionAddress + branchLength );
         *address = instructions[0];
 
         // Clear the cache for both the address and where the instructions were stored

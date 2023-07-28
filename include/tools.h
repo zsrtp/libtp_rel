@@ -42,17 +42,6 @@ namespace libtp::tools
      */
     int32_t SpawnActor( uint8_t roomID, tp::dzx::ACTR& actor );
 
-#ifndef PLATFORM_WII
-
-    /**
-     *  @brief Mounts a memory card
-     *
-     *  @param chan Slot to check for the memory card
-     *
-     *  @return One of the CARD_RESULT Constants (CARD_RESULT_READY, ...)
-     */
-    int32_t mountMemoryCard( int32_t chan );
-
     /**
      *  @brief Spawns an actor
      *
