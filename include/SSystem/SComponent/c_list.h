@@ -17,7 +17,7 @@ namespace libtp::tp
     {
         node_class* mpHead;
         node_class* mpTail;
-        int mSize;
+        int32_t mSize;
     } node_list_class;
 }     // namespace libtp::tp
 

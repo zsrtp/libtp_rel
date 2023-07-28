@@ -7,9 +7,11 @@
 #ifndef TP_JKRCOMPRESSION_H
 #define TP_JKRCOMPRESSION_H
 
+#include <cstdint>
+
 namespace libtp::tp
 {
-    typedef int JKRCompression;
+    typedef int32_t JKRCompression;
     const JKRCompression COMPRESSION_NONE = 0;
     const JKRCompression COMPRESSION_YAY0 = 1;
     const JKRCompression COMPRESSION_YAZ0 = 2;
