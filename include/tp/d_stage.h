@@ -81,7 +81,8 @@ namespace libtp::tp::d_stage
         void roomTresureInit( void* unk1, dzx::ChunkTypeInfo* chunkTypeInfo, int32_t unk3, void* unk4 );
 
         /**
-         *  @brief Initialises Actors, can run multiple times per load - Global Based on Room
+         *  @brief Initialises Actors, can run multiple times per load - Global Based on
+         * Room
          *
          *  @param mStatus_roomControl Pointer to roomControl data (unknown)
          *  @param chunkTypeInfo Pointer to dzxHeader

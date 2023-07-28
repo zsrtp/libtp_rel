@@ -5,7 +5,7 @@ This project is meant to be the backbone of your Twilight Princess mod by provid
 It also features some basic tools and wrapper functions to avoid recreating the same code for future RELs
 
 # Links
- - [TP Dev Discord](//discord.gg/CsDF9hY)
+ - [TP Dev Discord](//discord.gg/aZx8ZFcSPy)
  - [TP Discord](//discord.gg/tp)
 
 # Usage

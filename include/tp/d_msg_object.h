@@ -1,5 +1,6 @@
 /**	@file d_msg_object.h
- *	@brief Contains some of the functions used in getting the values for a message
+ *	@brief Contains some of the functions used in getting the values for a
+ *message
  *
  *	@author Lunar Soap
  *  @author Zephiles
@@ -40,7 +41,8 @@ namespace libtp::tp::d_msg_object
          * @param msgObjPtr A pointer to the current message node object.
          * @param param_1 - Unknown
          * @param itemIndex - The itemId of the item received + 0x65
-         * @param param_3 - Unknown. I think it checks for a valid message but more research is needed
+         * @param param_3 - Unknown. I think it checks for a valid message but more
+         * research is needed
          */
         void setMessageIndex( void* msgObjPtr, uint32_t param_1, uint32_t itemIndex, bool param_3 );
 

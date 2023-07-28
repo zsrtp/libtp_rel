@@ -8,7 +8,8 @@
 #ifndef TP_JFWSYSTEM_H
 #define TP_JFWSYSTEM_H
 
-// Dedicated console line used to print messages wtihout relying on the Console Class from libtp
+// Dedicated console line used to print messages wtihout relying on the Console
+// Class from libtp
 #define JFW_DEBUG_LINE 24
 
 #include <cstdint>

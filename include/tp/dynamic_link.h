@@ -46,5 +46,13 @@ namespace libtp::tp::dynamic_link
 
         extern void* m_heap;
     }
+
+    namespace DynamicModuleControlBase
+    {
+        extern "C"
+        {
+            extern void* m_heap;
+        }
+    }     // namespace DynamicModuleControlBase
 }     // namespace libtp::tp::dynamic_link
 #endif

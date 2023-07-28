@@ -363,6 +363,13 @@ namespace libtp::tp::d_a_alink
          */
         libtp::tp::f_op_actor::fopAc_ac_c* searchBouDoor( libtp::tp::f_op_actor::fopAc_ac_c* actrPtr );
 
+        /**
+         *  @brief Checks to see if an eventBit for the currently active save is set.
+         *
+         *  @param flag Offset+Flag
+         */
+        bool dComIfGs_isEventBit( uint16_t flag );
+
         extern ClimbVars climbVars;
         extern LinkStatus* linkStatus;
         extern WallMoveVars wallMoveVars;
