@@ -2,6 +2,7 @@
  *	@brief Holds structs that contain values for item data
  *
  *	@author Zephiles
+ *  @author Lunar Soap
  *	@bug No known bugs.
  */
 #ifndef TP_D_ITEM_DATA_H
@@ -25,7 +26,7 @@ namespace libtp::tp::d_item_data
         uint8_t btpFrm;
         int16_t ringTexResIdx;
         int16_t unk_12[3];
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
     struct FieldItemRes
     {
@@ -36,25 +37,25 @@ namespace libtp::tp::d_item_data
         int16_t unk_a;
         int16_t heapSize;
         int16_t unk_e;
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    struct ItemInfo     // d_item_data.h
+    struct ItemInfo // d_item_data.h
     {
         uint8_t mShadowSize;
         uint8_t mCollisionH;
         uint8_t mCollisionR;
         uint8_t mFlags;
-    } __attribute__( ( __packed__ ) );
+    } __attribute__((__packed__));
 
-    static_assert( sizeof( ItemResource ) == 0x18 );
-    static_assert( sizeof( FieldItemRes ) == 0x10 );
-    static_assert( sizeof( ItemInfo ) == 0x4 );
+    static_assert(sizeof(ItemResource) == 0x18);
+    static_assert(sizeof(FieldItemRes) == 0x10);
+    static_assert(sizeof(ItemInfo) == 0x4);
 
     extern "C"
     {
-        extern ItemResource item_resource[255];      // 0x803AC5A0 in US
-        extern FieldItemRes field_item_res[255];     // 0x803ADD88 in US
-        extern ItemInfo item_info[255];              // 0x803AED78 in US
+        extern ItemResource item_resource[255];
+        extern FieldItemRes field_item_res[255];
+        extern ItemInfo item_info[255];
     }
-}     // namespace libtp::tp::d_item_data
+} // namespace libtp::tp::d_item_data
 #endif

@@ -1,8 +1,10 @@
 /**	@file dvdfs.h
- *	@brief Holds functions that use the dvd files
+ *	@brief Holds function defintions for the DVD Filesystem
  *
+ *	For additional information check the dolphin OS manual
  *
  *	@author Zephiles
+ *  @author Lunar Soap
  *	@bug No known bugs.
  */
 #ifndef GC_WII_DVDFS_H
@@ -14,7 +16,7 @@ namespace libtp::gc_wii::dvdfs
 {
     extern "C"
     {
-        int32_t DVDConvertPathToEntrynum( const char* fileName );
+        int32_t DVDConvertPathToEntrynum(const char* fileName);
     }
-}     // namespace libtp::gc_wii::dvdfs
+} // namespace libtp::gc_wii::dvdfs
 #endif

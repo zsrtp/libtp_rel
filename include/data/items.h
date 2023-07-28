@@ -21,8 +21,8 @@ namespace libtp::data::items
         Purple_Rupee = 0x05,
         Orange_Rupee = 0x06,
         Silver_Rupee = 0x07,
-        Borrow_Bomb_Bag = 0x08,
-        Bomb_Bag_And_Bombs = 0x09,
+        /*Small Magic	=	0x08,*/
+        /*Large Magic	=	0x09,*/
         Bombs_5 = 0x0A,
         Bombs_10 = 0x0B,
         Bombs_20 = 0x0C,
@@ -32,9 +32,9 @@ namespace libtp::data::items
         Arrows_30 = 0x10,
         Arrows_1 = 0x11,
         Seeds_50 = 0x12,
-        /*?	=	0x13,*/
-        /*?	=	0x14,*/
-        /*?	=	0x15,*/
+        /*unused = 0x13,*/
+        /*unused = 0x14,*/
+        /*unused = 0x15,*/
         Water_Bombs_5 = 0x16,
         Water_Bombs_10 = 0x17,
         Water_Bombs_15 = 0x18,
@@ -63,9 +63,9 @@ namespace libtp::data::items
         Heros_Clothes = 0x2F,
         Magic_Armor = 0x30,
         Zora_Armor = 0x31,
-        /*does notting*/ Shadow_Crystal = 0x32,
+        Shadow_Crystal = 0x32, // Does nothing in Vanilla. Is used to handle the transformation flag in the Randomizer.
         Ooccoo_Dungeon = 0x33,
-        /*unused*/ Small_Wallet = 0x34,
+        Small_Wallet = 0x34,   // Unused
         Big_Wallet = 0x35,
         Giant_Wallet = 0x36,
         /*Piece_of_Heart_2?	=	0x37,*/
@@ -83,24 +83,24 @@ namespace libtp::data::items
         Heros_Bow = 0x43,
         Clawshot = 0x44,
         Iron_Boots = 0x45,
-        Dominion_Rod = 0x46,
-        Clawshots = 0x47,
+        Dominion_Rod_Uncharged = 0x46,
+        Double_Clawshots = 0x47,
         Lantern = 0x48,
         Master_Sword_Light = 0x49,
         Fishing_Rod = 0x4A,
         Slingshot = 0x4B,
-        Dominion_Rod_Uncharged = 0x4C,
-        /*?	=	0x4D,*/
-        /*?	=	0x4E,*/
+        Dominion_Rod = 0x4C,
+        /*unused = 0x4D,*/
+        /*unused = 0x4E,*/
         Giant_Bomb_Bag = 0x4F,
         Empty_Bomb_Bag = 0x50,
         Goron_Bomb_Bag = 0x51,
         /*Giant_Bomb_Bag?	=	0x52,*/
-        /*?	=	0x53,*/
-        /*unused*/ Small_Quiver = 0x54,
+        /*unused = 0x53,*/
+        Small_Quiver = 0x54, // Unused
         Big_Quiver = 0x55,
         Giant_Quiver = 0x56,
-        /*?	=	0x57,*/
+        /*unused = 0x57,*/
         Fishing_Rod_Lure = 0x58,
         Bow_Bombs = 0x59,
         Bow_Hawkeye = 0x5A,
@@ -146,29 +146,29 @@ namespace libtp::data::items
         Wooden_Statue = 0x82,
         Ilias_Charm = 0x83,
         Horse_Call = 0x84,
-        /*?	=	0x85,*/
-        /*?	=	0x86,*/
-        /*?	=	0x87,*/
-        /*?	=	0x88,*/
-        /*?	=	0x89,*/
-        /*?	=	0x8A,*/
-        /*?	=	0x8B,*/
-        /*?	=	0x8C,*/
-        /*?	=	0x8D,*/
-        /*?	=	0x8E,*/
-        /*?	=	0x8F,*/
+        /*unused = 0x85,*/
+        /*unused = 0x86,*/
+        /*unused = 0x87,*/
+        /*unused = 0x88,*/
+        /*unused = 0x89,*/
+        /*unused = 0x8A,*/
+        /*unused = 0x8B,*/
+        /*unused = 0x8C,*/
+        /*unused = 0x8D,*/
+        /*unused = 0x8E,*/
+        /*unused =0x8F,*/
         Aurus_Memo = 0x90,
         Asheis_Sketch = 0x91,
-        /*?	=	0x92,*/
-        /*?	=	0x93,*/
-        /*?	=	0x94,*/
-        /*?	=	0x95,*/
-        /*?	=	0x96,*/
-        /*?	=	0x97,*/
-        /*?	=	0x98,*/
-        /*?	=	0x99,*/
-        /*?	=	0x9A,*/
-        /*?	=	0x9B,*/
+        /*unused = 0x92,*/
+        /*unused = 0x93,*/
+        /*unused = 0x94,*/
+        /*unused = 0x95,*/
+        /*unused = 0x96,*/
+        /*unused = 0x97,*/
+        /*unused = 0x98,*/
+        /*unused = 0x99,*/
+        /*unused = 0x9A,*/
+        /*unused = 0x9B,*/
         Lantern_Yellow_Chu_Chu = 0x9C,
         Coro_Bottle = 0x9D,
         Bee_Larva_Shop = 0x9E,
@@ -178,32 +178,32 @@ namespace libtp::data::items
         Vessel_Of_Light_Eldin = 0xA2,
         Vessel_Of_Light_Lanayru = 0xA3,
         /*unused*/ Vessel_Of_Light_Full = 0xA4,
-        /*?	=	0xA5,*/
-        /*?	=	0xA6,*/
-        /*?	=	0xA7,*/
-        /*?	=	0xA8,*/
-        /*?	=	0xA9,*/
-        /*?	=	0xAA,*/
-        /*?	=	0xAB,*/
-        /*?	=	0xAC,*/
-        /*?	=	0xAD,*/
-        /*?	=	0xAE,*/
-        /*?	=	0xAF,*/
+        /*unused*/ Mirror_Piece_2 = 0xA5,
+        /*unused*/ Mirror_Piece_3 = 0xA6,
+        /*unused*/ Mirror_Piece_4 = 0xA7,
+        /*unused = 0xA8,*/
+        /*unused = 0xA9,*/
+        /*unused = 0xAA,*/
+        /*unused = 0xAB,*/
+        /*unused = 0xAC,*/
+        /*unused = 0xAD,*/
+        /*unused = 0xAE,*/
+        /*unused = 0xAF,*/
         Ilias_Scent = 0xB0,
-        /*Unused_Scent?	=	0xB1,*/
+        /*unused scent? = 0xB1,*/
         Poe_Scent = 0xB2,
         Reekfish_Scent = 0xB3,
         Youths_Scent = 0xB4,
         Medicine_Scent = 0xB5,
-        /*?	=	0xB6,*/
-        /*?	=	0xB7,*/
-        /*?	=	0xB8,*/
-        /*?	=	0xB9,*/
-        /*?	=	0xBA,*/
-        /*?	=	0xBB,*/
-        /*?	=	0xBC,*/
-        /*?	=	0xBD,*/
-        /*?	=	0xBE,*/
+        /*unused = 0xB6,*/
+        /*unused = 0xB7,*/
+        /*unused = 0xB8,*/
+        /*unused = 0xB9,*/
+        /*unused = 0xBA,*/
+        /*unused = 0xBB,*/
+        /*unused = 0xBC,*/
+        /*unused = 0xBD,*/
+        /*unused = 0xBE,*/
         /*Bottle_Insides?	=	0xBF,*/
         Male_Beetle = 0xC0,
         Female_Beetle = 0xC1,
@@ -229,28 +229,28 @@ namespace libtp::data::items
         Female_Ant = 0xD5,
         Male_Dayfly = 0xD6,
         Female_Dayfly = 0xD7,
-        /*?	=	0xD8,*/
-        /*?	=	0xD9,*/
-        /*?	=	0xDA,*/
-        /*?	=	0xDB,*/
-        /*?	=	0xDC,*/
-        /*?	=	0xDD,*/
-        /*?	=	0xDE,*/
-        /*?	=	0xDF,*/
+        /*unused = 0xD8,*/
+        /*unused = 0xD9,*/
+        /*unused = 0xDA,*/
+        /*unused = 0xDB,*/
+        /*unused = 0xDC,*/
+        /*unused = 0xDD,*/
+        /*unused = 0xDE,*/
+        /*unused = 0xDF,*/
         Poe_Soul = 0xE0,
-        /*?	=	0xE1,*/
-        /*?	=	0xE2,*/
-        /*?	=	0xE3,*/
-        /*?	=	0xE4,*/
-        /*?	=	0xE5,*/
-        /*?	=	0xE6,*/
-        /*?	=	0xE7,*/
+        /*unused = 0xE1,*/
+        /*unused = 0xE2,*/
+        /*unused = 0xE3,*/
+        /*unused = 0xE4,*/
+        /*unused = 0xE5,*/
+        /*unused = 0xE6,*/
+        /*unused = 0xE7,*/
         /*?	=	0xE8,*/
-        Ancient_Sky_Book_empty = 0xE9,
-        Ancient_Sky_Book_partly_filled = 0xEA,
-        Ancient_Sky_Book_completed = 0xEB,
+        Ancient_Sky_Book_Empty = 0xE9,
+        Ancient_Sky_Book_Partly_Filled = 0xEA,
+        Ancient_Sky_Book_Completed = 0xEB,
         Ooccoo_CitS = 0xEC,
-        Purple_Rupee_Links_house = 0xED,
+        Purple_Rupee_Links_House = 0xED,
         Small_Key_N_Faron_Gate = 0xEE,
         /*Blue_Fire?	=	0xEF,*/
         /*Blue_Fire?	=	0xF0,*/
@@ -270,5 +270,48 @@ namespace libtp::data::items
         Coro_Key = 0xFE,
         /*Gives_Vanilla*/ NullItem = 0xFF
     };
-}     // namespace libtp::data::items
+
+    enum Wallets : uint8_t
+    {
+        WALLET = 0,
+        BIG_WALLET = 1,
+        GIANT_WALLET = 2
+    };
+
+    enum ItemSlot : uint8_t
+    { // The 24 useable item slots in the game
+        SLOT_0 = 0,
+        SLOT_1 = 1,
+        SLOT_2 = 2,
+        SLOT_3 = 3,
+        SLOT_4 = 4,
+        SLOT_5 = 5,
+        SLOT_6 = 6,
+        SLOT_7 = 7,
+        SLOT_8 = 8,
+        SLOT_9 = 9,
+        SLOT_10 = 10,
+        SLOT_11 = 11,
+        SLOT_12 = 12,
+        SLOT_13 = 13,
+        SLOT_14 = 14,
+        SLOT_15 = 15,
+        SLOT_16 = 16,
+        SLOT_17 = 17,
+        SLOT_18 = 18,
+        SLOT_19 = 19,
+        SLOT_20 = 20,
+        SLOT_21 = 21,
+        SLOT_22 = 22,
+        SLOT_23 = 23
+    };
+
+    enum class NodeDungeonItemType : uint8_t
+    {
+        Small_Key,
+        Dungeon_Map,
+        Compass,
+        Big_Key
+    };
+} // namespace libtp::data::items
 #endif

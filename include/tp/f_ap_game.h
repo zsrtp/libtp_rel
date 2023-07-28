@@ -16,5 +16,5 @@ namespace libtp::tp::f_ap_game
          */
         void fapGm_Execute();
     }
-}     // namespace libtp::tp::f_ap_game
+} // namespace libtp::tp::f_ap_game
 #endif

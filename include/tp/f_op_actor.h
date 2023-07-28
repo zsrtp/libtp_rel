@@ -22,7 +22,7 @@ namespace libtp::tp::f_op_actor
         int16_t mRoomNo;
     };
 
-    static_assert( sizeof( actor_place ) == 0x14 );
+    static_assert(sizeof(actor_place) == 0x14);
 
     struct actor_attention_types
     {
@@ -33,13 +33,13 @@ namespace libtp::tp::f_op_actor
         /* 0x18 */ uint32_t mFlags;
     };
 
-    static_assert( sizeof( actor_attention_types ) == 0x1C );
+    static_assert(sizeof(actor_attention_types) == 0x1C);
 
     class fopAc_ac_c
     {
        public:
         uint8_t unk_0x0[0x494];
-        // /* 0x0C0 */ int mAcType;
+        // /* 0x0C0 */ int32_t mAcType;
         // /* 0x0C4 */ create_tag_class mAcTg;
         // /* 0x0D8 */ create_tag_class mDwTg;
         // /* 0x0EC */ profile_method_class* mSubMtd;
@@ -63,8 +63,8 @@ namespace libtp::tp::f_op_actor
         // Visible rotation of actor; x and z rotation axis is relative to actor
         /* 0x4E4 */ csXyz mCollisionRot;
         /* 0x4EC */ cXyz mScale;
-        /* 0x4F8 */ cXyz mSpeed;                // x,y,z velocities
-        /* 0x504 */ uint8_t unk_0x504[0x4];     // MtxP mCullMtx;
+        /* 0x4F8 */ cXyz mSpeed;            // x,y,z velocities
+        /* 0x504 */ uint8_t unk_0x504[0x4]; // MtxP mCullMtx;
         union
         {
             struct
@@ -79,17 +79,17 @@ namespace libtp::tp::f_op_actor
             } mSphere;
         } mCull;
         /* 0x520 */ float mCullSizeFar;
-        /* 0x524 */ void* field_0x524;          // Possibly J3DModel*
-        /* 0x528 */ uint8_t unk_0x528[0x4];     //  dJntCol_c* mJntCol;
-        /* 0x52C */ float mSpeedF;              // acceleration on X-Z plane (horizontal)
-        /* 0x530 */ float mGravity;             //  acceleration on Y axis (vertical)
-        /* 0x534 */ float mMaxFallSpeed;        //  minimum y velocity (expect this to be negative)
+        /* 0x524 */ void* field_0x524;      // Possibly J3DModel*
+        /* 0x528 */ uint8_t unk_0x528[0x4]; //  dJntCol_c* mJntCol;
+        /* 0x52C */ float mSpeedF;          // acceleration on X-Z plane (horizontal)
+        /* 0x530 */ float mGravity;         //  acceleration on Y axis (vertical)
+        /* 0x534 */ float mMaxFallSpeed;    //  minimum y velocity (expect this to be negative)
         /* 0x538 */ cXyz mEyePos;
         /* 0x544 */ actor_attention_types mAttentionInfo;
         /* 0x560 */ uint8_t unk_544[0x8];
     };
 
-    static_assert( sizeof( fopAc_ac_c ) == 0x568 );
-}     // namespace libtp::tp::f_op_actor
+    static_assert(sizeof(fopAc_ac_c) == 0x568);
+} // namespace libtp::tp::f_op_actor
 
 #endif

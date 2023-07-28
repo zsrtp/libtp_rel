@@ -13,8 +13,13 @@ namespace libtp::tp::m_Do_printf
 {
     extern "C"
     {
-        void OSReport( const char* string, ... );
+        /**
+         *	@brief Prints the specified message to the OS.
+         *
+         *  @param string The message to print.
+         */
+        void OSReport(const char* string, ...);
     }
-}     // namespace libtp::tp::m_Do_printf
+} // namespace libtp::tp::m_Do_printf
 
 #endif

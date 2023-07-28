@@ -7,11 +7,13 @@
 #ifndef TP_M_DO_MEMCARD_H
 #define TP_M_DO_MEMCARD_H
 
+#include <cstdint>
+
 namespace libtp::tp::m_Do_MemCard
 {
     extern "C"
     {
         extern uint8_t MemCardWorkArea0[0xA000];
     }
-}     // namespace libtp::tp::m_Do_MemCard
+} // namespace libtp::tp::m_Do_MemCard
 #endif

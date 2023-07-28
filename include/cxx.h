@@ -11,6 +11,8 @@
 #include <cstdint>
 #include <new>
 
+#include "tp/JKRHeap.h"
+
 enum HeapID : int32_t
 {
     HEAP_ASSERT = 0,
@@ -33,15 +35,62 @@ enum HeapID : int32_t
 #endif
 };
 
-void* operator new( std::size_t size );
-void* operator new[]( std::size_t size );
-void* operator new( std::size_t size, int32_t alignment );
-void* operator new[]( std::size_t size, int32_t alignment );
-void* operator new( std::size_t size, int32_t alignment, int32_t heapId );
-void* operator new[]( std::size_t size, int32_t alignment, int32_t heapId );
-void operator delete( void* ptr );
-void operator delete[]( void* ptr );
-void operator delete( void* ptr, std::size_t size );
-void operator delete[]( void* ptr, std::size_t size );
+void* allocateMemoryFromMainHeap(std::size_t size, int32_t alignment);
+void* allocateMemoryFromMainHeap(std::size_t size);
+void* allocateMemoryFromHeapId(std::size_t size, int32_t alignment, int32_t id);
 
-#endif     // LIBTP_CXX_H
+inline void* operator new(std::size_t size)
+{
+    return allocateMemoryFromMainHeap(size);
+}
+
+inline void* operator new[](std::size_t size)
+{
+    return allocateMemoryFromMainHeap(size);
+}
+
+inline void* operator new(std::size_t size, int32_t alignment)
+{
+    return allocateMemoryFromMainHeap(size, alignment);
+}
+
+inline void* operator new[](std::size_t size, int32_t alignment)
+{
+    return allocateMemoryFromMainHeap(size, alignment);
+}
+
+inline void* operator new(std::size_t size, int32_t alignment, int32_t id)
+{
+    return allocateMemoryFromHeapId(size, alignment, id);
+}
+
+inline void* operator new[](std::size_t size, int32_t alignment, int32_t id)
+{
+    return allocateMemoryFromHeapId(size, alignment, id);
+}
+
+inline void operator delete(void* ptr)
+{
+    return libtp::tp::jkr_heap::__dl_JKRHeap(ptr);
+}
+
+inline void operator delete[](void* ptr)
+{
+    return libtp::tp::jkr_heap::__dl_JKRHeap(ptr);
+}
+
+inline void operator delete(void* ptr, std::size_t size)
+{
+    (void)size;
+
+    return libtp::tp::jkr_heap::__dl_JKRHeap(ptr);
+}
+
+inline void operator delete[](void* ptr, std::size_t size)
+{
+    (void)size;
+
+    return libtp::tp::jkr_heap::__dl_JKRHeap(ptr);
+}
+
+#endif // LIBTP_CXX_H

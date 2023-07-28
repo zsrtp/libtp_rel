@@ -17,7 +17,7 @@
 #include "tp/dynamic_link.h"
 #endif
 
-void* getHeapPtr( int32_t id )
+void* getHeapPtr(int32_t id)
 {
     static void** heapPtrArray[] = {
         &libtp::tp::m_Do_ext::AssertHeap,
@@ -36,13 +36,13 @@ void* getHeapPtr( int32_t id )
 #ifndef PLATFORM_WII
         &libtp::tp::m_Do_ext::HostIOHeap,
 #else
-        &libtp::tp::dynamic_link::DynamicModuleControlBase::m_heap,
+        &libtp::tp::dynamic_link::m_heap,
 #endif
     };
 
     // Make sure the id is valid
-    constexpr uint32_t heapPtrArraySize = sizeof( heapPtrArray ) / sizeof( heapPtrArray[0] );
-    if ( ( id < 0 ) || ( static_cast<uint32_t>( id ) >= heapPtrArraySize ) )
+    constexpr uint32_t heapPtrArraySize = sizeof(heapPtrArray) / sizeof(heapPtrArray[0]);
+    if ((id < 0) || (static_cast<uint32_t>(id) >= heapPtrArraySize))
     {
         // The id is invalid, so use the archive heap by default
         id = HEAP_ARCHIVE;
@@ -51,82 +51,33 @@ void* getHeapPtr( int32_t id )
     return *heapPtrArray[id];
 }
 
-void* allocateMemory( std::size_t size, void* heap, int32_t alignment )
+void* allocateMemory(std::size_t size, void* heap, int32_t alignment)
 {
     // Make sure the heap exists
-    if ( !heap )
+    if (!heap)
     {
         return nullptr;
     }
 
-    void* ptr = libtp::tp::jkr_heap::__nw_JKRHeap( size, heap, alignment );
-    ptr = memset( ptr, 0, size );
-    libtp::gc_wii::os_cache::DCFlushRange( ptr, size );
+    void* ptr = libtp::tp::jkr_heap::__nw_JKRHeap(size, heap, alignment);
+    ptr = memset(ptr, 0, size);
+    libtp::gc_wii::os_cache::DCFlushRange(ptr, size);
     return ptr;
 }
 
-void* allocateMemoryFromMainHeap( std::size_t size, int32_t alignment )
+void* allocateMemoryFromMainHeap(std::size_t size, int32_t alignment)
 {
     void* heapPtr = libtp::tp::m_Do_ext::archiveHeap;
-    return allocateMemory( size, heapPtr, alignment );
+    return allocateMemory(size, heapPtr, alignment);
 }
 
-void* allocateMemoryFromHeapId( std::size_t size, int32_t alignment, int32_t id )
+void* allocateMemoryFromMainHeap(std::size_t size)
 {
-    void* heapPtr = getHeapPtr( id );
-    return allocateMemory( size, heapPtr, alignment );
+    return allocateMemoryFromMainHeap(size, 0x20);
 }
 
-void* operator new( std::size_t size )
+void* allocateMemoryFromHeapId(std::size_t size, int32_t alignment, int32_t id)
 {
-    return allocateMemoryFromMainHeap( size, 0x20 );
-}
-
-void* operator new[]( std::size_t size )
-{
-    return allocateMemoryFromMainHeap( size, 0x20 );
-}
-
-void* operator new( std::size_t size, int32_t alignment )
-{
-    return allocateMemoryFromMainHeap( size, alignment );
-}
-
-void* operator new[]( std::size_t size, int32_t alignment )
-{
-    return allocateMemoryFromMainHeap( size, alignment );
-}
-
-void* operator new( std::size_t size, int32_t alignment, int32_t id )
-{
-    return allocateMemoryFromHeapId( size, alignment, id );
-}
-
-void* operator new[]( std::size_t size, int32_t alignment, int32_t id )
-{
-    return allocateMemoryFromHeapId( size, alignment, id );
-}
-
-void operator delete( void* ptr )
-{
-    return libtp::tp::jkr_heap::__dl_JKRHeap( ptr );
-}
-
-void operator delete[]( void* ptr )
-{
-    return libtp::tp::jkr_heap::__dl_JKRHeap( ptr );
-}
-
-void operator delete( void* ptr, std::size_t size )
-{
-    (void) size;
-
-    return libtp::tp::jkr_heap::__dl_JKRHeap( ptr );
-}
-
-void operator delete[]( void* ptr, std::size_t size )
-{
-    (void) size;
-
-    return libtp::tp::jkr_heap::__dl_JKRHeap( ptr );
+    void* heapPtr = getHeapPtr(id);
+    return allocateMemory(size, heapPtr, alignment);
 }
