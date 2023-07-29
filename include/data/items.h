@@ -63,7 +63,7 @@ namespace libtp::data::items
         Heros_Clothes = 0x2F,
         Magic_Armor = 0x30,
         Zora_Armor = 0x31,
-        Shadow_Crystal = 0x32, // Does nothing in Vanilla. Is used to handle the transformation flag in the Randomizer.
+        Shadow_Crystal = 0x32, // Does nothing in Vanilla.
         Ooccoo_Dungeon = 0x33,
         Small_Wallet = 0x34,   // Unused
         Big_Wallet = 0x35,
