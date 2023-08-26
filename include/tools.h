@@ -32,7 +32,7 @@ namespace libtp::tools
      *  @param state Current State (Link)
      *  @param event EventID to trigger
      */
-    void TriggerSaveLoad(const char* stage, uint8_t room, uint8_t spawn, uint8_t state = 0xFF, uint8_t event = 0xFF);
+    void triggerSaveLoad(const char* stage, uint8_t room, uint8_t spawn, uint8_t state = 0xFF, uint8_t event = 0xFF);
 
     /**
      *  @brief Spawns an actor
@@ -40,7 +40,7 @@ namespace libtp::tools
      *  @param roomID Room id to spawn the actor
      *  @param actor The actor object to be spawned
      */
-    int32_t SpawnActor(uint8_t roomID, tp::dzx::ACTR& actor);
+    int32_t spawnActor(uint8_t roomID, tp::dzx::ACTR& actor);
 
     /**
      *  @brief Spawns an actor
@@ -48,7 +48,7 @@ namespace libtp::tools
      *  @param roomID Room id to spawn the actor
      *  @param actor The actor object to be spawned
      */
-    int32_t SpawnSCOB(uint8_t roomID, tp::dzx::SCOB& actor_data);
+    int32_t spawnSCOB(uint8_t roomID, tp::dzx::SCOB& actor_data);
 
 #ifndef PLATFORM_WII
     /**
@@ -74,7 +74,7 @@ namespace libtp::tools
      *
      *  @return One of the CARD_RESULT Constants (CARD_RESULT_READY, ...)
      */
-    int32_t ReadGCIMounted(int32_t chan,
+    int32_t readGCIMounted(int32_t chan,
                            const char* fileName,
                            int32_t length,
                            int32_t offset,
@@ -95,7 +95,7 @@ namespace libtp::tools
      *
      *  @return One of the CARD_RESULT Constants (CARD_RESULT_READY, ...)
      */
-    int32_t ReadGCI(int32_t chan, const char* fileName, int32_t length, int32_t offset, void* buffer, bool startAfterComments);
+    int32_t readGCI(int32_t chan, const char* fileName, int32_t length, int32_t offset, void* buffer, bool startAfterComments);
 #else
     /**
      *  @brief Reads NAND data from offset to offset + length into buffer
@@ -107,7 +107,7 @@ namespace libtp::tools
      *
      *  @return One of the NAND_RESULT Constants (NAND_RESULT_READY, ...)
      */
-    int32_t ReadNAND(const char* fileName, int32_t length, int32_t offset, void* buffer);
+    int32_t readNAND(const char* fileName, int32_t length, int32_t offset, void* buffer);
 #endif
     /**
      *  @brief Reads file data from offset to offset + length into buffer.
@@ -119,7 +119,7 @@ namespace libtp::tools
      *
      *  @return One of the DVD_STATE Constants (DVD_STATE_END, ...)
      */
-    int32_t ReadFile(const char* file, int32_t length, int32_t offset, void* buffer);
+    int32_t readFile(const char* file, int32_t length, int32_t offset, void* buffer);
 #ifdef DVD
     /**
      *  @brief Loads a REL file from the disc and runs it's prolog function

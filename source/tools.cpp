@@ -45,7 +45,7 @@ namespace libtp::tools
 
     // This entire function will need to be re-looked at now that a lot of defintions are different. UPDATE: should be better.
     // updated data types in libtp
-    void TriggerSaveLoad(const char* stage, uint8_t room, uint8_t spawn, uint8_t state, uint8_t event)
+    void triggerSaveLoad(const char* stage, uint8_t room, uint8_t spawn, uint8_t state, uint8_t event)
     {
         using namespace libtp::tp::d_com_inf_game;
         using namespace libtp::tp::d_stage;
@@ -72,7 +72,7 @@ namespace libtp::tools
         strcpy(stageValuesPtr->mStage, stage);
     }
 
-    int32_t SpawnActor(uint8_t roomID, tp::dzx::ACTR& actor)
+    int32_t spawnActor(uint8_t roomID, tp::dzx::ACTR& actor)
     {
         using namespace libtp::tp::dzx;
         using namespace libtp::tp::f_op_actor_mng;
@@ -95,7 +95,7 @@ namespace libtp::tools
         return tp::d_stage::ActorCreate(&actor, actorMemoryPtr);
     }
 
-    int32_t SpawnSCOB(uint8_t roomID, tp::dzx::SCOB& actor_data)
+    int32_t spawnSCOB(uint8_t roomID, tp::dzx::SCOB& actor_data)
     {
         using namespace libtp::tp::dzx;
         using namespace libtp::tp::f_op_actor_mng;
@@ -164,7 +164,7 @@ namespace libtp::tools
         return result;
     }
 
-    int32_t ReadGCIMounted(int32_t chan,
+    int32_t readGCIMounted(int32_t chan,
                            const char* fileName,
                            int32_t length,
                            int32_t offset,
@@ -223,7 +223,7 @@ namespace libtp::tools
         return result;
     }
 
-    int32_t ReadGCI(int32_t chan, const char* fileName, int32_t length, int32_t offset, void* buffer, bool startAfterComments)
+    int32_t readGCI(int32_t chan, const char* fileName, int32_t length, int32_t offset, void* buffer, bool startAfterComments)
     {
         using namespace libtp::gc_wii::card;
         int32_t result;
@@ -232,13 +232,13 @@ namespace libtp::tools
         result = mountMemoryCard(chan);
         if (result == CARD_RESULT_READY)
         {
-            result = ReadGCIMounted(chan, fileName, length, offset, buffer, startAfterComments);
+            result = readGCIMounted(chan, fileName, length, offset, buffer, startAfterComments);
             CARDUnmount(chan);
         }
         return result;
     }
 #else
-    int32_t ReadNAND(const char* fileName, int32_t length, int32_t offset, void* buffer)
+    int32_t readNAND(const char* fileName, int32_t length, int32_t offset, void* buffer)
     {
         using namespace libtp::gc_wii::nand;
 
@@ -283,7 +283,7 @@ namespace libtp::tools
         return result;
     }
 #endif
-    int32_t ReadFile(const char* file, int32_t length, int32_t offset, void* buffer)
+    int32_t readFile(const char* file, int32_t length, int32_t offset, void* buffer)
     {
         using namespace libtp::gc_wii::dvd;
 
