@@ -7,7 +7,7 @@
 
 namespace libtp::memory
 {
-    void* clearMemory(void* ptr, size_t size)
+    void* clearMemory(void* ptr, std::size_t size)
     {
         return memset(ptr, 0, size);
     }
