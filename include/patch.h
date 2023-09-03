@@ -21,6 +21,12 @@ namespace libtp::patch
     void writeStandardBranches(void* ptr, void* funcStart, void* funcEnd);
 
     template<typename Func, typename Dest>
+    void writeBranch(Func func, Dest dst)
+    {
+        writeBranch(reinterpret_cast<void*>(func), reinterpret_cast<void*>(dst));
+    }
+
+    template<typename Func, typename Dest>
     void writeBranchBL(Func func, Dest dst)
     {
         writeBranchBL(reinterpret_cast<void*>(func), reinterpret_cast<void*>(dst));

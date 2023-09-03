@@ -182,9 +182,9 @@ namespace libtp::display
     Console& operator<<(Console& console, uint64_t n)
     {
         // Custom print this
-        char buf[64];
+        char buf[32];
 
-        snprintf(buf, sizeof(buf), "%" PRIu64, n);
+        snprintf(buf, sizeof(buf), "%016" PRIx64, n);
         console.parse(buf);
 
         return console;
