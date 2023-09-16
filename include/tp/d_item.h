@@ -45,7 +45,7 @@ namespace libtp::tp::d_item
         void item_func_UTUWA_HEART();
 
         /**
-         *  @brief  Sets the appropriate flag for the sketch so it dosen't show up in the inventory if the check is already got.
+         *  @brief  Sets the appropriate flags when the player collects Ashei's Sketch.
          */
         void item_func_ASHS_SCRIBBLING();
 
