@@ -59,11 +59,11 @@ namespace libtp::tp::d_a_alink
     {
         /* 0x00 */ int16_t field_0x00; // end f?
         /* 0x02 */ uint16_t padding_0x02;
-        /* 0x04 */ float field_0x04;   // speed?
-        /* 0x08 */ float field_0x08;   // start?
-        /* 0x0C */ float field_0x0c;   // interpolation?
-        /* 0x10 */ float field_0x10;   // CF?
-    } __attribute__((__packed__));     // size = 0x14
+        /* 0x04 */ float field_0x04; // speed?
+        /* 0x08 */ float field_0x08; // start?
+        /* 0x0C */ float field_0x0c; // interpolation?
+        /* 0x10 */ float field_0x10; // CF?
+    } __attribute__((__packed__));   // size = 0x14
 
     struct WallMoveVars
     {
@@ -362,6 +362,17 @@ namespace libtp::tp::d_a_alink
          *  @param actrPtr A pointer to an actor near Link
          */
         libtp::tp::f_op_actor::fopAc_ac_c* searchBouDoor(libtp::tp::f_op_actor::fopAc_ac_c* actrPtr);
+
+        /**
+         *	@brief Checks for any factors that could increase the damage Link takes.
+         *
+         *  @param linkActrPtr A pointer to Link's Actor
+         *  @param param_1 Unknown
+         *  @param param_2 Unknown
+         *
+         *  @return Returns a float that is the multiplier for the damage Link takes.
+         */
+        float damageMagnification(daAlink* linkActrPtr, int32_t param_1, int32_t param_2);
 
         /**
          *  @brief Checks to see if an eventBit for the currently active save is set.
