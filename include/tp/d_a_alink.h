@@ -370,6 +370,14 @@ namespace libtp::tp::d_a_alink
          */
         bool dComIfGs_isEventBit(uint16_t flag);
 
+         /**
+         *  @brief Checks to see if Link can use an item
+         *
+         *  @param item_id  id of the item
+         */
+        bool checkCastleTownUseItem(uint16_t item_id);
+
+
         extern ClimbVars climbVars;
         extern LinkStatus* linkStatus;
         extern WallMoveVars wallMoveVars;
