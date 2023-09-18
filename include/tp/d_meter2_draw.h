@@ -262,5 +262,16 @@ namespace libtp::tp::d_meter2_draw
         /* 0x861 */ uint8_t field_0x861;
         /* 0x862 */ uint8_t padding[0x2];
     } __attribute__((__packed__));
+
+    extern "C"
+    {
+        /**
+         *	@brief Handles the classes that draws the Lantern Oil meter on the screen, as well as others.
+         *
+         *  @param dMeterDrawPtr A pointer to the current dMeter2Draw structure
+         *  @param i_meterType The type of meter being drawn (Lantern, Breath, Magic, etc.)
+         */
+        void drawKanteraScreen(dMeter2Draw_c* dMeterDrawPtr, uint8_t i_meterType);
+    }
 } // namespace libtp::tp::d_meter2_draw
 #endif
