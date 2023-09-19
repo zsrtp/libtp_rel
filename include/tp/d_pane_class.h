@@ -10,6 +10,7 @@
 #include <cstdint>
 
 #include "tp/d_pane_class_alpha.h"
+#include "TColor.h"
 
 namespace libtp::tp::d_pane_class
 {
@@ -17,11 +18,11 @@ namespace libtp::tp::d_pane_class
     {
         /* 0x1C */ void* mpFirstStackSize;
         /* 0x20 */ void* field_0x20;
-        /* 0x24 */ float mInitPos;      // JGeometry::TVec2<float>
-        /* 0x2C */ float mGlobalPos;    // JGeometry::TVec2<float>
-        /* 0x34 */ float mInitSize;     // JGeometry::TVec2<float>
-        /* 0x3C */ float mInitScale;    // JGeometry::TVec2<float>
-        /* 0x44 */ float mInitTrans;    // JGeometry::TVec2<float>
+        /* 0x24 */ float mInitPos;   // JGeometry::TVec2<float>
+        /* 0x2C */ float mGlobalPos; // JGeometry::TVec2<float>
+        /* 0x34 */ float mInitSize;  // JGeometry::TVec2<float>
+        /* 0x3C */ float mInitScale; // JGeometry::TVec2<float>
+        /* 0x44 */ float mInitTrans; // JGeometry::TVec2<float>
         /* 0x4C */ float mRotateZ;
         /* 0x50 */ float mRotateOffset; // JGeometry::TVec2<float>
         /* 0x58 */ uint32_t mInitWhite; // JUtility::TColor
@@ -33,5 +34,19 @@ namespace libtp::tp::d_pane_class
         /* 0x68 */ int16_t field_0x68;
         /* 0x6A */ int16_t mColorAnime;
     } __attribute__((__packed__));
+
+    extern "C"
+    {
+        /**
+         *	@brief Updates the referenced CPaneMgr's color values with the specified color structs.
+         *
+         *  @param panePtr The pointer to the currently referenced CPaneMgr.
+         *  @param black The pointer to the primary color structure.
+         *  @param white The pointer to the secondary color structure.
+         */
+        void setBlackWhite(libtp::tp::d_pane_class::CPaneMgr* panePtr,
+                           libtp::tp::JUtility::TColor* black,
+                           libtp::tp::JUtility::TColor* white);
+    }
 } // namespace libtp::tp::d_pane_class
 #endif
