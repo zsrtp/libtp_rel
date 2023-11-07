@@ -381,13 +381,33 @@ namespace libtp::tp::d_a_alink
          */
         bool dComIfGs_isEventBit(uint16_t flag);
 
-         /**
+        /**
          *  @brief Checks to see if Link can use an item
          *
          *  @param item_id  id of the item
          */
         bool checkCastleTownUseItem(uint16_t item_id);
 
+        /**
+         *  @brief Initializes the animation for Link to bonk into something.
+         *
+         *  @param linkActrPtr A pointer to Link's Actor
+         */
+        int32_t procFrontRollCrashInit(daAlink* linkActrPtr);
+
+        /**
+         *  @brief Initializes the animation for Wolf Link when he bonks into a wall via a dash.
+         *
+         *  @param linkActrPtr A pointer to Link's Actor
+         */
+        int32_t procWolfDashReverseInit(daAlink* linkActrPtr);
+
+        /**
+         *  @brief Initializes the animation for Wolf Link when he bonks into a wall via an attack.
+         *
+         *  @param linkActrPtr A pointer to Link's Actor
+         */
+        int32_t procWolfAttackReverseInit(daAlink* linkActrPtr);
 
         extern ClimbVars climbVars;
         extern LinkStatus* linkStatus;
