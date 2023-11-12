@@ -393,21 +393,21 @@ namespace libtp::tp::d_a_alink
          *
          *  @param linkActrPtr A pointer to Link's Actor
          */
-        int32_t procFrontRollCrashInit(daAlink* linkActrPtr);
+        bool procFrontRollCrashInit(daAlink* linkActrPtr);
 
         /**
          *  @brief Initializes the animation for Wolf Link when he bonks into a wall via a dash.
          *
          *  @param linkActrPtr A pointer to Link's Actor
          */
-        int32_t procWolfDashReverseInit(daAlink* linkActrPtr);
+        bool procWolfDashReverseInit(daAlink* linkActrPtr, bool param_1);
 
         /**
          *  @brief Initializes the animation for Wolf Link when he bonks into a wall via an attack.
          *
          *  @param linkActrPtr A pointer to Link's Actor
          */
-        int32_t procWolfAttackReverseInit(daAlink* linkActrPtr);
+        bool procWolfAttackReverseInit(daAlink* linkActrPtr);
 
         extern ClimbVars climbVars;
         extern LinkStatus* linkStatus;
