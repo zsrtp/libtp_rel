@@ -26,20 +26,50 @@
 #define NAND_PERM_OWNER_READ 0x10
 #define NAND_PERM_OWNER_WRITE 0x20
 
-#define NAND_RESULT_READY 0
-// TODO Add NAND_RESULT error codes
+typedef enum {
+    NAND_RESULT_FATAL_ERROR = -128,
+    NAND_RESULT_UNKNOWN = -64,
+
+    NAND_RESULT_MAXDEPTH = -16,
+    NAND_RESULT_AUTHENTICATION,
+    NAND_RESULT_OPENFD,
+    NAND_RESULT_NOTEMPTY,
+    NAND_RESULT_NOEXISTS,
+    NAND_RESULT_MAXFILES,
+    NAND_RESULT_MAXFD,
+    NAND_RESULT_MAXBLOCKS,
+    NAND_RESULT_INVALID,
+
+    NAND_RESULT_EXISTS = -6,
+    NAND_RESULT_ECC_CRIT,
+    NAND_RESULT_CORRUPT,
+    NAND_RESULT_BUSY,
+    NAND_RESULT_ALLOC_FAILED,
+    NAND_RESULT_ACCESS,
+
+    NAND_RESULT_READY,
+} NANDResult;
 
 #define NAND_SEEK_START 0x0
 #define NAND_SEEK_CURRENT 0x1
 #define NAND_SEEK_END 0x2
 
 #define NAND_READ_SIZE 0x20
+#define NAND_MAX_PATH 0x40
 
 namespace libtp::gc_wii::nand
 {
     typedef struct NANDFileInfo
     {
-        uint8_t unk[0x8C];
+        int32_t fd;
+        int32_t originFd;
+        char originPath[NAND_MAX_PATH];
+        char tmpPath[NAND_MAX_PATH];
+        uint8_t accType;
+        uint8_t stage;
+        uint8_t mark;
+        uint8_t padding;
+        uint8_t unk[0xa8];
     } __attribute__((__packed__)) NANDFileInfo;
 
     extern "C"
@@ -147,6 +177,8 @@ namespace libtp::gc_wii::nand
          */
         int32_t NANDSeek(NANDFileInfo* fileInfo, int32_t offset, int32_t basePosition);
     }
+
+    extern uint8_t l_safeCopyBuf[0x4000];
 
 } // namespace libtp::gc_wii::nand
 
