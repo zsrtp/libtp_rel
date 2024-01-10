@@ -69,7 +69,6 @@ namespace libtp::gc_wii::nand
         uint8_t stage;
         uint8_t mark;
         uint8_t padding;
-        uint8_t unk[0xa8];
     } __attribute__((__packed__)) NANDFileInfo;
 
     extern "C"
