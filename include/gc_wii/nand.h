@@ -54,7 +54,7 @@
 
 namespace libtp::gc_wii::nand
 {
-    typedef struct NANDFileInfo
+    struct NANDFileInfo
     {
         int32_t fd;
         int32_t originFd;
@@ -64,7 +64,9 @@ namespace libtp::gc_wii::nand
         uint8_t stage;
         uint8_t mark;
         uint8_t padding;
-    } __attribute__((__packed__)) NANDFileInfo;
+    } __attribute__((__packed__));
+
+    static_assert(sizeof(NANDFileInfo) == 0x8C);
 
     extern "C"
     {
@@ -171,8 +173,6 @@ namespace libtp::gc_wii::nand
          */
         int32_t NANDSeek(NANDFileInfo* fileInfo, int32_t offset, int32_t basePosition);
     }
-
-    extern uint8_t l_safeCopyBuf[0x4000];
 
 } // namespace libtp::gc_wii::nand
 

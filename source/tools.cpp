@@ -120,7 +120,7 @@ namespace libtp::tools
 
         return tp::d_stage::ActorCreate(&actor_data, actorMemoryPtr);
     }
-#ifndef PLATFORM_WII
+#ifdef PLATFORM_GCN
     int32_t mountMemoryCard(int32_t chan)
     {
         using namespace libtp::gc_wii::card;
@@ -237,7 +237,7 @@ namespace libtp::tools
         }
         return result;
     }
-#else
+#elif defined(PLATFORM_WII)
     int32_t readNAND(const char* fileName, int32_t length, int32_t offset, void* buffer)
     {
         using namespace libtp::gc_wii::nand;
@@ -419,7 +419,7 @@ namespace libtp::tools
         return true;
     }
 #else
-#ifndef PLATFORM_WII
+#ifdef PLATFORM_GCN
     bool callRelProlog(int32_t chan, uint32_t rel_id, bool stayMounted)
     {
         using namespace libtp::gc_wii::card;
@@ -623,7 +623,7 @@ namespace libtp::tools
         libtp::gc_wii::card::CARDUnmount(chan);
         return ret;
     }
-#else
+#elif defined(PLATFORM_WII)
     bool callRelProlog(const char* file)
     {
         using namespace libtp::gc_wii::nand;
@@ -636,17 +636,18 @@ namespace libtp::tools
             return false;
         }
 
-#define NAND_ASSERT(result) if (result < NAND_RESULT_READY) {\
-    NANDClose(&fileInfo);\
-    return false;\
-}
-
         // Get the length of the file
         uint32_t length;
         int32_t result = NANDSeek(&fileInfo, 0, NAND_SEEK_END);
-        NAND_ASSERT(result);
+        if (result <= NAND_RESULT_READY) {
+            NANDClose(&fileInfo);
+            return false;
+        }
         length = result;
-        NAND_ASSERT(NANDSeek(&fileInfo, 0, NAND_SEEK_START));
+        if (NANDSeek(&fileInfo, 0, NAND_SEEK_START) <= NAND_RESULT_READY) {
+            NANDClose(&fileInfo);
+            return false;
+        }
 
         // Round the length to be in multiples of DVD_READ_SIZE
         length = (length + DVD_READ_SIZE - 1) & ~(DVD_READ_SIZE - 1);
@@ -728,8 +729,6 @@ namespace libtp::tools
 
         return true;
     }
-
-#undef NAND_ASSERT
 
 #endif
 #endif
