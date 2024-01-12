@@ -652,12 +652,12 @@ namespace libtp::tools
             return false;
         }
 
-        // Round the length to be in multiples of DVD_READ_SIZE
+        // Round the length to be in multiples of NAND_READ_SIZE
         length = (length + NAND_READ_SIZE - 1) & ~(NAND_READ_SIZE - 1);
 
         // Allocate bytes for the file
         // Allocate the memory to the back of the heap to avoid possible fragmentation
-        // Buffers that DVDRead uses must be aligned to 0x20 bytes
+        // Buffers that NANDRead uses must be aligned to 0x20 bytes
         uint8_t* fileData = new (-0x20) uint8_t[length];
         libtp::memory::clear_DC_IC_Cache(fileData, length);
 
