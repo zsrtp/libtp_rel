@@ -639,7 +639,7 @@ namespace libtp::tools
         }
 
         // Get the length of the file
-        uint32_t length = NANDSeek(&fileInfo, 0, NAND_SEEK_END);
+        int32_t length = NANDSeek(&fileInfo, 0, NAND_SEEK_END);
         if (length < NAND_RESULT_READY) {
             NANDClose(&fileInfo);
             return false;
