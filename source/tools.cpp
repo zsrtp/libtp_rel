@@ -120,7 +120,7 @@ namespace libtp::tools
 
         return tp::d_stage::ActorCreate(&actor_data, actorMemoryPtr);
     }
-#ifdef PLATFORM_GCN
+#ifndef PLATFORM_WII
     int32_t mountMemoryCard(int32_t chan)
     {
         using namespace libtp::gc_wii::card;
@@ -237,7 +237,7 @@ namespace libtp::tools
         }
         return result;
     }
-#elif defined(PLATFORM_WII)
+#else
     int32_t readNAND(const char* fileName, int32_t length, int32_t offset, void* buffer)
     {
         using namespace libtp::gc_wii::nand;
@@ -419,7 +419,7 @@ namespace libtp::tools
         return true;
     }
 #else
-#ifdef PLATFORM_GCN
+#ifndef PLATFORM_WII
     bool callRelProlog(int32_t chan, uint32_t rel_id, bool stayMounted)
     {
         using namespace libtp::gc_wii::card;
@@ -623,7 +623,7 @@ namespace libtp::tools
         libtp::gc_wii::card::CARDUnmount(chan);
         return ret;
     }
-#elif defined(PLATFORM_WII)
+#else
     bool callRelProlog(const char* file)
     {
         using namespace libtp::gc_wii::nand;
