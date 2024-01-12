@@ -653,7 +653,7 @@ namespace libtp::tools
         }
 
         // Round the length to be in multiples of DVD_READ_SIZE
-        length = (length + DVD_READ_SIZE - 1) & ~(DVD_READ_SIZE - 1);
+        length = (length + NAND_READ_SIZE - 1) & ~(NAND_READ_SIZE - 1);
 
         // Allocate bytes for the file
         // Allocate the memory to the back of the heap to avoid possible fragmentation
@@ -663,13 +663,13 @@ namespace libtp::tools
 
         // Read the REL from the disc
         const int32_t r = NANDRead(&fileInfo, fileData, length);
-        result = (r > 0) ? DVD_STATE_END : r;
+        result = (r > 0) ? NAND_RESULT_READY : r;
 
         // Close the file, as it's no longer needed
         NANDClose(&fileInfo);
 
         // Make sure the read was successful
-        if (result != DVD_STATE_END)
+        if (result != NAND_RESULT_READY)
         {
             delete[] fileData;
             return false;
