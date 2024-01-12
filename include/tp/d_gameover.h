@@ -23,7 +23,10 @@ namespace libtp::tp::d_gameover
         /* 0x116 */ int16_t field_0x116;
         /* 0x118 */ uint8_t mProc;
         /* 0x119 */ bool mIsDemoSave;
+        /* 0x11A */ uint8_t padding[2];
     } __attribute__((__packed__));
+
+    static_assert(sizeof(dGameOver) == 0x11C);
 
     extern "C"
     {
