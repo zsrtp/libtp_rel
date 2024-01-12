@@ -631,20 +631,23 @@ namespace libtp::tools
 
         // Try to open the file from the disc
         NANDFileInfo fileInfo;
-        if (!NANDOpen(file, &fileInfo, NAND_OPEN_READ))
+
+        int32_t result = NANDOpen(file, &fileInfo, NAND_OPEN_READ);
+        if (result != NAND_RESULT_READY)
         {
             return false;
         }
 
         // Get the length of the file
-        uint32_t length;
-        int32_t result = NANDSeek(&fileInfo, 0, NAND_SEEK_END);
-        if (result <= NAND_RESULT_READY) {
+        uint32_t length = NANDSeek(&fileInfo, 0, NAND_SEEK_END);
+        if (length < NAND_RESULT_READY) {
             NANDClose(&fileInfo);
             return false;
         }
-        length = result;
-        if (NANDSeek(&fileInfo, 0, NAND_SEEK_START) <= NAND_RESULT_READY) {
+
+        // The NANDSeek from before starts reading from the end of the file, so go back to the start of the file
+        result = NANDSeek(&fileInfo, 0, NAND_SEEK_START);
+        if (result < NAND_RESULT_READY) {
             NANDClose(&fileInfo);
             return false;
         }
