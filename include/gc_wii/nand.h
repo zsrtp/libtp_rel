@@ -27,20 +27,46 @@
 #define NAND_PERM_OWNER_WRITE 0x20
 
 #define NAND_RESULT_READY 0
-// TODO Add NAND_RESULT error codes
+#define NAND_RESULT_ACCESS -1
+#define NAND_RESULT_ALLOC_FAILED -2
+#define NAND_RESULT_BUSY -3
+#define NAND_RESULT_CORRUPT -4
+#define NAND_RESULT_ECC_CRIT -5
+#define NAND_RESULT_EXISTS -6
+#define NAND_RESULT_INVALID -8
+#define NAND_RESULT_MAXBLOCKS -9
+#define NAND_RESULT_MAXFD -10
+#define NAND_RESULT_MAXFILES -11
+#define NAND_RESULT_NOEXISTS -12
+#define NAND_RESULT_NOTEMPTY -13
+#define NAND_RESULT_OPENFD -14
+#define NAND_RESULT_AUTHENTICATION -15
+#define NAND_RESULT_MAXDEPTH -16
+#define NAND_RESULT_UNKNOWN -64
+#define NAND_RESULT_FATAL_ERROR -128
 
 #define NAND_SEEK_START 0x0
 #define NAND_SEEK_CURRENT 0x1
 #define NAND_SEEK_END 0x2
 
 #define NAND_READ_SIZE 0x20
+#define NAND_MAX_PATH 0x40
 
 namespace libtp::gc_wii::nand
 {
-    typedef struct NANDFileInfo
+    struct NANDFileInfo
     {
-        uint8_t unk[0x8C];
-    } __attribute__((__packed__)) NANDFileInfo;
+        int32_t fd;
+        int32_t originFd;
+        char originPath[NAND_MAX_PATH];
+        char tmpPath[NAND_MAX_PATH];
+        uint8_t accType;
+        uint8_t stage;
+        uint8_t mark;
+        uint8_t padding;
+    } __attribute__((__packed__));
+
+    static_assert(sizeof(NANDFileInfo) == 0x8C);
 
     extern "C"
     {

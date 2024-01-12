@@ -253,7 +253,7 @@ namespace libtp::tools
         result = NANDOpen(fileName, &fileInfo, NAND_OPEN_READ);
         if (result == NAND_RESULT_READY)
         {
-            result = NANDSeek(&fileInfo, adjustedOffset, NAND_SEEK_START);
+            result = NANDSeek(&fileInfo, offset, NAND_SEEK_START);
             if (result == NAND_RESULT_READY)
             {
                 // Since we can only read in and at increments of NAND_READ_SIZE do this to calculate the region we require
@@ -419,6 +419,7 @@ namespace libtp::tools
         return true;
     }
 #else
+#ifndef PLATFORM_WII
     bool callRelProlog(int32_t chan, uint32_t rel_id, bool stayMounted)
     {
         using namespace libtp::gc_wii::card;
@@ -622,6 +623,117 @@ namespace libtp::tools
         libtp::gc_wii::card::CARDUnmount(chan);
         return ret;
     }
+#else
+    bool callRelProlog(const char* file)
+    {
+        using namespace libtp::gc_wii::nand;
+        using namespace libtp::gc_wii::os_module;
+
+        // Try to open the file from the disc
+        NANDFileInfo fileInfo;
+
+        int32_t result = NANDOpen(file, &fileInfo, NAND_OPEN_READ);
+        if (result != NAND_RESULT_READY)
+        {
+            return false;
+        }
+
+        // Get the length of the file
+        int32_t length = NANDSeek(&fileInfo, 0, NAND_SEEK_END);
+        if (length < NAND_RESULT_READY) {
+            NANDClose(&fileInfo);
+            return false;
+        }
+
+        // The NANDSeek from before starts reading from the end of the file, so go back to the start of the file
+        result = NANDSeek(&fileInfo, 0, NAND_SEEK_START);
+        if (result < NAND_RESULT_READY) {
+            NANDClose(&fileInfo);
+            return false;
+        }
+
+        // Round the length to be in multiples of NAND_READ_SIZE
+        length = (length + NAND_READ_SIZE - 1) & ~(NAND_READ_SIZE - 1);
+
+        // Allocate bytes for the file
+        // Allocate the memory to the back of the heap to avoid possible fragmentation
+        // Buffers that NANDRead uses must be aligned to 0x20 bytes
+        uint8_t* fileData = new (-0x20) uint8_t[length];
+        libtp::memory::clear_DC_IC_Cache(fileData, length);
+
+        // Read the REL from the disc
+        const int32_t r = NANDRead(&fileInfo, fileData, length);
+        result = (r > 0) ? NAND_RESULT_READY : r;
+
+        // Close the file, as it's no longer needed
+        NANDClose(&fileInfo);
+
+        // Make sure the read was successful
+        if (result != NAND_RESULT_READY)
+        {
+            delete[] fileData;
+            return false;
+        }
+
+        // Get the REL's BSS size and allocate memory for it
+        OSModuleInfo* relFile = reinterpret_cast<OSModuleInfo*>(fileData);
+        uint32_t bssSize = relFile->bssSize;
+
+        // If bssSize is 0, then use an arbitrary size
+        if (bssSize == 0)
+        {
+            bssSize = 0x1;
+        }
+
+        // Allocate the memory to the back of the heap to avoid fragmentation
+        uint8_t* bssArea = new (-(relFile->bssAlignment)) uint8_t[bssSize];
+
+        // Disable interrupts to make sure other REL files do not try to be linked while this one is being linked
+        bool enable = libtp::gc_wii::os_interrupt::OSDisableInterrupts();
+
+        // Link the REL file
+        if (!OSLink(relFile, bssArea))
+        {
+            // Try to unlink to be safe
+            OSUnlink(relFile);
+
+            // Restore interrupts
+            libtp::gc_wii::os_interrupt::OSRestoreInterrupts(enable);
+
+            delete[] bssArea;
+            delete[] relFile;
+            return false;
+        }
+
+        // Restore interrupts
+        libtp::gc_wii::os_interrupt::OSRestoreInterrupts(enable);
+
+        // Call the REL's prolog functon
+        reinterpret_cast<void (*)()>(relFile->prologFuncOffset)();
+
+        // We are done with the REL file, so call it's epilog function to perform any necessary exit code
+        reinterpret_cast<void (*)()>(relFile->epilogFuncOffset)();
+
+        // Disable interrupts to make sure other REL files do not try to be linked while this one is being unlinked
+        enable = libtp::gc_wii::os_interrupt::OSDisableInterrupts();
+
+        // All REL functions are done, so the file can be unlinked
+        OSUnlink(relFile);
+
+        // Restore interrupts
+        libtp::gc_wii::os_interrupt::OSRestoreInterrupts(enable);
+
+        // Clear the cache of the memory used by the REL file since assembly ran from it
+        libtp::memory::clear_DC_IC_Cache(relFile, length);
+
+        // Cleanup
+        delete[] bssArea;
+        delete[] relFile;
+
+        return true;
+    }
+
+#endif
 #endif
     // xorshift32 was created by George Marsaglia
     // https://www.jstatsoft.org/article/view/v008i14
