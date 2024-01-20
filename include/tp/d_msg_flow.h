@@ -8,6 +8,7 @@
 #define TP_D_MSG_FLOW_H
 
 #include <cstdint>
+#include "tp/f_op_actor.h"
 
 namespace libtp::tp::d_msg_flow
 {
@@ -148,6 +149,30 @@ namespace libtp::tp::d_msg_flow
          *  @return Always returns 1.
          */
         int32_t event017(void* messageFlow, void* nodeEvent, void* actrPtr);
+
+        /**
+         *	@brief Executes the current flow node based on the interacting actor.
+         *
+         *  @param msgFlow A pointer to the current message flow node.
+         *  @param actrPtr A pointer to the actor interacting with the message flow node
+         *  @param actrValue The default base actor value to use for the flow
+         *
+         *  @return Returns 1 if the event node successfully executes, 0 if it fails.
+         */
+        int32_t doFlow(void* msgFlow,
+                       libtp::tp::f_op_actor::fopAc_ac_c* actrPtr,
+                       libtp::tp::f_op_actor::fopAc_ac_c** actrValue,
+                       int i_flow);
+
+        /**
+         *	@brief Gets the current event ID being used by an item in the message flow
+         *
+         *  @param msgFlow A pointer to the current message flow node.
+         *  @param itemNo A pointer to the item being used/given during the event.
+         *
+         *  @return Returns the ID of the currently processed event.
+         */
+        uint16_t getEventId(void* msgFlow, int32_t* itemNo);
     }
 } // namespace libtp::tp::d_msg_flow
 #endif
