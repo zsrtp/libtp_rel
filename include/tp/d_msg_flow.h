@@ -212,6 +212,15 @@ namespace libtp::tp::d_msg_flow
          *  @return Returns the ID of the currently processed event.
          */
         uint16_t getEventId(dMsgFlow* msgFlow, int32_t* itemNo);
+
+        /**
+         *	@brief Sets the message ID of the current message flow
+         *
+         *  @param msgFlow A pointer to the current message flow node.
+         *  @param nodeEvent A pointer to the current message flow header.
+         *  @param actrPtr A pointer to the actor interacting with the message flow node.
+         */
+        void setNormalMsg(dMsgFlow* msgFlow, void* nodeEvent, libtp::tp::f_op_actor::fopAc_ac_c* actrPtr);
     }
 } // namespace libtp::tp::d_msg_flow
 #endif
