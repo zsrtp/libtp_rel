@@ -686,7 +686,7 @@ namespace libtp::tools
         }
 
         // Allocate the memory to the back of the heap to avoid fragmentation
-        uint8_t* bssArea = new (-(relFile->bssAlignment), HEAP_ZELDA) uint8_t[bssSize];
+        uint8_t* bssArea = new (-(relFile->bssAlignment)) uint8_t[bssSize];
 
         // Disable interrupts to make sure other REL files do not try to be linked while this one is being linked
         bool enable = libtp::gc_wii::os_interrupt::OSDisableInterrupts();
