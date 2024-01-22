@@ -658,7 +658,7 @@ namespace libtp::tools
         // Allocate bytes for the file
         // Allocate the memory to the back of the heap to avoid possible fragmentation
         // Buffers that NANDRead uses must be aligned to 0x20 bytes
-        uint8_t* fileData = new (-0x20) uint8_t[length];
+        uint8_t* fileData = new (-0x20, HEAP_ZELDA) uint8_t[length];
         libtp::memory::clear_DC_IC_Cache(fileData, length);
 
         // Read the REL from the disc
@@ -686,7 +686,7 @@ namespace libtp::tools
         }
 
         // Allocate the memory to the back of the heap to avoid fragmentation
-        uint8_t* bssArea = new (-(relFile->bssAlignment)) uint8_t[bssSize];
+        uint8_t* bssArea = new (-(relFile->bssAlignment), HEAP_ZELDA) uint8_t[bssSize];
 
         // Disable interrupts to make sure other REL files do not try to be linked while this one is being linked
         bool enable = libtp::gc_wii::os_interrupt::OSDisableInterrupts();
