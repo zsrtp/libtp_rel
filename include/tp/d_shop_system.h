@@ -31,8 +31,8 @@ namespace libtp::tp::d_shop_system
 
     struct ShopCam_action_c
     {
-        /* 0x00 */ int field_0x0;
-        /* 0x04 */ int field_0x4;
+        /* 0x00 */ int32_t field_0x0;
+        /* 0x04 */ int32_t field_0x4;
         /* 0x08 */ void* mCamActionFunc; // ShopCam_actionFunc
         /* 0x0C */ uint8_t field_0xc[0xC];
         /* 0x18 */ libtp::tp::f_op_actor::fopAc_ac_c* field_0x18;
@@ -76,10 +76,10 @@ namespace libtp::tp::d_shop_system
         /* 0xE48 */ libtp::tp::d_shop_item_ctrl::dShopItemCtrl mItemCtrl;
         /* 0xE78 */ ShopCam_action_c mShopCamAction;
         /* 0xF54 */ uint32_t mEventParam;
-        /* 0xF58 */ int field_0xf58;
-        /* 0xF5C */ int field_0xf5c;
-        /* 0xF60 */ int field_0xf60;
-        /* 0xF64 */ int field_0xf64;
+        /* 0xF58 */ int32_t field_0xf58;
+        /* 0xF5C */ int32_t field_0xf5c;
+        /* 0xF60 */ int32_t field_0xf60;
+        /* 0xF64 */ int32_t field_0xf64;
         /* 0xF68 */ int16_t field_0xf68;
         /* 0xF6A */ uint16_t mFlag;
         /* 0xF6C */ uint16_t field_0xf6c;
@@ -112,7 +112,7 @@ namespace libtp::tp::d_shop_system
          *  @param flowPtr The pointer to the current Message Flow process.
          *  @returns 0 if complete, if currently processing a createItem process.
          */
-        int seq_decide_yes(dShopSystem* shopPtr, libtp::tp::f_op_actor::fopAc_ac_c* actor, void* flowPtr);
+        int32_t seq_decide_yes(dShopSystem* shopPtr, libtp::tp::f_op_actor::fopAc_ac_c* actor, void* flowPtr);
 
         /**
          *	@brief Sets the flag of the shop item that is either currentlly being bought or being processed

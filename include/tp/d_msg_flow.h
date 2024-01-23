@@ -201,7 +201,7 @@ namespace libtp::tp::d_msg_flow
         int32_t doFlow(dMsgFlow* msgFlow,
                        libtp::tp::f_op_actor::fopAc_ac_c* actrPtr,
                        libtp::tp::f_op_actor::fopAc_ac_c** actrValue,
-                       int i_flow);
+                       int32_t i_flow);
 
         /**
          *	@brief Gets the current event ID being used by an item in the message flow
@@ -220,7 +220,7 @@ namespace libtp::tp::d_msg_flow
          *  @param nodeEvent A pointer to the current message flow header.
          *  @param actrPtr A pointer to the actor interacting with the message flow node.
          */
-        void setNormalMsg(dMsgFlow* msgFlow, void* nodeEvent, libtp::tp::f_op_actor::fopAc_ac_c* actrPtr);
+        int32_t setNormalMsg(dMsgFlow* msgFlow, void* nodeEvent, libtp::tp::f_op_actor::fopAc_ac_c* actrPtr);
     }
 } // namespace libtp::tp::d_msg_flow
 #endif

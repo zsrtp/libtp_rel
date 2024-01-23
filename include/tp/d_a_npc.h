@@ -65,12 +65,12 @@ namespace libtp::tp::d_a_npc
         /* 0xD9C */ void* mSubMtd; // profile_method_class*
         /* 0xDA0 */ uint8_t field_0xda0[8];
         /* 0xDA8 */ uint32_t field_0xda8;
-        /* 0xDAC */ int field_0xdac;
-        /* 0xDB0 */ int mCutType;
-        /* 0xDB4 */ int field_0xdb4;
-        /* 0xDB8 */ int field_0xdb8;
-        /* 0xDBC */ int mTimer;
-        /* 0xDC0 */ int field_0xdc0;
+        /* 0xDAC */ int32_t field_0xdac;
+        /* 0xDB0 */ int32_t mCutType;
+        /* 0xDB4 */ int32_t field_0xdb4;
+        /* 0xDB8 */ int32_t field_0xdb8;
+        /* 0xDBC */ int32_t mTimer;
+        /* 0xDC0 */ int32_t field_0xdc0;
         /* 0xDC4 */ uint8_t field_0xdc4[4];
         /* 0xDC8 */ int16_t field_0xdc8;
         /* 0xDCA */ int16_t field_0xdca;
