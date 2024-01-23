@@ -8,9 +8,49 @@
 #define TP_D_MSG_FLOW_H
 
 #include <cstdint>
+#include "tp/f_op_actor.h"
 
 namespace libtp::tp::d_msg_flow
 {
+    struct dMsgFlow
+    {
+        /* 0x00*/ void* vtable;
+        /* 0x04 */ uint8_t* mFlow_p;
+        /* 0x08 */ uint8_t* mLabelInfo_p;
+        /* 0x0C */ void* mFlowNodeTBL; // mesg_flow_node*
+        /* 0x10 */ uint16_t field_0x10;
+        /* 0x12 */ uint16_t field_0x12;
+        /* 0x14 */ uint16_t* field_0x14;
+        /* 0x18 */ int32_t field_0x18;
+        /* 0x1C */ uint16_t mFlow;
+        /* 0x1E */ uint8_t field_0x1e[2];
+        /* 0x20 */ uint32_t mMsg;
+        /* 0x24 */ uint8_t mSelectMessage;
+        /* 0x25 */ uint8_t field_0x25;
+        /* 0x26 */ uint8_t field_0x26;
+        /* 0x27 */ uint8_t field_0x27;
+        /* 0x28 */ int32_t mMsgNo;
+        /* 0x2C */ int32_t mNowMsgNo;
+        /* 0x30 */ uint16_t field_0x30;
+        /* 0x32 */ uint16_t mEventId;
+        /* 0x34 */ int32_t field_0x34;
+        /* 0x38 */ uint16_t field_0x38;
+        /* 0x3A */ uint16_t mChoiceNo;
+        /* 0x3C */ int32_t field_0x3c;
+        /* 0x40 */ uint8_t field_0x40;
+        /* 0x41 */ uint8_t field_0x41;
+        /* 0x42 */ uint8_t field_0x42;
+        /* 0x43 */ uint8_t field_0x43;
+        /* 0x44 */ uint8_t field_0x44;
+        /* 0x45 */ uint8_t field_0x45;
+        /* 0x46 */ uint8_t field_0x46;
+        /* 0x47 */ uint8_t field_0x47;
+        /* 0x48 */ uint8_t mNonStopJunpFlowFlag;
+        /* 0x49 */ uint8_t padding[3];
+    } __attribute__((__packed__));
+
+    static_assert(sizeof(dMsgFlow) == 0x4C);
+
     extern "C"
     {
         /**
@@ -148,6 +188,39 @@ namespace libtp::tp::d_msg_flow
          *  @return Always returns 1.
          */
         int32_t event017(void* messageFlow, void* nodeEvent, void* actrPtr);
+
+        /**
+         *	@brief Executes the current flow node based on the interacting actor.
+         *
+         *  @param msgFlow A pointer to the current message flow node.
+         *  @param actrPtr A pointer to the actor interacting with the message flow node
+         *  @param actrValue The default base actor value to use for the flow
+         *
+         *  @return Returns 1 if the event node successfully executes, 0 if it fails.
+         */
+        int32_t doFlow(dMsgFlow* msgFlow,
+                       libtp::tp::f_op_actor::fopAc_ac_c* actrPtr,
+                       libtp::tp::f_op_actor::fopAc_ac_c** actrValue,
+                       int32_t i_flow);
+
+        /**
+         *	@brief Gets the current event ID being used by an item in the message flow
+         *
+         *  @param msgFlow A pointer to the current message flow node.
+         *  @param itemNo A pointer to the item being used/given during the event.
+         *
+         *  @return Returns the ID of the currently processed event.
+         */
+        uint16_t getEventId(dMsgFlow* msgFlow, int32_t* itemNo);
+
+        /**
+         *	@brief Sets the message ID of the current message flow
+         *
+         *  @param msgFlow A pointer to the current message flow node.
+         *  @param nodeEvent A pointer to the current message flow header.
+         *  @param actrPtr A pointer to the actor interacting with the message flow node.
+         */
+        int32_t setNormalMsg(dMsgFlow* msgFlow, void* nodeEvent, libtp::tp::f_op_actor::fopAc_ac_c* actrPtr);
     }
 } // namespace libtp::tp::d_msg_flow
 #endif
