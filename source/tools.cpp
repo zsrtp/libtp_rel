@@ -658,7 +658,7 @@ namespace libtp::tools
         // Allocate bytes for the file
         // Allocate the memory to the back of the heap to avoid possible fragmentation
         // Buffers that NANDRead uses must be aligned to 0x20 bytes
-        uint8_t* fileData = new (-0x20) uint8_t[length];
+        uint8_t* fileData = new (-0x20, HEAP_ZELDA) uint8_t[length];
         libtp::memory::clear_DC_IC_Cache(fileData, length);
 
         // Read the REL from the disc
