@@ -69,7 +69,7 @@ namespace libtp::tp::d_a_player
         /* 0x05EC */ cXyz mRightFootPos;
         /* 0x05F8 */ uint8_t field_0x5f8[0xC];
         /* 0x0604 */ daPy_demo mDemo;
-        /* 0x00628 */ uint32_t padding628;
+        /* 0x00628 */ void* vtable;
     } __attribute__((__packed__));
 
     static_assert(sizeof(daPy_demo) == 0x24);
