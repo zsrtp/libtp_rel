@@ -15,6 +15,7 @@
 
 namespace libtp::z2audiolib::z2audiomgr
 {
+#ifndef PLATFORM_WII
     struct Z2AudioMgr
     {
         /* 0x0000 */ libtp::z2audiolib::z2semgr::Z2SeMgr mSeMgr;
@@ -37,6 +38,31 @@ namespace libtp::z2audiolib::z2audiomgr
     } __attribute__((__packed__));
 
     static_assert(sizeof(Z2AudioMgr) == 0x138C);
+#else
+    struct Z2AudioMgr {
+        /* 0x0000 */ libtp::z2audiolib::z2semgr::Z2SeMgr mSeMgr;
+        /* 0x03E4 */ uint8_t mSeqMgr[0xD0];
+#ifndef TP_WUS0
+        uint8_t _p1[0x4];
+#endif
+        /* 0x04B4 */ libtp::z2audiolib::z2scenemgr::Z2SceneMgr mSceneMgr;
+        /* 0x04D4 */ uint8_t mStatusMgr[0x30];
+        /* 0x0504 */ uint8_t mSoundObjMgr[0x20];
+        /* 0x0524 */ void* vtable;
+        /* 0x0528 */ bool mResettingFlag;
+        /* 0x0529 */ bool field_0x519;
+        /* 0x052C */ uint8_t mAudioReseter[0x10];
+        /* 0x053C */ uint32_t mSoundStarter;
+        /* 0x0540 */ uint8_t mSoundMgr[0x81C];
+        /* 0x0D58 */                       // Z2SoundInfo mSoundInfo;
+        /* 0x0D58 */ void* mSoundInfo[3];  // remove later
+        /* 0x0D64 */ uint8_t mAudience[0x1E0];
+        /* 0x0F44 */ uint8_t mSpeechMgr[0x444];
+        /* 0x1388 */ uint8_t mFxLineMgr[0x1C];
+    };
+
+    static_assert(sizeof(Z2AudioMgr) == 0x13A8);
+#endif
 
     extern "C"
     {

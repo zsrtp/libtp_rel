@@ -56,7 +56,7 @@ namespace libtp::tp::J2DTextBox
             {
                 x = 0.0f;
             }
-            field_0x11c = x;
+            mFontSizeX = x;
 
             float y;
             if (sizeY > 0.0f)
@@ -67,7 +67,7 @@ namespace libtp::tp::J2DTextBox
             {
                 y = 0.0f;
             }
-            field_0x120 = y;
+            mFontSizeY = y;
         }
 
         void setFontSize(TFontSize size) { setFontSize(size.mSizeX, size.mSizeY); }
@@ -111,7 +111,7 @@ namespace libtp::tp::J2DTextBox
             return len;
         }
 
-       private:
+       public:
         /* 0x0100 */ void* mFont;
         /* 0x0104 */ uint32_t mCharColor;
         /* 0x0108 */ uint32_t mGradientColor;
@@ -119,14 +119,14 @@ namespace libtp::tp::J2DTextBox
         /* 0x0110 */ float field_0x110;
         /* 0x0114 */ float mCharSpacing;
         /* 0x0118 */ float mLineSpacing;
-        /* 0x011C */ float field_0x11c;
-        /* 0x0120 */ float field_0x120;
+        /* 0x011C */ float mFontSizeX;
+        /* 0x0120 */ float mFontSizeY;
         /* 0x0124 */ char* mStringPtr;
         /* 0x0128 */ uint32_t mWhiteColor;
         /* 0x012C */ uint32_t mBlackColor;
         /* 0x0130 */ uint8_t mFlags;
         /* 0x0131 */ bool mTextFontOwned;
         /* 0x0132 */ int16_t mStringLength;
-    };
+    } __attribute__((__packed__));
 } // namespace libtp::tp::J2DTextBox
 #endif

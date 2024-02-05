@@ -23,8 +23,8 @@ namespace libtp::tp::d_save
 
     struct dSv_event_c
     {
-        uint8_t event_flags[256];
-    } __attribute__((__packed__));
+        /* 0x0 */ uint8_t mEvent[256];
+    } __attribute__((__packed__));  // Size: 0x100
 
     struct dSv_MiniGame_c
     {
@@ -39,13 +39,13 @@ namespace libtp::tp::d_save
 
     struct dSv_danBit_c
     {
-        int8_t mStageNo;
-        uint8_t unk1;
-        uint8_t unk2[2];
-        uint32_t mSwitch[2];
-        uint32_t mItem[4];
-        uint16_t unk28[16];
-    } __attribute__((__packed__));
+        /* 0x00 */ int8_t mStageNo;
+        /* 0x01 */ uint8_t unk1;
+        /* 0x02 */ uint8_t unk2[2];
+        /* 0x04 */ uint32_t mSwitch[2];
+        /* 0x0C */ uint32_t mItem[4];
+        /* 0x1C */ int16_t unk28[16];
+    } __attribute__((__packed__));  // Size: 0x3C
 
     struct dSv_restart_c
     {
@@ -309,11 +309,12 @@ namespace libtp::tp::d_save
 
     struct dSv_zone_c
     {
-        uint8_t mRoomNo;
-        uint8_t unk1;
-        dSv_zoneBit_c zone_bit;
-        dSv_zoneActor_c zone_actor;
-    } __attribute__((__packed__));
+        /* 0x00 */ int8_t mRoomNo;
+        /* 0x01 */ uint8_t unk1;
+        /* 0x02 */ dSv_zoneBit_c mBit;
+        /* 0x10 */ dSv_zoneActor_c mActor;
+    } __attribute__((__packed__));  // Size: 0x20
+    static_assert(sizeof(dSv_zone_c) == 0x20);
 
     struct dSv_memBit_c
     {
@@ -345,35 +346,58 @@ namespace libtp::tp::d_save
         dSv_player_info_c player_info;
         dSv_player_config_c player_config;
     } __attribute__((__packed__));
+    static_assert(sizeof(dSv_player_c) == 0x1EC);
+
+    struct dSv_reserve_c
+    {
+        uint8_t unk[80];
+    } __attribute__((__packed__));
 
     struct dSv_save_c
     {
-        dSv_player_c player;
-        uint8_t field_0x1ec[4];
-        dSv_memory_c area_flags[32];
-        dSv_memory2_c map_flags[64];
-        dSv_event_c event_flags;
-        uint8_t reserve[80];
-        dSv_MiniGame_c minigame_flags;
-    } __attribute__((__packed__));
+        static const int STAGE_MAX = 32;
+        static const int STAGE2_MAX = 64;
+
+        /* 0x000 */ dSv_player_c player;
+        /* 0x1EC */ uint8_t unk_0x1EC[4];
+        /* 0x1F0 */ dSv_memory_c mSave[STAGE_MAX];
+        /* 0x5F0 */ dSv_memory2_c mSave2[STAGE2_MAX];
+        /* 0x7F0 */ dSv_event_c mEvent;
+        /* 0x8F0 */ dSv_reserve_c reserve;
+        /* 0x940 */ dSv_MiniGame_c mMiniGame;
+    } __attribute__((__packed__));  // Size: 0x958
+    static_assert(sizeof(dSv_save_c) == 0x958);
 
     struct dSv_info_c
     {
-        dSv_save_c save_file;           // ScratchPad 0 - 957
-        dSv_memory_c memory;            // Local Area Nodes 958 - 977
-        dSv_danBit_c dungeon_bit;       // 978 - 9B3
-        dSv_zone_c zones[32];           // 9B4 - DB3
-        dSv_restart_c restart;          // DB4 - DD7
-        dSv_event_c events;             // DD8 - ED7
-        dSv_turnRestart_c turn_restart; // ED8 - F13
-        uint8_t unkf14[0x4];            // F14 - F17
-        uint8_t mDataNum;               // F18
-        uint8_t mNewFile;               // F19
-        uint8_t mNoFile;                // F1A
-        uint8_t unkf1b[13];             // F1B-F27
-        int64_t mStartTime;             // F28
-        int64_t mSaveTotalTime;         // F30
-    } __attribute__((__packed__));
+        static const int MEMORY_SWITCH = 0x80;
+        static const int DAN_SWITCH = 0x40;
+        static const int ZONE_SWITCH = 0x20;
+        static const int ONEZONE_SWITCH = 0x10;
+
+        static const int MEMORY_ITEM = 0x80;
+        static const int DAN_ITEM = 0x20;
+        static const int ZONE_ITEM = 0x20;
+        static const int ONEZONE_ITEM = 0x10;
+
+        static const int ZONE_MAX = 0x20;
+
+        /* 0x000 */ dSv_save_c save_file;
+        /* 0x958 */ dSv_memory_c memory;
+        /* 0x978 */ dSv_danBit_c mDan;
+        /* 0x9B4 */ dSv_zone_c mZone[ZONE_MAX];
+        /* 0xDB4 */ dSv_restart_c mRestart;
+        /* 0xDD8 */ dSv_event_c mTmp;
+        /* 0xED8 */ dSv_turnRestart_c mTurnRestart;
+        /* 0xF14 */ uint8_t field_0xf14[4];
+        /* 0xF18 */ uint8_t mDataNum;
+        /* 0xF19 */ uint8_t mNewFile;
+        /* 0xF1A */ uint8_t mNoFile;
+        /* 0xF1B */ uint8_t field_0xf1b[13];
+        /* 0xF28 */ int64_t mStartTime;
+        /* 0xF30 */ int64_t mSaveTotalTime;
+    } __attribute__((__packed__));  // Size: 0xF38
+    static_assert(sizeof(dSv_info_c) == 0xF38);
 
     extern "C"
     {
