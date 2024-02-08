@@ -172,8 +172,50 @@ namespace libtp::gc_wii::nand
          * @return int32_t The new position of the cursor, or an error code for the operation
          */
         int32_t NANDSeek(NANDFileInfo* fileInfo, int32_t offset, int32_t basePosition);
+
+        /**
+         * @brief Checks whether the NAND API is initialized.
+         * 
+         * @return true If the NAND API is initialized.
+         * @return false If the NAND API is not initialized
+         */
+        bool nandIsInitialized();
+
+        /**
+         * @brief Converts ISFS error codes to NAND error codes.
+         * 
+         * @param code An ISFS error code to convert
+         * @return int32_t The corresponding NAND error code
+         */
+        int32_t nandConvertErrorCode(int32_t code);
+
+        /**
+         * @brief Internal API for reading NAND FileSystem directories.
+         * 
+         * @param dirName The name of the directory to read
+         * @param fileList A pointer to a string array where the names of the
+         * files (null terminated) will be contiguously put into. The array has to be
+         * aligned to 32 bytes. Pass nullptr to not store the list
+         * @param numFiles A pointer to a 32 bits unsigned integer where the number of files in
+         * the directory will be put
+         * @return int32_t ISFS result code
+         */
+        int32_t ISFS_ReadDir(const char *dirName, char *fileList, uint32_t *numFiles);
     }
 
+
+    /**
+     * @brief Reads a directory on the NAND.
+     * 
+     * @param dirName The name of the directory to read
+     * @param fileList A pointer to a string array where the names of the
+     * files (null terminated) will be contiguously put into. The array has to be
+     * aligned to 32 bytes. Pass nullptr to not store the list
+     * @param numFiles A pointer to a 32 bits unsigned integer where the number of files in
+     * the directory will be put
+     * @return int32_t NAND result code
+     */
+    int32_t NANDReadDir(const char *dirName, char *fileList, uint32_t *numFiles);
 } // namespace libtp::gc_wii::nand
 
 #endif
