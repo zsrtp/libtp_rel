@@ -61,7 +61,11 @@ namespace libtp::z2audiolib::z2audiomgr
         /* 0x1388 */ uint8_t mFxLineMgr[0x1C];
     };
 
+#ifdef TP_WUS0
     static_assert(sizeof(Z2AudioMgr) == 0x13A8);
+#else
+    static_assert(sizeof(Z2AudioMgr) == 0x13AC);
+#endif
 #endif
 
     extern "C"
