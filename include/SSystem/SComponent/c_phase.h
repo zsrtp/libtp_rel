@@ -11,7 +11,7 @@
 
 namespace libtp::tp
 {
-    typedef int (*cPhs__Handler)(void*);
+    typedef int32_t (*cPhs__Handler)(void*);
     struct request_of_phase_process_class
     {
         cPhs__Handler* mpHandlerTable;

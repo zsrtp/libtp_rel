@@ -78,12 +78,14 @@ namespace libtp::tp::f_op_actor
         // - mPosition is position.
         // - mAngle.y is the speed angle of actor (direction on X-Z plane)
         /* 0x4D0 */ actor_place mCurrent;
+
         // Visible rotation of actor; x and z rotation axis is relative to actor
         /* 0x4E4 */ csXyz mCollisionRot;
         /* 0x4EA */ uint16_t padding4EA;
         /* 0x4EC */ cXyz mScale;
         /* 0x4F8 */ cXyz mSpeed;            // x,y,z velocities
         /* 0x504 */ uint8_t unk_0x504[0x4]; // MtxP mCullMtx;
+
         union
         {
             struct
@@ -91,6 +93,7 @@ namespace libtp::tp::f_op_actor
                 /* 0x508 */ Vec mMin;
                 /* 0x514 */ Vec mMax;
             } mBox;
+
             struct
             {
                 /* 0x508 */ Vec mCenter;
@@ -98,6 +101,7 @@ namespace libtp::tp::f_op_actor
                 /* 0x518 */ uint8_t padding518[0x8];
             } mSphere;
         } mCull;
+
         /* 0x520 */ float mCullSizeFar;
         /* 0x524 */ void* field_0x524;   // Possibly J3DModel*
         /* 0x528 */ void* unk_0x528;     //  dJntCol_c* mJntCol;

@@ -16,6 +16,7 @@ namespace libtp::tp::J3DAnimation
         /* 0x00 */ uint16_t mMaxFrame;
         /* 0x02 */ uint16_t mOffset;
         /* 0x04 */ uint8_t mTexNo;
+        /* 0x05 */ uint8_t _padding;
         /* 0x06 */ uint16_t _6;
     } __attribute__((__packed__));  // Size = 0x8
 
@@ -112,6 +113,8 @@ namespace libtp::tp::J3DAnimation
     static_assert(sizeof(J3DAnmTevRegKey) == 0x70);
     static_assert(sizeof(J3DAnmTextureSRTKey) == 0x7C);
     static_assert(sizeof(J3DAnmCluster) == 0x10);
+    static_assert(sizeof(J3DAnmTexPattern) == 0x2C);
+    static_assert(sizeof(J3DAnmTexPatternFullTable) == 0x8);
 
 } // namespace libtp::tp::J3DAnimation
 #endif

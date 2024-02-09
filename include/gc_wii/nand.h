@@ -200,7 +200,7 @@ namespace libtp::gc_wii::nand
          * the directory will be put
          * @return int32_t ISFS result code
          */
-        int32_t ISFS_ReadDir(const char *dirName, char *fileList, uint32_t *numFiles);
+        int32_t ISFS_ReadDir(const char* dirName, char* fileList, uint32_t* numFiles);
     }
 
 
@@ -215,7 +215,7 @@ namespace libtp::gc_wii::nand
      * the directory will be put
      * @return int32_t NAND result code
      */
-    int32_t NANDReadDir(const char *dirName, char *fileList, uint32_t *numFiles);
+    int32_t NANDReadDir(const char* dirName, char* fileList, uint32_t* numFiles);
 } // namespace libtp::gc_wii::nand
 
 #endif

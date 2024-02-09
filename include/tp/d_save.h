@@ -355,8 +355,8 @@ namespace libtp::tp::d_save
 
     struct dSv_save_c
     {
-        static const int STAGE_MAX = 32;
-        static const int STAGE2_MAX = 64;
+        static const int32_t STAGE_MAX = 32;
+        static const int32_t STAGE2_MAX = 64;
 
         /* 0x000 */ dSv_player_c player;
         /* 0x1EC */ uint8_t unk_0x1EC[4];
@@ -370,17 +370,17 @@ namespace libtp::tp::d_save
 
     struct dSv_info_c
     {
-        static const int MEMORY_SWITCH = 0x80;
-        static const int DAN_SWITCH = 0x40;
-        static const int ZONE_SWITCH = 0x20;
-        static const int ONEZONE_SWITCH = 0x10;
+        static const int32_t MEMORY_SWITCH = 0x80;
+        static const int32_t DAN_SWITCH = 0x40;
+        static const int32_t ZONE_SWITCH = 0x20;
+        static const int32_t ONEZONE_SWITCH = 0x10;
 
-        static const int MEMORY_ITEM = 0x80;
-        static const int DAN_ITEM = 0x20;
-        static const int ZONE_ITEM = 0x20;
-        static const int ONEZONE_ITEM = 0x10;
+        static const int32_t MEMORY_ITEM = 0x80;
+        static const int32_t DAN_ITEM = 0x20;
+        static const int32_t ZONE_ITEM = 0x20;
+        static const int32_t ONEZONE_ITEM = 0x10;
 
-        static const int ZONE_MAX = 0x20;
+        static const int32_t ZONE_MAX = 0x20;
 
         /* 0x000 */ dSv_save_c save_file;
         /* 0x958 */ dSv_memory_c memory;

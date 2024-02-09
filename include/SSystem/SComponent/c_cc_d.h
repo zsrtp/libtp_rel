@@ -48,7 +48,7 @@ namespace libtp::tp
 
     struct cCcD_SrcObj
     {
-        /* 0x0 */ int mFlags;
+        /* 0x0 */ int32_t mFlags;
         /* 0x4 */ cCcD_SrcObjHitInf mSrcObjHitInf;
     } __attribute__((__packed__)); // Size: 0x1C
 

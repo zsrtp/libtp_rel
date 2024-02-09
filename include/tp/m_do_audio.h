@@ -10,6 +10,7 @@
 #include <cstdint>
 
 #include "dolphin/mtx/vec.h"
+
 #ifdef PLATFORM_WII
 #include "Z2AudioLib/Z2AudioMgr.h"
 #endif

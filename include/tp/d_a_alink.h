@@ -379,6 +379,7 @@ namespace libtp::tp::d_a_alink
         /* 0x15E */ PROC_HORSE_CALL_WAIT,
         /* 0x15F */ PROC_QUAKE_WAIT,
     };
+
     struct daAlink_footData
     {
         /* 0x00 */ uint8_t field_0x00[2];
@@ -692,31 +693,38 @@ namespace libtp::tp::d_a_alink
         /* 0x03006 */ int16_t field_0x3006;
         // `mProcVar`'s are variables that are context dependent for each `PROC` action.
         // (The exact setup may need to be simplified later)
+
         union
         {
             /* 0x03008 */ int16_t field_0x3008;
             /* 0x03008 */ int16_t mHowlExitID;
         } mProcVar0;
+
         union
         {
             /* 0x0300A */ int16_t field_0x300a;
         } mProcVar1;
+
         union
         {
             /* 0x0300C */ int16_t field_0x300c;
             /* 0x0300C */ int16_t mPuzzleAimAngle;
         } mProcVar2;
+
         union
         {
             /* 0x0300E */ csXyz field_0x300e;
         } __attribute__((__packed__)) mProcVar3;
+
         /* 0x03014 */ int16_t mFallVoiceInit;
         /* 0x03016 */ uint8_t field_0x3016[2];
+
         union
         {
             /* 0x03018 */ int16_t field_0x3018;
             /* 0x03018 */ int16_t mBottleItemHealAmount;
         } mItemVar0;
+
         /* 0x0301A */ int16_t mItemMode;
         /* 0x0301C */ int16_t field_0x301c;
         /* 0x0301E */ int16_t field_0x301e;

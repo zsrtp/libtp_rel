@@ -22,7 +22,7 @@ namespace libtp::tp::d_s_logo
 
     extern "C"
     {
-#if defined TP_EU || TP_WUS2
+#if defined(TP_EU) || defined(TP_WUS2)
         // This function only exists in the PAL version
         Languages getPalLanguage2(void* dScnLogo_c); // dScnLogo_c is unused
 #endif

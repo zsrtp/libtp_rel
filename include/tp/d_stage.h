@@ -23,11 +23,11 @@ namespace libtp::tp::d_stage
     struct stage_vrboxcol_info_class
     {
         // VRB
-    }; // Size: 0x18
+    } __attribute__((__packed__)); // Size: 0x18
 
     struct stage_camera2_data_class
     {
-        /* 0x00 */ int field_0x0;
+        /* 0x00 */ int32_t field_0x0;
         /* 0x04 */ float field_0x4;
         /* 0x08 */ float field_0x8;
         /* 0x0C */ float field_0xc;
@@ -37,25 +37,25 @@ namespace libtp::tp::d_stage
         /* 0x13 */ uint8_t field_0x13;
         /* 0x14 */ uint16_t field_0x14;
         /* 0x16 */ uint16_t field_0x16;
-    }; // Size: 0x18
+    } __attribute__((__packed__)); // Size: 0x18
 
     struct stage_camera_class
     {
-        /* 0x0 */ int field_0x0;
+        /* 0x0 */ int32_t field_0x0;
         /* 0x4 */ stage_camera2_data_class* mEntries;
-    };
+    } __attribute__((__packed__));
 
     struct stage_arrow_data_class
     {
         /* 0x00 */ cXyz mPosition;
         /* 0x0C */ csXyz mAngle;
-    }; // Size: 0x14
+    } __attribute__((__packed__)); // Size: 0x14
 
     struct stage_arrow_class
     {
-        /* 0x00 */ int mNum;
+        /* 0x00 */ int32_t mNum;
         /* 0x04 */ stage_arrow_data_class* mEntries;
-    };
+    } __attribute__((__packed__));
 
     struct stage_actor_data_class
     {
@@ -64,14 +64,14 @@ namespace libtp::tp::d_stage
         /* 0x0C */ cXyz mSpawnPos;
         /* 0x18 */ csXyz mAngle;
         /* 0x1E */ uint16_t mEnemyNo;
-    }; // Size: 0x20
+    } __attribute__((__packed__)); // Size: 0x20
 
     struct stage_actor_class
     {
        public:
-        /* 0x0 */ int mEntryNum;
+        /* 0x0 */ int32_t mEntryNum;
         /* 0x4 */ stage_actor_data_class* mEntries;
-    };
+    } __attribute__((__packed__));
 
     struct stage_tgsc_data_class: public stage_actor_data_class
     {
@@ -81,43 +81,43 @@ namespace libtp::tp::d_stage
         /* 0x20 */ uint8_t field_0x20;
         /* 0x21 */ uint8_t field_0x21;
         /* 0x22 */ uint8_t field_0x22;
-    }; // Size: 0x24
-
-    static_assert(sizeof(stage_tgsc_data_class) == 0x24);
+        /* 0x23 */ uint8_t padding_0x23;
+    } __attribute__((__packed__)); // Size: 0x24
 
     class stage_tgsc_class
     {
        public:
-        /* 0x00 */ int mEntryNum;
+        /* 0x00 */ int32_t mEntryNum;
         /* 0x04 */ stage_tgsc_data_class* mData;
-    };
+    } __attribute__((__packed__));
 
     struct roomRead_data_class
     {
         /* 0x0 */ uint8_t field_0x0;
         /* 0x1 */ uint8_t field_0x1;
         /* 0x2 */ uint8_t field_0x2;
+        /* 0x3 */ uint8_t padding_0x3;
         /* 0x4 */ uint8_t* field_0x4;
-    };
+    } __attribute__((__packed__));
 
     struct roomRead_class
     {
-        /* 0x0 */ int field_0x0;
+        /* 0x0 */ int32_t field_0x0;
         /* 0x4 */ roomRead_data_class** field_0x4;
-    };
+    } __attribute__((__packed__));
 
     struct stage_map_info_class
     {
         /* 0x00 */ uint8_t field_0x0[0x35];
         /* 0x35 */ uint8_t field_0x35;
         /* 0x36 */ uint8_t field_0x36[2];
-    }; // Size: 0x38
+    } __attribute__((__packed__)); // Size: 0x38
 
     struct stage_map_info_dummy_class
     {
-        /* 0x0 */ int field_0x0;
+        /* 0x0 */ int32_t field_0x0;
         /* 0x4 */ stage_map_info_class* mData;
-    };
+    } __attribute__((__packed__));
 
     struct stage_stag_info_class
     {
@@ -135,9 +135,10 @@ namespace libtp::tp::d_stage
         /* 0x20 */ float field_0x20;
         /* 0x24 */ float field_0x24;
         /* 0x28 */ uint8_t mMsgGroup;
+        /* 0x29 */ uint8_t padding_0x29;
         /* 0x2A */ uint16_t mStageTitleNo;
         /* 0x2C */ uint8_t mParticleNo[16];
-    };
+    } __attribute__((__packed__));
 
     struct stage_scls_info_class
     {
@@ -150,14 +151,14 @@ namespace libtp::tp::d_stage
 
         char* getStage() { return mStage; }
 
-        int getRoom() { return mRoom; }
-    }; // Size: 0xD
+        int32_t getRoom() { return mRoom; }
+    } __attribute__((__packed__)); // Size: 0xD
 
     struct stage_scls_info_dummy_class
     {
-        /* 0x00 */ int numEntries;
+        /* 0x00 */ int32_t numEntries;
         /* 0x04 */ stage_scls_info_class* mEntries;
-    };
+    } __attribute__((__packed__));
 
     struct stage_pure_lightvec_info_class
     {
@@ -171,14 +172,14 @@ namespace libtp::tp::d_stage
         /* 0x1D */ uint8_t field_0x1d;
         /* 0x1E */ uint8_t field_0x1e;
         /* 0x1F */ uint8_t field_0x1f;
-    }; // Size: 0x20
+    } __attribute__((__packed__)); // Size: 0x20
 
     // Col
     struct stage_pselect_info_class
     {
         /* 0x0 */ uint8_t mPalIdx[8];
         /* 0x8 */ float mChangeRate;
-    }; // Size: 0xC
+    } __attribute__((__packed__)); // Size: 0xC
 
     struct stage_plight_info_class
     {
@@ -188,7 +189,7 @@ namespace libtp::tp::d_stage
         /* 0x10 */ uint8_t field_0x10[0x18 - 0x10];
         /* 0x18 */ d_kankyo_data::color_RGB_class m_color;
         /* 0x1B */ uint8_t m_fluctuation;
-    }; // Size: 0x1C
+    } __attribute__((__packed__)); // Size: 0x1C
 
     // PALE
     struct stage_palette_info_class
@@ -207,12 +208,12 @@ namespace libtp::tp::d_stage
         /* 0x31 */ uint8_t mBgAmbColor1A;
         /* 0x32 */ uint8_t mBgAmbColor2A;
         /* 0x33 */ uint8_t mBgAmbColor3A;
-    }; // Size: 0x34
+    } __attribute__((__packed__)); // Size: 0x34
 
     struct stage_envr_info_class
     {
         /* 0x0 */ uint8_t m_pselectID[65];
-    }; // Size: 0x41
+    } __attribute__((__packed__)); // Size: 0x41
 
     // Virt
     struct stage_vrbox_info_class
@@ -223,7 +224,7 @@ namespace libtp::tp::d_stage
         /* 0x09 */ GXColor field_0x9;
         /* 0x0D */ GXColor field_0xd;
         /* 0x11 */ GXColor field_0x11;
-    }; // Size: 0x15
+    } __attribute__((__packed__)); // Size: 0x15
 
     struct stage_tresure_class
     {
@@ -237,7 +238,8 @@ namespace libtp::tp::d_stage
         /* 0x1A */ int16_t mRotation;
         /* 0x1C */ uint8_t mItem;
         /* 0x1D */ uint8_t mFlagID;
-    }; // Size: 0x20
+        /* 0x1E */ uint8_t padding_0x1E[2];
+    } __attribute__((__packed__)); // Size: 0x20
 
     struct dStage_FileList_dt_c
     {
@@ -249,7 +251,8 @@ namespace libtp::tp::d_stage
         /* 0x1A */ uint8_t mDefaultCamera;
         /* 0x1B */ uint8_t mBitSw;
         /* 0x1C */ uint16_t mMsg;
-    }; // Size: 0x20
+        /* 0x1E */ uint8_t padding_0x1E[2];
+    } __attribute__((__packed__)); // Size: 0x20
 
     // PPNT
     struct dStage_dPnt_c
@@ -259,53 +262,53 @@ namespace libtp::tp::d_stage
         /* 0x2 */ uint8_t field_0x2;
         /* 0x3 */ uint8_t field_0x3;
         /* 0x4 */ cXyz m_position;
-    }; // Size: 0x10
+    } __attribute__((__packed__)); // Size: 0x10
 
     struct dStage_FloorInfo_c
     {
         // FLOR
-    };
+    } __attribute__((__packed__));
 
     struct dStage_Lbnk_dt_c
     {
         /* 0x0 */ uint8_t bank;
         /* 0x1 */ uint8_t bank2;
         /* 0x2 */ uint8_t field_0x2;
-    };
+    } __attribute__((__packed__));
 
     struct dStage_Lbnk_c
     {
-        /* 0x0 */ int num;
+        /* 0x0 */ int32_t num;
         /* 0x4 */ dStage_Lbnk_dt_c* entries;
-    };
+    } __attribute__((__packed__));
 
     struct dStage_Elst_data
     {
         /* 0x0 */ uint8_t m_layerTable[15];
-    };
+    } __attribute__((__packed__));
 
     struct dStage_Elst_c
     {
-        /* 0x0 */ int m_entryNum;
+        /* 0x0 */ int32_t m_entryNum;
         /* 0x4 */ dStage_Elst_data* m_entries;
-    };
+    } __attribute__((__packed__));
 
     struct dStage_MemoryConfig_data
     {
         /* 0x0 */ uint8_t m_roomNo;
         /* 0x1 */ uint8_t m_blockID;
-    }; // Size: 0x2
+    } __attribute__((__packed__)); // Size: 0x2
 
     struct dStage_MemoryConfig_c
     {
-        /* 0x0 */ int m_num;
+        /* 0x0 */ int32_t m_num;
         /* 0x4 */ dStage_MemoryConfig_data* field_0x4;
-    };
+    } __attribute__((__packed__));
 
     struct dStage_DMap_c
     {
         // DMAP
-    };
+    } __attribute__((__packed__));
 
     struct dStage_MapEvent_dt_c
     {
@@ -329,14 +332,14 @@ namespace libtp::tp::d_stage
         /* 0x18 */ uint8_t mSeType; // 1: RIDDLE_A, 2: RIDDLE_B
         /* 0x19 */ uint8_t field_0x19[0x1B - 0x19];
         /* 0x1B */ uint8_t mSwitch;
-    }; // SIZE = 0x1C
+    } __attribute__((__packed__)); // SIZE = 0x1C
 
     struct dStage_MapEventInfo_c
     {
         // REVT
-        int mCount;
+        int32_t mCount;
         dStage_MapEvent_dt_c* mData;
-    };
+    } __attribute__((__packed__));
 
     struct dStage_FileList2_dt_c
     {
@@ -351,20 +354,21 @@ namespace libtp::tp::d_stage
         /* 0x14 */ float field_0x14;
         /* 0x18 */ float field_0x18;
         /* 0x1C */ int16_t field_0x1c;
-    }; // Size: 0x20
+        /* 0x1E */ uint8_t padding_0x1E[2];
+    } __attribute__((__packed__)); // Size: 0x20
 
     struct dStage_MemoryMap_c
     {
-        /* 0x0 */ int m_num;
+        /* 0x0 */ int32_t m_num;
         /* 0x4 */ uint32_t* field_0x4;
-    };
+    } __attribute__((__packed__));
 
     struct dPath;
     struct dStage_dPath_c
     {
-        /* 0x0 */ int m_num;
+        /* 0x0 */ int32_t m_num;
         /* 0x4 */ dPath* m_path;
-    };
+    } __attribute__((__packed__));
 
     struct dStage_Mult_info
     {
@@ -372,13 +376,14 @@ namespace libtp::tp::d_stage
         /* 0x4 */ float mTransY;
         /* 0x8 */ int16_t mAngle;
         /* 0xA */ uint8_t mRoomNo;
-    }; // Size: 0xC
+        /* 0xB */ uint8_t padding_0xB;
+    } __attribute__((__packed__)); // Size: 0xC
 
     struct dStage_Multi_c
     {
-        /* 0x0 */ int field_0x0;
+        /* 0x0 */ int32_t field_0x0;
         /* 0x4 */ dStage_Mult_info* mInfo;
-    };
+    } __attribute__((__packed__));
 
     struct stage_sound_data
     {
@@ -391,20 +396,22 @@ namespace libtp::tp::d_stage
         /* 0x18 */ uint8_t field_0x18;
         /* 0x19 */ uint8_t field_0x19;
         /* 0x1A */ uint8_t field_0x1a;
-    }; // Size: 0x1C
+        /* 0x1B */ uint8_t padding_0x1b;
+    } __attribute__((__packed__)); // Size: 0x1C
 
     struct dStage_SoundInfo_c
     {
         // SOND
-        /* 0x0 */ int num;
+        /* 0x0 */ int32_t num;
         /* 0x4 */ stage_sound_data* entries;
-    };
+    } __attribute__((__packed__));
 
     struct dStage_dt_c
     {
         /* 0x00 */ void* vtable;
         /* 0x04 */ int8_t mRoomNo;
-    };
+        /* 0x05 */ uint8_t padding_0x5[3];
+    } __attribute__((__packed__));
 
     struct dStage_stageDt_c: dStage_dt_c
     {
@@ -425,7 +432,7 @@ namespace libtp::tp::d_stage
         /* 0x40 */ uint32_t mPselectNumInfo;
         /* 0x44 */ uint32_t mEnvrNumInfo;
         /* 0x48 */ uint32_t mVrboxNumInfo;
-        /* 0x4C */ int mVrboxcolNumInfo;
+        /* 0x4C */ int32_t mVrboxcolNumInfo;
         /* 0x50 */ uint32_t mPlightNumInfo;
         /* 0x54 */ uint16_t mPlayerNum;
         /* 0x56 */ uint16_t field_0x56;
@@ -450,7 +457,6 @@ namespace libtp::tp::d_stage
         /* 0x9C */ stage_tgsc_class* mDoor;
         /* 0xA0 */ dStage_Elst_c* mElst;
     } __attribute__((__packed__));
-    static_assert(sizeof(dStage_stageDt_c) == 0xA4);
 
     struct dStage_roomControl
     {
@@ -486,6 +492,57 @@ namespace libtp::tp::d_stage
         /* 0x04 */ int32_t mNumEntries;
         /* 0x08 */ stage_actor_data_class* mDzrDataPointer;
     } __attribute__((__packed__)); // size: 0xC
+
+    static_assert(sizeof(stage_camera2_data_class) == 0x18);
+    static_assert(sizeof(stage_camera_class) == 0x8);
+    static_assert(sizeof(stage_arrow_data_class) == 0x12);
+    static_assert(sizeof(stage_arrow_class) == 0x8);
+    static_assert(sizeof(stage_actor_data_class) == 0x20);
+    static_assert(sizeof(stage_actor_class) == 0x8);
+    static_assert(sizeof(stage_tgsc_data_class) == 0x24);
+    static_assert(sizeof(stage_tgsc_class) == 0x8);
+    static_assert(sizeof(roomRead_data_class) == 0x8);
+    static_assert(sizeof(roomRead_class) == 0x8);
+    static_assert(sizeof(stage_map_info_class) == 0x38);
+    static_assert(sizeof(stage_map_info_dummy_class) == 0x8);
+    static_assert(sizeof(stage_stag_info_class) == 0x3C);
+    static_assert(sizeof(stage_scls_info_class) == 0xD);
+    static_assert(sizeof(stage_scls_info_dummy_class) == 0x8);
+    static_assert(sizeof(stage_pure_lightvec_info_class) == 0x20);
+    static_assert(sizeof(stage_pselect_info_class) == 0xC);
+    static_assert(sizeof(stage_plight_info_class) == 0x1C);
+    static_assert(sizeof(stage_palette_info_class) == 0x34);
+    static_assert(sizeof(stage_envr_info_class) == 0x41);
+    static_assert(sizeof(stage_vrbox_info_class) == 0x15);
+    static_assert(sizeof(stage_tresure_class) == 0x20);
+    static_assert(sizeof(dStage_FileList_dt_c) == 0x20);
+    static_assert(sizeof(dStage_dPnt_c) == 0x10);
+    static_assert(sizeof(dStage_Lbnk_dt_c) == 0x3);
+    static_assert(sizeof(dStage_Lbnk_c) == 0x8);
+    static_assert(sizeof(dStage_Elst_data) == 0xF);
+    static_assert(sizeof(dStage_Elst_c) == 0x8);
+    static_assert(sizeof(dStage_MemoryConfig_data) == 0x2);
+    static_assert(sizeof(dStage_MemoryConfig_c) == 0x8);
+    static_assert(sizeof(dStage_MapEvent_dt_c) == 0x1C);
+    static_assert(sizeof(dStage_MapEventInfo_c) == 0x8);
+    static_assert(sizeof(dStage_FileList2_dt_c) == 0x20);
+    static_assert(sizeof(dStage_MemoryMap_c) == 0x8);
+    static_assert(sizeof(dStage_dPath_c) == 0x8);
+    static_assert(sizeof(dStage_Mult_info) == 0xC);
+    static_assert(sizeof(dStage_Multi_c) == 0x8);
+    static_assert(sizeof(stage_sound_data) == 0x1C);
+    static_assert(sizeof(dStage_SoundInfo_c) == 0x8);
+    static_assert(sizeof(dStage_dt_c) == 0x8);
+    static_assert(sizeof(dStage_stageDt_c) == 0xA4);
+    static_assert(sizeof(dStage_roomControl) == 0xA4);
+    static_assert(sizeof(dStage_startStage) == 0xE);
+    static_assert(sizeof(stage_dzr_header_entry) == 0xC);
+
+#ifndef PLATFORM_WII
+    static_assert(sizeof(dStage_nextStage) == 0x11);
+#else
+    static_assert(sizeof(dStage_nextStage) == 0x10);
+#endif  // PLATFORM_WII
 
     extern "C"
     {

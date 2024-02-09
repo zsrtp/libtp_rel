@@ -20,6 +20,7 @@ struct GXColor
     /* 0x2 */ uint8_t b;
     /* 0x3 */ uint8_t a;
 } __attribute__((__packed__));
+static_assert(sizeof(GXColor) == 0x4);
 
 struct GXColorS10
 {
@@ -28,5 +29,6 @@ struct GXColorS10
     /* 0x4 */ int16_t b;
     /* 0x6 */ int16_t a;
 } __attribute__((__packed__));
+static_assert(sizeof(GXColorS10) == 0x8);
 
 #endif /* DOLPHIN_GX_GXSTRUCT_H */

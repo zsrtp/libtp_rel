@@ -20,5 +20,7 @@ namespace libtp::tp::d_kankyo_data
         uint8_t g;
         uint8_t b;
     };
+
+    static_assert(sizeof(color_RGB_class) == 3);
 } // namespace libtp::tp::d_kankyo_data
 #endif

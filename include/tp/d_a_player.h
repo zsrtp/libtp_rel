@@ -27,6 +27,7 @@ namespace libtp::tp::d_a_player
         /* 0x0 */ uint32_t mID;
         /* 0x4 */ libtp::tp::f_op_actor::fopAc_ac_c* mActor;
     };
+
     struct daPy_demo
     {
         /* 0x00 */ uint16_t mDemoType;
@@ -39,6 +40,7 @@ namespace libtp::tp::d_a_player
         /* 0x14 */ float mStick;
         /* 0x18 */ cXyz mDemoPos0;
     } __attribute__((__packed__));
+
     struct daPy_py: libtp::tp::f_op_actor::fopAc_ac_c
     {
         /* 0x0568 */ uint8_t mCutType;

@@ -22,7 +22,7 @@ namespace libtp::tp::JUTNameTab
             uint16_t mOffs;
         } mEntries[1];
 
-        inline const char* getName(uint32_t index) const { return ((const char*)mEntries) + mEntries[index].mOffs - 4; }
+        inline const char* getName(uint32_t index) const { return reinterpret_cast<const char*>(mEntries) + mEntries[index].mOffs - 4; }
     } __attribute__((__packed__));
 
     struct JUTNameTab
