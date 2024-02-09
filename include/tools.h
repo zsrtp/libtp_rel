@@ -127,6 +127,13 @@ namespace libtp::tools
      *  @param file File to load
      */
     bool callRelProlog(const char* file);
+#elif defined PLATFORM_WII
+    /**
+     *  @brief Loads a REL file from the NAND flash and runs it's prolog function
+     *
+     *  @param file File to load
+     */
+    bool callRelProlog(const char* file);
 #else
     /**
      *  @brief Loads a REL file from the current mod's GCI file and runs it's prolog function. If the memory card is not

@@ -45,7 +45,9 @@ namespace libtp::tp::J2DPane
         /* 0xD8 */ float mTranslateY;
         /* 0xDC */ uint8_t field[0x1C]; // JSUTree<J2DPane> mPaneTree;
         /* 0xF8 */ void* field_0xF8;    // const J2DAnmTransform* mTransform;
+#ifndef PLATFORM_WII
         /* 0xFC */ uint32_t _fc;
+#endif
     } __attribute__((__packed__));
 
 } // namespace libtp::tp::J2DPane

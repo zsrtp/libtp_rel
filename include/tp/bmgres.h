@@ -1,18 +1,18 @@
-/**	@file card.h
- *	@brief The CARD API provides file level access to memory cards.
+/**	@file bmgres.h
+ *	@brief Contains structures to handle BMG files.
  *
- *	Refer to the dolphin OS Reference Manual for further information
+ *	This helps when intercepting text the game is trying to load.
  *
  *	@author Zephiles
  *  @author Lunar Soap
  *	@bug No known bugs.
  */
-#ifndef GC_BMGRES_H
-#define GC_BMGRES_H
+#ifndef TP_BMGRES_H
+#define TP_BMGRES_H
 
 #include <cstdint>
 
-namespace libtp::gc::bmgres
+namespace libtp::tp::bmgres
 {
     struct FileHeader
     {
@@ -54,5 +54,5 @@ namespace libtp::gc::bmgres
     static_assert(sizeof(FileHeader) == 0x100);
     static_assert(sizeof(BMGHeader) == 0x20);
     static_assert(sizeof(MessageEntry) == 0x14);
-} // namespace libtp::gc::bmgres
+} // namespace libtp::tp::bmgres
 #endif

@@ -22,6 +22,17 @@ namespace libtp::tp::m_re_controller_pad
     /**
      *  @brief Controller inputs
      */
+    enum PadControllers
+    {
+        PAD_1 = 0,
+        PAD_2,
+        PAD_3,
+        PAD_4
+    };
+
+    /**
+     *  @brief Controller inputs
+     */
     enum ReCPadInputs : uint16_t
     {
         Button_DPad_Left = 0x0001,
@@ -72,15 +83,15 @@ namespace libtp::tp::m_re_controller_pad
         uint8_t n_points;            // 8044BBE8 // Number of IR points seen by the remote
         uint8_t _p6[0x1CE7];         // 8044BBE9
         float stick_amplitude;       // 8044D8D0
-        uint8_t _p7[0x5AAC];         // 8044D8D4
+        uint8_t _p7[0x94];         // 8044D8D4
     };
-    static_assert(sizeof(ReCPad) == 0x7820);
+    static_assert(sizeof(ReCPad) == 0x1e08);
 
     extern "C"
     {
         namespace mReCPd
         {
-            extern ReCPad m_pad;
+            extern ReCPad m_pad[4];
         }
     }
 } // namespace libtp::tp::m_re_controller_pad

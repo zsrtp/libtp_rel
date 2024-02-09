@@ -4,8 +4,8 @@
  *	@author kipcode66
  *	@bug No known bugs.
  */
-#ifndef TP_M_DO_EXT_H
-#define TP_M_DO_EXT_H
+#ifndef TP_M_DO_PRINTF_H
+#define TP_M_DO_PRINTF_H
 
 #include <cstdarg>
 
@@ -19,6 +19,12 @@ namespace libtp::tp::m_Do_printf
          *  @param string The message to print.
          */
         void OSReport(const char* string, ...);
+        void OSReport_Error(const char* fmt, ...);
+        void OSReport_FatalError(const char* fmt, ...);
+        void OSReport_System(const char* fmt, ...);
+        void OSReport_Warning(const char* fmt, ...);
+        void OSReportDisable(void);
+        void OSReportEnable(void);
     }
 } // namespace libtp::tp::m_Do_printf
 

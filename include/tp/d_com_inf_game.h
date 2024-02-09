@@ -22,6 +22,10 @@
 #include "tp/d_stage.h"
 #include "tp/evt_control.h"
 
+#ifdef PLATFORM_WII
+#include "tp/d_kankyo.h"
+#endif
+
 namespace libtp::tp::d_com_inf_game
 {
     /**
@@ -39,11 +43,14 @@ namespace libtp::tp::d_com_inf_game
         /* 0x03EC8 */ d_stage::dStage_startStage mStartStage; // Possibly currentStageVars
         /* 0x03ED6 */ d_stage::dStage_nextStage mNextStage;   // Probably nextStageVars
         /* 0x03EE7 */ uint8_t field_0x3ee7;                   // probably padding
-        /* 0x03EE8 */ uint8_t field_0x3ee8[0xA4];             // dStage_stageDt mStageData;
+        /* 0x03EE8 */ d_stage::dStage_stageDt_c mStageData;   // dStage_stageDt mStageData;
         /* 0x03F8C */ d_stage::dStage_roomControl* mRoomControl;
         /* 0x03F90 */ d_event::dEvt_control mEvent;           // Probably EventSystem
         /* 0x040C0 */ d_event_manager::dEvent_manager mEvtManager;
         /* 0x04780 */ uint8_t field_0x4780[0x51C];            // dAttention_c mAttention;
+#ifdef PLATFORM_WII
+        /* 0x04CA0 */ uint8_t field_0x4ca0[12];
+#endif
         /* 0x04C9C */ uint8_t field_0x4c9c[0x90];             // dVibration_c mVibration;
         /* 0x04D2C */ uint8_t field_0x4d2c[4];
         /* 0x04D30 */ void* mFieldMapArchive2;                // JKRArchive* mFieldMapArchive2;
@@ -288,7 +295,23 @@ namespace libtp::tp::d_com_inf_game
          *
          *  @param pLayer The pointer to the current layer.
          */
+#ifndef PLATFORM_WII
         void dComIfG_get_timelayer(int32_t* pLayer);
+#else
+        inline void dComIfG_get_timelayer(int32_t* pLayer) {
+            if (libtp::tp::d_kankyo::dKy_daynight_check()) {
+                *pLayer += 1;
+            }
+        }
+#endif
+
+        /**
+         * @brief Returns whether the player has gotten the specified item.
+         * 
+         * @param getItemPtr The pointer to the dSv_player_get_item_c.
+         * @param id The id of the item.
+         */
+        bool isFirstBit(d_save::dSv_player_get_item_c* getItemPtr, uint8_t id);
 
         /**
          *  @brief Returns the layer for the current stage after checking the appropriate flags.
@@ -308,7 +331,13 @@ namespace libtp::tp::d_com_inf_game
          *
          *  @return Bool returns True if the item has been obtained, otherwise returns False.
          */
+#ifndef PLATFORM_WII
         bool dComIfGs_isItemFirstBit(uint8_t itemID);
+#else
+        inline bool dComIfGs_isItemFirstBit(uint8_t itemID) {
+            return isFirstBit(&dComIfG_gameInfo.save.save_file.player.player_get_item, itemID);
+        }
+#endif
 
         /**
          *  @brief Returns whether the player should be transformed into a wolf based on story and the current stage.
@@ -366,6 +395,21 @@ namespace libtp::tp::d_com_inf_game
          *  @param flag  The index of the current stage in the list of region flag nodes.
          */
         void dComIfGs_onStageBossEnemy(int32_t i_stageNo);
+
+        /**
+         *  @brief Checks to see if an eventBit for the currently active save is set.
+         *
+         *  @param flag Offset | Flag
+         *
+         *  @return Bool returns True if the flag is set, otherwise returns False.
+         */
+#ifndef PLATFORM_WII
+        bool dComIfGs_isEventBit(uint16_t flag);
+#else
+        inline bool dComIfGs_isEventBit(uint16_t flag) {
+            return libtp::tp::d_save::isEventBit(&libtp::tp::d_com_inf_game::dComIfG_gameInfo.save.save_file.mEvent, flag);
+        }
+#endif
     }
 } // namespace libtp::tp::d_com_inf_game
 #endif

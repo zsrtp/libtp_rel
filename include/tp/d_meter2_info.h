@@ -26,7 +26,7 @@ namespace libtp::tp::d_meter2_info
         /* 0x20 */ void* mMeterMap;        // dMeterMap_c*
         /* 0x24 */ void* mMenuWindowClass; // dMw_c*
         /* 0x28 */ libtp::tp::d_pane_class::CPaneMgr* mMeterItemPanePtr[4];
-        /* 0x38 */ uint8_t unk38[0x1C];    // WarpInfo_c mWarpInfo;
+        /* 0x38 */ uint8_t unk38[0x1C]; // WarpInfo_c mWarpInfo;
         /* 0x54 */ float unk84;
         /* 0x58 */ float unk88;
         /* 0x5C */ float unk92;
@@ -101,10 +101,6 @@ namespace libtp::tp::d_meter2_info
 
     extern "C"
     {
-        /**
-         *	@brief Gets a pointer to the transparancy of the Z button
-         */
-        extern void* wZButtonPtr;
         extern G_Meter2_Info g_meter2_info;
 
         /**

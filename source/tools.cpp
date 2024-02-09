@@ -52,24 +52,23 @@ namespace libtp::tools
 
         dComIfG_inf_c* gameInfoPtr = &dComIfG_gameInfo;
         dStage_nextStage* nextStagePtr = &gameInfoPtr->play.mNextStage;
-        dStage_startStage* stageValuesPtr = &nextStagePtr->stageValues;
-        libtp::tp::d_save::dSv_restart_c* saveRestartPtr = &gameInfoPtr->save.restart;
+        libtp::tp::d_save::dSv_restart_c* saveRestartPtr = &gameInfoPtr->save.mRestart;
         libtp::tp::d_event::dEvt_order* eventOrderPtr = &gameInfoPtr->play.mEvent.mOrder[0];
 
-        stageValuesPtr->mRoomNo = room;
-        stageValuesPtr->mPoint = spawn;
-        stageValuesPtr->mLayer = state;
+        nextStagePtr->mRoomNo = room;
+        nextStagePtr->mPoint = spawn;
+        nextStagePtr->mLayer = state;
 
         eventOrderPtr->mEventInfoIdx = event;
         saveRestartPtr->mLastMode = 0;
-        stageValuesPtr->mPoint = 0;
+        nextStagePtr->mPoint = 0;
         saveRestartPtr->mRoomParam = 0;
         eventOrderPtr->mEventId = -1; // immediateControl
         nextStagePtr->wipe_speed = 0x13;
 
         nextStagePtr->wipe = true;
 
-        strcpy(stageValuesPtr->mStage, stage);
+        strcpy(nextStagePtr->mStage, stage);
     }
 
     int32_t spawnActor(uint8_t roomID, tp::dzx::ACTR& actor)
@@ -418,8 +417,7 @@ namespace libtp::tools
 
         return true;
     }
-#else
-#ifndef PLATFORM_WII
+#elif !defined(PLATFORM_WII)
     bool callRelProlog(int32_t chan, uint32_t rel_id, bool stayMounted)
     {
         using namespace libtp::gc_wii::card;
@@ -645,15 +643,15 @@ namespace libtp::tools
             return false;
         }
 
+        // Round the length to be in multiples of NAND_READ_SIZE
+        length = (length + NAND_READ_SIZE - 1) & ~(NAND_READ_SIZE - 1);
+
         // The NANDSeek from before starts reading from the end of the file, so go back to the start of the file
         result = NANDSeek(&fileInfo, 0, NAND_SEEK_START);
         if (result < NAND_RESULT_READY) {
             NANDClose(&fileInfo);
             return false;
         }
-
-        // Round the length to be in multiples of NAND_READ_SIZE
-        length = (length + NAND_READ_SIZE - 1) & ~(NAND_READ_SIZE - 1);
 
         // Allocate bytes for the file
         // Allocate the memory to the back of the heap to avoid possible fragmentation
@@ -733,7 +731,6 @@ namespace libtp::tools
         return true;
     }
 
-#endif
 #endif
     // xorshift32 was created by George Marsaglia
     // https://www.jstatsoft.org/article/view/v008i14
