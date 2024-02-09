@@ -417,7 +417,7 @@ namespace libtp::tools
 
         return true;
     }
-#elif not defined PLATFORM_WII
+#elif !defined(PLATFORM_WII)
     bool callRelProlog(int32_t chan, uint32_t rel_id, bool stayMounted)
     {
         using namespace libtp::gc_wii::card;
@@ -643,15 +643,15 @@ namespace libtp::tools
             return false;
         }
 
+        // Round the length to be in multiples of NAND_READ_SIZE
+        length = (length + NAND_READ_SIZE - 1) & ~(NAND_READ_SIZE - 1);
+
         // The NANDSeek from before starts reading from the end of the file, so go back to the start of the file
         result = NANDSeek(&fileInfo, 0, NAND_SEEK_START);
         if (result < NAND_RESULT_READY) {
             NANDClose(&fileInfo);
             return false;
         }
-
-        // Round the length to be in multiples of NAND_READ_SIZE
-        length = (length + NAND_READ_SIZE - 1) & ~(NAND_READ_SIZE - 1);
 
         // Allocate bytes for the file
         // Allocate the memory to the back of the heap to avoid possible fragmentation
