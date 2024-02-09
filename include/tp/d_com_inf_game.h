@@ -334,8 +334,8 @@ namespace libtp::tp::d_com_inf_game
 #ifndef PLATFORM_WII
         bool dComIfGs_isItemFirstBit(uint8_t itemID);
 #else
-        inline bool dComIfGs_isItemFirstBit(uint8_t i_no) {
-            return isFirstBit(&dComIfG_gameInfo.save.save_file.player.player_get_item, i_no);
+        inline bool dComIfGs_isItemFirstBit(uint8_t itemID) {
+            return isFirstBit(&dComIfG_gameInfo.save.save_file.player.player_get_item, itemID);
         }
 #endif
 
@@ -406,8 +406,8 @@ namespace libtp::tp::d_com_inf_game
 #ifndef PLATFORM_WII
         bool dComIfGs_isEventBit(uint16_t flag);
 #else
-        inline bool dComIfGs_isEventBit(uint16_t id) {
-            return libtp::tp::d_save::isEventBit(&libtp::tp::d_com_inf_game::dComIfG_gameInfo.save.save_file.mEvent, id);
+        inline bool dComIfGs_isEventBit(uint16_t flag) {
+            return libtp::tp::d_save::isEventBit(&libtp::tp::d_com_inf_game::dComIfG_gameInfo.save.save_file.mEvent, flag);
         }
 #endif
     }

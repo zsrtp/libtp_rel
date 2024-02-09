@@ -23,16 +23,16 @@ namespace libtp::tp::m_Do_Audio
          *	@brief Plays the specified audio sound effect.
          *
          *  @param sfxID The ID of the sound effect to be played.
-         *  @param unk4 Unknown.
+         *  @param i_sePos Unknown.
          *  @param unk5 Unknown.
-         *  @param unk6 Unknown.
+         *  @param i_reverb Unknown.
          */
 #ifndef PLATFORM_WII
-        void mDoAud_seStartLevel(uint32_t sfxID, const Vec* unk4, uint32_t unk5, int8_t unk6);
+        void mDoAud_seStartLevel(uint32_t sfxID, const Vec* i_sePos, uint32_t unk5, int8_t i_reverb);
 #else
-        inline void mDoAud_seStartLevel(uint32_t i_sfxID, const Vec* i_sePos, uint32_t param_2, int8_t i_reverb)
+        inline void mDoAud_seStartLevel(uint32_t sfxID, const Vec* i_sePos, uint32_t unk5, int8_t i_reverb)
         {
-            libtp::z2audiolib::z2semgr::z2SeMgr_seStartLevel(i_sfxID, i_sePos, param_2, i_reverb, 1.0f, 1.0f, -1.0f, -1.0f, 0);
+            libtp::z2audiolib::z2semgr::z2SeMgr_seStartLevel(sfxID, i_sePos, unk5, i_reverb, 1.0f, 1.0f, -1.0f, -1.0f, 0);
         }
 #endif
     }
