@@ -22,7 +22,7 @@ namespace libtp::tp::control
         uint16_t unk_E; // unk3 in setMessageCode_inSequence
         uint16_t msgId;
         void* unk_10;
-        gc::bmgres::MessageEntry* msgEntry;
+        tp::bmgres::MessageEntry* msgEntry;
         const char* msg;
         uint8_t unk_1C[0x4];
         const char* wMsgRender;
