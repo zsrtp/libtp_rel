@@ -26,7 +26,7 @@ namespace libtp::tp::d_a_player
     {
         /* 0x0 */ uint32_t mID;
         /* 0x4 */ libtp::tp::f_op_actor::fopAc_ac_c* mActor;
-    };
+    } __attribute__((__packed__));
 
     struct daPy_demo
     {
@@ -78,13 +78,14 @@ namespace libtp::tp::d_a_player
     } __attribute__((__packed__));
 
     static_assert(sizeof(daPy_demo) == 0x24);
+    static_assert(sizeof(daPy_actorKeep) == 0x8);
+    static_assert(sizeof(daPy_anmHeap) == 0x14);
 #ifndef PLATFORM_WII
     static_assert(sizeof(daPy_py) == 0x62C);
 #else
     static_assert(sizeof(daPy_py) == 0x630);
 #endif
-    static_assert(sizeof(daPy_actorKeep) == 0x8);
-    static_assert(sizeof(daPy_anmHeap) == 0x14);
+
     extern "C"
     {
         extern void* m_midnaActor;

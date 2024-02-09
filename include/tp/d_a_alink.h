@@ -691,9 +691,9 @@ namespace libtp::tp::d_a_alink
         /* 0x03002 */ int16_t field_0x3002;
         /* 0x03004 */ int16_t field_0x3004;
         /* 0x03006 */ int16_t field_0x3006;
+
         // `mProcVar`'s are variables that are context dependent for each `PROC` action.
         // (The exact setup may need to be simplified later)
-
         union
         {
             /* 0x03008 */ int16_t field_0x3008;

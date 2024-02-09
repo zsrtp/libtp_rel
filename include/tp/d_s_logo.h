@@ -23,7 +23,7 @@ namespace libtp::tp::d_s_logo
     extern "C"
     {
 #if defined(TP_EU) || defined(TP_WUS2)
-        // This function only exists in the PAL version
+        // This function only exists in all the PAL and the Wii US versions
         Languages getPalLanguage2(void* dScnLogo_c); // dScnLogo_c is unused
 #endif
         void* dScnLogo_c_dt(void* dScnLogo_c, int16_t freeThis);

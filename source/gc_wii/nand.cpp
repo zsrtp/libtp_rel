@@ -2,7 +2,7 @@
 
 namespace libtp::gc_wii::nand
 {
-    int32_t NANDReadDir(const char *dirName, char *fileList, uint32_t *numFiles)
+    int32_t NANDReadDir(const char* dirName, char* fileList, uint32_t* numFiles)
     {
         if (!nandIsInitialized())
         {

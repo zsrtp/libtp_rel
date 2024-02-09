@@ -10,7 +10,7 @@
 
 #include <cstdint>
 
-#include "gc_wii/bmgres.h"
+#include "tp/bmgres.h"
 
 namespace libtp::tp::control
 {

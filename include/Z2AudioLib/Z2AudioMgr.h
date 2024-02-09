@@ -11,7 +11,7 @@
 
 #include "Z2AudioLib/Z2SceneMgr.h"
 #include "Z2AudioLib/Z2SeMgr.h"
-#include "gc_wii/bmgres.h"
+#include "tp/bmgres.h"
 
 namespace libtp::z2audiolib::z2audiomgr
 {

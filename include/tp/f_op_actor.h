@@ -28,7 +28,6 @@ namespace libtp::tp::f_op_actor
         /* 0x10 */ uint8_t field_0x10;
         /* 0x11 */ uint8_t padding11[3];
         /* 0x14 */ void* field_0x14;
-
     } __attribute__((__packed__));
 
     struct actor_place
