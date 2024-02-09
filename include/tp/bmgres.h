@@ -1,7 +1,7 @@
-/**	@file card.h
- *	@brief The CARD API provides file level access to memory cards.
+/**	@file bmgres.h
+ *	@brief Contains structures to handle BMG files.
  *
- *	Refer to the dolphin OS Reference Manual for further information
+ *	This helps when intercepting text the game is trying to load.
  *
  *	@author Zephiles
  *  @author Lunar Soap
