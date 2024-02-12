@@ -25,4 +25,22 @@ namespace libtp::tp::d_event_manager
         /* 0x06BC */ bool mDataLoaded;
         /* 0x06BD */ uint8_t padding[0x3];
     } __attribute__((__packed__));
+
+    extern "C"
+    {
+        /**
+         *	@brief Gets the index of the specified event in the current event flow.
+         *
+         *	@param eventManager A pointer to the event manager
+         *  @param actrPtr The actor that is managing the specified event
+         *  @param eventID A pointer to the current event name
+         *  @param mapToolId The ID number of the current map tool being used
+         *
+         *  @returns The index of the specified event based on the actor and event being referenced.
+         */
+        int16_t getEventIdx3(dEvent_manager* eventManger,
+                             libtp::tp::f_op_actor::fopAc_ac_c* actrPtr,
+                             const char* eventID,
+                             uint8_t mapToolId);
+    }
 } // namespace libtp::tp::d_event_manager
