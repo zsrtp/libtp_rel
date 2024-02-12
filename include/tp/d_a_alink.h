@@ -1308,8 +1308,9 @@ namespace libtp::tp::d_a_alink
          *  @brief Initializes the function process that runs when Link collects an item.
          *
          *  @param linkActrPtr A pointer to Link's Actor
+         *  @returns 1 if the the process was successfully initialized and 0 if it failed to initialize
          */
-        void procCoGetItemInit(daAlink* linkActrPtr);
+        int32_t procCoGetItemInit(daAlink* linkActrPtr);
 
         /**
          *  @brief Increases Link's maximum health by a determined amount and sets the currently filled hearts to the stated

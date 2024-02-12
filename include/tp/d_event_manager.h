@@ -38,9 +38,9 @@ namespace libtp::tp::d_event_manager
          *
          *  @returns The index of the specified event based on the actor and event being referenced.
          */
-        int16_t getEventIdx(dEvent_manager* eventManger,
-                            libtp::tp::f_op_actor::fopAc_ac_c* actrPtr,
-                            const char* eventID,
-                            uint8_t mapToolId);
+        int16_t getEventIdx3(dEvent_manager* eventManger,
+                             libtp::tp::f_op_actor::fopAc_ac_c* actrPtr,
+                             const char* eventID,
+                             uint8_t mapToolId);
     }
 } // namespace libtp::tp::d_event_manager
