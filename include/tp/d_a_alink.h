@@ -25,7 +25,8 @@
 
 namespace libtp::tp::d_a_alink
 {
-    enum daAlink_PROC {
+    enum daAlink_PROC
+    {
         /* 0x000 */ PROC_PREACTION_UNEQUIP,
         /* 0x001 */ PROC_SERVICE_WAIT,
         /* 0x002 */ PROC_TIRED_WAIT,
@@ -1302,6 +1303,13 @@ namespace libtp::tp::d_a_alink
          *  @param linkActrPtr A pointer to Link's Actor
          */
         void procCoGetItem(daAlink* linkActrPtr);
+
+        /**
+         *  @brief Initializes the function process that runs when Link collects an item.
+         *
+         *  @param linkActrPtr A pointer to Link's Actor
+         */
+        void procCoGetItemInit(daAlink* linkActrPtr);
 
         /**
          *  @brief Increases Link's maximum health by a determined amount and sets the currently filled hearts to the stated

@@ -194,6 +194,16 @@ namespace libtp::tp::f_op_actor_mng
          *  @return BOOL returns True if Link is talking to the specified actor, otherwise returns False.
          */
         int32_t fopAcM_getTalkEventPartner(void* actrPtr);
+
+        /**
+         *	@brief Changes the order of the current event node.
+         *
+         *	@param actrPtr The actor that is executing the event.
+         *  @param eventID The ID of the event we want to change the order of.
+         *  @param param_3 unknown.
+         *  @param param_4 unknown.
+         */
+        void fopAcM_orderChangeEventId(void* actorPtr, int16_t eventID, uint16_t param_3, uint16_t param_4);
     }
 } // namespace libtp::tp::f_op_actor_mng
 #endif
