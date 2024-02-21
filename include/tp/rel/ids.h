@@ -11,767 +11,773 @@
 
 namespace libtp::tp::rel::relIDs
 {
-    // clang-format off
     enum GCRelIDs : uint32_t
     {
-        F_PC_PROFILE_LST                =0x001,
-        D_A_ANDSW                       =0x002,
-        D_A_BG                          =0x003,
-        D_A_BG_OBJ                      =0x004,
-        D_A_DMIDNA                      =0x005,
-        D_A_DOOR_DBDOOR00               =0x006,
-        D_A_DOOR_KNOB00                 =0x007,
-        D_A_DOOR_SHUTTER                =0x008,
-        D_A_DOOR_SPIRAL                 =0x009,
-        D_A_DSHUTTER                    =0x00A,
-        D_A_EP                          =0x00B,
-        D_A_HITOBJ                      =0x00C,
-        D_A_KYTAG00                     =0x00D,
-        D_A_KYTAG04                     =0x00E,
-        D_A_KYTAG17                     =0x00F,
-        D_A_OBJ_BRAKEEFF                =0x010,
-        D_A_OBJ_BURNBOX                 =0x011,
-        D_A_OBJ_CARRY                   =0x012,
-        D_A_OBJ_ITO                     =0x013,
-        D_A_OBJ_MOVEBOX                 =0x014,
-        D_A_OBJ_SWPUSH                  =0x015,
-        D_A_OBJ_TIMER                   =0x016,
-        D_A_PATH_LINE                   =0x017,
-        D_A_SCENE_EXIT                  =0x018,
-        D_A_SET_BGOBJ                   =0x019,
-        D_A_SWHIT0                      =0x01A,
-        D_A_TAG_ALLMATO                 =0x01B,
-        D_A_TAG_CAMERA                  =0x01C,
-        D_A_TAG_CHKPOINT                =0x01D,
-        D_A_TAG_EVENT                   =0x01E,
-        D_A_TAG_EVT                     =0x01F,
-        D_A_TAG_EVTAREA                 =0x020,
-        D_A_TAG_EVTMSG                  =0x021,
-        D_A_TAG_HOWL                    =0x022,
-        D_A_TAG_KMSG                    =0x023,
-        D_A_TAG_LANTERN                 =0x024,
-        D_A_TAG_MIST                    =0x025,
-        D_A_TAG_MSG                     =0x026,
-        D_A_TAG_PUSH                    =0x027,
-        D_A_TAG_TELOP                   =0x028,
-        D_A_TBOX                        =0x029,
-        D_A_TBOX2                       =0x02A,
-        D_A_VRBOX                       =0x02B,
-        D_A_VRBOX2                      =0x02C,
-        D_A_ARROW                       =0x02D,
-        D_A_BOOMERANG                   =0x02E,
-        D_A_CROD                        =0x02F,
-        D_A_DEMO00                      =0x030,
-        D_A_DISAPPEAR                   =0x031,
-        D_A_MG_ROD                      =0x032,
-        D_A_MIDNA                       =0x033,
-        D_A_NBOMB                       =0x034,
-        D_A_OBJ_LIFE_CONTAINER          =0x035,
-        D_A_OBJ_YOUSEI                  =0x036,
-        D_A_SPINNER                     =0x037,
-        D_A_SUSPEND                     =0x038,
-        D_A_TAG_ATTENTION               =0x039,
-        D_A_ALLDIE                      =0x03A,
-        D_A_ANDSW2                      =0x03B,
-        D_A_BD                          =0x03C,
-        D_A_CANOE                       =0x03D,
-        D_A_CSTAF                       =0x03E,
-        D_A_DEMO_ITEM                   =0x03F,
-        D_A_DOOR_BOSSL1                 =0x040,
-        D_A_E_DN                        =0x041,
-        D_A_E_FM                        =0x042,
-        D_A_E_GA                        =0x043,
-        D_A_E_HB                        =0x044,
-        D_A_E_NEST                      =0x045,
-        D_A_E_RD                        =0x046,
-        D_A_ECONT                       =0x047,
-        D_A_FR                          =0x048,
-        D_A_GRASS                       =0x049,
-        D_A_KYTAG05                     =0x04A,
-        D_A_KYTAG10                     =0x04B,
-        D_A_KYTAG11                     =0x04C,
-        D_A_KYTAG14                     =0x04D,
-        D_A_MG_FISH                     =0x04E,
-        D_A_NPC_BESU                    =0x04F,
-        D_A_NPC_FAIRY_SEIREI            =0x050,
-        D_A_NPC_FISH                    =0x051,
-        D_A_NPC_HENNA                   =0x052,
-        D_A_NPC_KAKASHI                 =0x053,
-        D_A_NPC_KKRI                    =0x054,
-        D_A_NPC_KOLIN                   =0x055,
-        D_A_NPC_MARO                    =0x056,
-        D_A_NPC_TARO                    =0x057,
-        D_A_NPC_TKJ                     =0x058,
-        D_A_OBJ_BHASHI                  =0x059,
-        D_A_OBJ_BKDOOR                  =0x05A,
-        D_A_OBJ_BOSSWARP                =0x05B,
-        D_A_OBJ_CBOARD                  =0x05C,
-        D_A_OBJ_DIGPLACE                =0x05D,
-        D_A_OBJ_EFF                     =0x05E,
-        D_A_OBJ_FMOBJ                   =0x05F,
-        D_A_OBJ_GPTARU                  =0x060,
-        D_A_OBJ_HHASHI                  =0x061,
-        D_A_OBJ_KANBAN2                 =0x062,
-        D_A_OBJ_KBACKET                 =0x063,
-        D_A_OBJ_KGATE                   =0x064,
-        D_A_OBJ_KLIFT00                 =0x065,
-        D_A_OBJ_KTONFIRE                =0x066,
-        D_A_OBJ_LADDER                  =0x067,
-        D_A_OBJ_LV2CANDLE               =0x068,
-        D_A_OBJ_MAGNE_ARM               =0x069,
-        D_A_OBJ_METALBOX                =0x06A,
-        D_A_OBJ_MGATE                   =0x06B,
-        D_A_OBJ_NAMEPLATE               =0x06C,
-        D_A_OBJ_ORNAMENT_CLOTH          =0x06D,
-        D_A_OBJ_ROPE_BRIDGE             =0x06E,
-        D_A_OBJ_SWALLSHUTTER            =0x06F,
-        D_A_OBJ_STICK                   =0x070,
-        D_A_OBJ_STONEMARK               =0x071,
-        D_A_OBJ_SWPROPELLER             =0x072,
-        D_A_OBJ_SWPUSH5                 =0x073,
-        D_A_OBJ_YOBIKUSA                =0x074,
-        D_A_SCENE_EXIT2                 =0x075,
-        D_A_SHOP_ITEM                   =0x076,
-        D_A_SQ                          =0x077,
-        D_A_SWC00                       =0x078,
-        D_A_TAG_CSTASW                  =0x079,
-        D_A_TAG_AJNOT                   =0x07A,
-        D_A_TAG_ATTACK_ITEM             =0x07B,
-        D_A_TAG_GSTART                  =0x07C,
-        D_A_TAG_HINIT                   =0x07D,
-        D_A_TAG_HJUMP                   =0x07E,
-        D_A_TAG_HSTOP                   =0x07F,
-        D_A_TAG_LV2PRCHK                =0x080,
-        D_A_TAG_MAGNE                   =0x081,
-        D_A_TAG_MHINT                   =0x082,
-        D_A_TAG_MSTOP                   =0x083,
-        D_A_TAG_SPRING                  =0x084,
-        D_A_TAG_STATUE_EVT              =0x085,
-        D_A_YKGR                        =0x086,
-        D_A_L7DEMO_DR                   =0x087,
-        D_A_L7LOW_DR                    =0x088,
-        D_A_L7OP_DEMO_DR                =0x089,
-        D_A_B_BH                        =0x08A,
-        D_A_B_BQ                        =0x08B,
-        D_A_B_DR                        =0x08C,
-        D_A_B_DRE                       =0x08D,
-        D_A_B_DS                        =0x08E,
-        D_A_B_GG                        =0x08F,
-        D_A_B_GM                        =0x090,
-        D_A_B_GND                       =0x091,
-        D_A_B_GO                        =0x092,
-        D_A_B_GOS                       =0x093,
-        D_A_B_MGN                       =0x094,
-        D_A_B_OB                        =0x095,
-        D_A_B_OH                        =0x096,
-        D_A_B_OH2                       =0x097,
-        D_A_B_TN                        =0x098,
-        D_A_B_YO                        =0x099,
-        D_A_B_YO_ICE                    =0x09A,
-        D_A_B_ZANT                      =0x09B,
-        D_A_B_ZANT_MAGIC                =0x09C,
-        D_A_B_ZANT_MOBILE               =0x09D,
-        D_A_B_ZANT_SIMA                 =0x09E,
-        D_A_BALLOON_2D                  =0x09F,
-        D_A_BULLET                      =0x0A0,
-        D_A_COACH_2D                    =0x0A1,
-        D_A_COACH_FIRE                  =0x0A2,
-        D_A_COW                         =0x0A3,
-        D_A_CSTATUE                     =0x0A4,
-        D_A_DO                          =0x0A5,
-        D_A_DOOR_BOSS                   =0x0A6,
-        D_A_DOOR_BOSSL5                 =0x0A7,
-        D_A_DOOR_MBOSSL1                =0x0A8,
-        D_A_DOOR_PUSH                   =0x0A9,
-        D_A_E_AI                        =0x0AA,
-        D_A_E_ARROW                     =0x0AB,
-        D_A_E_BA                        =0x0AC,
-        D_A_E_BEE                       =0x0AD,
-        D_A_E_BG                        =0x0AE,
-        D_A_E_BI                        =0x0AF,
-        D_A_E_BI_LEAF                   =0x0B0,
-        D_A_E_BS                        =0x0B1,
-        D_A_E_BU                        =0x0B2,
-        D_A_E_BUG                       =0x0B3,
-        D_A_E_CR                        =0x0B4,
-        D_A_E_CR_EGG                    =0x0B5,
-        D_A_E_DB                        =0x0B6,
-        D_A_E_DB_LEAF                   =0x0B7,
-        D_A_E_DD                        =0x0B8,
-        D_A_E_DF                        =0x0B9,
-        D_A_E_DK                        =0x0BA,
-        D_A_E_DT                        =0x0BB,
-        D_A_E_FB                        =0x0BC,
-        D_A_E_FK                        =0x0BD,
-        D_A_E_FS                        =0x0BE,
-        D_A_E_FZ                        =0x0BF,
-        D_A_E_GB                        =0x0C0,
-        D_A_E_GE                        =0x0C1,
-        D_A_E_GI                        =0x0C2,
-        D_A_E_GM                        =0x0C3,
-        D_A_E_GOB                       =0x0C4,
-        D_A_E_GS                        =0x0C5,
-        D_A_E_HB_LEAF                   =0x0C6,
-        D_A_E_HM                        =0x0C7,
-        D_A_E_HP                        =0x0C8,
-        D_A_E_HZ                        =0x0C9,
-        D_A_E_HZELDA                    =0x0CA,
-        D_A_E_IS                        =0x0CB,
-        D_A_E_KG                        =0x0CC,
-        D_A_E_KK                        =0x0CD,
-        D_A_E_KR                        =0x0CE,
-        D_A_E_MB                        =0x0CF,
-        D_A_E_MD                        =0x0D0,
-        D_A_E_MF                        =0x0D1,
-        D_A_E_MK                        =0x0D2,
-        D_A_E_MK_BO                     =0x0D3,
-        D_A_E_MM                        =0x0D4,
-        D_A_E_MM_MT                     =0x0D5,
-        D_A_E_MS                        =0x0D6,
-        D_A_E_NZ                        =0x0D7,
-        D_A_E_OC                        =0x0D8,
-        D_A_E_OCT_BG                    =0x0D9,
-        D_A_E_OT                        =0x0DA,
-        D_A_E_PH                        =0x0DB,
-        D_A_E_PM                        =0x0DC,
-        D_A_E_PO                        =0x0DD,
-        D_A_E_PZ                        =0x0DE,
-        D_A_E_RB                        =0x0DF,
-        D_A_E_RDB                       =0x0E0,
-        D_A_E_RDY                       =0x0E1,
-        D_A_E_S1                        =0x0E2,
-        D_A_E_SB                        =0x0E3,
-        D_A_E_SF                        =0x0E4,
-        D_A_E_SG                        =0x0E5,
-        D_A_E_SH                        =0x0E6,
-        D_A_E_SM                        =0x0E7,
-        D_A_E_SM2                       =0x0E8,
-        D_A_E_ST                        =0x0E9,
-        D_A_E_ST_LINE                   =0x0EA,
-        D_A_E_SW                        =0x0EB,
-        D_A_E_TH                        =0x0EC,
-        D_A_E_TH_BALL                   =0x0ED,
-        D_A_E_TK                        =0x0EE,
-        D_A_E_TK2                       =0x0EF,
-        D_A_E_TK_BALL                   =0x0F0,
-        D_A_E_TT                        =0x0F1,
-        D_A_E_VT                        =0x0F2,
-        D_A_E_WARPAPPEAR                =0x0F3,
-        D_A_E_WB                        =0x0F4,
-        D_A_E_WS                        =0x0F5,
-        D_A_E_WW                        =0x0F6,
-        D_A_E_YC                        =0x0F7,
-        D_A_E_YD                        =0x0F8,
-        D_A_E_YD_LEAF                   =0x0F9,
-        D_A_E_YG                        =0x0FA,
-        D_A_E_YH                        =0x0FB,
-        D_A_E_YK                        =0x0FC,
-        D_A_E_YM                        =0x0FD,
-        D_A_E_YM_TAG                    =0x0FE,
-        D_A_E_YMB                       =0x0FF,
-        D_A_E_YR                        =0x100,
-        D_A_E_ZH                        =0x101,
-        D_A_E_ZM                        =0x102,
-        D_A_E_ZS                        =0x103,
-        D_A_FORMATION_MNG               =0x104,
-        D_A_GUARD_MNG                   =0x105,
-        D_A_HORSE                       =0x106,
-        D_A_HOZELDA                     =0x107,
-        D_A_IZUMI_GATE                  =0x108,
-        D_A_KAGO                        =0x109,
-        D_A_KYTAG01                     =0x10A,
-        D_A_KYTAG02                     =0x10B,
-        D_A_KYTAG03                     =0x10C,
-        D_A_KYTAG06                     =0x10D,
-        D_A_KYTAG07                     =0x10E,
-        D_A_KYTAG08                     =0x10F,
-        D_A_KYTAG09                     =0x110,
-        D_A_KYTAG12                     =0x111,
-        D_A_KYTAG13                     =0x112,
-        D_A_KYTAG15                     =0x113,
-        D_A_KYTAG16                     =0x114,
-        D_A_MANT                        =0x115,
-        D_A_MG_FSHOP                    =0x116,
-        D_A_MIRROR                      =0x117,
-        D_A_MOVIE_PLAYER                =0x118,
-        D_A_MYNA                        =0x119,
-        D_A_NI                          =0x11A,
-        D_A_NPC_ARU                     =0x11B,
-        D_A_NPC_ASH                     =0x11C,
-        D_A_NPC_ASHB                    =0x11D,
-        D_A_NPC_BANS                    =0x11E,
-        D_A_NPC_BLUE_NS                 =0x11F,
-        D_A_NPC_BOU                     =0x120,
-        D_A_NPC_BOUS                    =0x121,
-        D_A_NPC_CDN3                    =0x122,
-        D_A_NPC_CHAT                    =0x123,
-        D_A_NPC_CHIN                    =0x124,
-        D_A_NPC_CLERKA                  =0x125,
-        D_A_NPC_CLERKB                  =0x126,
-        D_A_NPC_CLERKT                  =0x127,
-        D_A_NPC_COACH                   =0x128,
-        D_A_NPC_DF                      =0x129,
-        D_A_NPC_DOC                     =0x12A,
-        D_A_NPC_DOORBOY                 =0x12B,
-        D_A_NPC_DRAINSOL                =0x12C,
-        D_A_NPC_DU                      =0x12D,
-        D_A_NPC_FAIRY                   =0x12E,
-        D_A_NPC_FGUARD                  =0x12F,
-        D_A_NPC_GND                     =0x130,
-        D_A_NPC_GRA                     =0x131,
-        D_A_NPC_GRC                     =0x132,
-        D_A_NPC_GRD                     =0x133,
-        D_A_NPC_GRM                     =0x134,
-        D_A_NPC_GRMC                    =0x135,
-        D_A_NPC_GRO                     =0x136,
-        D_A_NPC_GRR                     =0x137,
-        D_A_NPC_GRS                     =0x138,
-        D_A_NPC_GRZ                     =0x139,
-        D_A_NPC_GUARD                   =0x13A,
-        D_A_NPC_GWOLF                   =0x13B,
-        D_A_NPC_HANJO                   =0x13C,
-        D_A_NPC_HENNA0                  =0x13D,
-        D_A_NPC_HOZ                     =0x13E,
-        D_A_NPC_IMPAL                   =0x13F,
-        D_A_NPC_INKO                    =0x140,
-        D_A_NPC_INS                     =0x141,
-        D_A_NPC_JAGAR                   =0x142,
-        D_A_NPC_KASI_HANA               =0x143,
-        D_A_NPC_KASI_KYU                =0x144,
-        D_A_NPC_KASI_MICH               =0x145,
-        D_A_NPC_KDK                     =0x146,
-        D_A_NPC_KN                      =0x147,
-        D_A_NPC_KNJ                     =0x148,
-        D_A_NPC_KOLINB                  =0x149,
-        D_A_NPC_KS                      =0x14A,
-        D_A_NPC_KYURY                   =0x14B,
-        D_A_NPC_LEN                     =0x14C,
-        D_A_NPC_LF                      =0x14D,
-        D_A_NPC_LUD                     =0x14E,
-        D_A_NPC_MIDP                    =0x14F,
-        D_A_NPC_MK                      =0x150,
-        D_A_NPC_MOI                     =0x151,
-        D_A_NPC_MOIR                    =0x152,
-        D_A_NPC_MYNA2                   =0x153,
-        D_A_NPC_NE                      =0x154,
-        D_A_NPC_P2                      =0x155,
-        D_A_NPC_PACHI_BESU              =0x156,
-        D_A_NPC_PACHI_MARO              =0x157,
-        D_A_NPC_PACHI_TARO              =0x158,
-        D_A_NPC_PASSER                  =0x159,
-        D_A_NPC_PASSER2                 =0x15A,
-        D_A_NPC_POST                    =0x15B,
-        D_A_NPC_POUYA                   =0x15C,
-        D_A_NPC_PRAYER                  =0x15D,
-        D_A_NPC_RACA                    =0x15E,
-        D_A_NPC_RAFREL                  =0x15F,
-        D_A_NPC_SARU                    =0x160,
-        D_A_NPC_SEIB                    =0x161,
-        D_A_NPC_SEIC                    =0x162,
-        D_A_NPC_SEID                    =0x163,
-        D_A_NPC_SEIRA                   =0x164,
-        D_A_NPC_SEIRA2                  =0x165,
-        D_A_NPC_SEIREI                  =0x166,
-        D_A_NPC_SHAD                    =0x167,
-        D_A_NPC_SHAMAN                  =0x168,
-        D_A_NPC_SHOE                    =0x169,
-        D_A_NPC_SHOP0                   =0x16A,
-        D_A_NPC_SHOP_MARO               =0x16B,
-        D_A_NPC_SOLA                    =0x16C,
-        D_A_NPC_SOLDIERA                =0x16D,
-        D_A_NPC_SOLDIERB                =0x16E,
-        D_A_NPC_SQ                      =0x16F,
-        D_A_NPC_THE                     =0x170,
-        D_A_NPC_THEB                    =0x171,
-        D_A_NPC_TK                      =0x172,
-        D_A_NPC_TKC                     =0x173,
-        D_A_NPC_TKJ2                    =0x174,
-        D_A_NPC_TKS                     =0x175,
-        D_A_NPC_TOBY                    =0x176,
-        D_A_NPC_TR                      =0x177,
-        D_A_NPC_URI                     =0x178,
-        D_A_NPC_WORM                    =0x179,
-        D_A_NPC_WRESTLER                =0x17A,
-        D_A_NPC_YAMID                   =0x17B,
-        D_A_NPC_YAMIS                   =0x17C,
-        D_A_NPC_YAMIT                   =0x17D,
-        D_A_NPC_YELIA                   =0x17E,
-        D_A_NPC_YKM                     =0x17F,
-        D_A_NPC_YKW                     =0x180,
-        D_A_NPC_ZANB                    =0x181,
-        D_A_NPC_ZANT                    =0x182,
-        D_A_NPC_ZELR                    =0x183,
-        D_A_NPC_ZELRO                   =0x184,
-        D_A_NPC_ZELDA                   =0x185,
-        D_A_NPC_ZRA                     =0x186,
-        D_A_NPC_ZRC                     =0x187,
-        D_A_NPC_ZRZ                     =0x188,
-        D_A_OBJ_LV5KEY                  =0x189,
-        D_A_OBJ_TURARA                  =0x18A,
-        D_A_OBJ_TVCDLST                 =0x18B,
-        D_A_OBJ_Y_TAIHOU                =0x18C,
-        D_A_OBJ_AMISHUTTER              =0x18D,
-        D_A_OBJ_ARI                     =0x18E,
-        D_A_OBJ_AUTOMATA                =0x18F,
-        D_A_OBJ_AVALANCHE               =0x190,
-        D_A_OBJ_BALLOON                 =0x191,
-        D_A_OBJ_BARDESK                 =0x192,
-        D_A_OBJ_BATTA                   =0x193,
-        D_A_OBJ_BBOX                    =0x194,
-        D_A_OBJ_BED                     =0x195,
-        D_A_OBJ_BEMOS                   =0x196,
-        D_A_OBJ_BHBRIDGE                =0x197,
-        D_A_OBJ_BK_LEAF                 =0x198,
-        D_A_OBJ_BKY_ROCK                =0x199,
-        D_A_OBJ_BMWINDOW                =0x19A,
-        D_A_OBJ_BMSHUTTER               =0x19B,
-        D_A_OBJ_BOMBF                   =0x19C,
-        D_A_OBJ_BOUMATO                 =0x19D,
-        D_A_OBJ_BRG                     =0x19E,
-        D_A_OBJ_BSGATE                  =0x19F,
-        D_A_OBJ_BUBBLEPILAR             =0x1A0,
-        D_A_OBJ_CATDOOR                 =0x1A1,
-        D_A_OBJ_CB                      =0x1A2,
-        D_A_OBJ_CBLOCK                  =0x1A3,
-        D_A_OBJ_CDOOR                   =0x1A4,
-        D_A_OBJ_CHANDELIER              =0x1A5,
-        D_A_OBJ_CHEST                   =0x1A6,
-        D_A_OBJ_CHO                     =0x1A7,
-        D_A_OBJ_COWDOOR                 =0x1A8,
-        D_A_OBJ_CROPE                   =0x1A9,
-        D_A_OBJ_CRVFENCE                =0x1AA,
-        D_A_OBJ_CRVGATE                 =0x1AB,
-        D_A_OBJ_CRVHAHEN                =0x1AC,
-        D_A_OBJ_CRVLH_DOWN              =0x1AD,
-        D_A_OBJ_CRVLH_UP                =0x1AE,
-        D_A_OBJ_CRVSTEEL                =0x1AF,
-        D_A_OBJ_CRYSTAL                 =0x1B0,
-        D_A_OBJ_CWALL                   =0x1B1,
-        D_A_OBJ_DAMCPS                  =0x1B2,
-        D_A_OBJ_DAN                     =0x1B3,
-        D_A_OBJ_DIGHOLL                 =0x1B4,
-        D_A_OBJ_DIGSNOW                 =0x1B5,
-        D_A_OBJ_DMELEVATOR              =0x1B6,
-        D_A_OBJ_DROP                    =0x1B7,
-        D_A_OBJ_DUST                    =0x1B8,
-        D_A_OBJ_ENEMY_CREATE            =0x1B9,
-        D_A_OBJ_FALLOBJ                 =0x1BA,
-        D_A_OBJ_FAN                     =0x1BB,
-        D_A_OBJ_FCHAIN                  =0x1BC,
-        D_A_OBJ_FIREWOOD                =0x1BD,
-        D_A_OBJ_FIREWOOD2               =0x1BE,
-        D_A_OBJ_FIREPILLAR              =0x1BF,
-        D_A_OBJ_FIREPILLAR2             =0x1C0,
-        D_A_OBJ_FLAG                    =0x1C1,
-        D_A_OBJ_FLAG2                   =0x1C2,
-        D_A_OBJ_FLAG3                   =0x1C3,
-        D_A_OBJ_FOOD                    =0x1C4,
-        D_A_OBJ_FW                      =0x1C5,
-        D_A_OBJ_GADGET                  =0x1C6,
-        D_A_OBJ_GANONWALL               =0x1C7,
-        D_A_OBJ_GANONWALL2              =0x1C8,
-        D_A_OBJ_GB                      =0x1C9,
-        D_A_OBJ_GEYSER                  =0x1CA,
-        D_A_OBJ_GLOWSPHERE              =0x1CB,
-        D_A_OBJ_GM                      =0x1CC,
-        D_A_OBJ_GOGATE                  =0x1CD,
-        D_A_OBJ_GOMIKABE                =0x1CE,
-        D_A_OBJ_GRA2                    =0x1CF,
-        D_A_OBJ_GRAWALL                 =0x1D0,
-        D_A_OBJ_GRA_ROCK                =0x1D1,
-        D_A_OBJ_GRAVE_STONE             =0x1D2,
-        D_A_OBJ_GROUNDWATER             =0x1D3,
-        D_A_OBJ_GRZ_ROCK                =0x1D4,
-        D_A_OBJ_H_SAKU                  =0x1D5,
-        D_A_OBJ_HAKAI_BRL               =0x1D6,
-        D_A_OBJ_HAKAI_FTR               =0x1D7,
-        D_A_OBJ_HASU2                   =0x1D8,
-        D_A_OBJ_HATA                    =0x1D9,
-        D_A_OBJ_HB                      =0x1DA,
-        D_A_OBJ_HBOMBKOYA               =0x1DB,
-        D_A_OBJ_HEAVYSW                 =0x1DC,
-        D_A_OBJ_HFUTA                   =0x1DD,
-        D_A_OBJ_HSTARGET                =0x1DE,
-        D_A_OBJ_ICE_L                   =0x1DF,
-        D_A_OBJ_ICE_S                   =0x1E0,
-        D_A_OBJ_ICEBLOCK                =0x1E1,
-        D_A_OBJ_ICELEAF                 =0x1E2,
-        D_A_OBJ_IHASI                   =0x1E3,
-        D_A_OBJ_IKADA                   =0x1E4,
-        D_A_OBJ_INOBONE                 =0x1E5,
-        D_A_OBJ_ITA                     =0x1E6,
-        D_A_OBJ_ITAMATO                 =0x1E7,
-        D_A_OBJ_KABUTO                  =0x1E8,
-        D_A_OBJ_KAG                     =0x1E9,
-        D_A_OBJ_KAGE                    =0x1EA,
-        D_A_OBJ_KAGO                    =0x1EB,
-        D_A_OBJ_KAISOU                  =0x1EC,
-        D_A_OBJ_KAMAKIRI                =0x1ED,
-        D_A_OBJ_KANTERA                 =0x1EE,
-        D_A_OBJ_KATATSUMURI             =0x1EF,
-        D_A_OBJ_KAZENEKO                =0x1F0,
-        D_A_OBJ_KBOX                    =0x1F1,
-        D_A_OBJ_KEY                     =0x1F2,
-        D_A_OBJ_KEYHOLE                 =0x1F3,
-        D_A_OBJ_KI                      =0x1F4,
-        D_A_OBJ_KIPOT                   =0x1F5,
-        D_A_OBJ_KITA                    =0x1F6,
-        D_A_OBJ_KJGJS                   =0x1F7,
-        D_A_OBJ_KKANBAN                 =0x1F8,
-        D_A_OBJ_KNBULLET                =0x1F9,
-        D_A_OBJ_KSHUTTER                =0x1FA,
-        D_A_OBJ_KUWAGATA                =0x1FB,
-        D_A_OBJ_KWHEEL00                =0x1FC,
-        D_A_OBJ_KWHEEL01                =0x1FD,
-        D_A_OBJ_KZNKARM                 =0x1FE,
-        D_A_OBJ_LAUNDRY                 =0x1FF,
-        D_A_OBJ_LAUNDRY_ROPE            =0x200,
-        D_A_OBJ_LBOX                    =0x201,
-        D_A_OBJ_LP                      =0x202,
-        D_A_OBJ_LV1CANDLE00             =0x203,
-        D_A_OBJ_LV1CANDLE01             =0x204,
-        D_A_OBJ_LV3CANDLE               =0x205,
-        D_A_OBJ_LV3WATER                =0x206,
-        D_A_OBJ_LV3WATER2               =0x207,
-        D_A_OBJ_LV3WATERB               =0x208,
-        D_A_OBJ_LV3SAKA00               =0x209,
-        D_A_OBJ_LV3WATEREFF             =0x20A,
-        D_A_OBJ_LV4CANDLEDEMOTAG        =0x20B,
-        D_A_OBJ_LV4CANDLETAG            =0x20C,
-        D_A_OBJ_LV4EDSHUTTER            =0x20D,
-        D_A_OBJ_LV4GATE                 =0x20E,
-        D_A_OBJ_LV4HSTARGET             =0x20F,
-        D_A_OBJ_LV4POGATE               =0x210,
-        D_A_OBJ_LV4RAILWALL             =0x211,
-        D_A_OBJ_LV4SLIDEWALL            =0x212,
-        D_A_OBJ_LV4BRIDGE               =0x213,
-        D_A_OBJ_LV4CHANDELIER           =0x214,
-        D_A_OBJ_LV4DIGSAND              =0x215,
-        D_A_OBJ_LV4FLOOR                =0x216,
-        D_A_OBJ_LV4GEAR                 =0x217,
-        D_A_OBJ_LV4PRELVTR              =0x218,
-        D_A_OBJ_LV4PRWALL               =0x219,
-        D_A_OBJ_LV4SAND                 =0x21A,
-        D_A_OBJ_LV5FLOORBOARD           =0x21B,
-        D_A_OBJ_LV5ICEWALL              =0x21C,
-        D_A_OBJ_LV5SWICE                =0x21D,
-        D_A_OBJ_LV5YCHNDLR              =0x21E,
-        D_A_OBJ_LV5YIBLLTRAY            =0x21F,
-        D_A_OBJ_LV6CHANGEGATE           =0x220,
-        D_A_OBJ_LV6FURIKOTRAP           =0x221,
-        D_A_OBJ_LV6LBLOCK               =0x222,
-        D_A_OBJ_LV6SWGATE               =0x223,
-        D_A_OBJ_LV6SZGATE               =0x224,
-        D_A_OBJ_LV6TENBIN               =0x225,
-        D_A_OBJ_LV6TOGEROLL             =0x226,
-        D_A_OBJ_LV6TOGETRAP             =0x227,
-        D_A_OBJ_LV6BEMOS                =0x228,
-        D_A_OBJ_LV6BEMOS2               =0x229,
-        D_A_OBJ_LV6EGATE                =0x22A,
-        D_A_OBJ_LV6ELEVTA               =0x22B,
-        D_A_OBJ_LV6SWTURN               =0x22C,
-        D_A_OBJ_LV7BSGATE               =0x22D,
-        D_A_OBJ_LV7PROPELLERY           =0x22E,
-        D_A_OBJ_LV7BRIDGE               =0x22F,
-        D_A_OBJ_LV8KEKKAITRAP           =0x230,
-        D_A_OBJ_LV8LIFT                 =0x231,
-        D_A_OBJ_LV8OPTILIFT             =0x232,
-        D_A_OBJ_LV8UDFLOOR              =0x233,
-        D_A_OBJ_LV9SWSHUTTER            =0x234,
-        D_A_OBJ_MAGLIFT                 =0x235,
-        D_A_OBJ_MAGLIFTROT              =0x236,
-        D_A_OBJ_MAKI                    =0x237,
-        D_A_OBJ_MASTER_SWORD            =0x238,
-        D_A_OBJ_MATO                    =0x239,
-        D_A_OBJ_MHOLE                   =0x23A,
-        D_A_OBJ_MIE                     =0x23B,
-        D_A_OBJ_MIRROR_6POLE            =0x23C,
-        D_A_OBJ_MIRROR_CHAIN            =0x23D,
-        D_A_OBJ_MIRROR_SAND             =0x23E,
-        D_A_OBJ_MIRROR_SCREW            =0x23F,
-        D_A_OBJ_MIRROR_TABLE            =0x240,
-        D_A_OBJ_MSIMA                   =0x241,
-        D_A_OBJ_MVSTAIR                 =0x242,
-        D_A_OBJ_MYOGAN                  =0x243,
-        D_A_OBJ_NAGAISU                 =0x244,
-        D_A_OBJ_NAN                     =0x245,
-        D_A_OBJ_NDOOR                   =0x246,
-        D_A_OBJ_NOUGU                   =0x247,
-        D_A_OBJ_OCTHASHI                =0x248,
-        D_A_OBJ_OILTUBO                 =0x249,
-        D_A_OBJ_ONSEN                   =0x24A,
-        D_A_OBJ_ONSENFIRE               =0x24B,
-        D_A_OBJ_ONSENTARU               =0x24C,
-        D_A_OBJ_PDOOR                   =0x24D,
-        D_A_OBJ_PDTILE                  =0x24E,
-        D_A_OBJ_PDWALL                  =0x24F,
-        D_A_OBJ_PICTURE                 =0x250,
-        D_A_OBJ_PILLAR                  =0x251,
-        D_A_OBJ_PLEAF                   =0x252,
-        D_A_OBJ_POCANDLE                =0x253,
-        D_A_OBJ_POFIRE                  =0x254,
-        D_A_OBJ_POTBOX                  =0x255,
-        D_A_OBJ_PROP                    =0x256,
-        D_A_OBJ_PUMPKIN                 =0x257,
-        D_A_OBJ_RCIRCLE                 =0x258,
-        D_A_OBJ_RFHOLE                  =0x259,
-        D_A_OBJ_RGATE                   =0x25A,
-        D_A_OBJ_RIVERROCK               =0x25B,
-        D_A_OBJ_ROCK                    =0x25C,
-        D_A_OBJ_ROTBRIDGE               =0x25D,
-        D_A_OBJ_ROTTRAP                 =0x25E,
-        D_A_OBJ_ROTEN                   =0x25F,
-        D_A_OBJ_RSTAIR                  =0x260,
-        D_A_OBJ_RW                      =0x261,
-        D_A_OBJ_SAIDAN                  =0x262,
-        D_A_OBJ_SAKUITA                 =0x263,
-        D_A_OBJ_SAKUITA_ROPE            =0x264,
-        D_A_OBJ_SCANNON                 =0x265,
-        D_A_OBJ_SCANNON_CRS             =0x266,
-        D_A_OBJ_SCANNON_TEN             =0x267,
-        D_A_OBJ_SEKIDOOR                =0x268,
-        D_A_OBJ_SEKIZO                  =0x269,
-        D_A_OBJ_SEKIZOA                 =0x26A,
-        D_A_OBJ_SHIELD                  =0x26B,
-        D_A_OBJ_SM_DOOR                 =0x26C,
-        D_A_OBJ_SMALLKEY                =0x26D,
-        D_A_OBJ_SMGDOOR                 =0x26E,
-        D_A_OBJ_SMOKE                   =0x26F,
-        D_A_OBJ_SMTILE                  =0x270,
-        D_A_OBJ_SMW_STONE               =0x271,
-        D_A_OBJ_SNOWEFFTAG              =0x272,
-        D_A_OBJ_SNOW_SOUP               =0x273,
-        D_A_OBJ_SO                      =0x274,
-        D_A_OBJ_SPINLIFT                =0x275,
-        D_A_OBJ_SS_DRINK                =0x276,
-        D_A_OBJ_SS_ITEM                 =0x277,
-        D_A_OBJ_STAIRBLOCK              =0x278,
-        D_A_OBJ_STONE                   =0x279,
-        D_A_OBJ_STOPPER                 =0x27A,
-        D_A_OBJ_STOPPER2                =0x27B,
-        D_A_OBJ_SUISYA                  =0x27C,
-        D_A_OBJ_SW                      =0x27D,
-        D_A_OBJ_SWBALLA                 =0x27E,
-        D_A_OBJ_SWBALLB                 =0x27F,
-        D_A_OBJ_SWBALLC                 =0x280,
-        D_A_OBJ_SWLIGHT                 =0x281,
-        D_A_OBJ_SWCHAIN                 =0x282,
-        D_A_OBJ_SWHANG                  =0x283,
-        D_A_OBJ_SWORD                   =0x284,
-        D_A_OBJ_SWPUSH2                 =0x285,
-        D_A_OBJ_SWSPINNER               =0x286,
-        D_A_OBJ_SWTURN                  =0x287,
-        D_A_OBJ_SYROCK                  =0x288,
-        D_A_OBJ_SZBRIDGE                =0x289,
-        D_A_OBJ_TAFENCE                 =0x28A,
-        D_A_OBJ_TABLE                   =0x28B,
-        D_A_OBJ_TAKARADAI               =0x28C,
-        D_A_OBJ_TATIGI                  =0x28D,
-        D_A_OBJ_TEN                     =0x28E,
-        D_A_OBJ_TESTCUBE                =0x28F,
-        D_A_OBJ_TGAKE                   =0x290,
-        D_A_OBJ_THASHI                  =0x291,
-        D_A_OBJ_THDOOR                  =0x292,
-        D_A_OBJ_TIMEFIRE                =0x293,
-        D_A_OBJ_TKS                     =0x294,
-        D_A_OBJ_TMOON                   =0x295,
-        D_A_OBJ_TOARU_MAKI              =0x296,
-        D_A_OBJ_TOBY                    =0x297,
-        D_A_OBJ_TOBYHOUSE               =0x298,
-        D_A_OBJ_TOGETRAP                =0x299,
-        D_A_OBJ_TOMBO                   =0x29A,
-        D_A_OBJ_TORNADO                 =0x29B,
-        D_A_OBJ_TORNADO2                =0x29C,
-        D_A_OBJ_TP                      =0x29D,
-        D_A_OBJ_TREESH                  =0x29E,
-        D_A_OBJ_TWGATE                  =0x29F,
-        D_A_OBJ_UDOOR                   =0x2A0,
-        D_A_OBJ_USAKU                   =0x2A1,
-        D_A_OBJ_VGROUND                 =0x2A2,
-        D_A_OBJ_VOLCBALL                =0x2A3,
-        D_A_OBJ_VOLCBOM                 =0x2A4,
-        D_A_OBJ_WARP_KBRG               =0x2A5,
-        D_A_OBJ_WARP_OBRG               =0x2A6,
-        D_A_OBJ_WATERGATE               =0x2A7,
-        D_A_OBJ_WATERPILLAR             =0x2A8,
-        D_A_OBJ_WATERFALL               =0x2A9,
-        D_A_OBJ_WCHAIN                  =0x2AA,
-        D_A_OBJ_WDSTICK                 =0x2AB,
-        D_A_OBJ_WEB0                    =0x2AC,
-        D_A_OBJ_WEB1                    =0x2AD,
-        D_A_OBJ_WELL_COVER              =0x2AE,
-        D_A_OBJ_WFLAG                   =0x2AF,
-        D_A_OBJ_WIND_STONE              =0x2B0,
-        D_A_OBJ_WINDOW                  =0x2B1,
-        D_A_OBJ_WOOD_PENDULUM           =0x2B2,
-        D_A_OBJ_WOOD_STATUE             =0x2B3,
-        D_A_OBJ_WSWORD                  =0x2B4,
-        D_A_OBJ_YEL_BAG                 =0x2B5,
-        D_A_OBJ_YSTONE                  =0x2B6,
-        D_A_OBJ_ZCLOTH                  =0x2B7,
-        D_A_OBJ_ZDOOR                   =0x2B8,
-        D_A_OBJ_ZRTURARA                =0x2B9,
-        D_A_OBJ_ZRTURARAROCK            =0x2BA,
-        D_A_OBJ_ZRAMARK                 =0x2BB,
-        D_A_OBJ_ZRA_FREEZE              =0x2BC,
-        D_A_OBJ_ZRA_ROCK                =0x2BD,
-        D_A_PASSER_MNG                  =0x2BE,
-        D_A_PERU                        =0x2BF,
-        D_A_PPOLAMP                     =0x2C0,
-        D_A_SKIP_2D                     =0x2C1,
-        D_A_STARTANDGOAL                =0x2C2,
-        D_A_SWBALL                      =0x2C3,
-        D_A_SWLBALL                     =0x2C4,
-        D_A_SWTIME                      =0x2C5,
-        D_A_TAG_LV6GATE                 =0x2C6,
-        D_A_TAG_LV7GATE                 =0x2C7,
-        D_A_TAG_LV8GATE                 =0x2C8,
-        D_A_TAG_TWGATE                  =0x2C9,
-        D_A_TAG_ARENA                   =0x2CA,
-        D_A_TAG_ASSISTANCE              =0x2CB,
-        D_A_TAG_BOTTLE_ITEM             =0x2CC,
-        D_A_TAG_CHGRESTART              =0x2CD,
-        D_A_TAG_CSW                     =0x2CE,
-        D_A_TAG_ESCAPE                  =0x2CF,
-        D_A_TAG_FIREWALL                =0x2D0,
-        D_A_TAG_GRA                     =0x2D1,
-        D_A_TAG_GUARD                   =0x2D2,
-        D_A_TAG_INSTRUCTION             =0x2D3,
-        D_A_TAG_KAGO_FALL               =0x2D4,
-        D_A_TAG_LIGHTBALL               =0x2D5,
-        D_A_TAG_LV5SOUP                 =0x2D6,
-        D_A_TAG_LV6CSTASW               =0x2D7,
-        D_A_TAG_MMSG                    =0x2D8,
-        D_A_TAG_MWAIT                   =0x2D9,
-        D_A_TAG_MYNA2                   =0x2DA,
-        D_A_TAG_MYNA_LIGHT              =0x2DB,
-        D_A_TAG_PACHI                   =0x2DC,
-        D_A_TAG_POFIRE                  =0x2DD,
-        D_A_TAG_QS                      =0x2DE,
-        D_A_TAG_RET_ROOM                =0x2DF,
-        D_A_TAG_RIVER_BACK              =0x2E0,
-        D_A_TAG_RMBIT_SW                =0x2E1,
-        D_A_TAG_SCHEDULE                =0x2E2,
-        D_A_TAG_SETBALL                 =0x2E3,
-        D_A_TAG_SETRESTART              =0x2E4,
-        D_A_TAG_SHOP_CAMERA             =0x2E5,
-        D_A_TAG_SHOP_ITEM               =0x2E6,
-        D_A_TAG_SMK_EMT                 =0x2E7,
-        D_A_TAG_SPINNER                 =0x2E8,
-        D_A_TAG_SPPATH                  =0x2E9,
-        D_A_TAG_SS_DRINK                =0x2EA,
-        D_A_TAG_STREAM                  =0x2EB,
-        D_A_TAG_THEB_HINT               =0x2EC,
-        D_A_TAG_WARA_HOWL               =0x2ED,
-        D_A_TAG_WATCHGE                 =0x2EE,
-        D_A_TAG_WATERFALL               =0x2EF,
-        D_A_TAG_WLJUMP                  =0x2F0,
-        D_A_TAG_YAMI                    =0x2F1,
-        D_A_TALK                        =0x2F2,
-        D_A_TBOXSW                      =0x2F3,
-        D_A_TITLE                       =0x2F4,
-        D_A_WARP_BUG                    =0x2F5,
+        F_PC_PROFILE_LST = 0x001,
+        D_A_ANDSW,         // 0x002
+        D_A_BG,            // 0x003
+        D_A_BG_OBJ,        // 0x004
+        D_A_DMIDNA,        // 0x005
+        D_A_DOOR_DBDOOR00, // 0x006
+        D_A_DOOR_KNOB00,   // 0x007
+        D_A_DOOR_SHUTTER,  // 0x008
+        D_A_DOOR_SPIRAL,   // 0x009
+        D_A_DSHUTTER,      // 0x00A
+        D_A_EP,            // 0x00B
+        D_A_HITOBJ,        // 0x00C
+        D_A_KYTAG00,       // 0x00D
+        D_A_KYTAG04,       // 0x00E
+        D_A_KYTAG17,       // 0x00F
+#ifdef PLATFORM_WII
+        D_A_NO_CHG_ROOM,
+#endif
+        D_A_OBJ_BRAKEEFF,       // 0x010
+        D_A_OBJ_BURNBOX,        // 0x011
+        D_A_OBJ_CARRY,          // 0x012
+        D_A_OBJ_ITO,            // 0x013
+        D_A_OBJ_MOVEBOX,        // 0x014
+        D_A_OBJ_SWPUSH,         // 0x015
+        D_A_OBJ_TIMER,          // 0x016
+        D_A_PATH_LINE,          // 0x017
+        D_A_SCENE_EXIT,         // 0x018
+        D_A_SET_BGOBJ,          // 0x019
+        D_A_SWHIT0,             // 0x01A
+        D_A_TAG_ALLMATO,        // 0x01B
+        D_A_TAG_CAMERA,         // 0x01C
+        D_A_TAG_CHKPOINT,       // 0x01D
+        D_A_TAG_EVENT,          // 0x01E
+        D_A_TAG_EVT,            // 0x01F
+        D_A_TAG_EVTAREA,        // 0x020
+        D_A_TAG_EVTMSG,         // 0x021
+        D_A_TAG_HOWL,           // 0x022
+        D_A_TAG_KMSG,           // 0x023
+        D_A_TAG_LANTERN,        // 0x024
+        D_A_TAG_MIST,           // 0x025
+        D_A_TAG_MSG,            // 0x026
+        D_A_TAG_PUSH,           // 0x027
+        D_A_TAG_TELOP,          // 0x028
+        D_A_TBOX,               // 0x029
+        D_A_TBOX2,              // 0x02A
+        D_A_VRBOX,              // 0x02B
+        D_A_VRBOX2,             // 0x02C
+        D_A_ARROW,              // 0x02D
+        D_A_BOOMERANG,          // 0x02E
+        D_A_CROD,               // 0x02F
+        D_A_DEMO00,             // 0x030
+        D_A_DISAPPEAR,          // 0x031
+        D_A_MG_ROD,             // 0x032
+        D_A_MIDNA,              // 0x033
+        D_A_NBOMB,              // 0x034
+        D_A_OBJ_LIFE_CONTAINER, // 0x035
+        D_A_OBJ_YOUSEI,         // 0x036
+        D_A_SPINNER,            // 0x037
+        D_A_SUSPEND,            // 0x038
+        D_A_TAG_ATTENTION,      // 0x039
+        D_A_ALLDIE,             // 0x03A
+        D_A_ANDSW2,             // 0x03B
+        D_A_BD,                 // 0x03C
+        D_A_CANOE,              // 0x03D
+        D_A_CSTAF,              // 0x03E
+        D_A_DEMO_ITEM,          // 0x03F
+        D_A_DOOR_BOSSL1,        // 0x040
+        D_A_E_DN,               // 0x041
+        D_A_E_FM,               // 0x042
+        D_A_E_GA,               // 0x043
+        D_A_E_HB,               // 0x044
+        D_A_E_NEST,             // 0x045
+        D_A_E_RD,               // 0x046
+        D_A_ECONT,              // 0x047
+        D_A_FR,                 // 0x048
+        D_A_GRASS,              // 0x049
+        D_A_KYTAG05,            // 0x04A
+        D_A_KYTAG10,            // 0x04B
+        D_A_KYTAG11,            // 0x04C
+        D_A_KYTAG14,            // 0x04D
+        D_A_MG_FISH,            // 0x04E
+        D_A_NPC_BESU,           // 0x04F
+        D_A_NPC_FAIRY_SEIREI,   // 0x050
+        D_A_NPC_FISH,           // 0x051
+        D_A_NPC_HENNA,          // 0x052
+        D_A_NPC_KAKASHI,        // 0x053
+        D_A_NPC_KKRI,           // 0x054
+        D_A_NPC_KOLIN,          // 0x055
+        D_A_NPC_MARO,           // 0x056
+        D_A_NPC_TARO,           // 0x057
+        D_A_NPC_TKJ,            // 0x058
+        D_A_OBJ_BHASHI,         // 0x059
+        D_A_OBJ_BKDOOR,         // 0x05A
+        D_A_OBJ_BOSSWARP,       // 0x05B
+        D_A_OBJ_CBOARD,         // 0x05C
+        D_A_OBJ_DIGPLACE,       // 0x05D
+        D_A_OBJ_EFF,            // 0x05E
+        D_A_OBJ_FMOBJ,          // 0x05F
+        D_A_OBJ_GPTARU,         // 0x060
+        D_A_OBJ_HHASHI,         // 0x061
+        D_A_OBJ_KANBAN2,        // 0x062
+#ifndef PLATFORM_WII
+        D_A_OBJ_KBACKET, // 0x063
+#endif
+        D_A_OBJ_KGATE,          // 0x064
+        D_A_OBJ_KLIFT00,        // 0x065
+        D_A_OBJ_KTONFIRE,       // 0x066
+        D_A_OBJ_LADDER,         // 0x067
+        D_A_OBJ_LV2CANDLE,      // 0x068
+        D_A_OBJ_MAGNE_ARM,      // 0x069
+        D_A_OBJ_METALBOX,       // 0x06A
+        D_A_OBJ_MGATE,          // 0x06B
+        D_A_OBJ_NAMEPLATE,      // 0x06C
+        D_A_OBJ_ORNAMENT_CLOTH, // 0x06D
+        D_A_OBJ_ROPE_BRIDGE,    // 0x06E
+        D_A_OBJ_SWALLSHUTTER,   // 0x06F
+        D_A_OBJ_STICK,          // 0x070
+        D_A_OBJ_STONEMARK,      // 0x071
+        D_A_OBJ_SWPROPELLER,    // 0x072
+        D_A_OBJ_SWPUSH5,        // 0x073
+        D_A_OBJ_YOBIKUSA,       // 0x074
+        D_A_SCENE_EXIT2,        // 0x075
+        D_A_SHOP_ITEM,          // 0x076
+        D_A_SQ,                 // 0x077
+        D_A_SWC00,              // 0x078
+        D_A_TAG_CSTASW,         // 0x079
+        D_A_TAG_AJNOT,          // 0x07A
+        D_A_TAG_ATTACK_ITEM,    // 0x07B
+        D_A_TAG_GSTART,         // 0x07C
+        D_A_TAG_HINIT,          // 0x07D
+        D_A_TAG_HJUMP,          // 0x07E
+        D_A_TAG_HSTOP,          // 0x07F
+        D_A_TAG_LV2PRCHK,       // 0x080
+        D_A_TAG_MAGNE,          // 0x081
+        D_A_TAG_MHINT,          // 0x082
+        D_A_TAG_MSTOP,          // 0x083
+        D_A_TAG_SPRING,         // 0x084
+        D_A_TAG_STATUE_EVT,     // 0x085
+        D_A_YKGR,               // 0x086
+        D_A_L7DEMO_DR,          // 0x087
+        D_A_L7LOW_DR,           // 0x088
+        D_A_L7OP_DEMO_DR,       // 0x089
+        D_A_B_BH,               // 0x08A
+        D_A_B_BQ,               // 0x08B
+        D_A_B_DR,               // 0x08C
+        D_A_B_DRE,              // 0x08D
+        D_A_B_DS,               // 0x08E
+        D_A_B_GG,               // 0x08F
+        D_A_B_GM,               // 0x090
+        D_A_B_GND,              // 0x091
+        D_A_B_GO,               // 0x092
+        D_A_B_GOS,              // 0x093
+        D_A_B_MGN,              // 0x094
+        D_A_B_OB,               // 0x095
+        D_A_B_OH,               // 0x096
+        D_A_B_OH2,              // 0x097
+        D_A_B_TN,               // 0x098
+        D_A_B_YO,               // 0x099
+        D_A_B_YO_ICE,           // 0x09A
+        D_A_B_ZANT,             // 0x09B
+        D_A_B_ZANT_MAGIC,       // 0x09C
+        D_A_B_ZANT_MOBILE,      // 0x09D
+        D_A_B_ZANT_SIMA,        // 0x09E
+        D_A_BALLOON_2D,         // 0x09F
+        D_A_BULLET,             // 0x0A0
+        D_A_COACH_2D,           // 0x0A1
+        D_A_COACH_FIRE,         // 0x0A2
+        D_A_COW,                // 0x0A3
+        D_A_CSTATUE,            // 0x0A4
+        D_A_DO,                 // 0x0A5
+        D_A_DOOR_BOSS,          // 0x0A6
+        D_A_DOOR_BOSSL5,        // 0x0A7
+        D_A_DOOR_MBOSSL1,       // 0x0A8
+        D_A_DOOR_PUSH,          // 0x0A9
+        D_A_E_AI,               // 0x0AA
+        D_A_E_ARROW,            // 0x0AB
+        D_A_E_BA,               // 0x0AC
+        D_A_E_BEE,              // 0x0AD
+        D_A_E_BG,               // 0x0AE
+        D_A_E_BI,               // 0x0AF
+        D_A_E_BI_LEAF,          // 0x0B0
+        D_A_E_BS,               // 0x0B1
+        D_A_E_BU,               // 0x0B2
+        D_A_E_BUG,              // 0x0B3
+        D_A_E_CR,               // 0x0B4
+        D_A_E_CR_EGG,           // 0x0B5
+        D_A_E_DB,               // 0x0B6
+        D_A_E_DB_LEAF,          // 0x0B7
+        D_A_E_DD,               // 0x0B8
+        D_A_E_DF,               // 0x0B9
+        D_A_E_DK,               // 0x0BA
+        D_A_E_DT,               // 0x0BB
+        D_A_E_FB,               // 0x0BC
+        D_A_E_FK,               // 0x0BD
+        D_A_E_FS,               // 0x0BE
+        D_A_E_FZ,               // 0x0BF
+        D_A_E_GB,               // 0x0C0
+        D_A_E_GE,               // 0x0C1
+        D_A_E_GI,               // 0x0C2
+        D_A_E_GM,               // 0x0C3
+        D_A_E_GOB,              // 0x0C4
+        D_A_E_GS,               // 0x0C5
+        D_A_E_HB_LEAF,          // 0x0C6
+        D_A_E_HM,               // 0x0C7
+        D_A_E_HP,               // 0x0C8
+        D_A_E_HZ,               // 0x0C9
+        D_A_E_HZELDA,           // 0x0CA
+        D_A_E_IS,               // 0x0CB
+        D_A_E_KG,               // 0x0CC
+        D_A_E_KK,               // 0x0CD
+        D_A_E_KR,               // 0x0CE
+        D_A_E_MB,               // 0x0CF
+        D_A_E_MD,               // 0x0D0
+        D_A_E_MF,               // 0x0D1
+        D_A_E_MK,               // 0x0D2
+        D_A_E_MK_BO,            // 0x0D3
+        D_A_E_MM,               // 0x0D4
+        D_A_E_MM_MT,            // 0x0D5
+        D_A_E_MS,               // 0x0D6
+        D_A_E_NZ,               // 0x0D7
+        D_A_E_OC,               // 0x0D8
+        D_A_E_OCT_BG,           // 0x0D9
+        D_A_E_OT,               // 0x0DA
+        D_A_E_PH,               // 0x0DB
+        D_A_E_PM,               // 0x0DC
+        D_A_E_PO,               // 0x0DD
+        D_A_E_PZ,               // 0x0DE
+        D_A_E_RB,               // 0x0DF
+        D_A_E_RDB,              // 0x0E0
+        D_A_E_RDY,              // 0x0E1
+        D_A_E_S1,               // 0x0E2
+        D_A_E_SB,               // 0x0E3
+        D_A_E_SF,               // 0x0E4
+        D_A_E_SG,               // 0x0E5
+        D_A_E_SH,               // 0x0E6
+        D_A_E_SM,               // 0x0E7
+        D_A_E_SM2,              // 0x0E8
+        D_A_E_ST,               // 0x0E9
+        D_A_E_ST_LINE,          // 0x0EA
+        D_A_E_SW,               // 0x0EB
+        D_A_E_TH,               // 0x0EC
+        D_A_E_TH_BALL,          // 0x0ED
+        D_A_E_TK,               // 0x0EE
+        D_A_E_TK2,              // 0x0EF
+        D_A_E_TK_BALL,          // 0x0F0
+        D_A_E_TT,               // 0x0F1
+        D_A_E_VT,               // 0x0F2
+        D_A_E_WARPAPPEAR,       // 0x0F3
+        D_A_E_WB,               // 0x0F4
+        D_A_E_WS,               // 0x0F5
+        D_A_E_WW,               // 0x0F6
+        D_A_E_YC,               // 0x0F7
+        D_A_E_YD,               // 0x0F8
+        D_A_E_YD_LEAF,          // 0x0F9
+        D_A_E_YG,               // 0x0FA
+        D_A_E_YH,               // 0x0FB
+        D_A_E_YK,               // 0x0FC
+        D_A_E_YM,               // 0x0FD
+        D_A_E_YM_TAG,           // 0x0FE
+        D_A_E_YMB,              // 0x0FF
+        D_A_E_YR,               // 0x100
+        D_A_E_ZH,               // 0x101
+        D_A_E_ZM,               // 0x102
+        D_A_E_ZS,               // 0x103
+        D_A_FORMATION_MNG,      // 0x104
+        D_A_GUARD_MNG,          // 0x105
+        D_A_HORSE,              // 0x106
+        D_A_HOZELDA,            // 0x107
+        D_A_IZUMI_GATE,         // 0x108
+        D_A_KAGO,               // 0x109
+        D_A_KYTAG01,            // 0x10A
+        D_A_KYTAG02,            // 0x10B
+        D_A_KYTAG03,            // 0x10C
+        D_A_KYTAG06,            // 0x10D
+        D_A_KYTAG07,            // 0x10E
+        D_A_KYTAG08,            // 0x10F
+        D_A_KYTAG09,            // 0x110
+        D_A_KYTAG12,            // 0x111
+        D_A_KYTAG13,            // 0x112
+        D_A_KYTAG15,            // 0x113
+        D_A_KYTAG16,            // 0x114
+        D_A_MANT,               // 0x115
+        D_A_MG_FSHOP,           // 0x116
+        D_A_MIRROR,             // 0x117
+        D_A_MOVIE_PLAYER,       // 0x118
+        D_A_MYNA,               // 0x119
+        D_A_NI,                 // 0x11A
+        D_A_NPC_ARU,            // 0x11B
+        D_A_NPC_ASH,            // 0x11C
+        D_A_NPC_ASHB,           // 0x11D
+        D_A_NPC_BANS,           // 0x11E
+        D_A_NPC_BLUE_NS,        // 0x11F
+        D_A_NPC_BOU,            // 0x120
+        D_A_NPC_BOUS,           // 0x121
+        D_A_NPC_CDN3,           // 0x122
+        D_A_NPC_CHAT,           // 0x123
+        D_A_NPC_CHIN,           // 0x124
+        D_A_NPC_CLERKA,         // 0x125
+        D_A_NPC_CLERKB,         // 0x126
+        D_A_NPC_CLERKT,         // 0x127
+        D_A_NPC_COACH,          // 0x128
+        D_A_NPC_DF,             // 0x129
+        D_A_NPC_DOC,            // 0x12A
+        D_A_NPC_DOORBOY,        // 0x12B
+        D_A_NPC_DRAINSOL,       // 0x12C
+        D_A_NPC_DU,             // 0x12D
+        D_A_NPC_FAIRY,          // 0x12E
+        D_A_NPC_FGUARD,         // 0x12F
+        D_A_NPC_GND,            // 0x130
+        D_A_NPC_GRA,            // 0x131
+        D_A_NPC_GRC,            // 0x132
+        D_A_NPC_GRD,            // 0x133
+        D_A_NPC_GRM,            // 0x134
+        D_A_NPC_GRMC,           // 0x135
+        D_A_NPC_GRO,            // 0x136
+        D_A_NPC_GRR,            // 0x137
+        D_A_NPC_GRS,            // 0x138
+        D_A_NPC_GRZ,            // 0x139
+        D_A_NPC_GUARD,          // 0x13A
+        D_A_NPC_GWOLF,          // 0x13B
+        D_A_NPC_HANJO,          // 0x13C
+        D_A_NPC_HENNA0,         // 0x13D
+        D_A_NPC_HOZ,            // 0x13E
+        D_A_NPC_IMPAL,          // 0x13F
+        D_A_NPC_INKO,           // 0x140
+        D_A_NPC_INS,            // 0x141
+        D_A_NPC_JAGAR,          // 0x142
+        D_A_NPC_KASI_HANA,      // 0x143
+        D_A_NPC_KASI_KYU,       // 0x144
+        D_A_NPC_KASI_MICH,      // 0x145
+        D_A_NPC_KDK,            // 0x146
+        D_A_NPC_KN,             // 0x147
+        D_A_NPC_KNJ,            // 0x148
+        D_A_NPC_KOLINB,         // 0x149
+        D_A_NPC_KS,             // 0x14A
+        D_A_NPC_KYURY,          // 0x14B
+        D_A_NPC_LEN,            // 0x14C
+        D_A_NPC_LF,             // 0x14D
+        D_A_NPC_LUD,            // 0x14E
+        D_A_NPC_MIDP,           // 0x14F
+        D_A_NPC_MK,             // 0x150
+        D_A_NPC_MOI,            // 0x151
+        D_A_NPC_MOIR,           // 0x152
+        D_A_NPC_MYNA2,          // 0x153
+        D_A_NPC_NE,             // 0x154
+        D_A_NPC_P2,             // 0x155
+        D_A_NPC_PACHI_BESU,     // 0x156
+        D_A_NPC_PACHI_MARO,     // 0x157
+        D_A_NPC_PACHI_TARO,     // 0x158
+        D_A_NPC_PASSER,         // 0x159
+        D_A_NPC_PASSER2,        // 0x15A
+        D_A_NPC_POST,           // 0x15B
+        D_A_NPC_POUYA,          // 0x15C
+        D_A_NPC_PRAYER,         // 0x15D
+        D_A_NPC_RACA,           // 0x15E
+        D_A_NPC_RAFREL,         // 0x15F
+        D_A_NPC_SARU,           // 0x160
+        D_A_NPC_SEIB,           // 0x161
+        D_A_NPC_SEIC,           // 0x162
+        D_A_NPC_SEID,           // 0x163
+        D_A_NPC_SEIRA,          // 0x164
+        D_A_NPC_SEIRA2,         // 0x165
+        D_A_NPC_SEIREI,         // 0x166
+        D_A_NPC_SHAD,           // 0x167
+        D_A_NPC_SHAMAN,         // 0x168
+        D_A_NPC_SHOE,           // 0x169
+        D_A_NPC_SHOP0,          // 0x16A
+        D_A_NPC_SHOP_MARO,      // 0x16B
+        D_A_NPC_SOLA,           // 0x16C
+        D_A_NPC_SOLDIERA,       // 0x16D
+        D_A_NPC_SOLDIERB,       // 0x16E
+        D_A_NPC_SQ,             // 0x16F
+        D_A_NPC_THE,            // 0x170
+        D_A_NPC_THEB,           // 0x171
+        D_A_NPC_TK,             // 0x172
+        D_A_NPC_TKC,            // 0x173
+        D_A_NPC_TKJ2,           // 0x174
+        D_A_NPC_TKS,            // 0x175
+        D_A_NPC_TOBY,           // 0x176
+        D_A_NPC_TR,             // 0x177
+        D_A_NPC_URI,            // 0x178
+        D_A_NPC_WORM,           // 0x179
+        D_A_NPC_WRESTLER,       // 0x17A
+        D_A_NPC_YAMID,          // 0x17B
+        D_A_NPC_YAMIS,          // 0x17C
+        D_A_NPC_YAMIT,          // 0x17D
+        D_A_NPC_YELIA,          // 0x17E
+        D_A_NPC_YKM,            // 0x17F
+        D_A_NPC_YKW,            // 0x180
+        D_A_NPC_ZANB,           // 0x181
+        D_A_NPC_ZANT,           // 0x182
+        D_A_NPC_ZELR,           // 0x183
+        D_A_NPC_ZELRO,          // 0x184
+        D_A_NPC_ZELDA,          // 0x185
+        D_A_NPC_ZRA,            // 0x186
+        D_A_NPC_ZRC,            // 0x187
+        D_A_NPC_ZRZ,            // 0x188
+        D_A_OBJ_LV5KEY,         // 0x189
+        D_A_OBJ_TURARA,         // 0x18A
+        D_A_OBJ_TVCDLST,        // 0x18B
+        D_A_OBJ_Y_TAIHOU,       // 0x18C
+        D_A_OBJ_AMISHUTTER,     // 0x18D
+        D_A_OBJ_ARI,            // 0x18E
+        D_A_OBJ_AUTOMATA,       // 0x18F
+        D_A_OBJ_AVALANCHE,      // 0x190
+        D_A_OBJ_BALLOON,        // 0x191
+        D_A_OBJ_BARDESK,        // 0x192
+        D_A_OBJ_BATTA,          // 0x193
+        D_A_OBJ_BBOX,           // 0x194
+        D_A_OBJ_BED,            // 0x195
+        D_A_OBJ_BEMOS,          // 0x196
+        D_A_OBJ_BHBRIDGE,       // 0x197
+        D_A_OBJ_BK_LEAF,        // 0x198
+        D_A_OBJ_BKY_ROCK,       // 0x199
+        D_A_OBJ_BMWINDOW,       // 0x19A
+        D_A_OBJ_BMSHUTTER,      // 0x19B
+        D_A_OBJ_BOMBF,          // 0x19C
+        D_A_OBJ_BOUMATO,        // 0x19D
+        D_A_OBJ_BRG,            // 0x19E
+        D_A_OBJ_BSGATE,         // 0x19F
+        D_A_OBJ_BUBBLEPILAR,    // 0x1A0
+        D_A_OBJ_CATDOOR,        // 0x1A1
+        D_A_OBJ_CB,             // 0x1A2
+        D_A_OBJ_CBLOCK,         // 0x1A3
+        D_A_OBJ_CDOOR,          // 0x1A4
+        D_A_OBJ_CHANDELIER,     // 0x1A5
+        D_A_OBJ_CHEST,          // 0x1A6
+        D_A_OBJ_CHO,            // 0x1A7
+        D_A_OBJ_COWDOOR,        // 0x1A8
+        D_A_OBJ_CROPE,          // 0x1A9
+        D_A_OBJ_CRVFENCE,       // 0x1AA
+        D_A_OBJ_CRVGATE,        // 0x1AB
+        D_A_OBJ_CRVHAHEN,       // 0x1AC
+        D_A_OBJ_CRVLH_DOWN,     // 0x1AD
+        D_A_OBJ_CRVLH_UP,       // 0x1AE
+        D_A_OBJ_CRVSTEEL,       // 0x1AF
+        D_A_OBJ_CRYSTAL,        // 0x1B0
+        D_A_OBJ_CWALL,          // 0x1B1
+        D_A_OBJ_DAMCPS,         // 0x1B2
+        D_A_OBJ_DAN,            // 0x1B3
+        D_A_OBJ_DIGHOLL,        // 0x1B4
+        D_A_OBJ_DIGSNOW,        // 0x1B5
+        D_A_OBJ_DMELEVATOR,     // 0x1B6
+        D_A_OBJ_DROP,           // 0x1B7
+        D_A_OBJ_DUST,           // 0x1B8
+        D_A_OBJ_ENEMY_CREATE,   // 0x1B9
+        D_A_OBJ_FALLOBJ,        // 0x1BA
+        D_A_OBJ_FAN,            // 0x1BB
+        D_A_OBJ_FCHAIN,         // 0x1BC
+        D_A_OBJ_FIREWOOD,       // 0x1BD
+        D_A_OBJ_FIREWOOD2,      // 0x1BE
+        D_A_OBJ_FIREPILLAR,     // 0x1BF
+        D_A_OBJ_FIREPILLAR2,    // 0x1C0
+        D_A_OBJ_FLAG,           // 0x1C1
+        D_A_OBJ_FLAG2,          // 0x1C2
+        D_A_OBJ_FLAG3,          // 0x1C3
+        D_A_OBJ_FOOD,           // 0x1C4
+        D_A_OBJ_FW,             // 0x1C5
+        D_A_OBJ_GADGET,         // 0x1C6
+        D_A_OBJ_GANONWALL,      // 0x1C7
+        D_A_OBJ_GANONWALL2,     // 0x1C8
+        D_A_OBJ_GB,             // 0x1C9
+        D_A_OBJ_GEYSER,         // 0x1CA
+        D_A_OBJ_GLOWSPHERE,     // 0x1CB
+        D_A_OBJ_GM,             // 0x1CC
+        D_A_OBJ_GOGATE,         // 0x1CD
+        D_A_OBJ_GOMIKABE,       // 0x1CE
+        D_A_OBJ_GRA2,           // 0x1CF
+        D_A_OBJ_GRAWALL,        // 0x1D0
+        D_A_OBJ_GRA_ROCK,       // 0x1D1
+        D_A_OBJ_GRAVE_STONE,    // 0x1D2
+        D_A_OBJ_GROUNDWATER,    // 0x1D3
+        D_A_OBJ_GRZ_ROCK,       // 0x1D4
+        D_A_OBJ_H_SAKU,         // 0x1D5
+        D_A_OBJ_HAKAI_BRL,      // 0x1D6
+        D_A_OBJ_HAKAI_FTR,      // 0x1D7
+        D_A_OBJ_HASU2,          // 0x1D8
+        D_A_OBJ_HATA,           // 0x1D9
+        D_A_OBJ_HB,             // 0x1DA
+        D_A_OBJ_HBOMBKOYA,      // 0x1DB
+        D_A_OBJ_HEAVYSW,        // 0x1DC
+        D_A_OBJ_HFUTA,          // 0x1DD
+        D_A_OBJ_HSTARGET,       // 0x1DE
+        D_A_OBJ_ICE_L,          // 0x1DF
+        D_A_OBJ_ICE_S,          // 0x1E0
+        D_A_OBJ_ICEBLOCK,       // 0x1E1
+        D_A_OBJ_ICELEAF,        // 0x1E2
+        D_A_OBJ_IHASI,          // 0x1E3
+        D_A_OBJ_IKADA,          // 0x1E4
+        D_A_OBJ_INOBONE,        // 0x1E5
+        D_A_OBJ_ITA,            // 0x1E6
+        D_A_OBJ_ITAMATO,        // 0x1E7
+        D_A_OBJ_KABUTO,         // 0x1E8
+        D_A_OBJ_KAG,            // 0x1E9
+        D_A_OBJ_KAGE,           // 0x1EA
+        D_A_OBJ_KAGO,           // 0x1EB
+        D_A_OBJ_KAISOU,         // 0x1EC
+        D_A_OBJ_KAMAKIRI,       // 0x1ED
+        D_A_OBJ_KANTERA,        // 0x1EE
+        D_A_OBJ_KATATSUMURI,    // 0x1EF
+        D_A_OBJ_KAZENEKO,       // 0x1F0
+#ifdef PLATFORM_WII
+        D_A_OBJ_KBACKET,
+#endif
+        D_A_OBJ_KBOX,             // 0x1F1
+        D_A_OBJ_KEY,              // 0x1F2
+        D_A_OBJ_KEYHOLE,          // 0x1F3
+        D_A_OBJ_KI,               // 0x1F4
+        D_A_OBJ_KIPOT,            // 0x1F5
+        D_A_OBJ_KITA,             // 0x1F6
+        D_A_OBJ_KJGJS,            // 0x1F7
+        D_A_OBJ_KKANBAN,          // 0x1F8
+        D_A_OBJ_KNBULLET,         // 0x1F9
+        D_A_OBJ_KSHUTTER,         // 0x1FA
+        D_A_OBJ_KUWAGATA,         // 0x1FB
+        D_A_OBJ_KWHEEL00,         // 0x1FC
+        D_A_OBJ_KWHEEL01,         // 0x1FD
+        D_A_OBJ_KZNKARM,          // 0x1FE
+        D_A_OBJ_LAUNDRY,          // 0x1FF
+        D_A_OBJ_LAUNDRY_ROPE,     // 0x200
+        D_A_OBJ_LBOX,             // 0x201
+        D_A_OBJ_LP,               // 0x202
+        D_A_OBJ_LV1CANDLE00,      // 0x203
+        D_A_OBJ_LV1CANDLE01,      // 0x204
+        D_A_OBJ_LV3CANDLE,        // 0x205
+        D_A_OBJ_LV3WATER,         // 0x206
+        D_A_OBJ_LV3WATER2,        // 0x207
+        D_A_OBJ_LV3WATERB,        // 0x208
+        D_A_OBJ_LV3SAKA00,        // 0x209
+        D_A_OBJ_LV3WATEREFF,      // 0x20A
+        D_A_OBJ_LV4CANDLEDEMOTAG, // 0x20B
+        D_A_OBJ_LV4CANDLETAG,     // 0x20C
+        D_A_OBJ_LV4EDSHUTTER,     // 0x20D
+        D_A_OBJ_LV4GATE,          // 0x20E
+        D_A_OBJ_LV4HSTARGET,      // 0x20F
+        D_A_OBJ_LV4POGATE,        // 0x210
+        D_A_OBJ_LV4RAILWALL,      // 0x211
+        D_A_OBJ_LV4SLIDEWALL,     // 0x212
+        D_A_OBJ_LV4BRIDGE,        // 0x213
+        D_A_OBJ_LV4CHANDELIER,    // 0x214
+        D_A_OBJ_LV4DIGSAND,       // 0x215
+        D_A_OBJ_LV4FLOOR,         // 0x216
+        D_A_OBJ_LV4GEAR,          // 0x217
+        D_A_OBJ_LV4PRELVTR,       // 0x218
+        D_A_OBJ_LV4PRWALL,        // 0x219
+        D_A_OBJ_LV4SAND,          // 0x21A
+        D_A_OBJ_LV5FLOORBOARD,    // 0x21B
+        D_A_OBJ_LV5ICEWALL,       // 0x21C
+        D_A_OBJ_LV5SWICE,         // 0x21D
+        D_A_OBJ_LV5YCHNDLR,       // 0x21E
+        D_A_OBJ_LV5YIBLLTRAY,     // 0x21F
+        D_A_OBJ_LV6CHANGEGATE,    // 0x220
+        D_A_OBJ_LV6FURIKOTRAP,    // 0x221
+        D_A_OBJ_LV6LBLOCK,        // 0x222
+        D_A_OBJ_LV6SWGATE,        // 0x223
+        D_A_OBJ_LV6SZGATE,        // 0x224
+        D_A_OBJ_LV6TENBIN,        // 0x225
+        D_A_OBJ_LV6TOGEROLL,      // 0x226
+        D_A_OBJ_LV6TOGETRAP,      // 0x227
+        D_A_OBJ_LV6BEMOS,         // 0x228
+        D_A_OBJ_LV6BEMOS2,        // 0x229
+        D_A_OBJ_LV6EGATE,         // 0x22A
+        D_A_OBJ_LV6ELEVTA,        // 0x22B
+        D_A_OBJ_LV6SWTURN,        // 0x22C
+        D_A_OBJ_LV7BSGATE,        // 0x22D
+        D_A_OBJ_LV7PROPELLERY,    // 0x22E
+        D_A_OBJ_LV7BRIDGE,        // 0x22F
+        D_A_OBJ_LV8KEKKAITRAP,    // 0x230
+        D_A_OBJ_LV8LIFT,          // 0x231
+        D_A_OBJ_LV8OPTILIFT,      // 0x232
+        D_A_OBJ_LV8UDFLOOR,       // 0x233
+        D_A_OBJ_LV9SWSHUTTER,     // 0x234
+        D_A_OBJ_MAGLIFT,          // 0x235
+        D_A_OBJ_MAGLIFTROT,       // 0x236
+        D_A_OBJ_MAKI,             // 0x237
+        D_A_OBJ_MASTER_SWORD,     // 0x238
+        D_A_OBJ_MATO,             // 0x239
+        D_A_OBJ_MHOLE,            // 0x23A
+        D_A_OBJ_MIE,              // 0x23B
+        D_A_OBJ_MIRROR_6POLE,     // 0x23C
+        D_A_OBJ_MIRROR_CHAIN,     // 0x23D
+        D_A_OBJ_MIRROR_SAND,      // 0x23E
+        D_A_OBJ_MIRROR_SCREW,     // 0x23F
+        D_A_OBJ_MIRROR_TABLE,     // 0x240
+        D_A_OBJ_MSIMA,            // 0x241
+        D_A_OBJ_MVSTAIR,          // 0x242
+        D_A_OBJ_MYOGAN,           // 0x243
+        D_A_OBJ_NAGAISU,          // 0x244
+        D_A_OBJ_NAN,              // 0x245
+        D_A_OBJ_NDOOR,            // 0x246
+        D_A_OBJ_NOUGU,            // 0x247
+        D_A_OBJ_OCTHASHI,         // 0x248
+        D_A_OBJ_OILTUBO,          // 0x249
+        D_A_OBJ_ONSEN,            // 0x24A
+        D_A_OBJ_ONSENFIRE,        // 0x24B
+        D_A_OBJ_ONSENTARU,        // 0x24C
+        D_A_OBJ_PDOOR,            // 0x24D
+        D_A_OBJ_PDTILE,           // 0x24E
+        D_A_OBJ_PDWALL,           // 0x24F
+        D_A_OBJ_PICTURE,          // 0x250
+        D_A_OBJ_PILLAR,           // 0x251
+        D_A_OBJ_PLEAF,            // 0x252
+        D_A_OBJ_POCANDLE,         // 0x253
+        D_A_OBJ_POFIRE,           // 0x254
+        D_A_OBJ_POTBOX,           // 0x255
+        D_A_OBJ_PROP,             // 0x256
+        D_A_OBJ_PUMPKIN,          // 0x257
+        D_A_OBJ_RCIRCLE,          // 0x258
+        D_A_OBJ_RFHOLE,           // 0x259
+        D_A_OBJ_RGATE,            // 0x25A
+        D_A_OBJ_RIVERROCK,        // 0x25B
+        D_A_OBJ_ROCK,             // 0x25C
+        D_A_OBJ_ROTBRIDGE,        // 0x25D
+        D_A_OBJ_ROTTRAP,          // 0x25E
+        D_A_OBJ_ROTEN,            // 0x25F
+        D_A_OBJ_RSTAIR,           // 0x260
+        D_A_OBJ_RW,               // 0x261
+        D_A_OBJ_SAIDAN,           // 0x262
+        D_A_OBJ_SAKUITA,          // 0x263
+        D_A_OBJ_SAKUITA_ROPE,     // 0x264
+        D_A_OBJ_SCANNON,          // 0x265
+        D_A_OBJ_SCANNON_CRS,      // 0x266
+        D_A_OBJ_SCANNON_TEN,      // 0x267
+        D_A_OBJ_SEKIDOOR,         // 0x268
+        D_A_OBJ_SEKIZO,           // 0x269
+        D_A_OBJ_SEKIZOA,          // 0x26A
+        D_A_OBJ_SHIELD,           // 0x26B
+        D_A_OBJ_SM_DOOR,          // 0x26C
+        D_A_OBJ_SMALLKEY,         // 0x26D
+        D_A_OBJ_SMGDOOR,          // 0x26E
+        D_A_OBJ_SMOKE,            // 0x26F
+        D_A_OBJ_SMTILE,           // 0x270
+        D_A_OBJ_SMW_STONE,        // 0x271
+        D_A_OBJ_SNOWEFFTAG,       // 0x272
+        D_A_OBJ_SNOW_SOUP,        // 0x273
+        D_A_OBJ_SO,               // 0x274
+        D_A_OBJ_SPINLIFT,         // 0x275
+        D_A_OBJ_SS_DRINK,         // 0x276
+        D_A_OBJ_SS_ITEM,          // 0x277
+        D_A_OBJ_STAIRBLOCK,       // 0x278
+        D_A_OBJ_STONE,            // 0x279
+        D_A_OBJ_STOPPER,          // 0x27A
+        D_A_OBJ_STOPPER2,         // 0x27B
+        D_A_OBJ_SUISYA,           // 0x27C
+        D_A_OBJ_SW,               // 0x27D
+        D_A_OBJ_SWBALLA,          // 0x27E
+        D_A_OBJ_SWBALLB,          // 0x27F
+        D_A_OBJ_SWBALLC,          // 0x280
+        D_A_OBJ_SWLIGHT,          // 0x281
+        D_A_OBJ_SWCHAIN,          // 0x282
+        D_A_OBJ_SWHANG,           // 0x283
+        D_A_OBJ_SWORD,            // 0x284
+        D_A_OBJ_SWPUSH2,          // 0x285
+        D_A_OBJ_SWSPINNER,        // 0x286
+        D_A_OBJ_SWTURN,           // 0x287
+        D_A_OBJ_SYROCK,           // 0x288
+        D_A_OBJ_SZBRIDGE,         // 0x289
+        D_A_OBJ_TAFENCE,          // 0x28A
+        D_A_OBJ_TABLE,            // 0x28B
+        D_A_OBJ_TAKARADAI,        // 0x28C
+        D_A_OBJ_TATIGI,           // 0x28D
+        D_A_OBJ_TEN,              // 0x28E
+        D_A_OBJ_TESTCUBE,         // 0x28F
+        D_A_OBJ_TGAKE,            // 0x290
+        D_A_OBJ_THASHI,           // 0x291
+        D_A_OBJ_THDOOR,           // 0x292
+        D_A_OBJ_TIMEFIRE,         // 0x293
+        D_A_OBJ_TKS,              // 0x294
+        D_A_OBJ_TMOON,            // 0x295
+        D_A_OBJ_TOARU_MAKI,       // 0x296
+        D_A_OBJ_TOBY,             // 0x297
+        D_A_OBJ_TOBYHOUSE,        // 0x298
+        D_A_OBJ_TOGETRAP,         // 0x299
+        D_A_OBJ_TOMBO,            // 0x29A
+        D_A_OBJ_TORNADO,          // 0x29B
+        D_A_OBJ_TORNADO2,         // 0x29C
+        D_A_OBJ_TP,               // 0x29D
+        D_A_OBJ_TREESH,           // 0x29E
+        D_A_OBJ_TWGATE,           // 0x29F
+        D_A_OBJ_UDOOR,            // 0x2A0
+        D_A_OBJ_USAKU,            // 0x2A1
+        D_A_OBJ_VGROUND,          // 0x2A2
+        D_A_OBJ_VOLCBALL,         // 0x2A3
+        D_A_OBJ_VOLCBOM,          // 0x2A4
+        D_A_OBJ_WARP_KBRG,        // 0x2A5
+        D_A_OBJ_WARP_OBRG,        // 0x2A6
+        D_A_OBJ_WATERGATE,        // 0x2A7
+        D_A_OBJ_WATERPILLAR,      // 0x2A8
+        D_A_OBJ_WATERFALL,        // 0x2A9
+        D_A_OBJ_WCHAIN,           // 0x2AA
+        D_A_OBJ_WDSTICK,          // 0x2AB
+        D_A_OBJ_WEB0,             // 0x2AC
+        D_A_OBJ_WEB1,             // 0x2AD
+        D_A_OBJ_WELL_COVER,       // 0x2AE
+        D_A_OBJ_WFLAG,            // 0x2AF
+        D_A_OBJ_WIND_STONE,       // 0x2B0
+        D_A_OBJ_WINDOW,           // 0x2B1
+        D_A_OBJ_WOOD_PENDULUM,    // 0x2B2
+        D_A_OBJ_WOOD_STATUE,      // 0x2B3
+        D_A_OBJ_WSWORD,           // 0x2B4
+        D_A_OBJ_YEL_BAG,          // 0x2B5
+        D_A_OBJ_YSTONE,           // 0x2B6
+        D_A_OBJ_ZCLOTH,           // 0x2B7
+        D_A_OBJ_ZDOOR,            // 0x2B8
+        D_A_OBJ_ZRTURARA,         // 0x2B9
+        D_A_OBJ_ZRTURARAROCK,     // 0x2BA
+        D_A_OBJ_ZRAMARK,          // 0x2BB
+        D_A_OBJ_ZRA_FREEZE,       // 0x2BC
+        D_A_OBJ_ZRA_ROCK,         // 0x2BD
+        D_A_PASSER_MNG,           // 0x2BE
+        D_A_PERU,                 // 0x2BF
+        D_A_PPOLAMP,              // 0x2C0
+        D_A_SKIP_2D,              // 0x2C1
+        D_A_STARTANDGOAL,         // 0x2C2
+        D_A_SWBALL,               // 0x2C3
+        D_A_SWLBALL,              // 0x2C4
+        D_A_SWTIME,               // 0x2C5
+        D_A_TAG_LV6GATE,          // 0x2C6
+        D_A_TAG_LV7GATE,          // 0x2C7
+        D_A_TAG_LV8GATE,          // 0x2C8
+        D_A_TAG_TWGATE,           // 0x2C9
+        D_A_TAG_ARENA,            // 0x2CA
+        D_A_TAG_ASSISTANCE,       // 0x2CB
+        D_A_TAG_BOTTLE_ITEM,      // 0x2CC
+        D_A_TAG_CHGRESTART,       // 0x2CD
+        D_A_TAG_CSW,              // 0x2CE
+        D_A_TAG_ESCAPE,           // 0x2CF
+        D_A_TAG_FIREWALL,         // 0x2D0
+        D_A_TAG_GRA,              // 0x2D1
+        D_A_TAG_GUARD,            // 0x2D2
+        D_A_TAG_INSTRUCTION,      // 0x2D3
+        D_A_TAG_KAGO_FALL,        // 0x2D4
+        D_A_TAG_LIGHTBALL,        // 0x2D5
+        D_A_TAG_LV5SOUP,          // 0x2D6
+        D_A_TAG_LV6CSTASW,        // 0x2D7
+        D_A_TAG_MMSG,             // 0x2D8
+        D_A_TAG_MWAIT,            // 0x2D9
+        D_A_TAG_MYNA2,            // 0x2DA
+        D_A_TAG_MYNA_LIGHT,       // 0x2DB
+        D_A_TAG_PACHI,            // 0x2DC
+        D_A_TAG_POFIRE,           // 0x2DD
+        D_A_TAG_QS,               // 0x2DE
+        D_A_TAG_RET_ROOM,         // 0x2DF
+        D_A_TAG_RIVER_BACK,       // 0x2E0
+        D_A_TAG_RMBIT_SW,         // 0x2E1
+        D_A_TAG_SCHEDULE,         // 0x2E2
+        D_A_TAG_SETBALL,          // 0x2E3
+        D_A_TAG_SETRESTART,       // 0x2E4
+        D_A_TAG_SHOP_CAMERA,      // 0x2E5
+        D_A_TAG_SHOP_ITEM,        // 0x2E6
+        D_A_TAG_SMK_EMT,          // 0x2E7
+        D_A_TAG_SPINNER,          // 0x2E8
+        D_A_TAG_SPPATH,           // 0x2E9
+        D_A_TAG_SS_DRINK,         // 0x2EA
+        D_A_TAG_STREAM,           // 0x2EB
+        D_A_TAG_THEB_HINT,        // 0x2EC
+        D_A_TAG_WARA_HOWL,        // 0x2ED
+        D_A_TAG_WATCHGE,          // 0x2EE
+        D_A_TAG_WATERFALL,        // 0x2EF
+        D_A_TAG_WLJUMP,           // 0x2F0
+        D_A_TAG_YAMI,             // 0x2F1
+        D_A_TALK,                 // 0x2F2
+        D_A_TBOXSW,               // 0x2F3
+        D_A_TITLE,                // 0x2F4
+        D_A_WARP_BUG,             // 0x2F5
     };
-    //clang-format on
-}     // namespace libtp::tp::rel::relIDs
+} // namespace libtp::tp::rel::relIDs
 #endif
