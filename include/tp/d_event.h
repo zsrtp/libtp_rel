@@ -67,7 +67,7 @@ namespace libtp::tp::d_event
         /* 0x12A */ uint16_t padding;
         /* 0x12C */ int32_t field_0x12c;
 #ifdef PLATFORM_WII
-        /* 0x130 */ uint8_t field_0x130;
+        /* 0x130 */ uint8_t field_0x130[4];
 #endif
     } __attribute__((__packed__)); // Size = 0x130
 

@@ -33,7 +33,7 @@ namespace libtp::tp::m_re_controller_pad
     /**
      *  @brief Controller inputs
      */
-    enum ReCPadInputs : uint16_t
+    enum ReCPadInputs : uint32_t
     {
         Button_DPad_Left = 0x0001,
         Button_DPad_Right = 0x0002,
@@ -60,18 +60,16 @@ namespace libtp::tp::m_re_controller_pad
 
     struct ReCPad
     {
-        uint8_t _unk1[4];           // 8044BB60
-        uint8_t _p1[2];             // 8044BB64
-        uint16_t held;              // 8044BB66
-        uint8_t _p2[2];             // 8044BB68
-        uint16_t down;              // 8044BB6A
-        uint8_t _p3[2];             // 8044BB6C
-        uint16_t up;                // 8044BB6E
+        uint32_t _unk1;             // 8044BB60
+        uint32_t mButtonFlags;      // 8044BB64
+        uint32_t mPressedButtonFlags; // 8044BB68
+        uint32_t mRelease;          // 8044BB6C
         Vec wiimote_acc;            // 8044BB70
         float wiimote_acc_strength; // 8044BB7C
         float wiimote_shake;        // 8044BB80 // Unsure of the real meaning of this, needs more verification
         Pointer pointer;            // 8044BB84
-        uint8_t _p4[8];             // 8044BBB0
+        float _f1;                  // 8044BBB0
+        float _f2;                  // 8044BBB4
         float horizontal;           // 8044BBB8 // Goes from 0.0 to 1.0, shows how much the remote is horizontal
         float vertical;    // 8044BBBC // Goes from -1.0 to 1.0, shows how much the remote is vertical (up is 1.0, down is -1.0)
         uint32_t ext_type; // 8044BBC0
@@ -79,7 +77,8 @@ namespace libtp::tp::m_re_controller_pad
         Vec nunchuck_acc;  // 8044BBCC
         float nunchuck_acc_strength; // 8044BBD8
         float nunchuck_shake;        // 8044BBDC // Unsure of the real meaning of this, needs more verification
-        uint8_t _p5[0x8];            // 8044BBE0
+        float _f3;                   // 8044BBE0
+        float _f4;                   // 8044BBE4
         uint8_t n_points;            // 8044BBE8 // Number of IR points seen by the remote
         uint8_t _p6[0x1CE7];         // 8044BBE9
         float stick_amplitude;       // 8044D8D0

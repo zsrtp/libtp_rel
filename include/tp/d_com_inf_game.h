@@ -43,6 +43,9 @@ namespace libtp::tp::d_com_inf_game
         /* 0x03EC8 */ d_stage::dStage_startStage mStartStage; // Possibly currentStageVars
         /* 0x03ED6 */ d_stage::dStage_nextStage mNextStage;   // Probably nextStageVars
         /* 0x03EE7 */ uint8_t field_0x3ee7;                   // probably padding
+#ifdef PLATFORM_WII
+        /* 0x03EE8 */ uint8_t field_0x3ee8;                   // probably padding
+#endif
         /* 0x03EE8 */ d_stage::dStage_stageDt_c mStageData;   // dStage_stageDt mStageData;
         /* 0x03F8C */ d_stage::dStage_roomControl* mRoomControl;
         /* 0x03F90 */ d_event::dEvt_control mEvent;           // Probably EventSystem
