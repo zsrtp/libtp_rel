@@ -1357,7 +1357,7 @@ namespace libtp::tp::d_a_alink
          *
          * @param param_1 unknown
         */
-       virtual void setClothesChange(daAlink* linkActrPtr, int32_t param_1);
+       void setClothesChange(daAlink* linkActrPtr, int32_t param_1);
 
         /**
          *  @brief Checks to see if Link is currently voiding out.
