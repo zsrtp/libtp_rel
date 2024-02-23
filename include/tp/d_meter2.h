@@ -2,6 +2,7 @@
  *	@brief Holds data about drawn objects.
  *
  *  @author Lunar Soap
+ *  @author Captain Kitty Cat
  *	@bug No known bugs.
  */
 #ifndef TP_D_METER2_H
