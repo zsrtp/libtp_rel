@@ -1261,7 +1261,7 @@ namespace libtp::tp::d_a_alink
          * 
          * @param param_1 unknown
         */
-       bool checkNextActionFromCrouch(daAlink* linkActrPtr, int32_t param_1);
+       BOOL checkNextActionFromCrouch(daAlink* linkActrPtr, int32_t param_1);
 
         /**
          *  @brief Checks to see if link should be taking damage.
