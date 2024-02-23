@@ -2,6 +2,7 @@
  *	@brief Holds data about drawn objects.
  *
  *  @author Lunar Soap
+ *  @author Captain Kitty Cat
  *	@bug No known bugs.
  */
 #ifndef TP_D_METER2_DRAW_H
@@ -272,6 +273,20 @@ namespace libtp::tp::d_meter2_draw
          *  @param i_meterType The type of meter being drawn (Lantern, Breath, Magic, etc.)
          */
         void drawKanteraScreen(dMeter2Draw_c* dMeterDrawPtr, uint8_t i_meterType);
+
+        /**
+         * @brief Makes the heart UI disappear.
+         * 
+         * @param dMeterDrawPtr A pointer to the current dMeter2Draw structure
+        */
+        void setAlphaLifeAnimeMin(dMeter2Draw_c* dMeterDrawPtr);
+
+        /**
+         * @brief Makes the heart UI appear.
+         * 
+         * @param dMeterDrawPtr A pointer to the current dMeter2Draw structure
+        */
+        void setAlphaLifeAnimeMax(dMeter2Draw_c* dMeterDrawPtr);
     }
 } // namespace libtp::tp::d_meter2_draw
 #endif
