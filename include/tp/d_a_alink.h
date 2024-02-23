@@ -7,6 +7,7 @@
  *	@author AECX
  *	@author Zephiles
  *	@author Lunar Soap
+ *  @author Captain Kitty Cat
  *	@bug No known bugs.
  */
 #ifndef TP_D_A_ALINK_H
