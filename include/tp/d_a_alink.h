@@ -1153,6 +1153,16 @@ namespace libtp::tp::d_a_alink
         bool procCoMetamorphoseInit(daAlink* linkActrPtr);
 
         /**
+         * @brief Initializes jump animation.
+         * 
+         * @param linkActrPtr A pointer to Link's Actor
+         * @param param_1 Unknown.
+         * 
+         * @return Int
+        */
+        int procAutoJumpInit(daAlink* linkActrPtr, int32_t param_1);
+
+        /**
          *	@brief Checks whether a chest-rupee doesn't fit in Link's wallet.
          *
          *	@param linkActrPtr A pointer to Link's Actor
@@ -1233,6 +1243,24 @@ namespace libtp::tp::d_a_alink
          *  @return Bool returns True if the action was successful, otherwise returns False.
          */
         bool procGanonFinish(daAlink* linkActrPtr);
+
+        /**
+         * @brief Causes Link to crouch.
+         * 
+         * @param linkActrPtr A pointer to Link's Actor
+         * 
+         * @return Bool returns True if Link successfully crouched.
+        */
+        bool procCrouchInit(daAlink* linkActrPtr);
+
+        /**
+         * @brief Checks next action after link stops crouching.
+         * 
+         * @param linkActrPtr A pointer to Link's Actor
+         * 
+         * @param param_1 unknown
+        */
+       bool checkNextActionFromCrouch(daAlink* linkActrPtr, int32_t param_1);
 
         /**
          *  @brief Checks to see if link should be taking damage.
@@ -1320,6 +1348,15 @@ namespace libtp::tp::d_a_alink
          *  @param count The amount of filled hearts in which to increase Link's current health (in 1/4 hearts).
          */
         void dComIfGp_setItemLifeCount(float amount, uint8_t count);
+
+        /**
+         * @brief Used to switch between Link's armors.
+         *
+         * @param linkActrPtr A pointer to Link's Actor
+         *
+         * @param param_1 unknown
+        */
+       void setClothesChange(daAlink* linkActrPtr, int32_t param_1);
 
         /**
          *  @brief Checks to see if Link is currently voiding out.
