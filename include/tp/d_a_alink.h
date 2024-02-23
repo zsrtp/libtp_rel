@@ -1161,7 +1161,7 @@ namespace libtp::tp::d_a_alink
          * 
          * @return Int
         */
-        int procAutoJumpInit(daAlink* linkActrPtr, int32_t param_1);
+        int32_t procAutoJumpInit(daAlink* linkActrPtr, int32_t param_1);
 
         /**
          *	@brief Checks whether a chest-rupee doesn't fit in Link's wallet.
@@ -1252,7 +1252,7 @@ namespace libtp::tp::d_a_alink
          * 
          * @return Bool returns True if Link successfully crouched.
         */
-        bool procCrouchInit(daAlink* linkActrPtr);
+        int32_t procCrouchInit(daAlink* linkActrPtr);
 
         /**
          * @brief Checks next action after link stops crouching.
@@ -1357,7 +1357,7 @@ namespace libtp::tp::d_a_alink
          *
          * @param param_1 unknown
         */
-       void setClothesChange(daAlink* linkActrPtr, int32_t param_1);
+       virtual void setClothesChange(daAlink* linkActrPtr, int32_t param_1);
 
         /**
          *  @brief Checks to see if Link is currently voiding out.
