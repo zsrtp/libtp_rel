@@ -14,14 +14,9 @@
 
 namespace libtp::gc_wii::os_time
 {
-    struct GCTime
-    {
-        uint32_t unk1;
-    } __attribute__((__packed__));
 
     extern "C"
     {
-        extern GCTime __OSBusClock;
         uint32_t OSGetTick();
         int64_t OSGetTime();
     }
