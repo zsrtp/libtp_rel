@@ -1,4 +1,4 @@
-/**	@file OS.h
+/**	@file os.h
  *	@brief Holds OS definitions from dolphin OS
  *
  *	For additional information check the dolphin OS manual
