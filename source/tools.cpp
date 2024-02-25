@@ -417,7 +417,7 @@ namespace libtp::tools
 
         return true;
     }
-#elif !defined(PLATFORM_WII)
+#elif !defined PLATFORM_WII
     bool callRelProlog(int32_t chan, uint32_t rel_id, bool stayMounted)
     {
         using namespace libtp::gc_wii::card;
@@ -638,7 +638,8 @@ namespace libtp::tools
 
         // Get the length of the file
         int32_t length = NANDSeek(&fileInfo, 0, NAND_SEEK_END);
-        if (length < NAND_RESULT_READY) {
+        if (length < NAND_RESULT_READY)
+        {
             NANDClose(&fileInfo);
             return false;
         }
@@ -648,7 +649,8 @@ namespace libtp::tools
 
         // The NANDSeek from before starts reading from the end of the file, so go back to the start of the file
         result = NANDSeek(&fileInfo, 0, NAND_SEEK_START);
-        if (result < NAND_RESULT_READY) {
+        if (result < NAND_RESULT_READY)
+        {
             NANDClose(&fileInfo);
             return false;
         }

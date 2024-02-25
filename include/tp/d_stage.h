@@ -474,14 +474,14 @@ namespace libtp::tp::d_stage
         /* 0xD */ int8_t enabled;
 #else
         /* 0xD */ uint8_t padding;
-#endif  // PLATFORM_WII
+#endif
     } __attribute__((__packed__));
 
     struct dStage_nextStage: dStage_startStage
     {
 #ifndef PLATFORM_WII
         int8_t enabled;
-#endif  // PLATFORM_WII
+#endif
         uint8_t wipe;
         uint8_t wipe_speed;
     } __attribute__((__packed__));
@@ -542,7 +542,7 @@ namespace libtp::tp::d_stage
     static_assert(sizeof(dStage_nextStage) == 0x11);
 #else
     static_assert(sizeof(dStage_nextStage) == 0x10);
-#endif  // PLATFORM_WII
+#endif // PLATFORM_WII
 
     extern "C"
     {
