@@ -92,6 +92,8 @@ namespace libtp::tp::m_re_controller_pad
         {
             extern ReCPad m_pad[4];
         }
+
+        bool cAPICPad_A_TRIGGER(uint8_t padId);
     }
 } // namespace libtp::tp::m_re_controller_pad
 #endif
