@@ -44,43 +44,43 @@ namespace libtp::tp::d_com_inf_game
         /* 0x03ED6 */ d_stage::dStage_nextStage mNextStage;   // Probably nextStageVars
         /* 0x03EE7 */ uint8_t field_0x3ee7;                   // probably padding
 #ifdef PLATFORM_WII
-        /* 0x03EE8 */ uint8_t field_0x3ee8;                   // probably padding
+        /* 0x03EE8 */ uint8_t field_0x3ee8; // probably padding
 #endif
-        /* 0x03EE8 */ d_stage::dStage_stageDt_c mStageData;   // dStage_stageDt mStageData;
+        /* 0x03EE8 */ d_stage::dStage_stageDt_c mStageData; // dStage_stageDt mStageData;
         /* 0x03F8C */ d_stage::dStage_roomControl* mRoomControl;
-        /* 0x03F90 */ d_event::dEvt_control mEvent;           // Probably EventSystem
+        /* 0x03F90 */ d_event::dEvt_control mEvent; // Probably EventSystem
         /* 0x040C0 */ d_event_manager::dEvent_manager mEvtManager;
-        /* 0x04780 */ uint8_t field_0x4780[0x51C];            // dAttention_c mAttention;
+        /* 0x04780 */ uint8_t field_0x4780[0x51C]; // dAttention_c mAttention;
 #ifdef PLATFORM_WII
-        /* 0x04CA0 */ uint8_t field_0x4ca0[12];
+        /* 0x04CA0 */ uint8_t field_0x4ca0[0xC];
 #endif
-        /* 0x04C9C */ uint8_t field_0x4c9c[0x90];             // dVibration_c mVibration;
-        /* 0x04D2C */ uint8_t field_0x4d2c[4];
-        /* 0x04D30 */ void* mFieldMapArchive2;                // JKRArchive* mFieldMapArchive2;
-        /* 0x04D34 */ void* mMsgArchive[11];                  // JKRArchive* mMsgArchive[11];
-        /* 0x04D60 */ void* mDemoMsgArchive;                  // JKRArchive* mDemoMsgArchive;
-        /* 0x04D64 */ void* mMeterButtonArchive;              // JKRArchive* mMeterButtonArchive;
+        /* 0x04C9C */ uint8_t field_0x4c9c[0x90]; // dVibration_c mVibration;
+        /* 0x04D2C */ uint8_t field_0x4d2c[0x4];
+        /* 0x04D30 */ void* mFieldMapArchive2;   // JKRArchive* mFieldMapArchive2;
+        /* 0x04D34 */ void* mMsgArchive[11];     // JKRArchive* mMsgArchive[11];
+        /* 0x04D60 */ void* mDemoMsgArchive;     // JKRArchive* mDemoMsgArchive;
+        /* 0x04D64 */ void* mMeterButtonArchive; // JKRArchive* mMeterButtonArchive;
         /* 0x04D68 */ void* field_0x4d68;
-        /* 0x04D6C */ void* mFontArchive;                     // JKRArchive* mFontArchive;
-        /* 0x04D70 */ void* mRubyArchive;                     // JKRArchive* mRubyArchive;
-        /* 0x04D74 */ void* mAnmArchive;                      // JKRArchive* mAnmArchive;
+        /* 0x04D6C */ void* mFontArchive; // JKRArchive* mFontArchive;
+        /* 0x04D70 */ void* mRubyArchive; // JKRArchive* mRubyArchive;
+        /* 0x04D74 */ void* mAnmArchive;  // JKRArchive* mAnmArchive;
         /* 0x04D78 */ void* field_0x4d78[2];
-        /* 0x04D80 */ void* mCollectResArchive;               // JKRArchive* mCollectResArchive;
-        /* 0x04D84 */ void* mFmapResArchive;                  // JKRArchive* mFmapResArchive;
-        /* 0x04D88 */ void* mDmapResArchive;                  // JKRArchive* mDmapResArchive;
-        /* 0x04D8C */ void* mOptionResArchive;                // JKRArchive* mOptionResArchive;
+        /* 0x04D80 */ void* mCollectResArchive; // JKRArchive* mCollectResArchive;
+        /* 0x04D84 */ void* mFmapResArchive;    // JKRArchive* mFmapResArchive;
+        /* 0x04D88 */ void* mDmapResArchive;    // JKRArchive* mDmapResArchive;
+        /* 0x04D8C */ void* mOptionResArchive;  // JKRArchive* mOptionResArchive;
         /* 0x04D90 */ void* field_0x4d90[2];
-        /* 0x04D98 */ void* mItemIconArchive;                 // JKRArchive* mItemIconArchive;
-        /* 0x04D9C */ void* mNameResArchive;                  // JKRArchive* mNameResArchive;
-        /* 0x04DA0 */ void* mErrorResArchive;                 // JKRArchive* mErrorResArchive;
+        /* 0x04D98 */ void* mItemIconArchive; // JKRArchive* mItemIconArchive;
+        /* 0x04D9C */ void* mNameResArchive;  // JKRArchive* mNameResArchive;
+        /* 0x04DA0 */ void* mErrorResArchive; // JKRArchive* mErrorResArchive;
         /* 0x04DA4 */ void* field_0x4da4;
-        /* 0x04DA8 */ void* mAllMapArchive;                   // JKRArchive* mAllMapArchive;
-        /* 0x04DAC */ void* mMsgCommonArchive;                // JKRArchive* mMsgCommonArchive;
-        /* 0x04DB0 */ void* mRingResArchive;                  // JKRArchive* mRingResArchive;
+        /* 0x04DA8 */ void* mAllMapArchive;    // JKRArchive* mAllMapArchive;
+        /* 0x04DAC */ void* mMsgCommonArchive; // JKRArchive* mMsgCommonArchive;
+        /* 0x04DB0 */ void* mRingResArchive;   // JKRArchive* mRingResArchive;
         /* 0x04DB4 */ void* field_0x4db4;
-        /* 0x04DB8 */ void* mCardIconResArchive;              // JKRArchive* mCardIconResArchive;
-        /* 0x04DBC */ void* mMsgDtArchive[15];                // JKRArchive* mMsgDtArchive[15];
-        /* 0x04DF8 */ void* mMain2DArchive;                   // JKRArchive* mMain2DArchive;
+        /* 0x04DB8 */ void* mCardIconResArchive; // JKRArchive* mCardIconResArchive;
+        /* 0x04DBC */ void* mMsgDtArchive[15];   // JKRArchive* mMsgDtArchive[15];
+        /* 0x04DF8 */ void* mMain2DArchive;      // JKRArchive* mMain2DArchive;
         /* 0x04DFC */ void* field_0x4dfc[2];
         /* 0x04E04 */ void* mParticle;
         /* 0x04E08 */ void* mSimpleModel;
@@ -236,9 +236,9 @@ namespace libtp::tp::d_com_inf_game
         /* 0x04F94 */ char field_0x4F94[8];    // related to setWarpItemData
         /* 0x04F9C */ cXyz field_0x4f9c;       // related to setWarpItemData
         /* 0x04FA8 */ uint8_t field_0x4fa8[2];
-        /* 0x04FAA */ uint8_t field_0x4faa;    // related to setWarpItemData
-        /* 0x04FAB */ uint8_t field_0x4fab;    // related to setWarpItemData
-        /* 0x04FAC */ uint8_t field_0x4fac;    // related to setWarpItemData
+        /* 0x04FAA */ uint8_t field_0x4faa; // related to setWarpItemData
+        /* 0x04FAB */ uint8_t field_0x4fab; // related to setWarpItemData
+        /* 0x04FAC */ uint8_t field_0x4fac; // related to setWarpItemData
         /* 0x04FAD */ uint8_t field_0x4fad[3];
         /* 0x04FB0 */ void* mMesgCamInfo;
         /* 0x04FB4 */ uint32_t mMesgCamInfoBasicID;
@@ -268,26 +268,28 @@ namespace libtp::tp::d_com_inf_game
         /* 0x05024 */ char mLastPlayStageName[8];
     } __attribute__((__packed__));
 
-    struct dComIfG_inf_c               // Game Info
+    struct dComIfG_inf_c // Game Info
     {
         d_save::dSv_info_c save;       // 0 - F37
         dComIfG_play play;             // F38 - 5F63
         uint8_t field_0x5f64[0x161AC]; // dDlst_list_c draw_list_list; 5F64 - 1C10F
         uint8_t field_0x1c110[0x1E8];  // 1C110 - 1C2F7
         libtp::tp::d_resource::dRes_control_c mResControl;
-        uint8_t field_0x1ddf8;         // 1DDF8
-        uint8_t mWorldDark;            // 1DDF9
-        uint8_t field_0x1ddfa;         // 1DDFA
-        uint8_t field_0x1ddfb;         // 1DDFB
-        uint8_t field_0x1ddfc;         // 1DDFC
-        uint8_t padding[3];            // 1DDFD - 1DDFF
-        uint32_t field_0x1de00;        // 1DE00 - 1DE03
-        uint32_t field_0x1de04;        // 1DE04 -  1DE07
-        uint8_t field_0x1de08;         // 1DE08
-        uint8_t field_0x1de09;         // 1DE09
-        uint8_t field_0x1de0a;         // 1DE0A
-        uint8_t padding_0x1DE0B[8];    // 1DE0B - 1DE010
+        uint8_t field_0x1ddf8;      // 1DDF8
+        uint8_t mWorldDark;         // 1DDF9
+        uint8_t field_0x1ddfa;      // 1DDFA
+        uint8_t field_0x1ddfb;      // 1DDFB
+        uint8_t field_0x1ddfc;      // 1DDFC
+        uint8_t padding[3];         // 1DDFD - 1DDFF
+        uint32_t field_0x1de00;     // 1DE00 - 1DE03
+        uint32_t field_0x1de04;     // 1DE04 -  1DE07
+        uint8_t field_0x1de08;      // 1DE08
+        uint8_t field_0x1de09;      // 1DE09
+        uint8_t field_0x1de0a;      // 1DE0A
+        uint8_t padding_0x1DE0B[8]; // 1DE0B - 1DE010
     } __attribute__((__packed__));
+
+    // static_assert(sizeof(dComIfG_inf_c) == 0x1DE20);
 
     extern "C"
     {
@@ -301,8 +303,10 @@ namespace libtp::tp::d_com_inf_game
 #ifndef PLATFORM_WII
         void dComIfG_get_timelayer(int32_t* pLayer);
 #else
-        inline void dComIfG_get_timelayer(int32_t* pLayer) {
-            if (libtp::tp::d_kankyo::dKy_daynight_check()) {
+        inline void dComIfG_get_timelayer(int32_t* pLayer)
+        {
+            if (libtp::tp::d_kankyo::dKy_daynight_check())
+            {
                 *pLayer += 1;
             }
         }
@@ -310,7 +314,7 @@ namespace libtp::tp::d_com_inf_game
 
         /**
          * @brief Returns whether the player has gotten the specified item.
-         * 
+         *
          * @param getItemPtr The pointer to the dSv_player_get_item_c.
          * @param id The id of the item.
          */
@@ -337,7 +341,8 @@ namespace libtp::tp::d_com_inf_game
 #ifndef PLATFORM_WII
         bool dComIfGs_isItemFirstBit(uint8_t itemID);
 #else
-        inline bool dComIfGs_isItemFirstBit(uint8_t itemID) {
+        inline bool dComIfGs_isItemFirstBit(uint8_t itemID)
+        {
             return isFirstBit(&dComIfG_gameInfo.save.save_file.player.player_get_item, itemID);
         }
 #endif
@@ -409,7 +414,8 @@ namespace libtp::tp::d_com_inf_game
 #ifndef PLATFORM_WII
         bool dComIfGs_isEventBit(uint16_t flag);
 #else
-        inline bool dComIfGs_isEventBit(uint16_t flag) {
+        inline bool dComIfGs_isEventBit(uint16_t flag)
+        {
             return libtp::tp::d_save::isEventBit(&libtp::tp::d_com_inf_game::dComIfG_gameInfo.save.save_file.mEvent, flag);
         }
 #endif
