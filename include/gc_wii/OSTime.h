@@ -14,7 +14,6 @@
 
 namespace libtp::gc_wii::os_time
 {
-
     extern "C"
     {
         uint32_t OSGetTick();
