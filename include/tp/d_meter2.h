@@ -122,7 +122,7 @@ namespace libtp::tp::d_meter2
         uint32_t dMeter2_Create(dMeter2_c* dMeterPtr);
 
         /**
-         * @brief Manages the value of the oil meter.
+         * @brief Modifies the oil meter value in many ways, such as decreasing it when equipping or swinging the lantern.
          * 
          * @param dMeterPtr A pointer to the current dMeter2 structure.
         */
