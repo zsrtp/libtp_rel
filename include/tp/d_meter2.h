@@ -122,14 +122,14 @@ namespace libtp::tp::d_meter2
         uint32_t dMeter2_Create(dMeter2_c* dMeterPtr);
 
         /**
-         * @brief Function for health meter.
+         * @brief Function modifies the heart value.
          * 
          * @param dMeterPtr A pointer to the current dMeter2 structure.
         */
         void moveLife(dMeter2_c* dMeterPtr);
 
         /**
-         * @brief Function for lantern oil meter.
+         * @brief Function modifies lantern oil meter value.
          * 
          * @param dMeterPtr A pointer to the current dMeter2 structure.
         */
