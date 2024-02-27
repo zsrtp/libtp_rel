@@ -164,8 +164,8 @@ namespace libtp::tp::d_meter2_draw
         /* 0x73C */ uint8_t field_0x73c[4];
         /* 0x740 */ uint16_t field_0x740;
         /* 0x742 */ uint16_t field_0x742[3];
-        /* 0x748 */ uint8_t field_0x748[0xE];
-        /* 0x756 */ uint16_t field_0x754;
+        /* 0x748 */ uint8_t field_0x748[0xC];
+        /* 0x754 */ uint16_t field_0x754;
         /* 0x756 */ uint16_t field_0x756;
         /* 0x758 */ uint8_t field_0x758;
         /* 0x759 */ uint8_t field_0x759;
@@ -190,6 +190,7 @@ namespace libtp::tp::d_meter2_draw
         /* 0x771 */ uint8_t field_0x771;
         /* 0x772 */ uint8_t field_0x772;
         /* 0x773 */ uint8_t field_0x773[2];
+        /* 0x775 */ uint8_t padding_0x775[3];
         /* 0x778 */ float field_0x778;
         /* 0x77C */ float field_0x77c;
         /* 0x780 */ float field_0x780;

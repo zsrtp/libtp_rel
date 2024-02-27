@@ -84,6 +84,13 @@ namespace libtp::gc_wii::nand
         int32_t NANDInit(void);
 
         /**
+         * @brief Gets the home directory for the current game. This is where the game's save data is stored.
+         *
+         * @return const char* Pointer to the game's home directory.
+         */
+        const char* nandGetHomeDir();
+
+        /**
          * @brief Creates a new file on the NAND memory file system.
          *
          * @param fileName Path to the file
@@ -175,7 +182,7 @@ namespace libtp::gc_wii::nand
 
         /**
          * @brief Checks whether the NAND API is initialized.
-         * 
+         *
          * @return true If the NAND API is initialized.
          * @return false If the NAND API is not initialized
          */
@@ -183,7 +190,7 @@ namespace libtp::gc_wii::nand
 
         /**
          * @brief Converts ISFS error codes to NAND error codes.
-         * 
+         *
          * @param code An ISFS error code to convert
          * @return int32_t The corresponding NAND error code
          */
@@ -191,7 +198,7 @@ namespace libtp::gc_wii::nand
 
         /**
          * @brief Internal API for reading NAND FileSystem directories.
-         * 
+         *
          * @param dirName The name of the directory to read
          * @param fileList A pointer to a string array where the names of the
          * files (null terminated) will be contiguously put into. The array has to be
@@ -203,10 +210,9 @@ namespace libtp::gc_wii::nand
         int32_t ISFS_ReadDir(const char* dirName, char* fileList, uint32_t* numFiles);
     }
 
-
     /**
      * @brief Reads a directory on the NAND.
-     * 
+     *
      * @param dirName The name of the directory to read
      * @param fileList A pointer to a string array where the names of the
      * files (null terminated) will be contiguously put into. The array has to be

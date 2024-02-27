@@ -11,15 +11,12 @@
 
 #include "tp/f_op_actor.h"
 
-// Lv5 refers to Snowpeak Ruins. It is called Key because the Japanese word
-// "kagi" is generally used for both key and lock.
+// Lv5 refers to Snowpeak Ruins. It is called Key because the Japanese word "kagi" is generally used for both key and lock.
 
-// There is a softlock that happens when you open a lock from the opposite side
-// of the door for 3 of the 4 small key doors in Snowpeak Ruins. This happens
-// because the lock never changes from the Fall animation to the Land animation
-// because it doesn't collide with the ground. The Land animation is what
-// handles communicating that Link can open the door. For more information, see
-// https://icogn.github.io/tp-docs/docs/technical-explanations/sprlocksoftlock.
+// There is a softlock that happens when you open a lock from the opposite side of the door for 3 of the 4 small key doors in
+// Snowpeak Ruins. This happens because the lock never changes from the Fall animation to the Land animation because it doesn't
+// collide with the ground. The Land animation is what handles communicating that Link can open the door. For more information,
+// see https://icogn.github.io/tp-docs/docs/technical-explanations/sprlocksoftlock.
 
 namespace libtp::tp::rel::d_a_obj_Lv5Key
 {
@@ -38,7 +35,7 @@ namespace libtp::tp::rel::d_a_obj_Lv5Key
 
         /* 0x944 */ uint8_t unk_0x944; // padding?
 
-                                       // Byte which allows for communication between the door and the lock.
+        // Byte which allows for communication between the door and the lock.
         // Normally, the byte sits at 0. When Link tries to open the door without a
         // key the byte is set to 1. On the next Wait call, the lock will change to
         // Shake. When Shake finishes the byte is set back to 0. If Link has a key
