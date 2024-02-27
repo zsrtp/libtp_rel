@@ -122,7 +122,7 @@ namespace libtp::tp::d_meter2
         uint32_t dMeter2_Create(dMeter2_c* dMeterPtr);
 
         /**
-         * @brief Function decreases the lantern oil meter value when you equip the lantern every frame, and decreases more if you attack with lantern.
+         * @brief Manages the value of the oil meter.
          * 
          * @param dMeterPtr A pointer to the current dMeter2 structure.
         */
