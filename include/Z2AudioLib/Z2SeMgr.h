@@ -16,13 +16,13 @@ namespace libtp::z2audiolib::z2semgr
 {
     struct Z2SeMgr
     {
-        /* 0x000 */ uint8_t mSoundHandle[0x60];     // JAISoundHandle mSoundHandle[24]
-        /* 0x060 */ uint8_t field_0x60[0x8];        // JAISoundHandles field_0x60
+        /* 0x000 */ uint8_t mSoundHandle[0x60]; // JAISoundHandle mSoundHandle[24]
+        /* 0x060 */ uint8_t field_0x60[0x8];    // JAISoundHandles field_0x60
 #ifdef PLATFORM_WII
         /* 0x68 */ uint32_t field_0x68;
         /* 0x6C */ uint8_t field_0x6c[0x10];
 #endif
-        /* 0x068 */ uint8_t mLevelObjSe[0x168];     // Z2MultiSeObj mLevelObjSe[10]
+        /* 0x068 */ uint8_t mLevelObjSe[0x168]; // Z2MultiSeObj mLevelObjSe[10]
         /* 0x1D0 */ uint32_t mLevelObjectSeCount;
         /* 0x1D4 */ uint8_t mMultiTriggerSe[0x168]; // Z2MultiSeObj mMultiTriggerSe[10]
         /* 0x33C */ uint8_t mMultiTriggerSeCount;
@@ -52,7 +52,10 @@ namespace libtp::z2audiolib::z2semgr
 
     extern "C"
     {
-        void z2SeMgr_seStartLevel(uint32_t sfxID,
+        extern Z2SeMgr* mAudioMgrPtr;
+
+        void z2SeMgr_seStartLevel(Z2SeMgr* audioMgr,
+                                  uint32_t* sfxID,
                                   const Vec* unk4,
                                   uint32_t unk5,
                                   int8_t unk6,
