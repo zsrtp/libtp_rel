@@ -4,6 +4,7 @@
  *	For additional information check the dolphin OS manual
  *
  *	@author Lunar Soap
+ *  @author Captain Kitty Cat
  *	@bug No known bugs.
  */
 #ifndef GC_WII_OSTIME_H
@@ -16,6 +17,7 @@ namespace libtp::gc_wii::os_time
     extern "C"
     {
         uint32_t OSGetTick();
+        int64_t OSGetTime();
     }
 } // namespace libtp::gc_wii::os_time
 #endif

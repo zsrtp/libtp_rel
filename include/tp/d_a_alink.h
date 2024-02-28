@@ -7,6 +7,7 @@
  *	@author AECX
  *	@author Zephiles
  *	@author Lunar Soap
+ *  @author Captain Kitty Cat
  *	@bug No known bugs.
  */
 #ifndef TP_D_A_ALINK_H
@@ -1153,6 +1154,16 @@ namespace libtp::tp::d_a_alink
         bool procCoMetamorphoseInit(daAlink* linkActrPtr);
 
         /**
+         * @brief Initializes jump animation.
+         * 
+         * @param linkActrPtr A pointer to Link's Actor
+         * @param param_1 Unknown.
+         * 
+         * @return int32_t unknown.
+        */
+        int32_t procAutoJumpInit(daAlink* linkActrPtr, int32_t param_1);
+
+        /**
          *	@brief Checks whether a chest-rupee doesn't fit in Link's wallet.
          *
          *	@param linkActrPtr A pointer to Link's Actor
@@ -1233,6 +1244,26 @@ namespace libtp::tp::d_a_alink
          *  @return Bool returns True if the action was successful, otherwise returns False.
          */
         bool procGanonFinish(daAlink* linkActrPtr);
+
+        /**
+         * @brief Causes Link to crouch.
+         * 
+         * @param linkActrPtr A pointer to Link's Actor
+         * 
+         * @return int32_t returns 1 if successful and 0 if not successful.
+        */
+        int32_t procCrouchInit(daAlink* linkActrPtr);
+
+        /**
+         * @brief Checks next action after link stops crouching.
+         * 
+         * @param linkActrPtr A pointer to Link's Actor
+         * 
+         * @param param_1 unknown
+         *
+         * @return unknown.
+        */
+       int32_t checkNextActionFromCrouch(daAlink* linkActrPtr, int32_t param_1);
 
         /**
          *  @brief Checks to see if link should be taking damage.
@@ -1320,6 +1351,15 @@ namespace libtp::tp::d_a_alink
          *  @param count The amount of filled hearts in which to increase Link's current health (in 1/4 hearts).
          */
         void dComIfGp_setItemLifeCount(float amount, uint8_t count);
+
+        /**
+         * @brief Used to switch between Link's armors.
+         *
+         * @param linkActrPtr A pointer to Link's Actor
+         *
+         * @param param_1 unknown
+        */
+       void setClothesChange(daAlink* linkActrPtr, int32_t param_1);
 
         /**
          *  @brief Checks to see if Link is currently voiding out.

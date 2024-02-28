@@ -2,6 +2,7 @@
  *	@brief Holds data about drawn objects.
  *
  *  @author Lunar Soap
+ *  @author Captain Kitty Cat
  *	@bug No known bugs.
  */
 #ifndef TP_D_METER2_H
@@ -119,6 +120,13 @@ namespace libtp::tp::d_meter2
          *  @return Returns the status value of the class after the function runs.
          */
         uint32_t dMeter2_Create(dMeter2_c* dMeterPtr);
+
+        /**
+         * @brief Modifies the oil meter value in many ways, such as decreasing it when equipping or swinging the lantern.
+         * 
+         * @param dMeterPtr A pointer to the current dMeter2 structure.
+        */
+       void moveKantera(dMeter2_c* dMeterPtr);
     }
 } // namespace libtp::tp::d_meter2
 #endif
