@@ -1159,7 +1159,7 @@ namespace libtp::tp::d_a_alink
          * @param linkActrPtr A pointer to Link's Actor
          * @param param_1 Unknown.
          * 
-         * @return Int
+         * @return int32_t unknown.
         */
         int32_t procAutoJumpInit(daAlink* linkActrPtr, int32_t param_1);
 
@@ -1250,7 +1250,7 @@ namespace libtp::tp::d_a_alink
          * 
          * @param linkActrPtr A pointer to Link's Actor
          * 
-         * @return Bool returns True if Link successfully crouched.
+         * @return int32_t returns 1 if successful and 0 if not successful.
         */
         int32_t procCrouchInit(daAlink* linkActrPtr);
 
@@ -1260,6 +1260,8 @@ namespace libtp::tp::d_a_alink
          * @param linkActrPtr A pointer to Link's Actor
          * 
          * @param param_1 unknown
+         *
+         * @return unknown.
         */
        int32_t checkNextActionFromCrouch(daAlink* linkActrPtr, int32_t param_1);
 
