@@ -24,7 +24,7 @@ namespace libtp::tp::d_save
     struct dSv_event_c
     {
         /* 0x0 */ uint8_t mEvent[256];
-    } __attribute__((__packed__));  // Size: 0x100
+    } __attribute__((__packed__)); // Size: 0x100
 
     struct dSv_MiniGame_c
     {
@@ -45,7 +45,7 @@ namespace libtp::tp::d_save
         /* 0x04 */ uint32_t mSwitch[2];
         /* 0x0C */ uint32_t mItem[4];
         /* 0x1C */ int16_t unk28[16];
-    } __attribute__((__packed__));  // Size: 0x3C
+    } __attribute__((__packed__)); // Size: 0x3C
 
     struct dSv_restart_c
     {
@@ -313,7 +313,7 @@ namespace libtp::tp::d_save
         /* 0x01 */ uint8_t unk1;
         /* 0x02 */ dSv_zoneBit_c mBit;
         /* 0x10 */ dSv_zoneActor_c mActor;
-    } __attribute__((__packed__));  // Size: 0x20
+    } __attribute__((__packed__)); // Size: 0x20
     static_assert(sizeof(dSv_zone_c) == 0x20);
 
     struct dSv_memBit_c
@@ -365,7 +365,7 @@ namespace libtp::tp::d_save
         /* 0x7F0 */ dSv_event_c mEvent;
         /* 0x8F0 */ dSv_reserve_c reserve;
         /* 0x940 */ dSv_MiniGame_c mMiniGame;
-    } __attribute__((__packed__));  // Size: 0x958
+    } __attribute__((__packed__)); // Size: 0x958
     static_assert(sizeof(dSv_save_c) == 0x958);
 
     struct dSv_info_c
@@ -396,7 +396,7 @@ namespace libtp::tp::d_save
         /* 0xF1B */ uint8_t field_0xf1b[13];
         /* 0xF28 */ int64_t mStartTime;
         /* 0xF30 */ int64_t mSaveTotalTime;
-    } __attribute__((__packed__));  // Size: 0xF38
+    } __attribute__((__packed__)); // Size: 0xF38
     static_assert(sizeof(dSv_info_c) == 0xF38);
 
     extern "C"
@@ -439,6 +439,14 @@ namespace libtp::tp::d_save
         void putSave(dSv_info_c* gameInfoPtr, int32_t areaID);
 
         /**
+         * @brief Returns whether the player has gotten the specified item.
+         *
+         * @param getItemPtr The pointer to the dSv_player_get_item_c.
+         * @param id The id of the item.
+         */
+        bool isFirstBit(dSv_player_get_item_c* getItemPtr, uint8_t id);
+
+        /**
          *  @brief Checks if an eventBit for the currently active save is set.
          *
          *  @param eventPtr The pointer to the event bits.
@@ -453,7 +461,6 @@ namespace libtp::tp::d_save
          *  @param eventPtr The pointer to the event bits.
          *  @param flag Offset+Flag
          */
-
         void onEventBit(dSv_event_c* eventPtr, uint16_t flag);
 
         /**

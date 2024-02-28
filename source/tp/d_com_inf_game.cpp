@@ -1,5 +1,6 @@
 #include "tp/d_com_inf_game.h"
 #include "tp/d_kankyo.h"
+#include "tp/d_save.h"
 
 #include <cstdint>
 
@@ -16,7 +17,7 @@ namespace libtp::tp::d_com_inf_game
 
     bool dComIfGs_isItemFirstBit(uint8_t itemID)
     {
-        return isFirstBit(&dComIfG_gameInfo.save.save_file.player.player_get_item, itemID);
+        return libtp::tp::d_save::isFirstBit(&dComIfG_gameInfo.save.save_file.player.player_get_item, itemID);
     }
 
     bool dComIfGs_isEventBit(uint16_t flag)

@@ -299,14 +299,6 @@ namespace libtp::tp::d_com_inf_game
         void dComIfG_get_timelayer(int32_t* pLayer);
 
         /**
-         * @brief Returns whether the player has gotten the specified item.
-         *
-         * @param getItemPtr The pointer to the dSv_player_get_item_c.
-         * @param id The id of the item.
-         */
-        bool isFirstBit(d_save::dSv_player_get_item_c* getItemPtr, uint8_t id);
-
-        /**
          *  @brief Returns the layer for the current stage after checking the appropriate flags.
          *
          *  @param stageName The current stage.
