@@ -49,8 +49,8 @@ namespace libtp::tp::d_meter2
         /* 0x196 */ int16_t field_0x196;
         /* 0x198 */ int16_t field_0x198;
         /* 0x19A */ int16_t field_0x19a;
-        /* 0x19C */ int32_t field_0x19c;
-        /* 0x1A0 */ int32_t field_0x1a0;
+        /* 0x19C */ int32_t mNowOil;
+        /* 0x1A0 */ int32_t mMaxOil;
         /* 0x1A4 */ int32_t field_0x1a4;
         /* 0x1A8 */ int32_t field_0x1a8;
         /* 0x1AC */ int32_t field_0x1ac;
@@ -127,6 +127,13 @@ namespace libtp::tp::d_meter2
          * @param dMeterPtr A pointer to the current dMeter2 structure.
         */
        void moveKantera(dMeter2_c* dMeterPtr);
+
+        /**
+        * @brief Determines whether the oil meter should be visible or not after checking multiple conditions, such as if oxygen meter is visible.
+        * 
+        * @param dMeterPtr A pointer to the current dMeter2 structure.
+       */
+       void alphaAnimeKantera(dMeter2_c* dMeterPtr);
     }
 } // namespace libtp::tp::d_meter2
 #endif
