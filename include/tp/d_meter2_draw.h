@@ -288,6 +288,20 @@ namespace libtp::tp::d_meter2_draw
          * @param dMeterDrawPtr A pointer to the current dMeter2Draw structure
         */
         void setAlphaLifeAnimeMax(dMeter2Draw_c* dMeterDrawPtr);
+
+        /**
+         * @brief Makes the Oil meter disappear.
+         * 
+         * @param dMeterDrawPtr A pointer to the current dMeter2Draw structure
+        */
+        void setAlphaKanteraAnimeMin(dMeter2Draw_c* dMeterDrawPtr);
+
+        /**
+         * @brief Makes the Oil meter appear.
+         * 
+         * @param dMeterDrawPtr A pointer to the current dMeter2Draw structure
+        */
+        void setAlphaKanteraAnimeMax(dMeter2Draw_c* dMeterDrawPtr);
     }
 } // namespace libtp::tp::d_meter2_draw
 #endif
