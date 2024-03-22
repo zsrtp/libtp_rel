@@ -129,8 +129,17 @@ namespace libtp::tp::d_meter2_draw
         /* 0x578 */ float field_0x578;
         /* 0x57C */ float field_0x57c;
         /* 0x580 */ float field_0x580;
-        /* 0x584 */ uint8_t field_0x584[0x78];
-        /* 0x5FC */ float field_0x5fc[3];
+        /* 0x584 */ float field_0x584[3];
+        /* 0x590 */ float field_0x590[3];
+        /* 0x59C */ float field_0x59c[3];
+        /* 0x5A8 */ float field_0x5a8[3];
+        /* 0x5B4 */ float field_0x5b4[3];
+        /* 0x5C0 */ float field_0x5c0[3];
+        /* 0x5CC */ float field_0x5cc[3];
+        /* 0x5D8 */ float field_0x5d8[3];
+        /* 0x5E4 */ float field_0x5e4[3];
+        /* 0x5F0 */ float field_0x5f0[3];
+        /* 0x5FC */ float mMeterAlphaRate[3];
         /* 0x608 */ float field_0x608;
         /* 0x60C */ float field_0x60c;
         /* 0x610 */ float field_0x610[3];
@@ -197,44 +206,43 @@ namespace libtp::tp::d_meter2_draw
         /* 0x784 */ float field_0x784;
         /* 0x788 */ float field_0x788;
         /* 0x78C */ float field_0x78c;
-        /* 0x790 */ float field_0x790;
-        /* 0x794 */ float field_0x794;
-        /* 0x798 */ float field_0x798;
-        /* 0x79C */ float field_0x79c;
-        /* 0x7A0 */ float field_0x7a0;
+        /* 0x790 */ float mLifeParentAlpha;
+        /* 0x794 */ float mLifeParentHeartAlpha;
+        /* 0x798 */ float mHeartBaseAlpha;
+        /* 0x79C */ float mHeartAlpha;
+        /* 0x7A0 */ float mBigHeartAlpha;
         /* 0x7A4 */ float field_0x7a4;
-        /* 0x7A8 */ float field_0x7a8;
-        /* 0x7AC */ float field_0x7ac;
+        /* 0x7A8 */ float mMagicMeterAlpha;
+        /* 0x7AC */ float mMagicMeterFrameAlpha;
         /* 0x7B0 */ float field_0x7b0;
-        /* 0x7B4 */ float field_0x7b4;
-        /* 0x7B8 */ float field_0x7b8;
+        /* 0x7B4 */ float mLanternMeterAlpha;
+        /* 0x7B8 */ float mLanternMeterFrameAlpha;
         /* 0x7BC */ float field_0x7bc;
-        /* 0x7C0 */ float field_0x7c0;
-        /* 0x7C4 */ float field_0x7c4;
+        /* 0x7C0 */ float mOxygenMeterAlpha;
+        /* 0x7C4 */ float mOxygenMeterFrameAlpha;
         /* 0x7C8 */ float field_0x7c8;
         /* 0x7CC */ float field_0x7cc;
         /* 0x7D0 */ float field_0x7d0;
-        /* 0x7D4 */ float field_0x7d4;
-        /* 0x7D8 */ float field_0x7d8;
-        /* 0x7DC */ float field_0x7dc;
+        /* 0x7D4 */ float mRupeeAlpha;
+        /* 0x7D8 */ float mRupeeFrameAlpha;
+        /* 0x7DC */ float mRupeeCountAlpha;
         /* 0x7E0 */ float field_0x7e0;
         /* 0x7E4 */ float field_0x7e4;
-        /* 0x7E8 */ float field_0x7e8;
-        /* 0x7EC */ float field_0x7ec;
+        /* 0x7E8 */ float mKeyAlpha;
+        /* 0x7EC */ float mKeyNumAlpha;
         /* 0x7F0 */ float field_0x7f0;
-        /* 0x7F4 */ float field_0x7f4;
-        /* 0x7F8 */ float field_0x7f8;
-        /* 0x7FC */ float field_0x7fc;
-        /* 0x800 */ float field_0x800;
-        /* 0x804 */ float field_0x804;
-        /* 0x808 */ float field_0x808;
+        /* 0x7F4 */ float mMainHUDButtonsAlpha;
+        /* 0x7F8 */ float mButtonDisplayBackAlpha;
+        /* 0x7FC */ float mButtonAAlpha;
+        /* 0x800 */ float mButtonBAlpha;
+        /* 0x804 */ float mButtonXAlpha;
+        /* 0x808 */ float mButtonYAlpha;
         /* 0x80C */ float field_0x80c;
         /* 0x810 */ float field_0x810;
-        /* 0x814 */ float field_0x814[2];
-        /* 0x81C */ float field_0x81c[2];
-        /* 0x824 */ float field_0x824[2];
+        /* 0x814 */ float mItemBBaseAlpha[2];
+        /* 0x81C */ float mButtonXItemBaseAlpha[2];
+        /* 0x824 */ float mButtonYItemBaseAlpha[2];
         /* 0x82C */ float field_0x82c[2];
-        /* 0x834 */ float field_0x834;
         /* 0x838 */ float field_0x838;
         /* 0x83C */ float field_0x83c;
         /* 0x840 */ float field_0x840;
@@ -277,31 +285,37 @@ namespace libtp::tp::d_meter2_draw
 
         /**
          * @brief Makes the heart UI disappear.
-         * 
+         *
          * @param dMeterDrawPtr A pointer to the current dMeter2Draw structure
-        */
+         */
         void setAlphaLifeAnimeMin(dMeter2Draw_c* dMeterDrawPtr);
 
         /**
          * @brief Makes the heart UI appear.
-         * 
+         *
          * @param dMeterDrawPtr A pointer to the current dMeter2Draw structure
-        */
+         */
         void setAlphaLifeAnimeMax(dMeter2Draw_c* dMeterDrawPtr);
 
         /**
          * @brief Makes the Oil meter disappear.
-         * 
+         *
          * @param dMeterDrawPtr A pointer to the current dMeter2Draw structure
-        */
+         */
         void setAlphaKanteraAnimeMin(dMeter2Draw_c* dMeterDrawPtr);
 
         /**
          * @brief Makes the Oil meter appear.
-         * 
+         *
          * @param dMeterDrawPtr A pointer to the current dMeter2Draw structure
-        */
+         */
         void setAlphaKanteraAnimeMax(dMeter2Draw_c* dMeterDrawPtr);
+
+        void drawMagic(dMeter2Draw_c* dMeterDrawPtr, int32_t max, int32_t curr, float posX, float posY);
+
+        void setAlphaMagicChange(dMeter2Draw_c* dMeterDrawPtr, bool);
+        void drawKanteraScreen(dMeter2Draw_c* dMeterDrawPtr, uint8_t);
+        void draw(dMeter2Draw_c* dMeterDrawPtr);
     }
 } // namespace libtp::tp::d_meter2_draw
 #endif
