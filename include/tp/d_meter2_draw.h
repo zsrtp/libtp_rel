@@ -311,10 +311,27 @@ namespace libtp::tp::d_meter2_draw
          */
         void setAlphaKanteraAnimeMax(dMeter2Draw_c* dMeterDrawPtr);
 
+        /**
+        * @brief Sets variables about the magic bar in the dMeterDraw object
+        * @param dMeterDrawPtr A pointer to the current dMeter2Draw structure
+        * @param max the maximum value of the bar (100%)
+        * @param curr the current value of the bar - how much is filled
+        * @param posX the X position of the magic meter
+        * @param posX the Y position of the magic meter
+        */
         void drawMagic(dMeter2Draw_c* dMeterDrawPtr, int32_t max, int32_t curr, float posX, float posY);
 
-        void setAlphaMagicChange(dMeter2Draw_c* dMeterDrawPtr, bool);
+        /**
+         * @brief sets the alpha rate of the bar and it's sides
+        * @param dMeterDrawPtr A pointer to the current dMeter2Draw structure
+        * @param forceSet if set to true force the change
+        */
+        void setAlphaMagicChange(dMeter2Draw_c* dMeterDrawPtr, bool forceSet);
 
+        /**
+         * @brief draws the dMeter2Draw on screen
+         * @param dMeterDrawPtr A pointer to the current dMeter2Draw structure
+        */
         void draw(dMeter2Draw_c* dMeterDrawPtr);
     }
 } // namespace libtp::tp::d_meter2_draw
