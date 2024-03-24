@@ -66,6 +66,12 @@ namespace libtp::tp::d_attention{
 //     /* 8014B010 */ static dist_entry& getDistTable(int);
 // };
 extern "C"{
-    libtp::tp::f_op_actor::fopAc_ac_c* LockonTarget(void*, int32_t);
+    /**
+     * @brief gets the actor that is targeted
+     * @param dAttentionPointer a pointer to the dAttention instance 
+     * @param attentionIndex the index of the targeted actor
+     * @return the actor pointer that is targeted
+    */
+    libtp::tp::f_op_actor::fopAc_ac_c* LockonTarget(void* dAttentionPointer, int32_t attentionIndex);
 }}
 #endif
