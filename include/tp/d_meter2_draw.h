@@ -314,7 +314,7 @@ namespace libtp::tp::d_meter2_draw
         void drawMagic(dMeter2Draw_c* dMeterDrawPtr, int32_t max, int32_t curr, float posX, float posY);
 
         void setAlphaMagicChange(dMeter2Draw_c* dMeterDrawPtr, bool);
-        void drawKanteraScreen(dMeter2Draw_c* dMeterDrawPtr, uint8_t);
+
         void draw(dMeter2Draw_c* dMeterDrawPtr);
     }
 } // namespace libtp::tp::d_meter2_draw
