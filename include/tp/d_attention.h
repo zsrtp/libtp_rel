@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <tp/f_op_actor.h>
 #include <tp/m_do_ext.h>
-#include <SSystem/SComponent/c_angle.h>
+// #include <SSystem/SComponent/c_angle.h>
 
 namespace libtp::tp::d_attention{
 // struct dist_entry {
