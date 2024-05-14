@@ -54,6 +54,17 @@ namespace libtp::tp::d_msg_flow
     extern "C"
     {
         /**
+         *	@brief Checks to see if a specified event bit is set during a conversation.
+         *
+         *  @param flow_node A pointer to the current message flow node.
+         *  @param actrPtr A pointer to the actor interacting with the message flow node
+         *  @param unk3 Unknown.
+         *
+         *  @return BOOL returns 0 if the flag is set, 1 if it is not.
+         */
+        int32_t query001(void* flow_node, void* actrPtr, int32_t unk3);
+
+        /**
          *	@brief Checks to see if the player has a specified item that is determined by the current conversation.
          *
          *  @param flow_node A pointer to the current message flow node.
