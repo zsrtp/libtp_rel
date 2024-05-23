@@ -2,6 +2,7 @@
  *	@brief Contains structure definitions and functions for handling game audio
  *
  *	@author Lunar Soap
+ *  @author Captain Kitty Cat
  *	@bug No known bugs.
  */
 #ifndef Z2AUDIOLIB_Z2SEMGR_H
@@ -64,6 +65,17 @@ namespace libtp::z2audiolib::z2semgr
                                   float f3,
                                   float f4,
                                   uint8_t unk7);
+
+        void z2SeMgr_seStart(Z2SeMgr* audioMgr,
+                             uint32_t* sfxID,
+                             const Vec* unk4,
+                             uint32_t unk5,
+                             int8_t unk6,
+                             float f1,
+                             float f2,
+                             float f3,
+                             float f4,
+                             uint8_t unk7);
     };
 } // namespace libtp::z2audiolib::z2semgr
 #endif

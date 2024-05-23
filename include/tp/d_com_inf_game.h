@@ -7,6 +7,7 @@
  *	@author Zephiles
  *	@author AECX
  *  @author Lunar Soap
+ *  @author Captain Kitty Cat
  *	@bug No known bugs.
  */
 #ifndef TP_D_COM_INF_GAME_H
@@ -98,9 +99,9 @@ namespace libtp::tp::d_com_inf_game
         /* 0x04E96 */ int16_t mItemNowMagicCount;
         /* 0x04E98 */ int16_t mItemMaxMagicCount;
         /* 0x04E9A */ int16_t field_0x4e9a;
-        /* 0x04E9C */ uint32_t mItemOilCount;
-        /* 0x04EA0 */ uint32_t mItemNowOil;
-        /* 0x04EA4 */ uint32_t mItemMaxOilCount;
+        /* 0x04E9C */ int32_t mItemOilCount;
+        /* 0x04EA0 */ int32_t mItemNowOil;
+        /* 0x04EA4 */ int32_t mItemMaxOilCount;
         /* 0x04EA8 */ uint32_t mOxygen;
         /* 0x04EAC */ uint32_t mNowOxygen;
         /* 0x04EB0 */ uint32_t mMaxOxygen;
