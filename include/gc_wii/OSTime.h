@@ -12,6 +12,8 @@
 
 #include <cstdint>
 
+typedef int64_t OSTime;
+
 namespace libtp::gc_wii::os_time
 {
     extern "C"

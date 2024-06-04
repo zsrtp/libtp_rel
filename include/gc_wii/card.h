@@ -9,6 +9,11 @@
 #ifndef GC_WII_CARD_H
 #define GC_WII_CARD_H
 
+#include "gc_wii/dsp.h"
+#include "gc_wii/OSThead.h"
+#include "gc_wii/OSAlarm.h"
+#include "gc_wii/dvd.h"
+
 #include <cstdint>
 
 #define CARD_SLOT_A 0
@@ -49,8 +54,13 @@
 
 #define CARD_READ_SIZE 512
 
+// Taken from https://github.com/TakaRikka/dolsdk2004/blob/card/include/dolphin/card.h
+#define CARD_NUM_SYSTEM_BLOCK 5
+
 namespace libtp::gc_wii::card
 {
+    typedef void (*CARDCallback)(int32_t chan, int32_t result);
+
     struct CARDFileInfo
     {
         int32_t chan;
@@ -86,16 +96,73 @@ namespace libtp::gc_wii::card
         uint32_t offsetData;
     } __attribute__((__packed__));
 
-    struct CARDBlock
+    // Taken from https://github.com/TakaRikka/dolsdk2004/blob/card/include/dolphin/card.h
+    struct CARDDir
     {
-        uint8_t unk[0x110];
+        /*0x00*/ uint8_t gameName[4];
+        /*0x04*/ uint8_t company[2];
+        /*0x06*/ uint8_t _padding0;
+        /*0x07*/ uint8_t bannerFormat;
+        /*0x08*/ uint8_t fileName[CARD_FILENAME_MAX];
+        /*0x28*/ uint32_t time;     // seconds since 01/01/2000 midnight
+        /*0x2C*/ uint32_t iconAddr; // 0xffffffff if not used
+        /*0x30*/ uint16_t iconFormat;
+        /*0x32*/ uint16_t iconSpeed;
+        /*0x34*/ uint8_t permission;
+        /*0x35*/ uint8_t copyTimes;
+        /*0x36*/ uint16_t startBlock;
+        /*0x38*/ uint16_t length;
+        /*0x3A*/ uint8_t _padding1[2];
+        /*0x3C*/ uint32_t commentAddr; // 0xffffffff if not used
+    } __attribute__((__packed__));
+
+    struct CARDControl
+    {
+        /* 0x000 */ int32_t attached;
+        /* 0x004 */ int32_t result;
+        /* 0x008 */ uint16_t size;
+        /* 0x00A */ uint16_t pageSize;
+        /* 0x00C */ int32_t sectorSize;
+        /* 0x010 */ uint16_t cBlock;
+        /* 0x012 */ uint16_t vendorID;
+        /* 0x014 */ int32_t latency;
+        /* 0x018 */ uint8_t id[12];
+        /* 0x024 */ int32_t mountStep;
+        /* 0x028 */ int32_t formatStep;
+        /* 0x02C */ uint32_t scramble;
+        /* 0x030 */ dsp::DSPTaskInfo task;
+        /* 0x080 */ void* workArea;
+        /* 0x084 */ CARDDir* currentDir;
+        /* 0x088 */ uint16_t* currentFat;
+        /* 0x08C */ os_thread::OSThreadQueue threadQueue;
+        /* 0x094 */ uint8_t cmd[9];
+        /* 0x09D */ uint8_t padding_9d[3];
+        /* 0x0A0 */ int32_t cmdlen;
+        /* 0x0A4 */ volatile uint32_t mode;
+        /* 0x0A8 */ int32_t retry;
+        /* 0x0AC */ int32_t repeat;
+        /* 0x0B0 */ uint32_t addr;
+        /* 0x0B4 */ void* buffer;
+        /* 0x0B8 */ int32_t xferred;
+        /* 0x0BC */ uint16_t freeNo;
+        /* 0x0BE */ uint16_t startBlock;
+        /* 0x0C0 */ CARDFileInfo* fileInfo;
+        /* 0x0C4 */ CARDCallback extCallback;
+        /* 0x0C8 */ CARDCallback txCallback;
+        /* 0x0CC */ CARDCallback exiCallback;
+        /* 0x0D0 */ CARDCallback apiCallback;
+        /* 0x0D4 */ CARDCallback xferCallback;
+        /* 0x0D8 */ CARDCallback eraseCallback;
+        /* 0x0DC */ CARDCallback unlockCallback;
+        /* 0x0E0 */ os_alarm::OSAlarm alarm;
+        /* 0x108 */ uint32_t cid;
+        /* 0x10C */ const dvd::DVDDiskID* diskID;
     } __attribute__((__packed__));
 
     static_assert(sizeof(CARDFileInfo) == 0x14);
     static_assert(sizeof(CARDStat) == 0x6C);
-    static_assert(sizeof(CARDBlock) == 0x110);
-
-    typedef void (*CARDCallback)(int32_t chan, int32_t result);
+    static_assert(sizeof(CARDDir) == 0x40);
+    static_assert(sizeof(CARDControl) == 0x110);
 
     extern "C"
     {
@@ -103,7 +170,7 @@ namespace libtp::gc_wii::card
         /**
          *  @brief No decent description at this time
          */
-        extern CARDBlock __CARDBlock[2]; // One for each memory card slot
+        extern CARDControl __CARDBlock[2]; // One for each memory card slot
 
         // Functions
         /**
@@ -235,20 +302,20 @@ namespace libtp::gc_wii::card
         void __CARDSyncCallback(int32_t chan, int32_t result);
 
         /**
-         *  @brief Gets the control block for the desired memory card slot
+         *  @brief Gets the control block for the desired memory card
          *
          *  @param chan Slot number (0: slot A, 1: slot B).
-         *  @param card Output for the pointer to the current card block (Struct for this not defined yet)
+         *  @param card Output for the pointer to the CARDBlock for the current memory card.
          */
-        int32_t __CARDGetControlBlock(int32_t chan, void** card);
+        int32_t __CARDGetControlBlock(int32_t chan, CARDControl** card);
 
         /**
-         *  @brief Puts the control block for the desired memory card slot
+         *  @brief Puts the control block for the desired memory card
          *
-         *  @param card Pointer to the current card block (Struct for this not defined yet)
-         *  @param result Return value of the most recent CARD function (This description may be incorrect)
+         *  @param card Pointer to the CARDBlock for the current memory card.
+         *  @param result Return value of the most recent CARD function.
          */
-        int32_t __CARDPutControlBlock(void* card, int32_t result);
+        int32_t __CARDPutControlBlock(CARDControl* card, int32_t result);
 
         /**
          *  @brief Suspends the current thread until the most resent asynchronous CARD function has finished its operation
@@ -258,23 +325,44 @@ namespace libtp::gc_wii::card
         int32_t __CARDSync(int32_t chan);
 
         /**
-         *  @brief Updates the fat block section for a specific file on the memory card (This description may be incorrect)
+         *  @brief Updates the fat block section for the specified memory card (This description may be incorrect)
          *
          *  @param chan Slot number (0: slot A, 1: slot B).
-         *  @param fatBlock Fat block section to be updated (Struct for this not defined yet)
+         *  @param fat Fat block section to be updated
          *  @param callback Callback function
          */
-        int32_t __CARDUpdateFatBlock(int32_t chan, void* fatBlock, CARDCallback callback);
+        int32_t __CARDUpdateFatBlock(int32_t chan, uint16_t* fat, CARDCallback callback);
 
         /**
-         *  @brief Gets the directly block for a specified file on the memory card (This description may be incorrect)
+         *  @brief Gets the pointer to the fat block section for the current memory card.
          *
-         *  @param card Pointer to the current card block (Struct for this not defined yet)
+         *  @param card Pointer to the CARDBlock for the current memory card.
          */
-        void* __CARDGetDirBlock(void* card);
+        inline uint16_t* __CARDGetFatBlock(CARDControl* card)
+        {
+            return card->currentFat;
+        }
 
         /**
-         *  @brief Updates the directly block for a specified file on the memory card (This description may be incorrect)
+         *  @brief Verifies if a block is valid on the memory card (This description may be incorrect)
+         *
+         *  @param card Pointer to the CARDBlock for the current memory card.
+         *  @param blockNo Block number to check.
+         */
+        inline bool CARDIsValidBlockNo(CARDControl* card, uint16_t blockNo)
+        {
+            return (blockNo >= CARD_NUM_SYSTEM_BLOCK) && (blockNo < card->cBlock);
+        }
+
+        /**
+         *  @brief Gets the directly block for a specified file on the memory card.
+         *
+         *  @param card Pointer to the CARDBlock for the current memory card.
+         */
+        CARDDir* __CARDGetDirBlock(CARDControl* card);
+
+        /**
+         *  @brief Updates the directly block for a specified file on the memory card.
          *
          *  @param chan Slot number (0: slot A, 1: slot B).
          *  @param callback Callback function
@@ -284,40 +372,38 @@ namespace libtp::gc_wii::card
         /**
          *  @brief Determines if the file name of the file in the current directly block is the same as the fileName parameter
          *
-         *  @param dirBlock Pointer the directly block for a specified file on the memory card (This description may be
-         * incorrect) (Struct for this not defined yet)
+         *  @param dir Pointer the directly block for a specified file on the memory card.
          *  @param fileName Internal name for the desired file on the memory card
          */
-        bool __CARDCompareFileName(void* dirBlock, const char* fileName);
+        bool __CARDCompareFileName(CARDDir* dir, const char* fileName);
 
         /**
          *  @brief Determines if the current file on the memory card can be accessed
          *
-         *  @param card Pointer to the current card block (Struct for this not defined yet)
-         *  @param dirBlock Pointer the directly block for a specified file on the memory card (This description may be
-         * incorrect) (Struct for this not defined yet)
+         *  @param card Pointer to the CARDBlock for the current memory card.
+         *  @param dir Pointer the directly block for a specified file on the memory card.
          */
-        int32_t __CARDAccess(void* card, void* dirBlock);
+        int32_t __CARDAccess(CARDControl* card, CARDDir* dir);
 
         /**
-     *  @brief Gets the status of a file.
-     *
-     *  @param chan EXI channel number
-        @param fileNo Index to the desired file on the memory card
-        @param stat Output for the status of the file
-    */
+         *  @brief Gets the status of a file.
+         *
+         *  @param chan EXI channel number
+         *  @param fileNo Index to the desired file on the memory card
+         *  @param stat Output for the status of the file
+         */
         int32_t CARDGetStatus(int32_t chan, int32_t fileNo, CARDStat* stat);
     }
 
     // Manually written functions
     /**
-     *  @brief Frees the fat blocks for a specific file (This description may be incorrect)
+     *  @brief Frees specific blocks in the fat block section for the current memory card (This description may be incorrect)
      *
      *  @param chan Slot number (0: slot A, 1: slot B).
-     *  @param block Starting block
+     *  @param nBlock Starting block
      *  @param Callback Callback function
      */
-    int32_t __CARDFreeBlock(int32_t chan, uint16_t block, CARDCallback callback);
+    int32_t __CARDFreeBlock(int32_t chan, uint16_t nBlock, CARDCallback callback);
 
     /**
      *  @brief Callback to be called when a file is ready to be deleted (This description may be incorrect)
@@ -330,11 +416,11 @@ namespace libtp::gc_wii::card
     /**
      *  @brief Gets the file number of the desired file on the memory card
      *
-     *  @param card Pointer to the current card block (Struct for this not defined yet)
+     *  @param card Pointer to the CARDBlock for the current memory card.
      *  @param fileName Internal name for the desired file on the memory card
-     *  @param fileNo Output for the index to the desired file on the memory card
+     *  @param pfileNo Output for the index to the desired file on the memory card
      */
-    int32_t __CARDGetFileNo(void* card, const char* fileName, int32_t* fileNo);
+    int32_t __CARDGetFileNo(CARDControl* card, const char* fileName, int32_t* pfileNo);
 
     /**
      *  @brief Deletes a file asynchronously

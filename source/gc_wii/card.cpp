@@ -4,140 +4,112 @@
 
 namespace libtp::gc_wii::card
 {
-    int32_t __CARDFreeBlock(int32_t chan, uint16_t block, CARDCallback callback)
+    // Taken from https://github.com/TakaRikka/dolsdk2004/tree/card/include/dolphin/card
+    int32_t __CARDFreeBlock(int32_t chan, uint16_t nBlock, CARDCallback callback)
     {
-        uint32_t card = reinterpret_cast<uint32_t>(&__CARDBlock[chan]);
-        if (*reinterpret_cast<int32_t*>(card) == 0)
+        CARDControl* card = &__CARDBlock[chan];
+        if (!card->attached)
         {
             return CARD_RESULT_NOCARD;
         }
 
-        uint16_t cardVar = *reinterpret_cast<uint16_t*>(card + 0x10); // Maximum number of blocks?
-        uint16_t* fatBlock = *reinterpret_cast<uint16_t**>(card + 0x88);
-
-        while (block != 0xFFFF)
+        uint16_t* fat = __CARDGetFatBlock(card);
+        while (nBlock != 0xFFFF)
         {
-            uint32_t tempBlock = static_cast<uint32_t>(block);
-            if ((tempBlock < 5) || (tempBlock >= cardVar))
+            if (!CARDIsValidBlockNo(card, nBlock))
             {
                 return CARD_RESULT_BROKEN;
             }
 
-            block = fatBlock[tempBlock];
-            fatBlock[tempBlock] = 0;
-            fatBlock[3] += 1;
+            uint16_t nextBlock = fat[nBlock];
+            fat[nBlock] = 0;
+            nBlock = nextBlock;
+            ++fat[3];
         }
 
-        return __CARDUpdateFatBlock(chan, fatBlock, callback);
+        return __CARDUpdateFatBlock(chan, fat, callback);
     }
 
     void DeleteCallback(int32_t chan, int32_t result)
     {
-        uint32_t card = reinterpret_cast<uint32_t>(&__CARDBlock[chan]);
-        CARDCallback* cardApiCbAddress = reinterpret_cast<CARDCallback*>(card + 0xD0);
+        CARDControl* card = &__CARDBlock[chan];
+        CARDCallback callback = card->apiCallback;
+        card->apiCallback = nullptr;
 
-        CARDCallback cb = *cardApiCbAddress;
-        *cardApiCbAddress = nullptr;
-
-        int32_t ret = result;
-        if (ret >= CARD_RESULT_READY)
+        if (result >= CARD_RESULT_READY)
         {
-            uint16_t* currFileBlockAddr = reinterpret_cast<uint16_t*>(card + 0xBE);
-
-            ret = __CARDFreeBlock(chan, *currFileBlockAddr, cb);
-            if (ret >= CARD_RESULT_READY)
+            result = __CARDFreeBlock(chan, card->startBlock, callback);
+            if (result >= CARD_RESULT_READY)
             {
                 return;
             }
         }
 
-        __CARDPutControlBlock(reinterpret_cast<void*>(card), ret);
-
-        if (cb)
+        __CARDPutControlBlock(card, result);
+        if (callback)
         {
-            cb(chan, ret);
+            callback(chan, result);
         }
     }
 
-    int32_t __CARDGetFileNo(void* card, const char* fileName, int32_t* fileNo)
+    int32_t __CARDGetFileNo(CARDControl* card, const char* fileName, int32_t* pfileNo)
     {
-        int32_t cardIsAttached = *reinterpret_cast<int32_t*>(reinterpret_cast<uint32_t>(card));
-        if (cardIsAttached == 0)
+        if (!card->attached)
         {
             return CARD_RESULT_NOCARD;
         }
 
-        uint32_t dirBlock = reinterpret_cast<uint32_t>(__CARDGetDirBlock(card));
+        CARDDir* dir = __CARDGetDirBlock(card);
 
-        int32_t i;
-        for (i = 0; i < 127; i++)
+        int32_t fileNo;
+        for (fileNo = 0; fileNo < CARD_MAX_FILE; fileNo++)
         {
-            uint8_t* currentDirBlock = reinterpret_cast<uint8_t*>(dirBlock + (i * 0x40));
+            CARDDir* ent = &dir[fileNo];
 
-            if (!__CARDCompareFileName(currentDirBlock, fileName))
+            if (__CARDAccess(card, ent) < CARD_RESULT_READY)
             {
                 continue;
             }
 
-            if (__CARDAccess(card, currentDirBlock) < CARD_RESULT_READY)
+            if (__CARDCompareFileName(ent, fileName))
             {
-                continue;
+                *pfileNo = fileNo;
+                return CARD_RESULT_READY;
             }
-
-            *fileNo = i;
-            break;
         }
 
-        if (i >= 127)
-        {
-            return CARD_RESULT_NOFILE;
-        }
-
-        return CARD_RESULT_READY;
+        return CARD_RESULT_NOFILE;
     }
 
     int32_t CARDDeleteAsync(int32_t chan, const char* fileName, CARDCallback callback)
     {
-        uint32_t card;
-        int32_t ret = __CARDGetControlBlock(chan, reinterpret_cast<void**>(&card));
+        CARDControl* card;
+        int32_t ret = __CARDGetControlBlock(chan, &card);
         if (ret < CARD_RESULT_READY)
         {
             return ret;
         }
 
         int32_t fileNo;
-        ret = __CARDGetFileNo(reinterpret_cast<void*>(card), fileName, &fileNo);
+        ret = __CARDGetFileNo(card, fileName, &fileNo);
         if (ret < CARD_RESULT_READY)
         {
-            __CARDPutControlBlock(reinterpret_cast<void*>(card), ret);
+            __CARDPutControlBlock(card, ret);
             return ret;
         }
 
-        uint32_t dirBlock = reinterpret_cast<uint32_t>(__CARDGetDirBlock(reinterpret_cast<void*>(card)));
-        uint32_t entry = dirBlock + (fileNo * 0x40);
+        CARDDir* dir = __CARDGetDirBlock(card);
+        CARDDir* ent = &dir[fileNo];
+        card->startBlock = ent->startBlock;
+        memset(ent, 0xFF, sizeof(CARDDir));
 
-        uint16_t* blockAddr = reinterpret_cast<uint16_t*>(entry + 0x36);
-        uint16_t* currFileBlockAddr = reinterpret_cast<uint16_t*>(card + 0xBE);
-        *currFileBlockAddr = *blockAddr;
-
-        memset(reinterpret_cast<void*>(entry), -1, 0x40);
-
-        CARDCallback cb = callback;
-        if (!cb)
-        {
-            cb = __CARDDefaultApiCallback;
-        }
-
-        CARDCallback* cardApiCbAddress = reinterpret_cast<CARDCallback*>(card + 0xD0);
-        *cardApiCbAddress = cb;
-
+        card->apiCallback = callback ? callback : __CARDDefaultApiCallback;
         ret = __CARDUpdateDir(chan, DeleteCallback);
-        if (ret >= CARD_RESULT_READY)
+        if (ret < CARD_RESULT_READY)
         {
-            return ret;
+            __CARDPutControlBlock(card, ret);
         }
 
-        __CARDPutControlBlock(reinterpret_cast<void*>(card), ret);
         return ret;
     }
 
