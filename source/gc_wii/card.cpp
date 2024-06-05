@@ -60,9 +60,7 @@ namespace libtp::gc_wii::card
         }
 
         CARDDir* dir = __CARDGetDirBlock(card);
-
-        int32_t fileNo;
-        for (fileNo = 0; fileNo < CARD_MAX_FILE; fileNo++)
+        for (int32_t fileNo = 0; fileNo < CARD_MAX_FILE; fileNo++)
         {
             CARDDir* ent = &dir[fileNo];
 
@@ -94,8 +92,7 @@ namespace libtp::gc_wii::card
         ret = __CARDGetFileNo(card, fileName, &fileNo);
         if (ret < CARD_RESULT_READY)
         {
-            __CARDPutControlBlock(card, ret);
-            return ret;
+            return __CARDPutControlBlock(card, ret);
         }
 
         CARDDir* dir = __CARDGetDirBlock(card);
