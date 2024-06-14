@@ -1155,12 +1155,12 @@ namespace libtp::tp::d_a_alink
 
         /**
          * @brief Initializes jump animation.
-         * 
+         *
          * @param linkActrPtr A pointer to Link's Actor
          * @param param_1 Unknown.
-         * 
+         *
          * @return int32_t unknown.
-        */
+         */
         int32_t procAutoJumpInit(daAlink* linkActrPtr, int32_t param_1);
 
         /**
@@ -1247,23 +1247,23 @@ namespace libtp::tp::d_a_alink
 
         /**
          * @brief Causes Link to crouch.
-         * 
+         *
          * @param linkActrPtr A pointer to Link's Actor
-         * 
+         *
          * @return int32_t returns 1 if successful and 0 if not successful.
-        */
+         */
         int32_t procCrouchInit(daAlink* linkActrPtr);
 
         /**
          * @brief Checks next action after link stops crouching.
-         * 
+         *
          * @param linkActrPtr A pointer to Link's Actor
-         * 
+         *
          * @param param_1 unknown
          *
          * @return unknown.
-        */
-       int32_t checkNextActionFromCrouch(daAlink* linkActrPtr, int32_t param_1);
+         */
+        int32_t checkNextActionFromCrouch(daAlink* linkActrPtr, int32_t param_1);
 
         /**
          *  @brief Checks to see if link should be taking damage.
@@ -1358,8 +1358,8 @@ namespace libtp::tp::d_a_alink
          * @param linkActrPtr A pointer to Link's Actor
          *
          * @param param_1 unknown
-        */
-       void setClothesChange(daAlink* linkActrPtr, int32_t param_1);
+         */
+        void setClothesChange(daAlink* linkActrPtr, int32_t param_1);
 
         /**
          *  @brief Checks to see if Link is currently voiding out.
@@ -1436,6 +1436,13 @@ namespace libtp::tp::d_a_alink
          *  @param linkActrPtr A pointer to Link's Actor
          */
         bool procWolfAttackReverseInit(daAlink* linkActrPtr);
+
+        /**
+         *  @brief Initializes the animation for Wolf Link when currently L-targetting.
+         *
+         *  @param linkActrPtr A pointer to Link's Actor
+         */
+        bool procWolfAtnActorMoveInit(daAlink* linkActrPtr);
 
         extern ClimbVars climbVars;
         extern LinkStatus* linkStatus;
