@@ -718,17 +718,17 @@ namespace libtp::tp::d_meter_hio
         /* 0x008 */ float mLifeTopPosX;
         /* 0x00C */ float mLifeTopPosY;
         /* 0x010 */ float mNoMagicPosY;
-        /* 0x014 */ float mHUDScale;
-        /* 0x018 */ float mHUDAlpha;
-        /* 0x01C */ float mLifeGaugeScale;
-        /* 0x020 */ float mLifeGaugeHeartAlpha;
-        /* 0x024 */ float mLifeGaugeBaseAlpha;
+        /* 0x014 */ float mParentScale;
+        /* 0x018 */ float mParentAlpha;
+        /* 0x01C */ float mLifeParentScale;
+        /* 0x020 */ float mLifeParentHeartAlpha;
+        /* 0x024 */ float mHeartBaseAlpha;
         /* 0x028 */ float mLifeGaugePosX;
         /* 0x02C */ float mLifeGaugePosY;
-        /* 0x030 */ float mHeartScale;
+        /* 0x030 */ float mHeartMarkScale;
         /* 0x034 */ float mHeartAlpha;
-        /* 0x038 */ float mLargeHeartScale;
-        /* 0x03C */ float mLargeHeartAlpha;
+        /* 0x038 */ float mBigHeartScale;
+        /* 0x03C */ float mBigHeartAlpha;
         /* 0x040 */ float mMagicMeterScale;
         /* 0x044 */ float mMagicMeterAlpha;
         /* 0x048 */ float mMagicMeterFrameAlpha;
@@ -754,38 +754,30 @@ namespace libtp::tp::d_meter_hio
         /* 0x098 */ float mRingHUDButtonsPosY;
         /* 0x09C */ float mButtonDisplayBackScale;
         /* 0x0A0 */ float mButtonDisplayBackAlpha;
-        /* 0x0A4 */ float mAButtonScale;
-        /* 0x0A8 */ float mAButtonAlpha;
-        /* 0x0AC */ float mAButtonPosX;
-        /* 0x0B0 */ float mAButtonPosY;
-        /* 0x0B4 */ float mAButtonTalkScale;
-        /* 0x0B8 */ float mAButtonFontTalkScale;
-        /* 0x0BC */ float mAButtonTalkPosX;
-        /* 0x0C0 */ float mAButtonFontTalkPosX;
-        /* 0x0C4 */ float mAButtonTalkPosY;
-        /* 0x0C8 */ float mAButtonFontTalkPosY;
-        /* 0x0CC */ float mAButtonTalkAScale;
-        /* 0x0D0 */ float mAButtonFontTalkAScale;
-        /* 0x0D4 */ float mAButtonTalkAPosX;
-        /* 0x0D8 */ float mAButtonFontTalkAPosX;
-        /* 0x0DC */ float mAButtonTalkAPosY;
-        /* 0x0E0 */ float mAButtonFontTalkAPosY;
-        /* 0x0E4 */ float mAButtonVesselPosX;
-        /* 0x0E8 */ float mAButtonVesselPosY;
-        /* 0x0EC */ float mBButtonScale;
-        /* 0x0F0 */ float mBButtonAlpha;
-        /* 0x0F4 */ float mBButtonPosX;
-        /* 0x0F8 */ float mBButtonPosY;
-        /* 0x0FC */ float mBButtonTalkScale;
-        /* 0x100 */ float mBButtonFontTalkScale;
-        /* 0x104 */ float mBButtonTalkPosX;
-        /* 0x108 */ float mBButtonFontTalkPosX;
-        /* 0x10C */ float mBButtonTalkPosY;
-        /* 0x110 */ float mBButtonFontTalkPosY;
-        /* 0x114 */ float mBButtonWolfPosX;
-        /* 0x118 */ float mBButtonWolfPosY;
-        /* 0x11C */ float mBButtonVesselPosX;
-        /* 0x120 */ float mBButtonVesselPosY;
+        /* 0x0A4 */ float mButtonAScale;
+        /* 0x0A8 */ float mButtonAAlpha;
+        /* 0x0AC */ float mButtonAPosX;
+        /* 0x0B0 */ float mButtonAPosY;
+        /* 0x0B4 */ float mButtonATalkScale[2];
+        /* 0x0BC */ float mButtonATalkPosX[2];
+        /* 0x0C4 */ float mButtonATalkPosY[2];
+        /* 0x0CC */ float mButtonATalkAScale;
+        /* 0x0D0 */ float mButtonATextTalkAScale;
+        /* 0x0D4 */ float mButtonATalkAPosX[2];
+        /* 0x0DC */ float mButtonATalkAPosY[2];
+        /* 0x0E4 */ float mButtonAVesselPosX;
+        /* 0x0E8 */ float mButtonAVesselPosY;
+        /* 0x0EC */ float mButtonBScale;
+        /* 0x0F0 */ float mButtonBAlpha;
+        /* 0x0F4 */ float mButtonBPosX;
+        /* 0x0F8 */ float mButtonBPosY;
+        /* 0x0FC */ float mButtonBTalkScale[2];
+        /* 0x104 */ float mButtonBTalkPosX[2];
+        /* 0x10C */ float mButtonBTalkPosY[2];
+        /* 0x114 */ float mButtonBWolfPosX;
+        /* 0x118 */ float mButtonBWolfPosY;
+        /* 0x11C */ float mButtonBVesselPosX;
+        /* 0x120 */ float mButtonBVesselPosY;
         /* 0x124 */ float mMidnaIconScale;
         /* 0x128 */ float mMidnaIconAlpha;
         /* 0x12C */ float mMidnaIconPosX;
@@ -794,77 +786,63 @@ namespace libtp::tp::d_meter_hio
         /* 0x138 */ float field_0x138;
         /* 0x13C */ float field_0x13c;
         /* 0x140 */ float field_0x140;
-        /* 0x144 */ float mXButtonScale;
-        /* 0x148 */ float mXButtonAlpha;
-        /* 0x14C */ float mXButtonPosX;
-        /* 0x150 */ float mXButtonPosY;
-        /* 0x154 */ float mYButtonScale;
-        /* 0x158 */ float mYButtonAlpha;
-        /* 0x15C */ float mYButtonPosX;
-        /* 0x160 */ float mYButtonPosY;
+        /* 0x144 */ float mButtonXScale;
+        /* 0x148 */ float mButtonXAlpha;
+        /* 0x14C */ float mButtonXPosX;
+        /* 0x150 */ float mButtonXPosY;
+        /* 0x154 */ float mButtonYScale;
+        /* 0x158 */ float mButtonYAlpha;
+        /* 0x15C */ float mButtonYPosX;
+        /* 0x160 */ float mButtonYPosY;
         /* 0x164 */ float field_0x164;
         /* 0x168 */ float field_0x168;
         /* 0x16C */ float field_0x16c;
         /* 0x170 */ float field_0x170;
-        /* 0x174 */ float mZButtonScale;
-        /* 0x178 */ float mZButtonAlpha;
-        /* 0x17C */ float mZButtonPosX;
-        /* 0x180 */ float mZButtonPosY;
-        /* 0x184 */ float mBButtonItemPosX;
-        /* 0x188 */ float mBButtonSwordPosX;
-        /* 0x18C */ float mBButtonFishingPosX;
-        /* 0x190 */ float mBButtonItemPosY;
-        /* 0x194 */ float mBButtonSwordPosY;
-        /* 0x198 */ float mBButtonFishingPosY;
-        /* 0x19C */ float mBButtonItemRotation;
-        /* 0x1A0 */ float mBButtonSwordRotation;
-        /* 0x1A4 */ float mBButtonFishingRotation;
-        /* 0x1A8 */ float mBButtonItemScale;
-        /* 0x1AC */ float mBButtonSwordScale;
-        /* 0x1B0 */ float mBButtonFishingScale;
-        /* 0x1B4 */ float mXButtonItemPosX;
-        /* 0x1B8 */ float mXButtonItemPosY;
-        /* 0x1BC */ float mXButtonItemScale;
-        /* 0x1C0 */ float mYButtonItemPosX;
-        /* 0x1C4 */ float mYButtonItemPosY;
-        /* 0x1C8 */ float mYButtonItemScale;
+        /* 0x174 */ float mButtonZScale;
+        /* 0x178 */ float mButtonZAlpha;
+        /* 0x17C */ float mButtonZPosX;
+        /* 0x180 */ float mButtonZPosY;
+        /* 0x184 */ float mButtonBItemPosX[3];
+        /* 0x190 */ float mButtonBItemPosY[3];
+        /* 0x19C */ float mButtonBItemRotation[3];
+        /* 0x1A8 */ float mButtonBItemScale[3];
+        /* 0x1B4 */ float mButtonXItemPosX;
+        /* 0x1B8 */ float mButtonXItemPosY;
+        /* 0x1BC */ float mButtonXItemScale;
+        /* 0x1C0 */ float mButtonYItemPosX;
+        /* 0x1C4 */ float mButtonYItemPosY;
+        /* 0x1C8 */ float mButtonYItemScale;
         /* 0x1CC */ float field_0x1cc;
         /* 0x1D0 */ float field_0x1d0;
         /* 0x1D4 */ float field_0x1d4;
-        /* 0x1D8 */ float mZButtonItemPosX;
-        /* 0x1DC */ float mZButtonItemPosY;
-        /* 0x1E0 */ float mZButtonItemScale;
+        /* 0x1D8 */ float mButtonZItemPosX;
+        /* 0x1DC */ float mButtonZItemPosY;
+        /* 0x1E0 */ float mButtonZItemScale;
         /* 0x1E4 */ float mButtonItemRotation[3];
         /* 0x1F0 */ float mXItemNumPosX;
         /* 0x1F4 */ float mYItemNumPosX;
         /* 0x1F8 */ float field_0x1f8;
-        /* 0x1FC */ float mBItemNumPosX;
+        /* 0x1FC */ float mItemBNumPosX;
         /* 0x200 */ float mXItemNumPosY;
         /* 0x204 */ float mYItemNumPosY;
         /* 0x208 */ float field_0x208;
-        /* 0x20C */ float mBItemNumPosY;
+        /* 0x20C */ float mItemBNumPosY;
         /* 0x210 */ float mXItemNumScale;
         /* 0x214 */ float mYItemNumScale;
         /* 0x218 */ float field_0x218;
-        /* 0x21C */ float mBItemNumScale;
-        /* 0x220 */ float mBItemBaseScale[2];
-        /* 0x228 */ float mBItemBasePosX[2];
-        /* 0x230 */ float mBItemBasePosY[2];
-        /* 0x238 */ float mBItemBaseAlpha[2];
-        /* 0x240 */ float mXButtonItemBaseScale;
-        /* 0x244 */ float mXButtonItemBaseNoItemScale;
-        /* 0x248 */ float mXButtonItemBasePosX;
-        /* 0x24C */ float mXButtonItemBaseNoItemPosX;
-        /* 0x250 */ float mXButtonItemBasePosY;
-        /* 0x254 */ float mXButtonItemBaseNoItemPosY;
-        /* 0x258 */ float mXButtonItemBaseAlpha[2];
-        /* 0x260 */ float mYButtonItemBaseScale;
-        /* 0x264 */ float mYButtonItemBaseNoItemScale;
-        /* 0x268 */ float mYButtonItemBasePosX;
-        /* 0x26C */ float mYButtonItemBaseNoItemPosX;
-        /* 0x270 */ float mYButtonItemBasePosY;
-        /* 0x274 */ float mYButtonItemBaseNoItemPosY;
-        /* 0x278 */ float mYButtonItemBaseAlpha[2];
+        /* 0x21C */ float mItemBNumScale;
+        /* 0x220 */ float mItemBBaseScale[2];
+        /* 0x228 */ float mItemBBasePosX[2];
+        /* 0x230 */ float mItemBBasePosY[2];
+        /* 0x238 */ float mItemBBaseAlpha[2];
+        /* 0x240 */ float mButtonXItemBaseScale[2];
+        /* 0x248 */ float mButtonXItemBasePosX[2];
+        /* 0x250 */ float mButtonXItemBasePosY[2];
+        /* 0x258 */ float mButtonXItemBaseAlpha[2];
+        /* 0x260 */ float mButtonYItemBaseScale[2];
+        /* 0x268 */ float mButtonYItemBasePosX[2];
+        /* 0x270 */ float mButtonYItemBasePosY[2];
+        /* 0x278 */ float mButtonYItemBaseAlpha[2];
         /* 0x280 */ float field_0x280;
         /* 0x284 */ float field_0x284;
         /* 0x288 */ float field_0x288;
@@ -872,32 +850,32 @@ namespace libtp::tp::d_meter_hio
         /* 0x290 */ float field_0x290;
         /* 0x294 */ float field_0x294;
         /* 0x298 */ float field_0x298[2];
-        /* 0x2A0 */ float mZButtonItemBaseScale;
-        /* 0x2A4 */ float mZButtonItemBasePosX;
-        /* 0x2A8 */ float mZButtonItemBasePosY;
-        /* 0x2AC */ float mZButtonItemBaseAlpha;
+        /* 0x2A0 */ float mButtonZItemBaseScale;
+        /* 0x2A4 */ float mButtonZItemBasePosX;
+        /* 0x2A8 */ float mButtonZItemBasePosY;
+        /* 0x2AC */ float mButtonZItemBaseAlpha;
         /* 0x2B0 */ float mButtonBaseAlpha;
-        /* 0x2B4 */ float mAButtonFontScale;
-        /* 0x2B8 */ float mAButtonFontPosX;
-        /* 0x2BC */ float mAButtonFontPosY;
+        /* 0x2B4 */ float mButtonATextScale;
+        /* 0x2B8 */ float mButtonATextPosX;
+        /* 0x2BC */ float mButtonATextPosY;
         /* 0x2C0 */ uint32_t mAButtonFontColor; // JUtility::TColor
         /* 0x2C4 */ float mAButtonFontSpacing;
-        /* 0x2C8 */ int32_t mAButtonFontActionID;
+        /* 0x2C8 */ int32_t mButtonATextActionID;
         /* 0x2CC */ uint32_t field_0x2cc;
-        /* 0x2D0 */ bool mAButtonTextDebug;
+        /* 0x2D0 */ bool mButtonATextDebug;
         /* 0x2D1 */ uint8_t padding_2d1[3];
-        /* 0x2D4 */ float mBButtonFontScale;
-        /* 0x2D8 */ float mBButtonFontPosX;
-        /* 0x2DC */ float mBButtonFontPosY;
-        /* 0x2E0 */ uint32_t mBButtonFontColor; // JUtility::TColor
+        /* 0x2D4 */ float mButtonBFontScale;
+        /* 0x2D8 */ float mButtonBFontPosX;
+        /* 0x2DC */ float mButtonBFontPosY;
+        /* 0x2E0 */ uint32_t mButtonBFontColor; // JUtility::TColor
         /* 0x2E4 */ float field_0x2e4;
         /* 0x2E8 */ float field_0x2e8;
         /* 0x2EC */ float field_0x2ec;
         /* 0x2F0 */ uint32_t field_0x2f0; // JUtility::TColor
-        /* 0x2F4 */ float mXYButtonFontScale;
-        /* 0x2F8 */ float mXYButtonFontPosX;
-        /* 0x2FC */ float mXYButtonFontPosY;
-        /* 0x300 */ uint32_t mXYButtonFontColor; // JUtility::TColor
+        /* 0x2F4 */ float mButtonXYTextScale;
+        /* 0x2F8 */ float mButtonXYTextPosX;
+        /* 0x2FC */ float mButtonXYTextPosY;
+        /* 0x300 */ uint32_t mButtonXYTextColor; // JUtility::TColor
         /* 0x304 */ float field_0x304;
         /* 0x308 */ float field_0x308;
         /* 0x30C */ float field_0x30c;
@@ -908,10 +886,10 @@ namespace libtp::tp::d_meter_hio
         /* 0x320 */ float field_0x320;
         /* 0x324 */ float field_0x324;
         /* 0x328 */ float field_0x328;
-        /* 0x32C */ float mZButtonFontScale;
-        /* 0x330 */ float mZButtonFontPosX;
-        /* 0x334 */ float mZButtonFontPosY;
-        /* 0x338 */ uint32_t mZButtonFontColor; // JUtility::TColor
+        /* 0x32C */ float mButtonZFontScale;
+        /* 0x330 */ float mButtonZFontPosX;
+        /* 0x334 */ float mButtonZFontPosY;
+        /* 0x338 */ uint32_t mButtonZFontColor; // JUtility::TColor
         /* 0x33C */ float mRupeeKeyScale;
         /* 0x340 */ float mRupeeKeyPosX;
         /* 0x344 */ float mRupeeKeyPosY;
@@ -943,102 +921,100 @@ namespace libtp::tp::d_meter_hio
         /* 0x3AC */ float mSpurBarScale;
         /* 0x3B0 */ float mSpurBarPosX;
         /* 0x3B4 */ float mSpurBarPosY;
-        /* 0x3B8 */ float mAButtonHorsePosX;
-        /* 0x3BC */ float mAButtonHorsePosY;
-        /* 0x3C0 */ float mAButtonHorseScale;
-        /* 0x3C4 */ float mAButtonHighlightScale;
-        /* 0x3C8 */ float mBButtonHighlightScale;
+        /* 0x3B8 */ float mButtonAHorsePosX;
+        /* 0x3BC */ float mButtonAHorsePosY;
+        /* 0x3C0 */ float mButtonAHorseScale;
+        /* 0x3C4 */ float mButtonAPikariScale;
+        /* 0x3C8 */ float mButtonBPikariScale;
         /* 0x3CC */ float field_0x3cc;
         /* 0x3D0 */ float field_0x3d0;
         /* 0x3D4 */ float field_0x3d4;
-        /* 0x3D8 */ float mZButtonHighlightScale;
-        /* 0x3DC */ float mXYButtonHighlightScale;
-        /* 0x3E0 */ float mSpurIconHighlightScale;
-        /* 0x3E4 */ float mSpurIconReviveHighlightScale;
-        /* 0x3E8 */ float mMidnaIconHighlightScale;
+        /* 0x3D8 */ float mButtonZPikariScale;
+        /* 0x3DC */ float mButtonXYPikariScale;
+        /* 0x3E0 */ float mSpurIconPikariScale;
+        /* 0x3E4 */ float mSpurIconRevivePikariScale;
+        /* 0x3E8 */ float mMidnaIconPikariScale;
         /* 0x3EC */ int16_t mMidnaIconFlashRate;
         /* 0x3EE */ uint8_t padding_3ee[2];
         /* 0x3F0 */ float field_0x3f0;
         /* 0x3F4 */ float field_0x3f4;
         /* 0x3F8 */ float field_0x3f8;
-        /* 0x3FC */ float mDPadButtonScale;
-        /* 0x400 */ float mDPadButtonOFFPosX;
-        /* 0x404 */ float mDPadButtonOFFPosY;
-        /* 0x408 */ float mDPadButtonONPosX;
-        /* 0x40C */ float mDPadButtonONPosY;
-        /* 0x410 */ float mDPadButtonLetterSpacing;
-        /* 0x414 */ float mDPadButtonAlpha;
-        /* 0x418 */ float mDPadButtonITEMAlpha;
-        /* 0x41C */ float mDPadButtonMAPAlpha;
-        /* 0x420 */ int16_t mDPadButtonMoveFrame;
+        /* 0x3FC */ float mButtonCrossScale;
+        /* 0x400 */ float mButtonCrossOFFPosX;
+        /* 0x404 */ float mButtonCrossOFFPosY;
+        /* 0x408 */ float mButtonCrossONPosX;
+        /* 0x40C */ float mButtonCrossONPosY;
+        /* 0x410 */ float mButtonCrossTextScale;
+        /* 0x414 */ float mButtonCrossAlpha;
+        /* 0x418 */ float mButtonCrossITEMAlpha;
+        /* 0x41C */ float mButtonCrossMAPAlpha;
+        /* 0x420 */ int16_t mButtonCrossMoveFrame;
         /* 0x422 */ int16_t field_0x422;
         /* 0x424 */ int16_t field_0x424;
         /* 0x426 */ bool mButtonDebug[4];
-        /* 0x42A */ uint8_t mXYButtonsItemDimAlpha;
-        /* 0x42B */ uint8_t mXYButtonsBaseDimAlpha;
+        /* 0x42A */ uint8_t mButtonXYItemDimAlpha;
+        /* 0x42B */ uint8_t mButtonXYBaseDimAlpha;
         /* 0x42C */ uint8_t field_0x42c;
         /* 0x42D */ uint8_t mMaxSpurAmount;
         /* 0x42E */ bool mSpurDebug;
         /* 0x42F */ bool field_0x42f;
-        /* 0x430 */ uint32_t mSpurIconHighlightFrontInner;       // JUtility::TColor
-        /* 0x434 */ uint32_t mSpurIconHighlightFrontOuter;       // JUtility::TColor
-        /* 0x438 */ uint32_t mSpurIconHighlightBackInner;        // JUtility::TColor
-        /* 0x43C */ uint32_t mSpurIconHighlightBackOuter;        // JUtility::TColor
-        /* 0x440 */ float mSpurIconHighlightAnimSpeed;
-        /* 0x444 */ uint32_t mSpurIconReviveHighlightFrontInner; // JUtility::TColor
-        /* 0x448 */ uint32_t mSpurIconReviveHighlightFrontOuter; // JUtility::TColor
-        /* 0x44C */ uint32_t mSpurIconReviveHighlightBackInner;  // JUtility::TColor
-        /* 0x450 */ uint32_t mSpurIconReviveHighlightBackOuter;  // JUtility::TColor
-        /* 0x454 */ float mSpurIconReviveHighlightAnimSpeed;
-        /* 0x458 */ uint32_t mZButtonHighlightFrontInner;        // JUtility::TColor
-        /* 0x45C */ uint32_t mZButtonHighlightFrontOuter;        // JUtility::TColor
-        /* 0x460 */ uint32_t mZButtonHighlightBackInner;         // JUtility::TColor
-        /* 0x464 */ uint32_t mZButtonHighlightBackOuter;         // JUtility::TColor
-        /* 0x468 */ float mZButtonHighlightAnimSpeed;
-        /* 0x46C */ uint32_t mXYButtonHighlightFrontInner;       // JUtility::TColor
-        /* 0x470 */ uint32_t mXYButtonHighlightFrontOuter;       // JUtility::TColor
-        /* 0x474 */ uint32_t mXYButtonHighlightBackInner;        // JUtility::TColor
-        /* 0x478 */ uint32_t mXYButtonHighlightBackOuter;        // JUtility::TColor
-        /* 0x47C */ float mXYButtonHighlightAnimSpeed;
-        /* 0x480 */ uint32_t mAButtonHighlightFrontInner;        // JUtility::TColor
-        /* 0x484 */ uint32_t mAButtonHighlightFrontOuter;        // JUtility::TColor
-        /* 0x488 */ uint32_t mAButtonHighlightBackInner;         // JUtility::TColor
-        /* 0x48C */ uint32_t mAButtonHighlightBackOuter;         // JUtility::TColor
-        /* 0x490 */ float mAButtonHighlightAnimSpeed;
-        /* 0x494 */ uint32_t mBButtonHighlightFrontInner;        // JUtility::TColor
-        /* 0x498 */ uint32_t mBButtonHighlightFrontOuter;        // JUtility::TColor
-        /* 0x49C */ uint32_t mBButtonHighlightBackInner;         // JUtility::TColor
-        /* 0x4A0 */ uint32_t mBButtonHighlightBackOuter;         // JUtility::TColor
-        /* 0x4A4 */ float mBButtonHighlightAnimSpeed;
-        /* 0x4A8 */ uint32_t field_0x4a8;                        // JUtility::TColor
-        /* 0x4AC */ uint32_t field_0x4ac;                        // JUtility::TColor
-        /* 0x4B0 */ uint32_t field_0x4b0;                        // JUtility::TColor
-        /* 0x4B4 */ uint32_t field_0x4b4;                        // JUtility::TColor
+        /* 0x430 */ uint32_t mSpurIconPikariFrontInner; // JUtility::TColor
+        /* 0x434 */ uint32_t mSpurIconPikariFrontOuter; // JUtility::TColor
+        /* 0x438 */ uint32_t mSpurIconPikariBackInner; // JUtility::TColor
+        /* 0x43C */ uint32_t mSpurIconPikariBackOuter; // JUtility::TColor
+        /* 0x440 */ float mSpurIconPikariAnimSpeed;
+        /* 0x444 */ uint32_t mSpurIconRevivePikariFrontInner; // JUtility::TColor
+        /* 0x448 */ uint32_t mSpurIconRevivePikariFrontOuter; // JUtility::TColor
+        /* 0x44C */ uint32_t mSpurIconRevivePikariBackInner; // JUtility::TColor
+        /* 0x450 */ uint32_t mSpurIconRevivePikariBackOuter; // JUtility::TColor
+        /* 0x454 */ float mSpurIconRevivePikariAnimSpeed;
+        /* 0x458 */ uint32_t mButtonZPikariFrontInner; // JUtility::TColor
+        /* 0x45C */ uint32_t mButtonZPikariFrontOuter; // JUtility::TColor
+        /* 0x460 */ uint32_t mButtonZPikariBackInner; // JUtility::TColor
+        /* 0x464 */ uint32_t mButtonZPikariBackOuter; // JUtility::TColor
+        /* 0x468 */ float mButtonZPikariAnimSpeed;
+        /* 0x46C */ uint32_t mButtonXYPikariFrontInner; // JUtility::TColor
+        /* 0x470 */ uint32_t mButtonXYPikariFrontOuter; // JUtility::TColor
+        /* 0x474 */ uint32_t mButtonXYPikariBackInner; // JUtility::TColor
+        /* 0x478 */ uint32_t mButtonXYPikariBackOuter; // JUtility::TColor
+        /* 0x47C */ float mButtonXYPikariAnimSpeed;
+        /* 0x480 */ uint32_t mButtonAPikariFrontInner; // JUtility::TColor
+        /* 0x484 */ uint32_t mButtonAPikariFrontOuter; // JUtility::TColor
+        /* 0x488 */ uint32_t mButtonAPikariBackInner; // JUtility::TColor
+        /* 0x48C */ uint32_t mButtonAPikariBackOuter; // JUtility::TColor
+        /* 0x490 */ float mButtonAPikariAnimSpeed;
+        /* 0x494 */ uint32_t mButtonBPikariFrontInner; // JUtility::TColor
+        /* 0x498 */ uint32_t mButtonBPikariFrontOuter; // JUtility::TColor
+        /* 0x49C */ uint32_t mButtonBPikariBackInner; // JUtility::TColor
+        /* 0x4A0 */ uint32_t mButtonBPikariBackOuter; // JUtility::TColor
+        /* 0x4A4 */ float mButtonBPikariAnimSpeed;
+        /* 0x4A8 */ uint32_t field_0x4a8; // JUtility::TColor
+        /* 0x4AC */ uint32_t field_0x4ac; // JUtility::TColor
+        /* 0x4B0 */ uint32_t field_0x4b0; // JUtility::TColor
+        /* 0x4B4 */ uint32_t field_0x4b4; // JUtility::TColor
         /* 0x4B8 */ float field_0x4b8;
-        /* 0x4BC */ uint32_t field_0x4bc;                        // JUtility::TColor
-        /* 0x4C0 */ uint32_t field_0x4c0;                        // JUtility::TColor
-        /* 0x4C4 */ uint32_t field_0x4c4;                        // JUtility::TColor
-        /* 0x4C8 */ uint32_t field_0x4c8;                        // JUtility::TColor
+        /* 0x4BC */ uint32_t field_0x4bc; // JUtility::TColor
+        /* 0x4C0 */ uint32_t field_0x4c0; // JUtility::TColor
+        /* 0x4C4 */ uint32_t field_0x4c4; // JUtility::TColor
+        /* 0x4C8 */ uint32_t field_0x4c8; // JUtility::TColor
         /* 0x4CC */ float field_0x4cc;
-        /* 0x4D0 */ uint32_t field_0x4d0;                        // JUtility::TColor
-        /* 0x4D4 */ uint32_t field_0x4d4;                        // JUtility::TColor
-        /* 0x4D8 */ uint32_t field_0x4d8;                        // JUtility::TColor
-        /* 0x4DC */ uint32_t field_0x4dc;                        // JUtility::TColor
+        /* 0x4D0 */ uint32_t field_0x4d0; // JUtility::TColor
+        /* 0x4D4 */ uint32_t field_0x4d4; // JUtility::TColor
+        /* 0x4D8 */ uint32_t field_0x4d8; // JUtility::TColor
+        /* 0x4DC */ uint32_t field_0x4dc; // JUtility::TColor
         /* 0x4E0 */ float field_0x4e0;
-        /* 0x4E4 */ uint32_t mMidnaIconHighlightFrontInner;      // JUtility::TColor
-        /* 0x4E8 */ uint32_t mMidnaIconHighlightFrontOuter;      // JUtility::TColor
-        /* 0x4EC */ uint32_t mMidnaIconHighlightBackInner;       // JUtility::TColor
-        /* 0x4F0 */ uint32_t mMidnaIconHighlightBackOuter;       // JUtility::TColor
-        /* 0x4F4 */ float mMidnaIconHighlightAnimSpeed;
+        /* 0x4E4 */ uint32_t mMidnaIconPikariFrontInner; // JUtility::TColor
+        /* 0x4E8 */ uint32_t mMidnaIconPikariFrontOuter; // JUtility::TColor
+        /* 0x4EC */ uint32_t mMidnaIconPikariBackInner; // JUtility::TColor
+        /* 0x4F0 */ uint32_t mMidnaIconPikariBackOuter; // JUtility::TColor
+        /* 0x4F4 */ float mMidnaIconPikariAnimSpeed;
         /* 0x4F8 */ float mScrollArrowScaleX;
         /* 0x4FC */ float mScrollArrowScaleY;
         /* 0x500 */ float mScrollArrowBPKAnimSpeed;
         /* 0x504 */ float mScrollArrowBCKAnimSpeed;
         /* 0x508 */ float mScrollArrowBTKAnimSpeed;
-        /* 0x50C */ float mScrollArrowTopBottomPosX;
-        /* 0x510 */ float mScrollArrowLeftRightPosX;
-        /* 0x514 */ float mScrollArrowTopBottomPosY;
-        /* 0x518 */ float mScrollArrowLeftRightPosY;
+        /* 0x50C */ float mScrollArrowPosX[2];
+        /* 0x514 */ float mScrollArrowPosY[2];
         /* 0x51C */ float mScrollArrowCenterPosX;
         /* 0x520 */ float mScrollArrowCenterPosY;
         /* 0x524 */ bool mScrollArrowDisplayAll;
@@ -1048,10 +1024,8 @@ namespace libtp::tp::d_meter_hio
         /* 0x530 */ float mWiiLockArrowBPKAnimSpeed;
         /* 0x534 */ float mWiiLockArrowBCKAnimSpeed;
         /* 0x538 */ float mWiiLockArrowBTKAnimSpeed;
-        /* 0x53C */ float mWiiLockArrowTopBottomPosX;
-        /* 0x540 */ float mWiiLockArrowLeftRightPosX;
-        /* 0x544 */ float mWiiLockArrowTopBottomPosY;
-        /* 0x548 */ float mWiiLockArrowLeftRightPosY;
+        /* 0x53C */ float mWiiLockArrowPosX[2];
+        /* 0x544 */ float mWiiLockArrowPosY[2];
         /* 0x54C */ float field_0x54c;
         /* 0x550 */ bool mWiiLockArrowDisplayAll;
         /* 0x551 */ uint8_t padding_551[3];
