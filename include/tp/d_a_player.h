@@ -2,6 +2,7 @@
  *	@brief Contains functions and values that relate to the player and its interactions.
  *
  *	@author Lunar Soap
+ *  @author Captain Kitty Cat
  *	@bug No known bugs.
  */
 #ifndef TP_D_A_PLAYER_H
@@ -77,6 +78,98 @@ namespace libtp::tp::d_a_player
         /* 0x0628 */ void* vtable;
     } __attribute__((__packed__));
 
+    enum daPy_FLG2 {
+        FLG2_UNK_20000000 = 0x20000000,
+        FLG2_UNK_10000000 = 0x10000000,
+        FLG2_UNK_4080000 = 0x4080000,
+        FLG2_UNK_2080000 = 0x2080000,
+        FLG2_BOAR_SINGLE_BATTLE = 0x1800000,
+        FLG2_UNK_8000000 = 0x8000000,
+        FLG2_UNK_1000000 = 0x1000000,
+        FLG2_UNK_800000 = 0x800000,
+        FLG2_STATUS_WINDOW_DRAW = 0x400000,
+        FLG2_UNK_280000 = 0x280000,
+        FLG2_UNK_200000 = 0x200000,
+        FLG2_UNK_100000 = 0x100000,
+        FLG2_UNK_80000 = 0x80000,
+        FLG2_UNK_40000 = 0x40000,
+        FLG2_UNK_20000 = 0x20000,
+        FLG2_UNK_10000 = 0x10000,
+        FLG2_SCN_CHG_START = 0x8000,
+        FLG2_UNK_4000 = 0x4000,
+        FLG2_UNK_2000 = 0x2000,
+        FLG2_UNK_1000 = 0x1000,
+        FLG2_UNK_400 = 0x400,
+        FLG2_UNK_200 = 0x200,
+        FLG2_UNK_80 = 0x80,
+        FLG2_UNK_40 = 0x40,
+        FLG2_WOLF_ENEMY_LEFT_THROW = 0x20,
+        FLG2_UNK_10 = 0x10,
+        FLG2_UNK_8 = 8,
+        FLG2_UNK_2 = 2,
+        FLG2_UNK_1 = 1,
+
+        FLG2_UNK_58 = FLG2_UNK_40 | FLG2_UNK_10 | FLG2_UNK_8,
+    };
+
+    enum daPy_FLG0 {
+        FLG0_UNK_40000000 = 0x40000000,
+        FLG0_EQUIP_HVY_BOOTS = 0x2000000,
+        FLG0_PLAYER_NO_DRAW = 0x8000000,
+        FLG0_UNK_10000000 = 0x10000000,
+        FLG0_UNK_1000000 = 0x1000000,
+        FLG0_UNDERWATER = 0x800000,
+        FLG0_UNK_200000 = 0x200000,
+        FLG0_UNK_100000 = 0x100000,
+        FLG0_UNK_80000 = 0x80000,
+        FLG0_UNK_40000 = 0x40000,
+        FLG0_UNK_20000 = 0x20000,
+        FLG0_UNK_10000 = 0x10000,
+        FLG0_UNK_8000 = 0x8000,
+        FLG0_UNK_4000 = 0x4000,
+        FLG0_UNK_2000 = 0x2000,
+        FLG0_MAGNE_BOOTS_ON = 0x1000,
+        FLG0_PUSH_PULL_KEEP = 0x800,
+        FLG0_UNK_400 = 0x400,
+        FLG0_UNK_100 = 0x100,
+        FLG0_UNK_80 = 0x80,
+        FLG0_UNK_40 = 0x40,
+        FLG0_UNK_20 = 0x20,
+        FLG0_UNK_10 = 0x10,
+        FLG0_UNK_8 = 0x8,
+        FLG0_MIDNA_RIDE = 4,
+        FLG0_UNK_2 = 2,
+
+        FLG0_HVY_STATE = FLG0_UNK_40000000 | FLG0_EQUIP_HVY_BOOTS | FLG0_UNK_20000,
+        FLG0_UNK_14000 = 0x14000,
+        FLG0_UNK_10400 = 0x10400,
+        FLG0_UNK_18 = FLG0_UNK_10 | FLG0_UNK_8,
+    };
+
+    enum daPy_RFLG0 {
+        RFLG0_UNK_40000000 = 0x40000000,
+        RFLG0_UNK_20000000 = 0x20000000,
+        RFLG0_UNK_8000000 = 0x8000000,
+        RFLG0_UNK_4000000 = 0x4000000,
+        RFLG0_GRAB_PUT_START = 0x400000,
+        RFLG0_UNK_20000 = 0x20000,
+        RFLG0_UNK_10000 = 0x10000,
+        RFLG0_UNK_8000 = 0x8000,
+        RFLG0_UNK_4000 = 0x4000,
+        RFLG0_FRONT_ROLL_CRASH = 0x2000,
+        RFLG0_ENEMY_ATTN_LOCK = 0x1000,
+        RFLG0_UNK_400 = 0x400,
+        RFLG0_UNK_200 = 0x200,
+        RFLG0_UNK_100 = 0x100,
+        RFLG0_UNK_80 = 0x80,
+        RFLG0_UNK_40 = 0x40,
+        RFLG0_GRAB_UP_END = 0x20,
+        RFLG0_UNK_10 = 0x10,
+        RFLG0_UNK_8 = 0x8,
+        RFLG0_UNK_2 = 0x2,
+        RFLG0_UNK_1 = 0x1,
+    };
+
     static_assert(sizeof(daPy_demo) == 0x24);
     static_assert(sizeof(daPy_actorKeep) == 0x8);
     static_assert(sizeof(daPy_anmHeap) == 0x14);
@@ -89,6 +182,11 @@ namespace libtp::tp::d_a_player
     extern "C"
     {
         extern void* m_midnaActor;
+        void offNoResetFlg2(daPy_py* linkActrPtr, daPy_FLG2);
+        void offNoResetFlg0(daPy_py* linkActrPtr, daPy_FLG0);
+        void onResetFlg0(daPy_py* linkActrPtr, daPy_RFLG0);
+        uint32_t checkWolf(daPy_py* linkActrPtr);
+        int32_t checkBombItem(int32_t id);
     }
 } // namespace libtp::tp::d_a_player
 #endif
