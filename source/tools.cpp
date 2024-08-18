@@ -334,7 +334,7 @@ namespace libtp::tools
         }
 
         // Get the variables from the entry so that fileData can be freed
-        const uint32_t fileSize = entry->rel_size;
+        uint32_t fileSize = entry->rel_size;
         const uint32_t fileOffset = entry->offset;
         delete[] fileData;
 
@@ -376,7 +376,7 @@ namespace libtp::tools
         libtp::memory::clear_DC_IC_Cache(fileData, adjustedLength);
 
         // Resize fileData to only include the necessary bytes
-        libtp::tp::jkr_heap::resize1_JKRHeap(fileData, fileSize);
+        fileSize = libtp::tp::jkr_heap::resize1_JKRHeap(fileData, fileSize, nullptr);
 
         *dataOut = fileData;
         return static_cast<int32_t>(fileSize);
