@@ -379,7 +379,7 @@ namespace libtp::tools
         libtp::tp::jkr_heap::resize1_JKRHeap(fileData, fileSize);
 
         *dataOut = fileData;
-        return fileSize;
+        return static_cast<int32_t>(fileSize);
     }
 
     int32_t readFileFromGCI(int32_t chan, uint32_t id, bool allocFromHead, uint8_t** dataOut)
