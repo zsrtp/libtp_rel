@@ -26,6 +26,7 @@
 #include "gc_wii/OSCache.h"
 #include "gc_wii/OSInterrupt.h"
 #include "tp/d_a_alink.h"
+#include "tp/JKRHeap.h"
 
 namespace libtp::tools
 {
@@ -71,7 +72,7 @@ namespace libtp::tools
         strcpy(nextStagePtr->mStage, stage);
     }
 
-    int32_t spawnActor(uint8_t roomID, tp::dzx::ACTR& actor)
+    int32_t spawnActor(uint8_t roomID, const tp::dzx::ACTR& actor)
     {
         using namespace libtp::tp::dzx;
         using namespace libtp::tp::f_op_actor_mng;
@@ -91,10 +92,11 @@ namespace libtp::tools
         actorMemoryPtr->enemy_id = actor.enemyID;
         actorMemoryPtr->room_id = roomID;
 
-        return tp::d_stage::ActorCreate(&actor, actorMemoryPtr);
+        // ActorCreate does not do anything with the actor param
+        return tp::d_stage::ActorCreate(const_cast<tp::dzx::ACTR*>(&actor), actorMemoryPtr);
     }
 
-    int32_t spawnSCOB(uint8_t roomID, tp::dzx::SCOB& actor_data)
+    int32_t spawnSCOB(uint8_t roomID, const tp::dzx::SCOB& actor_data)
     {
         using namespace libtp::tp::dzx;
         using namespace libtp::tp::f_op_actor_mng;
@@ -117,7 +119,8 @@ namespace libtp::tools
         actorMemoryPtr->mScale[1] = actor_data.yScale;
         actorMemoryPtr->mScale[2] = actor_data.zScale;
 
-        return tp::d_stage::ActorCreate(&actor_data, actorMemoryPtr);
+        // ActorCreate does not do anything with the actor param
+        return tp::d_stage::ActorCreate(const_cast<tp::dzx::SCOB*>(&actor_data), actorMemoryPtr);
     }
 #ifndef PLATFORM_WII
     int32_t mountMemoryCard(int32_t chan)
@@ -235,6 +238,158 @@ namespace libtp::tools
             CARDUnmount(chan);
         }
         return result;
+    }
+
+    int32_t readFileFromGCI(int32_t chan, uint32_t id, bool allocFromHead, bool stayMounted, uint8_t** dataOut)
+    {
+        using namespace libtp::gc_wii::card;
+        using namespace libtp::gc_wii::os_module;
+
+        // Init dataOut
+        *dataOut = nullptr;
+
+        // All of the files should be in the main save file, which always uses an internal name of "Custom REL File"
+        const char* internalName = "Custom REL File";
+        CARDFileInfo fileInfo;
+
+        int32_t result = CARDOpen(chan, internalName, &fileInfo);
+
+        // If CARD_RESULT_NOCARD is returned, then the memory card may not be mounted
+        if (result == CARD_RESULT_NOCARD)
+        {
+            result = mountMemoryCard(chan);
+            if (result != CARD_RESULT_READY)
+            {
+                return -1;
+            }
+
+            result = CARDOpen(chan, internalName, &fileInfo);
+        }
+
+        if (result != CARD_RESULT_READY)
+        {
+            if (!stayMounted)
+            {
+                CARDUnmount(chan);
+            }
+
+            return -1;
+        }
+
+        // Allocate bytes to hold the area of the file that contains the size
+        // Allocate the memory to the back of the heap to avoid possible fragmentation
+        // Buffers that CARDRead uses must be aligned to 0x20 bytes
+        uint8_t* fileData = new (-0x20) uint8_t[CARD_READ_SIZE];
+
+        // Get the data from the area that holds the size
+        result = CARDRead(&fileInfo, fileData, CARD_READ_SIZE, 0x2000);
+        if (result != CARD_RESULT_READY)
+        {
+            delete[] fileData;
+            CARDClose(&fileInfo);
+
+            if (!stayMounted)
+            {
+                CARDUnmount(chan);
+            }
+
+            return -1;
+        }
+
+        // Loop through the entries until the desired one is found
+        const RelEntry* entry = reinterpret_cast<RelEntry*>(&fileData[0x44]);
+        bool foundDesiredFile = false;
+
+        for (uint32_t i = 0; i < MAX_REL_ENTRIES; i++)
+        {
+            const uint32_t currentId = entry->rel_id;
+
+            // If any of the fields are 0, then there are no more entries
+            if ((currentId == 0) || (entry->rel_size == 0) || (entry->offset == 0))
+            {
+                break;
+            }
+
+            if (currentId == id)
+            {
+                // Found the desired file
+                foundDesiredFile = true;
+                break;
+            }
+
+            entry++;
+        }
+
+        if (!foundDesiredFile)
+        {
+            delete[] fileData;
+            CARDClose(&fileInfo);
+
+            if (!stayMounted)
+            {
+                CARDUnmount(chan);
+            }
+
+            return -1;
+        }
+
+        // Get the variables from the entry so that fileData can be freed
+        const uint32_t fileSize = entry->rel_size;
+        const uint32_t fileOffset = entry->offset;
+        delete[] fileData;
+
+        // Since we can only read in and at increments of CARD_READ_SIZE do this to calculate the region we require
+        const int32_t adjustedOffset = (fileOffset / CARD_READ_SIZE) * CARD_READ_SIZE;
+        const int32_t adjustedLength = (1 + ((fileOffset - adjustedOffset + fileSize - 1) / CARD_READ_SIZE)) * CARD_READ_SIZE;
+
+        // Buffer might not be adjusted to the new length so create a temporary data buffer
+        // Buffers that CARDRead uses must be aligned to 0x20 bytes
+        uint32_t alignment = 0x20;
+        if (!allocFromHead)
+        {
+            alignment = -0x20;
+        }
+
+        fileData = new (alignment) uint8_t[adjustedLength];
+
+        // Read the file from the memory card
+        result = CARDRead(&fileInfo, fileData, adjustedLength, adjustedOffset);
+
+        // Close the file, as it's no longer needed
+        CARDClose(&fileInfo);
+
+        // Unmount the memory card if necessary, as it's no longer needed
+        if (!stayMounted)
+        {
+            CARDUnmount(chan);
+        }
+
+        if (result != CARD_RESULT_READY)
+        {
+            delete[] fileData;
+            return -1;
+        }
+
+        // Move the data so that the start of the file is at the start of the buffer
+        memmove(fileData, fileData + (fileOffset - adjustedOffset), fileSize);
+
+        libtp::memory::clear_DC_IC_Cache(fileData, adjustedLength);
+
+        // Resize fileData to only include the necessary bytes
+        libtp::tp::jkr_heap::resize1_JKRHeap(fileData, fileSize);
+
+        *dataOut = fileData;
+        return fileSize;
+    }
+
+    int32_t readFileFromGCI(int32_t chan, uint32_t id, bool allocFromHead, uint8_t** dataOut)
+    {
+        // Call the main function
+        const int32_t fileSize = readFileFromGCI(chan, id, allocFromHead, true, dataOut);
+
+        // Try to unmount the memory card even if the main function fails
+        libtp::gc_wii::card::CARDUnmount(chan);
+        return fileSize;
     }
 #else
     int32_t readNAND(const char* fileName, int32_t length, int32_t offset, void* buffer)
@@ -423,129 +578,15 @@ namespace libtp::tools
         using namespace libtp::gc_wii::card;
         using namespace libtp::gc_wii::os_module;
 
-        int32_t result;
+        // Get the file from the GCI
+        uint8_t* fileData;
+        const int32_t fileSize = readFileFromGCI(chan, rel_id, false, stayMounted, &fileData);
 
-        // All of the RELs should be in the main save file, which always uses an internal name of "Custom REL File"
-        const char* internalName = "Custom REL File";
-        CARDFileInfo fileInfo;
-
-        result = CARDOpen(chan, internalName, &fileInfo);
-
-        // If CARD_RESULT_NOCARD is returned, then the memory card may not be mounted
-        if (result == CARD_RESULT_NOCARD)
+        // Make sure the file was successfully read
+        if (fileSize <= 0)
         {
-            result = mountMemoryCard(chan);
-            if (result != CARD_RESULT_READY)
-            {
-                return false;
-            }
-
-            result = CARDOpen(chan, internalName, &fileInfo);
-        }
-
-        if (result != CARD_RESULT_READY)
-        {
-            if (!stayMounted)
-            {
-                CARDUnmount(chan);
-            }
-
             return false;
         }
-
-        // Allocate bytes to hold the area of the file that contains the size
-        // Allocate the memory to the back of the heap to avoid possible fragmentation
-        // Buffers that CARDRead uses must be aligned to 0x20 bytes
-        uint8_t* fileData = new (-0x20) uint8_t[CARD_READ_SIZE];
-
-        // Get the data from the area that holds the size
-        result = CARDRead(&fileInfo, fileData, CARD_READ_SIZE, 0x2000);
-        if (result != CARD_RESULT_READY)
-        {
-            delete[] fileData;
-            CARDClose(&fileInfo);
-
-            if (!stayMounted)
-            {
-                CARDUnmount(chan);
-            }
-
-            return false;
-        }
-
-        // Loop through the REL entries until the desired one is found
-        const RelEntry* entry = reinterpret_cast<RelEntry*>(&fileData[0x44]);
-        bool foundDesiredRel = false;
-
-        for (uint32_t i = 0; i < MAX_REL_ENTRIES; i++)
-        {
-            const uint32_t currentRelId = entry->rel_id;
-
-            // If any of the fields are 0, then there are no more entries
-            if ((currentRelId == 0) || (entry->rel_size == 0) || (entry->offset == 0))
-            {
-                break;
-            }
-
-            if (currentRelId == rel_id)
-            {
-                // Found the desired REL
-                foundDesiredRel = true;
-                break;
-            }
-
-            entry++;
-        }
-
-        if (!foundDesiredRel)
-        {
-            delete[] fileData;
-            CARDClose(&fileInfo);
-
-            if (!stayMounted)
-            {
-                CARDUnmount(chan);
-            }
-
-            return false;
-        }
-
-        // Get the variables from the entry so that fileData can be freed
-        const uint32_t fileSize = entry->rel_size;
-        const uint32_t fileOffset = entry->offset;
-        delete[] fileData;
-
-        // Since we can only read in and at increments of CARD_READ_SIZE do this to calculate the region we require
-        const int32_t adjustedOffset = (fileOffset / CARD_READ_SIZE) * CARD_READ_SIZE;
-
-        const int32_t adjustedLength = (1 + ((fileOffset - adjustedOffset + fileSize - 1) / CARD_READ_SIZE)) * CARD_READ_SIZE;
-
-        // Buffer might not be adjusted to the new length so create a temporary data buffer
-        // Allocate the memory to the back of the heap to avoid fragmentation
-        // Buffers that CARDRead uses must be aligned to 0x20 bytes, and REL files must also be aligned to 0x20 bytes
-        fileData = new (-0x20) uint8_t[adjustedLength];
-        libtp::memory::clear_DC_IC_Cache(fileData, adjustedLength);
-
-        // Read the REL file from the memory card
-        result = CARDRead(&fileInfo, fileData, adjustedLength, adjustedOffset);
-
-        // Close the file, as it's no longer needed
-        CARDClose(&fileInfo);
-
-        // Unmount the memory card if necessary, as it's no longer needed
-        if (!stayMounted)
-        {
-            CARDUnmount(chan);
-        }
-
-        if (result != CARD_RESULT_READY)
-        {
-            delete[] fileData;
-            return false;
-        }
-
-        // Move the data so that the start of the rel file is at the start of the buffer
-        memmove(fileData, fileData + (fileOffset - adjustedOffset), fileSize);
 
         // Failsafe: Be 100% sure the REL file loaded is the correct one
         OSModuleInfo* relFile = reinterpret_cast<OSModuleInfo*>(fileData);

@@ -6,6 +6,7 @@
  */
 #ifndef TP_D_CAMERA_H
 #define TP_D_CAMERA_H
+
 #include <cstdint>
 
 #include "tp/d_a_alink.h"
