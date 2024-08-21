@@ -146,6 +146,20 @@ namespace libtp::tools
      *  @brief Reads file data from offset to offset + length into buffer.
      *
      *  @param file File to load
+     *  @param allocFromHead If true, then the memory that will hold the file will be allocated from the head (front) of the
+     * heap.
+     *  @param[out] dataOut Pointer to where the pointer to the file will be stored
+     *
+     *  @return The size of the file. If the file could not be read, then `-1` will be returned instead.
+     *
+     *  @note `dataOut` will contain a pointer to dynamic memory if the file from the GCI is successfully read.
+     */
+    int32_t readFile(const char* file, bool allocFromHead, uint8_t** dataOut);
+
+    /**
+     *  @brief Reads file data from offset to offset + length into buffer.
+     *
+     *  @param file File to load
      *  @param length Maximum length to read
      *  @param offset File offset to read
      *  @param[out] buffer Buffer to save the data

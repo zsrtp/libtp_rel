@@ -342,7 +342,7 @@ namespace libtp::tools
         const int32_t adjustedOffset = (fileOffset / CARD_READ_SIZE) * CARD_READ_SIZE;
         const int32_t adjustedLength = (1 + ((fileOffset - adjustedOffset + fileSize - 1) / CARD_READ_SIZE)) * CARD_READ_SIZE;
 
-        // Buffer might not be adjusted to the new length so create a temporary data buffer
+        // Allocate memory for the file
         // Buffers that CARDRead uses must be aligned to 0x20 bytes
         uint32_t alignment = 0x20;
         if (!allocFromHead)
@@ -437,6 +437,55 @@ namespace libtp::tools
         return result;
     }
 #endif
+    int32_t readFile(const char* file, bool allocFromHead, uint8_t** dataOut)
+    {
+        using namespace libtp::gc_wii::dvd;
+
+        // Init dataOut
+        *dataOut = nullptr;
+
+        // Open the file
+        DVDFileInfo fileInfo;
+        if (!DVDOpen(file, &fileInfo))
+        {
+            return -1;
+        }
+
+        // Get the size of the file
+        int32_t fileSize = static_cast<int32_t>(fileInfo.length);
+
+        // Make sure the size is a multiple of DVD_READ_SIZE, as we can only read in and at increments of DVD_READ_SIZE
+        fileSize = (fileSize + DVD_READ_SIZE - 1) & ~(DVD_READ_SIZE - 1);
+
+        // Allocate memory for the file
+        // Buffers that DVDRead uses must be aligned to 0x20 bytes
+        uint32_t alignment = 0x20;
+        if (!allocFromHead)
+        {
+            alignment = -0x20;
+        }
+
+        uint8_t* fileData = new (alignment) uint8_t[fileSize];
+
+        // Read the file from the disc
+        const int32_t result = DVDRead(&fileInfo, fileData, fileSize, 0);
+
+        // Close the file, as it's no longer needed
+        DVDClose(&fileInfo);
+
+        // Make sure the file was successfully read
+        if (result <= 0)
+        {
+            delete[] fileData;
+            return -1;
+        }
+
+        libtp::memory::clear_DC_IC_Cache(fileData, fileSize);
+
+        *dataOut = fileData;
+        return fileSize;
+    }
+
     int32_t readFile(const char* file, int32_t length, int32_t offset, void* buffer)
     {
         using namespace libtp::gc_wii::dvd;
@@ -448,7 +497,7 @@ namespace libtp::tools
         int32_t adjustedLength;
         uint8_t* data;
 
-        // Read data
+        // Open the file
         if (!DVDOpen(file, &fileInfo))
         {
             return DVD_STATE_FATAL_ERROR;
@@ -482,105 +531,9 @@ namespace libtp::tools
         using namespace libtp::gc_wii::dvd;
         using namespace libtp::gc_wii::os_module;
 
-        // Try to open the file from the disc
-        DVDFileInfo fileInfo;
-        if (!DVDOpen(file, &fileInfo))
-        {
-            return false;
-        }
-
-        // Get the length of the file
-        uint32_t length = fileInfo.length;
-
-        // Round the length to be in multiples of DVD_READ_SIZE
-        length = (length + DVD_READ_SIZE - 1) & ~(DVD_READ_SIZE - 1);
-
-        // Allocate bytes for the file
-        // Allocate the memory to the back of the heap to avoid possible fragmentation
-        // Buffers that DVDRead uses must be aligned to 0x20 bytes
-        uint8_t* fileData = new (-0x20) uint8_t[length];
-        libtp::memory::clear_DC_IC_Cache(fileData, length);
-
-        // Read the REL from the disc
-        const int32_t r = DVDRead(&fileInfo, fileData, length, 0);
-        int32_t result = (r > 0) ? DVD_STATE_END : r;
-
-        // Close the file, as it's no longer needed
-        DVDClose(&fileInfo);
-
-        // Make sure the read was successful
-        if (result != DVD_STATE_END)
-        {
-            delete[] fileData;
-            return false;
-        }
-
-        // Get the REL's BSS size and allocate memory for it
-        OSModuleInfo* relFile = reinterpret_cast<OSModuleInfo*>(fileData);
-        uint32_t bssSize = relFile->bssSize;
-
-        // If bssSize is 0, then use an arbitrary size
-        if (bssSize == 0)
-        {
-            bssSize = 0x1;
-        }
-
-        // Allocate the memory to the back of the heap to avoid fragmentation
-        uint8_t* bssArea = new (-(relFile->bssAlignment)) uint8_t[bssSize];
-
-        // Disable interrupts to make sure other REL files do not try to be linked while this one is being linked
-        bool enable = libtp::gc_wii::os_interrupt::OSDisableInterrupts();
-
-        // Link the REL file
-        if (!OSLink(relFile, bssArea))
-        {
-            // Try to unlink to be safe
-            OSUnlink(relFile);
-
-            // Restore interrupts
-            libtp::gc_wii::os_interrupt::OSRestoreInterrupts(enable);
-
-            delete[] bssArea;
-            delete[] relFile;
-            return false;
-        }
-
-        // Restore interrupts
-        libtp::gc_wii::os_interrupt::OSRestoreInterrupts(enable);
-
-        // Call the REL's prolog functon
-        reinterpret_cast<void (*)()>(relFile->prologFuncOffset)();
-
-        // We are done with the REL file, so call it's epilog function to perform any necessary exit code
-        reinterpret_cast<void (*)()>(relFile->epilogFuncOffset)();
-
-        // Disable interrupts to make sure other REL files do not try to be linked while this one is being unlinked
-        enable = libtp::gc_wii::os_interrupt::OSDisableInterrupts();
-
-        // All REL functions are done, so the file can be unlinked
-        OSUnlink(relFile);
-
-        // Restore interrupts
-        libtp::gc_wii::os_interrupt::OSRestoreInterrupts(enable);
-
-        // Clear the cache of the memory used by the REL file since assembly ran from it
-        libtp::memory::clear_DC_IC_Cache(relFile, length);
-
-        // Cleanup
-        delete[] bssArea;
-        delete[] relFile;
-
-        return true;
-    }
-#elif !defined PLATFORM_WII
-    bool callRelProlog(int32_t chan, uint32_t rel_id, bool stayMounted)
-    {
-        using namespace libtp::gc_wii::card;
-        using namespace libtp::gc_wii::os_module;
-
-        // Get the file from the GCI
+        // Get the file from the disc
         uint8_t* fileData;
-        const int32_t fileSize = readFileFromGCI(chan, rel_id, false, stayMounted, &fileData);
+        const int32_t fileSize = readFile(file, false, &fileData);
 
         // Make sure the file was successfully read
         if (fileSize <= 0)
@@ -588,15 +541,8 @@ namespace libtp::tools
             return false;
         }
 
-        // Failsafe: Be 100% sure the REL file loaded is the correct one
-        OSModuleInfo* relFile = reinterpret_cast<OSModuleInfo*>(fileData);
-        if (relFile->id != rel_id)
-        {
-            delete[] relFile;
-            return false;
-        }
-
         // Get the REL's BSS size and allocate memory for it
+        OSModuleInfo* relFile = reinterpret_cast<OSModuleInfo*>(fileData);
         uint32_t bssSize = relFile->bssSize;
 
         // If bssSize is 0, then use an arbitrary size
@@ -621,7 +567,7 @@ namespace libtp::tools
             libtp::gc_wii::os_interrupt::OSRestoreInterrupts(enable);
 
             delete[] bssArea;
-            delete[] relFile;
+            delete relFile;
             return false;
         }
 
@@ -648,7 +594,87 @@ namespace libtp::tools
 
         // Cleanup
         delete[] bssArea;
-        delete[] relFile;
+        delete relFile;
+
+        return true;
+    }
+#elif !defined PLATFORM_WII
+    bool callRelProlog(int32_t chan, uint32_t rel_id, bool stayMounted)
+    {
+        using namespace libtp::gc_wii::card;
+        using namespace libtp::gc_wii::os_module;
+
+        // Get the file from the GCI
+        uint8_t* fileData;
+        const int32_t fileSize = readFileFromGCI(chan, rel_id, false, stayMounted, &fileData);
+
+        // Make sure the file was successfully read
+        if (fileSize <= 0)
+        {
+            return false;
+        }
+
+        // Failsafe: Be 100% sure the REL file loaded is the correct one
+        OSModuleInfo* relFile = reinterpret_cast<OSModuleInfo*>(fileData);
+        if (relFile->id != rel_id)
+        {
+            delete relFile;
+            return false;
+        }
+
+        // Get the REL's BSS size and allocate memory for it
+        uint32_t bssSize = relFile->bssSize;
+
+        // If bssSize is 0, then use an arbitrary size
+        if (bssSize == 0)
+        {
+            bssSize = 0x1;
+        }
+
+        // Allocate the memory to the back of the heap to avoid fragmentation
+        uint8_t* bssArea = new (-(relFile->bssAlignment)) uint8_t[bssSize];
+
+        // Disable interrupts to make sure other REL files do not try to be linked while this one is being linked
+        bool enable = libtp::gc_wii::os_interrupt::OSDisableInterrupts();
+
+        // Link the REL file
+        if (!OSLink(relFile, bssArea))
+        {
+            // Try to unlink to be safe
+            OSUnlink(relFile);
+
+            // Restore interrupts
+            libtp::gc_wii::os_interrupt::OSRestoreInterrupts(enable);
+
+            delete[] bssArea;
+            delete relFile;
+            return false;
+        }
+
+        // Restore interrupts
+        libtp::gc_wii::os_interrupt::OSRestoreInterrupts(enable);
+
+        // Call the REL's prolog functon
+        reinterpret_cast<void (*)()>(relFile->prologFuncOffset)();
+
+        // We are done with the REL file, so call it's epilog function to perform any necessary exit code
+        reinterpret_cast<void (*)()>(relFile->epilogFuncOffset)();
+
+        // Disable interrupts to make sure other REL files do not try to be linked while this one is being unlinked
+        enable = libtp::gc_wii::os_interrupt::OSDisableInterrupts();
+
+        // All REL functions are done, so the file can be unlinked
+        OSUnlink(relFile);
+
+        // Restore interrupts
+        libtp::gc_wii::os_interrupt::OSRestoreInterrupts(enable);
+
+        // Clear the cache of the memory used by the REL file since assembly ran from it
+        libtp::memory::clear_DC_IC_Cache(relFile, fileSize);
+
+        // Cleanup
+        delete[] bssArea;
+        delete relFile;
 
         return true;
     }
@@ -742,7 +768,7 @@ namespace libtp::tools
             libtp::gc_wii::os_interrupt::OSRestoreInterrupts(enable);
 
             delete[] bssArea;
-            delete[] relFile;
+            delete relFile;
             return false;
         }
 
@@ -769,7 +795,7 @@ namespace libtp::tools
 
         // Cleanup
         delete[] bssArea;
-        delete[] relFile;
+        delete relFile;
 
         return true;
     }
