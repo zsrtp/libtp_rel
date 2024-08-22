@@ -567,7 +567,7 @@ namespace libtp::tools
             libtp::gc_wii::os_interrupt::OSRestoreInterrupts(enable);
 
             delete[] bssArea;
-            delete relFile;
+            delete[] fileData;
             return false;
         }
 
@@ -594,7 +594,7 @@ namespace libtp::tools
 
         // Cleanup
         delete[] bssArea;
-        delete relFile;
+        delete[] fileData;
 
         return true;
     }
@@ -618,7 +618,7 @@ namespace libtp::tools
         OSModuleInfo* relFile = reinterpret_cast<OSModuleInfo*>(fileData);
         if (relFile->id != rel_id)
         {
-            delete relFile;
+            delete[] fileData;
             return false;
         }
 
@@ -647,7 +647,7 @@ namespace libtp::tools
             libtp::gc_wii::os_interrupt::OSRestoreInterrupts(enable);
 
             delete[] bssArea;
-            delete relFile;
+            delete[] fileData;
             return false;
         }
 
@@ -674,7 +674,7 @@ namespace libtp::tools
 
         // Cleanup
         delete[] bssArea;
-        delete relFile;
+        delete[] fileData;
 
         return true;
     }
@@ -768,7 +768,7 @@ namespace libtp::tools
             libtp::gc_wii::os_interrupt::OSRestoreInterrupts(enable);
 
             delete[] bssArea;
-            delete relFile;
+            delete[] fileData;
             return false;
         }
 
@@ -795,7 +795,7 @@ namespace libtp::tools
 
         // Cleanup
         delete[] bssArea;
-        delete relFile;
+        delete[] fileData;
 
         return true;
     }
