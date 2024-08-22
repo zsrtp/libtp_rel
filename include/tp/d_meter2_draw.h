@@ -63,14 +63,27 @@ namespace libtp::tp::d_meter2_draw
         /* 0x178 */ libtp::tp::d_pane_class::CPaneMgr* mpHeartMask[20];
         /* 0x1C8 */ libtp::tp::d_pane_class::CPaneMgr* mpBigHeart; // Big heart that displays highest heart value.
         /* 0x1CC */ libtp::tp::d_pane_class::CPaneMgr* mpMagicParent;
+#if defined(TP_WUS2) || defined(TP_WJP)
+        /* 0x1D0 */ uint8_t unk1[0x10];
+#else
         /* 0x1D0 */ libtp::tp::d_pane_class::CPaneMgr* mpMagicBase;
         /* 0x1D4 */ libtp::tp::d_pane_class::CPaneMgr* mpMagicFrameL;
         /* 0x1D8 */ libtp::tp::d_pane_class::CPaneMgr* mpMagicMeter;
         /* 0x1DC */ libtp::tp::d_pane_class::CPaneMgr* mpMagicFrameR;
+#endif
         /* 0x1E0 */ libtp::tp::d_pane_class::CPaneMgr* mpLightDropParent;
         /* 0x1E4 */ int32_t field_0x1e4;
         /* 0x1E8 */ libtp::tp::d_pane_class::CPaneMgr* mpSIParent[2];
+#if defined(TP_WUS2) || defined(TP_WJP)
+        /* 0x1F0 */ uint8_t unk2[0x22C - 0x1F0];
+        /* 0x22C */ libtp::tp::d_pane_class::CPaneMgr* mpMagicBase;
+        /* 0x230 */ libtp::tp::d_pane_class::CPaneMgr* mpMagicFrameL;
+        /* 0x234 */ libtp::tp::d_pane_class::CPaneMgr* mpMagicMeter;
+        /* 0x238 */ libtp::tp::d_pane_class::CPaneMgr* mpMagicFrameR;
+        /* 0x23C */ uint8_t unk3[0x2B0 - 0x23C];
+#else
         /* 0x1F0 */ libtp::tp::d_pane_class::CPaneMgr* mpSIParts[16][3];
+#endif
         /* 0x2B0 */ libtp::tp::d_pane_class::CPaneMgr* mpRupeeKeyParent;
         /* 0x2B4 */ libtp::tp::d_pane_class::CPaneMgr* mpRupeeParent[3];
         /* 0x2C0 */ libtp::tp::d_pane_class::CPaneMgr* mpRupeeTexture[4][2];
@@ -106,10 +119,10 @@ namespace libtp::tp::d_meter2_draw
         /* 0x4A4 */ libtp::tp::d_pane_class::CPaneMgr* mpJujiM[5];
         /* 0x4B8 */ libtp::tp::d_pane_class::CPaneMgr* mpUzu;
         /* 0x4BC */ uint8_t field_0x4bc[0x28];
-        /* 0x4E4 */ void* mpItemBTex[2][2];     // JKRHeap*
-        /* 0x4F4 */ void* mpItemXYTex[2][2][2]; // JKRHeap*
-        /* 0x514 */ void* mpItemBPane;          // J2DPicture*
-        /* 0x518 */ void* mpItemXYPane[3];      // J2DPicture*
+        /* 0x4E4 */ libtp::tp::JUTTexture::ResTIMG* mpItemBTex[2][2];     // JKRHeap*
+        /* 0x4F4 */ libtp::tp::JUTTexture::ResTIMG* mpItemXYTex[2][2][2]; // JKRHeap*
+        /* 0x514 */ libtp::tp::J2DPicture::J2DPicture* mpItemBPane;          // J2DPicture*
+        /* 0x518 */ libtp::tp::J2DPicture::J2DPicture* mpItemXYPane[3];      // J2DPicture*
         /* 0x524 */ int32_t field_0x524[2][2];
         /* 0x534 */ uint8_t field_0x534[8];
         /* 0x53C */ void* field_0x53c;
@@ -129,15 +142,44 @@ namespace libtp::tp::d_meter2_draw
         /* 0x578 */ float field_0x578;
         /* 0x57C */ float field_0x57c;
         /* 0x580 */ float field_0x580;
-        /* 0x584 */ uint8_t field_0x584[0x78];
-        /* 0x5FC */ float field_0x5fc[3];
+#if defined(TP_WUS2) || defined(TP_WJP)
+        /* 0x584 */ uint8_t unkunk[0x608 - 0x584];
+#else
+        /* 0x584 */ float field_0x584[3];
+        /* 0x590 */ float field_0x590[3];
+        /* 0x59C */ float field_0x59c[3];
+        /* 0x5A8 */ float field_0x5a8[3];
+        /* 0x5B4 */ float field_0x5b4[3];
+        /* 0x5C0 */ float field_0x5c0[3];
+        /* 0x5CC */ float field_0x5cc[3];
+        /* 0x5D8 */ float field_0x5d8[3];
+        /* 0x5E4 */ float field_0x5e4[3];
+        /* 0x5F0 */ float field_0x5f0[3];
+        /* 0x5FC */ float mMeterAlphaRate[3];
+#endif
         /* 0x608 */ float field_0x608;
         /* 0x60C */ float field_0x60c;
+#if defined(TP_WUS2) || defined(TP_WJP)
+        /* 0x610 */ float field_0x610[2];
+        /* 0x618 */ float field_0x584[3];
+        /* 0x624 */ float field_0x590[3];
+        /* 0x630 */ float field_0x59c[3];
+        /* 0x63C */ float field_0x5a8[3];;
+        /* 0x648 */ float field_0x5b4[3];
+        /* 0x654 */ float field_0x5c0[3];
+        /* 0x660 */ float field_0x5cc[3];
+        /* 0x66C */ float field_0x5d8[3];
+        /* 0x678 */ float field_0x5e4[3];
+        /* 0x684 */ float field_0x5f0[3];
+        /* 0x690 */ float mMeterAlphaRate[3];
+        /* 0x69C */ uint8_t field_0x690[0x6AC - 0x69C];
+#else
         /* 0x610 */ float field_0x610[3];
         /* 0x61C */ float field_0x61c;
         /* 0x620 */ float field_0x620[3];
         /* 0x62C */ float field_0x62c[16];
         /* 0x66C */ float field_0x66c[16];
+#endif
         /* 0x6AC */ float field_0x6ac[3];
         /* 0x6B8 */ float field_0x6b8[3];
         /* 0x6C4 */ float field_0x6c4[3];
@@ -148,7 +190,7 @@ namespace libtp::tp::d_meter2_draw
         /* 0x6E8 */ float field_0x6e8;
         /* 0x6EC */ float field_0x6ec;
         /* 0x6F0 */ float field_0x6f0;
-        /* 0x6F4 */ float field_0x6f4;
+        /* 0x6F4 */ float mLightDropVesselScale;
         /* 0x6F8 */ float field_0x6f8;
         /* 0x6FC */ float field_0x6fc;
         /* 0x700 */ uint8_t field_0x700[0x18];
@@ -163,7 +205,11 @@ namespace libtp::tp::d_meter2_draw
         /* 0x738 */ float field_0x738;
         /* 0x73C */ uint8_t field_0x73c[4];
         /* 0x740 */ uint16_t field_0x740;
+#if defined(TP_WUS2) || defined(TP_WJP)
+        /* 0x742 */ uint16_t unkunkunk[3];
+#else
         /* 0x742 */ uint16_t field_0x742[3];
+#endif
         /* 0x748 */ uint8_t field_0x748[0xC];
         /* 0x754 */ uint16_t field_0x754;
         /* 0x756 */ uint16_t field_0x756;
@@ -222,8 +268,13 @@ namespace libtp::tp::d_meter2_draw
         /* 0x7E8 */ float field_0x7e8;
         /* 0x7EC */ float field_0x7ec;
         /* 0x7F0 */ float field_0x7f0;
+#if defined(TP_WUS2) || defined(TP_WJP)
+        /* 0x7F4 */ uint8_t unkunkunkunk[2];
+        /* 0x7F6 */ uint16_t field_0x742[3];
+#else
         /* 0x7F4 */ float field_0x7f4;
         /* 0x7F8 */ float field_0x7f8;
+#endif
         /* 0x7FC */ float field_0x7fc;
         /* 0x800 */ float field_0x800;
         /* 0x804 */ float field_0x804;
