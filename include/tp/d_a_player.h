@@ -6,8 +6,9 @@
  */
 #ifndef TP_D_A_PLAYER_H
 #define TP_D_A_PLAYER_H
-#include <cstdint>
+
 #include "tp/f_op_actor.h"
+#include <cstdint>
 
 namespace libtp::tp::d_a_player
 {
@@ -46,7 +47,7 @@ namespace libtp::tp::d_a_player
         /* 0x0568 */ uint8_t mCutType;
         /* 0x0569 */ uint8_t mComboCutCount;
 #ifdef PLATFORM_WII
-        uint8_t unk_field0[4];  // might be part of fopAc_ac_c, fix later
+        uint8_t unk_field0[4]; // might be part of fopAc_ac_c, fix later
 #endif
         /* 0x056A */ uint8_t mSpecialMode; // maybe needs better name
         /* 0x056B */ uint8_t field_0x56b;

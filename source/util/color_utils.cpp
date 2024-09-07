@@ -22,7 +22,7 @@ namespace libtp::util::color
         return shifted;
     }
 
-    uint16_t blendOverlayRgb565(uint8_t grayVal, uint8_t* rgb)
+    uint16_t blendOverlayRgb565(uint8_t grayVal, const uint8_t* rgb)
     {
         uint32_t rTimes255, gTimes255, bTimes255;
 

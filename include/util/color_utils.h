@@ -17,6 +17,6 @@ namespace libtp::util::color
 
     // Performs an "Overlay" blend of a u8 gray value and a pointer to a u8
     // array of {r,g,b}. Returns the result as an RGB565.
-    uint16_t blendOverlayRgb565(uint8_t grayVal, uint8_t* rgb);
+    uint16_t blendOverlayRgb565(uint8_t grayVal, const uint8_t* rgb);
 } // namespace libtp::util::color
 #endif

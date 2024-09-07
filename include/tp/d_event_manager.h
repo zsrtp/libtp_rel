@@ -4,6 +4,8 @@
  *	@author Lunar Soap
  *	@bug No known bugs.
  */
+#ifndef TP_D_EVENT_MANAGER_H
+#define TP_D_EVENT_MANAGER_H
 
 #include <cstdint>
 
@@ -44,3 +46,4 @@ namespace libtp::tp::d_event_manager
                              uint8_t mapToolId);
     }
 } // namespace libtp::tp::d_event_manager
+#endif

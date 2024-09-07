@@ -17,7 +17,7 @@ namespace libtp::util::texture
 
     uint32_t swapIndexBits(bool leftIsGreater, uint32_t bits);
 
-    void recolorCmprTexture(uint8_t* tex1Ptr, const char* textureName, uint8_t* rgb);
+    void recolorCmprTexture(uint8_t* tex1Ptr, const char* textureName, const uint8_t* rgb);
 
     uint8_t* findTex1InBmd(uint8_t* bmdPtr);
 
