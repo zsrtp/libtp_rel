@@ -23,6 +23,12 @@ namespace libtp::tp::d_camera
          *  @return Bool returns True if Link is riding something, otherwise returns False.
          */
         bool checkRide(d_a_alink::daAlink* d_a_alink);
+
+        /**
+         *  @brief Change Camera orientation
+         *
+         */
+        void updatePad(void* d_camera_c);
     }
 } // namespace libtp::tp::d_camera
 #endif
