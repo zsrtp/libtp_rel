@@ -72,7 +72,7 @@ namespace libtp::util::texture
         }
     }
 
-    void recolorCmprTexture(uint8_t* tex1Ptr, const char* textureName, uint8_t* rgb)
+    void recolorCmprTexture(uint8_t* tex1Ptr, const char* textureName, const uint8_t* rgb)
     {
         uint8_t* texHeaderPtr = findTexHeaderInTex1Section(tex1Ptr, textureName);
         if (texHeaderPtr == nullptr)

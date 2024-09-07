@@ -14,6 +14,17 @@ namespace libtp::tp::jkr_heap
     extern "C"
     {
         /**
+         *	@brief Resizes memory used in a heap
+         *
+         *	@param ptr The pointer to the memory to resize
+         *	@param size The size to resize the memory to
+         *	@param heap heap The heap pointer. If nullptr, then the function will search through all of the heaps to find ptr.
+         *
+         *	@returns The size of the memory
+         */
+        uint32_t resize1_JKRHeap(void* ptr, uint32_t size, void* heap);
+
+        /**
          *	@brief Allocates a number of bytes in a given heap
          *
          *	@param size The number of bytes to be allocated

@@ -4,6 +4,8 @@
  *	@author Lunar Soap
  *	@bug No known bugs.
  */
+#ifndef TP_D_EVENT_H
+#define TP_D_EVENT_H
 
 #include <cstdint>
 
@@ -98,3 +100,4 @@ namespace libtp::tp::d_event
         bool skipper(void* eventPtr);
     }
 } // namespace libtp::tp::d_event
+#endif

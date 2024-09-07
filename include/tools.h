@@ -40,7 +40,7 @@ namespace libtp::tools
      *  @param roomID Room id to spawn the actor
      *  @param actor The actor object to be spawned
      */
-    int32_t spawnActor(uint8_t roomID, tp::dzx::ACTR& actor);
+    int32_t spawnActor(uint8_t roomID, const tp::dzx::ACTR& actor);
 
     /**
      *  @brief Spawns an actor
@@ -48,7 +48,7 @@ namespace libtp::tools
      *  @param roomID Room id to spawn the actor
      *  @param actor The actor object to be spawned
      */
-    int32_t spawnSCOB(uint8_t roomID, tp::dzx::SCOB& actor_data);
+    int32_t spawnSCOB(uint8_t roomID, const tp::dzx::SCOB& actor_data);
 
 #ifndef PLATFORM_WII
     /**
@@ -96,6 +96,39 @@ namespace libtp::tools
      *  @return One of the CARD_RESULT Constants (CARD_RESULT_READY, ...)
      */
     int32_t readGCI(int32_t chan, const char* fileName, int32_t length, int32_t offset, void* buffer, bool startAfterComments);
+
+    /**
+     *  @brief Reads a file from the GCI data, and places a pointer to it in dataOut. If the memory card is not mounted, then
+     * this function will mount it.
+     *
+     *  @param chan Slot to check for the file
+     *  @param id Id of the file to load. If the file is a REL file, then this will just be the module id of that REL.
+     *  @param allocFromHead If true, then the memory that will hold the file will be allocated from the head (front) of the
+     * heap.
+     *  @param stayMounted If true, then this function will not unmount the memory card after reading the file.
+     *  @param[out] dataOut Pointer to where the pointer to the file will be stored
+     *
+     *  @return The size of the file. If the file could not be read, then `-1` will be returned instead.
+     *
+     *  @note `dataOut` will contain a pointer to dynamic memory if the file from the GCI is successfully read.
+     */
+    int32_t readFileFromGCI(int32_t chan, uint32_t id, bool allocFromHead, bool stayMounted, uint8_t** dataOut);
+
+    /**
+     *  @brief Reads a file from the GCI data, and places a pointer to it in dataOut. This function unmounts the memory card
+     * after the file has been read.
+     *
+     *  @param chan Slot to check for the file
+     *  @param id Id of the file to load. If the file is a REL file, then this will just be the module id of that REL.
+     *  @param allocFromHead If true, then the memory that will hold the file will be allocated from the head (front) of the
+     * heap.
+     *  @param[out] dataOut Pointer to where the pointer to the file will be stored
+     *
+     *  @return The size of the file. If the file could not be read, then `-1` will be returned instead.
+     *
+     *  @note `dataOut` will contain a pointer to dynamic memory if the file from the GCI is successfully read.
+     */
+    int32_t readFileFromGCI(int32_t chan, uint32_t id, bool allocFromHead, uint8_t** dataOut);
 #else
     /**
      *  @brief Reads NAND data from offset to offset + length into buffer
@@ -109,6 +142,20 @@ namespace libtp::tools
      */
     int32_t readNAND(const char* fileName, int32_t length, int32_t offset, void* buffer);
 #endif
+    /**
+     *  @brief Reads file data from offset to offset + length into buffer.
+     *
+     *  @param file File to load
+     *  @param allocFromHead If true, then the memory that will hold the file will be allocated from the head (front) of the
+     * heap.
+     *  @param[out] dataOut Pointer to where the pointer to the file will be stored
+     *
+     *  @return The size of the file. If the file could not be read, then `-1` will be returned instead.
+     *
+     *  @note `dataOut` will contain a pointer to dynamic memory if the file from the GCI is successfully read.
+     */
+    int32_t readFile(const char* file, bool allocFromHead, uint8_t** dataOut);
+
     /**
      *  @brief Reads file data from offset to offset + length into buffer.
      *
