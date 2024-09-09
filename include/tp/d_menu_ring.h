@@ -33,6 +33,13 @@ namespace libtp::tp::d_menu_ring
          *	@param dMenuRing A pointer to the item wheel resources.
          */
         void dMenuRing__draw(void* dMenuRing);
+
+        /**
+         *	@brief Initializes the item wheel class
+         *
+         *	@param dMenuRing A pointer to the item wheel resources.
+         */
+        void dMenuRing__init(void* dMenuRing);
     }
 } // namespace libtp::tp::d_menu_ring
 #endif
