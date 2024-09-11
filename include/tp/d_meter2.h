@@ -25,7 +25,7 @@ namespace libtp::tp::d_meter2
         /* 0x114 */ void* field_0x114; // dDlst_base_c*
         /* 0x118 */ void* field_0x118; // dDlst_base_c*
         /* 0x11C */ void* field_0x11c;
-        /* 0x120 */ void* mpMap;       // dMeterMap_c*
+        /* 0x120 */ void* mpMap; // dMeterMap_c*
         /* 0x124 */ uint32_t field_0x124;
         /* 0x128 */ int32_t field_0x128;
         /* 0x12C */ int32_t field_0x12c;
@@ -123,17 +123,25 @@ namespace libtp::tp::d_meter2
 
         /**
          * @brief Modifies the oil meter value in many ways, such as decreasing it when equipping or swinging the lantern.
-         * 
+         *
          * @param dMeterPtr A pointer to the current dMeter2 structure.
-        */
-       void moveKantera(dMeter2_c* dMeterPtr);
+         */
+        void moveKantera(dMeter2_c* dMeterPtr);
 
         /**
-        * @brief Determines whether the oil meter should be visible or not after checking multiple conditions, such as if oxygen meter is visible.
-        * 
-        * @param dMeterPtr A pointer to the current dMeter2 structure.
-       */
-       void alphaAnimeKantera(dMeter2_c* dMeterPtr);
+         * @brief Determines whether the oil meter should be visible or not after checking multiple conditions, such as if
+         * oxygen meter is visible.
+         *
+         * @param dMeterPtr A pointer to the current dMeter2 structure.
+         */
+        void alphaAnimeKantera(dMeter2_c* dMeterPtr);
+
+        /**
+         * @brief Checks the status of the player and updates the GUI appropriately
+         *
+         * @param dMeterPtr A pointer to the current dMeter2 structure.
+         */
+        void checkStatus(dMeter2_c* dMeterPtr);
     }
 } // namespace libtp::tp::d_meter2
 #endif
