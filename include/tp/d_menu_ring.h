@@ -35,9 +35,9 @@ namespace libtp::tp::d_menu_ring
         void dMenuRing__draw(void* dMenuRing);
 
         /**
-         *	@brief Constructor for the item wheel class
+         *  @brief Constructor for the item wheel class
          *
-         *	@param dMenuRing A pointer to the item wheel resources.
+         *  @param dMenuRing A pointer to the item wheel resources.
          *  @param param_1 a pointer to the current JKRExpHeap
          *  @param param_2 unk
          *  @param param_3 unk
