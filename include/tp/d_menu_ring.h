@@ -43,7 +43,7 @@ namespace libtp::tp::d_menu_ring
          *  @param param_3 unk
          *  @param param_4 unk
          */
-        void dMenuRing_ct(void* dMenuRing, void* param_1, void* param_2, void* param_3, uint8_t param_4);
+        void* dMenuRing_ct(void* dMenuRing, void* param_1, void* param_2, void* param_3, uint8_t param_4);
     }
 } // namespace libtp::tp::d_menu_ring
 #endif
