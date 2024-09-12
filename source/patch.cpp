@@ -30,19 +30,6 @@ namespace libtp::patch
         memory::clear_DC_IC_Cache(ptr, sizeof(uint32_t));
     }
 
-    void writeAbsoluteBranch(void* ptr, void* destination)
-    {
-        uint32_t dstRaw = reinterpret_cast<uint32_t>(destination);
-        uint32_t* code = reinterpret_cast<uint32_t*>(ptr);
-
-        code[0] = 0x3D800000 | (dstRaw >> 16);    // lis r12,dstRaw@h
-        code[1] = 0x618C0000 | (dstRaw & 0xFFFF); // ori r12,r12,dstRaw@l
-        code[2] = 0x7D8903A6;                     // mtctr r12
-        code[3] = 0x4E800420;                     // bctr
-
-        memory::clear_DC_IC_Cache(ptr, sizeof(uint32_t) * 4);
-    }
-
     void writeStandardBranches(void* ptr, void* funcStart, void* funcEnd)
     {
         // Write the main branch

@@ -17,7 +17,6 @@ namespace libtp::patch
     void writeBranch(void* ptr, void* destination);
     void writeBranchBL(void* ptr, void* destination);
     void writeBranchMain(void* ptr, void* destination, uint32_t branch);
-    void writeAbsoluteBranch(void* ptr, void* destination);
     void writeStandardBranches(void* ptr, void* funcStart, void* funcEnd);
 
     template<typename Func, typename Dest>
@@ -40,6 +39,8 @@ namespace libtp::patch
                               reinterpret_cast<void*>(funcEnd));
     }
 
+    // Note: Absolute branches will not work correctly if the first instruction in the hooked function does something with the
+    // count register (ctr).
     template<typename Func, typename Dest>
     Func hookFunction(Func function, Dest destination, bool absoluteBranch)
     {
@@ -63,8 +64,17 @@ namespace libtp::patch
         }
 
         // Original instruction
-        trampoline[0] = instructions[0];
-        memory::clear_DC_IC_Cache(&trampoline[0], sizeof(uint32_t));
+        if (absoluteBranch)
+        {
+            // The instructions for handling the branch need to occur before the original instruction, so the original
+            // instruction should be stored in the 4th slot
+            trampoline[3] = instructions[0];
+        }
+        else
+        {
+            trampoline[0] = instructions[0];
+            memory::clear_DC_IC_Cache(&trampoline[0], sizeof(uint32_t));
+        }
 
         // Write actual hook
         writeBranch(&instructions[0], reinterpret_cast<void*>(static_cast<Func>(destination)));
@@ -72,7 +82,16 @@ namespace libtp::patch
         // Branch to original function past hook
         if (absoluteBranch)
         {
-            writeAbsoluteBranch(&trampoline[1], &instructions[1]);
+            const uint32_t dstRaw = reinterpret_cast<uint32_t>(&instructions[1]);
+            uint32_t* code = reinterpret_cast<uint32_t*>(&trampoline[0]);
+
+            code[0] = 0x3D800000 | (dstRaw >> 16);    // lis r12,dstRaw@h
+            code[1] = 0x618C0000 | (dstRaw & 0xFFFF); // ori r12,r12,dstRaw@l
+            code[2] = 0x7D8903A6;                     // mtctr r12
+            // code[3] should contain the original instruction from before
+            code[4] = 0x4E800420; // bctr
+
+            memory::clear_DC_IC_Cache(&trampoline[0], sizeof(uint32_t) * 5);
         }
         else
         {
@@ -88,6 +107,8 @@ namespace libtp::patch
         return hookFunction(function, destination, false);
     }
 
+    // Note: Absolute branches will not work correctly if the first instruction in the hooked function does something with the
+    // count register (ctr).
     template<typename Func, typename Dest>
     Func hookFunctionAbsolute(Func function, Dest destination)
     {
