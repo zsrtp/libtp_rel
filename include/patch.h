@@ -83,7 +83,7 @@ namespace libtp::patch
         if (absoluteBranch)
         {
             const uint32_t dstRaw = reinterpret_cast<uint32_t>(&instructions[1]);
-            uint32_t* code = reinterpret_cast<uint32_t*>(&trampoline[0]);
+            uint32_t* code = &trampoline[0];
 
             code[0] = 0x3D800000 | (dstRaw >> 16);    // lis r12,dstRaw@h
             code[1] = 0x618C0000 | (dstRaw & 0xFFFF); // ori r12,r12,dstRaw@l
