@@ -1444,6 +1444,13 @@ namespace libtp::tp::d_a_alink
          */
         bool procWolfAtnActorMoveInit(daAlink* linkActrPtr);
 
+        /**
+         *  @brief Evaluates current conditions and sets Link's status based on the outcome
+         *
+         *  @param linkActrPtr A pointer to Link's Actor
+         */
+        bool decideDoStatus(daAlink* linkActrPtr);
+
         extern ClimbVars climbVars;
         extern LinkStatus* linkStatus;
         extern WallMoveVars wallMoveVars;
