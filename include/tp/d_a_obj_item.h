@@ -16,30 +16,30 @@ namespace libtp::tp::d_a_obj_item
         /**
          *  @brief Calls the appropriate functions to give the player an item based on the actor.
          *
-         *  @param item A pointer to the Item actor being referenced.
+         *  @param daItem A pointer to the Item actor being referenced.
          */
-        void itemGet(void* item);
+        void itemGet(void* daItem);
 
         /**
          *  @brief Initializes the events necessary for collecting an item based on the actor.
          *
-         *  @param item A pointer to the Item actor being referenced.
+         *  @param daItem A pointer to the Item actor being referenced.
          */
-        void itemGetNextExecute(void* item);
+        void itemGetNextExecute(void* daItem);
 
         /**
          *  @brief Runs code that determines how an item acts while stationary.
          *
-         *  @param item A pointer to the Item actor being referenced.
+         *  @param daItem A pointer to the Item actor being referenced.
          */
-        void mode_wait(void* item);
+        void mode_wait(void* daItem);
 
         /**
          *  @brief Initializes values in the item system and the specified actor.
          *
-         *  @param item A pointer to the Item actor being referenced.
+         *  @param daItem A pointer to the Item actor being referenced.
          */
-        void CreateInit(void* item);
+        void CreateInit(void* daItem);
     }
 } // namespace libtp::tp::d_a_obj_item
 #endif
