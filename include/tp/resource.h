@@ -61,6 +61,7 @@
 #define MSG_ICON_A "\x0A"
 #define MSG_ICON_X "\x0F"
 #define MSG_ICON_Y "\x10"
+#define MSG_ICON_Z "\x11"
 
 // Message Option Values
 #define MSG_OPTION_1 "\x01"

@@ -536,6 +536,15 @@ namespace libtp::tp::d_save
         void onDungeonItem(dSv_memBit_c* memBitPtr, const int32_t memBit);
 
         /**
+         *  @brief Sets the specified flag in the specified area node.
+         *
+         *  @param save_file A pointer to the current save info struct
+         *  @param flag The flag to be unset
+         *  @param roomNo The room the player is currently in.
+         */
+        void onSwitch_dSv_info(dSv_info_c* save_file, int32_t flag, int32_t roomNo);
+
+        /**
          *  @brief Unsets the specified flag in the specified area node.
          *
          *  @param save_file A pointer to the current save info struct
@@ -569,6 +578,14 @@ namespace libtp::tp::d_save
          *  @return Bool returns True if the flag is set, otherwise returns False.
          */
         bool isSwitch_dSv_memBit(dSv_memBit_c* memoryBit, int32_t flag);
+
+        /**
+         *  @brief Sets the specified zone bits flag
+         *
+         *  @param zoneBit A pointer to the current zonebit struct
+         *  @param flag The flag to be set
+         */
+        void onOneSwitch(dSv_zoneBit_c* zoneBit, int32_t flag);
 
         /**
          *  @brief Sets the appearance order of the items in the item wheel.
