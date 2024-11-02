@@ -2,6 +2,7 @@
  *	@brief Contains defintions and functions that relate to Drawn 3D Objects
  *
  *  @author Lunar Soap
+ *  @author Captain Kitty Cat
  *	@bug No known bugs.
  */
 #ifndef TP_J3DSHAPE_H
@@ -12,8 +13,18 @@
 
 namespace libtp::tp::J3DShape
 {
+    enum J3DShpFlag {
+        J3DShpFlag_Visible = 0x0001,
+        J3DShpFlag_SkinPosCpu = 0x0004,
+        J3DShpFlag_SkinNrmCpu = 0x0008,
+        J3DShpFlag_Hidden = 0x0010,
+        J3DShpFlag_EnableLod = 0x0100,
+        J3DShpFlag_NoMtx = 0x0200,
+    };
+
     struct J3DShape
     {
+        public:
         /* 0x00 */ void* vtable;
         /* 0x04 */ void* mMaterial; // J3DMaterial*
         /* 0x08 */ uint16_t mIndex;
@@ -41,6 +52,13 @@ namespace libtp::tp::J3DShape
     } __attribute__((__packed__));
 
     static_assert(sizeof(J3DShape) == 0x68);
+
+    extern "C" {
+        void onFlag(J3DShape* shapePtr, uint32_t flaag);
+        void offFlag(J3DShape* shapePtr, uint32_t flaag);
+        void showMesh(J3DShape* shapePtr);
+        void hideMesh(J3DShape* shapePtr);
+    }
 
 } // namespace libtp::tp::J3DShape
 #endif
