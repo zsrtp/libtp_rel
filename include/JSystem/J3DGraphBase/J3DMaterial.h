@@ -14,7 +14,7 @@
 namespace libtp::tp
 {
 
-    class J3DMaterial {
+    struct J3DMaterial {
         /* 0x00 */ uint8_t field_0x0[0x8];
         /* 0x08 */ libtp::tp::J3DShape::J3DShape* mShape;
         /* 0x0C */ uint8_t field_0x0c[0x2C-0x0C];
