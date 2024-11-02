@@ -24,7 +24,6 @@ namespace libtp::tp::J3DShape
 
     struct J3DShape
     {
-        public:
         /* 0x00 */ void* vtable;
         /* 0x04 */ void* mMaterial; // J3DMaterial*
         /* 0x08 */ uint16_t mIndex;
