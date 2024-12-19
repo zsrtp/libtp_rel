@@ -383,6 +383,16 @@ namespace libtp::tp::d_com_inf_game
          *  @return Bool returns True if the flag is set, otherwise returns False.
          */
         bool dComIfGs_isEventBit(uint16_t flag);
+
+        /**
+         *  @brief Sets the specified flag for the specified stage id. If the specified stage is also using the temp bitfield,
+         * that flag is set as well.
+         *
+         *  @param stageID The id of the stage
+         *  @param flag The flag to be set
+         *
+         */
+        void dComIfGs_onStageSwitch(uint32_t stageID, int32_t flag);
     }
 } // namespace libtp::tp::d_com_inf_game
 #endif
