@@ -385,10 +385,10 @@ namespace libtp::tp::d_com_inf_game
         bool dComIfGs_isEventBit(uint16_t flag);
 
         /**
-         *  @brief Sets the specified flag for the specified stage id. If the specified stage is also using the temp bitfield,
-         * that flag is set as well.
+         *  @brief Sets the specified flag for the specified stage bitfield index. If the specified stage is also using the temp
+         * bitfield, that flag is set as well.
          *
-         *  @param stageID The id of the stage
+         *  @param stageID The index of the stage bitfield to check.
          *  @param flag The flag to be set
          *
          */
