@@ -392,7 +392,7 @@ namespace libtp::tp::d_com_inf_game
          *  @param flag The flag to be set
          *
          */
-        void dComIfGs_onStageSwitch(uint32_t stageID, int32_t flag);
+        void dComIfGs_onStageSwitch(int32_t stageID, int32_t flag);
     }
 } // namespace libtp::tp::d_com_inf_game
 #endif
