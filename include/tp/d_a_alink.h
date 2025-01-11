@@ -1451,6 +1451,13 @@ namespace libtp::tp::d_a_alink
          */
         bool decideDoStatus(daAlink* linkActrPtr);
 
+        /**
+         *  @brief Evaluates current ground conditions and updates Link's status appropriately
+         *
+         *  @param linkActrPtr A pointer to Link's Actor
+         */
+        bool checkGroundSpecialMode(daAlink* linkActrPtr);
+
         extern ClimbVars climbVars;
         extern LinkStatus* linkStatus;
         extern WallMoveVars wallMoveVars;
