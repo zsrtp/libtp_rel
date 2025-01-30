@@ -1461,9 +1461,8 @@ namespace libtp::tp::d_a_alink
         /**
          *  @brief Checks the current stage info pointer to determine if link is in a dungeon
          *
-         *  @param linkActrPtr A pointer to Link's Actor
          */
-        bool checkDungeon(daAlink* linkActrPtr);
+        bool checkDungeon();
 
         extern ClimbVars climbVars;
         extern LinkStatus* linkStatus;
