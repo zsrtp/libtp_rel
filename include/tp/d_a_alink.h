@@ -1458,6 +1458,13 @@ namespace libtp::tp::d_a_alink
          */
         bool checkGroundSpecialMode(daAlink* linkActrPtr);
 
+        /**
+         *  @brief Checks the current stage info pointer to determine if link is in a dungeon
+         *
+         *  @param linkActrPtr A pointer to Link's Actor
+         */
+        bool checkDungeon(daAlink* linkActrPtr);
+
         extern ClimbVars climbVars;
         extern LinkStatus* linkStatus;
         extern WallMoveVars wallMoveVars;
