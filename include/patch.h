@@ -128,7 +128,7 @@ namespace libtp::patch
         uint32_t* address;
 
         // Restore the original instruction
-        uint32_t firstInstruction = instructions[1];
+        const uint32_t firstInstruction = instructions[1];
         if ((firstInstruction >> 16) == 0x3D80) // lis r12
         {
             // Absolute branch
@@ -146,12 +146,12 @@ namespace libtp::patch
             // Check if this is a negative branch
             if (branchLength > 0x01FFFFFC)
             {
-                const int32_t Width = 26;
-                const int32_t Mask = (1 << (Width - 1));
-                branchLength = (branchLength ^ Mask) - Mask - 0x4;
+                const int32_t width = 26;
+                const int32_t mask = (1 << (width - 1));
+                branchLength = (branchLength ^ mask) - mask;
             }
 
-            uint32_t instructionAddress = reinterpret_cast<uint32_t>(&instructions[1]);
+            uint32_t instructionAddress = reinterpret_cast<uint32_t>(&instructions[0]);
             address = reinterpret_cast<uint32_t*>(instructionAddress + branchLength);
         }
 
