@@ -1451,6 +1451,26 @@ namespace libtp::tp::d_a_alink
          */
         bool decideDoStatus(daAlink* linkActrPtr);
 
+        /**
+         *  @brief Evaluates current ground conditions and updates Link's status appropriately
+         *
+         *  @param linkActrPtr A pointer to Link's Actor
+         */
+        bool checkGroundSpecialMode(daAlink* linkActrPtr);
+
+        /**
+         *  @brief Checks the current stage info pointer to determine if link is in a dungeon
+         *
+         */
+        bool checkDungeon();
+
+        /**
+         *  @brief Checks the current stage info pointer to determine if link is in a boss room
+         *
+         *  @param linkActrPtr A pointer to Link's Actor
+         */
+        bool checkBossRoom();
+
         extern ClimbVars climbVars;
         extern LinkStatus* linkStatus;
         extern WallMoveVars wallMoveVars;
