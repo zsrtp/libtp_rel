@@ -40,6 +40,13 @@ namespace libtp::tp::d_a_obj_item
          *  @param daItem A pointer to the Item actor being referenced.
          */
         void CreateInit(void* daItem);
+
+        /**
+         *  @brief General execution function that sets and modifies actor params
+         *
+         *  @param daItem A pointer to the Item actor being referenced.
+         */
+        int32_t daItem_execute(void* daItem);
     }
 } // namespace libtp::tp::d_a_obj_item
 #endif
