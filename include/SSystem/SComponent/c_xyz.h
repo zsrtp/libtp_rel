@@ -13,6 +13,14 @@
 
 struct cXyz: Vec
 {
+    void set(float pX, float pY, float pZ)
+    {
+        x = pX;
+        y = pY;
+        z = pZ;
+    }
+
+    void setall(float f) { set(f, f, f); }
 } __attribute__((__packed__));
 
 #endif
