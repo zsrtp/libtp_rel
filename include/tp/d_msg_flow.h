@@ -225,6 +225,29 @@ namespace libtp::tp::d_msg_flow
         uint16_t getEventId(dMsgFlow* msgFlow, int32_t* itemNo);
 
         /**
+         * @brief Returns a pointer to a data block in bmg data.
+         *
+         * @param blockTag A pointer to value such as "FLI1", "FLW1", "INF1", etc.
+         *
+         * @return Return pointer to data block in bmg data, or nullptr if not found.
+         */
+        uint8_t* getMsgDataBlock(dMsgFlow* msgFlow, char const* blockTag);
+
+        /**
+         * @brief Sets the current FLW node on the MsgFlow
+         *
+         * @param msgFlow A pointer to the current message flow node.
+         * @param flwIndex Index of the FLW node.
+         * @param param_2 An actor
+         */
+        void setNodeIndex(dMsgFlow* msgFlow, uint16_t flwIndex, libtp::tp::f_op_actor::fopAc_ac_c* actrPtr);
+
+        int32_t setSelectMsg(dMsgFlow* msgFlow,
+                             void* bodyMsgFlowNode,
+                             void* optionsMsgFlowNode,
+                             libtp::tp::f_op_actor::fopAc_ac_c* actrPtr);
+
+        /**
          *	@brief Sets the message ID of the current message flow
          *
          *  @param msgFlow A pointer to the current message flow node.
@@ -232,6 +255,42 @@ namespace libtp::tp::d_msg_flow
          *  @param actrPtr A pointer to the actor interacting with the message flow node.
          */
         int32_t setNormalMsg(dMsgFlow* msgFlow, void* nodeEvent, libtp::tp::f_op_actor::fopAc_ac_c* actrPtr);
+
+        /**
+         * @brief Process message node in flow
+         *
+         * @param msgFlow A pointer to the current message flow node.
+         * @param param_0 An actor
+         * @param param_1 An actor
+         * @return int32_t Returns proc_status
+         */
+        int32_t messageNodeProc(dMsgFlow* msgFlow,
+                                libtp::tp::f_op_actor::fopAc_ac_c* actrPtr_1,
+                                libtp::tp::f_op_actor::fopAc_ac_c* actrPtr_2);
+
+        /**
+         * @brief Process branch node in flow
+         *
+         * @param msgFlow A pointer to the current message flow node.
+         * @param param_0 An actor
+         * @param param_1 An actor
+         * @return int32_t Returns proc_status
+         */
+        int32_t branchNodeProc(dMsgFlow* msgFlow,
+                               libtp::tp::f_op_actor::fopAc_ac_c* actrPtr_1,
+                               libtp::tp::f_op_actor::fopAc_ac_c* actrPtr_2);
+
+        /**
+         * @brief Process event node in flow
+         *
+         * @param msgFlow A pointer to the current message flow node.
+         * @param param_0 An actor
+         * @param param_1 An actor
+         * @return int32_t Returns proc_status
+         */
+        int32_t eventNodeProc(dMsgFlow* msgFlow,
+                              libtp::tp::f_op_actor::fopAc_ac_c* actrPtr_1,
+                              libtp::tp::f_op_actor::fopAc_ac_c* actrPtr_2);
     }
 } // namespace libtp::tp::d_msg_flow
 #endif

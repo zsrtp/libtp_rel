@@ -47,6 +47,7 @@ namespace libtp::tp::d_msg_object
         void setMessageIndex(void* msgObjPtr, uint32_t param_1, uint32_t itemIndex, bool param_3);
 
         uint8_t isSend(void* msgObjPtr);
+        void endFlowGroup(void* msgObjPtr);
     }
 } // namespace libtp::tp::d_msg_object
 #endif

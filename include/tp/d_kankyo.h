@@ -53,6 +53,16 @@ namespace libtp::tp::d_kankyo
          *  @return BOOL returns 0 if it is day time and 1 if it is night time.
          */
         int32_t dKy_daynight_check();
+
+        /**
+         * @brief Check if environment is currently twilight. Aside from Faron,
+         * Eldin, and Lanayru Twilights, most of Palace of Twilight is also a
+         * twilight environment for example.
+         *
+         * @return Returns true if environment is currently twilight, else
+         * false.
+         */
+        bool dKy_darkworld_check();
     }
 } // namespace libtp::tp::d_kankyo
 #endif
