@@ -239,7 +239,7 @@ namespace libtp::tp::d_msg_flow
          *
          * @param msgFlow 'this' pointer to msgFlow
          * @param flwIndex Index of the FLW node.
-         * @param param_2 An actor
+         * @param actrPtr An actor
          */
         void setNodeIndex(dMsgFlow* msgFlow, uint16_t flwIndex, libtp::tp::f_op_actor::fopAc_ac_c* actrPtr);
 
