@@ -1479,8 +1479,8 @@ namespace libtp::tp::d_a_alink
         bool checkCastleTown();
 
         /**
-         * @brief Checks if currently in F_SP117 room 2 which is the past area
-         * behind the ToT door which is not part of the ToT dungeon.
+         *  @brief Checks if currently in F_SP117 room 2 which is the past area
+         *  behind the ToT door which is not part of the ToT dungeon.
          */
         bool checkForestOldCentury();
 
