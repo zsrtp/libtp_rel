@@ -59,8 +59,7 @@ namespace libtp::tp::d_kankyo
          * Eldin, and Lanayru Twilights, most of Palace of Twilight is also a
          * twilight environment for example.
          *
-         * @return Returns true if environment is currently twilight, else
-         * false.
+         * @return Returns true if environment is currently twilight, else false.
          */
         bool dKy_darkworld_check();
     }
