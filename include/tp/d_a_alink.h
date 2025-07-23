@@ -1459,12 +1459,7 @@ namespace libtp::tp::d_a_alink
         bool checkGroundSpecialMode(daAlink* linkActrPtr);
 
         /**
-         *  @brief Checks the current stage info pointer to determine if Link is in a dungeon
-         */
-        bool checkDungeon();
-
-        /**
-         *  @brief Checks the current stage info pointer to determine if Link is in a field.
+         *  @brief Checks the current stage info pointer to determine if Link is in a field
          */
         bool checkField();
 
@@ -1474,18 +1469,12 @@ namespace libtp::tp::d_a_alink
         bool checkBossRoom();
 
         /**
-         *	@brief Checks to see if Link has the iron boots equpped
-         *
-         *  @param linkActrPtr A pointer to Link's Actor
-         *
-         *  @return 0x02000000 if the item is equipped. 0 if not
+         *  @brief Checks the current stage info pointer to determine if Link is in a dungeon
          */
-        uint32_t checkEquipHeavyBoots(daAlink* linkActrPtr);
+        bool checkDungeon();
 
         /**
-         * @brief Checks the current stage info pointer to determine if link is in castle town
-         *
-         * @return Returns true if current stage info has STType of ST_CASTLE_TOWN, else false
+         *  @brief Checks the current stage info pointer to determine if Link is in Castle Town
          */
         bool checkCastleTown();
 
@@ -1494,6 +1483,15 @@ namespace libtp::tp::d_a_alink
          * behind the ToT door which is not part of the ToT dungeon.
          */
         bool checkForestOldCentury();
+
+        /**
+         *	@brief Checks to see if Link has the iron boots equpped
+         *
+         *  @param linkActrPtr A pointer to Link's Actor
+         *
+         *  @return 0x02000000 if the item is equipped. 0 if not
+         */
+        uint32_t checkEquipHeavyBoots(daAlink* linkActrPtr);
 
         extern ClimbVars climbVars;
         extern LinkStatus* linkStatus;
