@@ -18,10 +18,10 @@ namespace libtp::tp::JAudio2
         /**
          *	@brief Plays the specified audio sound effect.
          *
-         *  @param sfxID The ID of the sound effect to be played.
-         *  @param i_sePos Unknown.
-         *  @param unk5 Unknown.
-         *  @param i_reverb Unknown.
+         *  @param JAISeMge Pointer to the sound effect manager
+         *  @param soundID The ID of the sound being played
+         *  @param param_2 Unknown.
+         *  @param param_3 Unknown.
          */
         void JAISeMgr_start_ID(void* JAISeMgr, libtp::z2audiolib::z2scenemgr::JAISoundID soundID, void* param_2, void* param_3);
     }
