@@ -40,6 +40,11 @@ namespace libtp::tp::d_item
         void item_func_WOOD_STICK();
 
         /**
+         *  @brief Sets the appropriate flags when the player collects a Heart Piece.
+         */
+        void item_func_KAKERA_HEART();
+
+        /**
          *  @brief Sets the appropriate flags when the player collects a Heart Container.
          */
         void item_func_UTUWA_HEART();

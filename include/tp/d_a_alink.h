@@ -1471,6 +1471,15 @@ namespace libtp::tp::d_a_alink
          */
         bool checkBossRoom();
 
+        /**
+         *	@brief Checks to see if Link has the iron boots equpped
+         *
+         *  @param linkActrPtr A pointer to Link's Actor
+         *
+         *  @return 0x02000000 if the item is equipped. 0 if not
+         */
+        uint32_t checkEquipHeavyBoots(daAlink* linkActrPtr);
+
         extern ClimbVars climbVars;
         extern LinkStatus* linkStatus;
         extern WallMoveVars wallMoveVars;
