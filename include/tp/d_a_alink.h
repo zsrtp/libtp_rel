@@ -1459,23 +1459,17 @@ namespace libtp::tp::d_a_alink
         bool checkGroundSpecialMode(daAlink* linkActrPtr);
 
         /**
-         *  @brief Checks the current stage info pointer to determine if link is in a dungeon
-         *
+         *  @brief Checks the current stage info pointer to determine if Link is in a dungeon
          */
         bool checkDungeon();
 
         /**
-         * @brief Checks the current stage info pointer to determine if link is in a field.
-         *
-         * @param linkActrPtr A pointer to Link's Actor
-         * @return Returns true if in field, else false
+         *  @brief Checks the current stage info pointer to determine if Link is in a field.
          */
         bool checkField();
 
         /**
-         *  @brief Checks the current stage info pointer to determine if link is in a boss room
-         *
-         *  @param linkActrPtr A pointer to Link's Actor
+         *  @brief Checks the current stage info pointer to determine if Link is in a boss room
          */
         bool checkBossRoom();
 
@@ -1498,8 +1492,6 @@ namespace libtp::tp::d_a_alink
         /**
          * @brief Checks if currently in F_SP117 room 2 which is the past area
          * behind the ToT door which is not part of the ToT dungeon.
-         *
-         * @return Returns true if in that room, else false
          */
         bool checkForestOldCentury();
 
