@@ -251,10 +251,7 @@ namespace libtp::tp::d_msg_flow
          * @param optionsNode A pointer to the menu's options node.
          * @param actrPtr An actor
          */
-        int32_t setSelectMsg(dMsgFlow* msgFlow,
-                             void* bodyMsgFlowNode,
-                             void* optionsMsgFlowNode,
-                             libtp::tp::f_op_actor::fopAc_ac_c* actrPtr);
+        int32_t setSelectMsg(dMsgFlow* msgFlow, void* bodyNode, void* optionsNode, libtp::tp::f_op_actor::fopAc_ac_c* actrPtr);
 
         /**
          *	@brief Sets the message ID of the current message flow
@@ -269,8 +266,8 @@ namespace libtp::tp::d_msg_flow
          * @brief Process message node in flow
          *
          * @param msgFlow 'this' pointer to msgFlow
-         * @param param_0 An actor
-         * @param param_1 An actor
+         * @param actrPtr_1 An actor
+         * @param actrPtr_2 An actor
          * @return int32_t Returns proc_status
          */
         int32_t messageNodeProc(dMsgFlow* msgFlow,
@@ -281,8 +278,8 @@ namespace libtp::tp::d_msg_flow
          * @brief Process branch node in flow
          *
          * @param msgFlow 'this' pointer to msgFlow
-         * @param param_0 An actor
-         * @param param_1 An actor
+         * @param actrPtr_1 An actor
+         * @param actrPtr_2 An actor
          * @return int32_t Returns proc_status
          */
         int32_t branchNodeProc(dMsgFlow* msgFlow,
@@ -293,8 +290,8 @@ namespace libtp::tp::d_msg_flow
          * @brief Process event node in flow
          *
          * @param msgFlow 'this' pointer to msgFlow
-         * @param param_0 An actor
-         * @param param_1 An actor
+         * @param actrPtr_1 An actor
+         * @param actrPtr_2 An actor
          * @return int32_t Returns proc_status
          */
         int32_t eventNodeProc(dMsgFlow* msgFlow,
