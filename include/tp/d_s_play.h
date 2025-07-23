@@ -14,7 +14,7 @@ namespace libtp::tp::d_s_play
 
     extern "C"
     {
-        int32_t dScnPlay_phase_1();
+        int32_t dScnPlay_phase_1(void* i_this);
     }
 } // namespace libtp::tp::d_s_play
 #endif
