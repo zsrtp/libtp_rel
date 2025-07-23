@@ -225,23 +225,32 @@ namespace libtp::tp::d_msg_flow
         uint16_t getEventId(dMsgFlow* msgFlow, int32_t* itemNo);
 
         /**
-         * @brief Returns a pointer to a data block in bmg data.
+         * @brief Finds a data block in the BMG data by name.
          *
-         * @param blockTag A pointer to value such as "FLI1", "FLW1", "INF1", etc.
+         * @param msgFlow 'this' pointer to msgFlow
+         * @param blockTag A pointer to string such as "FLI1", "FLW1", "INF1", etc.
          *
          * @return Return pointer to data block in bmg data, or nullptr if not found.
          */
         uint8_t* getMsgDataBlock(dMsgFlow* msgFlow, char const* blockTag);
 
         /**
-         * @brief Sets the current FLW node on the MsgFlow
+         * @brief Sets the current FLW node on the msgFlow
          *
-         * @param msgFlow A pointer to the current message flow node.
+         * @param msgFlow 'this' pointer to msgFlow
          * @param flwIndex Index of the FLW node.
          * @param param_2 An actor
          */
         void setNodeIndex(dMsgFlow* msgFlow, uint16_t flwIndex, libtp::tp::f_op_actor::fopAc_ac_c* actrPtr);
 
+        /**
+         * @brief Sets up a menu in a msgFlow using its body and options nodes.
+         *
+         * @param msgFlow 'this' pointer to msgFlow
+         * @param bodyNode A pointer to the menu's body text node.
+         * @param optionsNode A pointer to the menu's options node.
+         * @param actrPtr An actor
+         */
         int32_t setSelectMsg(dMsgFlow* msgFlow,
                              void* bodyMsgFlowNode,
                              void* optionsMsgFlowNode,
@@ -250,16 +259,16 @@ namespace libtp::tp::d_msg_flow
         /**
          *	@brief Sets the message ID of the current message flow
          *
-         *  @param msgFlow A pointer to the current message flow node.
-         *  @param nodeEvent A pointer to the current message flow header.
+         *  @param msgFlow 'this' pointer to msgFlow
+         *  @param node A pointer to current node of type 'message'.
          *  @param actrPtr A pointer to the actor interacting with the message flow node.
          */
-        int32_t setNormalMsg(dMsgFlow* msgFlow, void* nodeEvent, libtp::tp::f_op_actor::fopAc_ac_c* actrPtr);
+        int32_t setNormalMsg(dMsgFlow* msgFlow, void* node, libtp::tp::f_op_actor::fopAc_ac_c* actrPtr);
 
         /**
          * @brief Process message node in flow
          *
-         * @param msgFlow A pointer to the current message flow node.
+         * @param msgFlow 'this' pointer to msgFlow
          * @param param_0 An actor
          * @param param_1 An actor
          * @return int32_t Returns proc_status
@@ -271,7 +280,7 @@ namespace libtp::tp::d_msg_flow
         /**
          * @brief Process branch node in flow
          *
-         * @param msgFlow A pointer to the current message flow node.
+         * @param msgFlow 'this' pointer to msgFlow
          * @param param_0 An actor
          * @param param_1 An actor
          * @return int32_t Returns proc_status
@@ -283,7 +292,7 @@ namespace libtp::tp::d_msg_flow
         /**
          * @brief Process event node in flow
          *
-         * @param msgFlow A pointer to the current message flow node.
+         * @param msgFlow 'this' pointer to msgFlow
          * @param param_0 An actor
          * @param param_1 An actor
          * @return int32_t Returns proc_status
