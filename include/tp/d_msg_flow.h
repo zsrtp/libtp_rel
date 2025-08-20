@@ -232,7 +232,7 @@ namespace libtp::tp::d_msg_flow
          *
          * @return Return pointer to data block in bmg data, or nullptr if not found.
          */
-        uint8_t* getMsgDataBlock(dMsgFlow* msgFlow, char const* blockTag);
+        uint8_t* getMsgDataBlock(dMsgFlow* msgFlow, const char* blockTag);
 
         /**
          * @brief Sets the current FLW node on the msgFlow

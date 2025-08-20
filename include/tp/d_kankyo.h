@@ -45,7 +45,7 @@ namespace libtp::tp::d_kankyo
          *
          *  @return Bool returns True if the stage should be in Twilight, otherwise returns False.
          */
-        bool dKy_darkworld_stage_check(char const* stageName, int32_t roomNo);
+        bool dKy_darkworld_stage_check(const char* stageName, int32_t roomNo);
 
         /**
          *  @brief Checks to see it is currently day or night time.
