@@ -110,6 +110,7 @@ namespace libtp::tp::d_meter2_info
          *  @param minigameFlag The status of the current minigame
          */
         void resetMiniGameItem(G_Meter2_Info* g_meter2_info_ptr, bool minigameFlag);
+        
     }
 } // namespace libtp::tp::d_meter2_info
 #endif
