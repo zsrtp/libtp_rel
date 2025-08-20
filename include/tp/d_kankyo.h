@@ -45,7 +45,7 @@ namespace libtp::tp::d_kankyo
          *
          *  @return Bool returns True if the stage should be in Twilight, otherwise returns False.
          */
-        bool dKy_darkworld_stage_check(char const* stageName, int32_t roomNo);
+        bool dKy_darkworld_stage_check(const char* stageName, int32_t roomNo);
 
         /**
          *  @brief Checks to see it is currently day or night time.
@@ -53,6 +53,15 @@ namespace libtp::tp::d_kankyo
          *  @return BOOL returns 0 if it is day time and 1 if it is night time.
          */
         int32_t dKy_daynight_check();
+
+        /**
+         * @brief Check if environment is currently twilight. Aside from Faron,
+         * Eldin, and Lanayru Twilights, most of Palace of Twilight is also a
+         * twilight environment for example.
+         *
+         * @return Returns true if environment is currently twilight, else false.
+         */
+        bool dKy_darkworld_check();
     }
 } // namespace libtp::tp::d_kankyo
 #endif
