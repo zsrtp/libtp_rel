@@ -611,6 +611,16 @@ namespace libtp::tp::d_save
          */
         void onLightDropGetFlag(dSv_light_drop_c* lightDropPtr, uint8_t i_nowLevel);
 
+        /**
+         *  @brief Updates the trade item slot to the given itemID. ItemID 0xFF
+         *  is a valid parameter value which is used to empty the slot (such as
+         *  after showing the Invoice).
+         *
+         *  @param playerItemPtr A pointer to the current player_item struct.
+         *  @param itemID The ID of the item to put in the trade item slot.
+         */
+        void setWarashibeItem(dSv_player_item_c* playerItemPtr, uint8_t itemID);
+
         extern uint16_t saveBitLabels[0x336]; // saveBitLabels__16dSv_event_flag_c
     }
 } // namespace libtp::tp::d_save
