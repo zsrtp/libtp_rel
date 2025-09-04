@@ -40,7 +40,10 @@ namespace libtp::tp::JUtility
 
         void set(uint32_t u32Color) { *(uint32_t*)&r = u32Color; }
         void set(libtp::tp::GXStruct::GXColor gxColor) { *(libtp::tp::GXStruct::GXColor*)&r = gxColor; }
-    };
+    } __attribute__((__packed__));
+
+    static_assert(sizeof(TColor) == 0x4);
+
 } // namespace libtp::tp::JUtility
 
 #endif

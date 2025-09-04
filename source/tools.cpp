@@ -848,6 +848,11 @@ namespace libtp::tools
         return static_cast<int32_t>(libtp::tp::d_stage::mStayNo);
     }
 
+    int32_t getPreviousRoomNo()
+    {
+        return static_cast<int32_t>(libtp::tp::d_stage::mOldStayNo);
+    }
+
     bool playerIsInRoomStage(int32_t room, const char* stage)
     {
         // Only check room if it is valid

@@ -655,6 +655,12 @@ namespace libtp::tp::d_stage
          *  @brief A static value that represents the current room the player is in
          */
         extern int8_t mStayNo;
+
+        /**
+         *  @brief A static value that represents the previous room the player was in.
+         *  Usually 0xFF unless walking between rooms seamlessly.
+         */
+        extern int8_t mOldStayNo;
     }
 } // namespace libtp::tp::d_stage
 #endif

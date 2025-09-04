@@ -621,6 +621,24 @@ namespace libtp::tp::d_save
          */
         void setWarashibeItem(dSv_player_item_c* playerItemPtr, uint8_t itemID);
 
+        /**
+         *  @brief Checks if a region is unlocked on the map
+         *
+         *  @param lastStayInfoPtr A pointer to the last_stay_info struct.
+         *  @param i_region ID of region (1 for Ordona, 2 for Faron, etc.)
+         *
+         *  @return Returns true if region is unlocked on map, else false
+         */
+        bool isRegionBit(dSv_player_field_last_stay_info_c* lastStayInfoPtr, int32_t i_region);
+
+        /**
+         *  @brief Marks a region as unlocked on the map.
+         *
+         *  @param lastStayInfoPtr A pointer to the last_stay_info struct.
+         *  @param i_region ID of region to unlock (1 for Ordona, 2 for Faron, etc.)
+         */
+        void onRegionBit(dSv_player_field_last_stay_info_c* lastStayInfoPtr, int32_t i_region);
+
         extern uint16_t saveBitLabels[0x336]; // saveBitLabels__16dSv_event_flag_c
     }
 } // namespace libtp::tp::d_save
