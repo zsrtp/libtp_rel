@@ -88,6 +88,8 @@ namespace libtp::tp::d_menu_fmap
         /* 0x313 */ bool mAreaNameSet;
     } __attribute__((__packed__));
 
+    static_assert(sizeof(dMenu_Fmap) == 0x314);
+
     extern "C"
     {
         /**
