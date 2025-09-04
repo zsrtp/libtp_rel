@@ -152,7 +152,9 @@ namespace libtp::tp::d_menu_fmap2D
         /**
          *  @brief Checks whether or not the map background of a region should be rendered.
          *
+         *  @param fmap2DBackPtr A pointer to a `dMenu_Fmap2DBack_c`.
          *  @param i_region ID of region (1 for Ordona, 2 for Faron, etc.)
+         *
          *  @return int32_t Returns 1 if should show, else returns 0.
          */
         int32_t isShowRegion(dMenu_Fmap2DBack_c* fmap2DBackPtr, int32_t i_region);
