@@ -91,15 +91,6 @@ namespace libtp::tp::d_menu_fmap
     extern "C"
     {
         /**
-         *	@brief Checks to see if the player is trying to map warp.
-         *
-         *	@param mapPtr A pointer to the map resource.
-         *
-         *  @return Bool returns True if the player is trying to warp, otherwise returns False.
-         */
-        bool checkPlayerWarpAccept(void* mapPtr);
-
-        /**
          *  @brief Handles execution of map while zoomed in on a region with portals hidden.
          *
          *  @param mapPtr A pointer to the dMenu_Fmap.
