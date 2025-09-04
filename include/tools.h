@@ -232,6 +232,11 @@ namespace libtp::tools
     int32_t getCurrentRoomNo();
 
     /**
+     * @brief Returns the previous room number (mOldStayNo converted to int32_t)
+     */
+    int32_t getPreviousRoomNo();
+
+    /**
      * @brief Checks if the player is in a specific room in a stage
      *
      * @param room The room to be checked

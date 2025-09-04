@@ -20,6 +20,9 @@ namespace libtp::tp::GXStruct
         /* 0x2 */ uint8_t b;
         /* 0x3 */ uint8_t a;
     } GXColor;
+
+    static_assert(sizeof(GXColor) == 0x4);
+
 } // namespace libtp::tp::GXStruct
 
 #endif
