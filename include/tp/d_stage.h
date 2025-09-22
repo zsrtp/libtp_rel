@@ -640,6 +640,12 @@ namespace libtp::tp::d_stage
         int32_t dStage_playerInit(void* stageDt, stage_dzr_header_entry* i_data, int32_t num, void* raw_data);
 
         /**
+         *  @brief Stage initialization called during phase_4 of dScnPly_Create.
+         *  Inits the stage, room, and event manager.
+         */
+        void dStage_Create();
+
+        /**
          *  @brief Checks to see if time is currently passing on the current stage.
          *
          *  @return Bool returns True if time is passing, otherwise returns False.
@@ -650,6 +656,15 @@ namespace libtp::tp::d_stage
          *  @brief Pointer to roomControl data
          */
         extern void* mStatus_roomControl;
+
+        /**
+         *  @brief Name of last loaded Demo archive. Gets cleared on every stage
+         *  load (first byte set to 0x00) even if there appears to be one
+         *  cutscene happening across multiple scenes such as the opening
+         *  cutscene. As the room initializes this value gets updated to a new
+         *  value if applicable.
+         */
+        extern char mDemoArcName[10];
 
         /**
          *  @brief A static value that represents the current room the player is in
