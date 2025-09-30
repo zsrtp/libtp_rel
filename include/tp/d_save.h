@@ -580,6 +580,16 @@ namespace libtp::tp::d_save
         bool isSwitch_dSv_memBit(dSv_memBit_c* memoryBit, int32_t flag);
 
         /**
+         *  @brief Checks to see if the specified flag in the dSv_danBit is set.
+         *
+         *  @param danBit A pointer to the current danBit struct
+         *  @param flag The flag to be checked
+         *
+         *  @return Bool returns True if the flag is set, otherwise returns False.
+         */
+        bool isSwitch_dSv_danBit(dSv_danBit_c* danBit, int32_t flag);
+
+        /**
          *  @brief Sets the specified zone bits flag
          *
          *  @param zoneBit A pointer to the current zonebit struct

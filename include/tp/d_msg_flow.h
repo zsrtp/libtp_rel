@@ -98,14 +98,14 @@ namespace libtp::tp::d_msg_flow
         int32_t query025(void* flow_node, void* actrPtr, int32_t unk3);
 
         /**
-         *	@brief Checks to see if there are any NPCs around to be able to transform.
+         *  @brief Checks if Midna should stop you from transforming.
          *
          *  @param flow_node A pointer to the current message flow node.
          *  @param actrPtr A pointer to the actor interacting with the message flow node
          *  @param unk3 Unknown.
          *
-         *  @return Returns 0 if the player can transform, 1 if a NPC is nearby, 2 if a NPC can see link from a distance, 3 if
-         *he has scared someone already (like in Kak), and 4 if he is in castle town and has scared the people.
+         *  @return Returns 0 if the player can transform, 1 if an NPC is nearby, 2 if an NPC can see Link from a
+         *  distance, 3 if standing in PoT dark fog, or 4 if Link is in Castle Town and has scared the people.
          */
         int32_t query042(void* flow_node, void* actrPtr, int32_t unk3);
 
