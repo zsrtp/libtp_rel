@@ -473,6 +473,14 @@ namespace libtp::tp::d_save
         void offEventBit(dSv_event_c* eventPtr, uint16_t flag);
 
         /**
+         * @brief Unsets the bit for the specified item
+         *
+         * @param getItemPtr The pointer to the dSv_player_get_item_c.
+         * @param id The id of the item.
+         */
+        void offFirstBit(dSv_player_get_item_c* getItemPtr, uint8_t id);
+
+        /**
          *  @brief Checks whether the player has cleared the specified twilight.
          *
          *  @param playerStatusPtr The pointer to the PlayerStatus struct.
