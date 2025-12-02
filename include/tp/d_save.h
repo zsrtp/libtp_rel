@@ -14,6 +14,8 @@
 #include "SSystem/SComponent/c_xyz.h"
 #include "data/items.h"
 
+#define MAX_ITEM_SLOTS 24
+
 namespace libtp::tp::d_save
 {
     struct dSv_memory2_c
