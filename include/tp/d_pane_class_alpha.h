@@ -27,6 +27,10 @@ namespace libtp::tp::d_pane_class_alpha
         /* 0x19 */ uint8_t mFlags;
         /* 0x1A */ uint8_t padding[2];
     } __attribute__((__packed__));
+        extern "C"{
+        void setAlphaRate(CPaneMgrAlpha*, float);
+    }
+
 
 } // namespace libtp::tp::d_pane_class_alpha
 #endif
