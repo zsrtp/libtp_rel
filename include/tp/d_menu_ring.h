@@ -183,6 +183,7 @@ namespace libtp::tp::d_menu_ring
          *  @param param_3 unk
          *  @param param_4 unk
          */
+        void* dMenuRing_ct(dMenu_Ring_c* dMenuRing, void* param_1, void* param_2, void* param_3, uint8_t param_4);
 
         /**
          *	@brief Returns the current ammo count for the specified item slot
