@@ -13,6 +13,7 @@
 #include "tp/d_pane_class.h"
 #include "tp/d_pane_class_alpha.h"
 #include "tp/J2DTextBox.h"
+#include "tp/JUTTexture.h"
 
 namespace libtp::tp::d_menu_ring
 {
@@ -26,11 +27,11 @@ namespace libtp::tp::d_menu_ring
             /* 3 */ STATUS_EXPLAIN_FORCE,
         };
         /* 0x000 */ uint8_t dDlst_base_c[0x4];
-        /* 0x004 */ uint8_t mpHeap[0x4]; // JKRExpHeap*
-        /* 0x008 */ void* mpStick;       // STControl*
-        /* 0x00C */ void* mpCStick;      // CSTControl*
-        /* 0x010 */ void* mpDrawCursor;  // dSelect_cursor_c*
-        /* 0x014 */ void* mpString;      // dMsgString_c*
+        /* 0x004 */ void* mpHeap;       // JKRExpHeap*
+        /* 0x008 */ void* mpStick;      // STControl*
+        /* 0x00C */ void* mpCStick;     // CSTControl*
+        /* 0x010 */ void* mpDrawCursor; // dSelect_cursor_c*
+        /* 0x014 */ void* mpString;     // dMsgString_c*
         /* 0x018 */ libtp::tp::d_pane_class_alpha::CPaneMgrAlpha* mpMessageParent;
         /* 0x01C */ libtp::tp::d_pane_class_alpha::CPaneMgrAlpha* mpCenterParent;
         /* 0x020 */ libtp::tp::d_pane_class_alpha::CPaneMgrAlpha* mpSpotParent;
@@ -51,9 +52,9 @@ namespace libtp::tp::d_menu_ring
                                                                             // and cursor is on combinable item
         /* 0x1DC */ libtp::tp::J2DTextBox::J2DTextBox* mpBowArrowComboString[5]; // Displays "Bow & Arrow Combo" if bow is
                                                                                  // equipped and cursor is on combinable item
-        /* 0x1F0 */ void* mpSelectItemTexBuf[4][3][2];                           // ResTIMG*
-        /* 0x250 */ void* mpItemBuf[MAX_ITEM_SLOTS][3];                          // ResTIMG*
-        /* 0x370 */ void* mpItemExplain;                                         // dMenu_ItemExplain_c*
+        /* 0x1F0 */ libtp::tp::JUTTexture::ResTIMG* mpSelectItemTexBuf[4][3][2];
+        /* 0x250 */ libtp::tp::JUTTexture::ResTIMG* mpItemBuf[MAX_ITEM_SLOTS][3];
+        /* 0x370 */ void* mpItemExplain;         // dMenu_ItemExplain_c*
         /* 0x374 */ void* mpResData[3];          // Contains screen data from .blo files which control e.g. the
                                                  // appearance of specific sprites and where they are on the screen
         /* 0x380 */ cXyz mDirectSelectCursorPos; // Positions the cursor with it's X and Z coordinates
@@ -182,7 +183,22 @@ namespace libtp::tp::d_menu_ring
          *  @param param_3 unk
          *  @param param_4 unk
          */
-        void* dMenuRing_ct(dMenu_Ring_c* dMenuRing, void* param_1, void* param_2, void* param_3, uint8_t param_4);
+
+        /**
+         *	@brief Returns the current ammo count for the specified item slot
+         *
+         *	@param dMenuRing A pointer to the item wheel resources.
+         *  @param slotNo The slot number of the item to be checked.
+         */
+        uint8_t getItemNum(dMenu_Ring_c* dMenuRing, uint8_t slotNo);
+
+        /**
+         *	@brief Returns the current ammo count for the specified item slot
+         *
+         *	@param dMenuRing A pointer to the item wheel resources.
+         *  @param slotNo The slot number of the item to be checked.
+         */
+        uint8_t getItemMaxNum(dMenu_Ring_c* dMenuRing, uint8_t slotNo);
     }
 } // namespace libtp::tp::d_menu_ring
 #endif

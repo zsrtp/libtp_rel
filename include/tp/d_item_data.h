@@ -25,7 +25,9 @@ namespace libtp::tp::d_item_data
         uint8_t tevFrm;
         uint8_t btpFrm;
         int16_t ringTexResIdx;
-        int16_t unk_12[3];
+        uint8_t mTexScale;
+        uint8_t unk_11;
+        int16_t unk_12[2];
     } __attribute__((__packed__));
 
     struct FieldItemRes
