@@ -11,6 +11,7 @@
 #include "tp/d_com_inf_game.h"
 #include "tp/d_meter2.h"
 #include "tp/d_msg_object.h"
+#include "tp/J2DPicture.h"
 
 namespace libtp::tp::d_meter2_info
 {
@@ -110,6 +111,18 @@ namespace libtp::tp::d_meter2_info
          *  @param minigameFlag The status of the current minigame
          */
         void resetMiniGameItem(G_Meter2_Info* g_meter2_info_ptr, bool minigameFlag);
+
+        int32_t readItemTexture(G_Meter2_Info* g_meter2_info_ptr,
+                                uint8_t item,
+                                void* i_texBuf1,
+                                libtp::tp::J2DPicture::J2DPicture* i_pic1,
+                                void* i_texBuf2,
+                                libtp::tp::J2DPicture::J2DPicture* i_pic2,
+                                void* i_texBuf3,
+                                libtp::tp::J2DPicture::J2DPicture* i_pic3,
+                                void* i_texBuf4,
+                                libtp::tp::J2DPicture::J2DPicture* i_pic4,
+                                int32_t param_9);
     }
 } // namespace libtp::tp::d_meter2_info
 #endif

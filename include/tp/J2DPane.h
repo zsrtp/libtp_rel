@@ -11,6 +11,16 @@
 
 namespace libtp::tp::J2DPane
 {
+
+    enum J2DBasePosition
+    {
+        J2DBasePosition_0,
+        J2DBasePosition_1,
+        J2DBasePosition_2,
+        J2DBasePosition_3,
+        J2DBasePosition_4
+    };
+
     class J2DPane
     {
        private:
@@ -49,6 +59,13 @@ namespace libtp::tp::J2DPane
         /* 0xFC */ uint32_t _fc;
 #endif
     } __attribute__((__packed__));
+
+    static_assert(sizeof(J2DPane) == 0x100);
+
+    extern "C"
+    {
+        void setBasePosition(J2DPane* panePtr, J2DBasePosition basePosition);
+    }
 
 } // namespace libtp::tp::J2DPane
 #endif
