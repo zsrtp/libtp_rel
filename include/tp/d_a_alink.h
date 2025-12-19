@@ -1137,6 +1137,13 @@ namespace libtp::tp::d_a_alink
         void setStickData();
 
         /**
+         *	@brief Checks if the player is magnetized
+         *
+         *  @return 0x1000 if the player is magnetized.
+         */
+        uint32_t checkMagneBootsOn(daAlink* player);
+
+        /**
          *	@brief Determines whether Link is in heavy state (Iron boots, Ball and
          *Chain, ...)
          *
