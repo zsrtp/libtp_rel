@@ -326,6 +326,12 @@ namespace libtp::tp::d_com_inf_game
         bool dComIfGs_Wolf_Change_Check();
 
         /**
+         *  @brief Runs when selecting a file on the title screen and populates the nextStage info with the data from the save
+         * file
+         */
+        void dComIfGs_gameStart();
+
+        /**
          *  @brief Fetches the specified data resource block that is loaded on the stage.
          *
          *  @param data The data file name to find.
