@@ -1144,6 +1144,12 @@ namespace libtp::tp::d_a_alink
         uint32_t checkMagneBootsOn(daAlink* player);
 
         /**
+         *	@brief Creates and updates the effects related to the Light Sword Glow
+         *
+         */
+        void setLightningSwordEffect(daAlink* player);
+
+        /**
          *	@brief Determines whether Link is in heavy state (Iron boots, Ball and
          *Chain, ...)
          *
