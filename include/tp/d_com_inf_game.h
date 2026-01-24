@@ -326,6 +326,12 @@ namespace libtp::tp::d_com_inf_game
         bool dComIfGs_Wolf_Change_Check();
 
         /**
+         *  @brief Runs when selecting a file on the title screen and populates the nextStage info with the data from the save
+         * file
+         */
+        void dComIfGs_gameStart();
+
+        /**
          *  @brief Fetches the specified data resource block that is loaded on the stage.
          *
          *  @param data The data file name to find.
@@ -393,6 +399,16 @@ namespace libtp::tp::d_com_inf_game
          *
          */
         void dComIfGs_onStageSwitch(int32_t stageID, int32_t flag);
+
+        /**
+         *  @brief Checks the specified flag for the specified stage bitfield index. If the specified stage is also using the
+         * temp bitfield, that flag is checked as well.
+         *
+         *  @param stageID The index of the stage bitfield to check.
+         *  @param flag The flag to be set
+         *
+         */
+        int32_t dComIfGs_isStageSwitch(int32_t stageID, int32_t flag);
     }
 } // namespace libtp::tp::d_com_inf_game
 #endif
