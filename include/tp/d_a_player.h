@@ -215,6 +215,13 @@ namespace libtp::tp::d_a_player
     extern "C"
     {
         extern daMidna_c* m_midnaActor;
+
+        /**
+         * @brief Checks if spawning in from a void, game over, etc.
+         *
+         * @return bool returns true if spawning in from void, game over, etc., else false.
+         */
+        bool checkRoomRestartStart();
     }
 } // namespace libtp::tp::d_a_player
 #endif
