@@ -16,6 +16,7 @@ namespace libtp::tp::d_msg_class
         uint32_t getFontCCColorTable(uint8_t colorId, uint8_t unk);
         uint32_t getFontGCColorTable(uint8_t colorId, uint8_t unk);
         void jmessage_tSequenceProcessor__do_begin(void* seqProcessor, const void* unk2, const char* text);
+        void jmessage_tSequenceProcessor__do_end(void* seqProcessor);
         bool jmessage_tSequenceProcessor__do_tag(void* seqProcessor, uint32_t unk2, const void* currentText, uint32_t unk4);
     }
 } // namespace libtp::tp::d_msg_class
