@@ -1150,6 +1150,13 @@ namespace libtp::tp::d_a_alink
         void setLightningSwordEffect(daAlink* player);
 
         /**
+         *	@brief Checks if the player is swinging the lantern
+         *
+         *  @return 1 if condition meets value 0 if not
+         */
+        uint32_t checkKandelaarSwing(daAlink* player, int32_t value);
+
+        /**
          *	@brief Determines whether Link is in heavy state (Iron boots, Ball and
          *Chain, ...)
          *
