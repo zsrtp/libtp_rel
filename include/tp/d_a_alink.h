@@ -22,6 +22,7 @@
 #include "tp/J3DShape.h"
 #include "SSystem/SComponent/c_phase.h"
 #include "tp/J3DModel.h"
+#include "JSystem/J3DGraphAnimator/J3DModelData.h"
 #include "tp/m_do_ext.h"
 
 namespace libtp::tp::d_a_alink
@@ -402,7 +403,7 @@ namespace libtp::tp::d_a_alink
         /* 0x0063C */ request_of_phase_process_class mShieldPhaseReq;
         /* 0x00644 */ char* mShieldArcName;
         /* 0x00648 */ void* field_0x0648; // JKRExpHeap*
-        /* 0x0064C */ void* field_0x064C; // J3DModelData*
+        /* 0x0064C */ J3DModelData* field_0x064C;
         /* 0x00650 */ libtp::tp::J3DModel::J3DModel* mpLinkModel;
         /* 0x00654 */ libtp::tp::J3DModel::J3DModel* mpLinkFaceModel;
         /* 0x00658 */ libtp::tp::J3DModel::J3DModel* mpLinkHatModel;
@@ -431,7 +432,7 @@ namespace libtp::tp::d_a_alink
         /* 0x006B4 */ libtp::tp::J3DAnimation::J3DAnmTransform* field_0x06b4;
         /* 0x006B8 */ libtp::tp::J3DModel::J3DModel* mSwordModel;
         /* 0x006BC */ libtp::tp::J3DModel::J3DModel* mSheathModel;
-        /* 0x006C0 */ void* field_0x06c0; // J3DModelData*
+        /* 0x006C0 */ J3DModelData* field_0x06c0;
         /* 0x006C4 */ libtp::tp::J3DAnimation::J3DAnmTextureSRTKey* m_nSwordBtk;
         /* 0x006C8 */ libtp::tp::J3DAnimation::J3DAnmTextureSRTKey* m_mSwordBtk;
         /* 0x006CC */ libtp::tp::J3DAnimation::J3DAnmTevRegKey* m_mSwordBrk;
@@ -461,7 +462,7 @@ namespace libtp::tp::d_a_alink
         /* 0x0072C */ libtp::tp::J3DAnimation::J3DAnmTexPattern* field_0x072c;
         /* 0x00730 */ libtp::tp::m_Do_ext::mDoExt_bckAnm mItemBck;
         /* 0x0074C */ libtp::tp::m_Do_ext::mDoExt_bckAnm mHookTipBck;
-        /* 0x00768 */ void* mpHookKusariModelData; // J3DModelData
+        /* 0x00768 */ J3DModelData* mpHookKusariModelData;
         /* 0x0076C */ void* mpHookSound;           // Z2SoundObjSimple
         /* 0x00770 */ void* mpHookChain;           // hsChainShape_c
         /* 0x00774 */ uint8_t field_0x0774[0x8];
